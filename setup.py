@@ -56,8 +56,6 @@ if __name__ == "__main__":
                 "pytest-pep8>=1.0.0",
                 "pytest-mock>=1.10.1",
                 "pytest-localserver>=0.5.0",
-                "testcontainers>=2.3",
-                "future==0.17.1",
                 "coveralls>=1.7.0",
                 "types-PyYAML",
                 "types-chardet",
