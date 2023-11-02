@@ -5,13 +5,20 @@
 
     The "Can I Play It?" (CIPI) dataset is a specialized collection of 652 classical piano scores, provided in a
     machine-readable MusicXML format and accompanied by integer-based difficulty levels ranging from 1 to 9, as
-    verified by expert pianists. Developed by the Music Technology Group in Barcelona, this dataset focuses
-    exclusively on classical piano music, offering a rich resource for music researchers, educators, and students.
+    verified by expert pianists. Then, it provides embeddings for fingering and expresiveness of the piece. Each 
+    recording has multiple scores corresponding to it. This dataset focuses exclusively on classical piano music,
+    offering a rich resource for music researchers, educators, and students. Developed by the Music Technology Group
+    in Barcelona, by P. Ramoneda et al. 
 
     The CIPI dataset facilitates various applications such as the study of musical complexity, the selection of
     appropriately leveled pieces for students, and general research in music education. The dataset, alongside
     embeddings of multiple dimensions of difficulty, has been made publicly available to encourage ongoing innovation
     and collaboration within the music education and research communities.
+
+    The dataset has been published alongside a paper in Expert Systems with Applications Journal. 
+
+    The paper is shared under a Creative Commons Attribution Non Commercial Share Alike 4.0 International License, but
+    the scores are shared under request. Please do request the scores and following the download instructions.
 """
 import json
 import logging
@@ -147,8 +154,10 @@ class Track(core.Track):
             scores = [load_score(path, self._data_home) for path in self.musicxml_paths]
         except FileNotFoundError:
             raise FileNotFoundError(
-                "Some MusicXML files for trackid {} not found. "
-                "Did you run .download()?".format(self.track_id)
+                "Some MusicXML files for track id {} not found. "
+                "Did you request, download, and store the files as indicated?".format(
+                    self.track_id
+                )
             )
         return scores
 
