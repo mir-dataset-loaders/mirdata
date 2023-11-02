@@ -23,7 +23,7 @@ def make_cipi_indexes(args):
             f"ArGNNThumb-s/rh/{k}.pt",
             md5(args.path + f"/ArGNNThumb-s/rh/{k}.pt"),
         ]
-        cipi_index["tracks"][k]["expressiviness"] = [
+        cipi_index["tracks"][k]["expressiveness"] = [
             f"virtuoso/{k}.pt",
             md5(args.path + f"/virtuoso/{k}.pt"),
         ]
