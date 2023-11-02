@@ -16,11 +16,11 @@ def test_track():
         "track_id": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
         "pitch_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam/"),
-            "MTG-otmm_makam_recognition_dataset-55ce75a/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch",
+            os.path.normpath("MTG-otmm_makam_recognition_dataset-55ce75a/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch"),
         ),
         "mb_tags_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam/"),
-            "MTG-otmm_makam_recognition_dataset-55ce75a/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json",
+            os.path.normpath("MTG-otmm_makam_recognition_dataset-55ce75a/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json"),
         ),
         "form": "sarki",
         "instrumentation": "Solo vocal with accompaniment",

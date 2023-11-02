@@ -5,7 +5,9 @@ import os
 from mirdata.validate import md5
 
 
-OTMM_MAKAM_INDEX_PATH = '../mirdata/datasets/indexes/compmusic_otmm_makam_index_dlfm2016-fix1.json'
+OTMM_MAKAM_INDEX_PATH = os.path.normpath(
+    '../mirdata/datasets/indexes/compmusic_otmm_makam_index_dlfm2016-fix1.json'
+)
 
 
 def make_otmm_makam_index(dataset_data_path):
