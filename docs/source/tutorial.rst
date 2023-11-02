@@ -125,7 +125,7 @@ A partial download example for ``cante100`` dataset could be:
 Validating a dataset
 ^^^^^^^^^^^^^^^^^^^^
 
-Using the method ``validate()`` we can check if the files in the local version are the same than the available canical version,
+Using the method ``validate()`` we can check if the files in the local version are the same than the available canonical version,
 and the files were downloaded correctly (none of them are corrupted).
 
 For big datasets: In future ``mirdata`` versions, a random validation will be included. This improvement will reduce validation time for very big datasets.
@@ -164,8 +164,8 @@ We can choose a random track from a dataset with the ``choice_track()`` method.
             )
 
 
-We can also access specific tracks by id. 
-The available track ids can be acessed via the ``.track_ids`` attribute.
+We can also access specific tracks by id.
+The available track ids can be accessed via the ``.track_ids`` attribute.
 In the next example we take the first track id, and then we retrieve the melody
 annotation.
 
@@ -188,7 +188,7 @@ Alternatively, we don't need to load the whole dataset to get a single track.
     example_melody = example_track.melody  # Get the melody from first track
 
 
-.. _Remote Data Example: 
+.. _Remote Data Example:
 
 Accessing data on non-local filesystems
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -231,7 +231,7 @@ when initializing a dataset. For example:
 Annotation classes
 ^^^^^^^^^^^^^^^^^^
 
-``mirdata`` defines annotation-specific data classes. These data classes are meant to standarize the format for
+``mirdata`` defines annotation-specific data classes. These data classes are meant to standardize the format for
 all loaders, and are compatibly with `jams <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
 The list and descriptions of available annotation classes can be found in :ref:`annotations`.
@@ -242,7 +242,7 @@ Iterating over datasets and annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In general, most datasets are a collection of tracks, and in most cases each track has an audio file along with annotations.
 
-With the ``load_tracks()`` method, all tracks are loaded as a dictionary with the ids as keys and 
+With the ``load_tracks()`` method, all tracks are loaded as a dictionary with the ids as keys and
 track objects (which include their respective audio and annotations, which are lazy-loaded on access) as values.
 
 .. code-block:: python
@@ -359,7 +359,7 @@ The following is a simple example of a generator that can be used to create a te
 
         import mirdata
         import numpy as np
-        import tensorflow as tf 
+        import tensorflow as tf
 
         def orchset_generator():
             # using the default data_home

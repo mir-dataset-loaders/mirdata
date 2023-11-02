@@ -75,8 +75,8 @@ one another, as multiple drums can be played at the same time.
 
 F0
 ^^
-Musical pitch contours, typically encoded as time series indidcating the musical pitch over time.
-The time series typically have evenly spaced timestamps, each with a correspoinding pitch value
+Musical pitch contours, typically encoded as time series indicating the musical pitch over time.
+The time series typically have evenly spaced timestamps, each with a corresponding pitch value
 which may be encoded in a number of formats/granularities, including midi note numbers and Hertz.
 
 .. _genre:
@@ -128,7 +128,7 @@ many subdivisions and the length of this subdivisions that we do have per each m
 Melody
 ^^^^^^
 The musical melody of a song. Melody has no universal definition and is typically defined per dataset.
-It is typically enocoded as F0_ or as Notes_. Other types of annotations such as Vocal F0 or Vocal Notes
+It is typically encoded as F0_ or as Notes_. Other types of annotations such as Vocal F0 or Vocal Notes
 can often be considered as melody annotations as well.
 
 .. _notes:
@@ -166,7 +166,7 @@ include labels for sections, which may indicate repetitions and/or the section t
 
 Segments
 ^^^^^^^^
-Segments of particular musical events, e.g. segments of note stability, segments of particular melodic 
+Segments of particular musical events, e.g. segments of note stability, segments of particular melodic
 event, and many more.
 
 .. _technique:
