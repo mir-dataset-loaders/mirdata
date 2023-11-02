@@ -1,0 +1,14 @@
+{
+    "usul": [
+        {
+            "attribute_key": "aksak", 
+            "mb_attribute": "Aksak", 
+            "source": "http://musicbrainz.org/work/753ff394-dec1-422b-991f-227d8f848532"
+        }, 
+        {
+            "attribute_key": "aksak", 
+            "mb_tag": "aksak", 
+            "source": "http://musicbrainz.org/recording/cafcdeaf-e966-4ff0-84fb-f660d2b68365"
+        }
+    ]
+}
