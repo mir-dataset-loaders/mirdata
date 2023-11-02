@@ -1,0 +1,15 @@
+{
+  "c-1": {
+        "URI": "https://www.henle.de/en/detail/?Title=Piano+Sonatas%2C+Volume+I_32",
+        "book": "Piano Sonatas, Volume I",
+        "composer": "LUDWIG VAN BEETHOVEN",
+        "henle": 6,
+        "path": {
+            "1": "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.musicxml",
+            "2": "craig_files/beethoven-piano-sonatas-master/kern/sonata01-2.musicxml",
+            "3": "craig_files/beethoven-piano-sonatas-master/kern/sonata01-3.musicxml",
+            "4": "craig_files/beethoven-piano-sonatas-master/kern/sonata01-4.musicxml"
+        },
+        "work_name": "Piano Sonata f minor op. 2,1"
+  }
+}
