@@ -281,6 +281,16 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - IDMT-SMT-Audio Effects
+     - - audio: ✅
+       - annotations: ✅
+     - - instrument :ref:`instruments`
+       - midi nr :ref:`notes`
+       - metadata :ref:`fx`
+     - 55044
+     - .. image:: https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-nd/4.0/
+
    * - IRMAS
      - - audio: ✅
        - annotations: ✅

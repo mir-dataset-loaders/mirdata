@@ -30,6 +30,7 @@ CUSTOM_TEST_TRACKS = {
     "giantsteps_tempo": "113",
     "gtzan_genre": "country.00000",
     "guitarset": "03_BN3-119-G_solo",
+    "idmt_smt_audio_effects": "G73-45200-3341-33944",
     "irmas": "1",
     "medley_solos_db": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
     "medleydb_melody": "MusicDelta_Beethoven",
