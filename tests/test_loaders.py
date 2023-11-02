@@ -358,7 +358,6 @@ def test_track_placeholder_case():
                 ret = getattr(track_test, prop)
 
         for cprop in track_data["cached_properties"]:
-            print(cprop)
             with pytest.raises(Exception):
                 ret = getattr(track_test, cprop)
 
