@@ -147,8 +147,8 @@ class Track(core.Track):
             scores = [load_score(path, self._data_home) for path in self.musicxml_paths]
         except FileNotFoundError:
             raise FileNotFoundError(
-                "MusicXML file {} for track {} not found. "
-                "Did you run .download()?".format(self.musicxml_paths, self.track_id)
+                "Some MusicXML files for trackid {} not found. "
+                "Did you run .download()?".format(self.track_id)
             )
         return scores
 
