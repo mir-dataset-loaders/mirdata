@@ -17,22 +17,19 @@
 
     The dataset has been published alongside a paper in Expert Systems with Applications Journal. 
 
-    The paper is shared under a Creative Commons Attribution Non Commercial Share Alike 4.0 International License, but
-    the scores are shared under request. Please do request the scores and following the download instructions.
+    The dataset is shared under a Creative Commons Attribution Non Commercial Share Alike 4.0 International License, but
+    need to be requested. Please do request the dataset here: https://zenodo.org/records/8037327. The dataset can only
+    be used for open research purposes.
 """
 import json
 import logging
 import os
-import pdb
-import pickle
-from typing import Optional, TextIO, List
+from typing import Optional, List
 
-import smart_open
 from smart_open import open
 
-from deprecated.sphinx import deprecated
 
-from mirdata import core, io, jams_utils, download_utils
+from mirdata import core, jams_utils
 
 try:
     import music21
@@ -67,8 +64,9 @@ LICENSE_INFO = (
 
 DOWNLOAD_INFO = """
     Unfortunately the files of the CIPI dataset are available
-    for download upon request. After requesting the dataset, you will receive a
-    link to download the dataset. You must download scores.zip, embeddings.zip and index.json
+    for download upon request here: https://zenodo.org/records/8037327.
+    After requesting the dataset, you will receive a link to download the 
+    dataset. You must download scores.zip, embeddings.zip and index.json
     copy the files into the folder:
         > cipi/
             > index.json
