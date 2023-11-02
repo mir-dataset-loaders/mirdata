@@ -60,6 +60,14 @@ cante100
    :inherited-members:
 
 
+cipi
+^^^^
+
+.. automodule:: mirdata.datasets.cipi
+   :members:
+   :inherited-members:
+
+
 compmusic_carnatic_rhythm
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
