@@ -3,6 +3,11 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
+    **NOTE**: From mirdata v0.3.8 on, the only version available of this dataset is dlfm2016-fix1, which is
+    basically the same as dlfm2016, but with a few fixes in some annotations. The original dlfm2016 version
+    is still available in mirdata versions <=0.3.7. Note that from dlfm2016 to dlfm2016-fix1, no new recordings
+    or annotation were added, only a few annotation files were fixed.
+
     This dataset is designed to test makam recognition methodologies on Ottoman-Turkish makam music.
     It is composed of 50 recording from each of the 20 most common makams in CompMusic Project's Dunya Ottoman-Turkish
     Makam Music collection. Currently the dataset is the largest makam recognition dataset.
@@ -60,8 +65,6 @@ BIBTEX = """
 INDEXES = {
     "default": "dlfm2016-fix1",
     "test": "dlfm2016-fix1",
-    "old": "dlfm2016",
-    "dlfm2016": core.Index(filename="compmusic_otmm_makam_index_dlfm2016.json"),
     "dlfm2016-fix1": core.Index(
         filename="compmusic_otmm_makam_index_dlfm2016-fix1.json"
     ),
