@@ -60,8 +60,8 @@ cante100
    :inherited-members:
 
 
-cante100
-^^^^^^^^
+cipi
+^^^^
 
 .. automodule:: mirdata.datasets.cipi
    :members:
