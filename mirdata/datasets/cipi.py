@@ -85,20 +85,24 @@ class Track(core.Track):
         track_id (str): track id
         musicxml_paths (list): path to musicxml score. If the music piece contains multiple movents the list will contain multiple paths.
         difficulty annotation (str): annotated difficulty
+        fingering_path (str): Path of fingering features from technique dimension computed with ArGNN fingering model. Return of two paths, the right hand and the ones of the left hand. Use torch.load(...) for loading the embeddings.
+        expressiveness_path (tuple): Path of expressiveness features from sound dimension computed with virtuosoNet model.Use torch.load(...) for loading the embeddings.
+        notes_path (str): Path of note features from notation dimension. Use torch.load(...) for loading the embeddings.
 
     Cached Properties:
-        Fingering path (str): Path of fingering features from technique dimension computed with ArGNN fingering model. Return of two paths, embeddings of the right hand and the ones of the left hand. Use torch.load(...) for loading the embeddings.
-        Expressiviness path (str): Path of expressiviness features from sound dimension computed with virtuosoNet model.Use torch.load(...) for loading the embeddings.
-        Notes path (str): Path of note features from notation dimension. Use torch.load(...) for loading the embeddings.
         scores (list[music21.stream.Score]): music21 scores. If the work is splited in several movements the list will contain multiple scores.
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
         self._data_home = data_home
+        self.fingering_path = (self.get_path("rh_fingering"), self.get_path("lh_fingering"))
+        self.expressiveness_path = self.get_path("expressiveness")
+        self.notes_path = self.get_path("notes")
+
 
     @property
-    def title(self) -> str:
+    def title(self) -> Optional[str]:
         return (
             self._track_metadata["work_name"]
             if "work_name" in self._track_metadata
@@ -106,15 +110,15 @@ class Track(core.Track):
         )
 
     @property
-    def book(self) -> str:
+    def book(self) -> Optional[str]:
         return self._track_metadata["book"] if "book" in self._track_metadata else None
 
     @property
-    def URI(self) -> str:
+    def URI(self) -> Optional[str]:
         return self._track_metadata["URI"] if "URI" in self._track_metadata else None
 
     @property
-    def composer(self) -> str:
+    def composer(self) -> Optional[str]:
         return (
             self._track_metadata["composer"]
             if "composer" in self._track_metadata
@@ -130,51 +134,10 @@ class Track(core.Track):
         )
 
     @property
-    def difficulty_annotation(self) -> str:
+    def difficulty_annotation(self) -> int:
         return (
             self._track_metadata["henle"] if "henle" in self._track_metadata else None
         )
-
-    def _check_embedding(self, fpath, file_type: str) -> str:
-        """
-        Verifies the existence of an embedding file and returns its path.
-
-        Args:
-            fpaths (str): The path to the embedding file.
-            file_type (str): The type of the embedding file.
-
-        Returns:
-            str: The path to the embedding file.
-
-        Raises:
-            FileNotFoundError: If the embedding file does not exist.
-        """
-        try:
-            with smart_open.open(fpath):
-                return fpath
-        except FileNotFoundError:
-            raise FileNotFoundError(
-                f"{file_type} embedding {fpath} for track {self.track_id} not found. "
-                "Did you run .download()?"
-            )
-
-    @core.cached_property
-    def fingering(self) -> tuple:
-        path_rh = self.get_path("rh_fingering")
-        path_lh = self.get_path("lh_fingering")
-        return self._check_embedding(path_rh, "Fingering"), self._check_embedding(
-            path_lh, "Fingering"
-        )
-
-    @core.cached_property
-    def expressiviness(self) -> str:
-        path = self.get_path("expressiviness")
-        return self._check_embedding(path, "Expressiviness")
-
-    @core.cached_property
-    def notes(self) -> str:
-        path = self.get_path("notes")
-        return self._check_embedding(path, "Expressiviness")
 
     @core.cached_property
     def scores(self) -> list:

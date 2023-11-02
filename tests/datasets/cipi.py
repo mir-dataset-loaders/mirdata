@@ -10,6 +10,7 @@ except ImportError:
     )
     raise ImportError
 
+    raise ImportError
 from mirdata.annotations import KeyData, ChordData
 from mirdata.datasets import cipi
 from tests.test_utils import run_track_tests
