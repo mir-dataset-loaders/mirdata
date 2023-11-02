@@ -96,10 +96,12 @@ class Track(core.Track):
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
         self._data_home = data_home
-        self.fingering_path = (self.get_path("rh_fingering"), self.get_path("lh_fingering"))
+        self.fingering_path = (
+            self.get_path("rh_fingering"),
+            self.get_path("lh_fingering"),
+        )
         self.expressiveness_path = self.get_path("expressiveness")
         self.notes_path = self.get_path("notes")
-
 
     @property
     def title(self) -> Optional[str]:
