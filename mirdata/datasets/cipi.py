@@ -84,9 +84,9 @@ class Track(core.Track):
         composer (str): name of the author of the track
         track_id (str): track id
         musicxml_paths (list): path to musicxml score. If the music piece contains multiple movents the list will contain multiple paths.
-        difficulty annotation (str): annotated difficulty
-        fingering_path (str): Path of fingering features from technique dimension computed with ArGNN fingering model. Return of two paths, the right hand and the ones of the left hand. Use torch.load(...) for loading the embeddings.
-        expressiveness_path (tuple): Path of expressiveness features from sound dimension computed with virtuosoNet model.Use torch.load(...) for loading the embeddings.
+        difficulty annotation (int): annotated difficulty
+        fingering_path (tuple): Path of fingering features from technique dimension computed with ArGNN fingering model. Return of two paths, the right hand and the ones of the left hand. Use torch.load(...) for loading the embeddings.
+        expressiveness_path (str): Path of expressiveness features from sound dimension computed with virtuosoNet model.Use torch.load(...) for loading the embeddings.
         notes_path (str): Path of note features from notation dimension. Use torch.load(...) for loading the embeddings.
 
     Cached Properties:
