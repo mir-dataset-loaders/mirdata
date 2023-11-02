@@ -62,12 +62,12 @@
      - :cante:`\ `
 
    * - CIPI
-     - - musicXML: ❌
+     - - musicXML: 🔑
        - embeddings: ✅
        - annotations: ✅
      - - difficulty levels
      - 652
-     - image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
        :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - .. line-block::
