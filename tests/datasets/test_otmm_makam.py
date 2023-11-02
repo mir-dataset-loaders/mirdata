@@ -16,11 +16,15 @@ def test_track():
         "track_id": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
         "pitch_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam/"),
-            "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch",
+            os.path.normpath(
+                "MTG-otmm_makam_recognition_dataset-55ce75a/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch"
+            ),
         ),
         "mb_tags_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam/"),
-            "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json",
+            os.path.normpath(
+                "MTG-otmm_makam_recognition_dataset-55ce75a/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json"
+            ),
         ),
         "form": "sarki",
         "instrumentation": "Solo vocal with accompaniment",
@@ -706,6 +710,14 @@ def test_load_mb_tags():
             "title": "A\u015fka Merak\u0131m Ezelden",
         }
     ]
+
+    # test empty duration
+    track_id = "2a3e1a6d-ab82-4a46-ae8b-0fb057b53de0"
+    dataset = compmusic_otmm_makam.Dataset(data_home)
+    track = dataset.track(track_id)
+    mb_tags_path = track.mb_tags_path
+    mb_tags = compmusic_otmm_makam.load_mb_tags(mb_tags_path)
+    assert mb_tags["duration"] == 0.0
 
 
 def test_special_turkish_characters():

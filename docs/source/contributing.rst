@@ -32,10 +32,10 @@ To install ``mirdata`` for development purposes:
       .. code-block:: console
 
           pip install .
-          pip install .[tests]
-          pip install .[docs]
-          pip install .[dali]
-          pip install .[haydn_op20]
+          pip install ."[tests]"
+          pip install ."[docs]"
+          pip install ."[dali]"
+          pip install ."[haydn_op20]"
 
 
 We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
@@ -62,7 +62,7 @@ Finally, run:
 
 .. code-block:: bash
 
-    pytest -vv --cov-report term-missing --cov-report=xml --cov=mirdata --black tests/ --local
+    pytest -vv --cov-report term-missing --cov-report=xml --cov=mirdata tests/ --local
 
 
 All tests should pass!
@@ -98,7 +98,7 @@ dataset which is necessary for the loading and validating functionalities of ``m
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
 1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
-2. Then run the script on the the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index_<version>.json``.
+2. Then run the script on the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index_<version>.json``.
    where <version> indicates which version of the dataset was used (e.g. 1.0).
 
 
@@ -118,8 +118,8 @@ tracks
 ^^^^^^
 
 Most MIR datasets are organized as a collection of tracks and annotations. In such case, the index should make use of the ``tracks``
-top-level key. A dictionary should be stored under the ``tracks`` top-level key where the keys are the unique track ids of the dataset. 
-The values are a dictionary of files associated with a track id, along with their checksums. These files can be for instance audio files 
+top-level key. A dictionary should be stored under the ``tracks`` top-level key where the keys are the unique track ids of the dataset.
+The values are a dictionary of files associated with a track id, along with their checksums. These files can be for instance audio files
 or annotations related to the track id. File paths are relative to the top level directory of a dataset.
 
 .. admonition:: Index Examples - Tracks
@@ -198,7 +198,7 @@ multitracks
 
 .. admonition:: Index Examples - Multitracks
     :class: dropdown
-    
+
     If the version `1.0` of a given multitrack dataset has the structure:
 
     .. code-block:: javascript
@@ -223,15 +223,15 @@ multitracks
 
     The top level directory is ``Example_Dataset`` and the relative path for ``multitrack1-voice1``
     would be ``audio/multitrack1-voice1.wav``. Any unavailable fields are indicated with `null`. A possible index file for this example would be:
-    
+
     .. code-block:: javascript
 
-        { 
+        {
             "version": 1,
             "tracks": {
                 "multitrack1-voice": {
-                    "audio_voice1": ('audio/multitrack1-voice1.wav', checksum), 
-                    "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),  
+                    "audio_voice1": ('audio/multitrack1-voice1.wav', checksum),
+                    "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),
                     "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum)
                 }
                 "multitrack1-accompaniment": {
@@ -242,7 +242,7 @@ multitracks
             },
             "multitracks": {
                 "multitrack1": {
-                    "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],    
+                    "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],
                     "audio": ('audio/multitrack1-mix.wav', checksum)
                     "f0": ('annotations/multitrack1-f0.csv', checksum)
                 }
@@ -255,8 +255,8 @@ multitracks
                     ]
             }
         }
-  
-    Note that in this examples we group ``audio_voice1`` and ``audio_voice2`` in a single Track because the annotation ``voice-f0`` annotation corresponds to their mixture. In contrast, the annotation ``voice-f0`` is extracted from the multitrack mix and it is stored in the ``multitracks`` group. The multitrack ``multitrack1`` has an additional track ``multitrack1-mix.wav`` which may be the master track, the final mix, the recording of ``multitrack1`` with another microphone. 
+
+    Note that in this examples we group ``audio_voice1`` and ``audio_voice2`` in a single Track because the annotation ``voice-f0`` annotation corresponds to their mixture. In contrast, the annotation ``voice-f0`` is extracted from the multitrack mix and it is stored in the ``multitracks`` group. The multitrack ``multitrack1`` has an additional track ``multitrack1-mix.wav`` which may be the master track, the final mix, the recording of ``multitrack1`` with another microphone.
 
 
 records
@@ -279,7 +279,7 @@ To quickstart a new module:
 
 1. Copy the example below and save it to ``mirdata/datasets/<your_dataset_name>.py``
 2. Find & Replace ``Example`` with the <your_dataset_name>.
-3. Remove any lines beginning with `# --` which are there as guidelines. 
+3. Remove any lines beginning with `# --` which are there as guidelines.
 
 .. admonition:: Example Module
     :class: dropdown
@@ -316,16 +316,16 @@ To finish your contribution, include tests that check the integrity of your load
     * For each audio/annotation file, reduce the audio length to 1-2 seconds and remove all but a few of the annotations.
     * If the dataset has a metadata file, reduce the length to a few lines.
 
-2. Test all of the dataset specific code, e.g. the public attributes of the Track class, the load functions and any other 
+2. Test all of the dataset specific code, e.g. the public attributes of the Track class, the load functions and any other
    custom functions you wrote. See the `tests folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/tests>`_ for reference.
-   If your loader has a custom download function, add tests similar to 
+   If your loader has a custom download function, add tests similar to
    `this loader <https://github.com/mir-dataset-loaders/mirdata/blob/master/tests/test_groove_midi.py#L96>`_.
-3. Locally run ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset`` before submitting your loader to make 
+3. Locally run ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset`` before submitting your loader to make
    sure everything is working. If your dataset has `multiple versions <multiple_versions_>`_, test each (non-default) version
    by running ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset --dataset-version my_version``.
 
 
-.. note::  We have written automated tests for all loader's ``cite``, ``download``, ``validate``, ``load``, ``track_ids`` functions, 
+.. note::  We have written automated tests for all loader's ``cite``, ``download``, ``validate``, ``load``, ``track_ids`` functions,
            as well as some basic edge cases of the ``Track`` class, so you don't need to write tests for these!
 
 
@@ -379,10 +379,10 @@ Finally, there is one local test you should run, which we can't easily run in ou
     pytest -s tests/test_full_dataset.py --local --dataset dataset
 
 
-Where ``dataset`` is the name of the module of the dataset you added. The ``-s`` tells pytest not to skip print 
-statments, which is useful here for seeing the download progress bar when testing the download function.
+Where ``dataset`` is the name of the module of the dataset you added. The ``-s`` tells pytest not to skip print
+statements, which is useful here for seeing the download progress bar when testing the download function.
 
-This tests that your dataset downloads, validates, and loads properly for every track. This test takes a long time 
+This tests that your dataset downloads, validates, and loads properly for every track. This test takes a long time
 for some datasets, but it's important to ensure the integrity of the library.
 
 The ``--skip-download`` flag can be added to ``pytest`` command to run the tests skipping the download.
@@ -446,9 +446,9 @@ it will simplify the reviewing process and also help you make a complete PR. You
 Docs
 ^^^^
 
-Staged docs for every new PR are built, and you can look at them by clicking on the "readthedocs" test in a PR. 
-To quickly troubleshoot any issues, you can build the docs locally by nagivating to the ``docs`` folder, and running 
-``make html`` (note, you must have ``sphinx`` installed). Then open the generated ``_build/source/index.html`` 
+Staged docs for every new PR are built, and you can look at them by clicking on the "readthedocs" test in a PR.
+To quickly troubleshoot any issues, you can build the docs locally by navigating to the ``docs`` folder, and running
+``make html`` (note, you must have ``sphinx`` installed). Then open the generated ``_build/source/index.html``
 file in your web browser to view.
 
 Troubleshooting
@@ -479,10 +479,10 @@ If github shows a red ``X`` next to your latest commit, it means one of our chec
 
 4. the test coverage is too low -- this means that there are too many new lines of code introduced that are not tested.
 
-5. the docs build has failed -- this means that one of the changes you made to the documentation has caused the build to fail. 
+5. the docs build has failed -- this means that one of the changes you made to the documentation has caused the build to fail.
    Check the formatting in your changes and make sure they are consistent.
 
-6. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing. 
+6. the tests have failed -- this means at least one of the tests is failing. Run the tests locally to make sure they are passing.
    If they are passing locally but failing in the check, open an `issue` and we can help debug.
 
 
@@ -501,7 +501,7 @@ cases, we aim to make sure that the version used in mirdata is the original one,
 **Before starting** a PR, if a dataset **is not fully downloadable**:
 
 1. Contact the mirdata team by opening an issue or PR so we can discuss how to proceed with the closed dataset.
-2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the 
+2. Show that the version used to create the checksum is the "canonical" one, either by getting the version from the
    dataset creator, or by verifying equivalence with several other copies of the dataset.
 
 
@@ -511,18 +511,18 @@ Datasets needing extra dependencies
 -----------------------------------
 
 If a new dataset requires a library that is not included setup.py, please open an issue.
-In general, if the new library will be useful for many future datasets, we will add it as a 
+In general, if the new library will be useful for many future datasets, we will add it as a
 dependency. If it is specific to one dataset, we will add it as an optional dependency.
 
 To add an optional dependency, add the dataset name as a key in `extras_require` in setup.py,
-and list any additional dependencies. Additionally, mock the dependecies in docs/conf.py
+and list any additional dependencies. Additionally, mock the dependencies in docs/conf.py
 by adding it to the `autodoc_mock_imports` list.
 
 When importing these optional dependencies in the dataset
 module, use a try/except clause and log instructions if the user hasn't installed the extra
-requriements. 
+requirements.
 
-For example, if a module called `example_dataset` requires a module called `asdf`, 
+For example, if a module called `example_dataset` requires a module called `asdf`,
 it should be imported as follows:
 
 .. code-block:: python
@@ -546,7 +546,7 @@ There are some datasets where the loading code is the same, but there are multip
 versions of the data (e.g. updated annotations, or an additional set of tracks which
 follow the same paradigm). In this case, only one loader should be written, and
 multiple versions can be defined by creating additional indexes. Indexes follow the
-naming convention <datasetname>_index_<version>.json, thus a dataset with two 
+naming convention <datasetname>_index_<version>.json, thus a dataset with two
 versions simply has two index files. Different versions are tracked using the
 ``INDEXES`` variable:
 
@@ -565,7 +565,7 @@ By default, mirdata loads the version specified as ``default`` in ``INDEXES``
 when running ``mirdata.initialize('example')``, but a specific version can
 be loaded by running ``mirdata.initialize('example', version='2.0')``.
 
-Different indexes can refer to different subsets of the same larger dataset, 
+Different indexes can refer to different subsets of the same larger dataset,
 or can reference completely different data. All data needed for all versions
 should be specified via keys in ``REMOTES``, and by default, mirdata will
 download everything. If one version only needs a subset
@@ -593,7 +593,7 @@ Large indexes should be stored remotely, rather than checked in to the mirdata r
 mirdata has a `zenodo community <https://zenodo.org/communities/mirdata/?page=1&size=20>`_
 where larger indexes can be uploaded as "datasets".
 
-When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and 
+When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and
 ``checksum`` to the ``Index`` class:
 
 .. code-block:: python
@@ -624,7 +624,7 @@ Here are some common examples.
 .. note::
     The small formatting details in these examples are important. Differences in new lines, indentation, and spacing make
     a difference in how the documentation is rendered. For example writing ``Returns:`` will render correctly, but ``Returns``
-    or ``Returns :`` will not. 
+    or ``Returns :`` will not.
 
 
 Functions:
@@ -736,10 +736,10 @@ it with a try/except:
     file_path = "flululu.txt"
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"{file_path} not found, did you run .download?")
-    
+
     with open(file_path, "r") as fhandle:
         ...
-    
+
     # replacement code that is compatible with remote filesystems
     try:
         with open(file_path, "r") as fhandle:
