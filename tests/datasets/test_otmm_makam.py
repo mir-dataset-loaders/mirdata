@@ -707,6 +707,14 @@ def test_load_mb_tags():
         }
     ]
 
+    # test empty duration
+    track_id = "2a3e1a6d-ab82-4a46-ae8b-0fb057b53de0"
+    dataset = compmusic_otmm_makam.Dataset(data_home)
+    track = dataset.track(track_id)
+    mb_tags_path = track.mb_tags_path
+    mb_tags = compmusic_otmm_makam.load_mb_tags(mb_tags_path)
+    assert mb_tags["duration"] == 0.0
+
 
 def test_special_turkish_characters():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"

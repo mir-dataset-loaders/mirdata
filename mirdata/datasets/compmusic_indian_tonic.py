@@ -81,7 +81,7 @@ REMOTES = {
         filename="indian_art_music_tonic_1.0.zip",
         url="https://zenodo.org/record/1257114/files/indian_art_music_tonic_1.0.zip?download=1",
         checksum="47493d59d400dac459444b7a3bd2c572",  # the md5 checksum
-    )
+    ),
 }
 
 DOWNLOAD_INFO = """
@@ -118,8 +118,21 @@ class Track(core.Track):
 
     """
 
-    def __init__(self, track_id, data_home, dataset_name, index, metadata):
-        super().__init__(track_id, data_home, dataset_name, index, metadata)
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.audio_path = self.get_path("audio")
 

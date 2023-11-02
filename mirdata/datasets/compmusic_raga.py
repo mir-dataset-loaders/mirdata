@@ -122,8 +122,21 @@ class Track(core.Track):
         tradition (str): tradition name (carnatic or hindustani)
     """
 
-    def __init__(self, track_id, data_home, dataset_name, index, metadata):
-        super().__init__(track_id, data_home, dataset_name, index, metadata)
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         # Audio path
         self.audio_path = self.get_path("audio")
@@ -371,7 +384,11 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         carnatic_metadata_path = os.path.join(
-            self.data_home, "RagaDataset", "Carnatic", "_info_", "path_mbid_ragaid.json"
+            self.data_home,
+            "RagaDataset",
+            "Carnatic",
+            "_info_",
+            "path_mbid_ragaid.json",
         )
         hindustani_metadata_path = os.path.join(
             self.data_home,

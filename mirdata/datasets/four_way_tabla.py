@@ -61,7 +61,7 @@ REMOTES = {
         filename="4way-tabla-ismir21-dataset.zip",
         url="https://zenodo.org/record/7110248/files/4way-tabla-ismir21-dataset.zip?download=1",
         checksum="fcddb565f260d4170877f70a7c33d69d",  # the md5 checksum
-    )
+    ),
 }
 
 LICENSE_INFO = "Creative Commons Attribution 4.0 International License."
@@ -83,9 +83,21 @@ class Track(core.Track):
         onsets_rt_path (str): path to RT onsets
 
     """
-
-    def __init__(self, track_id, data_home, dataset_name, index, metadata):
-        super().__init__(track_id, data_home, dataset_name, index, metadata)
+    def __init__(
+        self,
+        track_id,
+        data_home,
+        dataset_name,
+        index,
+        metadata,
+    ):
+        super().__init__(
+            track_id,
+            data_home,
+            dataset_name,
+            index,
+            metadata,
+        )
 
         self.audio_path = self.get_path("audio")
         self.onsets_b_path = self.get_path("onsets_b")
