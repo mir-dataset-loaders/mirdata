@@ -94,7 +94,7 @@ jobs:
 
         - name: Run pytest
           shell: bash -l {0}
-          run: pytest -n auto -vv --cov-report term-missing --cov-report=xml --cov=mirdata --cov-fail-under=95 tests
+          run: pytest -n auto -vv --cov-report term-missing --cov-report=xml --cov=mirdata --cov-fail-under=100 tests
 
         - name: Upload coverage to Codecov
           uses: codecov/codecov-action@v3
