@@ -368,6 +368,15 @@ saraga_hindustani
 .. automodule:: mirdata.datasets.saraga_hindustani
    :members:
    :inherited-members:
+   
+   
+scms
+^^^^
+
+.. automodule:: mirdata.datasets.scms
+   :members:
+   :inherited-members:
+
 
 
 slakh
