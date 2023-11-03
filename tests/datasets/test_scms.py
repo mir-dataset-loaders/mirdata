@@ -127,3 +127,13 @@ def test_load_metadata():
         data_home = "a/fake/path"
         dataset = scms.Dataset(data_home)
         metadata = dataset._artists_to_track_mapping
+
+
+def test_load_audio():
+    data_home = "tests/resources/mir_datasets/scms"
+    dataset = scms.Dataset(data_home)
+    track = dataset.track("Enta_Bhagyamu_2")
+    audio_path = track.audio_path
+    audio, sr = scms.load_audio(audio_path)
+    assert sr == 44100
+    assert type(audio) is np.ndarray

@@ -77,7 +77,7 @@ class Track(core.Track):
         pitch_path (str): path to the pitch annotation file
         activations_path (str): path to the vocal activation annotation file
         tonic (str): tonic of the recording
-        gender (str): genre
+        gender (str): gender
         artist (str): instrument of the track
         title (str): title
         train (bool): indicating if the track belongs to the train or testing set
