@@ -79,6 +79,13 @@ Musical pitch contours, typically encoded as time series indicating the musical 
 The time series typically have evenly spaced timestamps, each with a corresponding pitch value
 which may be encoded in a number of formats/granularities, including midi note numbers and Hertz.
 
+.. _fx:
+
+Effect
+^^^^^^
+Effect applied to a track. It may refer to the effect applied to a single stroke or an entire track. 
+It can include the effect name, the effect type, the effect parameters, and the effect settings.
+
 .. _genre:
 
 Genre
@@ -219,7 +226,7 @@ strings, sometimes with associated weights/confidences.
 .. _tonic:
 
 Tonic
-^^^^^^^^^^^
+^^^^^
 The absolute tonic of a track. It may refer to the tonic a single stroke, or the tonal center of
 a track.
 
