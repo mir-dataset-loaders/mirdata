@@ -323,7 +323,7 @@ class Dataset(core.Dataset):
     # -- you do not have to include this function if there is no metadata 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, 'example_metadta.csv')
+        metadata_path = os.path.join(self.data_home, 'example_metadata.csv')
 
         # load metadata however makes sense for your dataset
         metadata_path = os.path.join(data_home, 'example_metadata.json')
