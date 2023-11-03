@@ -1,0 +1,355 @@
+{
+  "version": 1.0,
+  "tracks": {
+    "csic.1995_ansina1_01": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina1_01.flac",
+        "fe9bb8edaa46892e4f094a07583ecfb7"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina1_01.csv",
+        "3abfa7a3a13225738b39769a5ef0726a"
+      ]
+    },
+    "csic.1995_ansina1_02": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina1_02.flac",
+        "d9d952f51ac38ece03ece0be80fe4071"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina1_02.csv",
+        "cf1f689d524363ecf2a267736c43d5dc"
+      ]
+    },
+    "csic.1995_ansina1_03": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina1_03.flac",
+        "fffe0c4677d994cbc16e7009b7cad982"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina1_03.csv",
+        "3e6afce6de38df768cecc5eb7676f25d"
+      ]
+    },
+    "csic.1995_ansina1_04": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina1_04.flac",
+        "6b94f386f6669dfb75b8af42049fdffd"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina1_04.csv",
+        "f061084486027a874298677ffc1c805a"
+      ]
+    },
+    "csic.1995_ansina1_05": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina1_05.flac",
+        "b0c0938d3c04cc70aeb58cc6e98633bd"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina1_05.csv",
+        "00f4c16ff9127c4904d8985295eb7b75"
+      ]
+    },
+    "csic.1995_ansina2_01": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina2_01.flac",
+        "1131da5060d9a55675563fd0d9754bce"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina2_01.csv",
+        "07d950c2460d4d7e0e2b8d4fe86fd4b5"
+      ]
+    },
+    "csic.1995_ansina2_02": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina2_02.flac",
+        "09fb3f9b9a64a162783dfd62798063ea"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina2_02.csv",
+        "a07ae4015c2f83fd0e1e5154f5adb828"
+      ]
+    },
+    "csic.1995_ansina2_03": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina2_03.flac",
+        "1d280f3a996f500620930b011885b857"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina2_03.csv",
+        "8f51291430b6c0287d7a6471339f0c0d"
+      ]
+    },
+    "csic.1995_ansina2_04": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina2_04.flac",
+        "ea6d50a23fe392aa2c0059378e86c5e1"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina2_04.csv",
+        "3ba5f867009db02eb8fac52ce0ff10a0"
+      ]
+    },
+    "csic.1995_cuareim_01": {
+      "audio": [
+        "candombe_audio/csic.1995_cuareim_01.flac",
+        "efe99db48fc385e90b36ff7a49052462"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_cuareim_01.csv",
+        "7456802573f3839405e11272805d7e17"
+      ]
+    },
+    "csic.1995_cuareim_02": {
+      "audio": [
+        "candombe_audio/csic.1995_cuareim_02.flac",
+        "73aa793b6810118dc19e0f50d63ddcbd"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_cuareim_02.csv",
+        "5eb8d698b1620bc65b7ff40157c883be"
+      ]
+    },
+    "csic.1995_cuareim_03": {
+      "audio": [
+        "candombe_audio/csic.1995_cuareim_03.flac",
+        "67d45b125dc7d99c07ac653407ca7b2d"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_cuareim_03.csv",
+        "a01612011033aea8b67fcfda2622c48d"
+      ]
+    },
+    "csic.1995_cuareim_04": {
+      "audio": [
+        "candombe_audio/csic.1995_cuareim_04.flac",
+        "e01ec34a31e5f93bcb22e74ed83faf9c"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_cuareim_04.csv",
+        "b3dbcd302891a6692885b3c27f827b12"
+      ]
+    },
+    "csic.1995_cuareim_05": {
+      "audio": [
+        "candombe_audio/csic.1995_cuareim_05.flac",
+        "fb0c5db4caa5580e72625fcce0062e94"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_cuareim_05.csv",
+        "31112a70b78476501cec9e040e27a85f"
+      ]
+    },
+    "proyecto.1992_gimenez_02": {
+      "audio": [
+        "candombe_audio/proyecto.1992_gimenez_02.flac",
+        "c02e1c932727ec94c3153f5de9a2d2fb"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/proyecto.1992_gimenez_02.csv",
+        "9fd4364a7d9d5d56fb0db6fb5ba61e71"
+      ]
+    },
+    "proyecto.1992_gimenez_06": {
+      "audio": [
+        "candombe_audio/proyecto.1992_gimenez_06.flac",
+        "51208f645e90ea2c967297b18455d342"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/proyecto.1992_gimenez_06.csv",
+        "23af6b491f0133f8b1b3cd23a375756e"
+      ]
+    },
+    "proyecto.1992_lobo_01": {
+      "audio": [
+        "candombe_audio/proyecto.1992_lobo_01.flac",
+        "e017f03844575a1cca1225b96f212095"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/proyecto.1992_lobo_01.csv",
+        "62d3cf27e9b60fcf68f4d27bc2a6b7b7"
+      ]
+    },
+    "proyecto.1992_lobo_06": {
+      "audio": [
+        "candombe_audio/proyecto.1992_lobo_06.flac",
+        "9cb81decde63aba9978fb901e09dc2de"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/proyecto.1992_lobo_06.csv",
+        "c3d47b4828ec527c96b66bd30247567f"
+      ]
+    },
+    "proyecto.1992_magarinos_02": {
+      "audio": [
+        "candombe_audio/proyecto.1992_magarinos_02.flac",
+        "2ec7965082a2cf7ac41424755649ec54"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/proyecto.1992_magarinos_02.csv",
+        "2ec3f4cdd2ff9ff80846643ad90c61c8"
+      ]
+    },
+    "proyecto.1992_pelado_01": {
+      "audio": [
+        "candombe_audio/proyecto.1992_pelado_01.flac",
+        "0f1e38695131186b1716147ba58d9411"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/proyecto.1992_pelado_01.csv",
+        "bd92938935414029cbf20b076a5faa7b"
+      ]
+    },
+    "proyecto.1992_pelado_05": {
+      "audio": [
+        "candombe_audio/proyecto.1992_pelado_05.flac",
+        "72a87c91a7af67b6630b4e881ca603d8"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/proyecto.1992_pelado_05.csv",
+        "6c62df8870223c94f314ff71bf37b8f7"
+      ]
+    },
+    "zavala.muniz.2014_41": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_41.flac",
+        "a305627f4549d364a9627e5e507b1046"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_41.csv",
+        "c6218485a208e7770b1a91a5170d8200"
+      ]
+    },
+    "zavala.muniz.2014_42": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_42.flac",
+        "39e5ed9021b77d1013aacb4d2fc288db"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_42.csv",
+        "781c2b3963e761323fb49bb213aee6fd"
+      ]
+    },
+    "zavala.muniz.2014_44": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_44.flac",
+        "388f460e98398ea3b9e8c0e990d81574"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_44.csv",
+        "6c819abb4b84c373dd7f537e6e9d16dc"
+      ]
+    },
+    "zavala.muniz.2014_45": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_45.flac",
+        "46108a01d62ba0259ac4edb61c1c26e6"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_45.csv",
+        "86a426132c30db1b44d512c48788def8"
+      ]
+    },
+    "zavala.muniz.2014_46": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_46.flac",
+        "eae726e7c5e96591e85b409ba5ece495"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_46.csv",
+        "9aa57f8217ba636bbde444f8c08a1a5b"
+      ]
+    },
+    "zavala.muniz.2014_47": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_47.flac",
+        "0bf42e2c6662efb6aca5ff1090118faf"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_47.csv",
+        "1bcbf496298b73bd7431b38bef44b050"
+      ]
+    },
+    "zavala.muniz.2014_48": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_48.flac",
+        "2a8df7f9636412e67bb49d961a65f8c6"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_48.csv",
+        "2a909fb7bb2b2c4d1034309c976e1af1"
+      ]
+    },
+    "zavala.muniz.2014_49": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_49.flac",
+        "6b5bb491ba4696facff317ace5f9637f"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_49.csv",
+        "feb35bd136bd0f6ef8e2da78237736d4"
+      ]
+    },
+    "zavala.muniz.2014_50": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_50.flac",
+        "9541981fc36724c7aa9d4c666a690d8d"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_50.csv",
+        "ed4cb4e3954753872dd4504815afae16"
+      ]
+    },
+    "zavala.muniz.2014_51": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_51.flac",
+        "022124d195d5b76fbc42b8eb423bbafb"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_51.csv",
+        "12940af6adc5de6d5e3ecd2edc94a94a"
+      ]
+    },
+    "zavala.muniz.2014_52": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_52.flac",
+        "730c172f12455d7b6f5e55e056c8e2b0"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_52.csv",
+        "795af8482a6b501b481466ea336be54c"
+      ]
+    },
+    "zavala.muniz.2014_53": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_53.flac",
+        "8c6e134bb8fabb7ada5ba25ef5a856b4"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_53.csv",
+        "1ee3f567e93fc91d7590982a467d1484"
+      ]
+    },
+    "zavala.muniz.2014_54": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_54.flac",
+        "83500f50537a4b80fe7a91c3240b6c9d"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_54.csv",
+        "fbfad83884635b87a6b39bfdfb7f0efd"
+      ]
+    },
+    "zavala.muniz.2014_55": {
+      "audio": [
+        "candombe_audio/zavala.muniz.2014_55.flac",
+        "31c7cdbe1de195e8c4667724a040b3d8"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/zavala.muniz.2014_55.csv",
+        "c9027a8bb61821db3980fce4d7c3042e"
+      ]
+    }
+  }
+}
