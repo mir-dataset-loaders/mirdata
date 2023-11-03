@@ -5,12 +5,14 @@ import os
 from mirdata.validate import md5
 
 
-OTMM_MAKAM_INDEX_PATH = '../mirdata/datasets/indexes/otmm_makam_index.json'
+OTMM_MAKAM_INDEX_PATH = os.path.normpath(
+    '../mirdata/datasets/indexes/compmusic_otmm_makam_index_dlfm2016-fix1.json'
+)
 
 
 def make_otmm_makam_index(dataset_data_path):
 
-    otmm_index = {'version': 'dlfm2016', 'tracks': {}, 'metadata': []}
+    otmm_index = {'version': 'dlfm2016-fix1', 'tracks': {}, 'metadata': []}
 
     for makam in os.listdir(os.path.join(dataset_data_path, 'data')):
         if '.' not in makam:
@@ -23,7 +25,7 @@ def make_otmm_makam_index(dataset_data_path):
                     otmm_index['tracks'][index] = {
                         "metadata": [
                             os.path.join(
-                                'MTG-otmm_makam_recognition_dataset-f14c0d0',
+                                'MTG-otmm_makam_recognition_dataset-55ce75a',
                                 'data',
                                 makam,
                                 track,
@@ -32,7 +34,7 @@ def make_otmm_makam_index(dataset_data_path):
                         ],
                         "pitch": [
                             os.path.join(
-                                'MTG-otmm_makam_recognition_dataset-f14c0d0',
+                                'MTG-otmm_makam_recognition_dataset-55ce75a',
                                 'data',
                                 makam,
                                 pitch_path,
@@ -44,10 +46,12 @@ def make_otmm_makam_index(dataset_data_path):
                             ),
                         ],
                     }
-    otmm_index['metadata'] = [
-        os.path.join('MTG-otmm_makam_recognition_dataset-f14c0d0', 'annotations.json'),
-        md5(os.path.join(dataset_data_path, 'annotations.json')),
-    ]
+    otmm_index['metadata'] = {
+        "annotation_metadata": [
+            os.path.join('MTG-otmm_makam_recognition_dataset-55ce75a', 'annotations.json'),
+            md5(os.path.join(dataset_data_path, 'annotations.json')),
+        ]
+    }
 
     with open(OTMM_MAKAM_INDEX_PATH, 'w') as fhandle:
         json.dump(otmm_index, fhandle, indent=2)

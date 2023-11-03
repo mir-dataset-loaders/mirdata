@@ -60,6 +60,14 @@ cante100
    :inherited-members:
 
 
+cipi
+^^^^
+
+.. automodule:: mirdata.datasets.cipi
+   :members:
+   :inherited-members:
+
+
 compmusic_carnatic_rhythm
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -219,6 +227,14 @@ haydn_op20
    :inherited-members:
 
 
+idmt_smt_audio_effects
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.idmt_smt_audio_effects
+   :members:
+   :inherited-members:
+
+   
 ikala
 ^^^^^
 
