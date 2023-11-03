@@ -8,6 +8,11 @@ Common loaders for Music Information Retrieval (MIR) datasets. Find the API docu
 [![Documentation Status](https://readthedocs.org/projects/mirdata/badge/?version=latest)](https://mirdata.readthedocs.io/en/latest/?badge=latest)
 ![GitHub](https://img.shields.io/github/license/mir-dataset-loaders/mirdata.svg)
 
+[![Downloads](https://static.pepy.tech/badge/mirdata)](https://pepy.tech/project/mirdata)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![PyPI version](https://badge.fury.io/py/mirdata.svg)](https://badge.fury.io/py/mirdata)
+[![DOI](https://zenodo.org/badge/259046250.svg)](https://zenodo.org/badge/latestdoi/259046250)
+
 
 This library provides tools for working with common MIR datasets, including tools for:
 * downloading datasets to a common location and format
