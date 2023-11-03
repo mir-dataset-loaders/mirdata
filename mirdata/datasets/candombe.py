@@ -66,21 +66,16 @@ Creative Commons Attribution 4.0 International
 
 class Track(core.Track):
     """candombe track class
-    # -- YOU CAN AUTOMATICALLY GENERATE THIS DOCSTRING BY CALLING THE SCRIPT:
-    # -- `scripts/print_track_docstring.py my_dataset`
-    # -- note that you'll first need to have a test track (see "Adding tests to your dataset" below)
 
     Args:
         track_id (str): track id of the track
 
     Attributes:
         audio_path (str): path to audio file
-        annotation_path (str): path to annotation file
-        # -- Add any of the dataset specific attributes here
+        beats_path (str): path to beats file
 
     Cached Properties:
-        annotation (EventData): a description of this annotation
-
+        beats (BeatData): beat annotations
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
