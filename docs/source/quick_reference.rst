@@ -47,6 +47,15 @@ Here we provide a rough guide to the types in this table, but we **strongly reco
 the dataset specific documentation to ensure the data is as you expect. To see how these annotation
 types are implemented in ``mirdata`` see :ref:`annotations`.
 
+.. _events:
+
+Events
+^^^^^^
+A generic annotation to indicate whether a particular event is happening at a given time. 
+It can be used, for instance, to indicate whether a particular instrument is playing at a 
+given time-step or whether a particular note is being played at a given time-step. In fact,
+it is implicit in annotations such as F0_ or Vocal Notes_ (instrument is activated when the
+melody is non-0). However, some datasets provide it as a standalone event annotation.
 
 .. _beats:
 
