@@ -59,9 +59,7 @@ REMOTES = {
     ),
 }
 
-LICENSE_INFO = (
-    "Creative Commons Attribution 4.0 International"
-)
+LICENSE_INFO = "Creative Commons Attribution 4.0 International"
 
 
 class Track(core.Track):
