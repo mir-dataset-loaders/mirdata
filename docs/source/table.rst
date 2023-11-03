@@ -69,6 +69,15 @@
      - 100
      - :cante:`\ `
 
+   * - CIPI
+     - - musicXML: 🔑
+       - embeddings: 🔑
+       - annotations: 🔑
+     - - difficulty levels
+     - 652
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
    * - .. line-block::
 
         (CompMusic)
@@ -289,6 +298,16 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - IDMT-SMT-Audio Effects
+     - - audio: ✅
+       - annotations: ✅
+     - - instrument :ref:`instruments`
+       - midi nr :ref:`notes`
+       - metadata :ref:`fx`
+     - 55044
+     - .. image:: https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-nd/4.0/
+
    * - IRMAS
      - - audio: ✅
        - annotations: ✅
@@ -433,6 +452,15 @@
        - :ref:`sections`
        - :ref:`tonic`
      - 108
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+          
+   * - Saraga-Carnatic-Melody-Synth (SCMS)
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`events`
+     - 2460
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 

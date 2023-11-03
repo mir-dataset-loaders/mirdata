@@ -47,6 +47,15 @@ Here we provide a rough guide to the types in this table, but we **strongly reco
 the dataset specific documentation to ensure the data is as you expect. To see how these annotation
 types are implemented in ``mirdata`` see :ref:`annotations`.
 
+.. _events:
+
+Events
+^^^^^^
+A generic annotation to indicate whether a particular event is happening at a given time. 
+It can be used, for instance, to indicate whether a particular instrument is playing at a 
+given time-step or whether a particular note is being played at a given time-step. In fact,
+it is implicit in annotations such as F0_ or Vocal Notes_ (instrument is activated when the
+melody is non-0). However, some datasets provide it as a standalone event annotation.
 
 .. _beats:
 
@@ -78,6 +87,13 @@ F0
 Musical pitch contours, typically encoded as time series indicating the musical pitch over time.
 The time series typically have evenly spaced timestamps, each with a corresponding pitch value
 which may be encoded in a number of formats/granularities, including midi note numbers and Hertz.
+
+.. _fx:
+
+Effect
+^^^^^^
+Effect applied to a track. It may refer to the effect applied to a single stroke or an entire track. 
+It can include the effect name, the effect type, the effect parameters, and the effect settings.
 
 .. _genre:
 
@@ -219,7 +235,7 @@ strings, sometimes with associated weights/confidences.
 .. _tonic:
 
 Tonic
-^^^^^^^^^^^
+^^^^^
 The absolute tonic of a track. It may refer to the tonic a single stroke, or the tonal center of
 a track.
 
