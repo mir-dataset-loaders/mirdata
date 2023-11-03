@@ -4,14 +4,14 @@ Common loaders for Music Information Retrieval (MIR) datasets. Find the API docu
 ![CI status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/ci.yml/badge.svg)
 ![Formatting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/formatting.yml/badge.svg)
 ![Linting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/lint-python.yml/badge.svg)
-[![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
 [![Documentation Status](https://readthedocs.org/projects/mirdata/badge/?version=latest)](https://mirdata.readthedocs.io/en/latest/?badge=latest)
 ![GitHub](https://img.shields.io/github/license/mir-dataset-loaders/mirdata.svg)
 
+[![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
 [![Downloads](https://static.pepy.tech/badge/mirdata)](https://pepy.tech/project/mirdata)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![PyPI version](https://badge.fury.io/py/mirdata.svg)](https://badge.fury.io/py/mirdata)
 [![DOI](https://zenodo.org/badge/259046250.svg)](https://zenodo.org/badge/latestdoi/259046250)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 
 This library provides tools for working with common MIR datasets, including tools for:
