@@ -161,7 +161,9 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
 
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The candombe dataset"""
+    """
+    The candombe dataset
+    """
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
