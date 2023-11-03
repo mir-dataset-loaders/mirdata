@@ -291,12 +291,3 @@ class Dataset(core.Dataset):
             }
 
         return metadata
-
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
-
-    def load_pitch(self, *args, **kwargs):
-        return load_pitch(*args, **kwargs)
-
-    def load_activations(self, *args, **kwargs):
-        return load_activations(*args, **kwargs)
