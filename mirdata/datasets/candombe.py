@@ -59,13 +59,13 @@ REMOTES = {
     ),
 }
 
-LICENSE_INFO = """
-Creative Commons Attribution 4.0 International
-"""
+LICENSE_INFO = (
+    "Creative Commons Attribution 4.0 International"
+)
 
 
 class Track(core.Track):
-    """candombe track class
+    """Candombe Track class
 
     Args:
         track_id (str): track id of the track
@@ -76,6 +76,7 @@ class Track(core.Track):
 
     Cached Properties:
         beats (BeatData): beat annotations
+
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -106,7 +107,12 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     def to_jams(self):
-        """Jams: the track's data in jams format"""
+        """Get the track's data in jams format
+
+        Returns:
+            jams.JAMS: the track's data in jams format
+
+        """
         return jams_utils.jams_converter(
             audio_path=self.audio_path, beat_data=[(self.beats, None)], metadata=None
         )
@@ -135,9 +141,7 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
         fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
-        * BeatData: loaded beat data
-
-
+        BeatData: loaded beat data
     """
     reader = csv.reader(fhandle, delimiter=",")
     times = []
