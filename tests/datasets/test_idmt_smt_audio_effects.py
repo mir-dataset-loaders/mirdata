@@ -120,7 +120,7 @@ def test_download(httpserver):
     dataset.download(None, False, False)
 
     assert os.path.exists(data_home)
-    
+
     # expected_folders = [
     #     "Bass monophon",
     #     "Bass monophon2",
