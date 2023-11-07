@@ -305,10 +305,6 @@ class Dataset(core.Dataset):
             IOError: if a downloaded file's checksum is different from expected
 
         """
-        # Ensure data_home directory exists
-        if not os.path.exists(self.data_home):
-            os.makedirs(self.data_home)
-
         # Download the main zip file
         download_path = download_utils.download_from_remote(
             remote=self.remotes["full_dataset"],
