@@ -332,24 +332,22 @@ class Dataset(core.Dataset):
 
         for zip_file, target_subdir in zip_files_to_extract.items():
             zip_file_path = os.path.join(nested_zip_path, zip_file)
-            try:
+            # try:
                 # Extract each zip file
-                download_utils.unzip(zip_path=zip_file_path, cleanup=cleanup)
+            download_utils.unzip(zip_path=zip_file_path, cleanup=cleanup)
 
-                extracted_dir = os.path.join(
-                    nested_zip_path, os.path.splitext(zip_file)[0]
-                )
+            extracted_dir = os.path.join(
+                nested_zip_path, os.path.splitext(zip_file)[0]
+            )
 
-                destination_dir = os.path.join(self.data_home, target_subdir)
-                if not os.path.exists(destination_dir):
-                    os.makedirs(destination_dir)
+            destination_dir = os.path.join(self.data_home, target_subdir)
+                
+            # Move contents from the temporary directory to the target directory
+            download_utils.move_directory_contents(
+                source_dir=extracted_dir, target_dir=destination_dir
+            )
 
-                # Move contents from the temporary directory to the target directory
-                download_utils.move_directory_contents(
-                    source_dir=extracted_dir, target_dir=destination_dir
-                )
-
-            except FileNotFoundError:
-                print(
-                    f"Warning: The zip file {zip_file_path} does not exist and cannot be extracted."
-                )
+            # except FileNotFoundError:
+            #     print(
+            #         f"Warning: The zip file {zip_file_path} does not exist and cannot be extracted."
+            #     )
