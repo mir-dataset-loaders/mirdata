@@ -24,6 +24,10 @@ def test_track():
             os.path.normpath("tests/resources/mir_datasets/salami/"),
             "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt",
         ),
+        "sections_annotator1_functions_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_functions.txt",
+        ),
         "sections_annotator2_uppercase_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/salami/"),
             "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt",
@@ -31,6 +35,10 @@ def test_track():
         "sections_annotator2_lowercase_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/salami/"),
             "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt",
+        ),
+        "sections_annotator2_functions_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_functions.txt",
         ),
         "source": "Codaich",
         "annotator_1_id": "5",
@@ -47,8 +55,10 @@ def test_track():
     expected_property_types = {
         "sections_annotator_1_uppercase": annotations.SectionData,
         "sections_annotator_1_lowercase": annotations.SectionData,
+        "sections_annotator_1_functions": annotations.SectionData,
         "sections_annotator_2_uppercase": annotations.SectionData,
         "sections_annotator_2_lowercase": annotations.SectionData,
+        "sections_annotator_2_functions": annotations.SectionData,
         "audio": tuple,
     }
 
@@ -86,15 +96,22 @@ def test_track():
             "salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_lowercase.txt",
             "6640237e7844d0d9d37bf21cf96a2690",
         ],
+        "annotator_1_functions": [
+            "salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_functions.txt",
+            "ecc595c44c30c2ed74a291e110f9134d",
+        ],
         "annotator_2_uppercase": [None, None],
         "annotator_2_lowercase": [None, None],
+        "annotator_2_functions": [None, None],
     }
 
     # test that cached properties don't fail and have the expected type
     assert type(track.sections_annotator_1_uppercase) is annotations.SectionData
     assert type(track.sections_annotator_1_lowercase) is annotations.SectionData
+    assert type(track.sections_annotator_1_functions) is annotations.SectionData
     assert track.sections_annotator_2_uppercase is None
     assert track.sections_annotator_2_lowercase is None
+    assert track.sections_annotator_2_functions is None
 
     # Test file with missing annotations
     track = dataset.track("1015")
@@ -103,6 +120,7 @@ def test_track():
         "audio": ["audio/1015.mp3", "811a4a6b46f0c15a61bfb299b21ebdc4"],
         "annotator_1_uppercase": [None, None],
         "annotator_1_lowercase": [None, None],
+        "annotator_1_functions": [None, None],
         "annotator_2_uppercase": [
             "salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_uppercase.txt",
             "e4a268342a45fdffd8ec9c3b8287ad8b",
@@ -110,6 +128,10 @@ def test_track():
         "annotator_2_lowercase": [
             "salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_lowercase.txt",
             "201642fcea4a27c60f7b48de46a82234",
+        ],
+        "annotator_2_functions": [
+            "salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_functions.txt",
+            "99071c03df21635c8fda504ddb1bdfa8",
         ],
     }
 
@@ -126,8 +148,11 @@ def test_to_jams():
     track = dataset.track("2")
     jam = track.to_jams()
 
-    segments = jam.search(namespace="multi_segment")[0]["data"]
-    assert [segment.time for segment in segments] == [
+    annotations = jam.search(namespace="segment")
+    segments_uppercase = annotations[0]["data"]
+    segments_lowercase = annotations[1]["data"]
+    segments_functions = annotations[2]["data"]
+    assert [segment.time for segment in segments_uppercase + segments_lowercase] == [
         0.0,
         0.0,
         0.464399092,
@@ -139,7 +164,9 @@ def test_to_jams():
         263.205419501,
         263.205419501,
     ]
-    assert [segment.duration for segment in segments] == [
+    assert [
+        segment.duration for segment in segments_uppercase + segments_lowercase
+    ] == [
         0.464399092,
         0.464399092,
         13.915464853,
@@ -151,19 +178,45 @@ def test_to_jams():
         1.6797959180000248,
         1.6797959180000248,
     ]
-    assert [segment.value for segment in segments] == [
-        {"label": "Silence", "level": 0},
-        {"label": "Silence", "level": 1},
-        {"label": "A", "level": 0},
-        {"label": "b", "level": 1},
-        {"label": "b", "level": 1},
-        {"label": "B", "level": 0},
-        {"label": "ab", "level": 1},
-        {"label": "ab", "level": 1},
-        {"label": "Silence", "level": 0},
-        {"label": "Silence", "level": 1},
+    assert [segment.value for segment in segments_uppercase + segments_lowercase] == [
+        "Silence",
+        "Silence",
+        "A",
+        "b",
+        "b",
+        "B",
+        "ab",
+        "ab",
+        "Silence",
+        "Silence",
     ]
-    assert [segment.confidence for segment in segments] == [
+    assert [segment.value for segment in segments_functions] == [
+        "Silence",
+        "Intro",
+        "no_function",
+        "no_function",
+        "Verse",
+        "no_function",
+        "Transition",
+        "Pre-Chorus",
+        "Chorus",
+        "no_function",
+        "Verse",
+        "no_function",
+        "Transition",
+        "Chorus",
+        "no_function",
+        "no_function",
+        "Pre-Chorus",
+        "Chorus",
+        "no_function",
+        "Outro",
+        "Fade-out",
+        "Silence",
+    ]
+    assert [
+        segment.confidence for segment in segments_uppercase + segments_lowercase
+    ] == [
         None,
         None,
         None,
