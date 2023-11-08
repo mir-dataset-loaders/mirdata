@@ -519,7 +519,7 @@ def test_sections():
         jams_utils.jams_converter(section_data=section_data_4)
     with pytest.raises(TypeError):
         jams_utils.jams_converter(section_data=section_data_5)
-    with pytest.raises(TypeError):
+    with pytest.raises(AttributeError):
         jams_utils.jams_converter(section_data=section_data_7)
 
 
