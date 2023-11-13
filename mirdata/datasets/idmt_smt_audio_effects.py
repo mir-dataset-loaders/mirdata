@@ -71,7 +71,22 @@ REMOTES = {
 
 DOWNLOAD_INFO = """
     Folder tree:
-    data_home/
+```data_home/
+    ├── Bass monophon/
+    │   ├── Lists
+    │   └── Samples
+    ├── Bass monophon2
+    ├── Gitarre monophon/
+    │   ├── Lists
+    │   ├── Samples
+    │   └── ReadMe.txt
+    ├── Gitarre monophon2
+    ├── Gitarre polyphon/
+    │   ├── Lists
+    │   └── Samples
+    ├── Gitarre polyphon2
+    └── IDMT-SMT-AUDIO-EFFECTS/
+        └── IDMT-SMT-Audio-Effects-Description.pdf
             |- Bass monophon
             |   |- Lists
             |   |- Samples
