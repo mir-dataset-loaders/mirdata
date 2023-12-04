@@ -72,8 +72,9 @@ REMOTES = {
 DOWNLOAD_INFO = """
     IDMT-SMT-Audio-Effects Dataset is available at:
     https://www.idmt.fraunhofer.de/en/publications/datasets/audio_effects.html
-    And from Zenodo:
+    And Zenodo:
     https://zenodo.org/records/7544032
+    
     Folder tree:
     data_home/
     ├── Bass monophon/
