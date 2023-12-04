@@ -70,8 +70,12 @@ REMOTES = {
 }
 
 DOWNLOAD_INFO = """
+    IDMT-SMT-Audio-Effects Dataset is available at:
+    https://www.idmt.fraunhofer.de/en/publications/datasets/audio_effects.html
+    And from Zenodo:
+    https://zenodo.org/records/7544032
     Folder tree:
-```data_home/
+    data_home/
     ├── Bass monophon/
     │   ├── Lists
     │   └── Samples
@@ -85,23 +89,9 @@ DOWNLOAD_INFO = """
     │   ├── Lists
     │   └── Samples
     ├── Gitarre polyphon2
-    └── IDMT-SMT-AUDIO-EFFECTS/
-        └── IDMT-SMT-Audio-Effects-Description.pdf
-            |- Bass monophon
-            |   |- Lists
-            |   |- Samples
-            |- Bass monophon2
-            |- Gitarre monophon
-            |   |- Lists
-            |   |- Samples
-            |   |- ReadMe.txt
-            |- Gitarre monophon2
-            |- Gitarre polyphon
-            |   |- Lists
-            |   |- Samples
-            |- Gitarre polyphon2
-            |- IDMT-SMT-AUDIO-EFFECTS
-                |- IDMT-SMT-Audio-Effects-Description.pdf
+    ├── IDMT-SMT-AUDIO-EFFECTS/
+    └── IDMT-SMT-Audio-Effects-Description.pdf
+            
 """
 
 LICENSE_INFO = """
@@ -356,20 +346,10 @@ class Dataset(core.Dataset):
 
         for zip_file, target_subdir in zip_files_to_extract.items():
             zip_file_path = os.path.join(nested_zip_path, zip_file)
-            # try:
-            # Extract each zip file
+
             download_utils.unzip(zip_path=zip_file_path, cleanup=cleanup)
 
-            extracted_dir = os.path.join(nested_zip_path, os.path.splitext(zip_file)[0])
-
-            destination_dir = os.path.join(self.data_home, target_subdir)
-
-            # Move contents from the temporary directory to the target directory
-            download_utils.move_directory_contents(
-                source_dir=extracted_dir, target_dir=destination_dir
-            )
-
-            # except FileNotFoundError:
-            #     print(
-            #         f"Warning: The zip file {zip_file_path} does not exist and cannot be extracted."
-            #     )
+        # Move contents from the temporary directory to the target directory
+        download_utils.move_directory_contents(
+            source_dir=nested_zip_path, target_dir=self.data_home
+        )
