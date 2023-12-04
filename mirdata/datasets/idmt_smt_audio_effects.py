@@ -89,7 +89,8 @@ DOWNLOAD_INFO = """
     │   ├── Lists
     │   └── Samples
     ├── Gitarre polyphon2
-    ├── IDMT-SMT-AUDIO-EFFECTS/
+    ├── Gitarre_polyphon2.zip       # Duplicate of Gitarre polyphon2
+    ├── IDMT-SMT-AUDIO-EFFECTS/     # Empty folder
     └── IDMT-SMT-Audio-Effects-Description.pdf
             
 """
