@@ -28,8 +28,8 @@ Citing mirdata
 
 If you are using the library for your work, please cite the version you used as indexed at Zenodo:
 
-.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.4355859.svg
-   :target: https://doi.org/10.5281/zenodo.4355859
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.10070589.svg
+   :target: https://doi.org/10.5281/zenodo.10070589
 
 If you refer to mirdata's design principles, motivation etc., please cite the following
 `paper <https://magdalenafuentes.github.io/publications/2019_ISMIR_mirdata.pdf>`_  [#]_:
