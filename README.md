@@ -1,9 +1,9 @@
 # mirdata
 Common loaders for Music Information Retrieval (MIR) datasets. Find the API documentation [here](https://mirdata.readthedocs.io/).
 
-![CI status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/ci.yml/badge.svg)
-![Formatting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/formatting.yml/badge.svg)
-![Linting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/lint-python.yml/badge.svg)
+![CI status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/ci.yml/badge.svg?branch=main)
+![Formatting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/formatting.yml/badge.svg?branch=main)
+![Linting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/lint-python.yml/badge.svg?branch=main)
 [![Documentation Status](https://readthedocs.org/projects/mirdata/badge/?version=latest)](https://mirdata.readthedocs.io/en/latest/?badge=latest)
 ![GitHub](https://img.shields.io/github/license/mir-dataset-loaders/mirdata.svg)
 
