@@ -1,12 +1,18 @@
 # mirdata
 Common loaders for Music Information Retrieval (MIR) datasets. Find the API documentation [here](https://mirdata.readthedocs.io/).
 
-![CI status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/ci.yml/badge.svg)
-![Formatting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/formatting.yml/badge.svg)
-![Linting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/lint-python.yml/badge.svg)
-[![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
+![CI status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/ci.yml/badge.svg?branch=master)
+![Formatting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/formatting.yml/badge.svg?branch=master)
+![Linting status](https://github.com/mir-dataset-loaders/mirdata/actions/workflows/lint-python.yml/badge.svg?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/mirdata/badge/?version=latest)](https://mirdata.readthedocs.io/en/latest/?badge=latest)
 ![GitHub](https://img.shields.io/github/license/mir-dataset-loaders/mirdata.svg)
+
+
+[![PyPI version](https://badge.fury.io/py/mirdata.svg)](https://badge.fury.io/py/mirdata)
+[![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
+[![Downloads](https://static.pepy.tech/badge/mirdata)](https://pepy.tech/project/mirdata)
+[![DOI](https://zenodo.org/badge/DOI/zenodo.10070589.svg)](https://doi.org/10.5281/zenodo.10070589)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 
 This library provides tools for working with common MIR datasets, including tools for:
@@ -53,7 +59,7 @@ There are two ways of citing mirdata:
 
 If you are using the library for your work, please cite the version you used as indexed at Zenodo:
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4355859.svg)](https://doi.org/10.5281/zenodo.4355859)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10070589.svg)](https://doi.org/10.5281/zenodo.10070589)
 
 If you refer to mirdata's design principles, motivation etc., please cite the following [paper](https://zenodo.org/record/3527750#.X-Inp5NKhUI):
 
