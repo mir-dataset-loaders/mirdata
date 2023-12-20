@@ -1,10 +1,12 @@
 import os
 import pytest
+import shutil
 import xml.etree.ElementTree as ET
 
+from mirdata.datasets import idmt_smt_audio_effects
+from mirdata import download_utils
 from tests.test_utils import run_track_tests
 
-from mirdata.datasets import idmt_smt_audio_effects
 
 TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/idmt_smt_audio_effects")
 
@@ -94,3 +96,63 @@ def test_metadata():
 
     # Clean up after the test by removing the corrupted XML
     os.remove(os.path.join(corrupted_data_home, "corrupted.xml"))
+
+
+def test_download(httpserver):
+    data_home = "tests/resources/mir_datasets/idmt_smt_audio_effects_download"
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    httpserver.serve_content(
+        open("tests/resources/download/IDMT-SMT-AUDIO-EFFECTS.zip", "rb").read()
+    )
+
+    remotes = {
+        "full_dataset": download_utils.RemoteFileMetadata(
+            filename="IDMT-SMT-AUDIO-EFFECTS.zip",
+            url=httpserver.url,
+            checksum=("462b32e4834749204347014c819b3a7c"),
+        )
+    }
+
+    dataset = idmt_smt_audio_effects.Dataset(data_home)
+    dataset.remotes = remotes
+    dataset.download(None, False, False)
+
+    assert os.path.exists(data_home)
+
+    # expected_folders = [
+    #     "Bass monophon",
+    #     "Bass monophon2",
+    #     "Gitarre monophon",
+    #     "Gitarre monophon2",
+    #     "Gitarre polyphon",
+    #     "Gitarre polyphon2",
+    # ]
+
+    # test downloading again
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, False, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite
+    dataset.download(None, False, False)
+    dataset.download(None, True, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
+
+    # test downloading twice with force overwrite and cleanup
+    dataset.download(None, False, True)
+    dataset.download(None, True, False)
+
+    if os.path.exists(data_home):
+        shutil.rmtree(data_home)
