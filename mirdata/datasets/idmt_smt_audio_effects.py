@@ -65,21 +65,35 @@ REMOTES = {
     "full_dataset": download_utils.RemoteFileMetadata(
         filename="IDMT-SMT-AUDIO-EFFECTS.zip",
         url="https://zenodo.org/record/7544032/files/IDMT-SMT-AUDIO-EFFECTS.zip?download=1",
-        checksum="91e845a1b347352993ebd5ba948d5a7c",  # the md5 checksum
-        destination_dir=".",  # relative path for where to unzip the data, or None
-        unpack_directories=[""],
+        checksum="91e845a1b347352993ebd5ba948d5a7c",
     ),
 }
 
 DOWNLOAD_INFO = """
-        This loader will create the following folders in the dataset data_home path:
-            > idmt_smt_audio_effects/
-                > Bass monophon/
-                > Bass monophon2/
-                > Gitarre monophon/
-                > Gitarre monophon2/
-                > Gitarre polyphon/
-                > Gitarre polyphon2/
+    IDMT-SMT-Audio-Effects Dataset is available at:
+    https://www.idmt.fraunhofer.de/en/publications/datasets/audio_effects.html
+    And Zenodo:
+    https://zenodo.org/records/7544032
+    
+    Folder tree:
+    data_home/
+    ├── Bass monophon/
+    │   ├── Lists
+    │   └── Samples
+    ├── Bass monophon2
+    ├── Gitarre monophon/
+    │   ├── Lists
+    │   ├── Samples
+    │   └── ReadMe.txt
+    ├── Gitarre monophon2
+    ├── Gitarre polyphon/
+    │   ├── Lists
+    │   └── Samples
+    ├── Gitarre polyphon2
+    ├── Gitarre_polyphon2.zip       # Duplicate of Gitarre polyphon2
+    ├── IDMT-SMT-AUDIO-EFFECTS/     # Empty folder
+    └── IDMT-SMT-Audio-Effects-Description.pdf
+            
 """
 
 LICENSE_INFO = """
@@ -283,3 +297,61 @@ class Dataset(core.Dataset):
                 f"No XML files found in {self.data_home}. Did you run .download?"
             )
         return metadata
+
+    def download(
+        self,
+        partial_download=None,
+        force_overwrite=False,
+        cleanup=False,
+        allow_invalid_checksum=False,
+    ):
+        """Download the dataset
+
+        Args:
+            partial_download (list or None):
+                A list of keys of remotes to partially download.
+                If None, all data is downloaded
+            force_overwrite (bool):
+                If True, existing files are overwritten by the downloaded files.
+            cleanup (bool):
+                Whether to delete any zip/tar files after extracting.
+
+        Raises:
+            ValueError: if invalid keys are passed to partial_download
+            IOError: if a downloaded file's checksum is different from expected
+
+        """
+        # Download the main zip file
+        download_path = download_utils.download_from_remote(
+            remote=self.remotes["full_dataset"],
+            save_dir=self.data_home,
+            force_overwrite=force_overwrite,
+            allow_invalid_checksum=allow_invalid_checksum,
+        )
+
+        # Unzip the main archive
+        download_utils.unzip(zip_path=download_path, cleanup=cleanup)
+
+        # Unzip the nested archives
+        nested_zip_path = os.path.join(
+            self.data_home, "IDMT-SMT-AUDIO-EFFECTS", "IDMT-SMT-AUDIO-EFFECTS"
+        )
+
+        zip_files_to_extract = {
+            "Bass monophon.zip": "Bass monophon",
+            "Bass monophon2.zip": "Bass monophon2",
+            "Gitarre monophon.zip": "Gitarre monophon",
+            "Gitarre monophon2.zip": "Gitarre monophon2",
+            "Gitarre polyphon.zip": "Gitarre polyphon",
+            "Gitarre polyphon2.zip": "Gitarre polyphon2",
+        }
+
+        for zip_file, target_subdir in zip_files_to_extract.items():
+            zip_file_path = os.path.join(nested_zip_path, zip_file)
+
+            download_utils.unzip(zip_path=zip_file_path, cleanup=cleanup)
+
+        # Move contents from the temporary directory to the target directory
+        download_utils.move_directory_contents(
+            source_dir=nested_zip_path, target_dir=self.data_home
+        )
