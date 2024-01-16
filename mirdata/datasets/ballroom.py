@@ -157,7 +157,7 @@ def load_audio(audio_path):
 
 
 @io.coerce_to_string_io
-def load_beats(fhandle: TextIO) -> annotations.BeatData:
+def load_beats(fhandle: TextIO):
     """Load beats
 
     Args:
