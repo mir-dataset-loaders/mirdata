@@ -6,24 +6,24 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = "Media-105901.wav"
-    data_home = os.path.normpath("tests/resources/mir_datasets/")
+    default_trackid = "Media-105901"
+    data_home = os.path.normpath("tests/resources/mir_datasets/ballroom")
     dataset = ballroom.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "track_id": "Media-105901.wav",
+        "track_id": "Media-105901",
         "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/"),
-            "ballroom/audio/Waltz/Media-105901.wav",
+            os.path.normpath("tests/resources/mir_datasets/ballroom/"),
+            "B_1.0/audio/Waltz/Media-105901.wav",
         ),
         "beats_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/"),
-            "ballroom/annotations/beats/Media-105901.beats",
+            os.path.normpath("tests/resources/mir_datasets/ballroom/"),
+            "B_1.0/annotations/beats/Media-105901.beats",
         ),
         "tempo_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/"),
-            "ballroom/annotations/tempo/Media-105901.bpm",
+            os.path.normpath("tests/resources/mir_datasets/ballroom/"),
+            "B_1.0/annotations/tempo/Media-105901.bpm",
         ),
     }
 
@@ -41,9 +41,9 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/"
+    data_home = "tests/resources/mir_datasets/ballroom"
     dataset = ballroom.Dataset(data_home)
-    track = dataset.track("Media-105901.wav")
+    track = dataset.track("Media-105901")
     jam = track.to_jams()
     tempo = jam.search(namespace="tempo")[0]["data"]
     assert [temp.value for temp in tempo] == [84.0]
@@ -56,9 +56,9 @@ def test_to_jams():
 
 
 def test_load_tempo():
-    data_home = "tests/resources/mir_datasets/"
+    data_home = "tests/resources/mir_datasets/ballroom"
     dataset = ballroom.Dataset(data_home)
-    track = dataset.track("Media-105901.wav")
+    track = dataset.track("Media-105901")
     tempo_path = track.tempo_path
     parsed_tempo = ballroom.load_tempo(tempo_path)
     assert parsed_tempo == 84.0
@@ -66,9 +66,9 @@ def test_load_tempo():
 
 
 def test_load_beats():
-    data_home = "tests/resources/mir_datasets/"
+    data_home = "tests/resources/mir_datasets/ballroom"
     dataset = ballroom.Dataset(data_home)
-    track = dataset.track("Media-105901.wav")
+    track = dataset.track("Media-105901")
     beats_path = track.beats_path
     parsed_beats = ballroom.load_beats(beats_path)
 
@@ -84,9 +84,9 @@ def test_load_beats():
 
 
 def test_load_audio():
-    data_home = "tests/resources/mir_datasets/"
+    data_home = "tests/resources/mir_datasets/ballroom"
     dataset = ballroom.Dataset(data_home)
-    track = dataset.track("Media-105901.wav")
+    track = dataset.track("Media-105901")
     audio_path = track.audio_path
     audio, sr = ballroom.load_audio(audio_path)
 

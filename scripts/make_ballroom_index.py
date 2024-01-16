@@ -13,12 +13,12 @@ def make_ballroom_rhythm_index(dataset_data_path):
         "tracks": {},
     }
     
-    dataset_folder_name = "ballroom"  # Update this folder name if needed
+    dataset_folder_name = "B_1.0"  # Update this folder name if needed
     for root, dirs, files in os.walk(dataset_data_path):
         for filename in files:
             if filename.endswith(".wav"):
                 subfolder = os.path.basename(root)
-                idx = filename
+                idx = filename.split(".")[0]
                 cmr_index["tracks"][idx] = {
                     "audio": (
                         os.path.join(dataset_folder_name, "audio", subfolder, filename),
