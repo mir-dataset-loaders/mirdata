@@ -3,39 +3,27 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    CompMusic Hindustani Rhythm Dataset is a rhythm annotated test corpus for automatic rhythm analysis tasks in Hindustani Music. 
-    The collection consists of audio excerpts from the CompMusic Hindustani research corpus, manually annotated time aligned markers 
-    indicating the progression through the taal cycle, and the associated taal related metadata. A brief description of the dataset
-    is provided below.
+    The Ballroom Rhythm Dataset is a comprehensive collection of rhythm annotations for ballroom dance music. This dataset is designed for tasks such as beat tracking, rhythm analysis, and tempo estimation in ballroom dance music. It includes annotations for beats and bars corresponding to different dance styles within the ballroom genre.
 
-    For a brief overview and audio examples of taals in Hindustani music, please see: http://compmusic.upf.edu/examples-taal-hindustani
+    **Dataset Overview:**
 
-    The dataset contains the following data:
+    The dataset offers beat and bar annotations for various ballroom dance styles, such as Waltz, Tango, Viennese Waltz, Slow Foxtrot, Quickstep, Samba, Cha-Cha-Cha, Rumba, Paso Doble, and Jive. These annotations are provided in a format that includes beat time in seconds and beat ID, facilitating precise rhythm analysis.
 
-    **AUDIO:** The pieces are chosen from the CompMusic Hindustani music collection. The pieces were chosen in four popular taals of Hindustani music,
-    which encompasses a majority of Hindustani khyal music. The pieces were chosen include a mix of vocal and instrumental recordings, new and old
-    recordings, and to span three lays. For each taal, there are pieces in dhrut (fast), madhya (medium) and vilambit (slow) lays (tempo class). All
-    pieces have Tabla as the percussion accompaniment. The excerpts are two minutes long. Each piece is uniquely identified using the MBID of the recording.
-    The pieces are stereo, 160 kbps, mp3 files sampled at 44.1 kHz. The audio is also available as wav files for experiments.
+    **Beat and Bar Annotations:**
 
-    **SAM, VIBHAAG AND THE MAATRAS:** The primary annotations are audio synchronized time-stamps indicating the different metrical positions in the taal cycle.
-    The sam and matras of the cycle are annotated. The annotations were created using Sonic Visualizer by tapping to music and manually correcting the taps. 
-    Each annotation has a time-stamp and an associated numeric label that indicates the position of the beat marker in the taala cycle. The annotations and the
-    associated metadata have been verified for correctness and completeness by a professional Hindustani musician and musicologist. The long thick lines show 
-    vibhaag boundaries. The numerals indicate the matra number in cycle. In each case, the sam (the start of the cycle, analogous to the downbeat) are indicated
-    using the numeral 1.
+    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID. For example, a line `9.430022675 3` indicates that the third beat of a bar is located at 9.43 seconds. This format is particularly useful for identifying downbeats, as they correspond to beats with ID = 1.
 
-    The dataset consists of excerpts with a wide tempo range from 10 MPM (matras per minute) to 370 MPM. To study any effects of the tempo class, the full dataset
-    (HMDf) is also divided into two other subsets - the long cycle subset (HMDl) consisting of vilambit (slow) pieces with a median tempo between 10-60 MPM, and the
-    short cycle subset (HMDs) with madhyalay (medium, 60-150 MPM) and the drut lay (fast, 150+ MPM).
+    **Annotation Methodology:**
 
-    **Possible uses of the dataset:** Possible tasks where the dataset can be used include taal, sama and beat tracking, tempo estimation and tracking, taal recognition,
-    rhythm based segmentation of musical audio, audio to score/lyrics alignment, and rhythmic pattern discovery.
+    The dataset's annotations are based on the tempo guidelines of each ballroom dance style. Initial annotations were generated using a beat tracker, and then manually adjusted for accuracy. This method ensures that the annotations reflect the characteristic rhythms of each dance style.
 
-    **Dataset organization:** The dataset consists of audio, annotations, an accompanying spreadsheet providing additional metadata, a MAT-file that has identical
-    information as the spreadsheet, and a dataset description document.
+    **Applications:**
 
-    The annotations files of this dataset are shared with the following license: Creative Commons Attribution Non Commercial Share Alike 4.0 International
+    The Ballroom Rhythm Dataset is ideal for developing and testing algorithms for beat tracking, tempo estimation, and rhythm analysis in ballroom dance music. It can also be used for educational purposes, offering insights into the rhythmic structures of various ballroom dance styles.
+
+    **Acknowledgments and References:**
+
+    This dataset was created with the collaboration of experts in ballroom dance music. We extend our gratitude to those who contributed their knowledge and expertise to this project. For detailed information on the dataset and its creation, please refer to the associated research papers and documentation.
 
 """
 
