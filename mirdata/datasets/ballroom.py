@@ -61,10 +61,15 @@ LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
 
-DOWNLOAD_INFO = """The files of this dataset are shared under request. Please go to: https://zenodo.org/record/1264742 and request access, stating
-    the research-related use you will give to the dataset. Once the access is granted (it may take, at most, one day or two), please download 
-    the dataset with the provided Zenodo link and uncompress and store the datasets to a desired location, and use such location to initialize the 
-    dataset as follows: compmusic_hindustani_rhythm = mirdata.initialize("compmusic_hindustani_rhythm", data_home="/path/to/home/folder/of/dataset").
+DOWNLOAD_INFO = """
+    Unfortunately most of the Ballroom dataset is not available for download.
+    If you have the Ballroom dataset, place the contents into a folder called
+    ballroom with the following structure:
+        > ballroom/
+            > audio/
+            > annotations/beats
+            > annotations/tempo
+    and copy the ballroom folder to {}
     """
 
 
