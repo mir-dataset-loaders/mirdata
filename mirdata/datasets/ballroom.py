@@ -69,7 +69,7 @@ DOWNLOAD_INFO = """
     Unfortunately most of the Ballroom dataset is not available for download.
     If you have the Ballroom dataset, place the contents into a folder called
     ballroom with the following structure:
-        > ballroom/
+        > B_1.0/
             > audio/
             > annotations/beats
             > annotations/tempo
