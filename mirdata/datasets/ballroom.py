@@ -39,7 +39,7 @@ import librosa
 import numpy as np
 from typing import BinaryIO, Optional, TextIO, Tuple
 
-from mirdata import annotations, core, io, jams_utils
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
@@ -60,7 +60,15 @@ INDEXES = {
     "1.0": core.Index(filename="ballroom_full_index_1.0.json"),
 }
 
-REMOTES = None
+REMOTES = {
+    "audio": download_utils.RemoteFileMetadata(
+        filename="data1.tar.gz",
+        url="https://mtg.upf.edu/ismir2004/contest/tempoContest/data1.tar.gz",
+        checksum="2872a3e52070bc342a4510a95e2fa0b8",
+        destination_dir="B_1.0/audio",
+        unpack_directories=["BallroomData"],
+    )
+}
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
