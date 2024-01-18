@@ -4,7 +4,7 @@ Deprecated>=1.2.13
 jams
 librosa>=0.10.1
 numpy>=1.21.6
-sphinx==5.2.0
+sphinx>=5.2.0
 sphinx-togglebutton
 sphinx-rtd-theme
 tqdm
