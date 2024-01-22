@@ -187,9 +187,7 @@ def load_beats(fhandle: TextIO):
     if not beat_times or beat_times[0] == -1.0:
         return None
 
-    return annotations.BeatData(
-        np.array(beat_times), "s", None, "bar_index"
-    )
+    return annotations.BeatData(np.array(beat_times), "s", None, "bar_index")
 
 
 @io.coerce_to_string_io
