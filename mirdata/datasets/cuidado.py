@@ -178,7 +178,6 @@ def load_beats(fhandle: TextIO):
 
     """
     beat_times = []
-    beat_positions = []
 
     reader = csv.reader(fhandle, delimiter=" ")
     for line in reader:
