@@ -1,4 +1,4 @@
-"""Hainsworth Rhythm Dataset Loader
+"""Hainsworth Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
