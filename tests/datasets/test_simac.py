@@ -46,12 +46,12 @@ def test_to_jams():
     track = dataset.track("simac_01_H_mikri_Rallou")
     jam = track.to_jams()
     tempo = jam.search(namespace="tempo")[0]["data"]
-    assert [temp.value for temp in tempo] == [100.16]
+    assert [temp.value for temp in tempo] == [74.34]
     beats = jam.search(namespace="beat")[0]["data"]
     assert len(beats) == 3
-    assert [beat.time for beat in beats] == [0.47, 1.06, 1.63]
+    assert [beat.time for beat in beats] == [0.24, 1.047, 1.86]
     assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0]
-    assert [beat.value for beat in beats] == [2, 3, 4]
+    assert [beat.value for beat in beats] == [None, None, None]
     assert [beat.confidence for beat in beats] == [None, None, None]
 
 
@@ -61,7 +61,7 @@ def test_load_tempo():
     track = dataset.track("simac_01_H_mikri_Rallou")
     tempo_path = track.tempo_path
     parsed_tempo = simac.load_tempo(tempo_path)
-    assert parsed_tempo == 100.16
+    assert parsed_tempo == 74.34
     assert simac.load_tempo(None) is None
 
 
@@ -77,7 +77,7 @@ def test_load_beats():
     assert type(parsed_beats.times) is np.ndarray
 
     # Check values
-    assert np.array_equal(parsed_beats.times, np.array([0.47, 1.06, 1.63]))
+    assert np.array_equal(parsed_beats.times, np.array([0.24, 1.047, 1.86]))
     assert simac.load_beats(None) is None
 
 

@@ -178,19 +178,15 @@ def load_beats(fhandle: TextIO):
 
     """
     beat_times = []
-    beat_positions = []
 
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         beat_times.append(float(line[0]))
-        beat_positions.append(int(line[1]))
 
     if not beat_times or beat_times[0] == -1.0:
         return None
 
-    return annotations.BeatData(
-        np.array(beat_times), "s", np.array(beat_positions), "bar_index"
-    )
+    return annotations.BeatData(np.array(beat_times), "s", None, "bar_index")
 
 
 @io.coerce_to_string_io
