@@ -386,6 +386,13 @@ scms
    :inherited-members:
 
 
+simac
+^^^^^
+
+.. automodule:: mirdata.datasets.simac
+   :members:
+   :inherited-members:
+
 
 slakh
 ^^^^^^^^^^^^^^^^^
