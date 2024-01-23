@@ -81,7 +81,7 @@ REMOTES = {
         checksum="d0c31e1a30c0caf8fd22dec25f2174cf",
         destination_dir="B_1.0/annotations/beats",
         unpack_directories=["BallroomAnnotations-master"],
-    )
+    ),
 }
 
 LICENSE_INFO = (
