@@ -67,23 +67,26 @@ REMOTES = {
         checksum="2872a3e52070bc342a4510a95e2fa0b8",
         destination_dir="B_1.0/audio",
         unpack_directories=["BallroomData"],
+    ),
+    "tempo": download_utils.RemoteFileMetadata(
+        filename="data2.tar.gz",
+        url="https://mtg.upf.edu/ismir2004/contest/tempoContest/data2.tar.gz",
+        checksum="4a0ec5518bbb4dbf3ab02de0383b0994",
+        destination_dir="B_1.0/annotations/tempo",
+        unpack_directories=["BallroomAnnotations/ballroomGroundTruth"],
+    ),
+    "beats": download_utils.RemoteFileMetadata(
+        filename="master.zip",
+        url="https://github.com/CPJKU/BallroomAnnotations/archive/master.zip",
+        checksum="d0c31e1a30c0caf8fd22dec25f2174cf",
+        destination_dir="B_1.0/annotations/beats",
+        unpack_directories=["BallroomAnnotations-master"],
     )
 }
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
-
-DOWNLOAD_INFO = """
-    Unfortunately most of the Ballroom dataset is not available for download.
-    If you have the Ballroom dataset, place the contents into a folder called
-    ballroom with the following structure:
-        > B_1.0/
-            > audio/
-            > annotations/beats
-            > annotations/tempo
-    and copy the ballroom folder to {}
-    """
 
 
 class Track(core.Track):
@@ -96,9 +99,12 @@ class Track(core.Track):
 
     Attributes:
         audio_path (str): path to audio file
-        beats_path (srt): path to beats file
-        tempo_path (srt): path to tempo file
+        beats_path (str): path to beats file
+        tempo_path (str): path to tempo file
 
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotations
+        tempo (float): human-labeled tempo annotations
     """
 
     def __init__(
@@ -158,20 +164,19 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
-    """Load an audio file.
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load a Ballroom audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if audio_path is None:
-        return None
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
@@ -233,5 +238,4 @@ class Dataset(core.Dataset):
             indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
-            download_info=DOWNLOAD_INFO,
         )
