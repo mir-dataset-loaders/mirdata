@@ -26,8 +26,8 @@
             :target: https://zenodo.org/record/6868083
 
    * - Ballroom 
-     - - audio: ❌
-       - annotations: ✅
+     - - audio: ✅
+       - annotations: ❌
      - - :ref:`beats`
        - :ref:`tempo`
      - 698
