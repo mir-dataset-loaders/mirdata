@@ -7,7 +7,7 @@
 
     **Dataset Overview:**
 
-    BRID comprises a total of 367 short tracks, averaging about 30 seconds each, amounting to approximately 2 hours and 57 minutes of music. These tracks include recordings of various Brazilian instruments, played in different Brazilian rhythmic styles.
+    BRID comprises a total of 367 divided into 93 short tracks, amounting to approximately 2 hours and 57 minutes of music. These tracks include recordings of various Brazilian instruments, played in different Brazilian rhythmic styles.
 
     **Instruments and Rhythms:**
 
@@ -91,6 +91,10 @@ class Track(core.Track):
         beats_path (srt): path to beats file
         tempo_path (srt): path to tempo file
 
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotations
+        tempo (float): human-labeled tempo annotations
+
     """
 
     def __init__(
@@ -150,20 +154,16 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
-    """Load an audio file.
-
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load a Ballroom audio file.
     Args:
-        audio_path (str): path to audio file
-
+        fhandle (str or file-like): path or file-like object pointing to an audio file
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
-
     """
-    if audio_path is None:
-        return None
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
