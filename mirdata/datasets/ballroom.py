@@ -192,11 +192,16 @@ def load_beats(fhandle: TextIO):
     """
     beat_times = []
     beat_positions = []
-
-    reader = csv.reader(fhandle, delimiter=" ")
+    reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
-        beat_times.append(float(line[0]))
-        beat_positions.append(int(line[1]))
+        if len(line) == 2:
+            beat_times.append(float(line[0]))
+            beat_positions.append(int(line[1]))
+        else:
+            values = line[0].split(" ")
+            if len(values) == 2:
+                beat_times.append(float(values[0]))
+                beat_positions.append(int(values[1]))
 
     if not beat_times or beat_times[0] == -1.0:
         return None
