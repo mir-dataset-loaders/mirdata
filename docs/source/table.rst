@@ -157,7 +157,7 @@
 
    * - Cuidado 
      - - audio: ❌
-       - annotations: ✅
+       - annotations: ❌
      - - :ref:`beats`
        - :ref:`tempo`
      - 70
