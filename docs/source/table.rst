@@ -298,6 +298,15 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - hjdb
+     - - audio: ❌
+       - annotations: ❌
+     - - :ref:`beats`
+       - :ref:`tempo`
+     - 236
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
    * - IDMT-SMT-Audio Effects
      - - audio: ✅
        - annotations: ✅

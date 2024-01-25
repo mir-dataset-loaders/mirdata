@@ -234,6 +234,13 @@ haydn_op20
    :members:
    :inherited-members:
 
+hjdb
+^^^^
+
+.. automodule:: mirdata.datasets.hjdb
+   :members:
+   :inherited-members:
+
 
 idmt_smt_audio_effects
 ^^^^^^^^^^^^^^^^^^^^^^
