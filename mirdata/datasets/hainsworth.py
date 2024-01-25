@@ -3,33 +3,28 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The Cuidado Rhythm Dataset is a comprehensive collection of rhythm annotations for cuidado dance music. This dataset is designed for tasks such as beat tracking, rhythm analysis, and tempo estimation in ballroom dance music. It includes annotations for beats and bars corresponding to different dance styles within the ballroom genre.
-
     **Dataset Overview:**
 
-    The dataset offers beat and bar annotations for various cuidado dance styles, such as Waltz, Tango, Viennese Waltz, Slow Foxtrot, Quickstep, Samba, Cha-Cha-Cha, Rumba, Paso Doble, and Jive. These annotations are provided in a format that includes beat time in seconds and beat ID, facilitating precise rhythm analysis.
+    The Hainsworth Dataset comprises 222 musical excerpts, each approximately 1 minute in length, categorized into six genres: rock/pop, dance, jazz, folk, classical, and choral. It was created by Stephen Hainsworth as part of his PhD thesis on automatic music transcription. The dataset offers annotations for beat and downbeat locations, which were generated in a two-stage process. Initially, initial taps were recorded, and then annotations were manually corrected using a custom interface in Matlab, guided by a time-frequency representation.
 
-    **Beat and Bar Annotations:**
+    Of particular significance is the inclusion of approximately 20 choral examples, which posed a significant challenge for annotation due to their unique characteristics. This dataset gained recognition within the beat tracking community for its contribution to annotating and analyzing such challenging musical signals.
 
-    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID. For example, a line `9.430022675 3` indicates that the third beat of a bar is located at 9.43 seconds. This format is particularly useful for identifying downbeats, as they correspond to beats with ID = 1.
-
-    **Annotation Methodology:**
-
-    The dataset's annotations are based on the tempo guidelines of each cuidado dance style. Initial annotations were generated using a beat tracker, and then manually adjusted for accuracy. This method ensures that the annotations reflect the characteristic rhythms of each dance style.
+    In 2014, Böck et al. [BockKW14b] conducted revisions on the beat and downbeat annotations to correct errors, leading to an enhancement in performance.
 
     **Applications:**
 
-    The Cuidado Rhythm Dataset is ideal for developing and testing algorithms for beat tracking, tempo estimation, and rhythm analysis in cuidado dance music. It can also be used for educational purposes, offering insights into the rhythmic structures of various ballroom dance styles.
+    The Hainsworth Dataset Loader is valuable for tasks related to beat tracking, rhythm analysis, and downbeat detection in various musical genres. Researchers and developers can utilize this dataset for algorithm development, testing, and evaluation. Additionally, it serves as a valuable resource for educational purposes, providing insights into the rhythmic structures of different musical genres.
 
     **Acknowledgments and References:**
 
-    This dataset was created with the collaboration of experts in cuidado dance music. We extend our gratitude to those who contributed their knowledge and expertise to this project. For detailed information on the dataset and its creation, please refer to the associated research papers and documentation.
-    
-    [1] Gouyon F., A. Klapuri, S. Dixon, M. Alonso, G. Tzanetakis, C. Uhle, and P. Cano. An experimental comparison of audio tempo induction algorithms. Transactions on Audio, Speech and Language Processing 14(5), pp.1832-1844, 2006.
+    We would like to acknowledge Stephen Hainsworth for creating this dataset and his significant contribution to the field of automatic music transcription. Special thanks to Böck et al. [BockKW14b] for their efforts in improving the dataset annotations.
 
-    [2] Böck, S., and M. Schedl. Enhanced beat tracking with context-aware neural networks. In Proceedings of the International Conference on Digital Audio Effects (DAFX), 2010.
+    For more detailed information about the dataset and its creation, please refer to Stephen Hainsworth's PhD thesis and the associated research papers and documentation.
+
+    [1] Hainsworth, Stephen. (PhD Thesis) 
+
+    [2] Böck, Sebastian, et al. "Enhanced beat tracking with context-aware neural networks." In Proceedings of the International Conference on Digital Audio Effects (DAFX), 2010.
     
-    [3] Dixon, S., F. Gouyon & G. Widmer. Towards Characterisation of Music via Rhythmic Patterns. In Proceedings of the 5th International Society for Music Information Retrieval Conference (ISMIR). 2004.
 """
 
 import os
@@ -43,15 +38,16 @@ from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
-@ARTICLE{1678001,
-    author={Gouyon, F. and Klapuri, A. and Dixon, S. and Alonso, M. and Tzanetakis, G. and Uhle, C. and Cano, P.},
-    journal={IEEE Transactions on Audio, Speech, and Language Processing}, 
-    title={An experimental comparison of audio tempo induction algorithms}, 
-    year={2006},
-    volume={14},
-    number={5},
-    pages={1832-1844},
-    doi={10.1109/TSA.2005.858509}}
+@article{article,
+author = {Macleod, Malcolm and Hainsworth, Stephen},
+year = {2004},
+month = {11},
+pages = {},
+title = {Particle Filtering Applied to Musical Tempo Tracking},
+volume = {2004},
+journal = {EURASIP Journal on Advances in Signal Processing},
+doi = {10.1155/S1110865704408099}
+}
 """
 
 INDEXES = {
@@ -79,7 +75,7 @@ DOWNLOAD_INFO = """
 
 
 class Track(core.Track):
-    """Hainsworth Rhythm class
+    """Hainsworth dataset class
 
     Args:
         track_id (str): track id of the track
@@ -90,6 +86,10 @@ class Track(core.Track):
         audio_path (str): path to audio file
         beats_path (srt): path to beats file
         tempo_path (srt): path to tempo file
+
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotations
+        tempo (float): human-labeled tempo annotations
 
     """
 
@@ -127,11 +127,9 @@ class Track(core.Track):
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
-
         Returns:
            * np.ndarray - audio signal
            * float - sample rate
-
         """
         return load_audio(self.audio_path)
 
@@ -150,20 +148,16 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
-    """Load an audio file.
-
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load a Ballroom audio file.
     Args:
-        audio_path (str): path to audio file
-
+        fhandle (str or file-like): path or file-like object pointing to an audio file
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
-
     """
-    if audio_path is None:
-        return None
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io

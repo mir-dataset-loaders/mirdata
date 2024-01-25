@@ -289,7 +289,7 @@
 
    * - Hainsworth 
      - - audio: ❌
-       - annotations: ✅
+       - annotations: ❌
      - - :ref:`beats`
        - :ref:`tempo`
      - 222
