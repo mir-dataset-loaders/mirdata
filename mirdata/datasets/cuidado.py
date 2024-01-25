@@ -43,15 +43,14 @@ from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
-@ARTICLE{1678001,
-    author={Gouyon, F. and Klapuri, A. and Dixon, S. and Alonso, M. and Tzanetakis, G. and Uhle, C. and Cano, P.},
-    journal={IEEE Transactions on Audio, Speech, and Language Processing}, 
-    title={An experimental comparison of audio tempo induction algorithms}, 
-    year={2006},
-    volume={14},
-    number={5},
-    pages={1832-1844},
-    doi={10.1109/TSA.2005.858509}}
+@article{article,
+author = {Gouyon, Fabien and Herrera, Perfecto},
+year = {2003},
+month = {01},
+pages = {},
+title = {Determination of the meter of musical audio signals: Seeking recurrences in beat segment descriptors},
+journal = {Advances in Engineering Software - AES}
+}
 """
 
 INDEXES = {
