@@ -1,35 +1,35 @@
-"""Simac Dataset Loader
+"""SIMAC Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The Cuidado Rhythm Dataset is a comprehensive collection of rhythm annotations for cuidado dance music. This dataset is designed for tasks such as beat tracking, rhythm analysis, and tempo estimation in ballroom dance music. It includes annotations for beats and bars corresponding to different dance styles within the ballroom genre.
+    The SIMAC (Semantic Interaction with Music Audio Contents) project, funded by the EU-FP6-IST-507142, addresses the development of innovative components for a music information retrieval system. It focuses on the use and exploitation of semantic descriptors of musical content, automatically extracted from music audio files. These descriptors, derived from combinations of lower-level descriptors and generalizations from manually annotated databases, are generated using machine learning techniques. The project aims to enhance the effectiveness of music consumption behaviors, particularly those guided by the concept of similarity.
 
-    **Dataset Overview:**
+    **Project Overview:**
 
-    The dataset offers beat and bar annotations for various cuidado dance styles, such as Waltz, Tango, Viennese Waltz, Slow Foxtrot, Quickstep, Samba, Cha-Cha-Cha, Rumba, Paso Doble, and Jive. These annotations are provided in a format that includes beat time in seconds and beat ID, facilitating precise rhythm analysis.
+    SIMAC's approach to music content processing involves the computation of low-level signal features, characterizing the acoustic properties of signals. However, it goes beyond by incorporating higher-level semantic descriptors into these feature sets. These descriptors emphasize the musical attributes of audio signals, like chords, rhythm, and instrumentation, achieving a higher level of semantic complexity than low-level features.
 
-    **Beat and Bar Annotations:**
+    **Musical Facets and Descriptors:**
 
-    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID. For example, a line `9.430022675 3` indicates that the third beat of a bar is located at 9.43 seconds. This format is particularly useful for identifying downbeats, as they correspond to beats with ID = 1.
+    - **Rhythm:** SIMAC investigates various aspects of automatic rhythm description, such as tempo induction, beat tracking, and rhythmic pattern characterization. High-level rhythmic descriptors are used for genre classification of recorded audio, demonstrating the significance of these features in characterizing dance music.
 
-    **Annotation Methodology:**
+    - **Harmony:** The project explores harmonic aspects of music, defining it through the combination of notes, chords, and their progressions. Harmonic-based retrieval is facilitated without the need for pitch estimation in the mixture, enabling operation on a wide variety of music.
 
-    The dataset's annotations are based on the tempo guidelines of each cuidado dance style. Initial annotations were generated using a beat tracker, and then manually adjusted for accuracy. This method ensures that the annotations reflect the characteristic rhythms of each dance style.
+    - **Timbre and Instrumentation:** SIMAC focuses on the overall timbre or texture of music, as current technologies do not allow for reliable separation of individual instrumental information. This aspect is characterized based on low-level signal features.
 
-    **Applications:**
+    - **Music Structure:** The project examines how music materials are presented, repeated, varied, or confronted in a piece, providing ways to interact with audio content through summaries, fast-listening, and on-the-fly identification of songs.
 
-    The Cuidado Rhythm Dataset is ideal for developing and testing algorithms for beat tracking, tempo estimation, and rhythm analysis in cuidado dance music. It can also be used for educational purposes, offering insights into the rhythmic structures of various ballroom dance styles.
+    - **Intensity and Complexity:** These descriptors are defined to capture the subjective sensation of energeticness and the effort required to follow and understand a musical piece. The project notes the relationship between music complexity and listener preference.
+
+    - **Music Similarity:** SIMAC tackles the challenge of defining music similarity, considering both audio-based aspects and cultural background. It aims to develop similarity metrics that incorporate multiple musical facets beyond just timbre.
+
+    **Future Directions and Challenges:**
+
+    SIMAC identifies areas for future exploration, such as incorporating musical facets beyond timbre in similarity metrics and addressing the limitations of current approaches to similarity. The project underscores the potential benefits of enriching music files with metadata from their origin for more effective music retrieval and recommendation systems.
 
     **Acknowledgments and References:**
 
-    This dataset was created with the collaboration of experts in cuidado dance music. We extend our gratitude to those who contributed their knowledge and expertise to this project. For detailed information on the dataset and its creation, please refer to the associated research papers and documentation.
-    
-    [1] Gouyon F., A. Klapuri, S. Dixon, M. Alonso, G. Tzanetakis, C. Uhle, and P. Cano. An experimental comparison of audio tempo induction algorithms. Transactions on Audio, Speech and Language Processing 14(5), pp.1832-1844, 2006.
-
-    [2] Böck, S., and M. Schedl. Enhanced beat tracking with context-aware neural networks. In Proceedings of the International Conference on Digital Audio Effects (DAFX), 2010.
-    
-    [3] Dixon, S., F. Gouyon & G. Widmer. Towards Characterisation of Music via Rhythmic Patterns. In Proceedings of the 5th International Society for Music Information Retrieval Conference (ISMIR). 2004.
+    The project involved more than 15 collaborators and was led by teams from Universitat Pompeu Fabra Barcelona, Queen Mary University London, the Austrian Research Institute for Artificial Intelligence Vienna, and Philips Research Eindhoven. For detailed information, visit [http://www.semanticaudio.org](http://www.semanticaudio.org).
 """
 
 import os
@@ -43,15 +43,16 @@ from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
-@ARTICLE{1678001,
-    author={Gouyon, F. and Klapuri, A. and Dixon, S. and Alonso, M. and Tzanetakis, G. and Uhle, C. and Cano, P.},
-    journal={IEEE Transactions on Audio, Speech, and Language Processing}, 
-    title={An experimental comparison of audio tempo induction algorithms}, 
-    year={2006},
-    volume={14},
-    number={5},
-    pages={1832-1844},
-    doi={10.1109/TSA.2005.858509}}
+@INPROCEEDINGS{1576040,
+  author={Herrera, P. and Bello, J. and Widmer, G. and Sandler, M. and Celma, O. and Vignoli, F. and Pampalk, E. and Cano, P. and Pauws, S. and Serra, X.},
+  booktitle={The 2nd European Workshop on the Integration of Knowledge, Semantics and Digital Media Technology, 2005. EWIMT 2005. (Ref. No. 2005/11099)}, 
+  title={SIMAC: semantic interaction with music audio contents}, 
+  year={2005},
+  volume={},
+  number={},
+  pages={399-406},
+  keywords={},
+  doi={10.1049/ic.2005.0763}}
 """
 
 INDEXES = {
@@ -90,6 +91,10 @@ class Track(core.Track):
         audio_path (str): path to audio file
         beats_path (srt): path to beats file
         tempo_path (srt): path to tempo file
+
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotations
+        tempo (float): human-labeled tempo annotations
 
     """
 
@@ -150,20 +155,16 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
-    """Load an audio file.
-
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load a Ballroom audio file.
     Args:
-        audio_path (str): path to audio file
-
+        fhandle (str or file-like): path or file-like object pointing to an audio file
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
-
     """
-    if audio_path is None:
-        return None
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
