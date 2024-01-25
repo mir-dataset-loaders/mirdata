@@ -1,35 +1,33 @@
-"""Smc Dataset Loader
+"""SMC Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The Cuidado Rhythm Dataset is a comprehensive collection of rhythm annotations for cuidado dance music. This dataset is designed for tasks such as beat tracking, rhythm analysis, and tempo estimation in ballroom dance music. It includes annotations for beats and bars corresponding to different dance styles within the ballroom genre.
-
     **Dataset Overview:**
 
-    The dataset offers beat and bar annotations for various cuidado dance styles, such as Waltz, Tango, Viennese Waltz, Slow Foxtrot, Quickstep, Samba, Cha-Cha-Cha, Rumba, Paso Doble, and Jive. These annotations are provided in a format that includes beat time in seconds and beat ID, facilitating precise rhythm analysis.
+    This beat tracking dataset contains 217 excerpts, each approximately 40 seconds long. Among these excerpts, 19 are classified as easy, while the remaining 198 are considered hard. This dataset has been meticulously designed for testing and developing radically new techniques that can contend with challenging beat tracking situations. These challenging situations include quiet accompaniment, expressive timing, changes in time signature, slow tempo, poor sound quality, and more.
 
-    **Beat and Bar Annotations:**
+    **Annotation Process:**
 
-    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID. For example, a line `9.430022675 3` indicates that the third beat of a bar is located at 9.43 seconds. This format is particularly useful for identifying downbeats, as they correspond to beats with ID = 1.
+    The annotation process for the SMC (Spontaneous Music Corpus) dataset followed a detailed protocol, which is available on the paper’s website [32]. Here is a summary of the annotation process:
 
-    **Annotation Methodology:**
+        1. Spontaneous Taps Recording: The first step consisted of recording spontaneous taps from all authors of this paper for all 289 pieces. These taps were used to examine the ability of listeners to follow the beat in possibly difficult pieces of music without any entrainment. The Mean Mutual Agreement (MMA) of these taps was used to assess the perceptual difficulty and was compared to the MMA of automatic beat trackers. It should be noted that while all five authors come from an engineering background, four have many years of experience as practicing musicians in different styles and instruments. Each subject tapped the beat while listening to the piece for the first time, and no subsequent correction of the taps was allowed.
 
-    The dataset's annotations are based on the tempo guidelines of each cuidado dance style. Initial annotations were generated using a beat tracker, and then manually adjusted for accuracy. This method ensures that the annotations reflect the characteristic rhythms of each dance style.
+        2. Ground Truth Annotation: In the next step, the files in Dataset2 were equally distributed among the authors of the paper for ground truth annotation. The annotations were performed using Sonic Visualiser [33]. Each annotator was allowed to use multiple visualizations, such as the waveform or spectrogram, to assist with the annotation. The use of automatic beat tracking or onset detection algorithms was not permitted; however, the spontaneous taps could be used. Wherever available, scores of the pieces were used as a guideline to arrive at a valid annotation, especially for classical and Romantic music. Each annotator had the possibility to reject a file if the annotation process appeared intractable. This rejection happened in 72 cases, resulting in 217 valid beat annotations for Dataset2.
 
-    **Applications:**
+        3. Tag Compilation: Finally, the annotator had to compile a tag file for each annotated sample. These tags specified which signal characteristics made the annotation difficult. An arbitrary number of tags could be assigned to a song; however, if the file was not considered difficult for annotation, the tag “none” was used. The full list of tags is presented in Section V-B.
 
-    The Cuidado Rhythm Dataset is ideal for developing and testing algorithms for beat tracking, tempo estimation, and rhythm analysis in cuidado dance music. It can also be used for educational purposes, offering insights into the rhythmic structures of various ballroom dance styles.
+        4. Second Subject Evaluation: Each annotation was subsequently evaluated by a second subject. During the annotation process, all annotators expressed insecurity about some of their annotations due to the high level of difficulty of some of the files.
+
+        5. Consultation with Experts: To address the issue of annotation difficulty, experts with conservatory degrees in music and composition were consulted. Their assistance helped obtain a more reliable ground truth, especially for the most difficult samples. The comments and changes made in this revision process were documented and are available on the paper’s website [3].
 
     **Acknowledgments and References:**
 
-    This dataset was created with the collaboration of experts in cuidado dance music. We extend our gratitude to those who contributed their knowledge and expertise to this project. For detailed information on the dataset and its creation, please refer to the associated research papers and documentation.
+    For detailed information on the dataset and its creation, please refer to the associated research paper and documentation.
     
-    [1] Gouyon F., A. Klapuri, S. Dixon, M. Alonso, G. Tzanetakis, C. Uhle, and P. Cano. An experimental comparison of audio tempo induction algorithms. Transactions on Audio, Speech and Language Processing 14(5), pp.1832-1844, 2006.
+    [1] A. Holzapfel, M. E. P. Davies, J. R. Zapata, J. L. Oliveira and F. Gouyon, "Selective Sampling for Beat Tracking Evaluation," in IEEE Transactions on Audio, Speech, and Language Processing, vol. 20, no. 9, pp. 2539-2548, Nov. 2012.
 
-    [2] Böck, S., and M. Schedl. Enhanced beat tracking with context-aware neural networks. In Proceedings of the International Conference on Digital Audio Effects (DAFX), 2010.
-    
-    [3] Dixon, S., F. Gouyon & G. Widmer. Towards Characterisation of Music via Rhythmic Patterns. In Proceedings of the 5th International Society for Music Information Retrieval Conference (ISMIR). 2004.
+    [2] https://joserzapata.github.io/project/smc-beat-tracker-dataset/
 """
 
 import os
@@ -43,15 +41,16 @@ from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
-@ARTICLE{1678001,
-    author={Gouyon, F. and Klapuri, A. and Dixon, S. and Alonso, M. and Tzanetakis, G. and Uhle, C. and Cano, P.},
-    journal={IEEE Transactions on Audio, Speech, and Language Processing}, 
-    title={An experimental comparison of audio tempo induction algorithms}, 
-    year={2006},
-    volume={14},
-    number={5},
-    pages={1832-1844},
-    doi={10.1109/TSA.2005.858509}}
+@ARTICLE{6220849,
+  author={Holzapfel, André and Davies, Matthew E. P. and Zapata, José R. and Oliveira, João Lobato and Gouyon, Fabien},
+  journal={IEEE Transactions on Audio, Speech, and Language Processing}, 
+  title={Selective Sampling for Beat Tracking Evaluation}, 
+  year={2012},
+  volume={20},
+  number={9},
+  pages={2539-2548},
+  keywords={Histograms;Accuracy;Humans;Electronic mail;Europe;Estimation;Correlation;Beat tracking;evaluation;ground truth annotation;selective sampling},
+  doi={10.1109/TASL.2012.2205244}}
 """
 
 INDEXES = {
@@ -90,6 +89,10 @@ class Track(core.Track):
         audio_path (str): path to audio file
         beats_path (srt): path to beats file
         tempo_path (srt): path to tempo file
+
+    Cached Properties:
+        beats (BeatData): human-labeled beat annotations
+        tempo (float): human-labeled tempo annotations
 
     """
 
@@ -150,20 +153,16 @@ class Track(core.Track):
         )
 
 
-def load_audio(audio_path):
-    """Load an audio file.
-
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load a rock audio file.
     Args:
-        audio_path (str): path to audio file
-
+        fhandle (str or file-like): path or file-like object pointing to an audio file
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
-
     """
-    if audio_path is None:
-        return None
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
