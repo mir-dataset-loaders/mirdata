@@ -77,7 +77,7 @@ def test_load_beats():
     assert type(parsed_beats.times) is np.ndarray
 
     # Check values
-    assert np.array_equal(parsed_beats.times, np.array([0.9287, 2.7863, 4.435])
+    assert np.array_equal(parsed_beats.times, np.array([0.9287, 2.7863, 4.435]))
     assert smc.load_beats(None) is None
 
 
