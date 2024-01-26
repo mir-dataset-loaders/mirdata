@@ -1,35 +1,23 @@
-"""Cuidado Rhythm Dataset Loader
+"""Cuidado Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
-
-    The Cuidado Rhythm Dataset is a comprehensive collection of rhythm annotations for cuidado dance music. This dataset is designed for tasks such as beat tracking, rhythm analysis, and tempo estimation in ballroom dance music. It includes annotations for beats and bars corresponding to different dance styles within the ballroom genre.
-
     **Dataset Overview:**
 
-    The dataset offers beat and bar annotations for various cuidado dance styles, such as Waltz, Tango, Viennese Waltz, Slow Foxtrot, Quickstep, Samba, Cha-Cha-Cha, Rumba, Paso Doble, and Jive. These annotations are provided in a format that includes beat time in seconds and beat ID, facilitating precise rhythm analysis.
-
-    **Beat and Bar Annotations:**
-
-    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID. For example, a line `9.430022675 3` indicates that the third beat of a bar is located at 9.43 seconds. This format is particularly useful for identifying downbeats, as they correspond to beats with ID = 1.
-
-    **Annotation Methodology:**
-
-    The dataset's annotations are based on the tempo guidelines of each cuidado dance style. Initial annotations were generated using a beat tracker, and then manually adjusted for accuracy. This method ensures that the annotations reflect the characteristic rhythms of each dance style.
+    The CUIDADO Project (Content-based Unified Interfaces and descriptors for Audio/music Databases available Online) aims at developing a new chain of applications through the use of audio/music content descriptors, in the spirit of the MPEG-7 standard. 
 
     **Applications:**
 
-    The Cuidado Rhythm Dataset is ideal for developing and testing algorithms for beat tracking, tempo estimation, and rhythm analysis in cuidado dance music. It can also be used for educational purposes, offering insights into the rhythmic structures of various ballroom dance styles.
+    The project includes the design of appropriate description structures, the development of extractors for deriving high-level information from audio signals, and the design and implementation of two applications: the Sound Palette and the Music Browser.
 
     **Acknowledgments and References:**
 
-    This dataset was created with the collaboration of experts in cuidado dance music. We extend our gratitude to those who contributed their knowledge and expertise to this project. For detailed information on the dataset and its creation, please refer to the associated research papers and documentation.
-    
-    [1] Gouyon F., A. Klapuri, S. Dixon, M. Alonso, G. Tzanetakis, C. Uhle, and P. Cano. An experimental comparison of audio tempo induction algorithms. Transactions on Audio, Speech and Language Processing 14(5), pp.1832-1844, 2006.
+    For detailed information on the dataset and its creation, please refer to the associated research paper.
 
-    [2] Böck, S., and M. Schedl. Enhanced beat tracking with context-aware neural networks. In Proceedings of the International Conference on Digital Audio Effects (DAFX), 2010.
+    [1] Vinet, Hugues & Herrera, Perfecto & Pachet, Francois. (2002). The CUIDADO Project.
     
-    [3] Dixon, S., F. Gouyon & G. Widmer. Towards Characterisation of Music via Rhythmic Patterns. In Proceedings of the 5th International Society for Music Information Retrieval Conference (ISMIR). 2004.
+
+    
 """
 
 import os
@@ -43,13 +31,12 @@ from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
-@article{article,
-author = {Gouyon, Fabien and Herrera, Perfecto},
-year = {2003},
+@inproceedings{inproceedings,
+author = {Vinet, Hugues and Herrera, Perfecto and Pachet, Francois},
+year = {2002},
 month = {01},
 pages = {},
-title = {Determination of the meter of musical audio signals: Seeking recurrences in beat segment descriptors},
-journal = {Advances in Engineering Software - AES}
+title = {The CUIDADO Project.}
 }
 """
 
@@ -78,7 +65,7 @@ DOWNLOAD_INFO = """
 
 
 class Track(core.Track):
-    """Cuidado Rhythm class
+    """Cuidado class
 
     Args:
         track_id (str): track id of the track
@@ -155,7 +142,7 @@ class Track(core.Track):
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load a Ballroom audio file.
+    """Load a Cuidado audio file.
     Args:
         fhandle (str or file-like): path or file-like object pointing to an audio file
     Returns:
@@ -206,7 +193,7 @@ def load_tempo(fhandle: TextIO) -> float:
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The cuidado dataset
+    The Cuidado dataset
 
     """
 
