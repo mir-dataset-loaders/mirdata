@@ -1,0 +1,1307 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "[0042] M3-23-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0042] M3-23-SE.wav",
+        "c976bc00d55317f97e1ba40017d00d33"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0042] M3-23-SE.beats",
+        "7c3cb6cb8ffdc410bfc6f49141ea142c"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0042] M3-23-SE.bpm",
+        "fd0463fa57278e151e213e5e177460a0"
+      ]
+    },
+    "[0015] M4-15-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0015] M4-15-SA.wav",
+        "ae6a48466b09f0fc5e972fffd239cecd"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0015] M4-15-SA.beats",
+        "6e177649ee32727f6c79509170f93506"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0015] M4-15-SA.bpm",
+        "59199fa70c28b2507a35f7aa09eaf3e6"
+      ]
+    },
+    "[0024] M3-05-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0024] M3-05-PA.wav",
+        "4d5045dd0b39549999cde7a18093570e"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0024] M3-05-PA.beats",
+        "b4ae5a0944c21e2d91fd4f38406185a0"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0024] M3-05-PA.bpm",
+        "f02a69d66ec83a139bcfcace592bbfa8"
+      ]
+    },
+    "[0051] M2-03-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0051] M2-03-SA.wav",
+        "3f6de7377dabf5f541f94a11f221930a"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0051] M2-03-SA.beats",
+        "7d7aba6535ac6c28252afb0b4217b4a0"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0051] M2-03-SA.bpm",
+        "8f62c379c2763a350620e99709e1e612"
+      ]
+    },
+    "[0060] M2-12-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0060] M2-12-SA.wav",
+        "414d6bce5c5f0228cb7959b9a0d4a397"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0060] M2-12-SA.beats",
+        "270eca6bfe0b406ec6d059349156fed7"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0060] M2-12-SA.bpm",
+        "b46590ebdda938664df35796bb40b207"
+      ]
+    },
+    "[0063] M2-15-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0063] M2-15-PA.wav",
+        "47000a0e395b07dce7281f095d2a54bc"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0063] M2-15-PA.beats",
+        "53ab9075ac9de9390f7e1619d1c00d76"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0063] M2-15-PA.bpm",
+        "b77f7f5dc3e976c17020baee35c9e309"
+      ]
+    },
+    "[0017] M4-17-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0017] M4-17-PA.wav",
+        "02d75ec3a5f7b0021c09682b31ba7722"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0017] M4-17-PA.beats",
+        "98e615b0ffaef194bc37b748fe2e97b2"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0017] M4-17-PA.bpm",
+        "65e8a4a0fa6763da2b6bb1f51969a2e5"
+      ]
+    },
+    "[0040] M3-21-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0040] M3-21-PA.wav",
+        "6aa6d993756ff42656f5b02df4234e83"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0040] M3-21-PA.beats",
+        "37654cef0201b8017ace31a277794b38"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0040] M3-21-PA.bpm",
+        "cc8ec2fe57fe81df43847c2cf2039b57"
+      ]
+    },
+    "[0028] M3-09-MA": {
+      "audio": [
+        "BRID_1.0/audio/[0028] M3-09-MA.wav",
+        "7b3ad943393a0cb35d88977d55646429"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0028] M3-09-MA.beats",
+        "caa82daa26a97a2fd29e89cba5c6b71f"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0028] M3-09-MA.bpm",
+        "74febd9477f2929317267161f41237bd"
+      ]
+    },
+    "[0089] M2-41-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0089] M2-41-SA.wav",
+        "f401e1e65e6fa9c4dd4b700db9c17473"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0089] M2-41-SA.beats",
+        "8b35174753ce0c7843c1b42edf84c928"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0089] M2-41-SA.bpm",
+        "314b6ae67795865a92f8ebb26336936d"
+      ]
+    },
+    "[0048] M3-29-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0048] M3-29-SE.wav",
+        "97c9df3e8a7654bc627881c9989390c5"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0048] M3-29-SE.beats",
+        "7f487ce4afc99c58474aeda2a1b6be56"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0048] M3-29-SE.bpm",
+        "3e1b5c8f2bad2f5e7dbd80059fba75c3"
+      ]
+    },
+    "[0047] M3-28-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0047] M3-28-SE.wav",
+        "31991ea7e4214dc10f9e35a427fd3982"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0047] M3-28-SE.beats",
+        "42e1efaa79d9742116e65048623ff53e"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0047] M3-28-SE.bpm",
+        "12078ad79bc0dc7479096f2b54fc4df7"
+      ]
+    },
+    "[0078] M2-30-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0078] M2-30-PA.wav",
+        "6936f508ef5334c5f86bf399386ffdfb"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0078] M2-30-PA.beats",
+        "edd6d097b63e115086a1c1c38a2fcca3"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0078] M2-30-PA.bpm",
+        "146b50d202899a1773874608bec25fd4"
+      ]
+    },
+    "[0010] M4-10-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0010] M4-10-SE.wav",
+        "484f3f509c088b83fcd0477524790264"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0010] M4-10-SE.beats",
+        "8d6a91bd439ec7a5125824afaefd9f1c"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0010] M4-10-SE.bpm",
+        "cfcbc36a033f8deb7f2e20a324415c56"
+      ]
+    },
+    "[0043] M3-24-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0043] M3-24-SE.wav",
+        "b372eb9f47268f8eff782eedc3e77a10"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0043] M3-24-SE.beats",
+        "3a2461792a5971c306d6762076ceefdf"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0043] M3-24-SE.bpm",
+        "24e3d27082b52b839fc412b998f34956"
+      ]
+    },
+    "[0081] M2-33-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0081] M2-33-SA.wav",
+        "fcafb2ce2edd6da361834ee117843169"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0081] M2-33-SA.beats",
+        "f44658cb3e09a94a659f665036a3776e"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0081] M2-33-SA.bpm",
+        "40e5e7be94f7997bfa5c8f4fe3d44b21"
+      ]
+    },
+    "[0039] M3-20-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0039] M3-20-SE.wav",
+        "e4a5bb0db2326491eac6573fa16969fd"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0039] M3-20-SE.beats",
+        "c69ead43b39b21b8c2e8786ca82f5d54"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0039] M3-20-SE.bpm",
+        "3711c5e1f68273db544274a39896cb95"
+      ]
+    },
+    "[0035] M3-16-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0035] M3-16-PA.wav",
+        "03c94186132c68b4551e8b3af6cfe3a9"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0035] M3-16-PA.beats",
+        "af21f9c478709f4cea07211c9681bf82"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0035] M3-16-PA.bpm",
+        "078fa6146f9d7b5ca378b97fbcd5c0a6"
+      ]
+    },
+    "[0025] M3-06-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0025] M3-06-PA.wav",
+        "5ceb33a79170669f8d509e2ddbad7673"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0025] M3-06-PA.beats",
+        "7de771418be4d97114270ee6cba4b122"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0025] M3-06-PA.bpm",
+        "9b46eaf9bf48b0a0148a21f783eefb14"
+      ]
+    },
+    "[0049] M2-01-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0049] M2-01-PA.wav",
+        "9ccac00de6dd8777b54c3d5ec55e5189"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0049] M2-01-PA.beats",
+        "18f019d2a830173a0ba82781a450a685"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0049] M2-01-PA.bpm",
+        "b78267d392ad53a4af9275a4724e50ce"
+      ]
+    },
+    "[0014] M4-14-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0014] M4-14-SE.wav",
+        "439a61d429e697c1e9aa463a919db601"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0014] M4-14-SE.beats",
+        "b75b1b6603328533b37ef4be8eea1e7d"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0014] M4-14-SE.bpm",
+        "a21a73f34de9c2074cc288182e898e16"
+      ]
+    },
+    "[0033] M3-14-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0033] M3-14-SA.wav",
+        "b70f21babb462fb690562b12d00daffe"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0033] M3-14-SA.beats",
+        "d97b9004cbeed034d19dc7964d8359f7"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0033] M3-14-SA.bpm",
+        "2a8a42faead199f312cd2c18ae8e5db7"
+      ]
+    },
+    "[0079] M2-31-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0079] M2-31-PA.wav",
+        "5f38bd43948606f8ae7593e4c6819a6f"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0079] M2-31-PA.beats",
+        "80c690261fc5ccfa396c8bc9d23d04d8"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0079] M2-31-PA.bpm",
+        "95396e86f04dcdcb0ccb1a1b3a1cd6c6"
+      ]
+    },
+    "[0061] M2-13-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0061] M2-13-SE.wav",
+        "1ffe4e7f4d6010c4b00ba255dfa97564"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0061] M2-13-SE.beats",
+        "63fedc0fc241a86bb089cb2f795585a0"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0061] M2-13-SE.bpm",
+        "a3df8d1f478416fc7e8d0b025fc262fe"
+      ]
+    },
+    "[0088] M2-40-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0088] M2-40-SA.wav",
+        "c83a84893a0e9b4f0bafbb41433052dd"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0088] M2-40-SA.beats",
+        "d473f1b0525f542df9d7a5b10410c524"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0088] M2-40-SA.bpm",
+        "949d47873cd3b5a7764ad6bb3adc95c4"
+      ]
+    },
+    "[0023] M3-04-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0023] M3-04-SA.wav",
+        "c87a3592cb89ee9c18a1d4069ee17503"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0023] M3-04-SA.beats",
+        "0f36a3de39e664e59dbbd8cb03d770e7"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0023] M3-04-SA.bpm",
+        "aba30ea901946dc10a7c2a4587d7e993"
+      ]
+    },
+    "[0038] M3-19-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0038] M3-19-SA.wav",
+        "84bfe57a12015dfd32fda594336bf742"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0038] M3-19-SA.beats",
+        "e6a644e82d54999c1006c738c1aad60a"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0038] M3-19-SA.bpm",
+        "a79269d1bc65eaf1037e2767c1292983"
+      ]
+    },
+    "[0011] M4-11-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0011] M4-11-SE.wav",
+        "04fb4b884c9c6c5616063e21951469c9"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0011] M4-11-SE.beats",
+        "98fc219534a6928b675928464c754164"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0011] M4-11-SE.bpm",
+        "654d9751739a8c09bdb1c2d52fc8c1ed"
+      ]
+    },
+    "[0037] M3-18-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0037] M3-18-SA.wav",
+        "518b1c8eccf3eea238ca381b75ebf163"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0037] M3-18-SA.beats",
+        "01620296c75fb6f03b42525d07ab6a45"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0037] M3-18-SA.bpm",
+        "b9958a4c8f6651c5f820806908c66c10"
+      ]
+    },
+    "[0066] M2-18-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0066] M2-18-PA.wav",
+        "b73927a1989739054ef3bc163cc63773"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0066] M2-18-PA.beats",
+        "259a88cc363c07228dd80c646dbe95e6"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0066] M2-18-PA.bpm",
+        "8fca206dadea26940d726c77e1f8877d"
+      ]
+    },
+    "[0046] M3-27-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0046] M3-27-SE.wav",
+        "9d67a63b51b791b9988dc1de20d9f1fc"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0046] M3-27-SE.beats",
+        "a402735aa316b7d0bd8a6854580bf385"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0046] M3-27-SE.bpm",
+        "bbdc9c81c4615f1083093111e9cb3934"
+      ]
+    },
+    "[0030] M3-11-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0030] M3-11-PA.wav",
+        "7611ded82c6dfb141d6334b524f936a8"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0030] M3-11-PA.beats",
+        "c91815287ce68a2e66bf3ed9c9316cea"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0030] M3-11-PA.bpm",
+        "6f3ea80f8583c06b712fa42760db8686"
+      ]
+    },
+    "[0050] M2-02-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0050] M2-02-SA.wav",
+        "57a3883089d101b4b6b39186a54ed293"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0050] M2-02-SA.beats",
+        "837ab524a573db5979226f50228720dc"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0050] M2-02-SA.bpm",
+        "72184340f98d5d9b50193208d817b944"
+      ]
+    },
+    "[0001] M4-01-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0001] M4-01-SA.wav",
+        "7b5605eabd42493158c3a250ddbb1810"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0001] M4-01-SA.beats",
+        "d37a01c33a34597a0e60fb5e3d8a89a6"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0001] M4-01-SA.bpm",
+        "4aa10c8164de322246e624fd7c920402"
+      ]
+    },
+    "[0027] M3-08-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0027] M3-08-SE.wav",
+        "53780e8bcc08d2596b43e114c8d97d2e"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0027] M3-08-SE.beats",
+        "d27ae16125d22b8aade62525dca678f0"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0027] M3-08-SE.bpm",
+        "89ddfb18dab0ef8184754c8748817e0f"
+      ]
+    },
+    "[0016] M4-16-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0016] M4-16-PA.wav",
+        "2f3a37920acb6c29e5d41c075950f36a"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0016] M4-16-PA.beats",
+        "8358c81afdac75fef78d9135903e14b3"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0016] M4-16-PA.bpm",
+        "ee03786bff2a52686592754bb03e08eb"
+      ]
+    },
+    "[0020] M3-01-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0020] M3-01-PA.wav",
+        "be7bcea3f97d933b35e1d7a762cfda69"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0020] M3-01-PA.beats",
+        "47b96fe3700730502aef60ac44e9e0d9"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0020] M3-01-PA.bpm",
+        "bfdf8883393e4897f3ab0dc9c3214a33"
+      ]
+    },
+    "[0003] M4-03-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0003] M4-03-PA.wav",
+        "61f382a86c9823963932347e651eec90"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0003] M4-03-PA.beats",
+        "cc9a9997e5abdad0cb343644153a1cf0"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0003] M4-03-PA.bpm",
+        "921bc3407cdeea4324f8384e737d06e2"
+      ]
+    },
+    "[0055] M2-07-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0055] M2-07-SA.wav",
+        "668590e07484ce3924e9c825d986751c"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0055] M2-07-SA.beats",
+        "0d8be1572a159e3f14bd96a4220c9752"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0055] M2-07-SA.bpm",
+        "f31f36194cdfbaab37bb8f64655a4a42"
+      ]
+    },
+    "[0070] M2-22-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0070] M2-22-SA.wav",
+        "47326f7550be4f4d981480137d24cd62"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0070] M2-22-SA.beats",
+        "8aa9eda69dd87d84a11c8cbb8eb8ef4a"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0070] M2-22-SA.bpm",
+        "c712293d310895ea10c51a388ddf2e0b"
+      ]
+    },
+    "[0022] M3-03-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0022] M3-03-SA.wav",
+        "c33dfdf03ae6bb120759fb861306ee3b"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0022] M3-03-SA.beats",
+        "556f7aac38c0b0e7365ffd9a3914682d"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0022] M3-03-SA.bpm",
+        "ea969e61773a6572204f851965586785"
+      ]
+    },
+    "[0085] M2-37-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0085] M2-37-SE.wav",
+        "53ae9d0a624c6ba7df02bc58ab09d588"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0085] M2-37-SE.beats",
+        "5df615fdfe3462786693195ed73d8b47"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0085] M2-37-SE.bpm",
+        "ac1ac0e5a9bcf4ae96ad2ebd9e5a88ed"
+      ]
+    },
+    "[0092] M2-44-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0092] M2-44-SA.wav",
+        "be39b27b979d1db53aa07b957cdbee90"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0092] M2-44-SA.beats",
+        "bdebc7923e06061ab8c92013d22a97b0"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0092] M2-44-SA.bpm",
+        "6735935f2a97646f146b7db39a1f69f1"
+      ]
+    },
+    "[0032] M3-13-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0032] M3-13-SA.wav",
+        "f2208966c972eac724327b9d38a82120"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0032] M3-13-SA.beats",
+        "4433fed8c85bce04294f8ccf956e128a"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0032] M3-13-SA.bpm",
+        "8f317920aa23628cde8133b0cf1d90e5"
+      ]
+    },
+    "[0073] M2-25-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0073] M2-25-SA.wav",
+        "0faa659a52b77637bf7d777ddb419177"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0073] M2-25-SA.beats",
+        "7f3afabbfc7fb35a76d88e7dd15dac46"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0073] M2-25-SA.bpm",
+        "1c02144843e1fb951cd93237f5f2f0ac"
+      ]
+    },
+    "[0004] M4-04-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0004] M4-04-PA.wav",
+        "0641a07b8164a0d718535cba2be664ef"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0004] M4-04-PA.beats",
+        "025a841152a4652eef7b982146485f32"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0004] M4-04-PA.bpm",
+        "06e6513cc5514239b8cc7f1827dd0e0c"
+      ]
+    },
+    "[0044] M3-25-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0044] M3-25-SE.wav",
+        "206fa5dc3899c756c9cacbc2db6d12a0"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0044] M3-25-SE.beats",
+        "a1b9901a250a319abe368f6ae7664ebd"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0044] M3-25-SE.bpm",
+        "ef7d6955b06703105dbba9b3e5e4c327"
+      ]
+    },
+    "[0091] M2-43-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0091] M2-43-SA.wav",
+        "359c31694778518ff7313b2326d881e0"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0091] M2-43-SA.beats",
+        "bf33986e94243d2e75e6e0732e771508"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0091] M2-43-SA.bpm",
+        "449ce3dca122acf8e16dfe791b20eef1"
+      ]
+    },
+    "[0029] M3-10-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0029] M3-10-PA.wav",
+        "05957cf5cb87d4260389365e362c58ad"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0029] M3-10-PA.beats",
+        "a20ab555ebd20a719eca513160bd0d0d"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0029] M3-10-PA.bpm",
+        "5690d8fe3a55e1ca4fbf5bee6c7bc72a"
+      ]
+    },
+    "[0064] M2-16-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0064] M2-16-PA.wav",
+        "37b840e60702152d7e72e01a892695c8"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0064] M2-16-PA.beats",
+        "36f1ac1fa68a0365b9018f6ae3649c7d"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0064] M2-16-PA.bpm",
+        "ca8729ce8897f0e995607f5f7c9731ab"
+      ]
+    },
+    "[0006] M4-06-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0006] M4-06-SA.wav",
+        "658ee31a7eef17f6ffa749c9d36719a6"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0006] M4-06-SA.beats",
+        "bd5bd0f38be72ffc4bfa64e7a9901dfe"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0006] M4-06-SA.bpm",
+        "b91257f950d7a98859d955c49a224a8f"
+      ]
+    },
+    "[0053] M2-05-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0053] M2-05-SA.wav",
+        "7dc54cc0e7bedeea2ec3b578d94773bb"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0053] M2-05-SA.beats",
+        "3edb57f392c5a6e97a84dde64a4c2228"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0053] M2-05-SA.bpm",
+        "064870814ded47f0aaf2376dc48ffb1e"
+      ]
+    },
+    "[0075] M2-27-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0075] M2-27-PA.wav",
+        "f9dffa81bb399718d1a1a475def586ad"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0075] M2-27-PA.beats",
+        "e353155ca6c88306c4928cd2731e00f6"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0075] M2-27-PA.bpm",
+        "3881adbfcd7228b7b3c3577be39854b2"
+      ]
+    },
+    "[0083] M2-35-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0083] M2-35-SE.wav",
+        "558d7ada523eefd14155ddc16b88691c"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0083] M2-35-SE.beats",
+        "dc29420794ffa4f08630ffb6b08c55be"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0083] M2-35-SE.bpm",
+        "eee0cf25254eb67ba9e0af6b311dcefd"
+      ]
+    },
+    "[0057] M2-09-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0057] M2-09-SA.wav",
+        "203988d5ff1c936a86cbaeabbc201e3e"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0057] M2-09-SA.beats",
+        "bec834e1a0431ca2a6b8f624da898255"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0057] M2-09-SA.bpm",
+        "7b56fbc4e3e0f34fdac66a415753b82c"
+      ]
+    },
+    "[0087] M2-39-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0087] M2-39-SE.wav",
+        "61d6e14e0914c99dc1247f4ddda4fbfe"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0087] M2-39-SE.beats",
+        "4044710ec0dd60deca7211e6c889a632"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0087] M2-39-SE.bpm",
+        "7d3ab21c7f90a5614fa6dd961c7144a4"
+      ]
+    },
+    "[0056] M2-08-MA": {
+      "audio": [
+        "BRID_1.0/audio/[0056] M2-08-MA.wav",
+        "10a1ed9b4ee9d86731915f21fc9ae6ba"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0056] M2-08-MA.beats",
+        "e9ceefc79f0cfa1d6b9f9c8250b77dfc"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0056] M2-08-MA.bpm",
+        "88b8b4aa1655498eb2bfd756f68b1b3e"
+      ]
+    },
+    "[0009] M4-09-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0009] M4-09-SA.wav",
+        "e121f38e145c740ab83bbd02b26222b6"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0009] M4-09-SA.beats",
+        "ef46474daa8328c71b15a670d94d5321"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0009] M4-09-SA.bpm",
+        "ac81853094ee0408c84740dfc1a30ba1"
+      ]
+    },
+    "[0069] M2-21-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0069] M2-21-SA.wav",
+        "4cfd7ec2b0f00eb219fa8f3f5634a19e"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0069] M2-21-SA.beats",
+        "5b67b3290035149ea671eb0ddb36edfa"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0069] M2-21-SA.bpm",
+        "74d1572245c00e4f86a2007dcf95d8c6"
+      ]
+    },
+    "[0080] M2-32-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0080] M2-32-PA.wav",
+        "e9014d70c7234f33c6660070ad691263"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0080] M2-32-PA.beats",
+        "8311b1b2ff219e295d00134684bf7ce9"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0080] M2-32-PA.bpm",
+        "43ec73fa2bd8559ca1276122e167c45d"
+      ]
+    },
+    "[0041] M3-22-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0041] M3-22-SE.wav",
+        "81dec4e08c87a5429a8f1982ae5d09ea"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0041] M3-22-SE.beats",
+        "904fa25d8f3fd370bb63cb41a3069320"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0041] M3-22-SE.bpm",
+        "eb7deece0a97117e3d4ea0692b452c68"
+      ]
+    },
+    "[0019] M4-19-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0019] M4-19-SA.wav",
+        "af3eb8e7d24994f1abf1e7e784cc1830"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0019] M4-19-SA.beats",
+        "bfd089f176faf981febf549df3ea6d4b"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0019] M4-19-SA.bpm",
+        "35cd99c7144221908dd347e5be1c2cbc"
+      ]
+    },
+    "[0059] M2-11-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0059] M2-11-SA.wav",
+        "a1500ee790bcc632a5bcf0b7c22cad89"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0059] M2-11-SA.beats",
+        "5127db4df0b383654ebc155813ee8132"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0059] M2-11-SA.bpm",
+        "30cb59f8f3381277877336302ccb2d26"
+      ]
+    },
+    "[0077] M2-29-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0077] M2-29-SE.wav",
+        "693957a6dbaa3b0dec0d1523094d7c2b"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0077] M2-29-SE.beats",
+        "6364c939ef306db850f7a0d70b4177c3"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0077] M2-29-SE.bpm",
+        "834ecb5bea88fcb8d19b5baa7eed3329"
+      ]
+    },
+    "[0013] M4-13-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0013] M4-13-SE.wav",
+        "bdd2fb1c0bab9332db51d6187452138e"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0013] M4-13-SE.beats",
+        "c4c0cd1154d39474b77e978f0cbc2ce7"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0013] M4-13-SE.bpm",
+        "39a5d79ebca6383b5d18c19fb4f4e1dd"
+      ]
+    },
+    "[0076] M2-28-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0076] M2-28-SE.wav",
+        "60c539435eac037887a677238b1fb748"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0076] M2-28-SE.beats",
+        "6700b87c48e0eb5ef6c8b72e9a0862f7"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0076] M2-28-SE.bpm",
+        "eec89715b9bf1edaefd49f53ba132428"
+      ]
+    },
+    "[0012] M4-12-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0012] M4-12-SE.wav",
+        "4ae0a3053884f0f6eb8a0ad789800112"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0012] M4-12-SE.beats",
+        "289712f59af597dd9558d88ffd8f07ed"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0012] M4-12-SE.bpm",
+        "c726e26c61f95ab973c9e263b18d3dca"
+      ]
+    },
+    "[0058] M2-10-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0058] M2-10-SA.wav",
+        "a1fd2c5c9f4c9d7f82974654a9ac0d85"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0058] M2-10-SA.beats",
+        "2f82b2130c346e4940c61e9c5f975446"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0058] M2-10-SA.bpm",
+        "31e947026275b3218cd675ccafd4f1b6"
+      ]
+    },
+    "[0045] M3-26-SE": {
+      "audio": [
+        "BRID_1.0/audio/[0045] M3-26-SE.wav",
+        "f2e01d3d4d9bad56de04135b1c251942"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0045] M3-26-SE.beats",
+        "3057062ade173b65c7f9440b26f59932"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0045] M3-26-SE.bpm",
+        "73f09c584f9020307978777cff95c348"
+      ]
+    },
+    "[0084] M2-36-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0084] M2-36-PA.wav",
+        "1274e8064ae2d50f6dea1aaf40d8d980"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0084] M2-36-PA.beats",
+        "1a3e70039572ab9bcf5b9ee95fe64b3a"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0084] M2-36-PA.bpm",
+        "eb56f417798e746dad101d2384c32a81"
+      ]
+    },
+    "[0086] M2-38-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0086] M2-38-SA.wav",
+        "82af96a0514fcc1772a7117f4ec7d095"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0086] M2-38-SA.beats",
+        "12045eecf5a66126d7d620ef560fa84f"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0086] M2-38-SA.bpm",
+        "ca415d67c656099a3077549b37c40e10"
+      ]
+    },
+    "[0008] M4-08-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0008] M4-08-SA.wav",
+        "2515437f79148cfb2ee3a0ccfc914268"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0008] M4-08-SA.beats",
+        "02d12d9401e79f20beee5947b208064c"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0008] M4-08-SA.bpm",
+        "49cc758b292d597a0a593553c62ca52d"
+      ]
+    },
+    "[0031] M3-12-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0031] M3-12-SA.wav",
+        "c4c0e3d88cdf04c2bb0c11dfc6737a2e"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0031] M3-12-SA.beats",
+        "a5db3d5902a9f1227735d17c56d6c563"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0031] M3-12-SA.bpm",
+        "53d8b5d6d36fc3945acf2da9e107c3ff"
+      ]
+    },
+    "[0018] M4-18-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0018] M4-18-SA.wav",
+        "23193950f659cef281caaa1fccdff2d7"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0018] M4-18-SA.beats",
+        "3056d15e76850e0f3559e5e4da260b3f"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0018] M4-18-SA.bpm",
+        "070eb1e162cb1e294cabd5282de8d00c"
+      ]
+    },
+    "[0082] M2-34-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0082] M2-34-SA.wav",
+        "4d897b536cf204b144177f624e36fb18"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0082] M2-34-SA.beats",
+        "b423d3ab9dc564015576226e3557fad1"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0082] M2-34-SA.bpm",
+        "1ba00336e8e99978d4b967a17a04e5f3"
+      ]
+    },
+    "[0021] M3-02-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0021] M3-02-SA.wav",
+        "7c5fdd773a3251607ea778b46cc1c22c"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0021] M3-02-SA.beats",
+        "27e5f4f6b4c6560b334eb0681644c167"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0021] M3-02-SA.bpm",
+        "2f3e377b5b1c3ce0da8cd2873366d2bd"
+      ]
+    },
+    "[0068] M2-20-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0068] M2-20-SA.wav",
+        "ab686de12af6f5b11863d6fc34ae3140"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0068] M2-20-SA.beats",
+        "fb1a7dc61fbea4ab9037ecadd1d44a22"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0068] M2-20-SA.bpm",
+        "655f18d788c73c1d6421b48a0a1b94cb"
+      ]
+    },
+    "[0026] M3-07-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0026] M3-07-PA.wav",
+        "3c76ce219dbbd7c81206d53b27750f27"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0026] M3-07-PA.beats",
+        "d73a039d09410464f10ad54f4aa0c43a"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0026] M3-07-PA.bpm",
+        "e1e660c43f8c532670d56d66fab39e23"
+      ]
+    },
+    "[0052] M2-04-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0052] M2-04-SA.wav",
+        "c18670dd038726303a9443895cb94922"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0052] M2-04-SA.beats",
+        "b959071ff8332d29e7a78a7cb14298cf"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0052] M2-04-SA.bpm",
+        "e9e5e1a6a1597633762f59a862a398f8"
+      ]
+    },
+    "[0074] M2-26-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0074] M2-26-PA.wav",
+        "68c7fd359ae5fddf7d5168c585137f63"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0074] M2-26-PA.beats",
+        "00570728c72b99135ab7633c36ab8c5f"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0074] M2-26-PA.bpm",
+        "91834bf173564cb9acd114f20986a776"
+      ]
+    },
+    "[0067] M2-19-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0067] M2-19-SA.wav",
+        "2805b84ad67f2c4209a0cf36dd0e0d9f"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0067] M2-19-SA.beats",
+        "2fc3d5662f0c43ba50c389cb3dd63a54"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0067] M2-19-SA.bpm",
+        "28b49e5acf9cc403eb4741642481377e"
+      ]
+    },
+    "[0007] M4-07-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0007] M4-07-SA.wav",
+        "cede21da2ab9daa3d42475b7be4ab167"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0007] M4-07-SA.beats",
+        "b2bfd71a1a535c56a677342fa523f4fd"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0007] M4-07-SA.bpm",
+        "2485650b144673de8269ab9b5c136dbe"
+      ]
+    },
+    "[0036] M3-17-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0036] M3-17-PA.wav",
+        "593f4d89b0e59564da749ba200dd495a"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0036] M3-17-PA.beats",
+        "0656728c79313d5e85fb93024bc2dc02"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0036] M3-17-PA.bpm",
+        "e79b18a8a33591bb329dab22936bb858"
+      ]
+    },
+    "[0062] M2-14-MA": {
+      "audio": [
+        "BRID_1.0/audio/[0062] M2-14-MA.wav",
+        "75485e7dc76378966d6fe6a4b54f7e45"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0062] M2-14-MA.beats",
+        "246b94ea6d980b2c54ac487a2957fa77"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0062] M2-14-MA.bpm",
+        "6cc5a4ec3634e9e059c3da766a520142"
+      ]
+    },
+    "[0071] M2-23-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0071] M2-23-PA.wav",
+        "bf3addcaf50de147c414416eb94fba81"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0071] M2-23-PA.beats",
+        "9f8da294e78a2dd9a8f2cc898d25d290"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0071] M2-23-PA.bpm",
+        "cec6e40835f7ffa60256ef16f929d221"
+      ]
+    },
+    "[0054] M2-06-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0054] M2-06-PA.wav",
+        "7ff062a0b7c664687a5bf0c6271cb386"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0054] M2-06-PA.beats",
+        "d0b1b39e33db748eedad41a613eb404f"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0054] M2-06-PA.bpm",
+        "9c68cac6033c0ba7fafc80eedc19d18b"
+      ]
+    },
+    "[0034] M3-15-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0034] M3-15-SA.wav",
+        "ac44eb8cfbe2b0f1e6d797291c62bb4a"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0034] M3-15-SA.beats",
+        "0679823328fd4f6fe24ca0bebc8f1d0f"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0034] M3-15-SA.bpm",
+        "f63004df5534994f0a712454d888bb11"
+      ]
+    },
+    "[0072] M2-24-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0072] M2-24-SA.wav",
+        "b3b2ce248669ab459f0ea4734e7c3599"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0072] M2-24-SA.beats",
+        "c86fad73b16158937cb1a83450f10506"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0072] M2-24-SA.bpm",
+        "597d195e8ae73dc0a71866bbe5fbad64"
+      ]
+    },
+    "[0002] M4-02-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0002] M4-02-SA.wav",
+        "84b5b335fe402a8a62404a0477e5826b"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0002] M4-02-SA.beats",
+        "c76c67d2eb3f9d2111a13892c27d9ae3"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0002] M4-02-SA.bpm",
+        "545e2dd23c179b1af7590709ced2f7a0"
+      ]
+    },
+    "[0065] M2-17-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0065] M2-17-PA.wav",
+        "3cb1252c269461ee915815bb58784b44"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0065] M2-17-PA.beats",
+        "66168e45ef529f43fba155f4c02630e8"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0065] M2-17-PA.bpm",
+        "dad3e2c143a01e4e2104d1e09a8d7dd9"
+      ]
+    },
+    "[0005] M4-05-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0005] M4-05-PA.wav",
+        "c63cc8d8c146f6ba134b3d658d2206ae"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0005] M4-05-PA.beats",
+        "e6f6e5d38278ddb8782ba18a18c81f6e"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0005] M4-05-PA.bpm",
+        "3758ffe0aeb6c77518aed3d380588921"
+      ]
+    },
+    "[0090] M2-42-SA": {
+      "audio": [
+        "BRID_1.0/audio/[0090] M2-42-SA.wav",
+        "7d5eb5275fb6be6b1ec7bcf397ea47ee"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0090] M2-42-SA.beats",
+        "8f8af6c6512aa7448375436299590237"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0090] M2-42-SA.bpm",
+        "8e4b793a9325bde3f5f81bf986ba1cb4"
+      ]
+    },
+    "[0093] M2-45-PA": {
+      "audio": [
+        "BRID_1.0/audio/[0093] M2-45-PA.wav",
+        "09bce1b782871dbbdbbb05d59e7bff11"
+      ],
+      "beats": [
+        "BRID_1.0/annotations/beats/[0093] M2-45-PA.beats",
+        "f7c372e8afac537e449b32a47619b028"
+      ],
+      "tempo": [
+        "BRID_1.0/annotations/tempo/[0093] M2-45-PA.bpm",
+        "19631174d07862ce1f88266c8b9ecc3d"
+      ]
+    }
+  }
+}
