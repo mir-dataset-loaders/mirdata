@@ -88,6 +88,7 @@ IRMAS Loader
     For more details, please visit: https://www.upf.edu/web/mtg/irmas
 
 """
+
 import csv
 import os
 from typing import BinaryIO, List, Optional, TextIO, Tuple

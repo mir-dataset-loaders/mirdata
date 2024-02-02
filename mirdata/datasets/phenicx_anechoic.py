@@ -44,6 +44,7 @@
     For more details, please visit: https://www.upf.edu/web/mtg/phenicx-anechoic
 
 """
+
 from typing import BinaryIO, Optional, TextIO, Tuple, cast
 
 from deprecated.sphinx import deprecated
