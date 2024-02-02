@@ -51,6 +51,7 @@
     For more details, please visit: http://github.com/marl/guitarset/
 
 """
+
 import logging
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple, Dict, List
