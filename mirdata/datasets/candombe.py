@@ -17,6 +17,7 @@
     Another set of annotations are provided as .beats files in which the bar numbers are removed.
 
 """
+
 import csv
 from typing import BinaryIO, Optional, TextIO, Tuple
 

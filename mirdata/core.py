@@ -1,5 +1,6 @@
 """Core mirdata classes
 """
+
 import json
 import os
 import random

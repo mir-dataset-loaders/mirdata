@@ -35,6 +35,7 @@
     Hence, when opening the dataset, use one of 4 versions: 'full', 'full_sax', 'lite', 'lite_sax'.
 
 """
+
 import csv
 import json
 import os
