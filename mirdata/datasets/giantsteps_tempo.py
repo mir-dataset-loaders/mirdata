@@ -65,6 +65,7 @@
         3577631.LOFI.mp3  119
 
 """
+
 from typing import Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated

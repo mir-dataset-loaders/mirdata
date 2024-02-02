@@ -29,6 +29,7 @@
     https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
 
 """
+
 import os
 import csv
 import json
@@ -307,12 +308,14 @@ def load_tempo(fhandle):
         tempo_annotation[sections[section_count]] = {
             "tempo": float(tempo) if "." in tempo else int(tempo),
             "matra_interval": float(matra) if "." in matra else int(matra),
-            "sama_interval": float(sama_interval)
-            if "." in sama_interval
-            else int(sama_interval),
-            "matras_per_cycle": float(matras_per_cycle)
-            if "." in matras_per_cycle
-            else int(matras_per_cycle),
+            "sama_interval": (
+                float(sama_interval) if "." in sama_interval else int(sama_interval)
+            ),
+            "matras_per_cycle": (
+                float(matras_per_cycle)
+                if "." in matras_per_cycle
+                else int(matras_per_cycle)
+            ),
             "start_time": float(start_time) if "." in start_time else int(start_time),
             "duration": float(duration) if "." in duration else int(duration),
         }
