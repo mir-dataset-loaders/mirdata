@@ -15,6 +15,7 @@
     For more details, please visit: https://zenodo.org/record/5578807
 
 """
+
 import csv
 import os
 from typing import BinaryIO, List, Optional, TextIO, Tuple
