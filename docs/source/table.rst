@@ -296,6 +296,15 @@
      - 252
      - :ikala:`\ `
 
+   * - Hainsworth 
+     - - audio: ❌
+       - annotations: ❌
+     - - :ref:`beats`
+       - :ref:`tempo`
+     - 222
+     - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
+          :target: http://creativecommons.org/publicdomain/zero/1.0/
+
    * - Haydn op20
      - - audio: N/A
        - midi: ✅
