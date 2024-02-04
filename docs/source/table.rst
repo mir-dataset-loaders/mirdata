@@ -482,6 +482,15 @@
      - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by/4.0/
 
+   * - SMC
+     - - audio: ❌
+       - annotations: ❌
+     - - :ref:`beats`
+       - :ref:`tempo`
+     - 217
+     - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
+          :target: http://creativecommons.org/publicdomain/zero/1.0/
+
    * - Tinysol
      - - audio: ✅
        - annotations: ✅

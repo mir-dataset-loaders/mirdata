@@ -1,0 +1,3043 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "SMC_175": {
+      "audio": [
+        "S_1.0/audio/SMC_175.flac",
+        "2edaf846846572312e6e2f70e48ee9b2"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_175.beats",
+        "2bb83f64735d628fa5bddad8a62dd663"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_175.bpm",
+        "d3f9277144ea9c8c15430cf12c775b68"
+      ]
+    },
+    "SMC_030": {
+      "audio": [
+        "S_1.0/audio/SMC_030.flac",
+        "d22f7363788d68e09688e780ebf4ed06"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_030.beats",
+        "f5647d53fa57e9618d3c4f03f92b5614"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_030.bpm",
+        "b1e2959acc42d3c5afd2c89f8b866f8c"
+      ]
+    },
+    "SMC_088": {
+      "audio": [
+        "S_1.0/audio/SMC_088.flac",
+        "4cd6c7e1a14692608f8d6891486a59fb"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_088.beats",
+        "0c899295a698e084ad399ebbc351ba28"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_088.bpm",
+        "b3947fc295a09674f5bf1f96daf37e32"
+      ]
+    },
+    "SMC_067": {
+      "audio": [
+        "S_1.0/audio/SMC_067.flac",
+        "5b0025b0868e5430035f00321384f2f6"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_067.beats",
+        "cdd4b6257f31fdefef80fb08be897394"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_067.bpm",
+        "bccdfa58f837fb09e61afdc567ed26e0"
+      ]
+    },
+    "SMC_071": {
+      "audio": [
+        "S_1.0/audio/SMC_071.flac",
+        "2163f5eaf47f14eca8282142ae245c11"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_071.beats",
+        "33c958e66f4e44b6c7060cdd69e44869"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_071.bpm",
+        "95ef45c478a700d15090ba05d30a43e1"
+      ]
+    },
+    "SMC_026": {
+      "audio": [
+        "S_1.0/audio/SMC_026.flac",
+        "09b741dafbb9c16a24e2a9b4e1b23a84"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_026.beats",
+        "0f660c74569566958b9d64f53508b3f0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_026.bpm",
+        "339d759cf55d15ff4fd3f1604e81586d"
+      ]
+    },
+    "SMC_118": {
+      "audio": [
+        "S_1.0/audio/SMC_118.flac",
+        "07e621867f881363341e9cb9bf7de40d"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_118.beats",
+        "ad3740d7a1076df884795efa2e7844de"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_118.bpm",
+        "616bfb01938462da83340806363b2589"
+      ]
+    },
+    "SMC_266": {
+      "audio": [
+        "S_1.0/audio/SMC_266.flac",
+        "8bf62c7d38a10fbd6addedc7cea26a83"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_266.beats",
+        "0ce97b35ac9a8860134005c6845ab34b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_266.bpm",
+        "27c37fab50afd771b6e2b4d660c9c24d"
+      ]
+    },
+    "SMC_289": {
+      "audio": [
+        "S_1.0/audio/SMC_289.flac",
+        "435b8b3b8a7b6fa6dd7d9dd87388f4ae"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_289.beats",
+        "208701031883eb99a71e39950befafbb"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_289.bpm",
+        "3ca96343cf3e928e6692071dee829ae1"
+      ]
+    },
+    "SMC_159": {
+      "audio": [
+        "S_1.0/audio/SMC_159.flac",
+        "32ea791f5f009a9b67e2f38040dcdb79"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_159.beats",
+        "5d261d468e9787316ffe32380a929329"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_159.bpm",
+        "1cd424e1a178f569d3547f292669b55b"
+      ]
+    },
+    "SMC_227": {
+      "audio": [
+        "S_1.0/audio/SMC_227.flac",
+        "8f405ca0197fd11f3db2a32cb3c1499b"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_227.beats",
+        "84fb4e3579ed8b46d4b9e6faf973aee9"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_227.bpm",
+        "bead8446893bc11aecfb0877abe61bd1"
+      ]
+    },
+    "SMC_179": {
+      "audio": [
+        "S_1.0/audio/SMC_179.flac",
+        "16ade66d73b26577c00bea189e182556"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_179.beats",
+        "c8b80017856b7b2e8d1e22cf27a2325a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_179.bpm",
+        "d0dbbca230f95f9cdfb63bad74e11011"
+      ]
+    },
+    "SMC_207": {
+      "audio": [
+        "S_1.0/audio/SMC_207.flac",
+        "ad2d9fd44c39b9c1ed4d7cc8323cf435"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_207.beats",
+        "69512a46679231e0f20272f8855acda8"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_207.bpm",
+        "c9e52fd7625c22d31511154f983f027b"
+      ]
+    },
+    "SMC_084": {
+      "audio": [
+        "S_1.0/audio/SMC_084.flac",
+        "959e90ce0ee37a9461f2b64e61883244"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_084.beats",
+        "15f9056488f70c3d3c8851be1cd5dfb5"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_084.bpm",
+        "cb531ba7ca5f2571f8104d2cf7c574d4"
+      ]
+    },
+    "SMC_211": {
+      "audio": [
+        "S_1.0/audio/SMC_211.flac",
+        "8e36f53aa70f553f4a18c67a1e7bd0f8"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_211.beats",
+        "e6163a3b7df201c8b29a3f0b03e36f7b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_211.bpm",
+        "59101fd8851a6b775a9926cfb4bbab7e"
+      ]
+    },
+    "SMC_092": {
+      "audio": [
+        "S_1.0/audio/SMC_092.flac",
+        "4cc178557f546a653221a601570cb39a"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_092.beats",
+        "0ceb037335c07b123512e377d72b445c"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_092.bpm",
+        "3d5c3e6edceda9b88264ae7487df1523"
+      ]
+    },
+    "SMC_051": {
+      "audio": [
+        "S_1.0/audio/SMC_051.flac",
+        "6184c25ae05d2db0fbb173abaaf67744"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_051.beats",
+        "742a11e2eb45d831738b546340e995cd"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_051.bpm",
+        "452f919a2dcf9ea1f7674db0dee689f7"
+      ]
+    },
+    "SMC_114": {
+      "audio": [
+        "S_1.0/audio/SMC_114.flac",
+        "8139a0c5d315bcd0500ec698435292fa"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_114.beats",
+        "268afc3c9f416792d70ae21c1cb51af5"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_114.bpm",
+        "31df38e839ade2b2c6c32c207a0f3f6c"
+      ]
+    },
+    "SMC_285": {
+      "audio": [
+        "S_1.0/audio/SMC_285.flac",
+        "bd69fcdaee43bffad652dd67ddac3f33"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_285.beats",
+        "0ff7a11a031af0e040146728580f514e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_285.bpm",
+        "4f1f98ca6b99d639948247a29c40bf25"
+      ]
+    },
+    "SMC_006": {
+      "audio": [
+        "S_1.0/audio/SMC_006.flac",
+        "d8d1b687f2191eccf14a8375a9d01af1"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_006.beats",
+        "006824eb8cef5438174d1b8fb6bdb789"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_006.bpm",
+        "8250c4523d390a2d32ced990d984977e"
+      ]
+    },
+    "SMC_143": {
+      "audio": [
+        "S_1.0/audio/SMC_143.flac",
+        "3ad367529339f32292cee001ba08cfe9"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_143.beats",
+        "177a7be3193110542f8de61b07c14632"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_143.bpm",
+        "8a9b4fb47c9a93c6669f70c20cead935"
+      ]
+    },
+    "SMC_010": {
+      "audio": [
+        "S_1.0/audio/SMC_010.flac",
+        "a91d28ae98c784f6bb3cae576d6d437f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_010.beats",
+        "7444fe8d1123335c3b00a946daec4c5d"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_010.bpm",
+        "fbd6940b421d4a61e9c45aaf74649ee1"
+      ]
+    },
+    "SMC_047": {
+      "audio": [
+        "S_1.0/audio/SMC_047.flac",
+        "84f2c6ad1474a039da255db05cab7e06"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_047.beats",
+        "9b6d7b021708f6e5928af687fbe0a7a1"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_047.bpm",
+        "2071d16e0c759e13e82c20106773ea6b"
+      ]
+    },
+    "SMC_046": {
+      "audio": [
+        "S_1.0/audio/SMC_046.flac",
+        "31bc7101c9f93b60c0031485c2e7167f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_046.beats",
+        "89e748400e3881017730f858081160db"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_046.bpm",
+        "ca1257592d33cd85e0941bc558b7fb43"
+      ]
+    },
+    "SMC_103": {
+      "audio": [
+        "S_1.0/audio/SMC_103.flac",
+        "3179217c876376c0c83993c69f4d7a6f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_103.beats",
+        "7113fceaca66351c8adfd92120f69fb0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_103.bpm",
+        "b55db9678fd0cc7bc8bd68e1214d41be"
+      ]
+    },
+    "SMC_011": {
+      "audio": [
+        "S_1.0/audio/SMC_011.flac",
+        "19fd488fd26c09305ded3c39a46403fd"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_011.beats",
+        "f4b76b04b6a243ae2036af4c083fb561"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_011.bpm",
+        "d406ba038fe8cb71cfe30552b0edd2af"
+      ]
+    },
+    "SMC_154": {
+      "audio": [
+        "S_1.0/audio/SMC_154.flac",
+        "86cc5005f7ba0d8f5ceafc0f1b4f1299"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_154.beats",
+        "d3816b511f8403872e439f889a920c4b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_154.bpm",
+        "0e886649bfaac92517312035175533e8"
+      ]
+    },
+    "SMC_007": {
+      "audio": [
+        "S_1.0/audio/SMC_007.flac",
+        "c85bcc5971aa77dd37255c5fa3d30f3b"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_007.beats",
+        "76aaed455b855379a56637a953a03054"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_007.bpm",
+        "138f6dc76cddcb48f79f043b3ee7e3cd"
+      ]
+    },
+    "SMC_142": {
+      "audio": [
+        "S_1.0/audio/SMC_142.flac",
+        "015fc7bcc58ba268231563b42e710e58"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_142.beats",
+        "05c58417f2cceeaf43f5b9b4bc04a9d0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_142.bpm",
+        "5ff70fcd6a0b00db2bf2be899e6b882d"
+      ]
+    },
+    "SMC_284": {
+      "audio": [
+        "S_1.0/audio/SMC_284.flac",
+        "0f78aa5ea8e53ac3651f194bb4bb9eb1"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_284.beats",
+        "918f595119fb0097ea70b15429bb7893"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_284.bpm",
+        "de43e5e858a727ef0a6767461930e7c0"
+      ]
+    },
+    "SMC_181": {
+      "audio": [
+        "S_1.0/audio/SMC_181.flac",
+        "202897ad4a0160b3e091c5af5ac3f6e3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_181.beats",
+        "82a41a50ca70c43ed779b41072a869d3"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_181.bpm",
+        "2d16283e2773aa92db657f6a62801db4"
+      ]
+    },
+    "SMC_139": {
+      "audio": [
+        "S_1.0/audio/SMC_139.flac",
+        "0ddeb3242dee542942f6443e36baf4b3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_139.beats",
+        "a33921043e0ce7e1d67647c3376a682d"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_139.bpm",
+        "947a90d6d441ed7ace2bc45c0ec66073"
+      ]
+    },
+    "SMC_093": {
+      "audio": [
+        "S_1.0/audio/SMC_093.flac",
+        "b6a3f9bcbe63fcf996bc6b2940b2f7e3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_093.beats",
+        "351cbd102f4f6edefe0222c0195ebd5e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_093.bpm",
+        "eb5b232bcde00f14f4561aea38a8d65a"
+      ]
+    },
+    "SMC_085": {
+      "audio": [
+        "S_1.0/audio/SMC_085.flac",
+        "4f2b91a74109010b70189af0bba79b20"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_085.beats",
+        "8ae3c96ef401fd91335e02b1065a0299"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_085.bpm",
+        "e2a2cffd51dbec15aed44f029acc188b"
+      ]
+    },
+    "SMC_206": {
+      "audio": [
+        "S_1.0/audio/SMC_206.flac",
+        "9c9feb5805ab9f7e8d7b6c6533a8c6e2"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_206.beats",
+        "e6896c55505d2810fd642fc5b5c7d8cd"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_206.bpm",
+        "d5abb86f3fdae0709768f56d4186e968"
+      ]
+    },
+    "SMC_178": {
+      "audio": [
+        "S_1.0/audio/SMC_178.flac",
+        "c73fbb40f422abdd1f6527e2a49e6e9b"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_178.beats",
+        "9b13e3e8a52439ff47d8a31ae7842baf"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_178.bpm",
+        "c3653cde25dd4a4eb0df503ae1611bc4"
+      ]
+    },
+    "SMC_197": {
+      "audio": [
+        "S_1.0/audio/SMC_197.flac",
+        "6e32a5b2b29b42bb461909f64a0b569d"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_197.beats",
+        "9c10b4f9d48346163a033749c7b7d2f7"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_197.bpm",
+        "150e551ddd1e3107a3042ecf7e2d66eb"
+      ]
+    },
+    "SMC_251": {
+      "audio": [
+        "S_1.0/audio/SMC_251.flac",
+        "7506130cb428b022e4151f900d2f3bb6"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_251.beats",
+        "1ff87d1ca82cca90d5224ed92a4ab587"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_251.bpm",
+        "ce472d4dcba8357f45fb794e660a0475"
+      ]
+    },
+    "SMC_226": {
+      "audio": [
+        "S_1.0/audio/SMC_226.flac",
+        "f0717b49e40a5760103b34684a6df5ce"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_226.beats",
+        "bbced8402bff0bc8745eecc84f69d9e6"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_226.bpm",
+        "2d1450b0007982858de14f081f0da068"
+      ]
+    },
+    "SMC_271": {
+      "audio": [
+        "S_1.0/audio/SMC_271.flac",
+        "e84bc2fdc1612243de7e2f33d598583e"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_271.beats",
+        "e9872af759c1c124e05aa4068689beaa"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_271.bpm",
+        "087ca509256d67374bba7809faff6651"
+      ]
+    },
+    "SMC_158": {
+      "audio": [
+        "S_1.0/audio/SMC_158.flac",
+        "d71f49da774c0e5d4871f16fc9642455"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_158.beats",
+        "7b5f050799e2e7d7411cb0d7c1339e91"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_158.bpm",
+        "53c893cf0cd9b89a9d173caf3b23afb6"
+      ]
+    },
+    "SMC_288": {
+      "audio": [
+        "S_1.0/audio/SMC_288.flac",
+        "ae081d2b8733702b25ea30b5c9dfd985"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_288.beats",
+        "6b03decc8d976b4f85fd5742d3286e85"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_288.bpm",
+        "de4973fdb2e20d657a3025e6186c4824"
+      ]
+    },
+    "SMC_119": {
+      "audio": [
+        "S_1.0/audio/SMC_119.flac",
+        "3f0d8390123339f29f8e99dd3262ad5f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_119.beats",
+        "c6920d3dd62d129c893d8bf2671efc48"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_119.bpm",
+        "941a9933237c3ec720603b76b71ef171"
+      ]
+    },
+    "SMC_027": {
+      "audio": [
+        "S_1.0/audio/SMC_027.flac",
+        "225cc93ce4513c140c86eb36c25d621d"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_027.beats",
+        "d704513402fc7ff28cddc6d458b2eeea"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_027.bpm",
+        "83742d1fa67dbd0e9ac82cfb4a1f01da"
+      ]
+    },
+    "SMC_135": {
+      "audio": [
+        "S_1.0/audio/SMC_135.flac",
+        "1244161b85278aefb903e1c92df5c497"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_135.beats",
+        "84d548aa193a23685b0c2b67e4efac84"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_135.bpm",
+        "5172460d3d29faa0a7031945eeb5c656"
+      ]
+    },
+    "SMC_089": {
+      "audio": [
+        "S_1.0/audio/SMC_089.flac",
+        "dca69fc8fb30de43d7bf893a78f855ad"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_089.beats",
+        "b156f83dff447e8dae8607bfc91d468a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_089.bpm",
+        "74a482e1ef765e6329b02d85d35a3511"
+      ]
+    },
+    "SMC_066": {
+      "audio": [
+        "S_1.0/audio/SMC_066.flac",
+        "1d222be9a7ec7bc158f47ee581fe9bcc"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_066.beats",
+        "8f37b76014fa1aa79b644869aa433712"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_066.bpm",
+        "58e5340ed6e46ac77fff70566fd91fec"
+      ]
+    },
+    "SMC_174": {
+      "audio": [
+        "S_1.0/audio/SMC_174.flac",
+        "da44d1009fd8961cd9c0d5aaa5121787"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_174.beats",
+        "88c14e5cb08ef690512ebb529c2e984f"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_174.bpm",
+        "27597c63fc5b81b5652425351e0ae46c"
+      ]
+    },
+    "SMC_256": {
+      "audio": [
+        "S_1.0/audio/SMC_256.flac",
+        "2b1e7cedfb0a36bb6924443cb51be94e"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_256.beats",
+        "8e9b2a147d72a5f1119e2aeaed86d4c0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_256.bpm",
+        "7294f7d475311ce503bb4068bcaa915a"
+      ]
+    },
+    "SMC_190": {
+      "audio": [
+        "S_1.0/audio/SMC_190.flac",
+        "5a9faa0b19b723f660248f99a26bcc21"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_190.beats",
+        "648705053833d6e13f47f2a08aebf076"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_190.bpm",
+        "f942fd06beb9af5f08f60add396600ea"
+      ]
+    },
+    "SMC_082": {
+      "audio": [
+        "S_1.0/audio/SMC_082.flac",
+        "06556a2d065ccc72442ef021a898271f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_082.beats",
+        "6c05928e109780bc5c1e60a6d479854d"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_082.bpm",
+        "a3b9b42c1af1bf55c6b431ed08bb252f"
+      ]
+    },
+    "SMC_217": {
+      "audio": [
+        "S_1.0/audio/SMC_217.flac",
+        "8d79bc1f6cd0b92e932a7d08007f98c9"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_217.beats",
+        "5d07471cba49089bb569aae4c493e317"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_217.bpm",
+        "e4f71ddf693b5dc1545e7500b8f720f1"
+      ]
+    },
+    "SMC_169": {
+      "audio": [
+        "S_1.0/audio/SMC_169.flac",
+        "f6d4b7e974a20f7efcfc9bede42c616d"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_169.beats",
+        "d47f1529be10ad018601d8f21a190c96"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_169.bpm",
+        "2b18f5d5a5419719de4ed90c69e80ae7"
+      ]
+    },
+    "SMC_057": {
+      "audio": [
+        "S_1.0/audio/SMC_057.flac",
+        "ce0263e5fb0a7b308276b1f6a18621e2"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_057.beats",
+        "121cffe19334d733f70a0b897796ea6e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_057.bpm",
+        "e1ae44d7ea501acf9c3c6e5aa6a77aa4"
+      ]
+    },
+    "SMC_283": {
+      "audio": [
+        "S_1.0/audio/SMC_283.flac",
+        "4676739fd0d0acdeb122cb106bd0fc6a"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_283.beats",
+        "329ae429b8527dc5c054b0abcf435fae"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_283.bpm",
+        "0e2361e0716b8f1f403f1b5c61758440"
+      ]
+    },
+    "SMC_016": {
+      "audio": [
+        "S_1.0/audio/SMC_016.flac",
+        "e32fc3d5eedaf902d0a3a7cb9fdcb72c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_016.beats",
+        "9b83d81fe95fd6ba0faa0ee288301ed0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_016.bpm",
+        "8666ffec11a7208c69771aafbf8a06e4"
+      ]
+    },
+    "SMC_153": {
+      "audio": [
+        "S_1.0/audio/SMC_153.flac",
+        "bc79de5283dc30a05ac4ffac1ecb5717"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_153.beats",
+        "f410ce82997236440857714d13454bce"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_153.bpm",
+        "1c77e285f4b56055689878cd6f7836f4"
+      ]
+    },
+    "SMC_041": {
+      "audio": [
+        "S_1.0/audio/SMC_041.flac",
+        "0e1d87a9eca8f6d11267a93adad76b65"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_041.beats",
+        "f0a041fa6232c5f7920b6d3c429c1264"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_041.bpm",
+        "86a94367225c96570a6ae32397002d70"
+      ]
+    },
+    "SMC_104": {
+      "audio": [
+        "S_1.0/audio/SMC_104.flac",
+        "387ae3ae1691fc28625a018fd3fe8c81"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_104.beats",
+        "0feb61c5876a9e6252007f2ac3e3cf71"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_104.bpm",
+        "42ba08831f6ceaed0aa2c9acbe961f7a"
+      ]
+    },
+    "SMC_173": {
+      "audio": [
+        "S_1.0/audio/SMC_173.flac",
+        "eb1b4f6640921a7391aa6810d62558f0"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_173.beats",
+        "2dec8b20d8b253ac0f18c40a2d7d2ee0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_173.bpm",
+        "386fc0994d65dd1f729b638c5b6366e9"
+      ]
+    },
+    "SMC_036": {
+      "audio": [
+        "S_1.0/audio/SMC_036.flac",
+        "96a2cec74defcf511ffa64cbbf9327e5"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_036.beats",
+        "4ad2d2e60a44ce775e779ac654de7e6f"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_036.bpm",
+        "3e0ad834c8d8c8423bead61b7c510143"
+      ]
+    },
+    "SMC_124": {
+      "audio": [
+        "S_1.0/audio/SMC_124.flac",
+        "df50ad6796377fed7caeed7262cee672"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_124.beats",
+        "662de2a79cbfc279dc09a902e379a5da"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_124.bpm",
+        "bf902005759d25fa3f5d0031c9ec03ac"
+      ]
+    },
+    "SMC_061": {
+      "audio": [
+        "S_1.0/audio/SMC_061.flac",
+        "5ee57bacce51db07ac94689868bc40cc"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_061.beats",
+        "aac59ab79e9da3bb8242413dc9510f3d"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_061.bpm",
+        "1bff108528327f1414025869d0a58889"
+      ]
+    },
+    "SMC_098": {
+      "audio": [
+        "S_1.0/audio/SMC_098.flac",
+        "230908d6c4ecd8591767583acb1498e3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_098.beats",
+        "b22bbceb95becf0c9667a3860cbe7863"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_098.bpm",
+        "a0f459df496b4a7f4d2a46c1124ff776"
+      ]
+    },
+    "SMC_237": {
+      "audio": [
+        "S_1.0/audio/SMC_237.flac",
+        "0d7cdf62320b19402dda94cc501de03c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_237.beats",
+        "26937079a74304860c96c4a95f4c36cd"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_237.bpm",
+        "95648801456b37a7065acc6061a4db53"
+      ]
+    },
+    "SMC_149": {
+      "audio": [
+        "S_1.0/audio/SMC_149.flac",
+        "4e8d089fda9125bf2b6a8eaa771d989e"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_149.beats",
+        "11c351e1b7b27879ac8f6f5c14486397"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_149.bpm",
+        "28520fa8902f6ab641cb58a864fc4e07"
+      ]
+    },
+    "SMC_260": {
+      "audio": [
+        "S_1.0/audio/SMC_260.flac",
+        "35e4f2170592fcd9782cd210c48481f5"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_260.beats",
+        "6e070e037693715e294e095cbb640386"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_260.bpm",
+        "2e31efa9dcfbcc30f72c300e078bbf71"
+      ]
+    },
+    "SMC_276": {
+      "audio": [
+        "S_1.0/audio/SMC_276.flac",
+        "5a6a9cf1ff3964303519764cef0cb9b1"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_276.beats",
+        "f94bf6696fab9c6823d9f8ffce149bd3"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_276.bpm",
+        "93b55d529fa7950abca78eeb1616f843"
+      ]
+    },
+    "SMC_221": {
+      "audio": [
+        "S_1.0/audio/SMC_221.flac",
+        "8a4ae80e392df12650d5293ad2fe03eb"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_221.beats",
+        "30a1d10994894749f945916a4d815a88"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_221.bpm",
+        "4b343893774c088c6de24c9a3438f850"
+      ]
+    },
+    "SMC_220": {
+      "audio": [
+        "S_1.0/audio/SMC_220.flac",
+        "f5724c06469bbf3505ce02dec8cc98bb"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_220.beats",
+        "d4de61b0757a3d6ff99dd0e22c9e4cf6"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_220.bpm",
+        "e2712c77408bba68719aa04e73618caf"
+      ]
+    },
+    "SMC_109": {
+      "audio": [
+        "S_1.0/audio/SMC_109.flac",
+        "a782f32499936a7bf756e0df23cbff8e"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_109.beats",
+        "ec7f9eb0402999600994075e8942af9c"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_109.bpm",
+        "bead8446893bc11aecfb0877abe61bd1"
+      ]
+    },
+    "SMC_277": {
+      "audio": [
+        "S_1.0/audio/SMC_277.flac",
+        "7a8e69248041b4de7d5f9f29c199ea9c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_277.beats",
+        "e32be6825ef1cf22fb24c4334d218b2b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_277.bpm",
+        "b28bfa4c0ad2c9774c93d322ddd00674"
+      ]
+    },
+    "SMC_261": {
+      "audio": [
+        "S_1.0/audio/SMC_261.flac",
+        "f0113a73b5574d4fdbd02868890d1351"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_261.beats",
+        "bdcb2e6e06c3d55046b69b12b8e7467a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_261.bpm",
+        "41c0bd0ff6919fd2ebc4da1ece9c1ac0"
+      ]
+    },
+    "SMC_148": {
+      "audio": [
+        "S_1.0/audio/SMC_148.flac",
+        "e0e91e089fe713b6b6bc18c112754a78"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_148.beats",
+        "b0a4bca598cbf71febe222cbeac50bf4"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_148.bpm",
+        "c897e313d0afc37e8838a5f16534c231"
+      ]
+    },
+    "SMC_236": {
+      "audio": [
+        "S_1.0/audio/SMC_236.flac",
+        "df510bc560996bc8315bb468f272ebe2"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_236.beats",
+        "1155a7bc65f933b2bfed27853a55167b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_236.bpm",
+        "3ef0b7d2d1288d41422636287f240f77"
+      ]
+    },
+    "SMC_021": {
+      "audio": [
+        "S_1.0/audio/SMC_021.flac",
+        "c90aa710a25733546c6c91f51ff4ede5"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_021.beats",
+        "f2e1a76875a0062f7460f45ccf65bd4b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_021.bpm",
+        "82462b3516ab74109fc54daa447b883a"
+      ]
+    },
+    "SMC_099": {
+      "audio": [
+        "S_1.0/audio/SMC_099.flac",
+        "c572dd9781d8bd386d052a7e171c336a"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_099.beats",
+        "1b2657938b7edb705d929973148e645c"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_099.bpm",
+        "6f12a7ba84e648b54a3cabadc44929e1"
+      ]
+    },
+    "SMC_133": {
+      "audio": [
+        "S_1.0/audio/SMC_133.flac",
+        "23ae25007fb3d4f581d6406dd29b6003"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_133.beats",
+        "4011007eb47a2c92e4d71ac9f8c096c1"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_133.bpm",
+        "91f6539d159f83d1dd4948ee7e8ce642"
+      ]
+    },
+    "SMC_076": {
+      "audio": [
+        "S_1.0/audio/SMC_076.flac",
+        "f80108641ce29c0a58f67c1637f5d224"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_076.beats",
+        "1a306c124a4b02b71fe2927f72e51619"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_076.bpm",
+        "0e97e63b946687638b6e768fe5b45269"
+      ]
+    },
+    "SMC_060": {
+      "audio": [
+        "S_1.0/audio/SMC_060.flac",
+        "4aa26a0bbf1dfb2595629a98c67cd8e7"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_060.beats",
+        "7ee69e4bd38a5d80380491b1af4c6999"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_060.bpm",
+        "ddabaa2615d1d2c1e7473802512a5467"
+      ]
+    },
+    "SMC_172": {
+      "audio": [
+        "S_1.0/audio/SMC_172.flac",
+        "c04044d7a44c8ebb2cc8cdcaf67dc4b2"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_172.beats",
+        "580f0d52dbc74140b52b5772dbb56f71"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_172.bpm",
+        "7e03b28d52a5d706159b2fa56826b1de"
+      ]
+    },
+    "SMC_037": {
+      "audio": [
+        "S_1.0/audio/SMC_037.flac",
+        "838da94e5bf9bd1eeb5eef17b870b9f9"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_037.beats",
+        "ef76c89d4bf01193b61b73e9499a1863"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_037.bpm",
+        "7da1645f809d95d3c417a98ab6cc0dda"
+      ]
+    },
+    "SMC_105": {
+      "audio": [
+        "S_1.0/audio/SMC_105.flac",
+        "a9ea3e16a4264d33f17b61016a4fe985"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_105.beats",
+        "2958a912cf5c8845b5ab9d5a5367bbf0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_105.bpm",
+        "49d8d1ae0921a49d9729336813f9374e"
+      ]
+    },
+    "SMC_017": {
+      "audio": [
+        "S_1.0/audio/SMC_017.flac",
+        "5639ce4da18ba978bd7e297724696255"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_017.beats",
+        "8d654eb68c3d7c24e7ada17219de4df1"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_017.bpm",
+        "ac0286f531da896f0aa0ad9ce997792f"
+      ]
+    },
+    "SMC_152": {
+      "audio": [
+        "S_1.0/audio/SMC_152.flac",
+        "93756459a2d210fa026170302315ba49"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_152.beats",
+        "bb06bded63c9caddc033dcf667e1b8f6"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_152.bpm",
+        "dfc72e6018e843f764d21b63cd6ed558"
+      ]
+    },
+    "SMC_001": {
+      "audio": [
+        "S_1.0/audio/SMC_001.flac",
+        "0a67aac6485eb9c9518932d13ed1dd3c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_001.beats",
+        "5409fa92647274d1aba591077951be0e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_001.bpm",
+        "d7a89108ca9d764116a845919b630d63"
+      ]
+    },
+    "SMC_282": {
+      "audio": [
+        "S_1.0/audio/SMC_282.flac",
+        "6daa5cc10641b4bb4d6fac11dbc93209"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_282.beats",
+        "73d4bd262d2db044c846eda5a701eca1"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_282.bpm",
+        "3508a7392d278a9ac52c50a71f734edc"
+      ]
+    },
+    "SMC_056": {
+      "audio": [
+        "S_1.0/audio/SMC_056.flac",
+        "dbccadd748fdb8254d921ff8163d7b76"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_056.beats",
+        "f8a149dee740b13af0b4898da07bd475"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_056.bpm",
+        "a07b5bf7ea42ed96fcdcf6851640f8bd"
+      ]
+    },
+    "SMC_113": {
+      "audio": [
+        "S_1.0/audio/SMC_113.flac",
+        "278106a203a74b518e26547cf1403346"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_113.beats",
+        "482fef0231add0d629c8702429fa53a2"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_113.bpm",
+        "dd433b855e3f0d5fc9e2e6b275f1f1a4"
+      ]
+    },
+    "SMC_168": {
+      "audio": [
+        "S_1.0/audio/SMC_168.flac",
+        "bddadb8a516230c3c931a834c1e19497"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_168.beats",
+        "82909352e68114e27801b81b9469edb9"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_168.bpm",
+        "90c878574e5efcd2d37629725ea49656"
+      ]
+    },
+    "SMC_187": {
+      "audio": [
+        "S_1.0/audio/SMC_187.flac",
+        "8cfbf80583c7202d5635d4b0b5ae98f7"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_187.beats",
+        "02e6c5872f45b2a200aa00bb7b5aa9f2"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_187.bpm",
+        "ccaedc9ab751d188021cc26268669361"
+      ]
+    },
+    "SMC_241": {
+      "audio": [
+        "S_1.0/audio/SMC_241.flac",
+        "8bc74693e7353a991403c6238218d7ac"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_241.beats",
+        "ed176fc1320491d4411a80135b5a590e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_241.bpm",
+        "49212d0a773ece3ac72cf6b949ab9297"
+      ]
+    },
+    "SMC_095": {
+      "audio": [
+        "S_1.0/audio/SMC_095.flac",
+        "622bbc4ec123bffb8768cda0e8059a05"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_095.beats",
+        "392daa43fb9d1ab73bd9ca7df27c1d3f"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_095.bpm",
+        "6334c8052565e8327d2d18847b2cc8a4"
+      ]
+    },
+    "SMC_216": {
+      "audio": [
+        "S_1.0/audio/SMC_216.flac",
+        "4f9771787da749fa824d64e1ed1a7378"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_216.beats",
+        "88f824656bf57102a88c96c3343145ca"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_216.bpm",
+        "03525fc621067e657a08bed059accd71"
+      ]
+    },
+    "SMC_257": {
+      "audio": [
+        "S_1.0/audio/SMC_257.flac",
+        "5ae1c107d97169582e6e14ea540d516b"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_257.beats",
+        "97437d8110bbb9a390a74bdcaf26a0ca"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_257.bpm",
+        "def2f5e2e4852b4bdf9d1e0bae99df53"
+      ]
+    },
+    "SMC_106": {
+      "audio": [
+        "S_1.0/audio/SMC_106.flac",
+        "78b45f341647f778c2a29abbdc8fa767"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_106.beats",
+        "1636b3c6222fba4fe27a3b2abf105b2e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_106.bpm",
+        "9cd3dc32d4985b374eb2287a43756a28"
+      ]
+    },
+    "SMC_043": {
+      "audio": [
+        "S_1.0/audio/SMC_043.flac",
+        "325f4301fa9ea56cc43634e8816f3ee3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_043.beats",
+        "35fc6f5e7025ab8e3ec13b78c21c9387"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_043.bpm",
+        "6b2b76d0e887ec0d046554f668ad4b5e"
+      ]
+    },
+    "SMC_151": {
+      "audio": [
+        "S_1.0/audio/SMC_151.flac",
+        "54d06e6eb0b5444ebeab743b8b30ded1"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_151.beats",
+        "8bf91e689d295c343d4d714cc9bf808e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_151.bpm",
+        "4949b3c8c1d3e11988b445b863cd44cc"
+      ]
+    },
+    "SMC_014": {
+      "audio": [
+        "S_1.0/audio/SMC_014.flac",
+        "efdfaf0935eb91f08732c7b8ca0f55da"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_014.beats",
+        "77deebd63dfc3613c226c3315fd036cd"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_014.bpm",
+        "d91f7e502d7465700965883a23cd373a"
+      ]
+    },
+    "SMC_278": {
+      "audio": [
+        "S_1.0/audio/SMC_278.flac",
+        "29f905ae1d89e14024a3a9261f92a6d4"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_278.beats",
+        "3fbd51874b6f7d30c081f56999b9419d"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_278.bpm",
+        "096c12842fa90857b637a5f045a4bdca"
+      ]
+    },
+    "SMC_147": {
+      "audio": [
+        "S_1.0/audio/SMC_147.flac",
+        "d284be8ad8213e0e43e914956337493d"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_147.beats",
+        "0f605e5c330e912df164df1747cccf32"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_147.bpm",
+        "f365ebc86a26bdf401d2fad38f15cfe9"
+      ]
+    },
+    "SMC_002": {
+      "audio": [
+        "S_1.0/audio/SMC_002.flac",
+        "c90f174c4ef00fb9988e056686fc4cd8"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_002.beats",
+        "2d30034999038f60941ab645008f0d6a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_002.bpm",
+        "7de19ae079edca7c15c74367974c98eb"
+      ]
+    },
+    "SMC_281": {
+      "audio": [
+        "S_1.0/audio/SMC_281.flac",
+        "f52ec8482aff295972d27f08a0fe7610"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_281.beats",
+        "596b90f1208fc49b6a08145cecd4acdf"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_281.bpm",
+        "56c68af7d834ef5a1ef5efcd945a2dd3"
+      ]
+    },
+    "SMC_055": {
+      "audio": [
+        "S_1.0/audio/SMC_055.flac",
+        "4f4bacf76f4707fa49be42ccb1c358d1"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_055.beats",
+        "86fa9b8d772b3f0512e1cbdbcf609737"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_055.bpm",
+        "84289f8df67258fcc862909f46618ec0"
+      ]
+    },
+    "SMC_239": {
+      "audio": [
+        "S_1.0/audio/SMC_239.flac",
+        "6d60fb85145a838d605cc651fa948cef"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_239.beats",
+        "1c1f6692f2210427b113d1ac0e6f784c"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_239.bpm",
+        "965189d067299b04edd9647b2964c18c"
+      ]
+    },
+    "SMC_184": {
+      "audio": [
+        "S_1.0/audio/SMC_184.flac",
+        "f13f791bd7843136238f54a99633c159"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_184.beats",
+        "5b5a0f8e7044c5e8d02ddb51394af8c5"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_184.bpm",
+        "3e5a730a4b34c6fe483fa8a9bb8945d6"
+      ]
+    },
+    "SMC_242": {
+      "audio": [
+        "S_1.0/audio/SMC_242.flac",
+        "935618045a0ad1c52be5eca7d3dde0d2"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_242.beats",
+        "04f7b3c03e1ccfb9c7786d8a2b38552c"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_242.bpm",
+        "4387b5167eba26f82223dd38d480821d"
+      ]
+    },
+    "SMC_079": {
+      "audio": [
+        "S_1.0/audio/SMC_079.flac",
+        "b548011d67b4ad367c966c95b3c33c69"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_079.beats",
+        "1437aa169434804e486c40c383b25ae3"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_079.bpm",
+        "bbffb7400fd419782f6ef1dc3af88341"
+      ]
+    },
+    "SMC_096": {
+      "audio": [
+        "S_1.0/audio/SMC_096.flac",
+        "fc670a1beb068722aec565364477b6c9"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_096.beats",
+        "ce4112338949b79d2be1ab3b2cb952ea"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_096.bpm",
+        "0a22dd5db7ed38fecf7a3a9527b78728"
+      ]
+    },
+    "SMC_215": {
+      "audio": [
+        "S_1.0/audio/SMC_215.flac",
+        "37e5902a73aac565dbb9de6a9e9c9547"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_215.beats",
+        "f6cce5fdf0df4aea2186214d8441191a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_215.bpm",
+        "5e3b1f17e75c155c4d050c0d7ffef143"
+      ]
+    },
+    "SMC_080": {
+      "audio": [
+        "S_1.0/audio/SMC_080.flac",
+        "fd92d485865f4d72ba7ac146ed9c601c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_080.beats",
+        "bbd2eeddd8a15c528a1fd9661b4d3a57"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_080.bpm",
+        "c5f7f598faf15a301e2615c4ac37022e"
+      ]
+    },
+    "SMC_203": {
+      "audio": [
+        "S_1.0/audio/SMC_203.flac",
+        "fcc86930a2b5efb6c1377eeff3fa4423"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_203.beats",
+        "fc854f4229994d638302a6887ce2d7b9"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_203.bpm",
+        "532cbb66c7a8f92d31e2f5e085303343"
+      ]
+    },
+    "SMC_038": {
+      "audio": [
+        "S_1.0/audio/SMC_038.flac",
+        "b902a24ecdb2c21fc352fa42ccb3dd35"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_038.beats",
+        "c6549ad7a3ff1a3a40750faa8f1a0472"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_038.bpm",
+        "343580de33b1c503186ca14a692c218f"
+      ]
+    },
+    "SMC_192": {
+      "audio": [
+        "S_1.0/audio/SMC_192.flac",
+        "c1adad326e528a25d125cca4f8320ea5"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_192.beats",
+        "5b170c4ae2d83949d605db56cd9e58a7"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_192.bpm",
+        "4e037ffda5e12f3d8dcda5437d61f73b"
+      ]
+    },
+    "SMC_254": {
+      "audio": [
+        "S_1.0/audio/SMC_254.flac",
+        "f6e8cb30e10f3cf5a31ba59bfef114e2"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_254.beats",
+        "bc157925c06aa7a2b14d5a42d38217d1"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_254.bpm",
+        "d466e2525ce7acd45cc7ed62cd870ebb"
+      ]
+    },
+    "SMC_223": {
+      "audio": [
+        "S_1.0/audio/SMC_223.flac",
+        "f1b35954c2ad9f2e9559a294fdbe7de7"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_223.beats",
+        "4023cafec3b1424249899f645352621e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_223.bpm",
+        "02ed21793be19637f1163d3903e8c2dd"
+      ]
+    },
+    "SMC_274": {
+      "audio": [
+        "S_1.0/audio/SMC_274.flac",
+        "6a2590b489703b495e52b49ddc8c6836"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_274.beats",
+        "72e8a6e3243e7ae6ac302fd9883bec1a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_274.bpm",
+        "a21bc86839cd8f079a14245650816a88"
+      ]
+    },
+    "SMC_018": {
+      "audio": [
+        "S_1.0/audio/SMC_018.flac",
+        "87baaac55ddb13c14eddf3cd07903b3c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_018.beats",
+        "7107442c330945284d699b135e06f440"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_018.bpm",
+        "11923a572fae7aa469458c72b0007954"
+      ]
+    },
+    "SMC_262": {
+      "audio": [
+        "S_1.0/audio/SMC_262.flac",
+        "3468c081285c6a8539d0b3b3d9c7ab78"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_262.beats",
+        "7b0c93dd1fd26dd32490e16c2807a9c7"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_262.bpm",
+        "4663e839f2fe4482febeb2307aefd5f6"
+      ]
+    },
+    "SMC_235": {
+      "audio": [
+        "S_1.0/audio/SMC_235.flac",
+        "34dcff4256e8f6a4245dccdadd7c82ec"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_235.beats",
+        "76b5f097f680c28b6f6a9dde0d2e85cc"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_235.bpm",
+        "b1851cfcf9479b5b80e616283ab3d95b"
+      ]
+    },
+    "SMC_059": {
+      "audio": [
+        "S_1.0/audio/SMC_059.flac",
+        "c9e3b9fdadfda376c17f7c9dfa4e1819"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_059.beats",
+        "829552725a23d6fd489bb970e9dbf80a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_059.bpm",
+        "e5b89a3371b0858b2d115370dc3fc7ad"
+      ]
+    },
+    "SMC_022": {
+      "audio": [
+        "S_1.0/audio/SMC_022.flac",
+        "d1a379fe53a63a93b0705b498e54a9c3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_022.beats",
+        "1fb524eb6a6766e161e65bc0bc0f69bd"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_022.bpm",
+        "dd244875e181165b5566d9c792a07af1"
+      ]
+    },
+    "SMC_188": {
+      "audio": [
+        "S_1.0/audio/SMC_188.flac",
+        "fdf6d8c7887d5a6307b20d0486088e87"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_188.beats",
+        "18830391b573a9d9a5535a4e59a6948f"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_188.bpm",
+        "a1e586eb1833864b28a062882e2aa853"
+      ]
+    },
+    "SMC_167": {
+      "audio": [
+        "S_1.0/audio/SMC_167.flac",
+        "3089938136ca14e88a3387b10d9d9d0c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_167.beats",
+        "7a2fa78a9b99c28d17df4c2cdf9b04a2"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_167.bpm",
+        "d9b01013c9ca69c77b0697c6d7b0b893"
+      ]
+    },
+    "SMC_219": {
+      "audio": [
+        "S_1.0/audio/SMC_219.flac",
+        "fad3bf8fea86cdffd22dc07da79a41c8"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_219.beats",
+        "6a6ee91ea84bd71ca5a998d0117aa37b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_219.bpm",
+        "172d440b5a85aae9f44493076e58e11d"
+      ]
+    },
+    "SMC_075": {
+      "audio": [
+        "S_1.0/audio/SMC_075.flac",
+        "e7838a0db127e272f9bd0b322af154dc"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_075.beats",
+        "65575e2850198cf11069d47341af3afb"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_075.bpm",
+        "0e2361e0716b8f1f403f1b5c61758440"
+      ]
+    },
+    "SMC_130": {
+      "audio": [
+        "S_1.0/audio/SMC_130.flac",
+        "b47f2d687c2d91bb24c0b69a8ee4afc8"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_130.beats",
+        "23030b3950240241094b0b5ae8388d85"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_130.bpm",
+        "ea9570c2cb5ade870b146d4ebe756ad9"
+      ]
+    },
+    "SMC_063": {
+      "audio": [
+        "S_1.0/audio/SMC_063.flac",
+        "dade6ac824acece77caf493eab947a08"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_063.beats",
+        "5e033a22a85bbfab38712476838b854e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_063.bpm",
+        "abe03c5b1f8b9004b0f948fffbd4ca94"
+      ]
+    },
+    "SMC_126": {
+      "audio": [
+        "S_1.0/audio/SMC_126.flac",
+        "fd916698fbf9622897667a9cf4254d9d"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_126.beats",
+        "0a8d4ff95cd245c9d7fce0f4c9ad9999"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_126.bpm",
+        "1c711cbbe7dbc8a08ec8f86854c41f61"
+      ]
+    },
+    "SMC_258": {
+      "audio": [
+        "S_1.0/audio/SMC_258.flac",
+        "aec29a117500eb34d26356b58367ed75"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_258.beats",
+        "eee0d10d6f6dd36099cf82184d9fe52a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_258.bpm",
+        "779b41ff859e7679e8f947d47a4d550f"
+      ]
+    },
+    "SMC_034": {
+      "audio": [
+        "S_1.0/audio/SMC_034.flac",
+        "ef89d43ec86820f34a5036288475a487"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_034.beats",
+        "c8bc99b8f785b9ce49798ce36cd79801"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_034.bpm",
+        "3bf5250e2808c016ee5b7536f249a712"
+      ]
+    },
+    "SMC_171": {
+      "audio": [
+        "S_1.0/audio/SMC_171.flac",
+        "ed501af3d80f2ecf74834021ca72488a"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_171.beats",
+        "4859ecc02916b42e620557cc59515479"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_171.bpm",
+        "85bd0903eb502c3702a1a8844abc4a1f"
+      ]
+    },
+    "SMC_035": {
+      "audio": [
+        "S_1.0/audio/SMC_035.flac",
+        "5352331f200d653c45857eeb51e1e4db"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_035.beats",
+        "80d34734df1201c9e49d886e394a79ba"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_035.bpm",
+        "9359d2cc93ebe14097c84dff67ad10b8"
+      ]
+    },
+    "SMC_170": {
+      "audio": [
+        "S_1.0/audio/SMC_170.flac",
+        "680a9d216b1ae0ea8559585f5494fcd3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_170.beats",
+        "d4083584e8352ed4469e77d62ec39bd8"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_170.bpm",
+        "e4ac269b1b0d7ba9aaee1263c629aba9"
+      ]
+    },
+    "SMC_259": {
+      "audio": [
+        "S_1.0/audio/SMC_259.flac",
+        "3f05530a267134c57805256633e94ad3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_259.beats",
+        "6190a262567fa0beeb03e62a34931c95"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_259.bpm",
+        "a3b05e7c147f57d5d388965ab5ba32ed"
+      ]
+    },
+    "SMC_127": {
+      "audio": [
+        "S_1.0/audio/SMC_127.flac",
+        "5fcf48d3db772ab68289f33ac41173e5"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_127.beats",
+        "bdfdfb5ff23953ec1c6fab3c4f1c4a8b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_127.bpm",
+        "02356174fb3f0220f1ded7439da48aac"
+      ]
+    },
+    "SMC_074": {
+      "audio": [
+        "S_1.0/audio/SMC_074.flac",
+        "9a9b8f80bdc630887a1804a836cf52e3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_074.beats",
+        "a6daf25dc4b1666c0ad13d1090a2f436"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_074.bpm",
+        "30030ebb56fc42c0a3810088c76abf5e"
+      ]
+    },
+    "SMC_023": {
+      "audio": [
+        "S_1.0/audio/SMC_023.flac",
+        "ff6deda7462475932070f0d857d315e4"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_023.beats",
+        "f5f59b6d59a4e4ffb7108f214fafe68a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_023.bpm",
+        "089c7ed42545b9e66790f1efacbdaaad"
+      ]
+    },
+    "SMC_166": {
+      "audio": [
+        "S_1.0/audio/SMC_166.flac",
+        "e47cf006ad53c22ec25ffc55800e7ba9"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_166.beats",
+        "dbd23256477037f8d632f6382b381252"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_166.bpm",
+        "2245a0fd2061b1989afa8517fb07fe6d"
+      ]
+    },
+    "SMC_058": {
+      "audio": [
+        "S_1.0/audio/SMC_058.flac",
+        "9455744666cdd0086abe1316082cf559"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_058.beats",
+        "d4bd3b25c8c3bdad075aa7a2145497c2"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_058.bpm",
+        "555f9875bb941bc75a33bcf372a0150f"
+      ]
+    },
+    "SMC_263": {
+      "audio": [
+        "S_1.0/audio/SMC_263.flac",
+        "7d046a9f8961bbc756f983205e6e71fc"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_263.beats",
+        "e0ad3fdb9648dade0847f5d2fb760f5c"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_263.bpm",
+        "d5af5ca0eb5febed349db5e27b0fd184"
+      ]
+    },
+    "SMC_019": {
+      "audio": [
+        "S_1.0/audio/SMC_019.flac",
+        "d4921c93428423536db5bbd2d45dc00b"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_019.beats",
+        "c22f3863e2313f719f4c23b80958a1ee"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_019.bpm",
+        "44bd238b0312b97e6fd3c70d3d0c1f19"
+      ]
+    },
+    "SMC_275": {
+      "audio": [
+        "S_1.0/audio/SMC_275.flac",
+        "31f55148661bff23245a6026355c119e"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_275.beats",
+        "10c2a50cc23780af8715c6c8fbe260cf"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_275.bpm",
+        "056136ec31749b6c0e7c40a10d831c35"
+      ]
+    },
+    "SMC_222": {
+      "audio": [
+        "S_1.0/audio/SMC_222.flac",
+        "b1560ee64f9a26cb6533951ae7f45653"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_222.beats",
+        "0fa5c0d5af7c0f2114208d5e97e4f394"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_222.bpm",
+        "eac46d067bc32c92c8b226bc64f01add"
+      ]
+    },
+    "SMC_255": {
+      "audio": [
+        "S_1.0/audio/SMC_255.flac",
+        "e43be5434be358500d4ffb8cdeefe79b"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_255.beats",
+        "74f9b76c35df5a3350420e48a41c922a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_255.bpm",
+        "ed065b525c4faa42ae06ecd63e3171ed"
+      ]
+    },
+    "SMC_193": {
+      "audio": [
+        "S_1.0/audio/SMC_193.flac",
+        "19fec961a4712e5c021aeb9e5a9dd97c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_193.beats",
+        "41f5b36b272e870717d32ad66783180e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_193.bpm",
+        "d92f379ca27ab3e13be0dc46171f93ab"
+      ]
+    },
+    "SMC_202": {
+      "audio": [
+        "S_1.0/audio/SMC_202.flac",
+        "90a0a228a641ab8f81cd4747493d2c12"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_202.beats",
+        "f9a2c6e6c92c52ee98eb2401f185500f"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_202.bpm",
+        "b1cb8044d9e3dc54b4fe6509ea0e8481"
+      ]
+    },
+    "SMC_214": {
+      "audio": [
+        "S_1.0/audio/SMC_214.flac",
+        "81d806edc4c5638b8c5102b41de2b20c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_214.beats",
+        "464be6fefd3644f0f2c660956cb7ccce"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_214.bpm",
+        "5f8571b165a218f8fb6df550d0a8ccec"
+      ]
+    },
+    "SMC_243": {
+      "audio": [
+        "S_1.0/audio/SMC_243.flac",
+        "f083bc6940727bdfbb157ef72849de17"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_243.beats",
+        "514c7e042f461ee7bf06afbe76d49f9c"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_243.bpm",
+        "f8432ab89db5e4f8e6bd3c0d44ff0193"
+      ]
+    },
+    "SMC_111": {
+      "audio": [
+        "S_1.0/audio/SMC_111.flac",
+        "f20b19ffcf690b3f12523b293ebb4fd0"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_111.beats",
+        "040db53b748bca386941d10bdf0fcf7d"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_111.bpm",
+        "a1d90593fe3b83fa62e32742776ec3a8"
+      ]
+    },
+    "SMC_054": {
+      "audio": [
+        "S_1.0/audio/SMC_054.flac",
+        "ce3d75afe25d74d827817709f024d2a3"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_054.beats",
+        "9067c575a6f983dbd8817ad327d22d04"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_054.bpm",
+        "381a9d79e45c8f381ea48addbb34e437"
+      ]
+    },
+    "SMC_280": {
+      "audio": [
+        "S_1.0/audio/SMC_280.flac",
+        "fc7524b62612a4e5994c25c972e54e6c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_280.beats",
+        "bb22e31fc75f1cadcefad48b775114a0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_280.bpm",
+        "d35510d31a422776b4841ea56dad0b73"
+      ]
+    },
+    "SMC_146": {
+      "audio": [
+        "S_1.0/audio/SMC_146.flac",
+        "36f389570bf98425817e274b80f2b291"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_146.beats",
+        "af5749ccde7634e6db91876fff61dab7"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_146.bpm",
+        "2a8db6aee7fa130b728d7ee5cdaf2b86"
+      ]
+    },
+    "SMC_003": {
+      "audio": [
+        "S_1.0/audio/SMC_003.flac",
+        "7145a6719e21a8f1f140be45539ffa32"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_003.beats",
+        "3e31bed019450158b95edfaa547139cc"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_003.bpm",
+        "590a803866191dc5e552cde9436b22ae"
+      ]
+    },
+    "SMC_279": {
+      "audio": [
+        "S_1.0/audio/SMC_279.flac",
+        "7b3e0fb5d9d84e7f4bda51498c8b68e7"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_279.beats",
+        "08c6cbc299661e9c5e107f6af7eb4c28"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_279.bpm",
+        "e1c36c71690dd01185eab293c1f7a454"
+      ]
+    },
+    "SMC_150": {
+      "audio": [
+        "S_1.0/audio/SMC_150.flac",
+        "f75889498cb9e3f648e643cbb574a836"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_150.beats",
+        "c29d7dc5a0a7f3602949e54717fd5848"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_150.bpm",
+        "ff6532c944834338a450e7b63cafd37a"
+      ]
+    },
+    "SMC_015": {
+      "audio": [
+        "S_1.0/audio/SMC_015.flac",
+        "e89dc862b13f18654f68013cdc24afda"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_015.beats",
+        "ba40450c08becf671d8b6dec2933c0e6"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_015.bpm",
+        "e2bb410af1b5f5363e7163273c0061df"
+      ]
+    },
+    "SMC_042": {
+      "audio": [
+        "S_1.0/audio/SMC_042.flac",
+        "b4571d7494723576802f07eb3459090a"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_042.beats",
+        "435d39d0bc83697a9cd84111f0473af9"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_042.bpm",
+        "ea9570c2cb5ade870b146d4ebe756ad9"
+      ]
+    },
+    "SMC_225": {
+      "audio": [
+        "S_1.0/audio/SMC_225.flac",
+        "72fc758198cb86a4ac77b22cbeb36aa9"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_225.beats",
+        "29063125206ac946e7d54790ea788286"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_225.bpm",
+        "048f3ed929a2204378a23c96104fe10d"
+      ]
+    },
+    "SMC_272": {
+      "audio": [
+        "S_1.0/audio/SMC_272.flac",
+        "be2f1593aaac87d6de81fcb4625d63f8"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_272.beats",
+        "1e1f5a7b3758bb0ae8f5b71756603d23"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_272.bpm",
+        "8f1fbffe91cd4008a8342d6c54c4cc82"
+      ]
+    },
+    "SMC_264": {
+      "audio": [
+        "S_1.0/audio/SMC_264.flac",
+        "e73989a8b6385ac1eab4fcfffe1018bd"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_264.beats",
+        "0d21f1fa739288e89eb1a06446c234f3"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_264.bpm",
+        "feaf9a10eadc21e2aff08087918de52f"
+      ]
+    },
+    "SMC_008": {
+      "audio": [
+        "S_1.0/audio/SMC_008.flac",
+        "8f7e9be61ad2ab39e85759ca855d8f78"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_008.beats",
+        "bf85e1fc9bad611343069f062f5886d2"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_008.bpm",
+        "afdbad6787bf0c07de89b695b1efbc4e"
+      ]
+    },
+    "SMC_248": {
+      "audio": [
+        "S_1.0/audio/SMC_248.flac",
+        "91c5325d52afded6efe82402de911e7e"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_248.beats",
+        "600e44c067645703cbf798580dda61ad"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_248.bpm",
+        "4dd2eba20f3189d5fcc0c68ca67bf7d2"
+      ]
+    },
+    "SMC_024": {
+      "audio": [
+        "S_1.0/audio/SMC_024.flac",
+        "5153a2538c1e345a5214e7536d869731"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_024.beats",
+        "88c74e2e5d438204f1649c391b12fd91"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_024.bpm",
+        "a6c67a358fa49838e5e540feefe26a58"
+      ]
+    },
+    "SMC_161": {
+      "audio": [
+        "S_1.0/audio/SMC_161.flac",
+        "5ca656f09e63b0c40c461ef7afb5dbcb"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_161.beats",
+        "76352c52cd18ecfb072b7c3c12130d05"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_161.bpm",
+        "40bd8724523c9bd8cb5251e6e1543cdb"
+      ]
+    },
+    "SMC_073": {
+      "audio": [
+        "S_1.0/audio/SMC_073.flac",
+        "4a0c3086624740b3a1f19c0bcf835ddf"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_073.beats",
+        "26aa8dccd59af71b2633c7ff3bf3a831"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_073.bpm",
+        "1313cc5b9fe9c8636c62d774b6ac0173"
+      ]
+    },
+    "SMC_209": {
+      "audio": [
+        "S_1.0/audio/SMC_209.flac",
+        "68d87100f8bacec4cfe278bc7680676e"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_209.beats",
+        "560d939e329e5f1078804eb92d650633"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_209.bpm",
+        "79eeaf0775b753adec82c8c034734483"
+      ]
+    },
+    "SMC_065": {
+      "audio": [
+        "S_1.0/audio/SMC_065.flac",
+        "df13f369c4f5c78e03bc6667cd57e7ef"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_065.beats",
+        "42ffabb892afb7f69dd1791256f76710"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_065.bpm",
+        "37aba52e25ff0eae544500367bf1992b"
+      ]
+    },
+    "SMC_120": {
+      "audio": [
+        "S_1.0/audio/SMC_120.flac",
+        "27ea98e7343df82fdb81beaea5552bb0"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_120.beats",
+        "26acb3122c38b06b61b4985177edb72e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_120.bpm",
+        "5104f1d7d10d53a765f84010a726136c"
+      ]
+    },
+    "SMC_198": {
+      "audio": [
+        "S_1.0/audio/SMC_198.flac",
+        "232088c856a927786d67b83440ba0cce"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_198.beats",
+        "50b899acc2304ed4f7e1890cabf09d50"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_198.bpm",
+        "e3e31843b83f9357e0d3917ec726b650"
+      ]
+    },
+    "SMC_032": {
+      "audio": [
+        "S_1.0/audio/SMC_032.flac",
+        "9d544c1e19f49fe4c03b2974f9dfb53f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_032.beats",
+        "a4f7644978e4b932acdd51140ad70324"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_032.bpm",
+        "21859944294c0a323a16f3f179448015"
+      ]
+    },
+    "SMC_100": {
+      "audio": [
+        "S_1.0/audio/SMC_100.flac",
+        "715dea52abd6b52a2cf31322b8931476"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_100.beats",
+        "db6d7cb682c60dc2e914fa58bed22eed"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_100.bpm",
+        "73cf0c5e5306ff49a4f551879484be19"
+      ]
+    },
+    "SMC_229": {
+      "audio": [
+        "S_1.0/audio/SMC_229.flac",
+        "e1884abdc60d22111597094915dbae7d"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_229.beats",
+        "f00b943134adb7290ec9eede87c5166a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_229.bpm",
+        "d822f5693d953d64bbe06a6e859302fb"
+      ]
+    },
+    "SMC_157": {
+      "audio": [
+        "S_1.0/audio/SMC_157.flac",
+        "f09c7e0be0090f42113976d0d92dd548"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_157.beats",
+        "956ee0dac5ec2797db2a99ac477e899b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_157.bpm",
+        "cf817e349103e5346f1e7cf890b75c9d"
+      ]
+    },
+    "SMC_012": {
+      "audio": [
+        "S_1.0/audio/SMC_012.flac",
+        "2ed3b4f485920e1e6fdee913fa6c0cc5"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_012.beats",
+        "793f59aec522ccc4c3704f4f43ade2a0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_012.bpm",
+        "935576a46ba372f1a7ff597f788f09cf"
+      ]
+    },
+    "SMC_004": {
+      "audio": [
+        "S_1.0/audio/SMC_004.flac",
+        "5c2e7999109bf071097253a3733e0a09"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_004.beats",
+        "ff3a485c8af3736d4aaff06fedb98527"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_004.bpm",
+        "eb2f2c8f0c12288649112d5ef5370bc3"
+      ]
+    },
+    "SMC_287": {
+      "audio": [
+        "S_1.0/audio/SMC_287.flac",
+        "a5e1d9cb05d3bf238885f5498f201aad"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_287.beats",
+        "544fa2f1fc27df7727faf352b0692ba9"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_287.bpm",
+        "993dc098f9b2d6eb296085a9c75b090f"
+      ]
+    },
+    "SMC_116": {
+      "audio": [
+        "S_1.0/audio/SMC_116.flac",
+        "3d649de6d16085accb9855e45633ea82"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_116.beats",
+        "2c166cfa36a60ad12588acb307066216"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_116.bpm",
+        "99f5a61b2b9f12c871897ab0ed70955a"
+      ]
+    },
+    "SMC_182": {
+      "audio": [
+        "S_1.0/audio/SMC_182.flac",
+        "1b99ceb90ce12a7e685f08a9c881490b"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_182.beats",
+        "09d73cc875c5d6ea6576e0db627aeb58"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_182.bpm",
+        "42df86981313ff75436af304402d731f"
+      ]
+    },
+    "SMC_028": {
+      "audio": [
+        "S_1.0/audio/SMC_028.flac",
+        "be7a77803cfa2f26dd914535b3335c80"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_028.beats",
+        "b21db615806106e4ab0d428e951f0840"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_028.bpm",
+        "4935d1dc2a3cabcdf9c19f8ae4daad78"
+      ]
+    },
+    "SMC_244": {
+      "audio": [
+        "S_1.0/audio/SMC_244.flac",
+        "4f155ed2a827dc19347a80188bb624dc"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_244.beats",
+        "bd573b3b1028ba2d5ef3671efc6c6767"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_244.bpm",
+        "98e0d688b772643da745410682936908"
+      ]
+    },
+    "SMC_213": {
+      "audio": [
+        "S_1.0/audio/SMC_213.flac",
+        "fac62e4d613406c682a1e00aab63a840"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_213.beats",
+        "811fb492ac4304e580606de1ba3fda28"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_213.bpm",
+        "69814051457e4190983aa1f8f3607664"
+      ]
+    },
+    "SMC_069": {
+      "audio": [
+        "S_1.0/audio/SMC_069.flac",
+        "8a04dd4e394374b89e0cbd18cd4c464f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_069.beats",
+        "87f886efabf99df68e68e76adf9a04e5"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_069.bpm",
+        "92a6e4c987e785b95b4b883f3459bdfd"
+      ]
+    },
+    "SMC_086": {
+      "audio": [
+        "S_1.0/audio/SMC_086.flac",
+        "fd5720346eaf81efa4d8927fc525a7f6"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_086.beats",
+        "ae787d0e24f3780436da1e8ec20d4e5c"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_086.bpm",
+        "c395d90708573ab39c8a40484b22957d"
+      ]
+    },
+    "SMC_205": {
+      "audio": [
+        "S_1.0/audio/SMC_205.flac",
+        "582c81fcc5d18b48e5a3c441632a9238"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_205.beats",
+        "0e87529c0d46bd6d1e4a74f659adfbb8"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_205.bpm",
+        "6511b9210d2bad422b8ccb5c451a1e42"
+      ]
+    },
+    "SMC_194": {
+      "audio": [
+        "S_1.0/audio/SMC_194.flac",
+        "f3631a79bcd457ae38af69727cfeb6cc"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_194.beats",
+        "9930a63d780825e8160ef8eb15d3e692"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_194.bpm",
+        "2845e3f4e050bf0f1d09522a05eb7a09"
+      ]
+    },
+    "SMC_252": {
+      "audio": [
+        "S_1.0/audio/SMC_252.flac",
+        "5c6c66738d15c6a0db59d77f2ec13c6a"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_252.beats",
+        "c010e09023a22a8f09cb70db5281e5b3"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_252.bpm",
+        "d8301ea8b334322ff00ccb53174bd9b8"
+      ]
+    },
+    "SMC_253": {
+      "audio": [
+        "S_1.0/audio/SMC_253.flac",
+        "52d00d18b70bd3fef2245cf62ae49cf0"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_253.beats",
+        "d76dbd906e30038c483eeb32d72c1ead"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_253.bpm",
+        "552f14422367b706119e02912aa1e7d5"
+      ]
+    },
+    "SMC_195": {
+      "audio": [
+        "S_1.0/audio/SMC_195.flac",
+        "9274a47bf57335d2f6939ef95e122781"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_195.beats",
+        "de6123b4f990dd835d06b38a55f29d79"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_195.bpm",
+        "132b7cbb4d5eba04dac58b3f4c22e841"
+      ]
+    },
+    "SMC_204": {
+      "audio": [
+        "S_1.0/audio/SMC_204.flac",
+        "959000c2b2f8ad0ec3cf4a9216cb380f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_204.beats",
+        "8d03dc084a94f2cdd08425fb550cb5e7"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_204.bpm",
+        "cc5cb6d1a195637fa47ed27ad5d82bc6"
+      ]
+    },
+    "SMC_068": {
+      "audio": [
+        "S_1.0/audio/SMC_068.flac",
+        "10361b1187ab2d6bab42a3e0433ba501"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_068.beats",
+        "294088e81afccea770b24bfceffc2e5e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_068.bpm",
+        "2b9f33c9257dfe45cc54cb418d2d5ff4"
+      ]
+    },
+    "SMC_087": {
+      "audio": [
+        "S_1.0/audio/SMC_087.flac",
+        "839bd2687e5d3585f20634d87319498d"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_087.beats",
+        "e4dbb9f5867ca621b1808a17652a9269"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_087.bpm",
+        "67f16f166f07875aaf33d5284b7d824e"
+      ]
+    },
+    "SMC_212": {
+      "audio": [
+        "S_1.0/audio/SMC_212.flac",
+        "a011e563d4bbe7d2f103a0f36c4c821c"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_212.beats",
+        "44e6bd3501b595611fbe837f2553b4d4"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_212.bpm",
+        "2a7cc4836ae839381c162a6ef1a561a3"
+      ]
+    },
+    "SMC_117": {
+      "audio": [
+        "S_1.0/audio/SMC_117.flac",
+        "86445d67de54f6f2cd1339f4ea009ce8"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_117.beats",
+        "9910bcbd647294264843b24bac505b79"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_117.bpm",
+        "eb039876bc32bb5ccc39ec1aec26c0e8"
+      ]
+    },
+    "SMC_052": {
+      "audio": [
+        "S_1.0/audio/SMC_052.flac",
+        "d28ad0f294295189e406ad45c5ebe8a5"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_052.beats",
+        "e8a88cb2106c6070dc8dd4961c57d77e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_052.bpm",
+        "3c6562b1237fc7f555e71c916db83cd0"
+      ]
+    },
+    "SMC_286": {
+      "audio": [
+        "S_1.0/audio/SMC_286.flac",
+        "e6bd9b0cc4c8399916737c4dfe6ed106"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_286.beats",
+        "9fe81f0836f563e49c286739bf2d775a"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_286.bpm",
+        "42c87e61a4488276b7cb34706f159718"
+      ]
+    },
+    "SMC_269": {
+      "audio": [
+        "S_1.0/audio/SMC_269.flac",
+        "b704054e91a27e5a7bee899ef6f9ec45"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_269.beats",
+        "317a64f819e6a596efaa2dcd71e1d37d"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_269.bpm",
+        "bc9bc13655607e909f589a02281f8521"
+      ]
+    },
+    "SMC_140": {
+      "audio": [
+        "S_1.0/audio/SMC_140.flac",
+        "fc090634ced10acabac73f8389a1bddc"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_140.beats",
+        "4baa574318dea9ee79f09811be4c4d7d"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_140.bpm",
+        "a091bb2b39e13fd12eb1aee4e3abbf84"
+      ]
+    },
+    "SMC_005": {
+      "audio": [
+        "S_1.0/audio/SMC_005.flac",
+        "29b04f3b444a5b541c48e9b0ba93e999"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_005.beats",
+        "2cdd7237efcfcb84b6e96767afb3087e"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_005.bpm",
+        "5ddcab5138804744a73743f6ed66f67e"
+      ]
+    },
+    "SMC_013": {
+      "audio": [
+        "S_1.0/audio/SMC_013.flac",
+        "25b9f9cc74913cfbc96cf3b6a85571dd"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_013.beats",
+        "deb41e8339167953a60b3f79ec49c748"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_013.bpm",
+        "02c421e2d52ddeed29d5123b29f017cc"
+      ]
+    },
+    "SMC_101": {
+      "audio": [
+        "S_1.0/audio/SMC_101.flac",
+        "c13df37ed4683cfcb328a6becdd8af3f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_101.beats",
+        "d1e4551f17d837a2bf2d0b1e131d860b"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_101.bpm",
+        "16d7c6d7027fcaafdff3c77f0a91bd96"
+      ]
+    },
+    "SMC_044": {
+      "audio": [
+        "S_1.0/audio/SMC_044.flac",
+        "b8729d8aa7f8bbfa4b97b1daad9ab12f"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_044.beats",
+        "f8a024ec06d3338be7d369d35ef4b663"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_044.bpm",
+        "c4245374090516ec2429fa25af1b341b"
+      ]
+    },
+    "SMC_199": {
+      "audio": [
+        "S_1.0/audio/SMC_199.flac",
+        "e8c17fc14e7b4e63ab1d68a5d05bded7"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_199.beats",
+        "70f58ec9d9d8010455212490ca466abf"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_199.bpm",
+        "7820be73f96f00b4c84ec8146ed159ec"
+      ]
+    },
+    "SMC_033": {
+      "audio": [
+        "S_1.0/audio/SMC_033.flac",
+        "4e52071401fc30174e7056ec9cd2274e"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_033.beats",
+        "1fb0ecc6eba3281157814b14ac320eb5"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_033.bpm",
+        "cabd78a0004644d135f85d1f0acf351e"
+      ]
+    },
+    "SMC_176": {
+      "audio": [
+        "S_1.0/audio/SMC_176.flac",
+        "a33f3bc6f9624626681743bb6bdc84a0"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_176.beats",
+        "b88dd0c9a4ecf67439b6604b9f577388"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_176.bpm",
+        "b5919c5849db1a4631a42709fdc0d069"
+      ]
+    },
+    "SMC_064": {
+      "audio": [
+        "S_1.0/audio/SMC_064.flac",
+        "ddb8fd1ad297d54e7bac0ede79edc160"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_064.beats",
+        "d9a671e1419aff1fa0c32612541aa3a5"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_064.bpm",
+        "e1e3a8d458ba69e569c399a1fc6c98f1"
+      ]
+    },
+    "SMC_121": {
+      "audio": [
+        "S_1.0/audio/SMC_121.flac",
+        "3a136ed88c467a389df04af8eb2b065b"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_121.beats",
+        "52836918888edb3b5c05fe70cd9aa272"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_121.bpm",
+        "48e4a81b089d59423e8b0fbabd1a0028"
+      ]
+    },
+    "SMC_208": {
+      "audio": [
+        "S_1.0/audio/SMC_208.flac",
+        "8d7918bf8a8ddcf0a95c4b77432da8ed"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_208.beats",
+        "9fc7ad983c9433083841c3aa0bb6f4d1"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_208.bpm",
+        "2a0cbd7c72fbf74c8a9a45ec29101e9f"
+      ]
+    },
+    "SMC_072": {
+      "audio": [
+        "S_1.0/audio/SMC_072.flac",
+        "b036bc58ef05074a16d8c41a654369c7"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_072.beats",
+        "6271bc838e15939cae12924e03eb2bdf"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_072.bpm",
+        "eb3cc30053fd1c6b74d2c67e14fddc16"
+      ]
+    },
+    "SMC_137": {
+      "audio": [
+        "S_1.0/audio/SMC_137.flac",
+        "13d225b8c928d32b8b4a7533cf65b946"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_137.beats",
+        "02076f6e6de1a929618524073f6b6fa0"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_137.bpm",
+        "153e4f8b368f8dc333737d052067a8b5"
+      ]
+    },
+    "SMC_249": {
+      "audio": [
+        "S_1.0/audio/SMC_249.flac",
+        "03484c8ecc778e29a01ed0b8e07d16fb"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_249.beats",
+        "0fdac7b0fb1edffe9a6d88f55ba45a4d"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_249.bpm",
+        "b5ec23a5ee07ea298af616eb6690527d"
+      ]
+    },
+    "SMC_232": {
+      "audio": [
+        "S_1.0/audio/SMC_232.flac",
+        "7dc95729c222c43b7bb03870ad274684"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_232.beats",
+        "f8025fca095fe999755495bd01349127"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_232.bpm",
+        "cea4052e9e0f81f2e48752432588b388"
+      ]
+    },
+    "SMC_009": {
+      "audio": [
+        "S_1.0/audio/SMC_009.flac",
+        "097ab300381faf2e68a3cd43af03cea9"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_009.beats",
+        "93a000382e9c8d567fa33207c1e48aa6"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_009.bpm",
+        "b985e5210bf7c8dcaf311ff8153a8a25"
+      ]
+    },
+    "SMC_265": {
+      "audio": [
+        "S_1.0/audio/SMC_265.flac",
+        "1d6a24190cdb7bf4e7745ea0f63b1545"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_265.beats",
+        "98925acebd02a3f3c8a2ed9b9c6e0d92"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_265.bpm",
+        "2daba1084ea361fc858ea31bd6179f81"
+      ]
+    },
+    "SMC_273": {
+      "audio": [
+        "S_1.0/audio/SMC_273.flac",
+        "00892c3c0d85119b48eacb9741c0cbb6"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_273.beats",
+        "2c38c1563bbf4342c6ab0414fb498063"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_273.bpm",
+        "36ce5110f8890dcfac83e16fcff92895"
+      ]
+    },
+    "SMC_048": {
+      "audio": [
+        "S_1.0/audio/SMC_048.flac",
+        "9db8c8046d1cc907d634dae6680347c7"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_048.beats",
+        "b2f154aad954d1f42c5d35c4acb48b7c"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_048.bpm",
+        "f91dfa8f3144efd6c11ce24f68350c35"
+      ]
+    },
+    "SMC_224": {
+      "audio": [
+        "S_1.0/audio/SMC_224.flac",
+        "0ad443d3cb7ca021873c9b4957b106a6"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/SMC_224.beats",
+        "8881bc094a0d32096386c2ae5f03c480"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/SMC_224.bpm",
+        "dbb1330c4bfd915e949b77b7e2aaf02c"
+      ]
+    }
+  }
+}

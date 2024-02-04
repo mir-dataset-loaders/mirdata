@@ -395,9 +395,17 @@ scms
 
 
 slakh
-^^^^^^^^^^^^^^^^^
+^^^^^
 
 .. automodule:: mirdata.datasets.slakh
+   :members:
+   :inherited-members:
+
+
+smc
+^^^
+
+.. automodule:: mirdata.datasets.smc
    :members:
    :inherited-members:
 
