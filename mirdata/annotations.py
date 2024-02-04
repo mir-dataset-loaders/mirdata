@@ -1,5 +1,6 @@
 """mirdata annotation data types
 """
+
 import logging
 import re
 from typing import List, Optional, Tuple
@@ -681,9 +682,9 @@ class MultiF0Data(Annotation):
         nonzero_freqs = (
             frequencies_flattened > 0
         )  # find indexes for frequencies not equal to 0
-        frequencies_flattened[
-            frequencies_flattened == 0
-        ] = 1  # change zero frequency value to avoid NaN
+        frequencies_flattened[frequencies_flattened == 0] = (
+            1  # change zero frequency value to avoid NaN
+        )
         freq_indexes = closest_index(
             np.log(frequencies_flattened)[:, np.newaxis],
             np.log(frequency_scale)[:, np.newaxis],
@@ -1249,9 +1250,11 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
     # if input is a nested list, call this function recursively
     if isinstance(pitches, list) and isinstance(pitches[0], list):
         return [
-            []
-            if len(plist) == 0
-            else list(convert_pitch_units(plist, pitch_unit, target_pitch_unit))
+            (
+                []
+                if len(plist) == 0
+                else list(convert_pitch_units(plist, pitch_unit, target_pitch_unit))
+            )
             for plist in pitches
         ]
 
@@ -1319,11 +1322,13 @@ def convert_amplitude_units(amplitude, amplitude_unit, target_amplitude_unit):
     # if input is a nested list, call this function recursively
     if isinstance(amplitude, list) and isinstance(amplitude[0], list):
         return [
-            []
-            if len(alist) == 0
-            else list(
-                convert_amplitude_units(
-                    np.array(alist), amplitude_unit, target_amplitude_unit
+            (
+                []
+                if len(alist) == 0
+                else list(
+                    convert_amplitude_units(
+                        np.array(alist), amplitude_unit, target_amplitude_unit
+                    )
                 )
             )
             for alist in amplitude
