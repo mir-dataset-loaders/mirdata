@@ -25,6 +25,15 @@
      - - .. image:: https://img.shields.io/badge/license-custom-orange
             :target: https://zenodo.org/record/6868083
 
+   * - Ballroom 
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`beats`
+       - :ref:`tempo`
+     - 698
+     - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
+          :target: http://creativecommons.org/publicdomain/zero/1.0/
+
    * - Beatles
      - - audio: ❌
        - annotations: ✅

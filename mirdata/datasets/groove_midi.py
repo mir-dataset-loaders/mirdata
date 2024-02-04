@@ -45,6 +45,7 @@
     For more details, please visit: http://magenta.tensorflow.org/datasets/groove
 
 """
+
 import csv
 import os
 from typing import BinaryIO, Optional, Tuple
