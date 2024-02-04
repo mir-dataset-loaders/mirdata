@@ -27,6 +27,13 @@ baf
 .. automodule:: mirdata.datasets.baf
    :members:
    :inherited-members:
+
+ballroom
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.ballroom
+   :members:
+   :inherited-members:
    
 
 beatles

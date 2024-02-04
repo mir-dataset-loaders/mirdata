@@ -14,6 +14,7 @@
     For more details, please visit: https://github.com/DDMAL/salami-data-public
 
 """
+
 import csv
 import os
 from typing import Optional, TextIO, Tuple
