@@ -85,16 +85,20 @@ class Track(core.Track):
         genre (str): genre of the song
         sections_annotator1_lowercase_path (str): path to annotations in hierarchy level 1 from annotator 1
         sections_annotator1_uppercase_path (str): path to annotations in hierarchy level 0 from annotator 1
+        sections_annotator1_functions_path (str): path to annotations in functions level from annotator 1
         sections_annotator2_lowercase_path (str): path to annotations in hierarchy level 1 from annotator 2
         sections_annotator2_uppercase_path (str): path to annotations in hierarchy level 0 from annotator 2
+        sections_annotator2_functions_path (str): path to annotations in functions level from annotator 2
         source (str): dataset or source of song
         title (str): title of the song
 
     Cached Properties:
         sections_annotator_1_uppercase (SectionData): annotations in hierarchy level 0 from annotator 1
         sections_annotator_1_lowercase (SectionData): annotations in hierarchy level 1 from annotator 1
+        sections_annotator_1_functions (SectionData): annotations in functions level from annotator 1
         sections_annotator_2_uppercase (SectionData): annotations in hierarchy level 0 from annotator 2
         sections_annotator_2_lowercase (SectionData): annotations in hierarchy level 1 from annotator 2
+        sections_annotator_2_functions (SectionData): annotations in functions level from annotator 2
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -102,8 +106,10 @@ class Track(core.Track):
 
         self.sections_annotator1_uppercase_path = self.get_path("annotator_1_uppercase")
         self.sections_annotator1_lowercase_path = self.get_path("annotator_1_lowercase")
+        self.sections_annotator1_functions_path = self.get_path("annotator_1_functions")
         self.sections_annotator2_uppercase_path = self.get_path("annotator_2_uppercase")
         self.sections_annotator2_lowercase_path = self.get_path("annotator_2_lowercase")
+        self.sections_annotator2_functions_path = self.get_path("annotator_2_functions")
 
         self.audio_path = self.get_path("audio")
 
@@ -156,12 +162,20 @@ class Track(core.Track):
         return load_sections(self.sections_annotator1_lowercase_path)
 
     @core.cached_property
+    def sections_annotator_1_functions(self) -> Optional[annotations.SectionData]:
+        return load_sections(self.sections_annotator1_functions_path)
+
+    @core.cached_property
     def sections_annotator_2_uppercase(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_annotator2_uppercase_path)
 
     @core.cached_property
     def sections_annotator_2_lowercase(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_annotator2_lowercase_path)
+
+    @core.cached_property
+    def sections_annotator_2_functions(self) -> Optional[annotations.SectionData]:
+        return load_sections(self.sections_annotator2_functions_path)
 
     @property
     def audio(self) -> Tuple[np.ndarray, float]:
@@ -181,24 +195,24 @@ class Track(core.Track):
             jams.JAMS: the track's data in jams format
 
         """
+
+        annotations = [
+            (self.sections_annotator_1_uppercase, "annotator 1"),
+            (self.sections_annotator_1_lowercase, "annotator 1"),
+            (self.sections_annotator_1_functions, "annotator 1"),
+            (self.sections_annotator_2_uppercase, "annotator 2"),
+            (self.sections_annotator_2_lowercase, "annotator 2"),
+            (self.sections_annotator_2_functions, "annotator 2"),
+        ]
+
+        section_data = []
+        for data, description in annotations:
+            if data is not None:
+                section_data.append((data, description))
+
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            multi_section_data=[
-                (
-                    [
-                        (self.sections_annotator_1_uppercase, 0),
-                        (self.sections_annotator_1_lowercase, 1),
-                    ],
-                    "annotator_1",
-                ),
-                (
-                    [
-                        (self.sections_annotator_2_uppercase, 0),
-                        (self.sections_annotator_2_lowercase, 1),
-                    ],
-                    "annotator_2",
-                ),
-            ],
+            section_data=section_data,
             metadata=self._track_metadata,
         )
 
@@ -241,11 +255,23 @@ def load_sections(fhandle: TextIO) -> annotations.SectionData:
     # remove sections with length == 0
     times_revised = np.delete(times, np.where(np.diff(times) == 0))
     secs_revised = np.delete(secs, np.where(np.diff(times) == 0))
+
+    # Pick label unit based on file name.
+    if "lowercase" in fhandle.name:
+        label_unit = "salami_lower"
+    elif "uppercase" in fhandle.name:
+        label_unit = "salami_upper"
+    elif "function" in fhandle.name:
+        # TODO label_unit = "salami_function"
+        label_unit = "open"
+    else:
+        raise ValueError("Unknown filename", fhandle)
+
     return annotations.SectionData(
-        np.array([times_revised[:-1], times_revised[1:]]).T,
-        "s",
-        list(secs_revised[:-1]),
-        "open",
+        intervals=np.array([times_revised[:-1], times_revised[1:]]).T,
+        interval_unit="s",
+        labels=list(secs_revised[:-1]),
+        label_unit=label_unit,
     )
 
 
