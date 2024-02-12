@@ -335,6 +335,13 @@ queen
 
 .. automodule:: mirdata.datasets.queen
    :members:
+
+rock
+^^^^
+
+.. automodule:: mirdata.datasets.rock
+   :members:
+   :inherited-members:
    
 
 rwc_classical

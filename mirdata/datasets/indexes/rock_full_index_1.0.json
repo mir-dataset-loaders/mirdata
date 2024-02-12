@@ -1,0 +1,955 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "rock_not_fade_away": {
+      "audio": [
+        "R_1.0/audio/rock_not_fade_away.flac",
+        "85fcaaf5759c71c1a0977b9175d38eaa"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_not_fade_away.beats",
+        "c55c54527e5573ad9d9df5b47dc04f04"
+      ]
+    },
+    "rock_dancing_in_the_street": {
+      "audio": [
+        "R_1.0/audio/rock_dancing_in_the_street.flac",
+        "c260020e71c6cb0e9d74716c528258e4"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_dancing_in_the_street.beats",
+        "a632c7b07605b27865d90f419a739c26"
+      ]
+    },
+    "rock_my_girl": {
+      "audio": [
+        "R_1.0/audio/rock_my_girl.flac",
+        "8fa5a1aeb6ed4e4a8b73abd8eb6a1ae7"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_my_girl.beats",
+        "0b1f70c10203a207ecd83099be223d67"
+      ]
+    },
+    "rock_suspicious_minds": {
+      "audio": [
+        "R_1.0/audio/rock_suspicious_minds.flac",
+        "083f7c42178fb8f0200de4a389f3631f"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_suspicious_minds.beats",
+        "66f4578d82ded62a70da206f48f5a8cf"
+      ]
+    },
+    "rock_in_the_still_of_the_night": {
+      "audio": [
+        "R_1.0/audio/rock_in_the_still_of_the_night.flac",
+        "6d01929879920860d193a6476ea72de7"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_in_the_still_of_the_night.beats",
+        "1a301ade9a06b56154b99c79d9f38449"
+      ]
+    },
+    "rock_who_do_you_love": {
+      "audio": [
+        "R_1.0/audio/rock_who_do_you_love.flac",
+        "76cd498393b97bed0ae26222b72094a5"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_who_do_you_love.beats",
+        "8ae4789ca57989ac9434782502a0e7a1"
+      ]
+    },
+    "rock_foxey_lady": {
+      "audio": [
+        "R_1.0/audio/rock_foxey_lady.flac",
+        "d16fd1f9a6ae9eca08710d2eb5b9ea52"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_foxey_lady.beats",
+        "95e48fa1249173fc29107d1b0ee0898c"
+      ]
+    },
+    "rock_a_whiter_shade_of_pale": {
+      "audio": [
+        "R_1.0/audio/rock_a_whiter_shade_of_pale.flac",
+        "5c5758fa0e423f4a3817d322c63cfb59"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_a_whiter_shade_of_pale.beats",
+        "26871838a8af120f27cc6580e190bc3e"
+      ]
+    },
+    "rock_i_want_you_back": {
+      "audio": [
+        "R_1.0/audio/rock_i_want_you_back.flac",
+        "6cb3da5ff4044f976543648146f3c94e"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_want_you_back.beats",
+        "cb4b419c75d2bc38898036d62d8646a0"
+      ]
+    },
+    "rock_billie_jean": {
+      "audio": [
+        "R_1.0/audio/rock_billie_jean.flac",
+        "a02a82636a1c05127bdde678c685d3ba"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_billie_jean.beats",
+        "494bc8edc82b2ac5f9fb03b081cbd9a0"
+      ]
+    },
+    "rock_rock_around_the_clock": {
+      "audio": [
+        "R_1.0/audio/rock_rock_around_the_clock.flac",
+        "185309f7021e3a551111d3a16cde3662"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_rock_around_the_clock.beats",
+        "8ae1d4eb17abb51986d928e87cea05fb"
+      ]
+    },
+    "rock_tears_in_heaven": {
+      "audio": [
+        "R_1.0/audio/rock_tears_in_heaven.flac",
+        "bedd3570ee7b84796794aa6cc21ec836"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_tears_in_heaven.beats",
+        "5e26779fadbaf8fe84821303fa7178d6"
+      ]
+    },
+    "rock_georgia_on_my_mind": {
+      "audio": [
+        "R_1.0/audio/rock_georgia_on_my_mind.flac",
+        "3149073ca7f70d1ae2397a0fd7df1547"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_georgia_on_my_mind.beats",
+        "8415a05550964225fbedf6717e9ca117"
+      ]
+    },
+    "rock_i_believe_i_can_fly": {
+      "audio": [
+        "R_1.0/audio/rock_i_believe_i_can_fly.flac",
+        "8c060050b25d49d198378ec908ee4c6d"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_believe_i_can_fly.beats",
+        "d8478f9ecfcd6909f4308598fd47b3ee"
+      ]
+    },
+    "rock_a_day_in_the_life": {
+      "audio": [
+        "R_1.0/audio/rock_a_day_in_the_life.flac",
+        "30c66b273e00228b349d6267dc339af9"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_a_day_in_the_life.beats",
+        "b16d4761b4d7df38cc5f1c146bd2c583"
+      ]
+    },
+    "rock_the_tracks_of_my_tears": {
+      "audio": [
+        "R_1.0/audio/rock_the_tracks_of_my_tears.flac",
+        "f74185e21fb454f798bd6ab179ec0bdf"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_the_tracks_of_my_tears.beats",
+        "ca747908f6dc029ba9268e2602c33624"
+      ]
+    },
+    "rock_rockin_in_the_free_world": {
+      "audio": [
+        "R_1.0/audio/rock_rockin_in_the_free_world.flac",
+        "70f1099246fef8f37e594580fa709846"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_rockin_in_the_free_world.beats",
+        "895f99e6bcb3e34b242e598373cd0ada"
+      ]
+    },
+    "rock_i_heard_it_through_the_grapevine": {
+      "audio": [
+        "R_1.0/audio/rock_i_heard_it_through_the_grapevine.flac",
+        "98a4f9852ce624810527dc8c3ab68fa7"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_heard_it_through_the_grapevine.beats",
+        "1f052853ec77579e156aa717b708e696"
+      ]
+    },
+    "rock_cathys_clown": {
+      "audio": [
+        "R_1.0/audio/rock_cathys_clown.flac",
+        "42aed7078a72e7e183ed1900f9823419"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_cathys_clown.beats",
+        "383c005b197fd243373edef303f0a2ed"
+      ]
+    },
+    "rock_a_change_is_gonna_come": {
+      "audio": [
+        "R_1.0/audio/rock_a_change_is_gonna_come.flac",
+        "01a15ce0801c6325fdc43721bb4a8a16"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_a_change_is_gonna_come.beats",
+        "ef59eeae24ab8e05c0e4c1b69e540841"
+      ]
+    },
+    "rock_whatd_i_say": {
+      "audio": [
+        "R_1.0/audio/rock_whatd_i_say.flac",
+        "b0a1beec75ee3d76873d33260d7b3b96"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_whatd_i_say.beats",
+        "e701e55d59ac48c923ef6e7696dd153d"
+      ]
+    },
+    "rock_hot_stuff": {
+      "audio": [
+        "R_1.0/audio/rock_hot_stuff.flac",
+        "3f63cf82031e0666fe5ca031ec59ccc7"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_hot_stuff.beats",
+        "2cd9772c611a8e90f80dd6bbcff8ab09"
+      ]
+    },
+    "rock_the_message": {
+      "audio": [
+        "R_1.0/audio/rock_the_message.flac",
+        "dbf0f7ae99c7f5dba1a78999959f0136"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_the_message.beats",
+        "91b2f8ca048176e5bcb4c491f524502b"
+      ]
+    },
+    "rock_louie_louie": {
+      "audio": [
+        "R_1.0/audio/rock_louie_louie.flac",
+        "516828904377d9bd634019df15315adc"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_louie_louie.beats",
+        "51c394232d1210f3a99ccac73721242b"
+      ]
+    },
+    "rock_i_cant_stop_loving_you": {
+      "audio": [
+        "R_1.0/audio/rock_i_cant_stop_loving_you.flac",
+        "55b8995d1abddedb0b84142072455c89"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_cant_stop_loving_you.beats",
+        "b886f76eba98a8b1bb48d71f885b5bec"
+      ]
+    },
+    "rock_rock_lobster": {
+      "audio": [
+        "R_1.0/audio/rock_rock_lobster.flac",
+        "bb550793b158e743eab98b96718893ae"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_rock_lobster.beats",
+        "53422e19065661b6150b219a5d21f232"
+      ]
+    },
+    "rock_blueberry_hill": {
+      "audio": [
+        "R_1.0/audio/rock_blueberry_hill.flac",
+        "ccf4f8b464e8eb8a7741e908ab59a89c"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_blueberry_hill.beats",
+        "838dd17f46e28e34dfe2f858451911c3"
+      ]
+    },
+    "rock_with_or_without_you": {
+      "audio": [
+        "R_1.0/audio/rock_with_or_without_you.flac",
+        "6e18c06c1fdf31658ce660b17f59932b"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_with_or_without_you.beats",
+        "0a782146d21ad7b438791454fcb52900"
+      ]
+    },
+    "rock_when_a_man_loves_a_woman": {
+      "audio": [
+        "R_1.0/audio/rock_when_a_man_loves_a_woman.flac",
+        "588b8327534c6766ffd1055717795c37"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_when_a_man_loves_a_woman.beats",
+        "216d937c34bd8830b4370415586114f3"
+      ]
+    },
+    "rock_no_woman_no_cry": {
+      "audio": [
+        "R_1.0/audio/rock_no_woman_no_cry.flac",
+        "064bd180499032c08eef3041781eea86"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_no_woman_no_cry.beats",
+        "b99922882279ba4be379e9f9f6bad0f7"
+      ]
+    },
+    "rock_people_get_ready": {
+      "audio": [
+        "R_1.0/audio/rock_people_get_ready.flac",
+        "474ac36666c1cf8ec22683bf4f822f0e"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_people_get_ready.beats",
+        "dcfbc144e299ee542e5946bf05331c4a"
+      ]
+    },
+    "rock_blitzkrieg_bop": {
+      "audio": [
+        "R_1.0/audio/rock_blitzkrieg_bop.flac",
+        "a1ac3bdc0a5232131018e97e6ebeffe3"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_blitzkrieg_bop.beats",
+        "23943b9d8e17d46fb02799d5cc34482d"
+      ]
+    },
+    "rock_losing_my_religion": {
+      "audio": [
+        "R_1.0/audio/rock_losing_my_religion.flac",
+        "3ebf0ae41764b424ca73efb478613a51"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_losing_my_religion.beats",
+        "ad88fb3c500ebf7bc4f4b1fe3821720d"
+      ]
+    },
+    "rock_papa_was_a_rollin_stone": {
+      "audio": [
+        "R_1.0/audio/rock_papa_was_a_rollin_stone.flac",
+        "b0d18c8daf082847711c943a41d90a10"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_papa_was_a_rollin_stone.beats",
+        "3c44114559ff8683d11227d7b81a1db1"
+      ]
+    },
+    "rock_youve_lost_that_lovin_feelin": {
+      "audio": [
+        "R_1.0/audio/rock_youve_lost_that_lovin_feelin.flac",
+        "7763d51c286e1df6836d86a06bd2e819"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_youve_lost_that_lovin_feelin.beats",
+        "12862583c6082301d8d1acd80706a32d"
+      ]
+    },
+    "rock_i_cant_make_you_love_me": {
+      "audio": [
+        "R_1.0/audio/rock_i_cant_make_you_love_me.flac",
+        "4f332d27d20550dd587f0c01559b2de5"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_cant_make_you_love_me.beats",
+        "2ad0e7c299948f6818a79e586e8ea6d2"
+      ]
+    },
+    "rock_imagine": {
+      "audio": [
+        "R_1.0/audio/rock_imagine.flac",
+        "1a59dc7ea4723143b2b0d3f9fccd1687"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_imagine.beats",
+        "d176013f1d7b0786b994c819911b98c1"
+      ]
+    },
+    "rock_everyday_people": {
+      "audio": [
+        "R_1.0/audio/rock_everyday_people.flac",
+        "f9dafa7cb5949a3363180fca1e373183"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_everyday_people.beats",
+        "cbfb569b889d5e4443c7d2b377efec6e"
+      ]
+    },
+    "rock_california_love": {
+      "audio": [
+        "R_1.0/audio/rock_california_love.flac",
+        "ac00591229eb8a029868b0428865b119"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_california_love.beats",
+        "31a1759eece1468c29a5967911aebfd6"
+      ]
+    },
+    "rock_she_loves_you": {
+      "audio": [
+        "R_1.0/audio/rock_she_loves_you.flac",
+        "885ca40bd658097bbb910c09c12af853"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_she_loves_you.beats",
+        "1e2bab85ffb0a6bbb40c438980e35a46"
+      ]
+    },
+    "rock_i_want_to_hold_your_hand": {
+      "audio": [
+        "R_1.0/audio/rock_i_want_to_hold_your_hand.flac",
+        "486765d860e9d46309fd7801645c180c"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_want_to_hold_your_hand.beats",
+        "c4cc04d267f2a1c696338bd1d925ad0f"
+      ]
+    },
+    "rock_i_still_havent_found_what_im_looking_for": {
+      "audio": [
+        "R_1.0/audio/rock_i_still_havent_found_what_im_looking_for.flac",
+        "71738897f258e84bd607fc6966add1fd"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_still_havent_found_what_im_looking_for.beats",
+        "2b16bd296b67b959c1f8d145f2a66284"
+      ]
+    },
+    "rock_paint_it_black": {
+      "audio": [
+        "R_1.0/audio/rock_paint_it_black.flac",
+        "a040af9d9c3c4321a8be987d863f136f"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_paint_it_black.beats",
+        "40947441a4de223973463455f31e130a"
+      ]
+    },
+    "rock_for_what_its_worth": {
+      "audio": [
+        "R_1.0/audio/rock_for_what_its_worth.flac",
+        "6a55db562d2557df9bc2d4514c98187f"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_for_what_its_worth.beats",
+        "874864000cab6e52c14d394630e2e61c"
+      ]
+    },
+    "rock_papas_got_a_brand_new_bag": {
+      "audio": [
+        "R_1.0/audio/rock_papas_got_a_brand_new_bag.flac",
+        "8d60774134406ce15f53b8039b5e953c"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_papas_got_a_brand_new_bag.beats",
+        "8351097f5364cf2cddb0f354a04e8c49"
+      ]
+    },
+    "rock_nothing_compares_2_u": {
+      "audio": [
+        "R_1.0/audio/rock_nothing_compares_2_u.flac",
+        "01f2fea041a7e2860a56f4ff95692595"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_nothing_compares_2_u.beats",
+        "6d21cbb52ce5797ce0b70bf3d80acffd"
+      ]
+    },
+    "rock_stand_by_me": {
+      "audio": [
+        "R_1.0/audio/rock_stand_by_me.flac",
+        "bf50b0e155516c85ac11245043866eb5"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_stand_by_me.beats",
+        "10cc82886a79ae8086e09242f9edfb2c"
+      ]
+    },
+    "rock_all_apologies": {
+      "audio": [
+        "R_1.0/audio/rock_all_apologies.flac",
+        "17d9021b63bab77a11c80ef90d1c25d2"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_all_apologies.beats",
+        "176de93ce964c67b67d8669560a01103"
+      ]
+    },
+    "rock_born_to_be_wild": {
+      "audio": [
+        "R_1.0/audio/rock_born_to_be_wild.flac",
+        "9c348131481cee7dce6ddb0ccc17210a"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_born_to_be_wild.beats",
+        "53389750abb16a107f9923d4eeee6b71"
+      ]
+    },
+    "rock_please_please_please": {
+      "audio": [
+        "R_1.0/audio/rock_please_please_please.flac",
+        "bda91f5c4bb1c6cc68d1a668f818d1e5"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_please_please_please.beats",
+        "ee6d09c081f2b46d4917b8201b577df0"
+      ]
+    },
+    "rock_honky_tonk_women": {
+      "audio": [
+        "R_1.0/audio/rock_honky_tonk_women.flac",
+        "9f2ec9188a0359e69651390139839b30"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_honky_tonk_women.beats",
+        "8be5618d0799d1966c7f9c720d640290"
+      ]
+    },
+    "rock_i_wanna_be_sedated": {
+      "audio": [
+        "R_1.0/audio/rock_i_wanna_be_sedated.flac",
+        "2d00459ab7ca6ab4ec344db6380ea6ca"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_wanna_be_sedated.beats",
+        "8a28107a30af239d36046cada2efe1e1"
+      ]
+    },
+    "rock_bohemian_rhapsody": {
+      "audio": [
+        "R_1.0/audio/rock_bohemian_rhapsody.flac",
+        "15826867916db5eae51abbefa4cc1e0c"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_bohemian_rhapsody.beats",
+        "065b1324573ce4620b111962fe5af69c"
+      ]
+    },
+    "rock_jailhouse_rock": {
+      "audio": [
+        "R_1.0/audio/rock_jailhouse_rock.flac",
+        "c3c4892740dcc967f31850ceec34791c"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_jailhouse_rock.beats",
+        "638d3749803dc5d157f17e8e5b877e74"
+      ]
+    },
+    "rock_lust_for_life": {
+      "audio": [
+        "R_1.0/audio/rock_lust_for_life.flac",
+        "1e4b3549e8fefdf4bf1a081dadb5890b"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_lust_for_life.beats",
+        "e5cc012602e6725a40ef1db2c55452b4"
+      ]
+    },
+    "rock_fake_plastic_trees": {
+      "audio": [
+        "R_1.0/audio/rock_fake_plastic_trees.flac",
+        "0ca58d960cdb9aea1d59b352f3f8e0be"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_fake_plastic_trees.beats",
+        "faa4e57a852e07a89f162dcf84caac84"
+      ]
+    },
+    "rock_both_sides_now": {
+      "audio": [
+        "R_1.0/audio/rock_both_sides_now.flac",
+        "a3b03aeb043b7da20653536183bb4b39"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_both_sides_now.beats",
+        "2eb5c54ac4abb75b37681b304109ce31"
+      ]
+    },
+    "rock_i_walk_the_line": {
+      "audio": [
+        "R_1.0/audio/rock_i_walk_the_line.flac",
+        "6098d95d4a320d622e3a64cf9dce354e"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_walk_the_line.beats",
+        "c2c00450e768296b641239d7b06f8b3a"
+      ]
+    },
+    "rock_rave_on": {
+      "audio": [
+        "R_1.0/audio/rock_rave_on.flac",
+        "ca587fd2388dc38e6189c073af445fbf"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_rave_on.beats",
+        "f2f70f991b5c2d8ed35bfaa7772f419c"
+      ]
+    },
+    "rock_your_song": {
+      "audio": [
+        "R_1.0/audio/rock_your_song.flac",
+        "acbaa444d2d6922ecaa21cce90b2f38e"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_your_song.beats",
+        "b8f27143f7f4a27da3a7a70420b60a12"
+      ]
+    },
+    "rock_september_gurls": {
+      "audio": [
+        "R_1.0/audio/rock_september_gurls.flac",
+        "b59408bbdbe0080e51190d4c0637022a"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_september_gurls.beats",
+        "c9644a44f0596244b8f74bae640c26a5"
+      ]
+    },
+    "rock_jumpin_jack_flash": {
+      "audio": [
+        "R_1.0/audio/rock_jumpin_jack_flash.flac",
+        "e1c11f5fc2778002f90af58731485a4c"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_jumpin_jack_flash.beats",
+        "5ef7b70a277293f13a1d4f1e5d68f943"
+      ]
+    },
+    "rock_hound_dog": {
+      "audio": [
+        "R_1.0/audio/rock_hound_dog.flac",
+        "9ceeab15ffffb584a97cfb0c4d6973b0"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_hound_dog.beats",
+        "e441adc422a82f235ff08bf2216bb3c0"
+      ]
+    },
+    "rock_lose_yourself": {
+      "audio": [
+        "R_1.0/audio/rock_lose_yourself.flac",
+        "535029b2d1db7e67d5788e33c564d9d5"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_lose_yourself.beats",
+        "759e17d07192ecf89e8d3340fd3bd086"
+      ]
+    },
+    "rock_river_deep_mountain_high": {
+      "audio": [
+        "R_1.0/audio/rock_river_deep_mountain_high.flac",
+        "ed5c81f0a138f0fbf023b5c934b861b9"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_river_deep_mountain_high.beats",
+        "b840fb2dc9eed70f15298320e4bfe574"
+      ]
+    },
+    "rock_lets_get_it_on": {
+      "audio": [
+        "R_1.0/audio/rock_lets_get_it_on.flac",
+        "d21a586c19efb4535b92a86f7af601aa"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_lets_get_it_on.beats",
+        "6353d6aeba74016c271ec46a12e928f5"
+      ]
+    },
+    "rock_voodoo_child": {
+      "audio": [
+        "R_1.0/audio/rock_voodoo_child.flac",
+        "ab712cf039bf17da7130c230e1e3e63a"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_voodoo_child.beats",
+        "a4f67374ead7443483af3acae58e0a5e"
+      ]
+    },
+    "rock_i_only_have_eyes_for_you": {
+      "audio": [
+        "R_1.0/audio/rock_i_only_have_eyes_for_you.flac",
+        "b47e39dcd36c1fb20954decef429f48a"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_only_have_eyes_for_you.beats",
+        "12ec6f566c759d2e79b3863037365f8b"
+      ]
+    },
+    "rock_in_the_midnight_hour": {
+      "audio": [
+        "R_1.0/audio/rock_in_the_midnight_hour.flac",
+        "260db6386903a2c8a5135a03d7486e97"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_in_the_midnight_hour.beats",
+        "e0af982f89f2cf5b750c2e33340c1266"
+      ]
+    },
+    "rock_respect": {
+      "audio": [
+        "R_1.0/audio/rock_respect.flac",
+        "1071adacd86aa1de7959f801bf11c57a"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_respect.beats",
+        "7de9f083dc41d21fefc82ed29764e088"
+      ]
+    },
+    "rock_shout": {
+      "audio": [
+        "R_1.0/audio/rock_shout.flac",
+        "3ff1d332fbfb11df7f07d49562603dd5"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_shout.beats",
+        "e036af0d6da99fc10ba6cfc84cb2bee0"
+      ]
+    },
+    "rock_living_for_the_city": {
+      "audio": [
+        "R_1.0/audio/rock_living_for_the_city.flac",
+        "f71fcf2ed35a735ed0fe61f0ff24b11f"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_living_for_the_city.beats",
+        "766f5aeb8aa484bab18f6b48cd922d4a"
+      ]
+    },
+    "rock_house_of_the_rising_sun": {
+      "audio": [
+        "R_1.0/audio/rock_house_of_the_rising_sun.flac",
+        "6ef5539a73ccdfa687ac6b99aaee8cc1"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_house_of_the_rising_sun.beats",
+        "8f8ea8e62f74c7b49f2fbeab1bcc0f1a"
+      ]
+    },
+    "rock_walk_on_by": {
+      "audio": [
+        "R_1.0/audio/rock_walk_on_by.flac",
+        "7cd8a2431d17b8ea6b1c21739920436e"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_walk_on_by.beats",
+        "f4bb676fad57f141aacdbc75fd273d91"
+      ]
+    },
+    "rock_family_affair": {
+      "audio": [
+        "R_1.0/audio/rock_family_affair.flac",
+        "31e7e6b65961523035bea092ebed05fd"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_family_affair.beats",
+        "9ccb6ac07052afbec0ebb21ca5a03234"
+      ]
+    },
+    "rock_love_will_tear_us_apart": {
+      "audio": [
+        "R_1.0/audio/rock_love_will_tear_us_apart.flac",
+        "a45e406f8af3b4d71fb585dc1b743ceb"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_love_will_tear_us_apart.beats",
+        "01a4c4aece4f8f031c591995a5c8ebf7"
+      ]
+    },
+    "rock_enter_sandman": {
+      "audio": [
+        "R_1.0/audio/rock_enter_sandman.flac",
+        "1f771439b637a11b970417946eac4f92"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_enter_sandman.beats",
+        "70a21b51ae8b3c3b5deaf95703fbe3ad"
+      ]
+    },
+    "rock_up_on_the_roof": {
+      "audio": [
+        "R_1.0/audio/rock_up_on_the_roof.flac",
+        "3aff2fd9584a870717e463aeb38a2d04"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_up_on_the_roof.beats",
+        "70a7caf9613b5ca026a77088ab74c93e"
+      ]
+    },
+    "rock_dream_on": {
+      "audio": [
+        "R_1.0/audio/rock_dream_on.flac",
+        "a4c98b6923ac0a6053979a3d2852ece2"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_dream_on.beats",
+        "3a2d5fe6dfce3ce8f1432c31f743435d"
+      ]
+    },
+    "rock_thatll_be_the_day": {
+      "audio": [
+        "R_1.0/audio/rock_thatll_be_the_day.flac",
+        "eae4a332b0e963e547270099f5409656"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_thatll_be_the_day.beats",
+        "9936c1f598ba8854baf93372555fe993"
+      ]
+    },
+    "rock_whats_going_on": {
+      "audio": [
+        "R_1.0/audio/rock_whats_going_on.flac",
+        "16b1bf408cfb473ee4a106ef63f2df56"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_whats_going_on.beats",
+        "83023802c35186eaff2eaf74afcb48d8"
+      ]
+    },
+    "rock_all_along_the_watchtower": {
+      "audio": [
+        "R_1.0/audio/rock_all_along_the_watchtower.flac",
+        "c51da8c2747ebec4aaf096bba1b46dab"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_all_along_the_watchtower.beats",
+        "22c56afa557aac141b9e14cca0cff04a"
+      ]
+    },
+    "rock_da_doo_ron_ron": {
+      "audio": [
+        "R_1.0/audio/rock_da_doo_ron_ron.flac",
+        "429e01282a3a8be2ee08ca7fd68ce347"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_da_doo_ron_ron.beats",
+        "552f80073ecab2220e677c296d6d47cf"
+      ]
+    },
+    "rock_heroes": {
+      "audio": [
+        "R_1.0/audio/rock_heroes.flac",
+        "2323f36fb397848d1a6c33ea43c4ba22"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_heroes.beats",
+        "2943f2ca8017423d23a374fd8ae01164"
+      ]
+    },
+    "rock_free_fallin": {
+      "audio": [
+        "R_1.0/audio/rock_free_fallin.flac",
+        "93987f2d8f70746236ad4a7fefbe5a11"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_free_fallin.beats",
+        "2dee073aa46952539bbd11d6b6eb1c04"
+      ]
+    },
+    "rock_bitter_sweet_symphony": {
+      "audio": [
+        "R_1.0/audio/rock_bitter_sweet_symphony.flac",
+        "c74f9d22523fe0ff78a6501603b1e774"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_bitter_sweet_symphony.beats",
+        "bcdaa115d234e2b58949e47c1273d133"
+      ]
+    },
+    "rock_take_me_to_the_river": {
+      "audio": [
+        "R_1.0/audio/rock_take_me_to_the_river.flac",
+        "24d6432572ac50731b04962f8bb601bd"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_take_me_to_the_river.beats",
+        "01a6bba5bdec2a6b93a21fd8d128ff4a"
+      ]
+    },
+    "rock_be-bop-a-lula": {
+      "audio": [
+        "R_1.0/audio/rock_be-bop-a-lula.flac",
+        "935469548033a617edce07b7d3c5be67"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_be-bop-a-lula.beats",
+        "0d98cf03cc7e93fab37807fdc5eb3b64"
+      ]
+    },
+    "rock_the_sounds_of_silence": {
+      "audio": [
+        "R_1.0/audio/rock_the_sounds_of_silence.flac",
+        "3b64b0beafa0c301ea1f11f0117be3a0"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_the_sounds_of_silence.beats",
+        "0ca1e41cabc1b8a48bf3851c99f0a880"
+      ]
+    },
+    "rock_you_send_me": {
+      "audio": [
+        "R_1.0/audio/rock_you_send_me.flac",
+        "8ed896e3f3904de265210b0839879ae0"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_you_send_me.beats",
+        "b2abdd4dee9a173236fc08c3cb953dde"
+      ]
+    },
+    "rock_i_fought_the_law": {
+      "audio": [
+        "R_1.0/audio/rock_i_fought_the_law.flac",
+        "3275aa7c23e43ddee691d95039210596"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_i_fought_the_law.beats",
+        "ea1fefba04e67da459f97ab047ceca07"
+      ]
+    },
+    "rock_shake_rattle_and_roll": {
+      "audio": [
+        "R_1.0/audio/rock_shake_rattle_and_roll.flac",
+        "c5678e504bb59bb181139b72aaaa637b"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_shake_rattle_and_roll.beats",
+        "1e3e6c14bb9c6784c28d30c505a02f4d"
+      ]
+    },
+    "rock_the_dock_of_the_bay": {
+      "audio": [
+        "R_1.0/audio/rock_the_dock_of_the_bay.flac",
+        "7d21fcf9f47420afe914feeb70ca17f8"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_the_dock_of_the_bay.beats",
+        "9e8716016552c42b3738cbc48de1cf77"
+      ]
+    },
+    "rock_heartbreak_hotel": {
+      "audio": [
+        "R_1.0/audio/rock_heartbreak_hotel.flac",
+        "225f435aa4610c11e8f31b41df6c13c7"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_heartbreak_hotel.beats",
+        "0d9a8ee74a749990106703b15c8f173b"
+      ]
+    },
+    "rock_earth_angel": {
+      "audio": [
+        "R_1.0/audio/rock_earth_angel.flac",
+        "348abcffe5dd1bd2b88ef66e97f43de4"
+      ],
+      "beats": [
+        "R_1.0/annotations/beats/rock_earth_angel.beats",
+        "7a18c5151ed74419d1b4af57f952904f"
+      ]
+    }
+  }
+}
