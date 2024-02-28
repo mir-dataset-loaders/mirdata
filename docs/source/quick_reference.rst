@@ -147,6 +147,14 @@ The musical melody of a song. Melody has no universal definition and is typicall
 It is typically encoded as F0_ or as Notes_. Other types of annotations such as Vocal F0 or Vocal Notes
 can often be considered as melody annotations as well.
 
+.. _mode:
+
+Mode
+^^^^
+Musical mode. Often associated with the major and minor scales in the Western musical traditions.
+There are additional modes such as Dorian, Mixolydian, and Locrianian.
+The major mode is also known as Ionian, and the minor mode as Aeolian.
+
 .. _notes:
 
 Notes

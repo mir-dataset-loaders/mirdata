@@ -232,6 +232,19 @@
      - 48
      - ❌
 
+
+   * - FMA Keys
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`spotify_uri`
+       - :ref:`key`
+       - :ref:`mode`
+       - :ref:`key_number`
+       - :ref:`mode_number`
+     - 5489
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
    * - Four-Way Tabla Stroke
      - - audio: ✅
        - annotations: ✅
