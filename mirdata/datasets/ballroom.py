@@ -37,7 +37,7 @@ import csv
 import logging
 import librosa
 import numpy as np
-from typing import BinaryIO, Optional, TextIO, Tuple, Union
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
