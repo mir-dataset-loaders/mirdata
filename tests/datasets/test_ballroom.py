@@ -25,12 +25,14 @@ def test_track():
             os.path.normpath("tests/resources/mir_datasets/ballroom/"),
             "B_1.0/annotations/tempo/Media-105901.bpm",
         ),
+        "genre": "waltz",
     }
 
     expected_property_types = {
         "tempo": float,
         "beats": annotations.BeatData,
         "audio": tuple,
+        "genre": str,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -94,3 +96,12 @@ def test_load_audio():
     assert type(audio) == np.ndarray
 
     assert ballroom.load_audio(None) is None
+
+
+def test_get_genre():
+    data_home = "tests/resources/mir_datasets/ballroom"
+    dataset = ballroom.Dataset(data_home)
+    track = dataset.track("Media-105901")
+    genre = ballroom.get_genre(track.audio_path)
+    assert genre == "waltz"
+    assert ballroom.get_genre(None) is None

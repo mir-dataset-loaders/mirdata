@@ -37,7 +37,7 @@ import csv
 import logging
 import librosa
 import numpy as np
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, Union
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
@@ -101,10 +101,12 @@ class Track(core.Track):
         audio_path (str): path to audio file
         beats_path (str): path to beats file
         tempo_path (str): path to tempo file
+        genre (str): genre of the track
 
     Cached Properties:
         beats (BeatData): human-labeled beat annotations
         tempo (float): human-labeled tempo annotations
+
     """
 
     def __init__(
@@ -129,6 +131,8 @@ class Track(core.Track):
         # Annotations paths
         self.beats_path = self.get_path("beats")
         self.tempo_path = self.get_path("tempo")
+
+        self.genre = get_genre(self.audio_path)
 
     @core.cached_property
     def beats(self) -> Optional[annotations.BeatData]:
@@ -162,6 +166,20 @@ class Track(core.Track):
             tempo_data=[(self.tempo, "tempo")],
             metadata=None,
         )
+
+
+def get_genre(audio_path: Optional[str]) -> Optional[str]:
+    """Get the genre from the given audio path.
+
+    Args:
+        audio_path: The path to the audio file.
+    Returns:
+       genre: The genre extracted from the audio path, or None if the audio path is None or no genre is found.
+    """
+    if audio_path is None:
+        return None
+
+    return os.path.basename(os.path.dirname(audio_path)).lower()
 
 
 @io.coerce_to_bytes_io
