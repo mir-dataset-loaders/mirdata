@@ -19,7 +19,6 @@ Cuidado Dataset Loader
     [1] Vinet, Hugues & Herrera, Perfecto & Pachet, Francois. (2002). The CUIDADO Project.
 """
 
-
 import os
 import csv
 import logging
