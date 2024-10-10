@@ -1,10 +1,12 @@
-"""Cuidado Dataset Loader
+"""
+Cuidado Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
+
     **Dataset Overview:**
 
-    The CUIDADO Project (Content-based Unified Interfaces and descriptors for Audio/music Databases available Online) aims at developing a new chain of applications through the use of audio/music content descriptors, in the spirit of the MPEG-7 standard. 
+    The CUIDADO Project (Content-based Unified Interfaces and descriptors for Audio/music Databases available Online) aims at developing a new chain of applications through the use of audio/music content descriptors, in the spirit of the MPEG-7 standard.
 
     **Applications:**
 
@@ -15,10 +17,8 @@
     For detailed information on the dataset and its creation, please refer to the associated research paper.
 
     [1] Vinet, Hugues & Herrera, Perfecto & Pachet, Francois. (2002). The CUIDADO Project.
-    
-
-    
 """
+
 
 import os
 import csv
