@@ -27,6 +27,7 @@ def test_track():
         ),
     }
 
+
     expected_property_types = {
         "tempo": float,
         "beats": annotations.BeatData,
