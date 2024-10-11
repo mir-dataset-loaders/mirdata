@@ -98,10 +98,10 @@ def test_load_audio():
     assert ballroom.load_audio(None) is None
 
 
-def test_get_genre():
+def test_load_genre():
     data_home = "tests/resources/mir_datasets/ballroom"
     dataset = ballroom.Dataset(data_home)
     track = dataset.track("Media-105901")
-    genre = ballroom.get_genre(track.audio_path)
+    genre = ballroom.load_genre(track.audio_path)
     assert genre == "waltz"
-    assert ballroom.get_genre(None) is None
+    assert ballroom.load_genre(None) is None

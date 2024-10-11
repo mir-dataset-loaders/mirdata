@@ -131,7 +131,7 @@ class Track(core.Track):
         self.beats_path = self.get_path("beats")
         self.tempo_path = self.get_path("tempo")
 
-        self.genre = get_genre(self.audio_path)
+        self.genre = self.load_genre(self.audio_path)
 
     @core.cached_property
     def beats(self) -> Optional[annotations.BeatData]:
