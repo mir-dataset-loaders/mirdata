@@ -106,7 +106,6 @@ class Track(core.Track):
     Cached Properties:
         beats (BeatData): human-labeled beat annotations
         tempo (float): human-labeled tempo annotations
-
     """
 
     def __init__(
@@ -168,7 +167,7 @@ class Track(core.Track):
         )
 
 
-def get_genre(audio_path: Optional[str]) -> Optional[str]:
+def load_genre(audio_path: Optional[str]) -> Optional[str]:
     """Get the genre from the given audio path.
 
     Args:
