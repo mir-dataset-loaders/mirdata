@@ -166,21 +166,6 @@ class Track(core.Track):
             metadata=None,
         )
 
-
-# def load_genre(audio_path: Optional[str]) -> Optional[str]:
-#     """Get the genre from the given audio path.
-
-#     Args:
-#         audio_path: The path to the audio file.
-#     Returns:
-#        genre: The genre extracted from the audio path, or None if the audio path is None or no genre is found.
-#     """
-#     if audio_path is None:
-#         return None
-
-#     return os.path.basename(os.path.dirname(audio_path)).lower()
-
-
 @io.coerce_to_bytes_io
 def load_genre(fhandle: BinaryIO) -> Optional[str]:
     """Get the genre from the given audio path.
