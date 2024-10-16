@@ -46,12 +46,6 @@ BIBTEX = """@inproceedings{lostanlen2019ismir,
 
 INDEXES = {
     "default": "1.2",
-    "test": "1.2",
-    "1.2": core.Index(filename="medley_solos_db_index_1.2.json"),
-}
-
-INDEXES = {
-    "default": "1.2",
     "test": "sample",
     "1.2": core.Index(
         filename="medley_solos_db_index_1.2.json",
