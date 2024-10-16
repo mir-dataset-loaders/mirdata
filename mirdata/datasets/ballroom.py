@@ -166,6 +166,7 @@ class Track(core.Track):
             metadata=None,
         )
 
+
 @io.coerce_to_bytes_io
 def load_genre(fhandle: BinaryIO) -> Optional[str]:
     """Get the genre from the given audio path.
