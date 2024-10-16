@@ -63,7 +63,9 @@ INDEXES = {
         url="https://zenodo.org/records/13930488/files/mtg_jamendo_autotagging_moodtheme_index_1.0.json?download=1",
         checksum="a6f7b654d3ebccf3388e9e93a5e58239",
     ),
-    "sample": core.Index(filename="mtg_jamendo_autotagging_moodtheme_index_1.0_sample.json"),
+    "sample": core.Index(
+        filename="mtg_jamendo_autotagging_moodtheme_index_1.0_sample.json"
+    ),
 }
 DOWNLOAD_INFO = """
     The audio files can be downloaded following the path described in https://github.com/MTG/mtg-jamendo-dataset#downloading-the-data
