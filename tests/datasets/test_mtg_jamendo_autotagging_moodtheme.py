@@ -11,7 +11,7 @@ def test_track():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
     )
-    dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home)
+    dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -46,7 +46,7 @@ def test_track():
 def test_track_properties_and_attributes():
     default_trackid = "track_0000948"
     data_home = "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
-    dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home)
+    dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     assert track.track_id == default_trackid
@@ -59,7 +59,7 @@ def test_track_properties_and_attributes():
 def test_to_jams():
     default_trackid = "track_0000948"
     data_home = "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
-    dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home)
+    dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
     assert jam["sandbox"].track_id == default_trackid
