@@ -37,7 +37,7 @@ import csv
 import logging
 import librosa
 import numpy as np
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, List
 
 from mirdata import annotations, core, download_utils, io, jams_utils
 
@@ -177,8 +177,8 @@ def load_beats(fhandle: TextIO):
         BeatData: beat annotations
 
     """
-    beat_times = []
-    beat_positions = []
+    beat_times: List[float] = []  # Adding type annotation for beat_times
+    beat_positions: List[float] = []  # Add type annotation here
 
     reader = csv.reader(fhandle, delimiter=" ")
     for line in reader:
