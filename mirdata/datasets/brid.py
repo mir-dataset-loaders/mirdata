@@ -1,35 +1,39 @@
-"""Ballroom Rhythm Dataset Loader
+"""BRID Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The Ballroom Rhythm Dataset is a comprehensive collection of rhythm annotations for ballroom dance music. This dataset is designed for tasks such as beat tracking, rhythm analysis, and tempo estimation in ballroom dance music. It includes annotations for beats and bars corresponding to different dance styles within the ballroom genre.
+    The Brazilian Rhythmic Instruments Dataset (BRID) is a valuable resource assembled for research in Music Information Retrieval (MIR). This dataset is designed to facilitate research in computational rhythm analysis, beat tracking, and rhythmic pattern recognition, particularly in the context of Brazilian music. BRID offers a comprehensive collection of solo and multiple-instrument recordings, featuring 10 different instrument classes playing in 5 main rhythm classes from Brazilian music, including samba, partido alto, samba-enredo, capoeira, and marcha.
 
     **Dataset Overview:**
 
-    The dataset offers beat and bar annotations for various ballroom dance styles, such as Waltz, Tango, Viennese Waltz, Slow Foxtrot, Quickstep, Samba, Cha-Cha-Cha, Rumba, Paso Doble, and Jive. These annotations are provided in a format that includes beat time in seconds and beat ID, facilitating precise rhythm analysis.
+    BRID comprises a total of 367 short tracks, averaging about 30 seconds each, amounting to approximately 2 hours and 57 minutes of music. These tracks include recordings of various Brazilian instruments, played in different Brazilian rhythmic styles.
 
-    **Beat and Bar Annotations:**
+    **Instruments and Rhythms:**
 
-    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID. For example, a line `9.430022675 3` indicates that the third beat of a bar is located at 9.43 seconds. This format is particularly useful for identifying downbeats, as they correspond to beats with ID = 1.
+    The recorded instruments in BRID represent the most significant instruments in Brazilian music, particularly samba. Ten different instrument classes were chosen, including agogoˆ, caixa (snare drum), cu ́ıca, pandeiro (frame drum), reco-reco, repique, shaker, surdo, tamborim, and tanta ̃. To ensure diversity in sound, these instruments vary in terms of shape, size, material, pitch/tuning, and the way they are struck, resulting in 32 variations.
 
-    **Annotation Methodology:**
+    **Rhythms in BRID:**
 
-    The dataset's annotations are based on the tempo guidelines of each ballroom dance style. Initial annotations were generated using a beat tracker, and then manually adjusted for accuracy. This method ensures that the annotations reflect the characteristic rhythms of each dance style.
+    BRID features various Brazilian rhythmic styles, with a focus on samba and its sub-genres, samba-enredo and partido alto. Additionally, the dataset includes rhythms such as marcha, capoeira, and a few tracks of baia ̃o and maxixe styles. The dataset provides a faithful representation of each rhythm, all of which are in duple meter.
+
+    **Dataset Recording:**
+
+    All recordings in BRID were made in a professional recording studio in Manaus, Brazil, between October and November.
 
     **Applications:**
 
-    The Ballroom Rhythm Dataset is ideal for developing and testing algorithms for beat tracking, tempo estimation, and rhythm analysis in ballroom dance music. It can also be used for educational purposes, offering insights into the rhythmic structures of various ballroom dance styles.
+    The Brazilian Rhythmic Instruments Dataset (BRID) serves as a crucial resource for researchers in the field of Music Information Retrieval (MIR) and rhythm analysis. It showcases the richness of Brazilian rhythmic content and highlights the challenges that non-Western music presents to traditional computational musicology research. Researchers can use BRID to develop more robust MIR tools tailored to Brazilian music.
 
-    **Acknowledgments and References:**
+    **Acknowledgments:**
 
-    This dataset was created with the collaboration of experts in ballroom dance music. We extend our gratitude to those who contributed their knowledge and expertise to this project. For detailed information on the dataset and its creation, please refer to the associated research papers and documentation.
-    [1] Gouyon F., A. Klapuri, S. Dixon, M. Alonso, G. Tzanetakis, C. Uhle, and P. Cano. An experimental comparison of audio tempo induction algorithms. Transactions on Audio, Speech and Language Processing 14(5), pp.1832-1844, 2006.
+    We extend our gratitude to the creators of BRID for providing this valuable dataset for research purposes in the field of MIR. Additionally, we acknowledge the authors of the following research paper for their contributions to the dataset and experiments:
 
-    [2] Böck, S., and M. Schedl. Enhanced beat tracking with context-aware neural networks. In Proceedings of the International Conference on Digital Audio Effects (DAFX), 2010.
-    
-    [3] Dixon, S., F. Gouyon & G. Widmer. Towards Characterisation of Music via Rhythmic Patterns. In Proceedings of the 5th International Society for Music Information Retrieval Conference (ISMIR). 2004.
+    [1] Lucas Maia, Pedro D. de Tomaz Júnior, Magdalena Fuentes, Martín Rocamora, Luiz W. P. Biscainho, Maurício V. M. Costa, and Sara Cohen. "A Novel Dataset of Brazilian Rhythmic Instruments and Some Experiments in Computational Rhythm Analysis." In Proceedings of the {CONGRESO LATINOAMERICANO DE LA AES}, 2018. [Link](https://api.semanticscholar.org/CorpusID:204762166)
+
+    For more details on the dataset and its applications, please refer to the associated research papers and documentation.
 """
+
 
 import os
 import csv
@@ -42,15 +46,12 @@ from mirdata import annotations, core, io, jams_utils
 
 
 BIBTEX = """
-@ARTICLE{1678001,
-    author={Gouyon, F. and Klapuri, A. and Dixon, S. and Alonso, M. and Tzanetakis, G. and Uhle, C. and Cano, P.},
-    journal={IEEE Transactions on Audio, Speech, and Language Processing}, 
-    title={An experimental comparison of audio tempo induction algorithms}, 
-    year={2006},
-    volume={14},
-    number={5},
-    pages={1832-1844},
-    doi={10.1109/TSA.2005.858509}}
+@inproceedings{Maia2018AND,
+  title={A Novel Dataset of Brazilian Rhythmic Instruments and Some Experiments in Computational Rhythm Analysis},
+  author={Lucas Maia and Pedro D. de Tomaz J{\'u}nior and Magdalena Fuentes and Mart{\'i}n Rocamora and Luiz W. P. Biscainho and Maur{\'i}cio V. M. Costa and Sara Cohen},
+  year={2018},
+  url={https://api.semanticscholar.org/CorpusID:204762166}
+}
 """
 
 INDEXES = {
