@@ -96,12 +96,3 @@ def test_load_audio():
     assert type(audio) == np.ndarray
 
     assert ballroom.load_audio(None) is None
-
-
-def test_load_genre():
-    data_home = "tests/resources/mir_datasets/ballroom"
-    dataset = ballroom.Dataset(data_home)
-    track = dataset.track("Media-105901")
-    genre = ballroom.load_genre(track.audio_path)
-    assert genre == "waltz"
-    assert ballroom.load_genre(None) is None

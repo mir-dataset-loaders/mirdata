@@ -131,7 +131,7 @@ class Track(core.Track):
         self.beats_path = self.get_path("beats")
         self.tempo_path = self.get_path("tempo")
 
-        self.genre = load_genre(self.audio_path)
+        self.genre = os.path.basename(os.path.dirname(self.audio_path)).lower()
 
     @core.cached_property
     def beats(self) -> Optional[annotations.BeatData]:
@@ -165,20 +165,6 @@ class Track(core.Track):
             tempo_data=[(self.tempo, "tempo")],
             metadata=None,
         )
-
-
-@io.coerce_to_bytes_io
-def load_genre(fhandle: BinaryIO) -> Optional[str]:
-    """Get the genre from the given audio path.
-
-    Args:
-        fhandle (str or file-like): path or file-like object pointing to an audio file
-    Returns:
-        genre: The genre extracted from the audio path, or None if the audio path is None or no genre is found.
-    """
-    file_path = getattr(fhandle, "name")
-
-    return os.path.basename(os.path.dirname(file_path)).lower()
 
 
 @io.coerce_to_bytes_io
