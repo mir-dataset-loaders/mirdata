@@ -16,7 +16,9 @@ def make_mdb_stem_synth_index(mdb_stem_synth_data_path: str, version: str) -> No
 
     audio_path = os.path.join(mdb_stem_synth_data_path, audio_dir)
 
-    track_ids = [os.path.basename(f).replace(".RESYN.csv", "") for f in annotation_files]
+    track_ids = sorted(
+        [os.path.basename(f).replace(".RESYN.csv", "") for f in annotation_files]
+    )
 
     # top-key level tracks
     index_tracks = {
@@ -50,7 +52,9 @@ def main(args):
 if __name__ == "__main__":
     PARSER = argparse.ArgumentParser(description="Make MDB-stem-synth index file.")
     PARSER.add_argument(
-        "mdb_stem_synth_data_path", type=str, help="Path to MDB-stem-synth dataset folder."
+        "mdb_stem_synth_data_path",
+        type=str,
+        help="Path to MDB-stem-synth dataset folder.",
     )
     PARSER.add_argument("version", type=str, help="index version")
 
