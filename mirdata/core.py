@@ -784,7 +784,6 @@ class MultiTrack(Track):
 
 class Index(object):
     """Class for storing information about dataset indexes.
-
     Args:
         filename (str): The index filename (not path), e.g. "example_dataset_index_1.2.json"
         url (str or None): None if index is not remote, or a url to download from
@@ -792,12 +791,10 @@ class Index(object):
         partial_download (list or None): if provided, specifies a subset of Dataset.remotes
             corresponding to this index to be downloaded. If None, all Dataset.remotes will
             be downloaded when calling Dataset.download()
-
     Attributes:
         remote (download_utils.RemoteFileMetadata or None): None if index is not remote, or
             a RemoteFileMetadata object
         partial_download (list or None): a list of keys to partially download, or None
-
     """
 
     def __init__(
@@ -809,12 +806,17 @@ class Index(object):
     ):
         self.filename = filename
         self.remote: Optional[download_utils.RemoteFileMetadata]
+        self.indexes_dir = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            "datasets",
+            "indexes",
+        )
         if url and checksum:
             self.remote = download_utils.RemoteFileMetadata(
                 filename=filename,
                 url=url,
                 checksum=checksum,
-                destination_dir="mirdata_indexes",
+                destination_dir=self.indexes_dir,
             )
         elif url or checksum:
             raise ValueError(
@@ -825,24 +827,9 @@ class Index(object):
 
         self.partial_download = partial_download
 
-    def get_path(self, data_home: str) -> str:
+    def get_path(self, data_home) -> str:
         """Get the absolute path to the index file
-
-        Args:
-            data_home (str): Path where the dataset's data lives
-
         Returns:
             str: absolute path to the index file
         """
-        # if the index is downloaded from remote, it is in the same folder
-        # as the data
-        if self.remote:
-            return os.path.join(data_home, "mirdata_indexes", self.filename)
-        # if the index is part of mirdata locally, it is in the indexes folder
-        # of the repository
-        else:
-            return os.path.join(
-                os.path.dirname(os.path.realpath(__file__)),
-                "datasets/indexes",
-                self.filename,
-            )
+        return os.path.join(self.indexes_dir, self.filename)
