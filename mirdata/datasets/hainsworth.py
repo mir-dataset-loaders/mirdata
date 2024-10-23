@@ -5,11 +5,11 @@
 
     **Dataset Overview:**
 
-    The Hainsworth Dataset comprises 222 musical excerpts, each approximately 1 minute in length, categorized into six genres: rock/pop, dance, jazz, folk, classical, and choral. It was created by Stephen Hainsworth as part of his PhD thesis on automatic music transcription. The dataset offers annotations for beat and downbeat locations, which were generated in a two-stage process. Initially, initial taps were recorded, and then annotations were manually corrected using a custom interface in Matlab, guided by a time-frequency representation.
+    The Hainsworth Dataset [1] comprises 222 musical excerpts, each approximately 1 minute in length, categorized into six genres: rock/pop, dance, jazz, folk, classical, and choral. It was created by Stephen Hainsworth as part of his PhD thesis [1] on automatic music transcription. The dataset offers annotations for beat and downbeat locations, which were generated in a two-stage process. Initially, initial taps were recorded, and then annotations were manually corrected using a custom interface in Matlab, guided by a time-frequency representation.
 
     Of particular significance is the inclusion of approximately 20 choral examples, which posed a significant challenge for annotation due to their unique characteristics. This dataset gained recognition within the beat tracking community for its contribution to annotating and analyzing such challenging musical signals.
 
-    In 2014, Böck et al. [BockKW14b] conducted revisions on the beat and downbeat annotations to correct errors, leading to an enhancement in performance.
+    In 2014, [2] conducted revisions on the beat and downbeat annotations to correct errors, leading to an enhancement in performance.
 
     **Applications:**
 
@@ -17,7 +17,7 @@
 
     **Acknowledgments and References:**
 
-    We would like to acknowledge Stephen Hainsworth for creating this dataset and his significant contribution to the field of automatic music transcription. Special thanks to Böck et al. [BockKW14b] for their efforts in improving the dataset annotations.
+    We would like to acknowledge Stephen Hainsworth for creating this dataset and his significant contribution to the field of automatic music transcription. Special thanks to [2] for their efforts in improving the dataset annotations.
 
     For more detailed information about the dataset and its creation, please refer to Stephen Hainsworth's PhD thesis and the associated research papers and documentation.
 
@@ -63,7 +63,7 @@ LICENSE_INFO = (
 )
 
 DOWNLOAD_INFO = """
-    Unfortunately most of the Hainsworth dataset is not available for download.
+    Unfortunately the Hainsworth dataset is not available for download.
     If you have the Hainsworth dataset, place the contents into a folder called
     hainsworth with the following structure:
         > H_1.0/
@@ -84,8 +84,8 @@ class Track(core.Track):
 
     Attributes:
         audio_path (str): path to audio file
-        beats_path (srt): path to beats file
-        tempo_path (srt): path to tempo file
+        beats_path (str): path to beats file
+        tempo_path (str): path to tempo file
 
     Cached Properties:
         beats (BeatData): human-labeled beat annotations
@@ -127,6 +127,7 @@ class Track(core.Track):
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
+
         Returns:
            * np.ndarray - audio signal
            * float - sample rate
@@ -151,6 +152,7 @@ class Track(core.Track):
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Ballroom audio file.
+
     Args:
         fhandle (str or file-like): path or file-like object pointing to an audio file
     Returns:
