@@ -3,6 +3,7 @@ import numpy as np
 from mirdata import annotations
 from mirdata.datasets import hainsworth
 from tests.test_utils import run_track_tests
+import io
 
 
 def test_track():
@@ -79,6 +80,23 @@ def test_load_beats():
     # Check values
     assert np.array_equal(parsed_beats.times, np.array([0.47, 1.06, 1.63]))
     assert hainsworth.load_beats(None) is None
+
+    # Check for None case
+    assert (
+        hainsworth.load_beats(None) is None
+    ), "The function should return None when the input is None."
+
+    # Case: beat_times[0] == -1.0
+    invalid_beats_file = io.StringIO("-1.0\t2\n")
+    assert (
+        hainsworth.load_beats(invalid_beats_file) is None
+    ), "The function should return None when the first beat time is -1.0."
+
+    # Case: empty beat_times
+    empty_beats_file = io.StringIO("")
+    assert (
+        hainsworth.load_beats(empty_beats_file) is None
+    ), "The function should return None when the beat times are empty."
 
 
 def test_load_audio():
