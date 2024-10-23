@@ -168,11 +168,11 @@ class Dataset(core.Dataset):
         )
 
     def download(
-            self,
-            partial_download=None,
-            force_overwrite=False,
-            cleanup=False,
-            allow_invalid_checksum=False,
+        self,
+        partial_download=None,
+        force_overwrite=False,
+        cleanup=False,
+        allow_invalid_checksum=False,
     ):
         """Download the dataset
 
@@ -199,7 +199,9 @@ class Dataset(core.Dataset):
             cleanup=cleanup,
         )
 
-        download_utils.move_directory_contents(os.path.join(self.data_home, "MDB-stem-synth"), self.data_home)
+        download_utils.move_directory_contents(
+            os.path.join(self.data_home, "MDB-stem-synth"), self.data_home
+        )
 
         # remove unnecessary Mac OS files
         for file in glob.glob(os.path.join(self.data_home, "*", "._*"), recursive=True):
