@@ -48,6 +48,7 @@ REMOTES = {
         filename="MDB-stem-synth.tar.gz",
         url="https://zenodo.org/records/1481172/files/MDB-stem-synth.tar.gz?download=1",
         checksum="31c1f6b4888e5fd108af91c69789a809",
+        unpack_directories=["MDB-stem-synth"],
     )
 }
 
@@ -166,46 +167,3 @@ class Dataset(core.Dataset):
             remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
-
-    def download(
-        self,
-        partial_download=None,
-        force_overwrite=False,
-        cleanup=False,
-        allow_invalid_checksum=False,
-    ):
-        """Download the dataset
-
-        Args:
-            partial_download (list or None):
-                A list of keys of remotes to partially download.
-                If None, all data is downloaded
-            force_overwrite (bool):
-                If True, existing files are overwritten by the downloaded files.
-            cleanup (bool):
-                Whether to delete any zip/tar files after extracting.
-
-        Raises:
-            ValueError: if invalid keys are passed to partial_download
-            IOError: if a downloaded file's checksum is different from expected
-
-        """
-        download_utils.downloader(
-            self.data_home,
-            remotes=self.remotes,
-            index=self._index_data,
-            partial_download=partial_download,
-            force_overwrite=force_overwrite,
-            cleanup=cleanup,
-        )
-
-        download_utils.move_directory_contents(
-            os.path.join(self.data_home, "MDB-stem-synth"), self.data_home
-        )
-
-        # remove unnecessary Mac OS files
-        for file in glob.glob(os.path.join(self.data_home, "*", "._*"), recursive=True):
-            try:
-                os.remove(file)
-            except OSError:
-                pass
