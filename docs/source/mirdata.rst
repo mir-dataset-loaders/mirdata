@@ -282,8 +282,8 @@ maestro
    :inherited-members:
 
 
-mdb\_stem\_synth
-^^^^^^^^^^^^^^^
+mdb_stem_synth
+^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.mdb_stem_synth
    :members:
