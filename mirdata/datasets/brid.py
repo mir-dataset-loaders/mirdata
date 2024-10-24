@@ -3,7 +3,7 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The Brazilian Rhythmic Instruments Dataset (BRID) is a valuable resource assembled for research in Music Information Retrieval (MIR). This dataset is designed to facilitate research in computational rhythm analysis, beat tracking, and rhythmic pattern recognition, particularly in the context of Brazilian music. BRID offers a comprehensive collection of solo and multiple-instrument recordings, featuring 10 different instrument classes playing in 5 main rhythm classes from Brazilian music, including samba, partido alto, samba-enredo, capoeira, and marcha.
+    The Brazilian Rhythmic Instruments Dataset (BRID) [1] is a valuable resource assembled for research in Music Information Retrieval (MIR). This dataset is designed to facilitate research in computational rhythm analysis, beat tracking, and rhythmic pattern recognition, particularly in the context of Brazilian music. BRID offers a comprehensive collection of solo and multiple-instrument recordings, featuring 10 different instrument classes playing in 5 main rhythm classes from Brazilian music, including samba, partido alto, samba-enredo, capoeira, and marcha.
 
     **Dataset Overview:**
 
@@ -66,7 +66,7 @@ LICENSE_INFO = (
 )
 
 DOWNLOAD_INFO = """
-    Unfortunately most of the BRID dataset is not available for download.
+    Unfortunately the BRID dataset is not available for download.
     If you have the BRID dataset, place the contents into a folder called
     BRID with the following structure:
         > BRID_1.0/
@@ -87,8 +87,8 @@ class Track(core.Track):
 
     Attributes:
         audio_path (str): path to audio file
-        beats_path (srt): path to beats file
-        tempo_path (srt): path to tempo file
+        beats_path (str): path to beats file
+        tempo_path (str): path to tempo file
 
     """
 
