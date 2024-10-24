@@ -68,11 +68,10 @@ class Track(core.Track):
         audio_path (str): path to the track's audio file
         f0_path (str): path to the track's f0 annotation file
         track_id (str): track id
-        audio (Tuple[np.ndarray, float]): the track's audio signal and sample rate
 
     Cached Properties:
         f0 (F0Data): the track's f0 annotation
-
+        audio (Tuple[np.ndarray, float]): audio signal and sample rate
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -89,15 +88,20 @@ class Track(core.Track):
 
     @core.cached_property
     def f0(self) -> Optional[annotations.F0Data]:
+        """The track's f0 annotation
+
+        Returns:
+            F0Data: the f0 annotation data
+        """
         return load_f0(self.f0_path)
 
-    @property
+    @core.cached_property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
-            * np.ndarray - audio signal
-            * float - sample rate
+            * np.ndarray: audio signal
+            * float: sample rate
 
         """
         return load_audio(self.audio_path)
