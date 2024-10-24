@@ -43,7 +43,7 @@ from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
-@ARTICLE{1678001,
+@article{1678001,
     author={Gouyon, F. and Klapuri, A. and Dixon, S. and Alonso, M. and Tzanetakis, G. and Uhle, C. and Cano, P.},
     journal={IEEE Transactions on Audio, Speech, and Language Processing}, 
     title={An experimental comparison of audio tempo induction algorithms}, 
@@ -67,7 +67,7 @@ LICENSE_INFO = (
 )
 
 DOWNLOAD_INFO = """
-    Unfortunately most of the Cuidado dataset is not available for download.
+    Unfortunately the Cuidado dataset is not available for download.
     If you have the Cuidado dataset, place the contents into a folder called
     cuidado with the following structure:
         > C_1.0/
@@ -79,7 +79,7 @@ DOWNLOAD_INFO = """
 
 
 class Track(core.Track):
-    """Cuidado Rhythm class
+    """Cuidado Rhythm Track class
 
     Args:
         track_id (str): track id of the track
@@ -88,8 +88,8 @@ class Track(core.Track):
 
     Attributes:
         audio_path (str): path to audio file
-        beats_path (srt): path to beats file
-        tempo_path (srt): path to tempo file
+        beats_path (str): path to beats file
+        tempo_path (str): path to tempo file
 
     """
 
