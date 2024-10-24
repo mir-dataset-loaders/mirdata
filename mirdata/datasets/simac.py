@@ -1,4 +1,4 @@
-"""SIMAC Dataset Loader
+"""SIMAC Rhythm Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
@@ -7,21 +7,11 @@
 
     **Project Overview:**
 
-    SIMAC's approach to music content processing involves the computation of low-level signal features, characterizing the acoustic properties of signals. However, it goes beyond by incorporating higher-level semantic descriptors into these feature sets. These descriptors emphasize the musical attributes of audio signals, like chords, rhythm, and instrumentation, achieving a higher level of semantic complexity than low-level features.
+    SIMAC's approach to music content processing involves the computation of low-level signal features, characterizing the acoustic properties of signals.
 
     **Musical Facets and Descriptors:**
 
-    - **Rhythm:** SIMAC investigates various aspects of automatic rhythm description, such as tempo induction, beat tracking, and rhythmic pattern characterization. High-level rhythmic descriptors are used for genre classification of recorded audio, demonstrating the significance of these features in characterizing dance music.
-
-    - **Harmony:** The project explores harmonic aspects of music, defining it through the combination of notes, chords, and their progressions. Harmonic-based retrieval is facilitated without the need for pitch estimation in the mixture, enabling operation on a wide variety of music.
-
-    - **Timbre and Instrumentation:** SIMAC focuses on the overall timbre or texture of music, as current technologies do not allow for reliable separation of individual instrumental information. This aspect is characterized based on low-level signal features.
-
-    - **Music Structure:** The project examines how music materials are presented, repeated, varied, or confronted in a piece, providing ways to interact with audio content through summaries, fast-listening, and on-the-fly identification of songs.
-
-    - **Intensity and Complexity:** These descriptors are defined to capture the subjective sensation of energeticness and the effort required to follow and understand a musical piece. The project notes the relationship between music complexity and listener preference.
-
-    - **Music Similarity:** SIMAC tackles the challenge of defining music similarity, considering both audio-based aspects and cultural background. It aims to develop similarity metrics that incorporate multiple musical facets beyond just timbre.
+    - **Rhythm:** SIMAC investigates various aspects of automatic rhythm description, such as tempo induction, beat tracking, and rhythmic pattern characterization. 
 
     **Future Directions and Challenges:**
 
@@ -68,7 +58,7 @@ LICENSE_INFO = (
 )
 
 DOWNLOAD_INFO = """
-    Unfortunately most of the simac dataset is not available for download.
+    Unfortunately the SIMAC Rhythm dataset is not available for download.
     If you have the simac dataset, place the contents into a folder called
     simac with the following structure:
         > S_1.0/
@@ -89,8 +79,8 @@ class Track(core.Track):
 
     Attributes:
         audio_path (str): path to audio file
-        beats_path (srt): path to beats file
-        tempo_path (srt): path to tempo file
+        beats_path (str): path to beats file
+        tempo_path (str): path to tempo file
 
     Cached Properties:
         beats (BeatData): human-labeled beat annotations
@@ -157,7 +147,7 @@ class Track(core.Track):
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load a Ballroom audio file.
+    """Load a SIMAC Rhythm audio file.
     Args:
         fhandle (str or file-like): path or file-like object pointing to an audio file
     Returns:

@@ -3,6 +3,7 @@ import numpy as np
 from mirdata import annotations
 from mirdata.datasets import simac
 from tests.test_utils import run_track_tests
+import io
 
 
 def test_track():
@@ -63,9 +64,6 @@ def test_load_tempo():
     parsed_tempo = simac.load_tempo(tempo_path)
     assert parsed_tempo == 74.34
     assert simac.load_tempo(None) is None
-
-
-import io
 
 
 def test_load_beats():
