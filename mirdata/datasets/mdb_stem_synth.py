@@ -130,7 +130,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_f0(fhandle: str | TextIO) -> annotations.F0Data:
+def load_f0(fhandle: TextIO) -> annotations.F0Data:
     """Load a MDB-stem-synth f0 annotation
 
     Args:
