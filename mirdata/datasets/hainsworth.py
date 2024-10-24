@@ -151,7 +151,7 @@ class Track(core.Track):
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load a Ballroom audio file.
+    """Load a Hainsworth audio file.
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to an audio file
