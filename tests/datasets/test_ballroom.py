@@ -8,7 +8,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "Media-105901"
     data_home = os.path.normpath("tests/resources/mir_datasets/ballroom")
-    dataset = ballroom.Dataset(data_home)
+    dataset = ballroom.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -42,7 +42,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/ballroom"
-    dataset = ballroom.Dataset(data_home)
+    dataset = ballroom.Dataset(data_home, version="test")
     track = dataset.track("Media-105901")
     jam = track.to_jams()
     tempo = jam.search(namespace="tempo")[0]["data"]
@@ -57,7 +57,7 @@ def test_to_jams():
 
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/ballroom"
-    dataset = ballroom.Dataset(data_home)
+    dataset = ballroom.Dataset(data_home, version="test")
     track = dataset.track("Media-105901")
     tempo_path = track.tempo_path
     parsed_tempo = ballroom.load_tempo(tempo_path)
@@ -67,7 +67,7 @@ def test_load_tempo():
 
 def test_load_beats():
     data_home = "tests/resources/mir_datasets/ballroom"
-    dataset = ballroom.Dataset(data_home)
+    dataset = ballroom.Dataset(data_home, version="test")
     track = dataset.track("Media-105901")
     beats_path = track.beats_path
     parsed_beats = ballroom.load_beats(beats_path)
@@ -85,7 +85,7 @@ def test_load_beats():
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/ballroom"
-    dataset = ballroom.Dataset(data_home)
+    dataset = ballroom.Dataset(data_home, version="test")
     track = dataset.track("Media-105901")
     audio_path = track.audio_path
     audio, sr = ballroom.load_audio(audio_path)
