@@ -147,8 +147,13 @@ BIBTEX = """@inproceedings{cortes2022BAF,
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="baf_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="baf_index_1.0.json",
+        url="https://zenodo.org/records/13993303/files/baf_index_1.0.json?download=1",
+        checksum="6bc533ab686a7c8940873e4580d93563",
+    ),
+    "sample": core.Index(filename="baf_index_1.0_sample.json"),
 }
 
 REMOTES = None
