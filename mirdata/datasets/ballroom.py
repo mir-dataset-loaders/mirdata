@@ -101,6 +101,7 @@ class Track(core.Track):
         audio_path (str): path to audio file
         beats_path (str): path to beats file
         tempo_path (str): path to tempo file
+        genre (str): genre of the track
 
     Cached Properties:
         beats (BeatData): human-labeled beat annotations
@@ -129,6 +130,8 @@ class Track(core.Track):
         # Annotations paths
         self.beats_path = self.get_path("beats")
         self.tempo_path = self.get_path("tempo")
+
+        self.genre = os.path.basename(os.path.dirname(self.audio_path)).lower()
 
     @core.cached_property
     def beats(self) -> Optional[annotations.BeatData]:

@@ -13,6 +13,7 @@ from tests.test_utils import get_attributes_and_properties
 DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
+    "ballroom": "Media-105901",
     "cante100": "008",
     "compmusic_carnatic_rhythm": "10003",
     "compmusic_carnatic_varnam": "dharini_abhogi",
