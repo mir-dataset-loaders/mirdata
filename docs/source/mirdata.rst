@@ -242,6 +242,14 @@ guitarset
    :inherited-members:
 
 
+hainsworth
+^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.hainsworth
+   :members:
+   :inherited-members:
+
+
 haydn_op20
 ^^^^^^^^^^
 
