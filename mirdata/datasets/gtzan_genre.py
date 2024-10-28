@@ -34,15 +34,18 @@ BIBTEX = """@article{tzanetakis2002gtzan,
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
+    "test": "sample",
     "1.0": core.Index(
         filename="gtzan_genre_index_1.0.json",
-        partial_download=["all", "tempo_beat_annotations"],
+        url="https://zenodo.org/records/13993311/files/gtzan_genre_index_1.0.json?download=1",
+        checksum="533ca050855f22acf2feb283d9957fe3",
     ),
     "mini": core.Index(
         filename="gtzan_genre_1.0_mini_index.json",
-        partial_download=["mini", "tempo_beat_annotations"],
+        url="https://zenodo.org/records/14004436/files/gtzan_genre_1.0_mini_index.json?download=1",
+        checksum="ac97f5a783d7843cf92ed8875d85af3d",
     ),
+    "sample": core.Index(filename="gtzan_genre_index_1.0_sample.json"),
 }
 
 REMOTES = {
