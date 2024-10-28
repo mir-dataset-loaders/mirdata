@@ -38,6 +38,9 @@ dependencies = [
     "tqdm>=4.66.1",
 ]
 
+[tool.setuptools.package-data]
+'mirdata' = ['datasets/indexes/*.json']
+
 [project.optional-dependencies]
 tests = [
     "decorator>=5.1.1",
