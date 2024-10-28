@@ -1,0 +1,17 @@
+{
+  "version": "6.0",
+  "tracks": {
+    "Cb-ord-A2-mf-2c-N": {
+      "audio": [
+        "audio/Strings/Contrabass/ordinario/Cb-ord-A2-mf-2c-N.wav",
+        "c4378852cf101c63d9e2750d66c3cb8f"
+      ]
+    },
+    "Fl-ord-C4-mf-N-T14d": {
+      "audio": [
+        "audio/Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav",
+        "404881c086097e3ade3766b2d32de886"
+      ]
+    }
+  }
+}
