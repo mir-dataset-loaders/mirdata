@@ -25,12 +25,14 @@ def test_track():
             os.path.normpath("tests/resources/mir_datasets/ballroom/"),
             "B_1.0/annotations/tempo/Media-105901.bpm",
         ),
+        "genre": "waltz",
     }
 
     expected_property_types = {
         "tempo": float,
         "beats": annotations.BeatData,
         "audio": tuple,
+        "genre": str,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
