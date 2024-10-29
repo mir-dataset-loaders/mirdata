@@ -1,0 +1,39 @@
+{
+  "version": "sample",
+  "tracks": {
+    "50_Irani_Bhairavi_Thumri": {
+      "audio": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3",
+        "221c4b721b699e0a08cd20e493b854c3"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt",
+        "99f8915c8950e2092524e48535ce1ab3"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt",
+        "ff77413921c32cd45cd58e6e3159a06c"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt",
+        "a99a247cc9d90adb4c87e81906775f3f"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt",
+        "7e6de134a6bc2737df99b725fcf601b4"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt",
+        "deb0957c028e51646c6f7c55344fd501"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt",
+        "39edd271e739ee29aa0189b1dac4125d"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json",
+        "0a13707b48db7d99ba3d51e7ce656d04"
+      ]
+    }
+  }
+}

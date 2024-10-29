@@ -10,7 +10,7 @@ def test_track():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
     )
-    dataset = compmusic_hindustani_rhythm.Dataset(data_home)
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -64,7 +64,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
-    dataset = compmusic_hindustani_rhythm.Dataset(data_home)
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
     track = dataset.track("20001")
     jam = track.to_jams()
 
@@ -96,7 +96,7 @@ def test_to_jams():
 
 def test_load_meter():
     data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
-    dataset = compmusic_hindustani_rhythm.Dataset(data_home)
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
     track = dataset.track("20001")
     meter_path = track.meter_path
     parsed_meter = compmusic_hindustani_rhythm.load_meter(meter_path)
@@ -106,7 +106,7 @@ def test_load_meter():
 
 def test_load_beats():
     data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
-    dataset = compmusic_hindustani_rhythm.Dataset(data_home)
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
     track = dataset.track("20001")
     beats_path = track.beats_path
     parsed_beats = compmusic_hindustani_rhythm.load_beats(beats_path)
@@ -124,7 +124,7 @@ def test_load_beats():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
-    dataset = compmusic_hindustani_rhythm.Dataset(data_home)
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
     meta = dataset._metadata  # get dataset metadata
     parsed_metadata = meta["20001"]  # get track metadata
 
@@ -144,7 +144,7 @@ def test_load_metadata():
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
-    dataset = compmusic_hindustani_rhythm.Dataset(data_home)
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
     track = dataset.track("20001")
     audio_path = track.audio_path
     audio, sr = compmusic_hindustani_rhythm.load_audio(audio_path)

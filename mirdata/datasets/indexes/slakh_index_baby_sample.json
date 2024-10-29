@@ -1,0 +1,19 @@
+{
+  "version": "sample",
+  "tracks": {
+    "Track00001-S00": {
+      "audio": [
+        "babyslakh_16k/Track00001/stems/S00.wav",
+        "ea0e7b3d996bb3fedfbf9ee43b5c414f"
+      ],
+      "midi": [
+        "babyslakh_16k/Track00001/MIDI/S00.mid",
+        "68f9d227a4fd70acdcd80a5bd3b69e22"
+      ],
+      "metadata": [
+        "babyslakh_16k/Track00001/metadata.yaml",
+        "ffde21b0625fd72ba04103ca55f6765d"
+      ]
+    }
+  }
+}

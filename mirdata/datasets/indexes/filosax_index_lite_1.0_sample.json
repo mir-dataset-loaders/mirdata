@@ -1,0 +1,27 @@
+{
+  "version": "sample",
+  "tracks": {
+    "multitrack_02_sax_1": {
+      "audio": [
+        "Participant 1/02/Sax.wav",
+        "c62cd9d2ec8085461cb2ffc9deeda176"
+      ],
+      "annotation": [
+        "Participant 1/02/annotations.json",
+        "8424df983f30e927c5a72b3d9bb94466"
+      ],
+      "midi": [
+        "Participant 1/02/Sax.mid",
+        "007beb3b84dfaafbc8767148bc00c0ff"
+      ],
+      "musicXML": [
+        "Participant 1/02/Sax.musicxml",
+        "3846ef79efc36448ea0a8059c43935ac"
+      ],
+      "pdf": [
+        "Participant 1/02/Sax.pdf",
+        "69b20b5b95b8807137cc86e7c72cc861"
+      ]
+    }
+  }
+}
