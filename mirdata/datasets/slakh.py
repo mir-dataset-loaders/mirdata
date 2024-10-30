@@ -148,7 +148,9 @@ class Track(core.Track):
 
         # split (train/validation/test/omitted) is part of the relative filepath in the index
         self.split = None  # for baby_slakh, there are no data splits - set to None
-        if (index["version"] == "2100-redux") or (index["version"] == "test_2100-redux"):  # Adding also option for test
+        if (index["version"] == "2100-redux") or (
+            index["version"] == "test_2100-redux"
+        ):  # Adding also option for test
             self.split = os.path.normpath(self._track_paths["metadata"][0]).split(
                 os.sep
             )[1]
@@ -277,7 +279,9 @@ class MultiTrack(core.MultiTrack):
 
         # split (train/validation/test) is determined by the relative filepath in the index
         self.split = None  # for baby_slakh, there are no data splits - set to None
-        if (index["version"] == "2100-redux") or (index["version"] == "test_2100-redux"):  # Adding also option for test
+        if (index["version"] == "2100-redux") or (
+            index["version"] == "test_2100-redux"
+        ):  # Adding also option for test
             self.split = os.path.normpath(self._multitrack_paths["mix"][0]).split(
                 os.sep
             )[1]

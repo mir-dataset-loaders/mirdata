@@ -112,6 +112,7 @@ def test_load_beats():
     parsed_beats = compmusic_carnatic_rhythm.load_beats(beats_path)
     assert parsed_beats is None
 
+
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")

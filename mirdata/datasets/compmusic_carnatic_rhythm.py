@@ -90,7 +90,9 @@ INDEXES = {
         url="hhttps://zenodo.org/records/14007996/files/compmusic_carnatic_rhythm_subset_index_1.0.json?download=1",
         checksum="05e8e5570d0f57fb36d75a50538e2afb",
     ),
-    "sample": core.Index(filename="compmusic_carnatic_rhythm_subset_index_1.0_sample.json"),
+    "sample": core.Index(
+        filename="compmusic_carnatic_rhythm_subset_index_1.0_sample.json"
+    ),
 }
 
 REMOTES = None

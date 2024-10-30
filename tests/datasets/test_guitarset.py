@@ -224,7 +224,9 @@ def test_audio_hex_cln():
 
 def test_to_jams():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset("tests/resources/mir_datasets/guitarset", version="test")
+    dataset = guitarset.Dataset(
+        "tests/resources/mir_datasets/guitarset", version="test"
+    )
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
