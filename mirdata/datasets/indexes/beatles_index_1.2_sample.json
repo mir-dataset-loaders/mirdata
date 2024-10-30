@@ -22,6 +22,28 @@
         "annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
         "509125d527dae09cdee832fc0a6e0580"
       ]
+    },
+    "10212": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_12_-_Revolution_9.wav",
+        "b2db9d775f17f0416d5ae3a0791fc9fb"
+      ],
+      "beat": [
+        null,
+        null
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_12_-_Revolution_9.lab",
+        "8bbe521a2c59d8d74247cd8f77ac865a"
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_12_-_Revolution_9.lab",
+        "95352965ee852479bbdc51e936038ecd"
+      ]
     }
   }
 }

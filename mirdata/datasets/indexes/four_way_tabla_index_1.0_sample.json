@@ -22,6 +22,28 @@
         "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-1.onsets",
         "7bf4534f4bc6d5a27b389ea98d73192c"
       ]
+    },
+    "binati_SRC": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/binati_SRC.wav",
+        "d46dfd164c635e654e5105dc4803665f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/binati_SRC.onsets",
+        "09309607ab804b81fd473eba836be732"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/binati_SRC.onsets",
+        "361bd33db490f722d36edf37e0dc0d1e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/binati_SRC.onsets",
+        "e2ffc90f1cdb701ef97abe878f42ce7c"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/binati_SRC.onsets",
+        "ff85fb53630dfa6d5bde08826bb8c24a"
+      ]
     }
   },
   "metadata": {}

@@ -51,6 +51,7 @@ BIBTEX = """
 INDEXES = {
     "default": "2100-redux",
     "test": "sample",
+    "test_2100-redux": "sample_2100-redux",
     "2100-redux": core.Index(
         filename="slakh_index_2100-redux.json",
         partial_download=["2100-redux"],
@@ -64,6 +65,7 @@ INDEXES = {
         checksum="be5032ff25a64dc3eb6ab63032490968",
     ),
     "sample": core.Index(filename="slakh_index_baby_sample.json"),
+    "sample_2100-redux": core.Index(filename="slakh_index_2100-redux_sample.json"),
 }
 
 REMOTES = {
@@ -146,7 +148,7 @@ class Track(core.Track):
 
         # split (train/validation/test/omitted) is part of the relative filepath in the index
         self.split = None  # for baby_slakh, there are no data splits - set to None
-        if index["version"] == "2100-redux":
+        if (index["version"] == "2100-redux") or (index["version"] == "test_2100-redux"):  # Adding also option for test
             self.split = os.path.normpath(self._track_paths["metadata"][0]).split(
                 os.sep
             )[1]
@@ -275,7 +277,7 @@ class MultiTrack(core.MultiTrack):
 
         # split (train/validation/test) is determined by the relative filepath in the index
         self.split = None  # for baby_slakh, there are no data splits - set to None
-        if index["version"] == "2100-redux":
+        if (index["version"] == "2100-redux") or (index["version"] == "test_2100-redux"):  # Adding also option for test
             self.split = os.path.normpath(self._multitrack_paths["mix"][0]).split(
                 os.sep
             )[1]
