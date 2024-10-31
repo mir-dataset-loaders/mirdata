@@ -3,7 +3,7 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The SIMAC (Semantic Interaction with Music Audio Contents) project, funded by the EU-FP6-IST-507142, addresses the development of innovative components for a music information retrieval system. It focuses on the use and exploitation of semantic descriptors of musical content, automatically extracted from music audio files. These descriptors, derived from combinations of lower-level descriptors and generalizations from manually annotated databases, are generated using machine learning techniques. The project aims to enhance the effectiveness of music consumption behaviors, particularly those guided by the concept of similarity.
+    The SIMAC (Semantic Interaction with Music Audio Contents) project, funded by the EU-FP6-IST-507142, addresses the development of innovative components for a music information retrieval system. It focuses on the use and exploitation of semantic descriptors of musical content, automatically extracted from music audio files. These descriptors, derived from combinations of lower-level descriptors and generalizations from manually annotated databases, are generated using machine learning techniques. Although SIMAC considers multiple modalities within its corpora, this loader currently supports only the rhythmic portion. We may add support for other modalities in the future to broaden its applicability.
 
     **Project Overview:**
 
@@ -12,10 +12,6 @@
     **Musical Facets and Descriptors:**
 
     - **Rhythm:** SIMAC investigates various aspects of automatic rhythm description, such as tempo induction, beat tracking, and rhythmic pattern characterization. 
-
-    **Future Directions and Challenges:**
-
-    SIMAC identifies areas for future exploration, such as incorporating musical facets beyond timbre in similarity metrics and addressing the limitations of current approaches to similarity. The project underscores the potential benefits of enriching music files with metadata from their origin for more effective music retrieval and recommendation systems.
 
     **Acknowledgments and References:**
 
