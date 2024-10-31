@@ -187,7 +187,7 @@ def test_dataset_versions():
                         "blah_1.json", url="https://google.com", checksum="asdf"
                     ),
                     "2": core.Index("blah_2.json"),
-                    "real": core.Index("beatles_index_1.2.json"),
+                    "real": core.Index("beatles_index_1.2_sample.json"),
                 },
             )
 
@@ -237,7 +237,7 @@ def test_dataset_versions():
     assert dataset_real.version == "real"
     assert os.path.normpath(dataset_real.index_path) == os.path.join(
         local_index_path,
-        os.path.normpath("mirdata/datasets/indexes/beatles_index_1.2.json"),
+        os.path.normpath("mirdata/datasets/indexes/beatles_index_1.2_sample.json"),
     )
     idx_test = dataset_real._index
     assert isinstance(idx_test, dict)
