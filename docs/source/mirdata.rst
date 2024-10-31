@@ -59,6 +59,14 @@ billboard
    :inherited-members:
 
 
+brid
+^^^^
+
+.. automodule:: mirdata.datasets.brid
+   :members:
+   :inherited-members:
+
+
 candombe
 ^^^^^^^^
 
