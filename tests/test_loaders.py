@@ -14,6 +14,7 @@ DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
     "brid": "[0001] M4-01-SA",
+    "ballroom": "Media-105901",
     "cante100": "008",
     "compmusic_carnatic_rhythm": "10003",
     "compmusic_carnatic_varnam": "dharini_abhogi",
