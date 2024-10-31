@@ -11,7 +11,7 @@
 
     **Beat and Bar Annotations:**
 
-    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID. For example, a line `9.430022675 3` indicates that the third beat of a bar is located at 9.43 seconds. This format is particularly useful for identifying downbeats, as they correspond to beats with ID = 1.
+    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID. 
 
     **Annotation Methodology:**
 
