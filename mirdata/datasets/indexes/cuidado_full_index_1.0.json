@@ -1,0 +1,985 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "cuidado_FallaCancion": {
+      "audio": [
+        "C_1.0/audio/cuidado_FallaCancion.flac",
+        "3b18b3c2c460842ca52a5bea82f3a649"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_FallaCancion.beats",
+        "d3b686403d23c3a15ca71d5cdbf138d5"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_FallaCancion.bpm",
+        "efbfcc140b5eceef344279305f674272"
+      ]
+    },
+    "cuidado_ConnaisPasLaFin": {
+      "audio": [
+        "C_1.0/audio/cuidado_ConnaisPasLaFin.flac",
+        "9213789b068bb91820661bf5287c33a6"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_ConnaisPasLaFin.beats",
+        "74a8d8e3d5e8072a6a615113748a16eb"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_ConnaisPasLaFin.bpm",
+        "890cbd307250cf958d382a783c05c89e"
+      ]
+    },
+    "cuidado_ChegaDaSaudade": {
+      "audio": [
+        "C_1.0/audio/cuidado_ChegaDaSaudade.flac",
+        "bbe9f1b585087faa952e5497bb5ddaaa"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_ChegaDaSaudade.beats",
+        "0da9fdfcd8708676277c197214038ef0"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_ChegaDaSaudade.bpm",
+        "4cd719be6b275fdda310be2f34013441"
+      ]
+    },
+    "cuidado_WeWillMeetAgain": {
+      "audio": [
+        "C_1.0/audio/cuidado_WeWillMeetAgain.flac",
+        "8bf3655ff3ea4391073d4ecd755b5b69"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_WeWillMeetAgain.beats",
+        "42b06f08df5ad91ca929d7925915c80f"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_WeWillMeetAgain.bpm",
+        "de29bb695d677790f1af01437cc0cbc1"
+      ]
+    },
+    "cuidado_AmourEnPoudre": {
+      "audio": [
+        "C_1.0/audio/cuidado_AmourEnPoudre.flac",
+        "5fce0a8a676b8fe3f60a2be8293f8a7a"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_AmourEnPoudre.beats",
+        "802de2e0e60576afcb9df1ff6a09f27f"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_AmourEnPoudre.bpm",
+        "06e57d1ca42bd71876e975b4cefb3e68"
+      ]
+    },
+    "cuidado_NewBorn2": {
+      "audio": [
+        "C_1.0/audio/cuidado_NewBorn2.flac",
+        "73b871470c123d9f95c178ad2aa716ca"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_NewBorn2.beats",
+        "e142c9bd6a08d695e6f8e6ae771c6a49"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_NewBorn2.bpm",
+        "ffec857a98b0e498ae11e498ed393bdb"
+      ]
+    },
+    "cuidado_ShakeEverything": {
+      "audio": [
+        "C_1.0/audio/cuidado_ShakeEverything.flac",
+        "256840993073941b3195f1f2bbce085e"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_ShakeEverything.beats",
+        "25f4f0f0fe9bfd6f4923d8903f24f191"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_ShakeEverything.bpm",
+        "0c982f12142239c943c5e2e7a96e33d2"
+      ]
+    },
+    "cuidado_RatherAPasting": {
+      "audio": [
+        "C_1.0/audio/cuidado_RatherAPasting.flac",
+        "be8ffc32e3c975fca02199aceb0e698b"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_RatherAPasting.beats",
+        "c3a28c28dd3e6d0f8d2350a30e9bfd7b"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_RatherAPasting.bpm",
+        "8ab6d435406033215add33fa8c830231"
+      ]
+    },
+    "cuidado_MrParks": {
+      "audio": [
+        "C_1.0/audio/cuidado_MrParks.flac",
+        "7fba1746ee455683eb8947fcb81f3982"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_MrParks.beats",
+        "f80d94cf74e5138cbba8b51628c8f80c"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_MrParks.bpm",
+        "514f85e97ff1813a7a58b5376c9ca388"
+      ]
+    },
+    "cuidado_LivingForTheCity": {
+      "audio": [
+        "C_1.0/audio/cuidado_LivingForTheCity.flac",
+        "a612af92da59e762a58fc9c5b59db7e7"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_LivingForTheCity.beats",
+        "ff84db39ccc33153d438a798c27369fb"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_LivingForTheCity.bpm",
+        "bd6ce8be5be83d769bb5c98e401872ea"
+      ]
+    },
+    "cuidado_BlueDanube_2": {
+      "audio": [
+        "C_1.0/audio/cuidado_BlueDanube_2.flac",
+        "4c855b8f41b1367ad8c9b5fe48efca94"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_BlueDanube_2.beats",
+        "8601174a128f79f2c6bff9350b4de362"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_BlueDanube_2.bpm",
+        "fcdd006111541511330612095a376d0a"
+      ]
+    },
+    "cuidado_YoungLovers": {
+      "audio": [
+        "C_1.0/audio/cuidado_YoungLovers.flac",
+        "8274fae519714401c028b79322ba8239"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_YoungLovers.beats",
+        "bc3e5d429fa4606ef283618569ae4a19"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_YoungLovers.bpm",
+        "9b963bf8f54eb2d86d8fb8492f0a1799"
+      ]
+    },
+    "cuidado_OnlyForAWhile": {
+      "audio": [
+        "C_1.0/audio/cuidado_OnlyForAWhile.flac",
+        "eb0ea5210d146154cfcb9093f2f83abb"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_OnlyForAWhile.beats",
+        "230a6cc0e98cbc91be3ac90891b035c9"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_OnlyForAWhile.bpm",
+        "ba170dfb5ed42dfa38cda8fadfe01084"
+      ]
+    },
+    "cuidado_SambaEAmor": {
+      "audio": [
+        "C_1.0/audio/cuidado_SambaEAmor.flac",
+        "3ebc211eaf0ca22b7229030b2703b35d"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_SambaEAmor.beats",
+        "720ef8608ea9a5740f1bf2dbee1b2261"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_SambaEAmor.bpm",
+        "89d4d688e441d49a84e3f05942925118"
+      ]
+    },
+    "cuidado_ALoCubano": {
+      "audio": [
+        "C_1.0/audio/cuidado_ALoCubano.flac",
+        "6ef5c7cbdbeae4325a369ee12ca2c742"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_ALoCubano.beats",
+        "f98d46373fec7aee83bfd0d5e5f8ff7d"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_ALoCubano.bpm",
+        "913c3c82fb10ad7fcb30f9a6858b4fc7"
+      ]
+    },
+    "cuidado_SevenSundays": {
+      "audio": [
+        "C_1.0/audio/cuidado_SevenSundays.flac",
+        "66ebfaab16fa2ea6b542c052296782a6"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_SevenSundays.beats",
+        "07a01c95f9bb0773fecc1f33b722be21"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_SevenSundays.bpm",
+        "5ca3730bcacfd68a21f865f447106527"
+      ]
+    },
+    "cuidado_HideIt": {
+      "audio": [
+        "C_1.0/audio/cuidado_HideIt.flac",
+        "f124f173b0e287ff02d3dcfe0775c82d"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_HideIt.beats",
+        "688b846d97e8d5e76ae18326e5e2f129"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_HideIt.bpm",
+        "8b0410e4b9abfbc4970e3dd38f53ca30"
+      ]
+    },
+    "cuidado_InvisibleLadder": {
+      "audio": [
+        "C_1.0/audio/cuidado_InvisibleLadder.flac",
+        "ff30dc91bf25a69c291ef94be4f91a25"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_InvisibleLadder.beats",
+        "802c075ba01bc5fc3887735ae0028461"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_InvisibleLadder.bpm",
+        "381842285d4b2dca30ed067e717c6867"
+      ]
+    },
+    "cuidado_Clifford": {
+      "audio": [
+        "C_1.0/audio/cuidado_Clifford.flac",
+        "6a44f6f809d0b535eb07158381a0b7f3"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Clifford.beats",
+        "e1ff178de73e42809ed6cf944c355ffa"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Clifford.bpm",
+        "59dd94f05d497b7d6eae02febd3d7978"
+      ]
+    },
+    "cuidado_PullYourselfTogether": {
+      "audio": [
+        "C_1.0/audio/cuidado_PullYourselfTogether.flac",
+        "e135da7312e640e4aa9f333e8a80b5bb"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_PullYourselfTogether.beats",
+        "1b337745d43d5d645ebdbfad000aa179"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_PullYourselfTogether.bpm",
+        "010492ef4b1df78fc1c2a17927517828"
+      ]
+    },
+    "cuidado_RoyalWaltz": {
+      "audio": [
+        "C_1.0/audio/cuidado_RoyalWaltz.flac",
+        "cffc8fc72b596090334f53e4ecd7046a"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_RoyalWaltz.beats",
+        "86f6e8ae133c2487cc8a31f229e85af2"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_RoyalWaltz.bpm",
+        "fa61a845e498e7cff64c4a05138a8343"
+      ]
+    },
+    "cuidado_VillaLobosAria": {
+      "audio": [
+        "C_1.0/audio/cuidado_VillaLobosAria.flac",
+        "5b8e760971869a46a67e271d8af099ca"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_VillaLobosAria.beats",
+        "72508639628782fc3e6db5dbfafd5605"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_VillaLobosAria.bpm",
+        "bd6ce8be5be83d769bb5c98e401872ea"
+      ]
+    },
+    "cuidado_AwayWithWords": {
+      "audio": [
+        "C_1.0/audio/cuidado_AwayWithWords.flac",
+        "542caa4414a91b466a45252daca7b1b1"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_AwayWithWords.beats",
+        "0d882fd6ef9388468663dc4ecc245f18"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_AwayWithWords.bpm",
+        "379c82650d0abbf8ed4b3b31e315ed72"
+      ]
+    },
+    "cuidado_PunkItUp": {
+      "audio": [
+        "C_1.0/audio/cuidado_PunkItUp.flac",
+        "92faae504f04e98f7e34b957ad0b4eb1"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_PunkItUp.beats",
+        "399f5e248c50ebdaab54a3830863f55c"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_PunkItUp.bpm",
+        "19b19a18c9e39af25fbb300641fad6d0"
+      ]
+    },
+    "cuidado_ICanGiveYou": {
+      "audio": [
+        "C_1.0/audio/cuidado_ICanGiveYou.flac",
+        "114f86f5d9ef47baf54fe6a101004315"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_ICanGiveYou.beats",
+        "ffe9e713a823724fa2539c3e34de1e5f"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_ICanGiveYou.bpm",
+        "c52b90c3faea276e89b45481cee5adfa"
+      ]
+    },
+    "cuidado_AssholeSong": {
+      "audio": [
+        "C_1.0/audio/cuidado_AssholeSong.flac",
+        "c5650c0b7025df6555067f3fac8775dc"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_AssholeSong.beats",
+        "67d9ccf9ca7eabdce76aa7246698243a"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_AssholeSong.bpm",
+        "34b975c0959aa6a15615fcea42cc4b76"
+      ]
+    },
+    "cuidado_Penelope": {
+      "audio": [
+        "C_1.0/audio/cuidado_Penelope.flac",
+        "1d839514d8f9595c0a8b04e74c8734be"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Penelope.beats",
+        "77ba3f8686a0d1c72447a95635301b9a"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Penelope.bpm",
+        "a8e8bb9fca20a2eddd7fcb27cf9d1c81"
+      ]
+    },
+    "cuidado_EternalLife": {
+      "audio": [
+        "C_1.0/audio/cuidado_EternalLife.flac",
+        "e336bdb22cddecfabe0bcb8cec2ac8b1"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_EternalLife.beats",
+        "aaacdc24ebc7bdd6b1bffad540102119"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_EternalLife.bpm",
+        "216e34f1c0bffcf89c5cdb8e6dea443b"
+      ]
+    },
+    "cuidado_SavoyBlues": {
+      "audio": [
+        "C_1.0/audio/cuidado_SavoyBlues.flac",
+        "4eca68c94026ca292479f01f4bd892ca"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_SavoyBlues.beats",
+        "455fc65bcaf3d1143e79d1c5e009802d"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_SavoyBlues.bpm",
+        "a7e339a3b345fba57a7195d6bc39b457"
+      ]
+    },
+    "cuidado_Ipanema": {
+      "audio": [
+        "C_1.0/audio/cuidado_Ipanema.flac",
+        "029ce5f1a81badf0b10e716dc4b07d60"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Ipanema.beats",
+        "a02f6461a7ece37c4b779cf429aace67"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Ipanema.bpm",
+        "013f5255b860588de7da3b5093d6013f"
+      ]
+    },
+    "cuidado_Lover": {
+      "audio": [
+        "C_1.0/audio/cuidado_Lover.flac",
+        "f5ff1b60e9941f5e2665fda7b45394f1"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Lover.beats",
+        "a46fb4a90a5f5a3300c332c1e622bd16"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Lover.bpm",
+        "c6f56bcf514458e22f067d6d12a5daff"
+      ]
+    },
+    "cuidado_TragiComic": {
+      "audio": [
+        "C_1.0/audio/cuidado_TragiComic.flac",
+        "4ddefeaa9b2fc0d5b070ca1ecff70e97"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_TragiComic.beats",
+        "64d0757960233890d045ec0bba206621"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_TragiComic.bpm",
+        "fb9ed3e43b1107a6643dcefd68b57d99"
+      ]
+    },
+    "cuidado_InTheMoonlight": {
+      "audio": [
+        "C_1.0/audio/cuidado_InTheMoonlight.flac",
+        "48997535ed732e87937f4428eab4af5c"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_InTheMoonlight.beats",
+        "9e00d37a6cf15d1ab5e866170c402689"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_InTheMoonlight.bpm",
+        "e6bf4779c9e2cc81aabb4ac9d71ee835"
+      ]
+    },
+    "cuidado_BoomBoomBoom": {
+      "audio": [
+        "C_1.0/audio/cuidado_BoomBoomBoom.flac",
+        "ea464807e55034e113cef64ca38e726a"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_BoomBoomBoom.beats",
+        "82c3a74a7144de007f9d492d3cda3d7f"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_BoomBoomBoom.bpm",
+        "f3137170997830dc1c3a6db7a94ffd91"
+      ]
+    },
+    "cuidado_ChoraTuaTristeza": {
+      "audio": [
+        "C_1.0/audio/cuidado_ChoraTuaTristeza.flac",
+        "ab1924d3512a2daa6c38b4ae982555fc"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_ChoraTuaTristeza.beats",
+        "7caa50ebd1d3115704ecc39ebcfdd304"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_ChoraTuaTristeza.bpm",
+        "2f6fa9451f1f2c8909e00b12871b1204"
+      ]
+    },
+    "cuidado_Amsterdam": {
+      "audio": [
+        "C_1.0/audio/cuidado_Amsterdam.flac",
+        "29022dc5a119b695737df443b3555961"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Amsterdam.beats",
+        "c8866cf4258a7b3079d2965c7aa16f11"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Amsterdam.bpm",
+        "72be322324ca0055f295db57c3bd670a"
+      ]
+    },
+    "cuidado_AstralWeeks": {
+      "audio": [
+        "C_1.0/audio/cuidado_AstralWeeks.flac",
+        "b7dbb6349db1e672ef6742bea2b1a2ee"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_AstralWeeks.beats",
+        "d9662d56beee585ffc28f82dde6f5798"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_AstralWeeks.bpm",
+        "44b8e9511372d0f3434fb62a8c41e7ae"
+      ]
+    },
+    "cuidado_WhosLovingYou": {
+      "audio": [
+        "C_1.0/audio/cuidado_WhosLovingYou.flac",
+        "fc657b483e9f85cebb8e260020948152"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_WhosLovingYou.beats",
+        "2f2920fdf9132e671de78ff25d81364d"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_WhosLovingYou.bpm",
+        "268fedeeec29b4899e012146e55101ee"
+      ]
+    },
+    "cuidado_SchubertD898_1": {
+      "audio": [
+        "C_1.0/audio/cuidado_SchubertD898_1.flac",
+        "768322be07d5554f39ea212a3ecabde5"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_SchubertD898_1.beats",
+        "e8e88cfacbf7df0036b8d497d2871306"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_SchubertD898_1.bpm",
+        "f706bacecd8bba53c2e2b4f747be0037"
+      ]
+    },
+    "cuidado_ISeeYou": {
+      "audio": [
+        "C_1.0/audio/cuidado_ISeeYou.flac",
+        "b1ca657dbdf79df942e71185bbb7e797"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_ISeeYou.beats",
+        "e1ab98fb9955e5600c13827fef4b4906"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_ISeeYou.bpm",
+        "4b94bda7736cda287e54bccc8f062660"
+      ]
+    },
+    "cuidado_WalkinInTheFog": {
+      "audio": [
+        "C_1.0/audio/cuidado_WalkinInTheFog.flac",
+        "895325e9f1561a80742f635ea77c8250"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_WalkinInTheFog.beats",
+        "0ca4473ffb500ae97be5dc6ea96dd412"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_WalkinInTheFog.bpm",
+        "6517d77a3cd7a2c950db23fadb0905e6"
+      ]
+    },
+    "cuidado_CeuxQuiSEnVont": {
+      "audio": [
+        "C_1.0/audio/cuidado_CeuxQuiSEnVont.flac",
+        "5e5d842692996276891fd58a36a23a6d"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_CeuxQuiSEnVont.beats",
+        "cd8964cb145e1bc1ef1608e4c3c7d5cd"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_CeuxQuiSEnVont.bpm",
+        "906b5ac32c916b1b67267a1c408d7fb7"
+      ]
+    },
+    "cuidado_BaumannOp62Allegro": {
+      "audio": [
+        "C_1.0/audio/cuidado_BaumannOp62Allegro.flac",
+        "84e4f2aa6eefc94faeb5754cdbd37570"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_BaumannOp62Allegro.beats",
+        "1880ee9699b762170a363613237f1e00"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_BaumannOp62Allegro.bpm",
+        "50946a1f23e798d687091cb684258812"
+      ]
+    },
+    "cuidado_BluebellField": {
+      "audio": [
+        "C_1.0/audio/cuidado_BluebellField.flac",
+        "f6b946d311f7af9db4681d584b427e23"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_BluebellField.beats",
+        "29eda529c4c7be3cb67aa59d5ca578cd"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_BluebellField.bpm",
+        "68773c10646e695b0b4bb5030b24151f"
+      ]
+    },
+    "cuidado_Sneaky": {
+      "audio": [
+        "C_1.0/audio/cuidado_Sneaky.flac",
+        "43f1950fe6b7efb3927e0f6a79c3dfab"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Sneaky.beats",
+        "941434c5ba0b83ac3f9b79b326d90081"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Sneaky.bpm",
+        "5345b15f52f5bfa6d5c98e6b1da24636"
+      ]
+    },
+    "cuidado_RestInPeace": {
+      "audio": [
+        "C_1.0/audio/cuidado_RestInPeace.flac",
+        "841127c73d067f977f8c5ead93a48b8a"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_RestInPeace.beats",
+        "edec75e4a4419835eb7bd7d49af753dd"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_RestInPeace.bpm",
+        "6ae483f62843d5f311917f16e7f4f8a5"
+      ]
+    },
+    "cuidado_RoyHargrove8": {
+      "audio": [
+        "C_1.0/audio/cuidado_RoyHargrove8.flac",
+        "8b79252e2e9e1a6fe7ef31ef8762f43e"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_RoyHargrove8.beats",
+        "605ddc7dfceef8c60ec209cf86f9d5d5"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_RoyHargrove8.bpm",
+        "1a3a94ae9bafba72ba362cded1f5f1ca"
+      ]
+    },
+    "cuidado_BeijaEu": {
+      "audio": [
+        "C_1.0/audio/cuidado_BeijaEu.flac",
+        "fd9bb9e9b5a04a410d0d2315594c4b6e"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_BeijaEu.beats",
+        "ab15826438b87529d8bf7d1ed3ed2dc6"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_BeijaEu.bpm",
+        "b4008af63d2d54c9af5f484455d9d724"
+      ]
+    },
+    "cuidado_EnceinteVierge": {
+      "audio": [
+        "C_1.0/audio/cuidado_EnceinteVierge.flac",
+        "e53d5435517c4b73f326428f07acf81d"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_EnceinteVierge.beats",
+        "e049b061e9e1954ccbad9b52b0e94736"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_EnceinteVierge.bpm",
+        "45462354e9276b740d6992cdc403c335"
+      ]
+    },
+    "cuidado_Borboleta": {
+      "audio": [
+        "C_1.0/audio/cuidado_Borboleta.flac",
+        "99603856c655185d456cb62711f2995a"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Borboleta.beats",
+        "3244198b7c11034652d537dda980e9c3"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Borboleta.bpm",
+        "1ab0dd8ae8b58a35d4774bd6588fe37a"
+      ]
+    },
+    "cuidado_ShakeIt": {
+      "audio": [
+        "C_1.0/audio/cuidado_ShakeIt.flac",
+        "2691af8ec7cd9161e315e81ec0539808"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_ShakeIt.beats",
+        "b18219c52b9529f5b2d1de2e49861508"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_ShakeIt.bpm",
+        "e3d984b45f796688495c8bda3ad481ed"
+      ]
+    },
+    "cuidado_RempartsDeSeville": {
+      "audio": [
+        "C_1.0/audio/cuidado_RempartsDeSeville.flac",
+        "080d98dbeebeecb015dca0497b7f4181"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_RempartsDeSeville.beats",
+        "63944e25aa94cdfdf1d3deb4afafeef6"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_RempartsDeSeville.bpm",
+        "a908a9c112093f52b459bf60dca39fad"
+      ]
+    },
+    "cuidado_Cvalda": {
+      "audio": [
+        "C_1.0/audio/cuidado_Cvalda.flac",
+        "dd5d9168ce30ab92ccf0cb82f334ac76"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Cvalda.beats",
+        "16ee9d5702aeda17d45729858f6444c3"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Cvalda.bpm",
+        "25518dcafffe50deb9afdc63d8531ecf"
+      ]
+    },
+    "cuidado_BlueDanube_1": {
+      "audio": [
+        "C_1.0/audio/cuidado_BlueDanube_1.flac",
+        "0bbe8475f4421cf9b8953f4956f14ec5"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_BlueDanube_1.beats",
+        "45d98b502a01f0a4c41cfb7cde381c9b"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_BlueDanube_1.bpm",
+        "7f65598b1242e950e43afa3c5c6e2a3b"
+      ]
+    },
+    "cuidado_HigherGround": {
+      "audio": [
+        "C_1.0/audio/cuidado_HigherGround.flac",
+        "eb0a89ea20d4ae112b019561e6bd2325"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_HigherGround.beats",
+        "d6dc5d0e06194f3ef35f2a6b545ae269"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_HigherGround.bpm",
+        "e58c3530941e4115be305de4fec2be91"
+      ]
+    },
+    "cuidado_Leyenda": {
+      "audio": [
+        "C_1.0/audio/cuidado_Leyenda.flac",
+        "1d9c0fbd4d85ed94fa59d9e77cdc96e8"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Leyenda.beats",
+        "37ba12ad62fbb4d7c3d5a23e6ec638db"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Leyenda.bpm",
+        "2b0edfb743a16a26c53af8f542e14bdb"
+      ]
+    },
+    "cuidado_GoodLuck": {
+      "audio": [
+        "C_1.0/audio/cuidado_GoodLuck.flac",
+        "b47a40a340d3e0d62b3368ac1884db29"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_GoodLuck.beats",
+        "39777d90297a7e0ceade408fb08a46e2"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_GoodLuck.bpm",
+        "b50ef85a00b368dac14cb4b13efff780"
+      ]
+    },
+    "cuidado_NewBorn1": {
+      "audio": [
+        "C_1.0/audio/cuidado_NewBorn1.flac",
+        "8efa9eb9a617fe0a5dc7073b40b95a79"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_NewBorn1.beats",
+        "85430ec2d23b935ba2ce092677512e84"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_NewBorn1.bpm",
+        "2a594a31da04753a52faf7a8bf25c0ea"
+      ]
+    },
+    "cuidado_CastilloDeArena": {
+      "audio": [
+        "C_1.0/audio/cuidado_CastilloDeArena.flac",
+        "cd6236ea247c0e9f8b026abe11f0efe7"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_CastilloDeArena.beats",
+        "7c370a270b5443f09cefddcfda716687"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_CastilloDeArena.bpm",
+        "1af799ae78e973a8c6e11dbe6bebead0"
+      ]
+    },
+    "cuidado_BoredToSobs": {
+      "audio": [
+        "C_1.0/audio/cuidado_BoredToSobs.flac",
+        "0525009ee2942ccfd3fcf10a444ebf37"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_BoredToSobs.beats",
+        "9e91c9fbd4f9e8174190e4cabc053ca2"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_BoredToSobs.bpm",
+        "fda2cd7a602e0de7aba6606c66726677"
+      ]
+    },
+    "cuidado_SoQuiet": {
+      "audio": [
+        "C_1.0/audio/cuidado_SoQuiet.flac",
+        "582da66b15052d9d293fb2d6460966ec"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_SoQuiet.beats",
+        "67dde6184f8b2afedcf87939de52edcb"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_SoQuiet.bpm",
+        "9db5b1e291bca11681efa14a62209367"
+      ]
+    },
+    "cuidado_Rosa": {
+      "audio": [
+        "C_1.0/audio/cuidado_Rosa.flac",
+        "99e399819ea6f0e5276143728885e2b8"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Rosa.beats",
+        "0c2274a89384b3009753ebae3aaa6af7"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Rosa.bpm",
+        "65de0f324724457c62529fd78152141c"
+      ]
+    },
+    "cuidado_Asturias": {
+      "audio": [
+        "C_1.0/audio/cuidado_Asturias.flac",
+        "03aa8520a4ae61611959358f54bffd65"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Asturias.beats",
+        "aaf0e4a9bbd5cf7c4c5d61ab0be08625"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Asturias.bpm",
+        "a454fdd0927c96106d4a5dcbca664c2b"
+      ]
+    },
+    "cuidado_WeDontMind": {
+      "audio": [
+        "C_1.0/audio/cuidado_WeDontMind.flac",
+        "9dd0c451b6017c57035d3fc0a65fc76e"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_WeDontMind.beats",
+        "c779b2db737e2b2253db14d6e45a14ed"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_WeDontMind.bpm",
+        "867f8a1bd0603d96892dcecbe935397d"
+      ]
+    },
+    "cuidado_Unintended1": {
+      "audio": [
+        "C_1.0/audio/cuidado_Unintended1.flac",
+        "bbb943f2e54bff7759a3728d341dfb0a"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_Unintended1.beats",
+        "50bfe5f6ba7b14a78005ca4e44320722"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_Unintended1.bpm",
+        "c57c92e3f83d96c67d6424d5c14d33ab"
+      ]
+    },
+    "cuidado_WaltzOfMyHeart": {
+      "audio": [
+        "C_1.0/audio/cuidado_WaltzOfMyHeart.flac",
+        "5dd1f4ed1e690a4463caa40b365618fd"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_WaltzOfMyHeart.beats",
+        "0ee1521bb9bff13685d9a52614184ff0"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_WaltzOfMyHeart.bpm",
+        "72be322324ca0055f295db57c3bd670a"
+      ]
+    },
+    "cuidado_FallingDown": {
+      "audio": [
+        "C_1.0/audio/cuidado_FallingDown.flac",
+        "bcdaa49b66f4f538d490ad51d96988c8"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_FallingDown.beats",
+        "e817dde8e0823fbd25cbc0b4f7b64138"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_FallingDown.bpm",
+        "4f91e741ebe9b78213d20f96c2a67b8e"
+      ]
+    },
+    "cuidado_SchubertD28": {
+      "audio": [
+        "C_1.0/audio/cuidado_SchubertD28.flac",
+        "a5f3d0d31cc26430f95280780cd1ae5f"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_SchubertD28.beats",
+        "e94c88ed1b702aa2cd83e82baafa95d8"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_SchubertD28.bpm",
+        "b76d7788ee7373f6e19d98404e95f276"
+      ]
+    },
+    "cuidado_SchubertD780_3": {
+      "audio": [
+        "C_1.0/audio/cuidado_SchubertD780_3.flac",
+        "a3f3b3593eb833ab2f70f6096ead8a41"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_SchubertD780_3.beats",
+        "a68408c08290a4457578a224b6dab367"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_SchubertD780_3.bpm",
+        "acf5c63e78ed193e356021638186239a"
+      ]
+    },
+    "cuidado_RoyHargrove2": {
+      "audio": [
+        "C_1.0/audio/cuidado_RoyHargrove2.flac",
+        "f7f5b473375f0e122af9cec967736b62"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_RoyHargrove2.beats",
+        "674a9ae7f458bf05d3fcf6fc37eccab2"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_RoyHargrove2.bpm",
+        "7e2b8d6e1410416ee9a6b2576cc2ef78"
+      ]
+    }
+  }
+}
