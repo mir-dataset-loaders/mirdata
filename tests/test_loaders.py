@@ -44,6 +44,7 @@ CUSTOM_TEST_TRACKS = {
     "salami": "2",
     "saraga_carnatic": "116_Bhuvini_Dasudane",
     "saraga_hindustani": "50_Irani_Bhairavi_Thumri",
+    "simac": "simac_01_H_mikri_Rallou",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
     "dagstuhl_choirset": "DCS_LI_QuartetB_Take04_B2",
     "tonas": "01-D_AMairena",
