@@ -48,7 +48,8 @@ INDEXES = {
     "1.3": core.Index(
         filename="haydn_op20_index_1.3.json",
         url="https://zenodo.org/records/14024682/files/haydn_op20_index_1.3.json?download=1",
-        checksum="1a63b52c3273fe2b1b37dc96c50f7bf4"),
+        checksum="1a63b52c3273fe2b1b37dc96c50f7bf4",
+    ),
     "sample": core.Index(filename="haydn_op20_index_1.3_sample.json"),
 }
 

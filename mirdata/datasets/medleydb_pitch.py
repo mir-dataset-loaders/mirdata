@@ -42,11 +42,13 @@ INDEXES = {
     "2.0": core.Index(
         filename="medleydb_pitch_index_2.0.json",
         url="https://zenodo.org/records/14022462/files/medleydb_pitch_index_2.0.json?download=1",
-        checksum="39d3175befbb2e3f817bc3d26785d5b2"),
+        checksum="39d3175befbb2e3f817bc3d26785d5b2",
+    ),
     "3.0": core.Index(
         filename="medleydb_pitch_index_3.0.json",
         url="https://zenodo.org/records/14023524/files/medleydb_pitch_index_3.0.json?download=1",
-        checksum="a5abc2c67c30b634aee87ed90f9fbaa4"),
+        checksum="a5abc2c67c30b634aee87ed90f9fbaa4",
+    ),
     "sample": core.Index(filename="medleydb_pitch_index_3.0_sample.json"),
 }
 REMOTES = {

@@ -81,8 +81,9 @@ INDEXES = {
     "1.0": core.Index(
         filename="phenicx_anechoic_index_1.0.json",
         url="https://zenodo.org/records/14024469/files/phenicx_anechoic_index_1.0.json?download=1",
-        checksum="f2e8106ef7a59d474fe3e26155144e6b"),
-    "sample": core.Index(filename="phenicx_anechoic_index_1.0_sample.json")
+        checksum="f2e8106ef7a59d474fe3e26155144e6b",
+    ),
+    "sample": core.Index(filename="phenicx_anechoic_index_1.0_sample.json"),
 }
 
 REMOTES = {
