@@ -94,8 +94,7 @@ def downloader(
         )
 
     if index.remote:
-        # add index to remotes
-        if not remotes:
+        if remotes is None:
             remotes = {}
         remotes["index"] = index.remote
 
