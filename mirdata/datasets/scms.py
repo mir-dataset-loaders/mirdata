@@ -43,11 +43,15 @@ BIBTEX = """
 }
 """
 
-
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="scms_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="scms_index_1.0.json",
+        url="https://zenodo.org/records/13930519/files/scms_index_1.0.json?download=1",
+        checksum="f4f8b5594b917a1d5f76f98a2c2371f5",
+    ),
+    "sample": core.Index(filename="scms_index_1.0_sample.json"),
 }
 
 REMOTES = {

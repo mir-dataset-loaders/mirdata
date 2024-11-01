@@ -42,8 +42,13 @@ booktitle={Proceedings of the 12th International Society for Music Information R
 
 INDEXES = {
     "default": "2.0",
-    "test": "2.0",
-    "2.0": core.Index(filename="billboard_index_2.0.json"),
+    "test": "sample",
+    "2.0": core.Index(
+        filename="billboard_index_2.0.json",
+        url="https://zenodo.org/records/13930536/files/billboard_index_2.0.json?download=1",
+        checksum="cafd738016a369550af23583e58a16c8",
+    ),
+    "sample": core.Index(filename="billboard_index_2.0_sample.json"),
 }
 
 REMOTES = {

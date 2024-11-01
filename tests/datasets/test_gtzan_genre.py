@@ -9,7 +9,7 @@ TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/gtzan_genre")
 
 def test_track():
     default_trackid = "country.00000"
-    dataset = gtzan_genre.Dataset(TEST_DATA_HOME)
+    dataset = gtzan_genre.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     expected_attributes = {
         "genre": "country",
@@ -93,14 +93,14 @@ def test_load_tempo():
 
 
 def test_hiphop():
-    dataset = gtzan_genre.Dataset(TEST_DATA_HOME)
+    dataset = gtzan_genre.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("hiphop.00000")
     assert track.genre == "hip-hop"
 
 
 def test_to_jams():
     default_trackid = "country.00000"
-    dataset = gtzan_genre.Dataset(TEST_DATA_HOME)
+    dataset = gtzan_genre.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 

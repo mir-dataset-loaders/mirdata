@@ -9,7 +9,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "Aruna_Sairam.Valli_Kanavan"
     data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_raga")
-    dataset = compmusic_raga.Dataset(data_home)
+    dataset = compmusic_raga.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -79,7 +79,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/compmusic_raga"
-    dataset = compmusic_raga.Dataset(data_home)
+    dataset = compmusic_raga.Dataset(data_home, version="test")
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     jam = track.to_jams()
 
@@ -176,7 +176,7 @@ def test_to_jams():
 
 def test_load_tonic():
     data_home = "tests/resources/mir_datasets/compmusic_raga"
-    dataset = compmusic_raga.Dataset(data_home)
+    dataset = compmusic_raga.Dataset(data_home, version="test")
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     tonic_path = track.tonic_path
     parsed_tonic = compmusic_raga.load_tonic(tonic_path)
@@ -186,7 +186,7 @@ def test_load_tonic():
 
 def test_load_pitch():
     data_home = "tests/resources/mir_datasets/compmusic_raga"
-    dataset = compmusic_raga.Dataset(data_home)
+    dataset = compmusic_raga.Dataset(data_home, version="test")
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     pitch_path = track.pitch_path
     parsed_pitch = compmusic_raga.load_pitch(pitch_path)
@@ -226,7 +226,7 @@ def test_load_pitch():
 
 def test_load_segments():
     data_home = "tests/resources/mir_datasets/compmusic_raga"
-    dataset = compmusic_raga.Dataset(data_home)
+    dataset = compmusic_raga.Dataset(data_home, version="test")
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     nyas_segments_path = track.nyas_segments_path
     tani_segments_path = track.tani_segments_path
@@ -284,7 +284,7 @@ def test_load_segments():
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/compmusic_raga"
-    dataset = compmusic_raga.Dataset(data_home)
+    dataset = compmusic_raga.Dataset(data_home, version="test")
     track = dataset.track("Aruna_Sairam.Valli_Kanavan")
     audio_path = track.audio_path
     audio, sr = compmusic_raga.load_audio(audio_path)
@@ -298,7 +298,7 @@ def test_load_audio():
 
 def test_dataset_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_raga"
-    dataset = compmusic_raga.Dataset(data_home)
+    dataset = compmusic_raga.Dataset(data_home, version="test")
     carnatic_mapping_path = os.path.join(
         data_home,
         "RagaDataset",

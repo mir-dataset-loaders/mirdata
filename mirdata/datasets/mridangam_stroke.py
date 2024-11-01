@@ -69,6 +69,17 @@ INDEXES = {
     "1.5": core.Index(filename="mridangam_stroke_index_1.5.json"),
 }
 
+INDEXES = {
+    "default": "1.5",
+    "test": "sample",
+    "1.5": core.Index(
+        filename="mridangam_stroke_index_1.5.json",
+        url="https://zenodo.org/records/13930511/files/mridangam_stroke_index_1.5.json?download=1",
+        checksum="b84b05f46839e2d4417cc59af377b0c2",
+    ),
+    "sample": core.Index(filename="mridangam_stroke_index_1.5_sample.json"),
+}
+
 REMOTES = {
     "remote_data": download_utils.RemoteFileMetadata(
         filename="mridangam_stroke_1.5.zip",

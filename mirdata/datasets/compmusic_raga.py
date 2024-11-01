@@ -66,8 +66,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="compmusic_raga_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="compmusic_raga_index_1.0.json",
+        url="https://zenodo.org/records/13993003/files/compmusic_raga_index_1.0.json?download=1",
+        checksum="f4b2c4d19169e35e76f3f161d6325341",
+    ),
+    "sample": core.Index(filename="compmusic_raga_index_1.0_sample.json"),
 }
 
 REMOTES = {

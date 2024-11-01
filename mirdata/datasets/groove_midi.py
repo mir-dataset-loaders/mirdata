@@ -73,8 +73,13 @@ BIBTEX = """@inproceedings{groove2019,
 
 INDEXES = {
     "default": "1.0.0",
-    "test": "1.0.0",
-    "1.0.0": core.Index(filename="groove_midi_index_1.0.0.json"),
+    "test": "sample",
+    "1.0.0": core.Index(
+        filename="groove_midi_index_1.0.0.json",
+        url="https://zenodo.org/records/13993337/files/groove_midi_index_1.0.0.json?download=1",
+        checksum="9ee6fd1b2f3d50570fc446d4b19814a3",
+    ),
+    "sample": core.Index(filename="groove_midi_index_1.0.0_sample.json"),
 }
 
 REMOTES = {

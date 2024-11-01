@@ -8,7 +8,7 @@ from mirdata.datasets import compmusic_indian_tonic
 def test_track():
     default_trackid = "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180"
     data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_indian_tonic")
-    dataset = compmusic_indian_tonic.Dataset(data_home)
+    dataset = compmusic_indian_tonic.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     expected_attributes = {
         "audio_path": os.path.join(
@@ -39,7 +39,7 @@ def test_track():
 def test_to_jams():
     default_trackid = "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180"
     data_home = "tests/resources/mir_datasets/compmusic_indian_tonic"
-    dataset = compmusic_indian_tonic.Dataset(data_home)
+    dataset = compmusic_indian_tonic.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -53,7 +53,7 @@ def test_to_jams():
 def test_load_audio():
     default_trackid = "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180"
     data_home = "tests/resources/mir_datasets/compmusic_indian_tonic"
-    dataset = compmusic_indian_tonic.Dataset(data_home)
+    dataset = compmusic_indian_tonic.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     _, sr = track.audio
@@ -62,7 +62,7 @@ def test_load_audio():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_indian_tonic"
-    dataset = compmusic_indian_tonic.Dataset(data_home)
+    dataset = compmusic_indian_tonic.Dataset(data_home, version="test")
 
     default_trackid = "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180"
     track = dataset.track(default_trackid)

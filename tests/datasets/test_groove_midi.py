@@ -10,7 +10,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "drummer1/eval_session/1"
     data_home = "tests/resources/mir_datasets/groove_midi"
-    dataset = groove_midi.Dataset(data_home)
+    dataset = groove_midi.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -68,7 +68,7 @@ def test_track():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/groove_midi"
-    dataset = groove_midi.Dataset(data_home)
+    dataset = groove_midi.Dataset(data_home, version="test")
     metadata = dataset._metadata
 
     assert metadata["drummer1/eval_session/1"] == {
@@ -109,7 +109,7 @@ def test_download(httpserver):
             unpack_directories=["groove"],
         )
     }
-    dataset = groove_midi.Dataset(data_home)
+    dataset = groove_midi.Dataset(data_home, version="test")
     dataset.remotes = remotes
     dataset.download(None, False, False)
 

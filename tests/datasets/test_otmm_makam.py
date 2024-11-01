@@ -9,7 +9,7 @@ def test_track():
     data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam")
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
-    dataset = compmusic_otmm_makam.Dataset(data_home)
+    dataset = compmusic_otmm_makam.Dataset(data_home, version="test")
     track = dataset.track(track_id)
 
     expected_attributes = {
@@ -179,7 +179,7 @@ def test_to_jams():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
-    dataset = compmusic_otmm_makam.Dataset(data_home)
+    dataset = compmusic_otmm_makam.Dataset(data_home, version="test")
     track = dataset.track(track_id)
     jam = track.to_jams()
 
@@ -445,7 +445,7 @@ def test_load_pitch():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
-    dataset = compmusic_otmm_makam.Dataset(data_home)
+    dataset = compmusic_otmm_makam.Dataset(data_home, version="test")
     track = dataset.track(track_id)
     pitch_path = track.pitch_path
     parsed_pitch = compmusic_otmm_makam.load_pitch(pitch_path)
@@ -486,7 +486,7 @@ def test_load_pitch():
 
 def test_load_metadata():
     data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam")
-    dataset = compmusic_otmm_makam.Dataset(data_home)
+    dataset = compmusic_otmm_makam.Dataset(data_home, version="test")
     metadata = dataset._metadata
 
     track_id = list(metadata.keys())[0]
@@ -504,7 +504,7 @@ def test_load_mb_tags():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
-    dataset = compmusic_otmm_makam.Dataset(data_home)
+    dataset = compmusic_otmm_makam.Dataset(data_home, version="test")
     track = dataset.track(track_id)
     mb_tags_path = track.mb_tags_path
     mb_tags = compmusic_otmm_makam.load_mb_tags(mb_tags_path)
@@ -713,7 +713,7 @@ def test_load_mb_tags():
 
     # test empty duration
     track_id = "2a3e1a6d-ab82-4a46-ae8b-0fb057b53de0"
-    dataset = compmusic_otmm_makam.Dataset(data_home)
+    dataset = compmusic_otmm_makam.Dataset(data_home, version="test")
     track = dataset.track(track_id)
     mb_tags_path = track.mb_tags_path
     mb_tags = compmusic_otmm_makam.load_mb_tags(mb_tags_path)
@@ -724,7 +724,7 @@ def test_special_turkish_characters():
     data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
-    dataset = compmusic_otmm_makam.Dataset(data_home)
+    dataset = compmusic_otmm_makam.Dataset(data_home, version="test")
     track = dataset.track(track_id)
     mb_tags_path = track.mb_tags_path
     special_characters = compmusic_otmm_makam.load_mb_tags(mb_tags_path)[

@@ -1,0 +1,23 @@
+{
+    "version": "1.0",
+    "tracks": {
+        "c-1": {
+            "lh_fingering": [
+                "ArGNNThumb-s/lh/c-1.pt",
+                "ecb8a0dcb70a4331708baf9141cedfd1"
+            ],
+            "rh_fingering": [
+                "ArGNNThumb-s/rh/c-1.pt",
+                "cdb1ba84bc21572c35d299291fca8442"
+            ],
+            "expressiveness": [
+                "virtuoso/c-1.pt",
+                "fb6eb47c9ee21051559325e217b9b0a1"
+            ],
+            "notes": [
+                "k/c-1.pt",
+                "9816f5c88488925c019283e29f00b536"
+            ]
+        }
+    }
+}

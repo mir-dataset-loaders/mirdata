@@ -28,7 +28,7 @@ class RemoteFileMetadata(object):
         checksum (str): the remote file's md5 checksum
         destination_dir (str or None): the relative path for where to save the file
         unpack_directories (list or None): list of relative directories. For each directory
-            the contents will be moved to destination_dir (or data_home if not provieds)
+            the contents will be moved to destination_dir (or data_home if not provided)
 
     """
 
@@ -94,8 +94,7 @@ def downloader(
         )
 
     if index.remote:
-        # add index to remotes
-        if not remotes:
+        if remotes is None:
             remotes = {}
         remotes["index"] = index.remote
 
@@ -103,8 +102,8 @@ def downloader(
     # partial download specified by the index.
     partial_download = partial_download if partial_download else index.partial_download
 
-    if remotes:
-        if partial_download:
+    if remotes is not None:
+        if partial_download is not None:
             # check the keys in partial_download are in the download dict
             if not isinstance(partial_download, list) or any(
                 [k not in remotes for k in partial_download]
@@ -118,7 +117,20 @@ def downloader(
         else:
             objs_to_download = list(remotes.keys())
 
-        logging.info("Downloading {} to {}".format(objs_to_download, save_dir))
+        if "index" in objs_to_download and len(objs_to_download) > 1:
+            logging.info(
+                "Downloading {}. Index is being stored in {}, and the rest of files in {}".format(
+                    objs_to_download, index.indexes_dir, save_dir
+                )
+            )
+        elif "index" in objs_to_download and len(objs_to_download) == 1:
+            logging.info(
+                "Downloading {}. Index is being stored in {}".format(
+                    objs_to_download, index.indexes_dir
+                )
+            )
+        else:
+            logging.info("Downloading {} to {}".format(objs_to_download, save_dir))
 
         for k in objs_to_download:
             logging.info("[{}] downloading {}".format(k, remotes[k].filename))

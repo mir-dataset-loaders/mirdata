@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "tracks": {
+    "1": {
+      "audio": [
+        "audio/100066 Lindstrom - Monsteer (Original Mix).mp3",
+        "099764df295be7fd1f81cafe494a7d6d"
+      ],
+      "meta": [
+        "meta/100066 Lindstrom - Monsteer (Original Mix).json",
+        "6fea1b13a9ff55e6837691439756d1c8"
+      ],
+      "key": [
+        "keys/100066 Lindstrom - Monsteer (Original Mix).txt",
+        "9ab051cf45588e2b8620aabf7a633dee"
+      ]
+    }
+  }
+}

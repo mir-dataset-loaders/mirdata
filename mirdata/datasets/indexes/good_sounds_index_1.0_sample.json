@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "exclude": ["takes", "packs", "ratings", "sounds"],
+  "tracks": {
+    "1": {
+      "audio": [
+        "good-sounds/sound_files/flute_almudena_reference/akg/0000.wav",
+        "948d457ae6b393f49942fc0eb490dca0"
+      ]
+    }
+  }
+}

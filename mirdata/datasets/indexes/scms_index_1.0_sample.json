@@ -1,0 +1,33 @@
+{
+  "version": 1.0,
+  "tracks": {
+    "Enta_Bhagyamu_2": {
+      "audio": [
+        "SCMS/audio/Enta_Bhagyamu_2.wav",
+        "8c06fe91fb52be24d01a1c2a3e49b6f0"
+      ],
+      "pitch": [
+        "SCMS/annotations/melody/Enta_Bhagyamu_2.csv",
+        "5c3f1339915865c41439976bf133777b"
+      ],
+      "activations": [
+        "SCMS/annotations/activations/Enta_Bhagyamu_2.lab",
+        "f258f7887c4d86d6f47bae6431c7a616"
+      ]
+    },
+    "Aaniraimekkani_9": {
+      "audio": [
+        "SCMS/audio/Aaniraimekkani_9.wav",
+        "7e1834b33d6b16d483bf0f598254d225"
+      ],
+      "pitch": [
+        "SCMS/annotations/melody/Aaniraimekkani_9.csv",
+        "9bfd85e6cd2c05f0a44f0c498741f1e6"
+      ],
+      "activations": [
+        "SCMS/annotations/activations/Aaniraimekkani_9.lab",
+        "2a896ba079bbb72d0d26424b7dc0cf12"
+      ]
+    }
+  }
+}

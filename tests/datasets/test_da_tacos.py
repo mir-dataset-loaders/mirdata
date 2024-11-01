@@ -124,7 +124,7 @@ def test_load_crema():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/da_tacos"
-    dataset = da_tacos.Dataset(data_home)
+    dataset = da_tacos.Dataset(data_home, version="test")
     metadata = dataset._metadata
     default_trackid = "coveranalysis#W_163992#P_547131"
     assert metadata[default_trackid] == {
@@ -146,14 +146,14 @@ def test_load_metadata():
 
 def test_load_metadata_not_there():
     data_home = "asdf/asdf/mir_datasets/da_tacos"
-    dataset = da_tacos.Dataset(data_home)
+    dataset = da_tacos.Dataset(data_home, version="test")
     with pytest.raises(FileNotFoundError):
         metadata = dataset._metadata
 
 
 def test_filters():
     data_home = "tests/resources/mir_datasets/da_tacos"
-    dataset = da_tacos.Dataset(data_home)
+    dataset = da_tacos.Dataset(data_home, version="test")
 
     data = dataset.filter_index("asdfasdfasdf")
     assert data == {}

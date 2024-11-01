@@ -1,0 +1,81 @@
+{
+  "version": "2.0",
+  "tracks": {
+    "3": {
+      "audio": [
+        "audio/1960s/James Brown/I Don't Mind/audio.flac",
+        "bb9f022b25c43983cf19aef562b00eac"
+      ],
+      "salami": [
+        "McGill-Billboard/0003/salami_chords.txt",
+        "8deb413e4cecadcffa5a7180a5f4c597"
+      ],
+      "bothchroma": [
+        "McGill-Billboard/0003/bothchroma.csv",
+        "c92ee46045f5bacd681543e8b9aa55b8"
+      ],
+      "tuning": [
+        "McGill-Billboard/0003/tuning.csv",
+        "31c744b447b739bc8c4ed29891dc1fb1"
+      ],
+      "lab_full": [
+        "McGill-Billboard/0003/full.lab",
+        "59c73209de645ef7e4e4293f4d6882b3"
+      ],
+      "lab_majmin7": [
+        "McGill-Billboard/0003/majmin7.lab",
+        "59c73209de645ef7e4e4293f4d6882b3"
+      ],
+      "lab_majmin7inv": [
+        "McGill-Billboard/0003/majmin7inv.lab",
+        "59c73209de645ef7e4e4293f4d6882b3"
+      ],
+      "lab_majmin": [
+        "McGill-Billboard/0003/majmin.lab",
+        "59c73209de645ef7e4e4293f4d6882b3"
+      ],
+      "lab_majmininv": [
+        "McGill-Billboard/0003/majmininv.lab",
+        "59c73209de645ef7e4e4293f4d6882b3"
+      ]
+    },
+    "35": {
+      "audio": [
+        "audio/1970s/Jimi Hendrix/Freedom/audio.flac",
+        "369b825c2d6e3d506673c8266c774a0c"
+      ],
+      "salami": [
+        "McGill-Billboard/0035/salami_chords.txt",
+        "b66c90b1ba3662108da7ac4b0872a933"
+      ],
+      "bothchroma": [
+        "McGill-Billboard/0035/bothchroma.csv",
+        "d130a6a9ff496a319ba286ded9aa96fc"
+      ],
+      "tuning": [
+        "McGill-Billboard/0035/tuning.csv",
+        "31d0857dbdc22393c8c987c02582129d"
+      ],
+      "lab_full": [
+        "McGill-Billboard/0035/full.lab",
+        "dcd5b8891768ed9f1e4421223220dca4"
+      ],
+      "lab_majmin7": [
+        "McGill-Billboard/0035/majmin7.lab",
+        "34d302b7352f90d9676fd06ab66afe85"
+      ],
+      "lab_majmin7inv": [
+        "McGill-Billboard/0035/majmin7inv.lab",
+        "34d302b7352f90d9676fd06ab66afe85"
+      ],
+      "lab_majmin": [
+        "McGill-Billboard/0035/majmin.lab",
+        "4010989431929e02a1a30d80bf9761b2"
+      ],
+      "lab_majmininv": [
+        "McGill-Billboard/0035/majmininv.lab",
+        "4010989431929e02a1a30d80bf9761b2"
+      ]
+    }
+  }
+}

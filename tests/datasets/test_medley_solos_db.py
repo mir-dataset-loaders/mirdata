@@ -6,7 +6,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "d07b1fc0-567d-52c2-fef4-239f31c9d40e"
     data_home = os.path.normpath("tests/resources/mir_datasets/medley_solos_db")
-    dataset = medley_solos_db.Dataset(data_home)
+    dataset = medley_solos_db.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -32,7 +32,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/medley_solos_db"
-    dataset = medley_solos_db.Dataset(data_home)
+    dataset = medley_solos_db.Dataset(data_home, version="test")
     track = dataset.track("d07b1fc0-567d-52c2-fef4-239f31c9d40e")
     jam = track.to_jams()
 

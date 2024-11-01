@@ -11,7 +11,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "0"
     data_home = os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb")
-    dataset = tonality_classicaldb.Dataset(data_home)
+    dataset = tonality_classicaldb.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -57,7 +57,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/tonality_classicaldb"
-    dataset = tonality_classicaldb.Dataset(data_home)
+    dataset = tonality_classicaldb.Dataset(data_home, version="test")
     track = dataset.track("0")
     jam = track.to_jams()
     assert jam["sandbox"]["key"] == "D major", "key does not match expected"

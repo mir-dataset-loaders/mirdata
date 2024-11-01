@@ -11,7 +11,9 @@ TEST_DATA_HOME = os.path.normpath(
 
 def test_track():
     default_trackid = "183"
-    dataset = freesound_one_shot_percussive_sounds.Dataset(TEST_DATA_HOME)
+    dataset = freesound_one_shot_percussive_sounds.Dataset(
+        TEST_DATA_HOME, version="test"
+    )
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -47,7 +49,9 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "183"
-    dataset = freesound_one_shot_percussive_sounds.Dataset(TEST_DATA_HOME)
+    dataset = freesound_one_shot_percussive_sounds.Dataset(
+        TEST_DATA_HOME, version="test"
+    )
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -146,7 +150,9 @@ def test_to_jams():
 
 def test_load_analysis():
     default_trackid = "183"
-    dataset = freesound_one_shot_percussive_sounds.Dataset(TEST_DATA_HOME)
+    dataset = freesound_one_shot_percussive_sounds.Dataset(
+        TEST_DATA_HOME, version="test"
+    )
     track = dataset.track(default_trackid)
     file_metadata_path = track.file_metadata_path
     file_metadata = freesound_one_shot_percussive_sounds.load_file_metadata(
@@ -167,7 +173,9 @@ def test_load_analysis():
 
 def test_load_audio():
     default_trackid = "183"
-    dataset = freesound_one_shot_percussive_sounds.Dataset(TEST_DATA_HOME)
+    dataset = freesound_one_shot_percussive_sounds.Dataset(
+        TEST_DATA_HOME, version="test"
+    )
     track = dataset.track(default_trackid)
     audio_path = track.audio_path
     audio, sr = freesound_one_shot_percussive_sounds.load_audio(audio_path)
@@ -177,7 +185,9 @@ def test_load_audio():
 
 def test_metadata():
     default_trackid = "183"
-    dataset = freesound_one_shot_percussive_sounds.Dataset(TEST_DATA_HOME)
+    dataset = freesound_one_shot_percussive_sounds.Dataset(
+        TEST_DATA_HOME, version="test"
+    )
     metadata = dataset._metadata
 
     assert type(metadata) is dict

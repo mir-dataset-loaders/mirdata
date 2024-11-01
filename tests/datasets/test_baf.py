@@ -16,7 +16,7 @@ TRACK_ID2 = "query_0002"
 
 def test_track():
     default_trackid = TRACK_ID
-    dataset = baf.Dataset(TEST_DATA_HOME)
+    dataset = baf.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -40,14 +40,14 @@ def test_track():
 
 def test_to_jams():
     default_trackid = TRACK_ID
-    dataset = baf.Dataset(TEST_DATA_HOME)
+    dataset = baf.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
     assert jam.validate()
 
 
 def test_load_audio():
-    dataset = baf.Dataset(TEST_DATA_HOME)
+    dataset = baf.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(TRACK_ID)
     audio_path = track.audio_path
     audio, sr = baf.load_audio(audio_path)
@@ -56,7 +56,7 @@ def test_load_audio():
 
 
 def test_load_matches():
-    dataset = baf.Dataset(TEST_DATA_HOME)
+    dataset = baf.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(TRACK_ID)
     matches = baf.load_matches(track._track_metadata)
 
@@ -97,7 +97,7 @@ def test_load_matches():
 
 
 def test_metadata():
-    dataset = baf.Dataset(TEST_DATA_HOME)
+    dataset = baf.Dataset(TEST_DATA_HOME, version="test")
     metadata = dataset._metadata
     assert metadata[TRACK_ID] == {
         "country": "Norway",
@@ -144,7 +144,7 @@ def test_metadata():
     }
 
     with pytest.raises(FileNotFoundError):
-        dataset = baf.Dataset("/a/fake/path")
+        dataset = baf.Dataset("/a/fake/path", version="test")
         metadata = dataset._metadata
 
 

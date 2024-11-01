@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "track_0000948": {
+      "audio": [
+        "audios/48/948.mp3",
+        "0b11d0db2617f873215a7fa1fd7403ec"
+      ]
+    },
+    "track_0003346": {
+      "audio": [
+        "audios/46/3346.mp3",
+        "314bf29efa9272b14137d5d0b76b9bc7"
+      ]
+    },
+    "track_0003524": {
+      "audio": [
+        "audios/24/3524.mp3",
+        "14521d7305e33744f9d6b6a3937c41fb"
+      ]
+    }
+  }
+}

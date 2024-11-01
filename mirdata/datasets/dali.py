@@ -59,6 +59,17 @@ INDEXES = {
     "1.0": core.Index(filename="dali_index_1.0.json"),
 }
 
+INDEXES = {
+    "default": "1.0",
+    "test": "sample",
+    "1.0": core.Index(
+        filename="dali_index_1.0.json",
+        url="https://zenodo.org/records/13930497/files/dali_index_1.0.json?download=1",
+        checksum="7091b6ce623aaa8a87351819f418a4ea",
+    ),
+    "sample": core.Index(filename="dali_index_1.0_sample.json"),
+}
+
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
         filename="dali_metadata.json",

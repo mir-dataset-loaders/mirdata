@@ -94,8 +94,13 @@ BIBTEX = """@inproceedings{knees2015two,
 
 INDEXES = {
     "default": "2.0",
-    "test": "2.0",
-    "2.0": core.Index(filename="giantsteps_tempo_index_2.0.json"),
+    "test": "sample",
+    "2.0": core.Index(
+        filename="giantsteps_tempo_index_2.0.json",
+        url="https://zenodo.org/records/13993327/files/giantsteps_tempo_index_2.0.json?download=1",
+        checksum="92e8db769a01def442b6bb89b700afb8",
+    ),
+    "sample": core.Index(filename="giantsteps_tempo_index_2.0_sample.json"),
 }
 
 REMOTES = {

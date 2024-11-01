@@ -8,7 +8,7 @@ from mirdata.datasets import mridangam_stroke
 def test_track():
     default_trackid = "224030"
     data_home = os.path.normpath("tests/resources/mir_datasets/mridangam_stroke")
-    dataset = mridangam_stroke.Dataset(data_home)
+    dataset = mridangam_stroke.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     expected_attributes = {
         "audio_path": os.path.join(
@@ -30,7 +30,7 @@ def test_track():
 def test_to_jams():
     default_trackid = "224030"
     data_home = "tests/resources/mir_datasets/mridangam_stroke"
-    dataset = mridangam_stroke.Dataset(data_home)
+    dataset = mridangam_stroke.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 

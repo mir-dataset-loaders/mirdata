@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "country.00000": {
+      "audio": [
+        "gtzan_genre/genres/country/country.00000.wav",
+        "5d3854fd8d4b01eeabafaa1111137daf"
+      ],
+      "beats": [
+        "gtzan_tempo_beat-main/beats/gtzan_country_00000.beats",
+        "ca145c8b2f8f0853ffef38db8cc9d2c5"
+      ],
+      "tempo": [
+        "gtzan_tempo_beat-main/tempo/gtzan_country_00000.bpm",
+        "5f1effc5917f4a95c89cd83c52fc2203"
+      ]
+    },
+    "hiphop.00000": {
+      "audio": [
+        "gtzan_genre/genres/hiphop/hiphop.00000.wav",
+        "8e7ea8f540a51d912230594c66a786c0"
+      ],
+      "beats": [
+        "gtzan_tempo_beat-main/beats/gtzan_hiphop_00000.beats",
+        "8e2dc42026bf713204f80b636e4511ea"
+      ],
+      "tempo": [
+        "gtzan_tempo_beat-main/tempo/gtzan_hiphop_00000.bpm",
+        "8409efbd0713cb0d97c1c79ef69a6df5"
+      ]
+    }
+  }
+}

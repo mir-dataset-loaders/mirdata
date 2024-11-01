@@ -8,7 +8,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "1"
     data_home = os.path.normpath("tests/resources/mir_datasets/good_sounds")
-    dataset = good_sounds.Dataset(data_home)
+    dataset = good_sounds.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -44,7 +44,7 @@ def test_track():
 def test_track_properties_and_attributes():
     default_trackid = "1"
     data_home = os.path.normpath("tests/resources/mir_datasets/good_sounds")
-    dataset = good_sounds.Dataset(data_home)
+    dataset = good_sounds.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     ground_truth_sound = {
         "id": 1,
@@ -105,7 +105,7 @@ def test_track_properties_and_attributes():
 def test_to_jams():
     default_trackid = "1"
     data_home = os.path.normpath("tests/resources/mir_datasets/good_sounds")
-    dataset = good_sounds.Dataset(data_home)
+    dataset = good_sounds.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     jam = track.to_jams()

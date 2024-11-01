@@ -1,0 +1,19 @@
+{
+  "version": "2.0",
+  "tracks": {
+    "113": {
+      "audio": [
+        "audio/28952.LOFI.mp3",
+        "c0f217376b2b579462f581a82526f1c8"
+      ],
+      "annotation_v1": [
+        "giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations/jams/28952.LOFI.jams",
+        "d1d6244314379472e84c128a8788e0bd"
+      ],
+      "annotation_v2": [
+        "giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations_v2/jams/28952.LOFI.jams",
+        "ea68bd6ce559cb8a219c7f10f42de17c"
+      ]
+    }
+  }
+}

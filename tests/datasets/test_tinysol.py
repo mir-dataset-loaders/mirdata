@@ -8,7 +8,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "Fl-ord-C4-mf-N-T14d"
     data_home = os.path.normpath("tests/resources/mir_datasets/tinysol")
-    dataset = tinysol.Dataset(data_home)
+    dataset = tinysol.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -49,7 +49,7 @@ def test_to_jams():
     data_home = "tests/resources/mir_datasets/tinysol"
 
     # Case with a wind instrument (no string_id)
-    dataset = tinysol.Dataset(data_home)
+    dataset = tinysol.Dataset(data_home, version="test")
     track = dataset.track("Fl-ord-C4-mf-N-T14d")
     jam = track.to_jams()
 

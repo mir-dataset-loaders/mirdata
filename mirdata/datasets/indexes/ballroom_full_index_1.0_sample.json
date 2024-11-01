@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "Media-105901": {
+      "audio": [
+        "B_1.0/audio/Waltz/Media-105901.wav",
+        "865d1fdd90175d62f8a265b495dee29e"
+      ],
+      "beats": [
+        "B_1.0/annotations/beats/Media-105901.beats",
+        "c3d5205f21f78100b1ca962933dc73e0"
+      ],
+      "tempo": [
+        "B_1.0/annotations/tempo/Media-105901.bpm",
+        "091b847d9660c0555bc6f29994a03710"
+      ]
+    }
+  }
+}

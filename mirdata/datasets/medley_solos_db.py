@@ -46,8 +46,13 @@ BIBTEX = """@inproceedings{lostanlen2019ismir,
 
 INDEXES = {
     "default": "1.2",
-    "test": "1.2",
-    "1.2": core.Index(filename="medley_solos_db_index_1.2.json"),
+    "test": "sample",
+    "1.2": core.Index(
+        filename="medley_solos_db_index_1.2.json",
+        url="https://zenodo.org/records/13930446/files/medley_solos_db_index_1.2.json?download=1",
+        checksum="ff756765385bb6fd5cab024e841504f7",
+    ),
+    "sample": core.Index(filename="medley_solos_db_index_1.2_sample.json"),
 }
 
 REMOTES = {

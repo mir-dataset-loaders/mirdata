@@ -11,7 +11,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
     data_home = "tests/resources/mir_datasets/maestro"
-    dataset = maestro.Dataset(data_home)
+    dataset = maestro.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -57,7 +57,7 @@ def test_track():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/maestro"
-    dataset = maestro.Dataset(data_home)
+    dataset = maestro.Dataset(data_home, version="test")
     metadata = dataset._metadata
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
 
@@ -99,7 +99,7 @@ def test_download_partial(httpserver):
             checksum=("d41d8cd98f00b204e9800998ecf8427e"),
         ),
     }
-    dataset = maestro.Dataset(data_home)
+    dataset = maestro.Dataset(data_home, version="test")
     dataset.remotes = remotes
     dataset.download(None, False, False)
     assert os.path.exists(os.path.join(data_home, "1-maestro-v2.0.0.json"))
@@ -146,7 +146,7 @@ def test_download(httpserver):
             unpack_directories=["maestro-v2.0.0"],
         )
     }
-    dataset = maestro.Dataset(data_home)
+    dataset = maestro.Dataset(data_home, version="test")
     dataset.remotes = remotes
     dataset.download(None, False, False)
 

@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "0": {
+      "audio": [
+        "audio/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.wav",
+        "a3bc0aa6607b904cf07595f4127152f7"
+      ],
+      "key": [
+        "keys/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.txt",
+        "c9e1ca07ae365053bb6e9f6e0b7ec2d5"
+      ],
+      "spectrum": [
+        "spectrums/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        "da743b180cd646bad9dca81313ce659d"
+      ],
+      "mb": [
+        "musicbrainz_metadata/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        "0421d58ee6c0b872f4ad84fd742404ed"
+      ],
+      "HPCP": [
+        "HPCPs/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        "5dd97edd555428d3b9bcad403ceba03f"
+      ]
+    }
+  }
+}

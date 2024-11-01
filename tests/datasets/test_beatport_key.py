@@ -8,7 +8,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "1"
     data_home = os.path.normpath("tests/resources/mir_datasets/beatport_key")
-    dataset = beatport_key.Dataset(data_home)
+    dataset = beatport_key.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -47,7 +47,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/beatport_key"
-    dataset = beatport_key.Dataset(data_home)
+    dataset = beatport_key.Dataset(data_home, version="test")
     track = dataset.track("1")
     jam = track.to_jams()
     assert jam["sandbox"]["key"] == ["D minor"], "key does not match expected"

@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180": {
+      "audio": [
+        "indian_art_music_tonic_1.0/CM/audio/0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180.mp3",
+        "1e3d1c7a1cc1759bcc267a7858eab059"
+      ]
+    },
+    "01-Varnam": {
+      "audio": [
+        "indian_art_music_tonic_1.0/IITM/audio/Tonic_Data3/555-SShankar/01-Varnam.mp3",
+        "e85cf9cfbd03c8f8a721894001cd7612"
+      ]
+    }
+  }
+}
