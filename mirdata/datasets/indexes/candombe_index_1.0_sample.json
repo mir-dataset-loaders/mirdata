@@ -1,0 +1,15 @@
+{
+  "version": "sample",
+  "tracks": {
+    "csic.1995_ansina1_01": {
+      "audio": [
+        "candombe_audio/csic.1995_ansina1_01.flac",
+        "fe9bb8edaa46892e4f094a07583ecfb7"
+      ],
+      "beats": [
+        "candombe_annotations/with_bar_number/csic.1995_ansina1_01.csv",
+        "3abfa7a3a13225738b39769a5ef0726a"
+      ]
+    }
+  }
+}

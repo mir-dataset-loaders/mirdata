@@ -10,7 +10,7 @@ from mirdata.datasets import four_way_tabla
 def test_track():
     default_trackid = "AHK_solo-tintal-1"
     data_home = os.path.normpath("tests/resources/mir_datasets/four_way_tabla")
-    dataset = four_way_tabla.Dataset(data_home)
+    dataset = four_way_tabla.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     expected_attributes = {
         "audio_path": os.path.join(
@@ -55,7 +55,7 @@ def test_track():
 def test_get_onsets():
     default_trackid = "AHK_solo-tintal-1"
     data_home = "tests/resources/mir_datasets/four_way_tabla"
-    dataset = four_way_tabla.Dataset(data_home)
+    dataset = four_way_tabla.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     loaded_b = track.onsets_b
@@ -84,7 +84,7 @@ def test_get_onsets():
 def test_to_jams():
     default_trackid = "AHK_solo-tintal-1"
     data_home = "tests/resources/mir_datasets/four_way_tabla"
-    dataset = four_way_tabla.Dataset(data_home)
+    dataset = four_way_tabla.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -103,7 +103,7 @@ def test_to_jams():
 def test_load_audio():
     default_trackid = "AHK_solo-tintal-1"
     data_home = "tests/resources/mir_datasets/four_way_tabla"
-    dataset = four_way_tabla.Dataset(data_home)
+    dataset = four_way_tabla.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     audio_path = track.audio_path
     audio, sr = four_way_tabla.load_audio(audio_path)

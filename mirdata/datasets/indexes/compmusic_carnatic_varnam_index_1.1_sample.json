@@ -1,0 +1,29 @@
+{
+  "version": "sample",
+  "tracks": {
+    "dharini_abhogi": {
+      "audio": [
+        "carnatic_varnam_1.1/Audio/223578__gopalkoduri__carnatic-varnam-by-dharini-in-abhogi-raaga.mp3",
+        "27ae0b06d43c2ed6033bdf64d83f8614"
+      ],
+      "notation": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi.yaml",
+        "8895f8a4cd5b59df2388446831cd5a31"
+      ],
+      "structure": [
+        "carnatic_varnam_1.1/Notations_Annotations/notations/abhogi/dharini.yaml",
+        "9660ef6859462641744ea7e8592fd31a"
+      ],
+      "taala": [
+        "carnatic_varnam_1.1/Notations_Annotations/annotations/taalas/abhogi/dharini.svl",
+        "b88e020c86effa282804bef6eea41216"
+      ]
+    }
+  },
+  "metadata": {
+    "annotation_metadata": [
+      "carnatic_varnam_1.1/Notations_Annotations/annotations/tonics.yaml",
+      "e3c4b1ad9218f7982ae477478db6c4b4"
+    ]
+  }
+}

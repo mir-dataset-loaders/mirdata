@@ -11,7 +11,7 @@ def test_track():
     )
     track_id = "lseh-Tan_Yang_jia-Hong_yang_dong-qm"
 
-    dataset = compmusic_jingju_acappella.Dataset(data_home)
+    dataset = compmusic_jingju_acappella.Dataset(data_home, version="test")
     track = dataset.track(track_id)
 
     expected_attributes = {
@@ -74,7 +74,7 @@ def test_to_jams():
     data_home = "tests/resources/mir_datasets/compmusic_jingju_acappella"
     track_id = "lseh-Tan_Yang_jia-Hong_yang_dong-qm"
 
-    dataset = compmusic_jingju_acappella.Dataset(data_home)
+    dataset = compmusic_jingju_acappella.Dataset(data_home, version="test")
     track = dataset.track(track_id)
     jam = track.to_jams()
 
@@ -143,7 +143,7 @@ def test_load_phrases():
     data_home = "tests/resources/mir_datasets/compmusic_jingju_acappella"
     track_id = "lseh-Tan_Yang_jia-Hong_yang_dong-qm"
 
-    dataset = compmusic_jingju_acappella.Dataset(data_home)
+    dataset = compmusic_jingju_acappella.Dataset(data_home, version="test")
     track = dataset.track(track_id)
     phrase_path = track.phrase_path
     phrase_char_path = track.phrase_char_path
@@ -213,7 +213,7 @@ def test_load_phoneme():
     data_home = "tests/resources/mir_datasets/compmusic_jingju_acappella"
     track_id = "lseh-Tan_Yang_jia-Hong_yang_dong-qm"
 
-    dataset = compmusic_jingju_acappella.Dataset(data_home)
+    dataset = compmusic_jingju_acappella.Dataset(data_home, version="test")
     track = dataset.track(track_id)
     phoneme_path = track.phoneme_path
     parsed_phonemes = compmusic_jingju_acappella.load_phonemes(phoneme_path)
@@ -239,7 +239,7 @@ def test_load_syllable():
     data_home = "tests/resources/mir_datasets/compmusic_jingju_acappella"
     track_id = "lseh-Tan_Yang_jia-Hong_yang_dong-qm"
 
-    dataset = compmusic_jingju_acappella.Dataset(data_home)
+    dataset = compmusic_jingju_acappella.Dataset(data_home, version="test")
     track = dataset.track(track_id)
     syllable_path = track.syllable_path
     parsed_syllable = compmusic_jingju_acappella.load_syllable(syllable_path)
@@ -263,7 +263,7 @@ def test_load_syllable():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/compmusic_jingju_acappella"
-    dataset = compmusic_jingju_acappella.Dataset(data_home)
+    dataset = compmusic_jingju_acappella.Dataset(data_home, version="test")
     metadata = dataset._metadata
 
     track_id = list(metadata.keys())[0]

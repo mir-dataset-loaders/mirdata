@@ -1,0 +1,25 @@
+{
+  "version": "sample",
+  "tracks": {
+    "Beethoven-S3-I-ex1": {
+      "audio_stereo": [
+        "audio/stereo/Beethoven-S3-I-ex1.wav",
+        "f819c86bba06120a19bd495f819cd0ef"
+      ],
+      "audio_mono": [
+        "audio/mono/Beethoven-S3-I-ex1.wav",
+        "7bb7a2492dcf9e1eaad9e82f8550219a"
+      ],
+      "melody": [
+        "GT/Beethoven-S3-I-ex1.mel",
+        "8bbf6716337a2b5f7afcc611ad66e91a"
+      ]
+    }
+  },
+  "metadata": {
+    "Orchset - Predominant Melodic Instruments": [
+      "Orchset - Predominant Melodic Instruments.csv",
+      "6301bdea599ac355a4d5fd9ad70c6127"
+    ]
+  }
+}

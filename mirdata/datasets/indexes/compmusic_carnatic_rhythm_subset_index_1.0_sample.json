@@ -1,0 +1,33 @@
+{
+  "version": "sample",
+  "tracks": {
+    "10001": {
+      "audio": [
+        "CMR_full_dataset_1.0/audio/10001_05_Thunga_Theera_Virajam.wav",
+        "981bf705d2dabb5fbbedce252194142e"
+      ],
+      "beats": [
+        "CMR_full_dataset_1.0/annotations/beats/10001_05_Thunga_Theera_Virajam.beats",
+        "5629732b96ca381faa7cb2283b140c61"
+      ],
+      "meter": [
+        "CMR_full_dataset_1.0/annotations/meter/10001_05_Thunga_Theera_Virajam.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    },
+    "10003": {
+      "audio": [
+        "CMR_subset_1.0/audio/01_10003_1-04_Shri_Visvanatham.wav",
+        "ab31552f0206d68c91d20a3de6a6db66"
+      ],
+      "beats": [
+        "CMR_subset_1.0/annotations/beats/01_10003_1-04_Shri_Visvanatham.beats",
+        "09a8cc54c1471bd073235945eba7196a"
+      ],
+      "meter": [
+        "CMR_subset_1.0/annotations/meter/01_10003_1-04_Shri_Visvanatham.meter",
+        "3b55c08436be9e1008bb19488c139c88"
+      ]
+    }
+  }
+}

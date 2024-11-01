@@ -10,7 +10,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "10161_chorus"
     data_home = os.path.normpath("tests/resources/mir_datasets/ikala")
-    dataset = ikala.Dataset(data_home)
+    dataset = ikala.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -80,7 +80,7 @@ def test_track():
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/ikala"
     default_trackid = "10161_chorus"
-    dataset = ikala.Dataset(data_home)
+    dataset = ikala.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -188,7 +188,7 @@ def test_load_lyrics():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/ikala"
-    dataset = ikala.Dataset(data_home)
+    dataset = ikala.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["10161"] == "1"
     assert metadata["21025"] == "1"

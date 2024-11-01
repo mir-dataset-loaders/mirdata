@@ -1,0 +1,50 @@
+{
+  "version": "sample",
+  "tracks": {
+    "AHK_solo-tintal-1": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-1.wav",
+        "1198daf006f4bf6ff6190166ddc39ed6"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-1.onsets",
+        "05d8937ab6124328e45bca25e35d6fb1"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-1.onsets",
+        "739066842f38297caae54e065dd96db4"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-1.onsets",
+        "ee31f8509ef3114297cefe53a3dacfdf"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-1.onsets",
+        "7bf4534f4bc6d5a27b389ea98d73192c"
+      ]
+    },
+    "binati_SRC": {
+      "audio": [
+        "4way-tabla-ismir21-dataset/test/audios/binati_SRC.wav",
+        "d46dfd164c635e654e5105dc4803665f"
+      ],
+      "onsets_b": [
+        "4way-tabla-ismir21-dataset/test/onsets/b/binati_SRC.onsets",
+        "09309607ab804b81fd473eba836be732"
+      ],
+      "onsets_d": [
+        "4way-tabla-ismir21-dataset/test/onsets/d/binati_SRC.onsets",
+        "361bd33db490f722d36edf37e0dc0d1e"
+      ],
+      "onsets_rb": [
+        "4way-tabla-ismir21-dataset/test/onsets/rb/binati_SRC.onsets",
+        "e2ffc90f1cdb701ef97abe878f42ce7c"
+      ],
+      "onsets_rt": [
+        "4way-tabla-ismir21-dataset/test/onsets/rt/binati_SRC.onsets",
+        "ff85fb53630dfa6d5bde08826bb8c24a"
+      ]
+    }
+  },
+  "metadata": {}
+}

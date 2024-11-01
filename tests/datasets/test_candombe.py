@@ -10,7 +10,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "csic.1995_ansina1_01"
     data_home = "tests/resources/mir_datasets/candombe/"
-    dataset = candombe.Dataset(data_home, version="1.0")
+    dataset = candombe.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -45,7 +45,7 @@ def test_track():
 def test_to_jams():
     default_trackid = "csic.1995_ansina1_01"
     data_home = "tests/resources/mir_datasets/candombe"
-    dataset = candombe.Dataset(data_home, version="1.0")
+    dataset = candombe.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
     beats = jam.search(namespace="beat")[0]["data"]

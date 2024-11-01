@@ -20,7 +20,7 @@ import numpy as np
 def test_track():
     default_trackid = "0"
     data_home = os.path.normpath("tests/resources/mir_datasets/haydn_op20")
-    dataset = haydn_op20.Dataset(data_home)
+    dataset = haydn_op20.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -47,7 +47,7 @@ def test_track():
 
 def test_to_jam():
     data_home = os.path.normpath("tests/resources/mir_datasets/haydn_op20")
-    dataset = haydn_op20.Dataset(data_home)
+    dataset = haydn_op20.Dataset(data_home, version="test")
     track = dataset.track("0")
     jam = track.to_jams()
     assert jam["file_metadata"]["title"] == "op20n1-01", "title does not match expected"

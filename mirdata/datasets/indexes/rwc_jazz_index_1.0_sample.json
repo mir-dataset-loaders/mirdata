@@ -1,0 +1,25 @@
+{
+  "version": "sample",
+  "tracks": {
+    "RM-J004": {
+      "audio": [
+        "audio/rwc-j-m01/4.wav",
+        "7887ad17b7e4dcad9aa4605482e36cfa"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT",
+        "59cd67199cce9da16283b85338e5a9af"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT",
+        "f3159206ae2f0aa86901248148f4021f"
+      ]
+    }
+  },
+  "metadata": {
+    "rwc-j": [
+      "metadata-master/rwc-j.csv",
+      "7850791b1833b1e4943bb47989d20d55"
+    ]
+  }
+}

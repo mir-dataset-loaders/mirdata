@@ -12,7 +12,7 @@ TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/cante100")
 
 def test_track():
     default_trackid = "008"
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -52,7 +52,7 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "008"
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -110,7 +110,7 @@ def test_to_jams():
 
 
 def test_load_melody():
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("008")
     f0_path = track.f0_path
     f0_data = cante100.load_melody(f0_path)
@@ -142,7 +142,7 @@ def test_load_melody():
 
 
 def test_load_notes():
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("008")
     notes_path = track.notes_path
     notes_data = cante100.load_notes(notes_path)
@@ -190,7 +190,7 @@ def test_load_notes():
 
 
 def test_load_spectrum():
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("008")
     spectrogram_path = track.spectrogram_path
     spectrogram = cante100.load_spectrogram(spectrogram_path)
@@ -201,7 +201,7 @@ def test_load_spectrum():
 
 
 def test_load_audio():
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("008")
     audio_path = track.audio_path
     audio, sr = cante100.load_audio(audio_path)

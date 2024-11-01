@@ -65,20 +65,13 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="acousticbrainz_genre_index_1.0.json",
-        url="https://zenodo.org/record/4698408/files/acousticbrainz_genre_index_1.0.json.zip?download=1",
+        url="https://zenodo.org/records/14024655/files/acousticbrainz_genre_index_1.0.json.zip?download=1",
         checksum="ee2837b04d8dd6ab0507f5b975314b7e",
     ),
-    "sample": core.Index(filename="acousticbrainz_genre_index_sample.json"),
+    "sample": core.Index(filename="acousticbrainz_genre_index_1.0_sample.json"),
 }
 
 REMOTES = {
-    "index": download_utils.RemoteFileMetadata(
-        filename="acousticbrainz_genre_index.json.zip",
-        url=(
-            "https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1"
-        ),
-        checksum="810f1c003f53cbe58002ba96e6d4d138",
-    ),
     "validation-01": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-validation-01234567.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-validation-01234567.tar.bz2?download=1",

@@ -9,7 +9,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "MusicDelta_Beethoven"
     data_home = os.path.normpath("tests/resources/mir_datasets/medleydb_melody")
-    dataset = medleydb_melody.Dataset(data_home)
+    dataset = medleydb_melody.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -54,7 +54,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/medleydb_melody"
-    dataset = medleydb_melody.Dataset(data_home)
+    dataset = medleydb_melody.Dataset(data_home, version="test")
     track = dataset.track("MusicDelta_Beethoven")
     jam = track.to_jams()
 
@@ -123,7 +123,7 @@ def test_load_melody3():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/medleydb_melody"
-    dataset = medleydb_melody.Dataset(data_home)
+    dataset = medleydb_melody.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["MusicDelta_Beethoven"] == {
         "audio_path": "medleydb_melody/audio/MusicDelta_Beethoven_MIX.wav",

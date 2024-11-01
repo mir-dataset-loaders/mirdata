@@ -1,0 +1,101 @@
+{
+  "version": "sample",
+  "tracks": {
+    "tagtraum#validation#be9e01e5-8f93-494d-bbaa-ddcc5a52f629#2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960#trance########": {
+      "data": [
+        "acousticbrainz-mediaeval-validation/be/be9e01e5-8f93-494d-bbaa-ddcc5a52f629.json",
+        "19be49112c1e02102e970574b9657bf3"
+      ]
+    },
+    "tagtraum#validation#896796e0-7f1f-4270-acdd-902418782a3b#c5e6df5d-eb1a-49fa-ad75-3b52035ec98a#dubstep#dubstep---bass#######": {
+      "data": [
+        "acousticbrainz-mediaeval-validation/89/896796e0-7f1f-4270-acdd-902418782a3b.json",
+        "4d1f9f00b08150d19d225fff71e4f8a3"
+      ]
+    },
+    "tagtraum#train#acf8fff1-2ccd-4a3e-85d2-f0c7090b78dc#4008a978-14ef-3885-8462-3ec3867df64e#jazz#jazz---jazzvocals#jazz---standards######": {
+      "data": [
+        "acousticbrainz-mediaeval-train/ac/acf8fff1-2ccd-4a3e-85d2-f0c7090b78dc.json",
+        "4d16df36f3c09140e87c0ab171ef8fc3"
+      ]
+    },
+    "tagtraum#train#77a9cc42-cc81-49d8-893c-34b9a5b6559d#f848a1cb-11dd-3dfc-9097-47adbeb3671f#easylistening#jazz#jazz---bigband######": {
+      "data": [
+        "acousticbrainz-mediaeval-train/77/77a9cc42-cc81-49d8-893c-34b9a5b6559d.json",
+        "041ef557db1acff0efd08449c1d99e67"
+      ]
+    },
+    "lastfm#validation#12d7776c-3055-4ac8-9fd6-339b9e56ee19#ae26d334-ddf7-4a1b-a39a-a6985f28c51a#dance#dance---club#dance---eurodance#######": {
+      "data": [
+        "acousticbrainz-mediaeval-validation/12/12d7776c-3055-4ac8-9fd6-339b9e56ee19.json",
+        "11cb9730fe4a33c7dcfde7dc26e25dcb"
+      ]
+    },
+    "lastfm#validation#8c5a3f2a-604a-49bd-b54c-767340abeef8#0f16c79e-f4db-470c-a466-f3bb56f416f8#rock#rock---alternative#rock---hardrock#######": {
+      "data": [
+        "acousticbrainz-mediaeval-validation/8c/8c5a3f2a-604a-49bd-b54c-767340abeef8.json",
+        "4a2d54acd5d0e7a6bd1a532eacccc0d3"
+      ]
+    },
+    "lastfm#train#77a9cc42-cc81-49d8-893c-34b9a5b6559d#f848a1cb-11dd-3dfc-9097-47adbeb3671f#instrumental#########": {
+      "data": [
+        "acousticbrainz-mediaeval-train/77/77a9cc42-cc81-49d8-893c-34b9a5b6559d.json",
+        "041ef557db1acff0efd08449c1d99e67"
+      ]
+    },
+    "lastfm#train#46c7f8fb-04a9-4fb8-9837-28173dd31a93#18ce6f9c-be10-4c26-8e57-4c478ba0834b#pop#pop---dancepop########": {
+      "data": [
+        "acousticbrainz-mediaeval-train/46/46c7f8fb-04a9-4fb8-9837-28173dd31a93.json",
+        "5b9ebe7255c51abc44c6b87b9f7fd873"
+      ]
+    },
+    "discogs#validation#7ded30da-4cf1-4ae4-8292-439722df6ea4#3b8da78c-a3ab-3f9a-afa0-beb24319df79#classical#classical---contemporary#################": {
+      "data": [
+        "acousticbrainz-mediaeval-validation/7d/7ded30da-4cf1-4ae4-8292-439722df6ea4.json",
+        "9e2aa010d5e6c258868fd23fcf82abfb"
+      ]
+    },
+    "discogs#validation#77c17f82-4e3b-412e-af94-36abb58d6ff2#695554d3-a77d-3320-886b-60c6e56f454d#rock#rock---folk rock#rock---prog rock################": {
+      "data": [
+        "acousticbrainz-mediaeval-validation/77/77c17f82-4e3b-412e-af94-36abb58d6ff2.json",
+        "30ef45ce32f5d41d97c0e4b6f66cb455"
+      ]
+    },
+    "discogs#train#6eafad9e-3e4e-4af7-ad2c-dba94cfedecf#fa7475c1-78a3-31e3-8b27-ca4fef89ba12#electronic#electronic---ambient#electronic---dark ambient#stage & screen#stage & screen---soundtrack#########################": {
+      "data": [
+        "acousticbrainz-mediaeval-train/6e/6eafad9e-3e4e-4af7-ad2c-dba94cfedecf.json",
+        "79f9829999ce2c1b2b6e189ca412d32e"
+      ]
+    },
+    "discogs#train#8eed6eed-24e7-4ac9-98dd-2e20502c1b13#a0394996-0923-324b-a176-cc1a572cb9e4#rock#rock---brit pop############################": {
+      "data": [
+        "acousticbrainz-mediaeval-train/8e/8eed6eed-24e7-4ac9-98dd-2e20502c1b13.json",
+        "41105ff317fd0c8738fa70946b6b4d92"
+      ]
+    },
+    "allmusic#validation#7ded30da-4cf1-4ae4-8292-439722df6ea4#3b8da78c-a3ab-3f9a-afa0-beb24319df79#classical#classical---chamber music###################################": {
+      "data": [
+        "acousticbrainz-mediaeval-validation/7d/7ded30da-4cf1-4ae4-8292-439722df6ea4.json",
+        "9e2aa010d5e6c258868fd23fcf82abfb"
+      ]
+    },
+    "allmusic#validation#aaa52449-01aa-47aa-8fd0-06273d64b039#d1bbca85-09f3-4f79-9944-92977740fb60#blues####################################": {
+      "data": [
+        "acousticbrainz-mediaeval-validation/aa/aaa52449-01aa-47aa-8fd0-06273d64b039.json",
+        "13190d696c9405b2ed73749900559404"
+      ]
+    },
+    "allmusic#train#6eafad9e-3e4e-4af7-ad2c-dba94cfedecf#fa7475c1-78a3-31e3-8b27-ca4fef89ba12#stage & screen#stage & screen---film music#stage & screen---soundtracks#stage & screen---television music#stage & screen---tv soundtracks###################################": {
+      "data": [
+        "acousticbrainz-mediaeval-train/6e/6eafad9e-3e4e-4af7-ad2c-dba94cfedecf.json",
+        "79f9829999ce2c1b2b6e189ca412d32e"
+      ]
+    },
+    "allmusic#train#bd523884-e1b7-4401-b882-743356fc0e33#a3fb800d-a878-3406-8b62-d2b84cfba36e#pop/rock#######################################": {
+      "data": [
+        "acousticbrainz-mediaeval-train/bd/bd523884-e1b7-4401-b882-743356fc0e33.json",
+        "7b06c20d6c2bceb0f5fb6c78b87f16f4"
+      ]
+    }
+  }
+}

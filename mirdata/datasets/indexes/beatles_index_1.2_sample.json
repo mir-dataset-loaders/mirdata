@@ -1,0 +1,49 @@
+{
+  "version": "sample",
+  "tracks": {
+    "0111": {
+      "audio": [
+        "audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav",
+        "1b57c2f78ae0f19eed1ae7fbf747e12d"
+      ],
+      "beat": [
+        "annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt",
+        "f698ad2d802bf62fe10f59ea8b4af9f6"
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        "24f12726a510c0321aa06cac95f27915"
+      ],
+      "keys": [
+        "annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        "ca194503b783ed20521a1429411f3094"
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        "509125d527dae09cdee832fc0a6e0580"
+      ]
+    },
+    "10212": {
+      "audio": [
+        "audio/10CD2_-_The_Beatles/CD2_-_12_-_Revolution_9.wav",
+        "b2db9d775f17f0416d5ae3a0791fc9fb"
+      ],
+      "beat": [
+        null,
+        null
+      ],
+      "chords": [
+        "annotations/chordlab/The Beatles/10CD2_-_The_Beatles/CD2_-_12_-_Revolution_9.lab",
+        "8bbe521a2c59d8d74247cd8f77ac865a"
+      ],
+      "keys": [
+        null,
+        null
+      ],
+      "sections": [
+        "annotations/seglab/The Beatles/10CD2_-_The_Beatles/CD2_-_12_-_Revolution_9.lab",
+        "95352965ee852479bbdc51e936038ecd"
+      ]
+    }
+  }
+}

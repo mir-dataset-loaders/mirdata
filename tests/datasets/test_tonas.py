@@ -11,7 +11,7 @@ TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/tonas")
 
 def test_track():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = tonas.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -51,7 +51,7 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = tonas.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -91,7 +91,7 @@ def test_to_jams():
 
 def test_load_melody():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = tonas.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     f0_path = track.f0_path
     f0_data_corrected = tonas.load_f0(f0_path, True)
@@ -139,7 +139,7 @@ def test_load_melody():
 
 def test_load_notes():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = tonas.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     notes_path = track.notes_path
     notes_data = tonas.load_notes(notes_path)
@@ -175,7 +175,7 @@ def test_load_notes():
 
 def test_load_audio():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = tonas.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     audio_path = track.audio_path
     audio, sr = tonas.load_audio(audio_path)
@@ -185,7 +185,7 @@ def test_load_audio():
 
 def test_metadata():
     default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME)
+    dataset = tonas.Dataset(TEST_DATA_HOME, version="test")
     metadata = dataset._metadata
     assert metadata[default_trackid] == {
         "title": "En el barrio de Triana",

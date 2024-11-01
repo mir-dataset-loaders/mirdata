@@ -1,0 +1,73 @@
+{
+  "version": "sample",
+  "tracks": {
+    "50_Irani_Bhairavi_Thumri": {
+      "audio": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3",
+        "221c4b721b699e0a08cd20e493b854c3"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt",
+        "99f8915c8950e2092524e48535ce1ab3"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt",
+        "ff77413921c32cd45cd58e6e3159a06c"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt",
+        "a99a247cc9d90adb4c87e81906775f3f"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt",
+        "7e6de134a6bc2737df99b725fcf601b4"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt",
+        "deb0957c028e51646c6f7c55344fd501"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt",
+        "39edd271e739ee29aa0189b1dac4125d"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json",
+        "0a13707b48db7d99ba3d51e7ce656d04"
+      ]
+    },
+    "51_Raag_Bairagi": {
+      "audio": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.mp3.mp3",
+        "a21136e763d076ce5368803ba0e91a59"
+      ],
+      "ctonic": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.ctonic.txt",
+        "166a4faa767b56cf390f0b5c69f2f339"
+      ],
+      "pitch": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.pitch.txt",
+        "1942ef8633b65dea611c4d233aa853a9"
+      ],
+      "tempo": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.tempo-manual.txt",
+        "c239f5e958f7b8217991ca809a877f74"
+      ],
+      "sama": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.sama-manual.txt",
+        "47e7b24835096d4fdf5f7f4309e5204f"
+      ],
+      "sections": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.sections-manual-p.txt",
+        "15c7ece955fdcc4a739e07c6b276282e"
+      ],
+      "phrases": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.mphrases-manual.txt",
+        "73ee7e370565feaf8226eeda5a8972d6"
+      ],
+      "metadata": [
+        "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Raag Bairagi/Raag Bairagi.json",
+        "dfb9a3236df4578902a0dcecad91ef8c"
+      ]
+    }
+  }
+}

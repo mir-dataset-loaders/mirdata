@@ -74,8 +74,13 @@ REMOTES = {
 
 INDEXES = {
     "default": "1.1",
-    "test": "1.1",
-    "1.1": core.Index(filename="compmusic_carnatic_varnam_index_1.1.json"),
+    "test": "sample",
+    "1.1": core.Index(
+        filename="compmusic_carnatic_varnam_index_1.1.json",
+        url="https://zenodo.org/records/14024560/files/compmusic_carnatic_varnam_index_1.1.json?download=1",
+        checksum="7b6639164f0204f0c62deb1cd9dd1435",
+    ),
+    "sample": core.Index(filename="compmusic_carnatic_varnam_index_1.1_sample.json"),
 }
 
 LICENSE_INFO = (

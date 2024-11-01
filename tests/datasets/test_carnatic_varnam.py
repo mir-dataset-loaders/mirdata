@@ -12,7 +12,7 @@ def test_track():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/compmusic_carnatic_varnam"
     )
-    dataset = compmusic_carnatic_varnam.Dataset(data_home)
+    dataset = compmusic_carnatic_varnam.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -72,7 +72,7 @@ def test_to_jams():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/compmusic_carnatic_varnam"
     )
-    dataset = compmusic_carnatic_varnam.Dataset(data_home)
+    dataset = compmusic_carnatic_varnam.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -227,7 +227,7 @@ def test_load_metadata():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/compmusic_carnatic_varnam"
     )
-    dataset = compmusic_carnatic_varnam.Dataset(data_home)
+    dataset = compmusic_carnatic_varnam.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     parsed_tonic = track.tonic
     assert parsed_tonic == 200.58
@@ -238,7 +238,7 @@ def test_load_taala():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/compmusic_carnatic_varnam"
     )
-    dataset = compmusic_carnatic_varnam.Dataset(data_home)
+    dataset = compmusic_carnatic_varnam.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     taala_path = track.taala_path
     parsed_taala = compmusic_carnatic_varnam.load_taala(taala_path)
@@ -269,7 +269,7 @@ def test_load_notation():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/compmusic_carnatic_varnam"
     )
-    dataset = compmusic_carnatic_varnam.Dataset(data_home)
+    dataset = compmusic_carnatic_varnam.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     notation_path = track.notation_path
     taala_path = track.taala_path
@@ -350,7 +350,7 @@ def test_load_mbid():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/compmusic_carnatic_varnam"
     )
-    dataset = compmusic_carnatic_varnam.Dataset(data_home)
+    dataset = compmusic_carnatic_varnam.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     notation_path = track.notation_path
     parsed_mbid = compmusic_carnatic_varnam.load_mbid(notation_path)
@@ -364,7 +364,7 @@ def test_load_moorchanas():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/compmusic_carnatic_varnam"
     )
-    dataset = compmusic_carnatic_varnam.Dataset(data_home)
+    dataset = compmusic_carnatic_varnam.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     notation_path = track.notation_path
     parsed_moorchanas = compmusic_carnatic_varnam.load_moorchanas(notation_path)
@@ -381,7 +381,7 @@ def test_load_audio():
     data_home = os.path.normpath(
         "tests/resources/mir_datasets/compmusic_carnatic_varnam"
     )
-    dataset = compmusic_carnatic_varnam.Dataset(data_home)
+    dataset = compmusic_carnatic_varnam.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     audio_path = track.audio_path
     audio, sr = compmusic_carnatic_varnam.load_audio(audio_path)

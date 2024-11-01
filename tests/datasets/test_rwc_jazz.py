@@ -7,7 +7,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "RM-J004"
     data_home = os.path.normpath("tests/resources/mir_datasets/rwc_jazz")
-    dataset = rwc_jazz.Dataset(data_home)
+    dataset = rwc_jazz.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -50,7 +50,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/rwc_jazz"
-    dataset = rwc_jazz.Dataset(data_home)
+    dataset = rwc_jazz.Dataset(data_home, version="test")
     track = dataset.track("RM-J004")
     jam = track.to_jams()
 
@@ -113,7 +113,7 @@ def test_to_jams():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/rwc_jazz"
-    dataset = rwc_jazz.Dataset(data_home)
+    dataset = rwc_jazz.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["RM-J004"] == {
         "piece_number": "No. 4",

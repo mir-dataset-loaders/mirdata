@@ -1,0 +1,201 @@
+{
+  "version": "sample",
+  "tracks": {
+    "beethoven-horn": {
+      "audio_horn1": [
+        "audio/beethoven/horn1.wav",
+        "6ef11a68c355aff072115bbe235ec17e"
+      ],
+      "audio_horn2": [
+        "audio/beethoven/horn2.wav",
+        "77ead1976b29abcf63b6208b6a59660d"
+      ],
+      "notes": [
+        "annotations/beethoven/horn.txt",
+        "d956da1db97fd505e5e0496b048171d1"
+      ],
+      "notes_original": [
+        "annotations/beethoven/horn_o.txt",
+        "b444aa2a9e3b3efa978c47ec307d864b"
+      ]
+    },
+    "beethoven-doublebass": {
+      "audio_doublebass": [
+        "audio/beethoven/doublebass.wav",
+        "fce7ad829171ea3dcaa035f0e329ab41"
+      ],
+      "notes": [
+        "annotations/beethoven/doublebass.txt",
+        "5123b675b09abbe667634ea55831a25e"
+      ],
+      "notes_original": [
+        "annotations/beethoven/doublebass_o.txt",
+        "0447b98ab4ab843f2c9c641bba03684e"
+      ]
+    },
+    "beethoven-violin": {
+      "audio_violin1": [
+        "audio/beethoven/violin1.wav",
+        "a74068d8caa5871b8ffcf18ebe2b82d2"
+      ],
+      "audio_violin2": [
+        "audio/beethoven/violin2.wav",
+        "0de1c7b9d38b91800b492b0f9e9e115d"
+      ],
+      "audio_violin3": [
+        "audio/beethoven/violin3.wav",
+        "7bda196429d30b8e614657056bd5645b"
+      ],
+      "audio_violin4": [
+        "audio/beethoven/violin4.wav",
+        "b4d253e1bd12f7c7211343bfb920eeee"
+      ],
+      "notes": [
+        "annotations/beethoven/violin.txt",
+        "1c17ce7879e1abf90ae9943e29bbc001"
+      ],
+      "notes_original": [
+        "annotations/beethoven/violin_o.txt",
+        "9d18e2156d94329f3ed126032fd9bc15"
+      ]
+    },
+    "beethoven-bassoon": {
+      "audio_bassoon1": [
+        "audio/beethoven/bassoon1.wav",
+        "4e939fc8d9d1a9e4f4de4816ee95c474"
+      ],
+      "audio_bassoon2": [
+        "audio/beethoven/bassoon2.wav",
+        "1e44e8c26f54ef2a45601534038eb857"
+      ],
+      "notes": [
+        "annotations/beethoven/bassoon.txt",
+        "57054d355fc2e9f49d0933a2e50a7b99"
+      ],
+      "notes_original": [
+        "annotations/beethoven/bassoon_o.txt",
+        "528135e3ec149e02f637c12f0eb40693"
+      ]
+    },
+    "beethoven-flute": {
+      "audio_flute1": [
+        "audio/beethoven/flute1.wav",
+        "7470feba556a6747d05ff0f1f43ff4b8"
+      ],
+      "audio_flute2": [
+        "audio/beethoven/flute2.wav",
+        "a0a2e8c2ec9d0b1ea439de0ec7eced8f"
+      ],
+      "notes": [
+        "annotations/beethoven/flute.txt",
+        "2030f38b06bd142f91de0c8295472ea1"
+      ],
+      "notes_original": [
+        "annotations/beethoven/flute_o.txt",
+        "703dd5f4e39ffbc5945e8d777b6e35ce"
+      ]
+    },
+    "beethoven-clarinet": {
+      "audio_clarinet1": [
+        "audio/beethoven/clarinet1.wav",
+        "463fa133456dfa15c922d88df9ecf0fc"
+      ],
+      "audio_clarinet2": [
+        "audio/beethoven/clarinet2.wav",
+        "4094f6e733e057f5defbd97ef43d5f4b"
+      ],
+      "notes": [
+        "annotations/beethoven/clarinet.txt",
+        "47b10279bce3733f65e8ffcb13f5014f"
+      ],
+      "notes_original": [
+        "annotations/beethoven/clarinet_o.txt",
+        "82a6c85685388b4b30d1c2f60f32be83"
+      ]
+    },
+    "beethoven-viola": {
+      "audio_viola1": [
+        "audio/beethoven/viola1.wav",
+        "7cfb84659a9a82fbf9207e5586edbf2f"
+      ],
+      "audio_viola2": [
+        "audio/beethoven/viola2.wav",
+        "9c2b56210d1442df236f9afcdcdd5a3c"
+      ],
+      "notes": [
+        "annotations/beethoven/viola.txt",
+        "430769e486cfeabf3101f3f841549db3"
+      ],
+      "notes_original": [
+        "annotations/beethoven/viola_o.txt",
+        "c882b74a653c17adfc6ad4a792b0d214"
+      ]
+    },
+    "beethoven-oboe": {
+      "audio_oboe1": [
+        "audio/beethoven/oboe1.wav",
+        "b0e9952081dbd03ff9b5b431b6778468"
+      ],
+      "audio_oboe2": [
+        "audio/beethoven/oboe2.wav",
+        "d24310ba29268450b8396fbced1f196a"
+      ],
+      "notes": [
+        "annotations/beethoven/oboe.txt",
+        "5a62d0bdafcdcdb61037210844d2d465"
+      ],
+      "notes_original": [
+        "annotations/beethoven/oboe_o.txt",
+        "c8dfa3e94db1256bcae8137ef1e1725c"
+      ]
+    },
+    "beethoven-cello": {
+      "audio_cello": [
+        "audio/beethoven/cello.wav",
+        "4b6edff26fc65401b48559ea18638e62"
+      ],
+      "notes": [
+        "annotations/beethoven/cello.txt",
+        "71b8cc499defd2c185be6d7aea926798"
+      ],
+      "notes_original": [
+        "annotations/beethoven/cello_o.txt",
+        "8b0eece78e1ace921c614b646c197d1c"
+      ]
+    },
+    "beethoven-trumpet": {
+      "audio_trumpet1": [
+        "audio/beethoven/trumpet1.wav",
+        "fdc5551a103d73da9779d242e94f6801"
+      ],
+      "audio_trumpet2": [
+        "audio/beethoven/trumpet2.wav",
+        "c996c83c6b6a91cdac0a539373914772"
+      ],
+      "notes": [
+        "annotations/beethoven/trumpet.txt",
+        "2015f9001be8e4bd3e1c5e8c9f83088a"
+      ],
+      "notes_original": [
+        "annotations/beethoven/trumpet_o.txt",
+        "015d5a66ee63763995d1d116a2340934"
+      ]
+    }
+  },
+  "multitracks": {
+    "beethoven": {
+      "tracks": [
+        "beethoven-horn",
+        "beethoven-doublebass",
+        "beethoven-violin",
+        "beethoven-bassoon",
+        "beethoven-flute",
+        "beethoven-clarinet",
+        "beethoven-viola",
+        "beethoven-oboe",
+        "beethoven-cello",
+        "beethoven-trumpet"
+      ]
+    }
+  }
+}

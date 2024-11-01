@@ -36,8 +36,13 @@ BIBTEX = """@article{bosch2016evaluation,
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="orchset_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="orchset_index_1.0.json",
+        url="https://zenodo.org/records/14024357/files/orchset_index_1.0.json?download=1",
+        checksum="c2b1b0(441d14be73b16c915d57005857",
+    ),
+    "sample": core.Index(filename="orchset_index_1.0_sample.json"),
 }
 
 REMOTES = {

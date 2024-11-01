@@ -11,7 +11,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "1"
     data_home = os.path.normpath("tests/resources/mir_datasets/vocadito")
-    dataset = vocadito.Dataset(data_home)
+    dataset = vocadito.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -77,7 +77,7 @@ def test_track():
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/vocadito"
     default_trackid = "1"
-    dataset = vocadito.Dataset(data_home)
+    dataset = vocadito.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -158,7 +158,7 @@ def test_load_lyrics():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/vocadito"
-    dataset = vocadito.Dataset(data_home)
+    dataset = vocadito.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["1"] == {
         "singer_id": "S1",

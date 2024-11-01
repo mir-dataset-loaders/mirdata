@@ -40,8 +40,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="candombe_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="candombe_index_1.0.json",
+        url="https://zenodo.org/records/14024573/files/candombe_index_1.0.json?download=1",
+        checksum="691dccb80d2638823bfc7f196baf1d6d",
+    ),
+    "sample": core.Index(filename="candombe_index_1.0_sample.json"),
 }
 
 

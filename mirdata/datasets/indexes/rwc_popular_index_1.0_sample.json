@@ -1,0 +1,33 @@
+{
+  "version": "sample",
+  "tracks": {
+    "RM-P001": {
+      "audio": [
+        "audio/rwc-p-m01/1.wav",
+        "110ac7edb20dbe9a75ffe81b2bfeecef"
+      ],
+      "sections": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT",
+        "2d735867d44c4f8677b48746b5eb324d"
+      ],
+      "beats": [
+        "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT",
+        "523231aebfea1cc62bad575cda3f704b"
+      ],
+      "chords": [
+        "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab",
+        "2a8b1d320bb88f710be3bff4339db99b"
+      ],
+      "voca_inst": [
+        "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT",
+        "f3ee36598a8bb9e367d25e0ff99850c7"
+      ]
+    }
+  },
+  "metadata": {
+    "rwc-p": [
+      "metadata-master/rwc-p.csv",
+      "2311ffa9c150bdc83575f581e1ad8bc2"
+    ]
+  }
+}

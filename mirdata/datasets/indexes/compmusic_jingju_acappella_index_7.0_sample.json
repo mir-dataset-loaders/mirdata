@@ -1,0 +1,37 @@
+{
+  "version": "sample",
+  "tracks": {
+    "lseh-Tan_Yang_jia-Hong_yang_dong-qm": {
+      "audio": [
+        "wav/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm.wav",
+        "5efe78979789687adc2921501587388e"
+      ],
+      "phoneme": [
+        "annotation_txt/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm_phoneme.txt",
+        "a5dc6529c593f475c86058bc6cd34e41"
+      ],
+      "phrase_char": [
+        "annotation_txt/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm_phrase_char.txt",
+        "6767ab429cfe31489c795880931420da"
+      ],
+      "phrase": [
+        "annotation_txt/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm_phrase.txt",
+        "af7e90849d23dadf33bd065f46b9a975"
+      ],
+      "syllable": [
+        "annotation_txt/laosheng/lseh-Tan_Yang_jia-Hong_yang_dong-qm_syllable.txt",
+        "e40d7ede55e848bc22fd47b7f7460f83"
+      ]
+    }
+  },
+  "metadata": {
+    "laosheng_metadata": [
+      "catalogue - laosheng.csv",
+      "768fa00ce1f8880ae5480fae103ecc06"
+    ],
+    "dan_metadata": [
+      "catalogue - dan.csv",
+      "82ce90bd8508b1ae12c6a1fe489618a4"
+    ]
+  }
+}
