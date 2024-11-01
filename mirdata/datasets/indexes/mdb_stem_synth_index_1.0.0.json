@@ -1,0 +1,2305 @@
+{
+  "version": "1.0.0",
+  "tracks": {
+    "AClassicEducation_NightOwl_STEM_01": {
+      "audio": [
+        "audio_stems/AClassicEducation_NightOwl_STEM_01.RESYN.wav",
+        "6ccb43281f6024338fb1869cc1df0532"
+      ],
+      "f0": [
+        "annotation_stems/AClassicEducation_NightOwl_STEM_01.RESYN.csv",
+        "7da9fab967e0d17943f1f7f8ed762418"
+      ]
+    },
+    "AClassicEducation_NightOwl_STEM_08": {
+      "audio": [
+        "audio_stems/AClassicEducation_NightOwl_STEM_08.RESYN.wav",
+        "698afb048e8bc2d22b8db86792a799cf"
+      ],
+      "f0": [
+        "annotation_stems/AClassicEducation_NightOwl_STEM_08.RESYN.csv",
+        "759614c33da2cb4fce3e81773df2a52c"
+      ]
+    },
+    "AClassicEducation_NightOwl_STEM_13": {
+      "audio": [
+        "audio_stems/AClassicEducation_NightOwl_STEM_13.RESYN.wav",
+        "2f6c771d8cc2c5f2d102ca1593e565bf"
+      ],
+      "f0": [
+        "annotation_stems/AClassicEducation_NightOwl_STEM_13.RESYN.csv",
+        "eb08eff608e76e2cda8ff8255e3aff53"
+      ]
+    },
+    "AimeeNorwich_Child_STEM_02": {
+      "audio": [
+        "audio_stems/AimeeNorwich_Child_STEM_02.RESYN.wav",
+        "9a071c03ebb65b09186e2b08b328d752"
+      ],
+      "f0": [
+        "annotation_stems/AimeeNorwich_Child_STEM_02.RESYN.csv",
+        "f5d41b9312eed8cd6c872328c2b132f2"
+      ]
+    },
+    "AimeeNorwich_Child_STEM_04": {
+      "audio": [
+        "audio_stems/AimeeNorwich_Child_STEM_04.RESYN.wav",
+        "1fb1d6e8048ae30899e1aa42d3ed054d"
+      ],
+      "f0": [
+        "annotation_stems/AimeeNorwich_Child_STEM_04.RESYN.csv",
+        "dba1dea634d8c1f0cfd1e1efa0fc9332"
+      ]
+    },
+    "AimeeNorwich_Flying_STEM_03": {
+      "audio": [
+        "audio_stems/AimeeNorwich_Flying_STEM_03.RESYN.wav",
+        "63cc8a0f90f121445b8ab52485434c28"
+      ],
+      "f0": [
+        "annotation_stems/AimeeNorwich_Flying_STEM_03.RESYN.csv",
+        "46a59c5218046a130b85b24f780ce8a2"
+      ]
+    },
+    "AimeeNorwich_Flying_STEM_10": {
+      "audio": [
+        "audio_stems/AimeeNorwich_Flying_STEM_10.RESYN.wav",
+        "86755767e042e3ee47cf9d02c182820a"
+      ],
+      "f0": [
+        "annotation_stems/AimeeNorwich_Flying_STEM_10.RESYN.csv",
+        "da4475dd92cfb0aa9734a9a9481c6b80"
+      ]
+    },
+    "AimeeNorwich_Flying_STEM_11": {
+      "audio": [
+        "audio_stems/AimeeNorwich_Flying_STEM_11.RESYN.wav",
+        "ba877d67da65fba7300c833c9a3afd4e"
+      ],
+      "f0": [
+        "annotation_stems/AimeeNorwich_Flying_STEM_11.RESYN.csv",
+        "fd2d5cb3e95d2f8fc0116f9729354079"
+      ]
+    },
+    "AimeeNorwich_Flying_STEM_13": {
+      "audio": [
+        "audio_stems/AimeeNorwich_Flying_STEM_13.RESYN.wav",
+        "d650f26d2db66dfaf0df28615babe2ec"
+      ],
+      "f0": [
+        "annotation_stems/AimeeNorwich_Flying_STEM_13.RESYN.csv",
+        "e2a1355a8516679234d3ded21e5a9e54"
+      ]
+    },
+    "AimeeNorwich_Flying_STEM_14": {
+      "audio": [
+        "audio_stems/AimeeNorwich_Flying_STEM_14.RESYN.wav",
+        "df2769daa43ad371a9ef6188e910390f"
+      ],
+      "f0": [
+        "annotation_stems/AimeeNorwich_Flying_STEM_14.RESYN.csv",
+        "b2d8aebcdfea8cb29ccf3292b18e91e8"
+      ]
+    },
+    "AimeeNorwich_Flying_STEM_15": {
+      "audio": [
+        "audio_stems/AimeeNorwich_Flying_STEM_15.RESYN.wav",
+        "ff9f1c26c08e587f4525b933a6cadb01"
+      ],
+      "f0": [
+        "annotation_stems/AimeeNorwich_Flying_STEM_15.RESYN.csv",
+        "771f98b5bd82de29d8163e24292c6504"
+      ]
+    },
+    "AlexanderRoss_GoodbyeBolero_STEM_04": {
+      "audio": [
+        "audio_stems/AlexanderRoss_GoodbyeBolero_STEM_04.RESYN.wav",
+        "d49f4a122257f09b755d7e0379e8bd0f"
+      ],
+      "f0": [
+        "annotation_stems/AlexanderRoss_GoodbyeBolero_STEM_04.RESYN.csv",
+        "ec2d5a7f41302c2895ef17c67d2dc553"
+      ]
+    },
+    "AlexanderRoss_GoodbyeBolero_STEM_06": {
+      "audio": [
+        "audio_stems/AlexanderRoss_GoodbyeBolero_STEM_06.RESYN.wav",
+        "566b3b7b5e7a1c64034200766b7dfab5"
+      ],
+      "f0": [
+        "annotation_stems/AlexanderRoss_GoodbyeBolero_STEM_06.RESYN.csv",
+        "e72a4cbc751d66163ec21fd45ff2e89b"
+      ]
+    },
+    "AlexanderRoss_VelvetCurtain_STEM_04": {
+      "audio": [
+        "audio_stems/AlexanderRoss_VelvetCurtain_STEM_04.RESYN.wav",
+        "a4efee3e2439bbead3201366eb7e03a4"
+      ],
+      "f0": [
+        "annotation_stems/AlexanderRoss_VelvetCurtain_STEM_04.RESYN.csv",
+        "720074ae5a541bf0a4e59d96aa4e035a"
+      ]
+    },
+    "AlexanderRoss_VelvetCurtain_STEM_06": {
+      "audio": [
+        "audio_stems/AlexanderRoss_VelvetCurtain_STEM_06.RESYN.wav",
+        "be54159be81953132046b7751b0db30d"
+      ],
+      "f0": [
+        "annotation_stems/AlexanderRoss_VelvetCurtain_STEM_06.RESYN.csv",
+        "968b35337d5545d28d504402c3e4b4e1"
+      ]
+    },
+    "Auctioneer_OurFutureFaces_STEM_02": {
+      "audio": [
+        "audio_stems/Auctioneer_OurFutureFaces_STEM_02.RESYN.wav",
+        "d6c3e2ed21e034983bb42996043b9e50"
+      ],
+      "f0": [
+        "annotation_stems/Auctioneer_OurFutureFaces_STEM_02.RESYN.csv",
+        "b424486fb48da0d21d967d32dd771b96"
+      ]
+    },
+    "Auctioneer_OurFutureFaces_STEM_08": {
+      "audio": [
+        "audio_stems/Auctioneer_OurFutureFaces_STEM_08.RESYN.wav",
+        "822013b947e5c1eae11d005e0f664292"
+      ],
+      "f0": [
+        "annotation_stems/Auctioneer_OurFutureFaces_STEM_08.RESYN.csv",
+        "467ecac648e40d090b983406222e2ad3"
+      ]
+    },
+    "AvaLuna_Waterduct_STEM_01": {
+      "audio": [
+        "audio_stems/AvaLuna_Waterduct_STEM_01.RESYN.wav",
+        "8a73020a70a771753a1b26ec179b73bf"
+      ],
+      "f0": [
+        "annotation_stems/AvaLuna_Waterduct_STEM_01.RESYN.csv",
+        "ce2a2c8dabffca033906acd74b3e232f"
+      ]
+    },
+    "AvaLuna_Waterduct_STEM_08": {
+      "audio": [
+        "audio_stems/AvaLuna_Waterduct_STEM_08.RESYN.wav",
+        "4095527b7daad486e68ef9b2c8a47052"
+      ],
+      "f0": [
+        "annotation_stems/AvaLuna_Waterduct_STEM_08.RESYN.csv",
+        "bc1fc4014b16e52a6926d3ae0e8e6acb"
+      ]
+    },
+    "BigTroubles_Phantom_STEM_01": {
+      "audio": [
+        "audio_stems/BigTroubles_Phantom_STEM_01.RESYN.wav",
+        "d259d2bc5b65c51d1ce3cc82f7c5cc98"
+      ],
+      "f0": [
+        "annotation_stems/BigTroubles_Phantom_STEM_01.RESYN.csv",
+        "d9cd2f1abb7e0ca518a888bcc44972ca"
+      ]
+    },
+    "BigTroubles_Phantom_STEM_04": {
+      "audio": [
+        "audio_stems/BigTroubles_Phantom_STEM_04.RESYN.wav",
+        "c44c37e91d3cca94690fcc8401779d63"
+      ],
+      "f0": [
+        "annotation_stems/BigTroubles_Phantom_STEM_04.RESYN.csv",
+        "60ab82259fe472c99dcba3a0ab19a897"
+      ]
+    },
+    "BigTroubles_Phantom_STEM_06": {
+      "audio": [
+        "audio_stems/BigTroubles_Phantom_STEM_06.RESYN.wav",
+        "8e31bfe1f6aa1ba8045c5b1b867a3a93"
+      ],
+      "f0": [
+        "annotation_stems/BigTroubles_Phantom_STEM_06.RESYN.csv",
+        "6fa6dc43d865e6fc325abf1e01694371"
+      ]
+    },
+    "BrandonWebster_YesSirICanFly_STEM_02": {
+      "audio": [
+        "audio_stems/BrandonWebster_YesSirICanFly_STEM_02.RESYN.wav",
+        "e9f76150fb1564bbb2da31379cb4ae8d"
+      ],
+      "f0": [
+        "annotation_stems/BrandonWebster_YesSirICanFly_STEM_02.RESYN.csv",
+        "f12b9ef37339e889dc7cca57b4eaf251"
+      ]
+    },
+    "CelestialShore_DieForUs_STEM_01": {
+      "audio": [
+        "audio_stems/CelestialShore_DieForUs_STEM_01.RESYN.wav",
+        "70b541904196d415ca2d004028f58347"
+      ],
+      "f0": [
+        "annotation_stems/CelestialShore_DieForUs_STEM_01.RESYN.csv",
+        "55f2a4e7520b887da2122cb4ee6de0b3"
+      ]
+    },
+    "CelestialShore_DieForUs_STEM_02": {
+      "audio": [
+        "audio_stems/CelestialShore_DieForUs_STEM_02.RESYN.wav",
+        "51dae5b27e4e0de3e71a105aef422b91"
+      ],
+      "f0": [
+        "annotation_stems/CelestialShore_DieForUs_STEM_02.RESYN.csv",
+        "ce8a57955273fad244ad8da38828e450"
+      ]
+    },
+    "CelestialShore_DieForUs_STEM_03": {
+      "audio": [
+        "audio_stems/CelestialShore_DieForUs_STEM_03.RESYN.wav",
+        "dfa2e58945987bda45c092f1c73dc5f0"
+      ],
+      "f0": [
+        "annotation_stems/CelestialShore_DieForUs_STEM_03.RESYN.csv",
+        "88c0acabe83249c3be77bffb4369c988"
+      ]
+    },
+    "ClaraBerryAndWooldog_AirTraffic_STEM_03": {
+      "audio": [
+        "audio_stems/ClaraBerryAndWooldog_AirTraffic_STEM_03.RESYN.wav",
+        "c981e59354e12b07a10b40f4a3fee98a"
+      ],
+      "f0": [
+        "annotation_stems/ClaraBerryAndWooldog_AirTraffic_STEM_03.RESYN.csv",
+        "5accf345632eccf759bfb6c8f632af00"
+      ]
+    },
+    "ClaraBerryAndWooldog_AirTraffic_STEM_07": {
+      "audio": [
+        "audio_stems/ClaraBerryAndWooldog_AirTraffic_STEM_07.RESYN.wav",
+        "b063015dd3aa5b2b2444b7242c06fb29"
+      ],
+      "f0": [
+        "annotation_stems/ClaraBerryAndWooldog_AirTraffic_STEM_07.RESYN.csv",
+        "e77b7b809f44e51d635c4e188287f188"
+      ]
+    },
+    "ClaraBerryAndWooldog_AirTraffic_STEM_08": {
+      "audio": [
+        "audio_stems/ClaraBerryAndWooldog_AirTraffic_STEM_08.RESYN.wav",
+        "02d1d17f9c88d0851abf3b9c7ee2af02"
+      ],
+      "f0": [
+        "annotation_stems/ClaraBerryAndWooldog_AirTraffic_STEM_08.RESYN.csv",
+        "59cbe07dc2e6a09202c231b6f399769a"
+      ]
+    },
+    "ClaraBerryAndWooldog_Stella_STEM_04": {
+      "audio": [
+        "audio_stems/ClaraBerryAndWooldog_Stella_STEM_04.RESYN.wav",
+        "05e4bcd676812a2ecb0171d219e8f2ac"
+      ],
+      "f0": [
+        "annotation_stems/ClaraBerryAndWooldog_Stella_STEM_04.RESYN.csv",
+        "25cb84f72da395caf0cbcb2e9961e05a"
+      ]
+    },
+    "ClaraBerryAndWooldog_Stella_STEM_07": {
+      "audio": [
+        "audio_stems/ClaraBerryAndWooldog_Stella_STEM_07.RESYN.wav",
+        "ef744fc222fe469f8c61962335ac7bc8"
+      ],
+      "f0": [
+        "annotation_stems/ClaraBerryAndWooldog_Stella_STEM_07.RESYN.csv",
+        "361c12b0ec92b9d8876453e8b3cf424a"
+      ]
+    },
+    "ClaraBerryAndWooldog_WaltzForMyVictims_STEM_02": {
+      "audio": [
+        "audio_stems/ClaraBerryAndWooldog_WaltzForMyVictims_STEM_02.RESYN.wav",
+        "9bd29a3ddcc604a294d73ea428d489c9"
+      ],
+      "f0": [
+        "annotation_stems/ClaraBerryAndWooldog_WaltzForMyVictims_STEM_02.RESYN.csv",
+        "e245a1ce53c1b7cf95666a2e9180cc4e"
+      ]
+    },
+    "ClaraBerryAndWooldog_WaltzForMyVictims_STEM_05": {
+      "audio": [
+        "audio_stems/ClaraBerryAndWooldog_WaltzForMyVictims_STEM_05.RESYN.wav",
+        "c0eff18e22ae11ab4afd9aca00d5bfaa"
+      ],
+      "f0": [
+        "annotation_stems/ClaraBerryAndWooldog_WaltzForMyVictims_STEM_05.RESYN.csv",
+        "06cf52f49e909de00af328c7c1f22846"
+      ]
+    },
+    "Creepoid_OldTree_STEM_02": {
+      "audio": [
+        "audio_stems/Creepoid_OldTree_STEM_02.RESYN.wav",
+        "7b99d939029438395732994e57dd2e1c"
+      ],
+      "f0": [
+        "annotation_stems/Creepoid_OldTree_STEM_02.RESYN.csv",
+        "3b62fc2372cb49bea623dfaa68e16dba"
+      ]
+    },
+    "Creepoid_OldTree_STEM_07": {
+      "audio": [
+        "audio_stems/Creepoid_OldTree_STEM_07.RESYN.wav",
+        "96136db393ec625e238bd5d2d68d2b11"
+      ],
+      "f0": [
+        "annotation_stems/Creepoid_OldTree_STEM_07.RESYN.csv",
+        "c51e7b0423b6bc738cd8b234869bf2f8"
+      ]
+    },
+    "Creepoid_OldTree_STEM_08": {
+      "audio": [
+        "audio_stems/Creepoid_OldTree_STEM_08.RESYN.wav",
+        "3a663a4f851f98bae4a8f2f92b14f26f"
+      ],
+      "f0": [
+        "annotation_stems/Creepoid_OldTree_STEM_08.RESYN.csv",
+        "5c60014f3a15eeeab8ecb170816efac3"
+      ]
+    },
+    "Creepoid_OldTree_STEM_09": {
+      "audio": [
+        "audio_stems/Creepoid_OldTree_STEM_09.RESYN.wav",
+        "0cb9fc1944b7f9dd65fe97f6b9f89b38"
+      ],
+      "f0": [
+        "annotation_stems/Creepoid_OldTree_STEM_09.RESYN.csv",
+        "9179df25e08efd7fb61a6f21effc1be0"
+      ]
+    },
+    "DreamersOfTheGhetto_HeavyLove_STEM_01": {
+      "audio": [
+        "audio_stems/DreamersOfTheGhetto_HeavyLove_STEM_01.RESYN.wav",
+        "9b4485eb7325cc385c9ad206ff80f535"
+      ],
+      "f0": [
+        "annotation_stems/DreamersOfTheGhetto_HeavyLove_STEM_01.RESYN.csv",
+        "ced2335f60cf124ddae9dac7c69233c7"
+      ]
+    },
+    "DreamersOfTheGhetto_HeavyLove_STEM_06": {
+      "audio": [
+        "audio_stems/DreamersOfTheGhetto_HeavyLove_STEM_06.RESYN.wav",
+        "062066cbdff778bd17257b2541089a7e"
+      ],
+      "f0": [
+        "annotation_stems/DreamersOfTheGhetto_HeavyLove_STEM_06.RESYN.csv",
+        "7f33dd82666ca5b015105bb5f40340eb"
+      ]
+    },
+    "DreamersOfTheGhetto_HeavyLove_STEM_08": {
+      "audio": [
+        "audio_stems/DreamersOfTheGhetto_HeavyLove_STEM_08.RESYN.wav",
+        "b898e5465ac4ec5fddd82720edfc8f05"
+      ],
+      "f0": [
+        "annotation_stems/DreamersOfTheGhetto_HeavyLove_STEM_08.RESYN.csv",
+        "90a6ec84c624b8ad817418126deb0c7c"
+      ]
+    },
+    "EthanHein_1930sSynthAndUprightBass_STEM_04": {
+      "audio": [
+        "audio_stems/EthanHein_1930sSynthAndUprightBass_STEM_04.RESYN.wav",
+        "4e2ac1b8edf090159b87dd64ccf5332d"
+      ],
+      "f0": [
+        "annotation_stems/EthanHein_1930sSynthAndUprightBass_STEM_04.RESYN.csv",
+        "ebbe94cc985fefb3e297bb29504b8367"
+      ]
+    },
+    "EthanHein_BluesForNofi_STEM_02": {
+      "audio": [
+        "audio_stems/EthanHein_BluesForNofi_STEM_02.RESYN.wav",
+        "2655db5bff6c397cb73435e2c2a14a7a"
+      ],
+      "f0": [
+        "annotation_stems/EthanHein_BluesForNofi_STEM_02.RESYN.csv",
+        "379cfeda4176ec62f87a08bd47d54030"
+      ]
+    },
+    "FacesOnFilm_WaitingForGa_STEM_02": {
+      "audio": [
+        "audio_stems/FacesOnFilm_WaitingForGa_STEM_02.RESYN.wav",
+        "af746a4e4f881d37f6e7989c5353750a"
+      ],
+      "f0": [
+        "annotation_stems/FacesOnFilm_WaitingForGa_STEM_02.RESYN.csv",
+        "25a7f472609a2882a8d6715e97fa2ddc"
+      ]
+    },
+    "FacesOnFilm_WaitingForGa_STEM_03": {
+      "audio": [
+        "audio_stems/FacesOnFilm_WaitingForGa_STEM_03.RESYN.wav",
+        "ab9bac6ca71b03593c209eb3ee03cd31"
+      ],
+      "f0": [
+        "annotation_stems/FacesOnFilm_WaitingForGa_STEM_03.RESYN.csv",
+        "4f41197a329444329f8492049afb3051"
+      ]
+    },
+    "Grants_PunchDrunk_STEM_02": {
+      "audio": [
+        "audio_stems/Grants_PunchDrunk_STEM_02.RESYN.wav",
+        "f4b3e344fd133817e288816a1dbaf715"
+      ],
+      "f0": [
+        "annotation_stems/Grants_PunchDrunk_STEM_02.RESYN.csv",
+        "1fa2b71b7986e296bbd8a0659aa0a548"
+      ]
+    },
+    "Grants_PunchDrunk_STEM_03": {
+      "audio": [
+        "audio_stems/Grants_PunchDrunk_STEM_03.RESYN.wav",
+        "bd9cfd0418a5295eb1b9baf4badb9a87"
+      ],
+      "f0": [
+        "annotation_stems/Grants_PunchDrunk_STEM_03.RESYN.csv",
+        "f14a77a9cf235a0b8cd9970527d8b40f"
+      ]
+    },
+    "Grants_PunchDrunk_STEM_04": {
+      "audio": [
+        "audio_stems/Grants_PunchDrunk_STEM_04.RESYN.wav",
+        "2230fbac1f023e9e36ab34e1a1cc7860"
+      ],
+      "f0": [
+        "annotation_stems/Grants_PunchDrunk_STEM_04.RESYN.csv",
+        "1c2b011e9152b1659b4bf0518504f6d0"
+      ]
+    },
+    "Grants_PunchDrunk_STEM_07": {
+      "audio": [
+        "audio_stems/Grants_PunchDrunk_STEM_07.RESYN.wav",
+        "e88c86addb981e0677605aff41046e58"
+      ],
+      "f0": [
+        "annotation_stems/Grants_PunchDrunk_STEM_07.RESYN.csv",
+        "72eba1b90996e191180353811e378efb"
+      ]
+    },
+    "HeladoNegro_MitadDelMundo_STEM_03": {
+      "audio": [
+        "audio_stems/HeladoNegro_MitadDelMundo_STEM_03.RESYN.wav",
+        "27ef37d3cd7bae9575b6ecb3aa316faa"
+      ],
+      "f0": [
+        "annotation_stems/HeladoNegro_MitadDelMundo_STEM_03.RESYN.csv",
+        "dcd2547490970434774bb812ef4c3228"
+      ]
+    },
+    "HeladoNegro_MitadDelMundo_STEM_08": {
+      "audio": [
+        "audio_stems/HeladoNegro_MitadDelMundo_STEM_08.RESYN.wav",
+        "3c17aeaafc31cf8fb5457cd51ac12bf0"
+      ],
+      "f0": [
+        "annotation_stems/HeladoNegro_MitadDelMundo_STEM_08.RESYN.csv",
+        "8a5db70426406aca1637ed550d1db2d8"
+      ]
+    },
+    "HezekiahJones_BorrowedHeart_STEM_04": {
+      "audio": [
+        "audio_stems/HezekiahJones_BorrowedHeart_STEM_04.RESYN.wav",
+        "f17ec74c3fc11a8be8f3455f6f063e86"
+      ],
+      "f0": [
+        "annotation_stems/HezekiahJones_BorrowedHeart_STEM_04.RESYN.csv",
+        "4c0dcc67bdb9ce86a7f5703f3603cda9"
+      ]
+    },
+    "HezekiahJones_BorrowedHeart_STEM_10": {
+      "audio": [
+        "audio_stems/HezekiahJones_BorrowedHeart_STEM_10.RESYN.wav",
+        "971a235ccaa610f6317a52961571723b"
+      ],
+      "f0": [
+        "annotation_stems/HezekiahJones_BorrowedHeart_STEM_10.RESYN.csv",
+        "4c2a3daac1354ad5c843416c7ecf3a17"
+      ]
+    },
+    "HopAlong_SisterCities_STEM_02": {
+      "audio": [
+        "audio_stems/HopAlong_SisterCities_STEM_02.RESYN.wav",
+        "8a6641821fdf587404b8d467385f9a69"
+      ],
+      "f0": [
+        "annotation_stems/HopAlong_SisterCities_STEM_02.RESYN.csv",
+        "ce34c2745afc933b2828fd0f5f583650"
+      ]
+    },
+    "HopAlong_SisterCities_STEM_07": {
+      "audio": [
+        "audio_stems/HopAlong_SisterCities_STEM_07.RESYN.wav",
+        "ec2cc1642172571f79428c30042c14f2"
+      ],
+      "f0": [
+        "annotation_stems/HopAlong_SisterCities_STEM_07.RESYN.csv",
+        "bd6341cfa7e6d134ae297d21f812e2d4"
+      ]
+    },
+    "InvisibleFamiliars_DisturbingWildlife_STEM_01": {
+      "audio": [
+        "audio_stems/InvisibleFamiliars_DisturbingWildlife_STEM_01.RESYN.wav",
+        "e6dde93ee737a30bc4143e78b5d1432a"
+      ],
+      "f0": [
+        "annotation_stems/InvisibleFamiliars_DisturbingWildlife_STEM_01.RESYN.csv",
+        "b0978c718be5da615418a91addf8548b"
+      ]
+    },
+    "InvisibleFamiliars_DisturbingWildlife_STEM_09": {
+      "audio": [
+        "audio_stems/InvisibleFamiliars_DisturbingWildlife_STEM_09.RESYN.wav",
+        "dbd320b70e182efca3dfea06a9688bad"
+      ],
+      "f0": [
+        "annotation_stems/InvisibleFamiliars_DisturbingWildlife_STEM_09.RESYN.csv",
+        "5c4aef26581ee75bfa7617aab8e9bc6e"
+      ]
+    },
+    "KarimDouaidy_Hopscotch_STEM_01": {
+      "audio": [
+        "audio_stems/KarimDouaidy_Hopscotch_STEM_01.RESYN.wav",
+        "109f17466644355305375299e060fefa"
+      ],
+      "f0": [
+        "annotation_stems/KarimDouaidy_Hopscotch_STEM_01.RESYN.csv",
+        "40e5f07aeb51e3d2275e5e137006a71e"
+      ]
+    },
+    "KarimDouaidy_Yatora_STEM_04": {
+      "audio": [
+        "audio_stems/KarimDouaidy_Yatora_STEM_04.RESYN.wav",
+        "147a3a69fef973b74d91e680de67cd15"
+      ],
+      "f0": [
+        "annotation_stems/KarimDouaidy_Yatora_STEM_04.RESYN.csv",
+        "c9a196b8acce00f0ed36ce3b8ead7234"
+      ]
+    },
+    "LizNelson_Coldwar_STEM_02": {
+      "audio": [
+        "audio_stems/LizNelson_Coldwar_STEM_02.RESYN.wav",
+        "dbe7dd632045f9324b8cfd32cea01ee9"
+      ],
+      "f0": [
+        "annotation_stems/LizNelson_Coldwar_STEM_02.RESYN.csv",
+        "2f56e0384a5d515b428647c3ea3211e5"
+      ]
+    },
+    "LizNelson_Rainfall_STEM_01": {
+      "audio": [
+        "audio_stems/LizNelson_Rainfall_STEM_01.RESYN.wav",
+        "30677038f00de13e22a9e6d2fbf4a6b2"
+      ],
+      "f0": [
+        "annotation_stems/LizNelson_Rainfall_STEM_01.RESYN.csv",
+        "5eb5c5112f44d81dcc3719faa201150c"
+      ]
+    },
+    "LizNelson_Rainfall_STEM_02": {
+      "audio": [
+        "audio_stems/LizNelson_Rainfall_STEM_02.RESYN.wav",
+        "a964f67d4e7129ee9324938a8323dc58"
+      ],
+      "f0": [
+        "annotation_stems/LizNelson_Rainfall_STEM_02.RESYN.csv",
+        "cf389654e711738cb972d0e7d2ce88fd"
+      ]
+    },
+    "LizNelson_Rainfall_STEM_03": {
+      "audio": [
+        "audio_stems/LizNelson_Rainfall_STEM_03.RESYN.wav",
+        "368fe05e8c5bcf0915b1c4cadfcaa6fb"
+      ],
+      "f0": [
+        "annotation_stems/LizNelson_Rainfall_STEM_03.RESYN.csv",
+        "466a2aeba1522bdeaef4e8d9f06061ec"
+      ]
+    },
+    "Lushlife_ToynbeeSuite_STEM_04": {
+      "audio": [
+        "audio_stems/Lushlife_ToynbeeSuite_STEM_04.RESYN.wav",
+        "5658dd1137036db0f53e493ef2374e4f"
+      ],
+      "f0": [
+        "annotation_stems/Lushlife_ToynbeeSuite_STEM_04.RESYN.csv",
+        "bf342107b4d10ecec702694c1d89581d"
+      ]
+    },
+    "Lushlife_ToynbeeSuite_STEM_08": {
+      "audio": [
+        "audio_stems/Lushlife_ToynbeeSuite_STEM_08.RESYN.wav",
+        "e4a2b576512d867b728a0023300a6d5b"
+      ],
+      "f0": [
+        "annotation_stems/Lushlife_ToynbeeSuite_STEM_08.RESYN.csv",
+        "b0f953eaad9c16ac2f628ca1059451b4"
+      ]
+    },
+    "Lushlife_ToynbeeSuite_STEM_17": {
+      "audio": [
+        "audio_stems/Lushlife_ToynbeeSuite_STEM_17.RESYN.wav",
+        "ff566fb27c6caa679d20d3d93ca2b669"
+      ],
+      "f0": [
+        "annotation_stems/Lushlife_ToynbeeSuite_STEM_17.RESYN.csv",
+        "59e937fc0a9fe2843175ec2e9c9f22e3"
+      ]
+    },
+    "Lushlife_ToynbeeSuite_STEM_18": {
+      "audio": [
+        "audio_stems/Lushlife_ToynbeeSuite_STEM_18.RESYN.wav",
+        "ecff43d3045d4e813e50496e82648d9c"
+      ],
+      "f0": [
+        "annotation_stems/Lushlife_ToynbeeSuite_STEM_18.RESYN.csv",
+        "d57be6a1d837c9f29d52cde0511036a8"
+      ]
+    },
+    "Lushlife_ToynbeeSuite_STEM_26": {
+      "audio": [
+        "audio_stems/Lushlife_ToynbeeSuite_STEM_26.RESYN.wav",
+        "5ccbe0b57a8a36ee33cf2edd965ea79f"
+      ],
+      "f0": [
+        "annotation_stems/Lushlife_ToynbeeSuite_STEM_26.RESYN.csv",
+        "2ada346fa5e7cd7d76b5055404673a28"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_01": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_01.RESYN.wav",
+        "767101e0dee829a67e8f38471cbe6bb1"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_01.RESYN.csv",
+        "f22c841842dd06866a091d6f2f15d7ad"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_02": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_02.RESYN.wav",
+        "0de821e785a47963d3a32911bcf1dd2b"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_02.RESYN.csv",
+        "9b03e037cb5c5ed684e8b72286e45f1c"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_03": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_03.RESYN.wav",
+        "471d809dfb49d4aeab47526bd63a9628"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_03.RESYN.csv",
+        "1b3b020c0a6bba4e8f7c4d7e16c943ff"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_04": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_04.RESYN.wav",
+        "5da22bf96dde5910dec94fdc943c877d"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_04.RESYN.csv",
+        "a836a824c15b358d4c989c440a89475e"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_07": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_07.RESYN.wav",
+        "dbc2db8eb85cf0b004297a98e64136ab"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_07.RESYN.csv",
+        "781d4afb38bdb890319be6580abffde4"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_12": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_12.RESYN.wav",
+        "a40ab3a67a60dedbeb782d460f1183c8"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_12.RESYN.csv",
+        "6937162908782f916db506cfab89f0dc"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_13": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_13.RESYN.wav",
+        "5121a566107085932eefc3d6bd3c922c"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_13.RESYN.csv",
+        "15174d96bd72fa69d914e7ff22cc1eef"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_14": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_14.RESYN.wav",
+        "caf4d247f648fe9732b337c2e4902de8"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_14.RESYN.csv",
+        "88b495d0699e06c38cb9cc5def31a326"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_15": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_15.RESYN.wav",
+        "90f5d3f0ab440747f061bb6b153f33d1"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_15.RESYN.csv",
+        "dfc5a9655bd4a0a427a68e1bc27cb20b"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_16": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_16.RESYN.wav",
+        "f5c9193e3ad3a05e4b1d694ea9da0ad2"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_16.RESYN.csv",
+        "0778ad739e5e092e68fdc96d2a3a57f3"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_17": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_17.RESYN.wav",
+        "07b50b228f62c50926194aac175612e5"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_17.RESYN.csv",
+        "b22c51064b881796fe44cab8b9c98396"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_18": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_18.RESYN.wav",
+        "2f9e0089cfaf40db42af0fdb8f892640"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_18.RESYN.csv",
+        "26629c049e7720237cd2b3e2fef88d79"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_19": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_19.RESYN.wav",
+        "27e0a2b5fbf91c46e42d85c341e374e6"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_19.RESYN.csv",
+        "18fda6538553dade453da8ab215c0422"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_20": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_20.RESYN.wav",
+        "29d645bb4c40430dc0da5477e14dc679"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_20.RESYN.csv",
+        "0c78cb6524cf517796897b13014aadac"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_21": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_21.RESYN.wav",
+        "efa3c3832f3e07135d86f2d0944ffcca"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_21.RESYN.csv",
+        "7b631e015f50dd7dfe1448be8b35823e"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_22": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_22.RESYN.wav",
+        "7fcf995bae61ce26b31947656e58ade7"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_22.RESYN.csv",
+        "9055c32f6325d5e3a054c14e95d04cf0"
+      ]
+    },
+    "MatthewEntwistle_AnEveningWithOliver_STEM_23": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_AnEveningWithOliver_STEM_23.RESYN.wav",
+        "10a770bf3fe2f15c104551ce63824a01"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_AnEveningWithOliver_STEM_23.RESYN.csv",
+        "cc3c1fc3c2bbe3d0fcab00828330e3a6"
+      ]
+    },
+    "MatthewEntwistle_DontYouEver_STEM_01": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_DontYouEver_STEM_01.RESYN.wav",
+        "abe6dd2bf527f4d1694866858ed17ad5"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_DontYouEver_STEM_01.RESYN.csv",
+        "da0baa70c532067390d1fd9d60236e40"
+      ]
+    },
+    "MatthewEntwistle_DontYouEver_STEM_07": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_DontYouEver_STEM_07.RESYN.wav",
+        "6841d57316ce683f1bca7f8d33426dd9"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_DontYouEver_STEM_07.RESYN.csv",
+        "03aa7bbbd876368d7f2ac158d6bc748e"
+      ]
+    },
+    "MatthewEntwistle_FairerHopes_STEM_07": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_FairerHopes_STEM_07.RESYN.wav",
+        "99304f0b52f4d2672a69a396acb769a1"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_FairerHopes_STEM_07.RESYN.csv",
+        "d8f5375ff1541ac52bdeb6743293e7be"
+      ]
+    },
+    "MatthewEntwistle_FairerHopes_STEM_08": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_FairerHopes_STEM_08.RESYN.wav",
+        "84699e72e394bc32c110290da965158b"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_FairerHopes_STEM_08.RESYN.csv",
+        "81b513f02ce0e1b6197f806418a05824"
+      ]
+    },
+    "MatthewEntwistle_FairerHopes_STEM_11": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_FairerHopes_STEM_11.RESYN.wav",
+        "cea9a80c8542c485275fcfb963f37b50"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_FairerHopes_STEM_11.RESYN.csv",
+        "523dcc219e61c6a7ef33df6a34835a29"
+      ]
+    },
+    "MatthewEntwistle_FairerHopes_STEM_12": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_FairerHopes_STEM_12.RESYN.wav",
+        "f540991005a2bc376f1558a936f7b3e5"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_FairerHopes_STEM_12.RESYN.csv",
+        "34ed3187d8734721178f072a5b03004b"
+      ]
+    },
+    "MatthewEntwistle_FairerHopes_STEM_14": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_FairerHopes_STEM_14.RESYN.wav",
+        "cd1e5aef466563136e0d2dcc2a16f01b"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_FairerHopes_STEM_14.RESYN.csv",
+        "8038b4d57d6b4198542ea096f8639903"
+      ]
+    },
+    "MatthewEntwistle_ImpressionsOfSaturn_STEM_01": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_ImpressionsOfSaturn_STEM_01.RESYN.wav",
+        "e6c7b4422451d3f1bf582495c283c146"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_ImpressionsOfSaturn_STEM_01.RESYN.csv",
+        "3fb0537186259719437bd1b2f0b3ad40"
+      ]
+    },
+    "MatthewEntwistle_ImpressionsOfSaturn_STEM_07": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_ImpressionsOfSaturn_STEM_07.RESYN.wav",
+        "f463ba7357df331bc5619f676bb7b4d9"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_ImpressionsOfSaturn_STEM_07.RESYN.csv",
+        "6bafbf82fbe0caca116f72de6e83704f"
+      ]
+    },
+    "MatthewEntwistle_ImpressionsOfSaturn_STEM_08": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_ImpressionsOfSaturn_STEM_08.RESYN.wav",
+        "659fe78706a46a10019bcfae507f07cf"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_ImpressionsOfSaturn_STEM_08.RESYN.csv",
+        "d902ae43fec2ccde7e72dd603152e8d2"
+      ]
+    },
+    "MatthewEntwistle_ImpressionsOfSaturn_STEM_09": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_ImpressionsOfSaturn_STEM_09.RESYN.wav",
+        "5a29601841cecffb4120f7dec3ad397a"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_ImpressionsOfSaturn_STEM_09.RESYN.csv",
+        "128d59cbb3b1e67513fb5b4b26b34bc3"
+      ]
+    },
+    "MatthewEntwistle_TheArch_STEM_10": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_TheArch_STEM_10.RESYN.wav",
+        "b3d9bf8b6e29119b0039555cc67eb0e4"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_TheArch_STEM_10.RESYN.csv",
+        "89a250473ab46ae96a276975278ad086"
+      ]
+    },
+    "MatthewEntwistle_TheArch_STEM_11": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_TheArch_STEM_11.RESYN.wav",
+        "d1a9e446f1368e4ae5dc3413d49642a8"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_TheArch_STEM_11.RESYN.csv",
+        "8a73bacd5ee7a00657912616775e678d"
+      ]
+    },
+    "MatthewEntwistle_TheFlaxenField_STEM_01": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_TheFlaxenField_STEM_01.RESYN.wav",
+        "6fc7a2e4bdb17ecfe4bbbfd1ce6e9dbd"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_TheFlaxenField_STEM_01.RESYN.csv",
+        "e63bca44b3e785c06cb4cec8450682e7"
+      ]
+    },
+    "MatthewEntwistle_TheFlaxenField_STEM_02": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_TheFlaxenField_STEM_02.RESYN.wav",
+        "34c3803fda682a1b5634cb246a2101e0"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_TheFlaxenField_STEM_02.RESYN.csv",
+        "50c20542f4125269dcd175cddfcd7f15"
+      ]
+    },
+    "MatthewEntwistle_TheFlaxenField_STEM_04": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_TheFlaxenField_STEM_04.RESYN.wav",
+        "172b1a9ae8438666cd57218b4df6beb8"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_TheFlaxenField_STEM_04.RESYN.csv",
+        "5bbddebe2c3e418929ca728f0933850a"
+      ]
+    },
+    "MatthewEntwistle_TheFlaxenField_STEM_05": {
+      "audio": [
+        "audio_stems/MatthewEntwistle_TheFlaxenField_STEM_05.RESYN.wav",
+        "d33c79cf0081d72a9719df28ac61ff41"
+      ],
+      "f0": [
+        "annotation_stems/MatthewEntwistle_TheFlaxenField_STEM_05.RESYN.csv",
+        "90ca6ccbce2d0a490134d9404706e249"
+      ]
+    },
+    "Meaxic_TakeAStep_STEM_01": {
+      "audio": [
+        "audio_stems/Meaxic_TakeAStep_STEM_01.RESYN.wav",
+        "5a01879ee3a83e1b8e8698f814a015b1"
+      ],
+      "f0": [
+        "annotation_stems/Meaxic_TakeAStep_STEM_01.RESYN.csv",
+        "c8bd0c20e2766f2b4e371bfc3b33459a"
+      ]
+    },
+    "Meaxic_TakeAStep_STEM_04": {
+      "audio": [
+        "audio_stems/Meaxic_TakeAStep_STEM_04.RESYN.wav",
+        "40ce675874d54f614e1819f9cf344492"
+      ],
+      "f0": [
+        "annotation_stems/Meaxic_TakeAStep_STEM_04.RESYN.csv",
+        "b46071538176a7e48281850d8563e0fa"
+      ]
+    },
+    "Meaxic_YouListen_STEM_01": {
+      "audio": [
+        "audio_stems/Meaxic_YouListen_STEM_01.RESYN.wav",
+        "2d2d1ae0401a29167e9c09cd8e9824c3"
+      ],
+      "f0": [
+        "annotation_stems/Meaxic_YouListen_STEM_01.RESYN.csv",
+        "3d4aa4835f65250ec9dd9d1e53630346"
+      ]
+    },
+    "Meaxic_YouListen_STEM_04": {
+      "audio": [
+        "audio_stems/Meaxic_YouListen_STEM_04.RESYN.wav",
+        "e9b48aca352ad4b43a8635c46ef543a5"
+      ],
+      "f0": [
+        "annotation_stems/Meaxic_YouListen_STEM_04.RESYN.csv",
+        "8251bdf92e93356d90bfa17a1bc0a0f4"
+      ]
+    },
+    "MusicDelta_80sRock_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_80sRock_STEM_02.RESYN.wav",
+        "4d185fc75d0d3d706634e005bbfa1a39"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_80sRock_STEM_02.RESYN.csv",
+        "b9954e7e8f5b05887f5a6d2244693f62"
+      ]
+    },
+    "MusicDelta_80sRock_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_80sRock_STEM_04.RESYN.wav",
+        "87f39a9bcfeabaa71acb33d57835cbb2"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_80sRock_STEM_04.RESYN.csv",
+        "91ddd45698d36be2b84d091f8284c3ff"
+      ]
+    },
+    "MusicDelta_Beatles_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Beatles_STEM_02.RESYN.wav",
+        "cd165d8edd322e2778b6108dfba86528"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beatles_STEM_02.RESYN.csv",
+        "7bafc53f0ac0842424fbda38853c7578"
+      ]
+    },
+    "MusicDelta_Beatles_STEM_07": {
+      "audio": [
+        "audio_stems/MusicDelta_Beatles_STEM_07.RESYN.wav",
+        "5b3c4f56dc908b6d685fb7d792a84266"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beatles_STEM_07.RESYN.csv",
+        "8c1ff7655423148c45d7682bcf083604"
+      ]
+    },
+    "MusicDelta_Beatles_STEM_08": {
+      "audio": [
+        "audio_stems/MusicDelta_Beatles_STEM_08.RESYN.wav",
+        "d733bd43913ad1ac59a9d64d46c5dac1"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beatles_STEM_08.RESYN.csv",
+        "d5b7ad0747eee52416f739cdbea4e444"
+      ]
+    },
+    "MusicDelta_BebopJazz_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_BebopJazz_STEM_02.RESYN.wav",
+        "fe7a58c71e4255ca79305b4e0ba6bffc"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_BebopJazz_STEM_02.RESYN.csv",
+        "27327316bc6c26b3c4c99fb82d94e365"
+      ]
+    },
+    "MusicDelta_BebopJazz_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_BebopJazz_STEM_04.RESYN.wav",
+        "a07c71a1ff62fc3b8806a2b26507aa7c"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_BebopJazz_STEM_04.RESYN.csv",
+        "98b0f4e0024e54f14b0781ddb0e22064"
+      ]
+    },
+    "MusicDelta_BebopJazz_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_BebopJazz_STEM_05.RESYN.wav",
+        "3a23d7d461b4f8d4c6c56881d1d2d34f"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_BebopJazz_STEM_05.RESYN.csv",
+        "a5eae7714d337f93fb054bc3c0a9ce09"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_03": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_03.RESYN.wav",
+        "c77ee9d4bc478d7d8023c7c427a78fa0"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_03.RESYN.csv",
+        "f3cc60528d6e01fa0eacd8ff1610742d"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_04.RESYN.wav",
+        "9b555ce4d172c032cb886c82c8964019"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_04.RESYN.csv",
+        "02251173371216f36e4586cab3ea0e43"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_05.RESYN.wav",
+        "e4e81aa08cb82958ac44afae33b65501"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_05.RESYN.csv",
+        "b6d97fe2b2d7baa1b04d8ec64d3e67cf"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_06": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_06.RESYN.wav",
+        "6dc2bd38f7d114e61a6cbf5ca915b6ae"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_06.RESYN.csv",
+        "2c277d61de73ad84b2b744e646ae25a5"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_07": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_07.RESYN.wav",
+        "4930c2e0d6654c55d82914f02939b88b"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_07.RESYN.csv",
+        "ce7f2ac55d2eedb3f3fc6da8f4864e49"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_08": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_08.RESYN.wav",
+        "a132639678ec37c6888b502d435a9c8a"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_08.RESYN.csv",
+        "2e90fac8bdc1a8f2224e8ae8c91e6bae"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_09": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_09.RESYN.wav",
+        "b9b08378e84cb91ab7d8e341904c2a00"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_09.RESYN.csv",
+        "b715763c1dba248efe7b1baf2c919b91"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_10": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_10.RESYN.wav",
+        "03ce7a49340060bcff8d6758f118c700"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_10.RESYN.csv",
+        "69824fa9a91603ec71e6eb03ab5e3185"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_11": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_11.RESYN.wav",
+        "0cff8b7d864d63d200aa2634b2c3d76c"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_11.RESYN.csv",
+        "84780d473af9ee236e08c5a3564057ba"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_12": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_12.RESYN.wav",
+        "fdd43bc4df5a898ceefcc3797fb0032f"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_12.RESYN.csv",
+        "8bf21607080a953e7c2fc078b14bfdc9"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_13": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_13.RESYN.wav",
+        "7a5f3f0f776500a52e94329580e5af29"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_13.RESYN.csv",
+        "b731e8a8880310787323cc3a30617d6e"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_14": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_14.RESYN.wav",
+        "52118ed8d9d53c70ffc5195df07d7da5"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_14.RESYN.csv",
+        "8d898338dd8d9ae30d2f3bca61b88575"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_15": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_15.RESYN.wav",
+        "00013690d36fa8012277c686788dcee8"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_15.RESYN.csv",
+        "66e1c29624aeab1b40cfa41ef26ba57e"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_16": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_16.RESYN.wav",
+        "27f95cf5b623bd5b10f06687905fc399"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_16.RESYN.csv",
+        "51dd04b337079ce1bf34818b7fa67652"
+      ]
+    },
+    "MusicDelta_Beethoven_STEM_17": {
+      "audio": [
+        "audio_stems/MusicDelta_Beethoven_STEM_17.RESYN.wav",
+        "13846adb430f525a5f2430f2ffe0e4b4"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Beethoven_STEM_17.RESYN.csv",
+        "b218aa9cf69b138f9e47c6a9e5b201bc"
+      ]
+    },
+    "MusicDelta_Britpop_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Britpop_STEM_02.RESYN.wav",
+        "7ba8eceb65e61d2855a01b5bb0b198f6"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Britpop_STEM_02.RESYN.csv",
+        "945b76ca5504b94f1464bf053205524b"
+      ]
+    },
+    "MusicDelta_Britpop_STEM_07": {
+      "audio": [
+        "audio_stems/MusicDelta_Britpop_STEM_07.RESYN.wav",
+        "3b3b58f26bcaee4375704571832759e7"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Britpop_STEM_07.RESYN.csv",
+        "213c695b36f75d37afce9b6dfb362ee9"
+      ]
+    },
+    "MusicDelta_Britpop_STEM_08": {
+      "audio": [
+        "audio_stems/MusicDelta_Britpop_STEM_08.RESYN.wav",
+        "b3d1b7acab132e4ca3f7ce193514d7db"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Britpop_STEM_08.RESYN.csv",
+        "810a24ce464984a5880fd33fb0652df9"
+      ]
+    },
+    "MusicDelta_ChineseChaoZhou_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseChaoZhou_STEM_01.RESYN.wav",
+        "fd782f19d4b00922a21d9c7a37b4567d"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseChaoZhou_STEM_01.RESYN.csv",
+        "5f0caae414843f5679fffa2f644b695c"
+      ]
+    },
+    "MusicDelta_ChineseChaoZhou_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseChaoZhou_STEM_02.RESYN.wav",
+        "bf98c3dd7ad9a8654c1ee80fb742516d"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseChaoZhou_STEM_02.RESYN.csv",
+        "89e8738a28192fd7eb41673c8e663439"
+      ]
+    },
+    "MusicDelta_ChineseDrama_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseDrama_STEM_01.RESYN.wav",
+        "c53d886d8d94eae272093735293f00c2"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseDrama_STEM_01.RESYN.csv",
+        "33faca12e71b61b3c02f79793f397491"
+      ]
+    },
+    "MusicDelta_ChineseDrama_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseDrama_STEM_02.RESYN.wav",
+        "8b767f76121f604a0ed2c627d223af85"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseDrama_STEM_02.RESYN.csv",
+        "bd399d8e6598620a0e8e2aec0c2c4971"
+      ]
+    },
+    "MusicDelta_ChineseHenan_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseHenan_STEM_01.RESYN.wav",
+        "c4f8d45d32eddb43a01c66677518726b"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseHenan_STEM_01.RESYN.csv",
+        "3fb53e83fbf5331da6e339024a53319f"
+      ]
+    },
+    "MusicDelta_ChineseHenan_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseHenan_STEM_02.RESYN.wav",
+        "f1bc94870744014c7e5ada0dcfce1f59"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseHenan_STEM_02.RESYN.csv",
+        "18390de50739f939c651f30a4cf3c52c"
+      ]
+    },
+    "MusicDelta_ChineseJiangNan_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseJiangNan_STEM_01.RESYN.wav",
+        "6a11a8d175b1d959fcec8278f8ce979f"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseJiangNan_STEM_01.RESYN.csv",
+        "81538dc1b8eebfb68df2fbe5310c9388"
+      ]
+    },
+    "MusicDelta_ChineseJiangNan_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseJiangNan_STEM_02.RESYN.wav",
+        "794171e53daf5da890725dd1d5f6b404"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseJiangNan_STEM_02.RESYN.csv",
+        "5f5f99f8f621987046eaac8e1387871d"
+      ]
+    },
+    "MusicDelta_ChineseXinJing_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseXinJing_STEM_01.RESYN.wav",
+        "9ba6d9e17ce21fdadb6c6a41a1659fe7"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseXinJing_STEM_01.RESYN.csv",
+        "bad4ada2a1eb44df615d90c66e720e6f"
+      ]
+    },
+    "MusicDelta_ChineseYaoZu_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseYaoZu_STEM_01.RESYN.wav",
+        "d1ac434337ab64a355c3fc000c355e33"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseYaoZu_STEM_01.RESYN.csv",
+        "f9c8986fb6dc85130b07f241460e6d3a"
+      ]
+    },
+    "MusicDelta_ChineseYaoZu_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_ChineseYaoZu_STEM_02.RESYN.wav",
+        "6258ab1205917d2854194fe4f40e8011"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ChineseYaoZu_STEM_02.RESYN.csv",
+        "431fcf02d0800ee8535e3b67d44dd24d"
+      ]
+    },
+    "MusicDelta_CoolJazz_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_CoolJazz_STEM_01.RESYN.wav",
+        "2230e6fc6ab2202ed872c52855ebdb7f"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_CoolJazz_STEM_01.RESYN.csv",
+        "e64d5a7d2fa5239dd985d69a7324cc97"
+      ]
+    },
+    "MusicDelta_CoolJazz_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_CoolJazz_STEM_04.RESYN.wav",
+        "33d17043334567025157837efea6c1fc"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_CoolJazz_STEM_04.RESYN.csv",
+        "9d9e099b810f99ab98a9b8bb576181fe"
+      ]
+    },
+    "MusicDelta_CoolJazz_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_CoolJazz_STEM_05.RESYN.wav",
+        "d1e90d0de57a0105ca8523fd0b64c81e"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_CoolJazz_STEM_05.RESYN.csv",
+        "ce89f0f2281aeef567dd9eb45fb97f8a"
+      ]
+    },
+    "MusicDelta_Country1_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Country1_STEM_02.RESYN.wav",
+        "ba081b9f4775b3469f3798f4158b63ee"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Country1_STEM_02.RESYN.csv",
+        "538c9a11606e5ffb8689e8325b527423"
+      ]
+    },
+    "MusicDelta_Country1_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_Country1_STEM_05.RESYN.wav",
+        "7f71aeff334f329514fc25ebb794fa5e"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Country1_STEM_05.RESYN.csv",
+        "9c97c0ffa4fd4f0d8f63a97b5d3da49a"
+      ]
+    },
+    "MusicDelta_Country2_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Country2_STEM_02.RESYN.wav",
+        "97c71bb819b772213e797e7db9c38f5b"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Country2_STEM_02.RESYN.csv",
+        "6bdcc87bb27f47cf7ec3bfc91ab73ade"
+      ]
+    },
+    "MusicDelta_Country2_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_Country2_STEM_05.RESYN.wav",
+        "1e38357b0003f049e2bed203543a546d"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Country2_STEM_05.RESYN.csv",
+        "9caeeb4b391a6bd65a27a29dc86b52b2"
+      ]
+    },
+    "MusicDelta_Disco_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Disco_STEM_02.RESYN.wav",
+        "d1029fc9ca272699a6f3aa9df7413b28"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Disco_STEM_02.RESYN.csv",
+        "742374e10e6f66a85920b04af9b4875d"
+      ]
+    },
+    "MusicDelta_Disco_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_Disco_STEM_04.RESYN.wav",
+        "3ee0e25ece775b76efaa400ed7cef5da"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Disco_STEM_04.RESYN.csv",
+        "05525fcf3062c9be182b99991c55c809"
+      ]
+    },
+    "MusicDelta_FreeJazz_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_FreeJazz_STEM_02.RESYN.wav",
+        "540fe876b8f349cc1b56194201a15499"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_FreeJazz_STEM_02.RESYN.csv",
+        "9d1f8c7e7fd9eb17ecdad8d6c7b92a7c"
+      ]
+    },
+    "MusicDelta_FreeJazz_STEM_03": {
+      "audio": [
+        "audio_stems/MusicDelta_FreeJazz_STEM_03.RESYN.wav",
+        "c13a70c59a2e9e1b2ea432521ab3b9eb"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_FreeJazz_STEM_03.RESYN.csv",
+        "fb020003e095994975e95c93f2c999d2"
+      ]
+    },
+    "MusicDelta_FunkJazz_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_FunkJazz_STEM_02.RESYN.wav",
+        "c5acb2d7d4a948cd57a56ad6a1f2b740"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_FunkJazz_STEM_02.RESYN.csv",
+        "7290beb9f4ba0a8def409d0547f0e73d"
+      ]
+    },
+    "MusicDelta_FunkJazz_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_FunkJazz_STEM_04.RESYN.wav",
+        "b05413f379b9c590203eaed857f30fdc"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_FunkJazz_STEM_04.RESYN.csv",
+        "061d4c6b5ce268ab081b2e07a754909b"
+      ]
+    },
+    "MusicDelta_FusionJazz_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_FusionJazz_STEM_02.RESYN.wav",
+        "58c8c80b6ff4119305736e7b4e3453b2"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_FusionJazz_STEM_02.RESYN.csv",
+        "297bd6d96bc308ffe716dbbdfeb5daea"
+      ]
+    },
+    "MusicDelta_FusionJazz_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_FusionJazz_STEM_05.RESYN.wav",
+        "9ea97f76f994ac92e1ab0ee8f7b18bc9"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_FusionJazz_STEM_05.RESYN.csv",
+        "893fa47dcdbfdffb678951872df4290c"
+      ]
+    },
+    "MusicDelta_FusionJazz_STEM_06": {
+      "audio": [
+        "audio_stems/MusicDelta_FusionJazz_STEM_06.RESYN.wav",
+        "7a774179e2ee74b158d41d566002d6e4"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_FusionJazz_STEM_06.RESYN.csv",
+        "7951d55390fb5430b9ee3c1ea6ad9284"
+      ]
+    },
+    "MusicDelta_Gospel_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Gospel_STEM_02.RESYN.wav",
+        "1d2d434f1ad6db871698f0fec4d4f9d7"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Gospel_STEM_02.RESYN.csv",
+        "993d0611b4de15a0b6d2db3fbd7cf236"
+      ]
+    },
+    "MusicDelta_Gospel_STEM_06": {
+      "audio": [
+        "audio_stems/MusicDelta_Gospel_STEM_06.RESYN.wav",
+        "d08660a23ea1bd9d561b2e6000d48ae1"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Gospel_STEM_06.RESYN.csv",
+        "c3cee338be84ca280c8d7272472068ea"
+      ]
+    },
+    "MusicDelta_GriegTrolltog_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_GriegTrolltog_STEM_04.RESYN.wav",
+        "de2afd57706f1eec8529826e4820e110"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_GriegTrolltog_STEM_04.RESYN.csv",
+        "0be013dbd63f202a4d5a286838e68688"
+      ]
+    },
+    "MusicDelta_GriegTrolltog_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_GriegTrolltog_STEM_05.RESYN.wav",
+        "63f601835ceef6c04848ddd52eb0eca9"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_GriegTrolltog_STEM_05.RESYN.csv",
+        "9859b000b912d38e180cfe4e3327a809"
+      ]
+    },
+    "MusicDelta_GriegTrolltog_STEM_07": {
+      "audio": [
+        "audio_stems/MusicDelta_GriegTrolltog_STEM_07.RESYN.wav",
+        "577a1277d17ccd92423f3ce6337266e8"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_GriegTrolltog_STEM_07.RESYN.csv",
+        "b5df9f87f98244c2a81c5b0302c21073"
+      ]
+    },
+    "MusicDelta_GriegTrolltog_STEM_08": {
+      "audio": [
+        "audio_stems/MusicDelta_GriegTrolltog_STEM_08.RESYN.wav",
+        "8eaf70f9cf7e272598fb1e68e0b097ae"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_GriegTrolltog_STEM_08.RESYN.csv",
+        "43265d0088f28fc52fc5b2e5522ce49a"
+      ]
+    },
+    "MusicDelta_GriegTrolltog_STEM_09": {
+      "audio": [
+        "audio_stems/MusicDelta_GriegTrolltog_STEM_09.RESYN.wav",
+        "6e0b1ada6bb13a359426c0cf24b46638"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_GriegTrolltog_STEM_09.RESYN.csv",
+        "20c3713c9406f8204eda10cd40f26d4b"
+      ]
+    },
+    "MusicDelta_GriegTrolltog_STEM_16": {
+      "audio": [
+        "audio_stems/MusicDelta_GriegTrolltog_STEM_16.RESYN.wav",
+        "b4128369c0b2e02346d64188a99f9374"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_GriegTrolltog_STEM_16.RESYN.csv",
+        "8720df24bf77ec5dbd853387c010d79a"
+      ]
+    },
+    "MusicDelta_Grunge_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Grunge_STEM_02.RESYN.wav",
+        "43e6e46b706caefe161ca61fc9d21f45"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Grunge_STEM_02.RESYN.csv",
+        "56eb25fc69761b8ce6ef9409e39936e8"
+      ]
+    },
+    "MusicDelta_Grunge_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_Grunge_STEM_05.RESYN.wav",
+        "cca40756039245116575a607aceeb552"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Grunge_STEM_05.RESYN.csv",
+        "1d9bfd61e87474d0dd972eb3b69b5284"
+      ]
+    },
+    "MusicDelta_Hendrix_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Hendrix_STEM_02.RESYN.wav",
+        "1ee76eae51e22baa084ad87029e93c3b"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Hendrix_STEM_02.RESYN.csv",
+        "b195eb724bac3306755970daa6db3d4d"
+      ]
+    },
+    "MusicDelta_Hendrix_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_Hendrix_STEM_04.RESYN.wav",
+        "83d55699537384b6cebecd212decc8b3"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Hendrix_STEM_04.RESYN.csv",
+        "ff94d0378567ef9f9660de1792ffccdd"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_03": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_03.RESYN.wav",
+        "5b8956046919df5ef48f3566489f6c83"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_03.RESYN.csv",
+        "7e1d6e6e5d94c2a13d98f38e39c13bd2"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_04.RESYN.wav",
+        "437f39ef238de56f87d7d2078de84159"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_04.RESYN.csv",
+        "d0593995e3b62dd247e96a177387d551"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_05.RESYN.wav",
+        "133d8a14dce7acfabea3dc44384f7b82"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_05.RESYN.csv",
+        "8fdf46457aad712883bf145b8d5bd7da"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_06": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_06.RESYN.wav",
+        "d27cacc71501c5760a66d546c5e80332"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_06.RESYN.csv",
+        "b5334d776fdbac323d7a92aa4ca18b9b"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_07": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_07.RESYN.wav",
+        "0b6f19a6abb10faab4c295c66d815b02"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_07.RESYN.csv",
+        "d4135bd473bcd7ebc9c483f656efed69"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_08": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_08.RESYN.wav",
+        "a368125e6f3a4073552ef60e2db4cb50"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_08.RESYN.csv",
+        "2ae532b3f30b4526c12af501dafe7111"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_09": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_09.RESYN.wav",
+        "e6c85144fc16a205114ac9d554c99058"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_09.RESYN.csv",
+        "40e8f7667b1ac6eb47ba46d1642b03da"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_10": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_10.RESYN.wav",
+        "d4051d7107a99245f95aa4525482222f"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_10.RESYN.csv",
+        "d6ed8073c00bd3bcc4997d77913d6346"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_12": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_12.RESYN.wav",
+        "a746e8dfade343d496be1bf445bafead"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_12.RESYN.csv",
+        "6362c591353b1bfa93d0f0c4fde6df90"
+      ]
+    },
+    "MusicDelta_InTheHalloftheMountainKing_STEM_14": {
+      "audio": [
+        "audio_stems/MusicDelta_InTheHalloftheMountainKing_STEM_14.RESYN.wav",
+        "2b0d40a6acd462b89ccb6e3dd04f5e2a"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_InTheHalloftheMountainKing_STEM_14.RESYN.csv",
+        "473d846e161ba45c41c6aace2a8a7175"
+      ]
+    },
+    "MusicDelta_LatinJazz_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_LatinJazz_STEM_01.RESYN.wav",
+        "1db2c872eadafc033a0262cdfdfa7dbc"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_LatinJazz_STEM_01.RESYN.csv",
+        "df878a2c19d9f7fc4fe7862614b94587"
+      ]
+    },
+    "MusicDelta_LatinJazz_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_LatinJazz_STEM_04.RESYN.wav",
+        "19b1696730d11f0e0ead5939bc405d0c"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_LatinJazz_STEM_04.RESYN.csv",
+        "36d44bbd75b4832a7488cb0cf0118a72"
+      ]
+    },
+    "MusicDelta_LatinJazz_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_LatinJazz_STEM_05.RESYN.wav",
+        "93e89455d86ba15532d77ef05d926bfe"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_LatinJazz_STEM_05.RESYN.csv",
+        "4418043d332d2ddc5e67b35046ed250e"
+      ]
+    },
+    "MusicDelta_ModalJazz_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_ModalJazz_STEM_02.RESYN.wav",
+        "878c3e7e88d153e4ff74e8bd747be73a"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ModalJazz_STEM_02.RESYN.csv",
+        "c2cb74cbbaa2a4afc78d4b780e5db745"
+      ]
+    },
+    "MusicDelta_ModalJazz_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_ModalJazz_STEM_04.RESYN.wav",
+        "89950626273c656d0ecf54a70fbb2f95"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ModalJazz_STEM_04.RESYN.csv",
+        "5511f895a8b57ec0d84966156cdb7f94"
+      ]
+    },
+    "MusicDelta_ModalJazz_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_ModalJazz_STEM_05.RESYN.wav",
+        "0bebff19982942c1af858b384514e05f"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_ModalJazz_STEM_05.RESYN.csv",
+        "8a62fc4a2ade828add6e174342cea746"
+      ]
+    },
+    "MusicDelta_Pachelbel_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_Pachelbel_STEM_01.RESYN.wav",
+        "d81d352312768735051d7f687dd861f2"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Pachelbel_STEM_01.RESYN.csv",
+        "83aa24c1172ba748fe53ee092f6bb620"
+      ]
+    },
+    "MusicDelta_Pachelbel_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Pachelbel_STEM_02.RESYN.wav",
+        "88a8a4ed7ad977d3fb232481cc7822ca"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Pachelbel_STEM_02.RESYN.csv",
+        "40ba1f81c1141f259d04e42678e6d3af"
+      ]
+    },
+    "MusicDelta_Pachelbel_STEM_03": {
+      "audio": [
+        "audio_stems/MusicDelta_Pachelbel_STEM_03.RESYN.wav",
+        "872759a79a82d16c54656b46f49a6239"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Pachelbel_STEM_03.RESYN.csv",
+        "59c07e1dea1646d818f46a9fa7fef7e6"
+      ]
+    },
+    "MusicDelta_Pachelbel_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_Pachelbel_STEM_04.RESYN.wav",
+        "c17688118449b866de4f20e4705d67da"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Pachelbel_STEM_04.RESYN.csv",
+        "e6edd419a644bb513eb9c61856d861ff"
+      ]
+    },
+    "MusicDelta_Punk_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Punk_STEM_02.RESYN.wav",
+        "6439abaa9099acff05627b0c16a4e7bf"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Punk_STEM_02.RESYN.csv",
+        "af5befc611989f05442304972c4cf3fc"
+      ]
+    },
+    "MusicDelta_Punk_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_Punk_STEM_04.RESYN.wav",
+        "08eee34c447bbfacecf981df07b43386"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Punk_STEM_04.RESYN.csv",
+        "eabf97b19d7f4b71f196e4169e5dbc21"
+      ]
+    },
+    "MusicDelta_Reggae_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Reggae_STEM_02.RESYN.wav",
+        "302f6c83765da44a32756f86a3496c4b"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Reggae_STEM_02.RESYN.csv",
+        "9fb1126b976e05b47ba1b0f64e8971f8"
+      ]
+    },
+    "MusicDelta_Reggae_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_Reggae_STEM_04.RESYN.wav",
+        "72bcbb0b59560f86eed66d3a2b9e6667"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Reggae_STEM_04.RESYN.csv",
+        "2eb06dba0e30b601d74e17e69d6a335c"
+      ]
+    },
+    "MusicDelta_Rock_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Rock_STEM_02.RESYN.wav",
+        "12555d9d4fc05556e86d1567a6d5cc26"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Rock_STEM_02.RESYN.csv",
+        "1bfa51bdf4e17f1008ec8b05282f7486"
+      ]
+    },
+    "MusicDelta_Rock_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_Rock_STEM_05.RESYN.wav",
+        "7628452784964ce74a585c84b9890c61"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Rock_STEM_05.RESYN.csv",
+        "6db98732d8d8e7570f9ffb553ff202c1"
+      ]
+    },
+    "MusicDelta_Rockabilly_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_Rockabilly_STEM_02.RESYN.wav",
+        "13a9163f7647475cd09099767ce26015"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Rockabilly_STEM_02.RESYN.csv",
+        "316f2c7f812827170f0ffaff0cb62110"
+      ]
+    },
+    "MusicDelta_Rockabilly_STEM_05": {
+      "audio": [
+        "audio_stems/MusicDelta_Rockabilly_STEM_05.RESYN.wav",
+        "aee3decd89463ec448cbd4cb51ee5a23"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Rockabilly_STEM_05.RESYN.csv",
+        "f3f826a1b7116fff62f7aa8641f03a8f"
+      ]
+    },
+    "MusicDelta_Shadows_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_Shadows_STEM_01.RESYN.wav",
+        "a64d0756829ab0d2140dd0ba4fa56bf1"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Shadows_STEM_01.RESYN.csv",
+        "da5b977f3ed1226e8dc1810b8af1651f"
+      ]
+    },
+    "MusicDelta_SpeedMetal_STEM_02": {
+      "audio": [
+        "audio_stems/MusicDelta_SpeedMetal_STEM_02.RESYN.wav",
+        "fb9a26da2c4befaacb9d46809c9eab50"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_SpeedMetal_STEM_02.RESYN.csv",
+        "35cab79cee0b8673d72250ed8029eb27"
+      ]
+    },
+    "MusicDelta_SwingJazz_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_SwingJazz_STEM_01.RESYN.wav",
+        "e2ee40c1b2ce84d317d946b991d50962"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_SwingJazz_STEM_01.RESYN.csv",
+        "efe58495487faabe708951421c99d31a"
+      ]
+    },
+    "MusicDelta_SwingJazz_STEM_04": {
+      "audio": [
+        "audio_stems/MusicDelta_SwingJazz_STEM_04.RESYN.wav",
+        "06dc4fff5ce46369ccf51e322ceb6480"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_SwingJazz_STEM_04.RESYN.csv",
+        "e201a86f054d258636732ff040746de9"
+      ]
+    },
+    "MusicDelta_Vivaldi_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_Vivaldi_STEM_01.RESYN.wav",
+        "2ed4672b9a6fef0a43bc445e547a9971"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Vivaldi_STEM_01.RESYN.csv",
+        "374b763fa3171bfc3e242e56d6bcd7f2"
+      ]
+    },
+    "MusicDelta_Vivaldi_STEM_03": {
+      "audio": [
+        "audio_stems/MusicDelta_Vivaldi_STEM_03.RESYN.wav",
+        "b681fb84b338174329eb4ccf778a0f50"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Vivaldi_STEM_03.RESYN.csv",
+        "a5072d99a20bd039c0cbc0225d1a198a"
+      ]
+    },
+    "MusicDelta_Zeppelin_STEM_01": {
+      "audio": [
+        "audio_stems/MusicDelta_Zeppelin_STEM_01.RESYN.wav",
+        "8267626de69305d6b4c3671c699941b5"
+      ],
+      "f0": [
+        "annotation_stems/MusicDelta_Zeppelin_STEM_01.RESYN.csv",
+        "bfa75666a5c5df3a0e22dc6e4fbc146f"
+      ]
+    },
+    "NightPanther_Fire_STEM_01": {
+      "audio": [
+        "audio_stems/NightPanther_Fire_STEM_01.RESYN.wav",
+        "eef12a381f9742850559f91d9568fc91"
+      ],
+      "f0": [
+        "annotation_stems/NightPanther_Fire_STEM_01.RESYN.csv",
+        "f463a09b4be7750f1ed73d34de95190d"
+      ]
+    },
+    "NightPanther_Fire_STEM_07": {
+      "audio": [
+        "audio_stems/NightPanther_Fire_STEM_07.RESYN.wav",
+        "811ff95844d009988f49375cf16802d9"
+      ],
+      "f0": [
+        "annotation_stems/NightPanther_Fire_STEM_07.RESYN.csv",
+        "552d37f15ec50223a5b3bb4289c03f71"
+      ]
+    },
+    "PortStWillow_StayEven_STEM_08": {
+      "audio": [
+        "audio_stems/PortStWillow_StayEven_STEM_08.RESYN.wav",
+        "2c9d9bc598772ddd6fdf72872cd6004c"
+      ],
+      "f0": [
+        "annotation_stems/PortStWillow_StayEven_STEM_08.RESYN.csv",
+        "94e7ab64b0d1504e07331174dd6a2a28"
+      ]
+    },
+    "PortStWillow_StayEven_STEM_10": {
+      "audio": [
+        "audio_stems/PortStWillow_StayEven_STEM_10.RESYN.wav",
+        "b2e1a59855a58a95dfdbc7e97e6359f7"
+      ],
+      "f0": [
+        "annotation_stems/PortStWillow_StayEven_STEM_10.RESYN.csv",
+        "3bc9b75219f22bc4cf055228878fd864"
+      ]
+    },
+    "SecretMountains_HighHorse_STEM_01": {
+      "audio": [
+        "audio_stems/SecretMountains_HighHorse_STEM_01.RESYN.wav",
+        "6da47447dfe002ca9e536ab3d97faf83"
+      ],
+      "f0": [
+        "annotation_stems/SecretMountains_HighHorse_STEM_01.RESYN.csv",
+        "80df542b644a5c444084fd18a5de04bf"
+      ]
+    },
+    "SecretMountains_HighHorse_STEM_09": {
+      "audio": [
+        "audio_stems/SecretMountains_HighHorse_STEM_09.RESYN.wav",
+        "d299bacdcca856e3e45faf663a2b426f"
+      ],
+      "f0": [
+        "annotation_stems/SecretMountains_HighHorse_STEM_09.RESYN.csv",
+        "3cc09e17b41e72f3627b574affa4f2cc"
+      ]
+    },
+    "Snowmine_Curfews_STEM_02": {
+      "audio": [
+        "audio_stems/Snowmine_Curfews_STEM_02.RESYN.wav",
+        "bc07d40af225dfbeb5924993cac0313d"
+      ],
+      "f0": [
+        "annotation_stems/Snowmine_Curfews_STEM_02.RESYN.csv",
+        "f2de23d95c6e11b2e0fe5c36294976d6"
+      ]
+    },
+    "Snowmine_Curfews_STEM_03": {
+      "audio": [
+        "audio_stems/Snowmine_Curfews_STEM_03.RESYN.wav",
+        "2df6a49f0ea282872093de405abb8a0d"
+      ],
+      "f0": [
+        "annotation_stems/Snowmine_Curfews_STEM_03.RESYN.csv",
+        "0d9f92ca3faaaaa5d2d233ad6b779a10"
+      ]
+    },
+    "StevenClark_Bounty_STEM_02": {
+      "audio": [
+        "audio_stems/StevenClark_Bounty_STEM_02.RESYN.wav",
+        "0c47b60e9a947c01a426757aa5ce7e47"
+      ],
+      "f0": [
+        "annotation_stems/StevenClark_Bounty_STEM_02.RESYN.csv",
+        "7485a3cc050c2a78ebeeddbf207275c4"
+      ]
+    },
+    "StevenClark_Bounty_STEM_07": {
+      "audio": [
+        "audio_stems/StevenClark_Bounty_STEM_07.RESYN.wav",
+        "90a085fe05ec5b0692f8d519598a12d0"
+      ],
+      "f0": [
+        "annotation_stems/StevenClark_Bounty_STEM_07.RESYN.csv",
+        "24acef6c39dc2980b978d2d808a45558"
+      ]
+    },
+    "StevenClark_Bounty_STEM_08": {
+      "audio": [
+        "audio_stems/StevenClark_Bounty_STEM_08.RESYN.wav",
+        "5e49da2a3390edc37714e6fb4c6cac9c"
+      ],
+      "f0": [
+        "annotation_stems/StevenClark_Bounty_STEM_08.RESYN.csv",
+        "5aa91593c5a8db28b2cf4e8a25658fe3"
+      ]
+    },
+    "StrandOfOaks_Spacestation_STEM_01": {
+      "audio": [
+        "audio_stems/StrandOfOaks_Spacestation_STEM_01.RESYN.wav",
+        "80a3aad4892388887f685e899b61534f"
+      ],
+      "f0": [
+        "annotation_stems/StrandOfOaks_Spacestation_STEM_01.RESYN.csv",
+        "3f5e5f95cf57759c0925b81c06891a52"
+      ]
+    },
+    "StrandOfOaks_Spacestation_STEM_04": {
+      "audio": [
+        "audio_stems/StrandOfOaks_Spacestation_STEM_04.RESYN.wav",
+        "012c7779bc9a4c1ad8fdd8862e057fb8"
+      ],
+      "f0": [
+        "annotation_stems/StrandOfOaks_Spacestation_STEM_04.RESYN.csv",
+        "18c86fdf79b9142a0d7463948bd0c347"
+      ]
+    },
+    "SweetLights_YouLetMeDown_STEM_02": {
+      "audio": [
+        "audio_stems/SweetLights_YouLetMeDown_STEM_02.RESYN.wav",
+        "72160d62ef33f8a66970004c287dd412"
+      ],
+      "f0": [
+        "annotation_stems/SweetLights_YouLetMeDown_STEM_02.RESYN.csv",
+        "be97cca15f513e3289e8c2fa8cbf8574"
+      ]
+    },
+    "SweetLights_YouLetMeDown_STEM_08": {
+      "audio": [
+        "audio_stems/SweetLights_YouLetMeDown_STEM_08.RESYN.wav",
+        "1f44cd83d343d0904fa450afefc243b9"
+      ],
+      "f0": [
+        "annotation_stems/SweetLights_YouLetMeDown_STEM_08.RESYN.csv",
+        "8ff2cda971a4186b7fa455b209b554f2"
+      ]
+    },
+    "TablaBreakbeatScience_Animoog_STEM_02": {
+      "audio": [
+        "audio_stems/TablaBreakbeatScience_Animoog_STEM_02.RESYN.wav",
+        "96df3aed104a8da934acbecd1ccd7bfb"
+      ],
+      "f0": [
+        "annotation_stems/TablaBreakbeatScience_Animoog_STEM_02.RESYN.csv",
+        "6b8cda3b988554420a7f6f94bdb589ca"
+      ]
+    },
+    "TablaBreakbeatScience_CaptainSky_STEM_02": {
+      "audio": [
+        "audio_stems/TablaBreakbeatScience_CaptainSky_STEM_02.RESYN.wav",
+        "639e6fa9732b44bbf91f15bff995fcfe"
+      ],
+      "f0": [
+        "annotation_stems/TablaBreakbeatScience_CaptainSky_STEM_02.RESYN.csv",
+        "fb2ebb7ffae37e8162a497b5951d0837"
+      ]
+    },
+    "TablaBreakbeatScience_PhaseTransition_STEM_03": {
+      "audio": [
+        "audio_stems/TablaBreakbeatScience_PhaseTransition_STEM_03.RESYN.wav",
+        "957420267574cf977be30fb3a6c5fa17"
+      ],
+      "f0": [
+        "annotation_stems/TablaBreakbeatScience_PhaseTransition_STEM_03.RESYN.csv",
+        "ac8a35e2e36964e7d8eba60dc8872710"
+      ]
+    },
+    "TablaBreakbeatScience_WhoIsIt_STEM_03": {
+      "audio": [
+        "audio_stems/TablaBreakbeatScience_WhoIsIt_STEM_03.RESYN.wav",
+        "dfbd1ff7efa0725546bf9ce602a02c1d"
+      ],
+      "f0": [
+        "annotation_stems/TablaBreakbeatScience_WhoIsIt_STEM_03.RESYN.csv",
+        "ae8a2ff759d93ca4334e222fc1c6b10e"
+      ]
+    },
+    "TheDistricts_Vermont_STEM_01": {
+      "audio": [
+        "audio_stems/TheDistricts_Vermont_STEM_01.RESYN.wav",
+        "f98aebe6a48da110942e5f37d9650f8c"
+      ],
+      "f0": [
+        "annotation_stems/TheDistricts_Vermont_STEM_01.RESYN.csv",
+        "da6687572dd68f990b3dd012b60a20e9"
+      ]
+    },
+    "TheDistricts_Vermont_STEM_05": {
+      "audio": [
+        "audio_stems/TheDistricts_Vermont_STEM_05.RESYN.wav",
+        "d0adba75337e97cb468029c043a53017"
+      ],
+      "f0": [
+        "annotation_stems/TheDistricts_Vermont_STEM_05.RESYN.csv",
+        "025c763ecb6808e31f487185670ff39b"
+      ]
+    },
+    "TheScarletBrand_LesFleursDuMal_STEM_02": {
+      "audio": [
+        "audio_stems/TheScarletBrand_LesFleursDuMal_STEM_02.RESYN.wav",
+        "ddcb3d5849a2e508e8c4fafdc4f63634"
+      ],
+      "f0": [
+        "annotation_stems/TheScarletBrand_LesFleursDuMal_STEM_02.RESYN.csv",
+        "c19f1d2385b3ea8cd096ca5900151aa2"
+      ]
+    },
+    "TheScarletBrand_LesFleursDuMal_STEM_08": {
+      "audio": [
+        "audio_stems/TheScarletBrand_LesFleursDuMal_STEM_08.RESYN.wav",
+        "1e29708e923b7ab31dd26d28a069edb2"
+      ],
+      "f0": [
+        "annotation_stems/TheScarletBrand_LesFleursDuMal_STEM_08.RESYN.csv",
+        "8c5dab014a7992ec89199f5f26ee5850"
+      ]
+    },
+    "TheSoSoGlos_Emergency_STEM_01": {
+      "audio": [
+        "audio_stems/TheSoSoGlos_Emergency_STEM_01.RESYN.wav",
+        "3c3a1355d82444e52b490fc628090f9e"
+      ],
+      "f0": [
+        "annotation_stems/TheSoSoGlos_Emergency_STEM_01.RESYN.csv",
+        "0cb533585fe5744edddeba180a923f41"
+      ]
+    },
+    "TheSoSoGlos_Emergency_STEM_05": {
+      "audio": [
+        "audio_stems/TheSoSoGlos_Emergency_STEM_05.RESYN.wav",
+        "514f43914b6b0051e7319580f9fbfff0"
+      ],
+      "f0": [
+        "annotation_stems/TheSoSoGlos_Emergency_STEM_05.RESYN.csv",
+        "da2c38c82909252b79d60a82bbc5c6d5"
+      ]
+    }
+  }
+}

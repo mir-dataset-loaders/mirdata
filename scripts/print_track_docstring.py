@@ -24,6 +24,7 @@ TEST_TRACKIDS = {
     "slakh": "Track00001-S01",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
     "dagstuhl_choirset": "DCS_LI_QuartetB_Take04_B2",
+    "mdb_stem_synth": "AClassicEducation_NightOwl_STEM_08",
 }
 
 
