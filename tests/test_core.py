@@ -250,7 +250,7 @@ def test_dataset_errors():
     with pytest.raises(ValueError):
         mirdata.initialize("not_a_dataset")
 
-    d = mirdata.initialize("orchset")
+    d = mirdata.initialize("orchset", version="test")
     d._track_class = None
     with pytest.raises(AttributeError):
         d.track("asdf")
@@ -270,11 +270,11 @@ def test_dataset_errors():
     with pytest.raises(AttributeError):
         d.choice_multitrack()
 
-    d = mirdata.initialize("acousticbrainz_genre")
+    d = mirdata.initialize("orchset")
     with pytest.raises(FileNotFoundError):
         d._index
 
-    d = mirdata.initialize("phenicx_anechoic")
+    d = mirdata.initialize("phenicx_anechoic", version="test")
     with pytest.raises(ValueError):
         d._multitrack("a")
 

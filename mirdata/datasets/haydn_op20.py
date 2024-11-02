@@ -374,6 +374,7 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version=version,
             name="haydn_op20",
             track_class=Track,
             bibtex=BIBTEX,
