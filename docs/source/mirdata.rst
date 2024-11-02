@@ -234,6 +234,14 @@ guitarset
    :inherited-members:
 
 
+hainsworth
+^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.hainsworth
+   :members:
+   :inherited-members:
+
+
 haydn_op20
 ^^^^^^^^^^
 
@@ -392,7 +400,12 @@ scms
    :members:
    :inherited-members:
 
+simac
+^^^^^
 
+.. automodule:: mirdata.datasets.simac
+   :members:
+   :inherited-members:
 
 slakh
 ^^^^^^^^^^^^^^^^^

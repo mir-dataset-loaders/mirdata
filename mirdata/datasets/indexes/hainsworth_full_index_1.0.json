@@ -1,0 +1,3113 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "hains178": {
+      "audio": [
+        "H_1.0/audio/hains178.flac",
+        "f65aac6065e3e45ca19745cb4bf9bca7"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains178.beats",
+        "4891464e49fd95d67ef7c076f43a229c"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains178.bpm",
+        "a2d030165261700b6f9fb3e4b97b7498"
+      ]
+    },
+    "hains197": {
+      "audio": [
+        "H_1.0/audio/hains197.flac",
+        "e475c7581529aa15e020a8fd8edc5eeb"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains197.beats",
+        "1f00894014ca9014fbca037d3a0cf054"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains197.bpm",
+        "4f46b41e0a71f124ec4573ac89f5a6ac"
+      ]
+    },
+    "hains085": {
+      "audio": [
+        "H_1.0/audio/hains085.flac",
+        "844c75073d96a54fbc27a6011698b821"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains085.beats",
+        "1ac2dca43264a6cb72750a38871d22a5"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains085.bpm",
+        "d4c3c6b37559db87dfb3311040b46578"
+      ]
+    },
+    "hains206": {
+      "audio": [
+        "H_1.0/audio/hains206.flac",
+        "f1cdeeecc310abe731afda8a8a079465"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains206.beats",
+        "ec689b3f5ea443bb482ff3ec7b561cb6"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains206.bpm",
+        "4949b3c8c1d3e11988b445b863cd44cc"
+      ]
+    },
+    "hains139": {
+      "audio": [
+        "H_1.0/audio/hains139.flac",
+        "bd4ef8dea6e2845942fbbca0bc500b2a"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains139.beats",
+        "6230e825a932dd5381ca49899bfadf78"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains139.bpm",
+        "4f928c9fb3e5a883eda93d68761afe81"
+      ]
+    },
+    "hains093": {
+      "audio": [
+        "H_1.0/audio/hains093.flac",
+        "f56a5660290d26de63c997e0e6e52179"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains093.beats",
+        "8d8c9890d2490864c0c56fec72da6352"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains093.bpm",
+        "183786bb04efd1dfedf2ca90c57b01f4"
+      ]
+    },
+    "hains210": {
+      "audio": [
+        "H_1.0/audio/hains210.flac",
+        "05c5a9934ac7d0ea03934b36b7538f4b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains210.beats",
+        "4c726bc36cc8347e03c241f5098f06a8"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains210.bpm",
+        "79e498700b2837287f7a8688e8817845"
+      ]
+    },
+    "hains181": {
+      "audio": [
+        "H_1.0/audio/hains181.flac",
+        "53ff2cf0aa88bf6686f0a82a10ca008b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains181.beats",
+        "839a79f7e44820562fa3df84a59d6318"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains181.bpm",
+        "7bf4b67bebab512beca098341399e9cd"
+      ]
+    },
+    "hains050": {
+      "audio": [
+        "H_1.0/audio/hains050.flac",
+        "618c6fd5e6eab9cd4aae8a2619a8a666"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains050.beats",
+        "19dec265a1b0075b6ea7d1ff36833ec7"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains050.bpm",
+        "d2882c1da240a28061f1459e89826584"
+      ]
+    },
+    "hains115": {
+      "audio": [
+        "H_1.0/audio/hains115.flac",
+        "51f5bbf2baaa3fd218b0c8c625f38233"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains115.beats",
+        "949119bbd1f8eeec57a831bfac538b85"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains115.bpm",
+        "a4e4a4c32fba74f37f4a95c5c9e600f4"
+      ]
+    },
+    "hains007": {
+      "audio": [
+        "H_1.0/audio/hains007.flac",
+        "ac15df3297d3233b49b75d3c03215998"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains007.beats",
+        "e4a01eaacd7b40e39ea68fbb5a943e3d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains007.bpm",
+        "3538777c83f5bf5d123b301c8c722d11"
+      ]
+    },
+    "hains011": {
+      "audio": [
+        "H_1.0/audio/hains011.flac",
+        "df871d89bec00c7c78b622bb0d1142a8"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains011.beats",
+        "7a5b6b8464cf4a0e4318431cb5a5f8cf"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains011.bpm",
+        "b6289457a32882ef880a38a06cd7f080"
+      ]
+    },
+    "hains154": {
+      "audio": [
+        "H_1.0/audio/hains154.flac",
+        "4c661f9ff4aca5688c4ac52e6875afd0"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains154.beats",
+        "0d62665110a515a9c3d88277c5ee5fab"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains154.bpm",
+        "d74386f12c37b2ecf0c0875b0536bf8a"
+      ]
+    },
+    "hains046": {
+      "audio": [
+        "H_1.0/audio/hains046.flac",
+        "a51109c72b2af00e5e8cea352b951133"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains046.beats",
+        "4684669bb50d93a248047c5d1b67cd76"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains046.bpm",
+        "a21137e14d16b7d8ac1e3e24061de873"
+      ]
+    },
+    "hains103": {
+      "audio": [
+        "H_1.0/audio/hains103.flac",
+        "753657cadd98f63e814748694437c5ac"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains103.beats",
+        "d73fbb34cd86fb8237985f050db6e896"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains103.bpm",
+        "65a7d0c1af7d8bbcd05f999b8c36e862"
+      ]
+    },
+    "hains174": {
+      "audio": [
+        "H_1.0/audio/hains174.flac",
+        "b413499e5c83afec1360966e1fad94ed"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains174.beats",
+        "1e101e55609ebc359d180184a3a2c987"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains174.bpm",
+        "e34144566fdabd218252d13d8b455dcd"
+      ]
+    },
+    "hains123": {
+      "audio": [
+        "H_1.0/audio/hains123.flac",
+        "f5a8e2bf615c3e5325ec6d4afd54cda8"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains123.beats",
+        "a9751741e320b6ebafd92c7190b97205"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains123.bpm",
+        "b27d6bd2af37c42c63620af8a361b17d"
+      ]
+    },
+    "hains089": {
+      "audio": [
+        "H_1.0/audio/hains089.flac",
+        "c39b95930ff748c5ce3500e73eca89ba"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains089.beats",
+        "aeaeafe9679b775448983877115beb8e"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains089.bpm",
+        "e52ae9f7b0eb9e666043f7aedde696f9"
+      ]
+    },
+    "hains066": {
+      "audio": [
+        "H_1.0/audio/hains066.flac",
+        "b18ba6fbd0c125e1e3309b66769d452e"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains066.beats",
+        "172ce29faf02953313113a0f8d3c503b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains066.bpm",
+        "eb2059e79869fcb5136247e6eb325a4e"
+      ]
+    },
+    "hains135": {
+      "audio": [
+        "H_1.0/audio/hains135.flac",
+        "0d2ca42166a49c213a8548a04e73617e"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains135.beats",
+        "dfdb97ac879843eb7774e3ea824d7f03"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains135.bpm",
+        "79b85c84ed0a8f864fc25f8644f24171"
+      ]
+    },
+    "hains070": {
+      "audio": [
+        "H_1.0/audio/hains070.flac",
+        "df6a1c0d202aa7949a5afe8a10649986"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains070.beats",
+        "2d25628b0ad351c3dd6160f824b1a714"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains070.bpm",
+        "1cd424e1a178f569d3547f292669b55b"
+      ]
+    },
+    "hains162": {
+      "audio": [
+        "H_1.0/audio/hains162.flac",
+        "d2870f2164a96d40aea10f61bda3aaab"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains162.beats",
+        "b800a58b74912a2f003c936d5c1022ae"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains162.bpm",
+        "10481fecca76c7bb5bcce3d42808befd"
+      ]
+    },
+    "hains230": {
+      "audio": [
+        "H_1.0/audio/hains230.flac",
+        "5c966efed0056469e0e99cfa5e93173a"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains230.beats",
+        "c07f7537b5ad8b450d2e32ef931667af"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains230.bpm",
+        "5b56d7cc390a07719015b1b7f279dd94"
+      ]
+    },
+    "hains119": {
+      "audio": [
+        "H_1.0/audio/hains119.flac",
+        "e7f635a423ab8b4f64631eb4bf3d787f"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains119.beats",
+        "b180ea24672882083134c6f3f723cda5"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains119.bpm",
+        "b931616f20c528c77773eaf3f9bc32a7"
+      ]
+    },
+    "hains158": {
+      "audio": [
+        "H_1.0/audio/hains158.flac",
+        "67e2f2fb2257ec3cad4eaaf76e2fea57"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains158.beats",
+        "d6f0a381c8a8c08ce21155379b6303f6"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains158.bpm",
+        "db6f740c8f2baacc39e7c99e5cabd7b0"
+      ]
+    },
+    "hains226": {
+      "audio": [
+        "H_1.0/audio/hains226.flac",
+        "239b6209b1b6bdb377c29c97dc023a87"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains226.beats",
+        "2689c0e542fb33b279053a0e79d0ac02"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains226.bpm",
+        "6266de56779d0bf5d73fd7ea10eb58ae"
+      ]
+    },
+    "hains227": {
+      "audio": [
+        "H_1.0/audio/hains227.flac",
+        "bbaa32287e4adba753e836545ef5f735"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains227.beats",
+        "21d28e613a3c524382146cdefce67b58"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains227.bpm",
+        "4d4f572a20bddb596cc4581163d44a08"
+      ]
+    },
+    "hains159": {
+      "audio": [
+        "H_1.0/audio/hains159.flac",
+        "976837bc6cb8444091d6f9b8c01f157d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains159.beats",
+        "bd2da78e86d4f8615c79818842412032"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains159.bpm",
+        "c925c9a059b4697ed6a7513fc15f1fff"
+      ]
+    },
+    "hains118": {
+      "audio": [
+        "H_1.0/audio/hains118.flac",
+        "7699bc26375edd9223d3f8c7c68adab9"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains118.beats",
+        "3318ecc8932a3464853d90637ce796a6"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains118.bpm",
+        "c049a1c9cb65c61f67c85bdc047f14bb"
+      ]
+    },
+    "hains231": {
+      "audio": [
+        "H_1.0/audio/hains231.flac",
+        "fd2a7abd00eba77502ffada0e863edf9"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains231.beats",
+        "ff31a8694ec5e6633b4a1f85ebc81a3e"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains231.bpm",
+        "5517f75e689b6de26b53b6078b788c0b"
+      ]
+    },
+    "hains163": {
+      "audio": [
+        "H_1.0/audio/hains163.flac",
+        "57f5d1a2e3e2a3d3f7ef749d97374f77"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains163.beats",
+        "da4a8faa5a03b490d722882ca5bf9661"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains163.bpm",
+        "d8afab8724b3485bce3494d63a7e7707"
+      ]
+    },
+    "hains134": {
+      "audio": [
+        "H_1.0/audio/hains134.flac",
+        "9d9c950c3b39d4859a38ffa9865e7f10"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains134.beats",
+        "3811264af80dac7b93d1b0354ef3928f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains134.bpm",
+        "3de20373f02f2f42a26302791bcb3100"
+      ]
+    },
+    "hains071": {
+      "audio": [
+        "H_1.0/audio/hains071.flac",
+        "c324978cfce934738706b1126f1b5681"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains071.beats",
+        "95129c806d6336e362cb2416da9fd96d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains071.bpm",
+        "36ba0aff1c52401c5a38073ac215adae"
+      ]
+    },
+    "hains122": {
+      "audio": [
+        "H_1.0/audio/hains122.flac",
+        "bda954c4f3d178e6df9f2dd70a44633c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains122.beats",
+        "17868c1fe214113f54a4dbe712ee9cab"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains122.bpm",
+        "bcdb1d5762406f1c6ecd1348a990a798"
+      ]
+    },
+    "hains088": {
+      "audio": [
+        "H_1.0/audio/hains088.flac",
+        "a3a3c8ee359377885129f934bcbbf655"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains088.beats",
+        "abd3395b3cb7e6bf4ce407ef92dadde5"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains088.bpm",
+        "4547184d4753cad115b0c105307d06dc"
+      ]
+    },
+    "hains067": {
+      "audio": [
+        "H_1.0/audio/hains067.flac",
+        "215d1e49126835ec7c2c47d5bcc2ad4d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains067.beats",
+        "8836a205dcd1bafb4c1e66a5a114d268"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains067.bpm",
+        "c1c1eff4701a721290048b6d2c568df7"
+      ]
+    },
+    "hains175": {
+      "audio": [
+        "H_1.0/audio/hains175.flac",
+        "8008604a3b99835fb1a97c1c98fb18a6"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains175.beats",
+        "c1f9765563e5b1dddc8e33c588647db9"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains175.bpm",
+        "a544855bc37a7cc29e4ad0fed36d01d4"
+      ]
+    },
+    "hains047": {
+      "audio": [
+        "H_1.0/audio/hains047.flac",
+        "14cd7dadafd5e909369779ba3616e280"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains047.beats",
+        "6dea957bfd53efb62ad90510d2d50290"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains047.bpm",
+        "4397057b7007c1459b86f0b690c731c2"
+      ]
+    },
+    "hains102": {
+      "audio": [
+        "H_1.0/audio/hains102.flac",
+        "562384d86400914dbbbdab3a32bbaf03"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains102.beats",
+        "07b92c1cbafaf8dfbff6acd155f5a55c"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains102.bpm",
+        "05e1ec78800969d86b44837ffe2af07c"
+      ]
+    },
+    "hains010": {
+      "audio": [
+        "H_1.0/audio/hains010.flac",
+        "1abc55cb09cec89db2a6a1ed7e7b35a0"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains010.beats",
+        "ea432ee3fc0c0b6d0e66b9d7908f6b02"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains010.bpm",
+        "4fbaf746f98c7d59a6362e9b80c78b3c"
+      ]
+    },
+    "hains155": {
+      "audio": [
+        "H_1.0/audio/hains155.flac",
+        "3069704f85e54412295dd9d4ff823976"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains155.beats",
+        "17ca3c54e6aeca80ef9bb576e722907f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains155.bpm",
+        "8176a849b9ef44e6ccc8142cc6ba2463"
+      ]
+    },
+    "hains006": {
+      "audio": [
+        "H_1.0/audio/hains006.flac",
+        "87ce2c9d530ccc6748d7717d1cd9e41d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains006.beats",
+        "0df9c8ffd0602b6b6e338a0540be89b7"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains006.bpm",
+        "6afec4a2a045494ac31812f8553bbaf2"
+      ]
+    },
+    "hains143": {
+      "audio": [
+        "H_1.0/audio/hains143.flac",
+        "2e6bdd8a969a1356bd7ade9181d4addf"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains143.beats",
+        "ae39935f592f2f3a0644c1b860cda4e0"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains143.bpm",
+        "e69a0d4b2a6ca3870870b6d893069685"
+      ]
+    },
+    "hains051": {
+      "audio": [
+        "H_1.0/audio/hains051.flac",
+        "270ccc99532fe70675737fd6be946154"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains051.beats",
+        "df5e9a4cbe76f4de1df93acb2265ebfb"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains051.bpm",
+        "032dd499e42a7c3e9f4070163daf8d54"
+      ]
+    },
+    "hains114": {
+      "audio": [
+        "H_1.0/audio/hains114.flac",
+        "0aa071639d1ec648f155c0d29cc71e3b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains114.beats",
+        "4f29f7ba8b0ddcf749e0f2546d1bf971"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains114.bpm",
+        "29110faa641aa158ac98be6e6ea92a88"
+      ]
+    },
+    "hains180": {
+      "audio": [
+        "H_1.0/audio/hains180.flac",
+        "d7d07aba1385310825f1f83527f76a9b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains180.beats",
+        "800ffdccd6d0d3034cd522392af1718b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains180.bpm",
+        "f620de2e2c1324d6e16ac09c0d2f3f9d"
+      ]
+    },
+    "hains211": {
+      "audio": [
+        "H_1.0/audio/hains211.flac",
+        "0279f97129ee7913492971fc6532289d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains211.beats",
+        "1bd89c7d5ca881bbba72fa8659f1e5df"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains211.bpm",
+        "4cac2170fe95560405f9f812e9e1c897"
+      ]
+    },
+    "hains138": {
+      "audio": [
+        "H_1.0/audio/hains138.flac",
+        "81df4e887cbf70a4ff601f43560eb68c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains138.beats",
+        "45cbe26c637bb7c6643b9efb7050bb25"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains138.bpm",
+        "a68b3b943ed0500af1c42cf3cdec749c"
+      ]
+    },
+    "hains092": {
+      "audio": [
+        "H_1.0/audio/hains092.flac",
+        "2376734ce21b2306e62254987dd8e9dc"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains092.beats",
+        "497abc7e51aaf92ab066097cfa8e3ad4"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains092.bpm",
+        "a078a9a226d49b6c59e6e7111241a704"
+      ]
+    },
+    "hains207": {
+      "audio": [
+        "H_1.0/audio/hains207.flac",
+        "6c32cb1234e44a52b569861d6682498b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains207.beats",
+        "04744a86b15b285aaae5143dd31d1322"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains207.bpm",
+        "5af65a675d0929b12bdb8d565cc9ced1"
+      ]
+    },
+    "hains084": {
+      "audio": [
+        "H_1.0/audio/hains084.flac",
+        "6c40e9180e45e4ad793801141e085060"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains084.beats",
+        "68444bf5faf51dccb89ccc9b06f91427"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains084.bpm",
+        "e4bdaccb97cd8127ba4557ca44d5261f"
+      ]
+    },
+    "hains179": {
+      "audio": [
+        "H_1.0/audio/hains179.flac",
+        "d495d80b4b3b2545591aa5c8e7c79019"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains179.beats",
+        "a9da7ced2a1325afd8cc4ca76c3afc96"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains179.bpm",
+        "77cfc30edf0edb233da5d9a9cf6954a4"
+      ]
+    },
+    "hains196": {
+      "audio": [
+        "H_1.0/audio/hains196.flac",
+        "8964b3197806736528465f6e111ff8b7"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains196.beats",
+        "d8bb7032430cda7ec255394cce32c672"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains196.bpm",
+        "c5c496bfc5987ec395dc9e06c3e206aa"
+      ]
+    },
+    "hains172": {
+      "audio": [
+        "H_1.0/audio/hains172.flac",
+        "7033f9f507f7af4841ec9aefebc69523"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains172.beats",
+        "34a9347b1e4de048d39e4f36f46724e5"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains172.bpm",
+        "d15cb05395e697caf917010c62da2bbe"
+      ]
+    },
+    "hains037": {
+      "audio": [
+        "H_1.0/audio/hains037.flac",
+        "18bc91d61320ec66604d1d178221b5f6"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains037.beats",
+        "545f8ab690393be4517e05d9aa9b34e0"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains037.bpm",
+        "cecb1bc39fce2786cab9ab6e02f3d83a"
+      ]
+    },
+    "hains125": {
+      "audio": [
+        "H_1.0/audio/hains125.flac",
+        "9c9e339b6b114d5567c42854f41a45f5"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains125.beats",
+        "6608c26ecc9e7e34481d812c38404d13"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains125.bpm",
+        "cdff8d371318c22d876d11dce6f4ac2c"
+      ]
+    },
+    "hains060": {
+      "audio": [
+        "H_1.0/audio/hains060.flac",
+        "af4946c26712df5d30f3d4df195fa28a"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains060.beats",
+        "4ee8c612aeccaefb26cf4e8b1c340327"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains060.bpm",
+        "ab39137496562c68bc50f83dd8cd8a98"
+      ]
+    },
+    "hains099": {
+      "audio": [
+        "H_1.0/audio/hains099.flac",
+        "49be97394701d526b742d858a66afe72"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains099.beats",
+        "b4d65fbd3b7905db3e89060ad16905a9"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains099.bpm",
+        "d3c995c4487c7015430725e36e2957cd"
+      ]
+    },
+    "hains133": {
+      "audio": [
+        "H_1.0/audio/hains133.flac",
+        "da03873e2c47f1df9d4e6c21b47e18e3"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains133.beats",
+        "fae4ee75dadedb9a2651ce654e2e97cc"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains133.bpm",
+        "cf817e349103e5346f1e7cf890b75c9d"
+      ]
+    },
+    "hains076": {
+      "audio": [
+        "H_1.0/audio/hains076.flac",
+        "8930cdacb1319a452cbbc0a5d0532654"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains076.beats",
+        "a10858e3d81aa62570d7c341e90ab3a7"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains076.bpm",
+        "a1a4cf2dcac20be5b5b2d79a071c95bc"
+      ]
+    },
+    "hains164": {
+      "audio": [
+        "H_1.0/audio/hains164.flac",
+        "71bdedcf59f16e0aad55dea3190ec7cd"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains164.beats",
+        "d98ceac453329ff8ba038f6765e5c4c1"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains164.bpm",
+        "6231f8d46d2301021dc6f3d2163ca807"
+      ]
+    },
+    "hains021": {
+      "audio": [
+        "H_1.0/audio/hains021.flac",
+        "9f2f5423f0f4c68cf96ffb99367d64ea"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains021.beats",
+        "bd1e261812926736461ee4d5074c64ee"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains021.bpm",
+        "0787c4886efd9a993feda0f06d54d73f"
+      ]
+    },
+    "hains236": {
+      "audio": [
+        "H_1.0/audio/hains236.flac",
+        "2e97bf7f6f5e679dc40f1b8cbfefd0db"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains236.beats",
+        "5dec555159c9f5f05270f7fa3a0a7c53"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains236.bpm",
+        "032dd499e42a7c3e9f4070163daf8d54"
+      ]
+    },
+    "hains148": {
+      "audio": [
+        "H_1.0/audio/hains148.flac",
+        "d8cbd13fa0184c5ce51482d55793245e"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains148.beats",
+        "e0e53920878c0ea5a589d8eb9f43f281"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains148.bpm",
+        "5c05db97a3afc9f5d3f8470e9d011a16"
+      ]
+    },
+    "hains220": {
+      "audio": [
+        "H_1.0/audio/hains220.flac",
+        "7aaa204068277a14027a7df2dcaa43ab"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains220.beats",
+        "347cbe5da89051cc9d9db5cb461d9602"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains220.bpm",
+        "2845e3f4e050bf0f1d09522a05eb7a09"
+      ]
+    },
+    "hains191": {
+      "audio": [
+        "H_1.0/audio/hains191.flac",
+        "288ab0bffade137b05fdb1635dc408cc"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains191.beats",
+        "c394331ba7a9a38d819d2c74af6cc96f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains191.bpm",
+        "74cf7446fad9f240a7756f64893d31fd"
+      ]
+    },
+    "hains083": {
+      "audio": [
+        "H_1.0/audio/hains083.flac",
+        "60769d3b85b7b7ac9643d89b54774db1"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains083.beats",
+        "747ef2af359e627eb3212c14a198e9b9"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains083.bpm",
+        "21764520e47f7617354b45f99ea4d99d"
+      ]
+    },
+    "hains129": {
+      "audio": [
+        "H_1.0/audio/hains129.flac",
+        "dbe20b3bd69101e318f1c69fd7632128"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains129.beats",
+        "8765eed918ac7333918c1e059187daa8"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains129.bpm",
+        "ee2979a3b31813e2ce727284b44e958e"
+      ]
+    },
+    "hains200": {
+      "audio": [
+        "H_1.0/audio/hains200.flac",
+        "af4b2ab87104aacd8f8e05a738a017b5"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains200.beats",
+        "c4b29d7e48a7290dd36a2809a461eb16"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains200.bpm",
+        "ec8265ae9d0e7cea7713f7770c9d6a9e"
+      ]
+    },
+    "hains095": {
+      "audio": [
+        "H_1.0/audio/hains095.flac",
+        "6051008d8fc116e7a107230b03badbc0"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains095.beats",
+        "87fe69422553cf82449439becb7ddfc2"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains095.bpm",
+        "65269643f726d7b5d8f3e7d65a8d24cc"
+      ]
+    },
+    "hains216": {
+      "audio": [
+        "H_1.0/audio/hains216.flac",
+        "f7a18d01bc1a3be15ebcfe07306dfb21"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains216.beats",
+        "ba2b3797fc9df0011283e9e7d6e5ae75"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains216.bpm",
+        "941a66f0042c313227aede6e97e18714"
+      ]
+    },
+    "hains168": {
+      "audio": [
+        "H_1.0/audio/hains168.flac",
+        "20e57ab9ef3d4977758e19c5addee65a"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains168.beats",
+        "4eb9929ca56858666e778098d8d0bd5a"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains168.bpm",
+        "1e0b7e1744b5d396ef2cd16ff30d1cbf"
+      ]
+    },
+    "hains187": {
+      "audio": [
+        "H_1.0/audio/hains187.flac",
+        "e537d31b779cebc02f7ed743d023f67b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains187.beats",
+        "4c226022cf690b173b241aa9ec36f35b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains187.bpm",
+        "36b667039efdaa969afff82c3f992b43"
+      ]
+    },
+    "hains241": {
+      "audio": [
+        "H_1.0/audio/hains241.flac",
+        "f314fda8746e8e42d6fa075605870055"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains241.beats",
+        "cecb18b06f5e7c82aa59eb8c9811ce6e"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains241.bpm",
+        "bc124449d1dad5ea010964f8275bed02"
+      ]
+    },
+    "hains056": {
+      "audio": [
+        "H_1.0/audio/hains056.flac",
+        "43f83d3440cc4490186cded67bdbab31"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains056.beats",
+        "a694f32154a2bbc8f72ea4b8e8de12a2"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains056.bpm",
+        "b5b92ab8953338c8d81401e03f8d3fd7"
+      ]
+    },
+    "hains113": {
+      "audio": [
+        "H_1.0/audio/hains113.flac",
+        "ea59b4c9535a454e06c7b15ba44017bd"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains113.beats",
+        "089bf840e682dd10e4dcfd66c0a03f48"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains113.bpm",
+        "cd17efad04875f7b536daed1220b7dff"
+      ]
+    },
+    "hains001": {
+      "audio": [
+        "H_1.0/audio/hains001.flac",
+        "1a4e92cbf16b1512d2593e8e4e4847bb"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains001.beats",
+        "1e8cead7c8182f0e89d83fa4d53fbf65"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains001.bpm",
+        "7ad6b34dec3d21ff26c1f107193d9081"
+      ]
+    },
+    "hains144": {
+      "audio": [
+        "H_1.0/audio/hains144.flac",
+        "eb447827a45b8e632691733dcc8a36a8"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains144.beats",
+        "e199e2568c6b0bdd4c9c87b8427a8417"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains144.bpm",
+        "017cf174e2ad9b59ee8bb71298b36418"
+      ]
+    },
+    "hains017": {
+      "audio": [
+        "H_1.0/audio/hains017.flac",
+        "4acbfb9d0348cc43d11da06a8c1941b4"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains017.beats",
+        "f039b60dca00a0d428e27a0f957bd007"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains017.bpm",
+        "489b6a562d121c96dbe6d9672c29d3d9"
+      ]
+    },
+    "hains152": {
+      "audio": [
+        "H_1.0/audio/hains152.flac",
+        "db17496477ebe188d91a138f646b248c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains152.beats",
+        "8d2a12de14e2ccae54136c8799d7c112"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains152.bpm",
+        "ec1b841dbada25c588f303dbf9ef03b6"
+      ]
+    },
+    "hains040": {
+      "audio": [
+        "H_1.0/audio/hains040.flac",
+        "9e3f9f40395245158e71d08b54b9d665"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains040.beats",
+        "911eb350f03379b9706231a438e2d4b6"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains040.bpm",
+        "5dc9c81c9ae3b556110a93aa9150e932"
+      ]
+    },
+    "hains041": {
+      "audio": [
+        "H_1.0/audio/hains041.flac",
+        "2bcccde2f4300fa511e38ad48fa3ebe8"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains041.beats",
+        "3a5833e1ae53ca362e4513c37977c5cd"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains041.bpm",
+        "c8e4510bb4e2ab010336bfabe9d512a6"
+      ]
+    },
+    "hains104": {
+      "audio": [
+        "H_1.0/audio/hains104.flac",
+        "72925ada34f8e528e302292b73727f43"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains104.beats",
+        "d238d5104c68a2729ed8f323c8b8b6c0"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains104.bpm",
+        "5425e7e4f0601587e6a52a69a8330c6f"
+      ]
+    },
+    "hains016": {
+      "audio": [
+        "H_1.0/audio/hains016.flac",
+        "ea9f2d746b1e909d3b47fa2519adda18"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains016.beats",
+        "e9d3f99bc8a98a0529c4669a71dd15ca"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains016.bpm",
+        "6b944b6a4c0b62939a0bcc48d5ec610a"
+      ]
+    },
+    "hains153": {
+      "audio": [
+        "H_1.0/audio/hains153.flac",
+        "61456877ff7aa8bd5f3509d26b63a677"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains153.beats",
+        "4e6b7505ad1b84c5bf866f4c2d6f8ea9"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains153.bpm",
+        "be52c592e093a1348716066bb9dce912"
+      ]
+    },
+    "hains145": {
+      "audio": [
+        "H_1.0/audio/hains145.flac",
+        "691f5e0b836aa6c359f8a43a60a4d8e0"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains145.beats",
+        "f08f93de599a4368b3a7dd66754ddd52"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains145.bpm",
+        "0be70b85b368f7c3f55480a29943fa09"
+      ]
+    },
+    "hains057": {
+      "audio": [
+        "H_1.0/audio/hains057.flac",
+        "6a88c7d2f37c09da880e84f508396083"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains057.beats",
+        "8e450674e753ea4781da15c8c47f9d1d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains057.bpm",
+        "0a3bce3cd9cde74929ba7fec8574ddea"
+      ]
+    },
+    "hains112": {
+      "audio": [
+        "H_1.0/audio/hains112.flac",
+        "8a3005f85743e458a74ef2c1693749f3"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains112.beats",
+        "0edcc51f936608a4d73a820d632d8062"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains112.bpm",
+        "b022bd0a9930ba002526006a71ebff72"
+      ]
+    },
+    "hains240": {
+      "audio": [
+        "H_1.0/audio/hains240.flac",
+        "2c9a7a904cbb08d4638fdd42fb5b7474"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains240.beats",
+        "b1424a1dbbcfb6cd90711c83423a818f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains240.bpm",
+        "ee74d8ac0ba53841cc1a48fe1baeb609"
+      ]
+    },
+    "hains169": {
+      "audio": [
+        "H_1.0/audio/hains169.flac",
+        "a0b071d62263121c70cafeaabb7d13fe"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains169.beats",
+        "5aa060e3094c1535dce674895381b2d9"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains169.bpm",
+        "2738023f36cd489fad55cd80b5c58fb0"
+      ]
+    },
+    "hains186": {
+      "audio": [
+        "H_1.0/audio/hains186.flac",
+        "231bcb34a2a5a7e2d34afe29724392b1"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains186.beats",
+        "eacf221dc157198b695efe9d1303ceab"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains186.bpm",
+        "d2badfea652eb8518c038fa11625b880"
+      ]
+    },
+    "hains217": {
+      "audio": [
+        "H_1.0/audio/hains217.flac",
+        "111ec8286c7de4c6488cb920df9d2f62"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains217.beats",
+        "99cc8168574d0e8cac2bc1f26995ec66"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains217.bpm",
+        "bcef15f6faabe27eae298d3b789d176e"
+      ]
+    },
+    "hains094": {
+      "audio": [
+        "H_1.0/audio/hains094.flac",
+        "c93d9c8922fba56f6900701ae439607c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains094.beats",
+        "a5d62a2bc00f8080d86fb961b2efa7b1"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains094.bpm",
+        "875a4a0fe3c14691e86e632dbe204da6"
+      ]
+    },
+    "hains201": {
+      "audio": [
+        "H_1.0/audio/hains201.flac",
+        "9d307d16dd26e7c49b2d2565618e7d7c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains201.beats",
+        "2a30e31188372a47e896b08e19eae067"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains201.bpm",
+        "054f733655594e76b37d4de82668544c"
+      ]
+    },
+    "hains082": {
+      "audio": [
+        "H_1.0/audio/hains082.flac",
+        "6cfdfbbdc06f0d47c23336de5ab0d460"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains082.beats",
+        "732a749e1b52f49361dc1faf6bf7306d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains082.bpm",
+        "190ffe7599e85d74974b55b4c29cdf80"
+      ]
+    },
+    "hains128": {
+      "audio": [
+        "H_1.0/audio/hains128.flac",
+        "5ee4b699799f1e94c9d6313ad47d3759"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains128.beats",
+        "09e1851dd38733f627f250c6ca22e17e"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains128.bpm",
+        "09f889afd5a7ed5df4ec2a004591ff75"
+      ]
+    },
+    "hains190": {
+      "audio": [
+        "H_1.0/audio/hains190.flac",
+        "b4ed4c0ff88c1b3ec5e8df9095551ed1"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains190.beats",
+        "7fd3de0311d7aab20068c38fe1472f3b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains190.bpm",
+        "dd66603aecc3c4d0fa8b91c1cdd38f87"
+      ]
+    },
+    "hains108": {
+      "audio": [
+        "H_1.0/audio/hains108.flac",
+        "6c6fb80a0a74eaf66b3c6389c25b2a50"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains108.beats",
+        "621629c58289cb80ab7c6f2c5a618535"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains108.bpm",
+        "841a5c9395dbbbcb9f527ec39fcbebda"
+      ]
+    },
+    "hains221": {
+      "audio": [
+        "H_1.0/audio/hains221.flac",
+        "a7025c1c1d21451b5b8a517ceae73027"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains221.beats",
+        "a07c766d7b58695676d88fabe66a0616"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains221.bpm",
+        "a92b9a6efd2c956118c1ccdd80dceaf6"
+      ]
+    },
+    "hains149": {
+      "audio": [
+        "H_1.0/audio/hains149.flac",
+        "999bdeb2e991f2ff6367960a21bf33ee"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains149.beats",
+        "630164123ab35acbb706f3717c61df8c"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains149.bpm",
+        "493b139ca8d24cddcdae36d72c1f9230"
+      ]
+    },
+    "hains237": {
+      "audio": [
+        "H_1.0/audio/hains237.flac",
+        "05db180860be8ddbdbd831842386def2"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains237.beats",
+        "518029fdcef511a409347814e7a0df8d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains237.bpm",
+        "beb310f7049bbac73be994f7779cc06b"
+      ]
+    },
+    "hains165": {
+      "audio": [
+        "H_1.0/audio/hains165.flac",
+        "154211e5f35add14cfabe31f127f21ea"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains165.beats",
+        "c79f848f40c20337a1e165ef1e163613"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains165.bpm",
+        "1e88b45846d7fa86a172f709d091dae3"
+      ]
+    },
+    "hains020": {
+      "audio": [
+        "H_1.0/audio/hains020.flac",
+        "e70f6a132712ca85f5b783aba1b2578b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains020.beats",
+        "e2dd0513fa8d2fbc6a049f44d015bac8"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains020.bpm",
+        "b2d28d8adc2a0f682ec9a0a567c940ac"
+      ]
+    },
+    "hains098": {
+      "audio": [
+        "H_1.0/audio/hains098.flac",
+        "638583904a367c1df01c10500fa1613c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains098.beats",
+        "d3b0412b6d039b039dd5df3baed73901"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains098.bpm",
+        "3fa158ee7fff8a170e9db04b8e37a7c1"
+      ]
+    },
+    "hains132": {
+      "audio": [
+        "H_1.0/audio/hains132.flac",
+        "026f648fc5ea1da1d1b967769d0ed243"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains132.beats",
+        "4873c6c349146ff8f2d6ef4c7350d9e9"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains132.bpm",
+        "3717b191192f0cc06d7b2089013daca1"
+      ]
+    },
+    "hains077": {
+      "audio": [
+        "H_1.0/audio/hains077.flac",
+        "702075dfadffda722175b7410f65ec9d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains077.beats",
+        "8084e5cfb08be300e49f49f38d8c994e"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains077.bpm",
+        "6757365e8f8b4da7b1bfd1e21df9d843"
+      ]
+    },
+    "hains124": {
+      "audio": [
+        "H_1.0/audio/hains124.flac",
+        "08ce67766955e4b656ce18886ea11e99"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains124.beats",
+        "685be1f28ef05a763af67bdd431b9cf6"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains124.bpm",
+        "e6cd238e1289bad790d15354cb54dae7"
+      ]
+    },
+    "hains061": {
+      "audio": [
+        "H_1.0/audio/hains061.flac",
+        "9cc156adb9e5d947ed5b852445482e34"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains061.beats",
+        "23e25c44f603781a13e250f34376c0c9"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains061.bpm",
+        "1c1f31436ba7bd35b735a4f931fb4015"
+      ]
+    },
+    "hains173": {
+      "audio": [
+        "H_1.0/audio/hains173.flac",
+        "96be3737bcbd7256af240624b5187a32"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains173.beats",
+        "c7f860b937c2cb6471f7af098bed1112"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains173.bpm",
+        "d875f47aa7ad76276b6e31a5e9b87df4"
+      ]
+    },
+    "hains036": {
+      "audio": [
+        "H_1.0/audio/hains036.flac",
+        "f31aa66e3ac0880accc1bff14d4ac62f"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains036.beats",
+        "fe7d9a3f0e88943889bd5bce87509b32"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains036.bpm",
+        "2bc4c4297c4692ed8ae87dc767a202a5"
+      ]
+    },
+    "hains222": {
+      "audio": [
+        "H_1.0/audio/hains222.flac",
+        "7adbe5f84ce156bbc24027eaeecfec44"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains222.beats",
+        "04945b4c717ef7ee82181f5e421516e3"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains222.bpm",
+        "fbd92cd6c55c10b9de06a3b592c5dedf"
+      ]
+    },
+    "hains019": {
+      "audio": [
+        "H_1.0/audio/hains019.flac",
+        "e32c513296adf595ff5fba17dab0da3d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains019.beats",
+        "f7dbb799a25e38f2c1b41a3a6ff5d9fe"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains019.bpm",
+        "67d2579b8b96500bd5d6f7b9f87aaa15"
+      ]
+    },
+    "hains058": {
+      "audio": [
+        "H_1.0/audio/hains058.flac",
+        "75d8589c14838df88dc7ac79fbbf0554"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains058.beats",
+        "1a6b5ffac54ff925089db005b6cf9656"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains058.bpm",
+        "6afde35e05167fba75f5124dcea9eb3e"
+      ]
+    },
+    "hains234": {
+      "audio": [
+        "H_1.0/audio/hains234.flac",
+        "93d58c8d04c2431f939081510d977cb6"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains234.beats",
+        "f760c59d6e3c9ee2d37c283a58ff6590"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains234.bpm",
+        "92b40adc39c3be525fad72918514a7a9"
+      ]
+    },
+    "hains023": {
+      "audio": [
+        "H_1.0/audio/hains023.flac",
+        "e3d07e7b774acef14cb45b7733dfd0f8"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains023.beats",
+        "0d15a7c4156bde9e1f2f825f8d0f5b11"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains023.bpm",
+        "3c65fb860740acf5a277f0df7d219574"
+      ]
+    },
+    "hains189": {
+      "audio": [
+        "H_1.0/audio/hains189.flac",
+        "a07cc4e923c6b119be157d1e24bcc47e"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains189.beats",
+        "e97222290bd84829e1a5e985849758b5"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains189.bpm",
+        "df6a7b28dc3673f508272836bfd7fa5b"
+      ]
+    },
+    "hains166": {
+      "audio": [
+        "H_1.0/audio/hains166.flac",
+        "d4fbfa29a3d783affbfd2ff8c02cd2d9"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains166.beats",
+        "7edac8bc40d49e4c52b92bd536dfafb3"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains166.bpm",
+        "feaf9a10eadc21e2aff08087918de52f"
+      ]
+    },
+    "hains074": {
+      "audio": [
+        "H_1.0/audio/hains074.flac",
+        "4e9e8e6c5cd81ce456ba3a60a0e75afc"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains074.beats",
+        "96dbec000af64aa814e07033b6e4bffe"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains074.bpm",
+        "bccdfa58f837fb09e61afdc567ed26e0"
+      ]
+    },
+    "hains131": {
+      "audio": [
+        "H_1.0/audio/hains131.flac",
+        "62636fa17d063b57ec89b172fda4d74c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains131.beats",
+        "7d5ef7c04dea25029cd27d24b3b3f9ed"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains131.bpm",
+        "78bdde5532b7e870af767c56b5dffee9"
+      ]
+    },
+    "hains218": {
+      "audio": [
+        "H_1.0/audio/hains218.flac",
+        "6b5e44ca8d56bfee0a0572056a9dd363"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains218.beats",
+        "e325aef0dcb8d121a2950e9f53b7696f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains218.bpm",
+        "e3219315fc295d4e15b2d936a4d06865"
+      ]
+    },
+    "hains062": {
+      "audio": [
+        "H_1.0/audio/hains062.flac",
+        "0a191395256edf0392e1b9811e345e95"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains062.beats",
+        "98db883b9cae41ea3d374a809c722e11"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains062.bpm",
+        "234eea285521572041a5948f5c2cb389"
+      ]
+    },
+    "hains127": {
+      "audio": [
+        "H_1.0/audio/hains127.flac",
+        "038496344707aa3df82760faa3df2ca0"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains127.beats",
+        "6702b643613808d14384d48b066a262d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains127.bpm",
+        "3e8e25b4e19d0adf50a20853607448e2"
+      ]
+    },
+    "hains035": {
+      "audio": [
+        "H_1.0/audio/hains035.flac",
+        "a2d8587240461cb58aeb5e6bf743f3a5"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains035.beats",
+        "355a7edb9168227022fd2aceaae916de"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains035.bpm",
+        "c3c2c14ec275f819737756bd095b62b8"
+      ]
+    },
+    "hains170": {
+      "audio": [
+        "H_1.0/audio/hains170.flac",
+        "b7c3b1aaf2413c31a3cabc0a6299a0cc"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains170.beats",
+        "2496abb8a0d17a2b1c122f07bdbd33a6"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains170.bpm",
+        "1b520f275ea12d9ecffd0a1eaaf5a7ff"
+      ]
+    },
+    "hains107": {
+      "audio": [
+        "H_1.0/audio/hains107.flac",
+        "85d5d2e2caa1940691a0dfa2fc980ab0"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains107.beats",
+        "f601fbf484c2207fce309483bb89b8e4"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains107.bpm",
+        "d3cedfc401c59b0e373064cff9b94026"
+      ]
+    },
+    "hains042": {
+      "audio": [
+        "H_1.0/audio/hains042.flac",
+        "b510a969fb2668309b30bfaa922bfc15"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains042.beats",
+        "4eb8e318e062ee11d7c41ffe120dbc42"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains042.bpm",
+        "cee79d9ba57d5cf01739c4f9b8b457fa"
+      ]
+    },
+    "hains150": {
+      "audio": [
+        "H_1.0/audio/hains150.flac",
+        "865d476a0e4707b1c4933d2e43b7a6ed"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains150.beats",
+        "5cc2d4f68cb96a61694de26297749500"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains150.bpm",
+        "63bf425af1cf300439ecf89c70fe8e65"
+      ]
+    },
+    "hains015": {
+      "audio": [
+        "H_1.0/audio/hains015.flac",
+        "40c88d14e2649b67939bab2313335a39"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains015.beats",
+        "36e8cecb1814f0f1fddd7a9a5ad0622c"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains015.bpm",
+        "0df4440a88e9ca74410afbd1c16c3971"
+      ]
+    },
+    "hains146": {
+      "audio": [
+        "H_1.0/audio/hains146.flac",
+        "94d6fdfc42021424584a2b0a3f139648"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains146.beats",
+        "81b62db7c56375edfa452a2dec8cd180"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains146.bpm",
+        "c9bdd79a47ec5cb163face544b37eda9"
+      ]
+    },
+    "hains003": {
+      "audio": [
+        "H_1.0/audio/hains003.flac",
+        "65264d9ad13b3e4d442a039717ea229d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains003.beats",
+        "323cfdb5523884688acfdff085bacbfd"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains003.bpm",
+        "e3112d9c02126d3206d19b0edb31628d"
+      ]
+    },
+    "hains238": {
+      "audio": [
+        "H_1.0/audio/hains238.flac",
+        "8a3d32acc7fd3b7939aa8d56a9915fc9"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains238.beats",
+        "b5552a0188b8f39d0e8e9a02e66e245e"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains238.bpm",
+        "92bd40c1ba9b7a354449246c10ed57f2"
+      ]
+    },
+    "hains111": {
+      "audio": [
+        "H_1.0/audio/hains111.flac",
+        "8d0ad0c0ecfb6c74bda1505ff8e3a527"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains111.beats",
+        "da78e6a1d95db4469aa67f6dff2cf66f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains111.bpm",
+        "36a6497c97bd863f15127bc575a1e58d"
+      ]
+    },
+    "hains054": {
+      "audio": [
+        "H_1.0/audio/hains054.flac",
+        "5b9432055f0a84377b212682a3e0839c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains054.beats",
+        "f806d658e3df7878ae24d7488193d1ab"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains054.bpm",
+        "a00fbd328c84e4a6f17c30cb6fba70db"
+      ]
+    },
+    "hains243": {
+      "audio": [
+        "H_1.0/audio/hains243.flac",
+        "bbab892cda5f4a498ae0a3635376be04"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains243.beats",
+        "ccffb579782199d1a9e7e51f92a2f7c7"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains243.bpm",
+        "5638e61ef4b20e09443da55701857769"
+      ]
+    },
+    "hains185": {
+      "audio": [
+        "H_1.0/audio/hains185.flac",
+        "5ac50050577e6b686144ec6cfa08464b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains185.beats",
+        "bfac8bcc17593f137996a8913046793f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains185.bpm",
+        "0be70b85b368f7c3f55480a29943fa09"
+      ]
+    },
+    "hains214": {
+      "audio": [
+        "H_1.0/audio/hains214.flac",
+        "abab474cfc341b3c1c2aa29cf7a88ce5"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains214.beats",
+        "96a1ae50908c1342521995828bbe0a93"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains214.bpm",
+        "3f08cfaba088c4c10748cd6477a9cc8f"
+      ]
+    },
+    "hains078": {
+      "audio": [
+        "H_1.0/audio/hains078.flac",
+        "a4a3eb7a59554dcff6239cad4ed9d893"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains078.beats",
+        "b776b51b2fab3773736602d7a471140e"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains078.bpm",
+        "08ec7ff3520c7a275afd7318664912fa"
+      ]
+    },
+    "hains097": {
+      "audio": [
+        "H_1.0/audio/hains097.flac",
+        "ed867ba8c0d3a3a137cdede0b4840155"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains097.beats",
+        "a8844c152ca2e8420bf8da925c78ac7c"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains097.bpm",
+        "7f97e4fb16cb79b9608d00ae5a4f2726"
+      ]
+    },
+    "hains202": {
+      "audio": [
+        "H_1.0/audio/hains202.flac",
+        "20292ce6e1a67e84eb2651b470850d32"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains202.beats",
+        "28d79cb4f9f97508f77998b86bc6484f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains202.bpm",
+        "4f29a1b36992ad21f1967c499d11324f"
+      ]
+    },
+    "hains081": {
+      "audio": [
+        "H_1.0/audio/hains081.flac",
+        "5d6069b1cc65ad304e3e5959d1ccbffc"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains081.beats",
+        "39309a5619e0250b2e7b443f0a75a79b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains081.bpm",
+        "e6c9edb60a6d55a19f17be97f2094315"
+      ]
+    },
+    "hains039": {
+      "audio": [
+        "H_1.0/audio/hains039.flac",
+        "adfa461dd7e9ba38d72951a5b72ee0c5"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains039.beats",
+        "660a35ffa5e3cee6c3f302ab743797d2"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains039.bpm",
+        "ec9853067fb815c579c4f7ec6efb873f"
+      ]
+    },
+    "hains193": {
+      "audio": [
+        "H_1.0/audio/hains193.flac",
+        "869db90daa3e6df42e72e2c8af70436e"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains193.beats",
+        "2c8997dbb22d3a22d79ae73504fc176b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains193.bpm",
+        "a299af6a28162e8569aa482db044d3f0"
+      ]
+    },
+    "hains038": {
+      "audio": [
+        "H_1.0/audio/hains038.flac",
+        "4ed085ac813b863caaa4a3172c9fa0df"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains038.beats",
+        "415310e03eba31daa8fce3b9ca0d5329"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains038.bpm",
+        "773d5223ef897c4b86b9d626f385c2a3"
+      ]
+    },
+    "hains080": {
+      "audio": [
+        "H_1.0/audio/hains080.flac",
+        "01bfc32651a79ecdc1ec9891930f58c8"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains080.beats",
+        "4618a52a7268582b6be9b99a648fe525"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains080.bpm",
+        "f1ec81e6659bafef8686b7cd9e000941"
+      ]
+    },
+    "hains079": {
+      "audio": [
+        "H_1.0/audio/hains079.flac",
+        "0c77d18ed5a1117575135677e5982390"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains079.beats",
+        "b8cfb55059118b7fb4827238a42a7d0f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains079.bpm",
+        "45a7484ea20f0a718fa188409edfdb6a"
+      ]
+    },
+    "hains096": {
+      "audio": [
+        "H_1.0/audio/hains096.flac",
+        "f05c94ed46b5f31a9a6ac6e1e3e5fc32"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains096.beats",
+        "9e0cbd2f12906c2922936ab5c58be052"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains096.bpm",
+        "611ff7b5a1a24b0863e54857ca91f2e9"
+      ]
+    },
+    "hains215": {
+      "audio": [
+        "H_1.0/audio/hains215.flac",
+        "85ea79fe91df9b9d9d583a172f809cf0"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains215.beats",
+        "90fa94cf9465a1cd72bda4685559f540"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains215.bpm",
+        "a403cc877b60b6099591917b67eea151"
+      ]
+    },
+    "hains184": {
+      "audio": [
+        "H_1.0/audio/hains184.flac",
+        "e40a4f739eec1e0f7d64f49751c3c750"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains184.beats",
+        "398bbf9f57bd8310fe3d24bc5edd131d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains184.bpm",
+        "0e215e8411bfec832c70d1e189d6fc00"
+      ]
+    },
+    "hains242": {
+      "audio": [
+        "H_1.0/audio/hains242.flac",
+        "d4ef5a51474cea6c1695f3eba6f7d512"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains242.beats",
+        "4796a4730a38a8c487a1197cfad372ec"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains242.bpm",
+        "ce472d4dcba8357f45fb794e660a0475"
+      ]
+    },
+    "hains110": {
+      "audio": [
+        "H_1.0/audio/hains110.flac",
+        "c3ba0dc16efc513f8e4a55d499cf8d83"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains110.beats",
+        "083721c369a4d18e915dbbb8651e4b62"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains110.bpm",
+        "9395892d4a069301c9eb9ab097bd3d2e"
+      ]
+    },
+    "hains055": {
+      "audio": [
+        "H_1.0/audio/hains055.flac",
+        "d3d3db94fcd452d15cb8e7f9bad9a803"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains055.beats",
+        "fbf6036047324ea13e356e64a006742c"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains055.bpm",
+        "a9c9530040b001d85510f0a63ec09840"
+      ]
+    },
+    "hains239": {
+      "audio": [
+        "H_1.0/audio/hains239.flac",
+        "e4212004dd99022d4d1446fe7779ef75"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains239.beats",
+        "084d91f859c05098462da485b76bb1a5"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains239.bpm",
+        "5e72a99eec04794d14f7b962a0432f67"
+      ]
+    },
+    "hains147": {
+      "audio": [
+        "H_1.0/audio/hains147.flac",
+        "0044badaa0c83c6916fd6a0adea3a437"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains147.beats",
+        "ead13a267ad4e2fb1c8976485617c7ad"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains147.bpm",
+        "cde875ab258319c1de40e331990c48e7"
+      ]
+    },
+    "hains002": {
+      "audio": [
+        "H_1.0/audio/hains002.flac",
+        "93e765f82b3d8af9a32648bf36374782"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains002.beats",
+        "e28e7f106908722cfefe97979a5b5711"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains002.bpm",
+        "4aaad0901e7fd12c1a01d7dd0d92f343"
+      ]
+    },
+    "hains151": {
+      "audio": [
+        "H_1.0/audio/hains151.flac",
+        "fee799918f9512f609207990236a6a7d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains151.beats",
+        "2ef14b617e6988c89a0ed40d1a874998"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains151.bpm",
+        "933b56d2933297afcd7d7d1bd28d99c0"
+      ]
+    },
+    "hains106": {
+      "audio": [
+        "H_1.0/audio/hains106.flac",
+        "adcbcf699750534be9aeac7a8da879f3"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains106.beats",
+        "991da7cc2cdbadacf4f061c4b8a627b3"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains106.bpm",
+        "7762c7387a1b8bd675b1597dd04cde66"
+      ]
+    },
+    "hains043": {
+      "audio": [
+        "H_1.0/audio/hains043.flac",
+        "38cdb619ac588737296d8836b501e2f5"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains043.beats",
+        "a188a86975112bab6fcf736aadf780a3"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains043.bpm",
+        "8550de4a2c0be8a555a561b7c7546200"
+      ]
+    },
+    "hains171": {
+      "audio": [
+        "H_1.0/audio/hains171.flac",
+        "f575fa7b9568c3f481cf7e0c4e1f4214"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains171.beats",
+        "4e6f955fc0585298e99e1ae2affe8be1"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains171.bpm",
+        "1adad207ca7ce0b83c3e58c40500924a"
+      ]
+    },
+    "hains063": {
+      "audio": [
+        "H_1.0/audio/hains063.flac",
+        "dc3f6bdf3068987b13080a1be5e0cd73"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains063.beats",
+        "a6c45e341be6189b245f78cc44693706"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains063.bpm",
+        "4fc3818cbab52109c6a26eb1dde699e7"
+      ]
+    },
+    "hains126": {
+      "audio": [
+        "H_1.0/audio/hains126.flac",
+        "a39a40c74d9ab8318a3133771ab5e854"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains126.beats",
+        "71f2e4fcb8fab8044f63ac99f419d29f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains126.bpm",
+        "0e7cdc4fd36239d9cb40352d05a77c16"
+      ]
+    },
+    "hains219": {
+      "audio": [
+        "H_1.0/audio/hains219.flac",
+        "c320645246c1ca52c8b0981c6599ec2e"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains219.beats",
+        "8b9673bce0d5fae7cb7857bd274d2f82"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains219.bpm",
+        "0b1aa4e461539565568b6f25bf13f072"
+      ]
+    },
+    "hains075": {
+      "audio": [
+        "H_1.0/audio/hains075.flac",
+        "4c68050de872d3d858fead7bd3e0176b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains075.beats",
+        "091ec128571c0e5db9b09181dc6a340c"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains075.bpm",
+        "e33789c28d7fb6384486e3f3cf16badc"
+      ]
+    },
+    "hains130": {
+      "audio": [
+        "H_1.0/audio/hains130.flac",
+        "59fbc531eb4bba5b540d71e137429150"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains130.beats",
+        "db2bb697d0f6c6e540854087a8c16ee2"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains130.bpm",
+        "f7f3a37099e57da48099fc8e5bc0cba9"
+      ]
+    },
+    "hains022": {
+      "audio": [
+        "H_1.0/audio/hains022.flac",
+        "da4c6b674966fdff92c44726711c7f48"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains022.beats",
+        "2c00cc5c5e8c6841118392c1a8f0d7d5"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains022.bpm",
+        "a82482c9cf971367e9174109008f7ffb"
+      ]
+    },
+    "hains188": {
+      "audio": [
+        "H_1.0/audio/hains188.flac",
+        "9719817a3fbef4708ff33371bffe0289"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains188.beats",
+        "cb1e2e3c308bf6a2633289a33b128087"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains188.bpm",
+        "f4fba3c4bbf4ff249c1217d4dcfb9498"
+      ]
+    },
+    "hains167": {
+      "audio": [
+        "H_1.0/audio/hains167.flac",
+        "a18c9015d0d98785df7aa1ddbf736dd0"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains167.beats",
+        "11d03c190ce719ece2d5b3701314bc47"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains167.bpm",
+        "7f3ac996e7ea8158f00c62b5715c4f56"
+      ]
+    },
+    "hains235": {
+      "audio": [
+        "H_1.0/audio/hains235.flac",
+        "e5d0f66c0af68cd92df8664095cb7050"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains235.beats",
+        "a9153c30100014375c250ec24337326b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains235.bpm",
+        "b89106cc2a3032afa5e7e8877a90fb33"
+      ]
+    },
+    "hains059": {
+      "audio": [
+        "H_1.0/audio/hains059.flac",
+        "d87b802514d8e592818434430d539659"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains059.beats",
+        "1ad9449cf42d86281b30978f55190f1c"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains059.bpm",
+        "f4870aaefc251427ade71f2584a3b3a6"
+      ]
+    },
+    "hains018": {
+      "audio": [
+        "H_1.0/audio/hains018.flac",
+        "a7b6c74f3a7ae1eefa0f9f76934960ec"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains018.beats",
+        "c09fe2d1a6918c10996fde7b16222380"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains018.bpm",
+        "defb13c60994e7c3aeddf439fd39a5ea"
+      ]
+    },
+    "hains223": {
+      "audio": [
+        "H_1.0/audio/hains223.flac",
+        "42c4d2b7da1ebcfd791cb0085206e664"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains223.beats",
+        "2ea22f2a10b14f7f96d0e722b37b4909"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains223.bpm",
+        "eea2fb89c7acff51110b3f2c25b502b0"
+      ]
+    },
+    "hains228": {
+      "audio": [
+        "H_1.0/audio/hains228.flac",
+        "f1d596f964f2f7d9741b985ecdd72158"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains228.beats",
+        "2e47dbffab42dd81a9abe8676fc4a44a"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains228.bpm",
+        "2929aa33b2a997a5dcf5825d4727a84c"
+      ]
+    },
+    "hains156": {
+      "audio": [
+        "H_1.0/audio/hains156.flac",
+        "03695147393f70fb3895258aca4efd87"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains156.beats",
+        "c867271999d7342342b35b0313ba58b1"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains156.bpm",
+        "4dcfe2969aad1c5fa3f71b9baf6a1c82"
+      ]
+    },
+    "hains013": {
+      "audio": [
+        "H_1.0/audio/hains013.flac",
+        "e672a2968e0e24d020002660c467107d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains013.beats",
+        "a3eb457d33cd82221ef37d1e57176d4b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains013.bpm",
+        "9c215e0c8f065d546a7f9b4c6ec3757e"
+      ]
+    },
+    "hains140": {
+      "audio": [
+        "H_1.0/audio/hains140.flac",
+        "ff77036c87b00337bd25ddce57542fbd"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains140.beats",
+        "74f4b6e78e90f434a0b7dfb8e47ca9a7"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains140.bpm",
+        "f167a160f13a3a39080098f6d66abf3b"
+      ]
+    },
+    "hains117": {
+      "audio": [
+        "H_1.0/audio/hains117.flac",
+        "ccd93f49370957312247f4dd481f05d4"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains117.beats",
+        "eb00675790dd39ba4939c10a8bff99d8"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains117.bpm",
+        "c18bea020a559892f51aab2d8a81306d"
+      ]
+    },
+    "hains052": {
+      "audio": [
+        "H_1.0/audio/hains052.flac",
+        "82499077c9bde6e26e0c238bb5e4d95c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains052.beats",
+        "cccae6b9bc9c1c5a34f998ebd41fa27e"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains052.bpm",
+        "2cb80634a7a1b6c18fc0d34d674d2a4d"
+      ]
+    },
+    "hains245": {
+      "audio": [
+        "H_1.0/audio/hains245.flac",
+        "a84c18d3a3823ebe674d0d114bcfba19"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains245.beats",
+        "faacc9e2aaa160ab0e0a6cc2156cc559"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains245.bpm",
+        "e6e1db168106aa82ff70e21b89e3d2a2"
+      ]
+    },
+    "hains183": {
+      "audio": [
+        "H_1.0/audio/hains183.flac",
+        "7ec062144225d2ed224d2f9e1a4401a3"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains183.beats",
+        "beb7a96c36ebab2cb4dbfb17619ca4cd"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains183.bpm",
+        "517aa72e0fef8dfc48cf1722a4a1dae0"
+      ]
+    },
+    "hains212": {
+      "audio": [
+        "H_1.0/audio/hains212.flac",
+        "e5f13698cca588492e8ea83977a79b10"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains212.beats",
+        "ab9280e82d43e39208e4021d6d30f87f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains212.bpm",
+        "120c73cafa0de4ca785875b4d52bd112"
+      ]
+    },
+    "hains091": {
+      "audio": [
+        "H_1.0/audio/hains091.flac",
+        "c35ac3bc2667ab6035440610bedcd5e4"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains091.beats",
+        "80e34f6978a0b80e1d0bfc502ddbdb5b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains091.bpm",
+        "79eeaf0775b753adec82c8c034734483"
+      ]
+    },
+    "hains068": {
+      "audio": [
+        "H_1.0/audio/hains068.flac",
+        "cb472e5efdbb84a87c5a8fd1dfc3d286"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains068.beats",
+        "f271fbe2cf862f672053bf574b2d73e7"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains068.bpm",
+        "7a3c20230961d1a9fdf33eb65f25fe22"
+      ]
+    },
+    "hains087": {
+      "audio": [
+        "H_1.0/audio/hains087.flac",
+        "e703f919a314af5deffab4e140895b15"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains087.beats",
+        "d80072f7d00854c6031fd0ed06d2b45d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains087.bpm",
+        "741e3b34cc70b16e015ecb1e41250de1"
+      ]
+    },
+    "hains195": {
+      "audio": [
+        "H_1.0/audio/hains195.flac",
+        "ff9d3c326a7a02eb05c29e7c7cbe0a44"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains195.beats",
+        "98d2ed5e762b3655bcefd0f90831704a"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains195.bpm",
+        "9ec46987f187870410cf6fcd460cfe6b"
+      ]
+    },
+    "hains048": {
+      "audio": [
+        "H_1.0/audio/hains048.flac",
+        "ff2a5063485d4bed6c54f5161185dbcb"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains048.beats",
+        "8da33e9d9adaa8a6e7376acdb180dd84"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains048.bpm",
+        "f74d809a637837d8e7e5b11fcc68bc8e"
+      ]
+    },
+    "hains224": {
+      "audio": [
+        "H_1.0/audio/hains224.flac",
+        "1963d6d65480086196ce001662be8c3c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains224.beats",
+        "ccc5d87f00b658c4ab05eafdda9f2622"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains224.bpm",
+        "28483fc4aca8dc200a27b47564d52a77"
+      ]
+    },
+    "hains009": {
+      "audio": [
+        "H_1.0/audio/hains009.flac",
+        "45b18d8802430995e017e42ab82e08ed"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains009.beats",
+        "8f9936ec874525f912acee0ff75f0c2d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains009.bpm",
+        "aded6340811412bfa3007ee5a89ac79e"
+      ]
+    },
+    "hains232": {
+      "audio": [
+        "H_1.0/audio/hains232.flac",
+        "e564ace165c85d3a5aec03a37ffe81d6"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains232.beats",
+        "f98e43a329158355ca4ad70a1e06d744"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains232.bpm",
+        "47e358be10dbe99398bb395d37e8cff7"
+      ]
+    },
+    "hains025": {
+      "audio": [
+        "H_1.0/audio/hains025.flac",
+        "5a180ecf3d785f0a346f091e1964205c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains025.beats",
+        "1a842a96b777e9480883c04a9d8f213d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains025.bpm",
+        "0746522724ef17a2a4152fb91a90e711"
+      ]
+    },
+    "hains160": {
+      "audio": [
+        "H_1.0/audio/hains160.flac",
+        "919ed9feff6b42067d9740ded5139028"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains160.beats",
+        "2b6559d60a36ce75f7235d9dc0a2d4e3"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains160.bpm",
+        "af862c5f2ef775daab3479c105c3fe14"
+      ]
+    },
+    "hains072": {
+      "audio": [
+        "H_1.0/audio/hains072.flac",
+        "9ab21bd8231c4ee0597f707b0e28e8c7"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains072.beats",
+        "43c5ee1123359e5747e7254856bc02b7"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains072.bpm",
+        "86dd2851813ef64a0e1fba152e0daf52"
+      ]
+    },
+    "hains137": {
+      "audio": [
+        "H_1.0/audio/hains137.flac",
+        "8e5c2f6fb9a874655d5550adf3017b4a"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains137.beats",
+        "a54235bdfcfb67597556e00a0ac530e6"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains137.bpm",
+        "252230b49e02792faa42987ebaa6d58f"
+      ]
+    },
+    "hains064": {
+      "audio": [
+        "H_1.0/audio/hains064.flac",
+        "ea0036fc0e335f9403489bbe6bb8d594"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains064.beats",
+        "fbab2bddae24f12a0ed96f7b752af3c8"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains064.bpm",
+        "65b796e6f174bab64e9af08100acb3fe"
+      ]
+    },
+    "hains121": {
+      "audio": [
+        "H_1.0/audio/hains121.flac",
+        "e3d822622a29bccbd02628cdbf47f0b0"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains121.beats",
+        "83084e6f9b60f083239353f5a891be4f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains121.bpm",
+        "d8a21f99f684777de8ea1144d5816707"
+      ]
+    },
+    "hains208": {
+      "audio": [
+        "H_1.0/audio/hains208.flac",
+        "7fd89099abaa887edfb8efbe3b3f8e20"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains208.beats",
+        "597c75afe7dd6a90f3686a7ffd160cc8"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains208.bpm",
+        "85d7e6ea5d3d72ed83c6d595df80ddee"
+      ]
+    },
+    "hains176": {
+      "audio": [
+        "H_1.0/audio/hains176.flac",
+        "eedbaa9e31afc57f59d81c8ef0c221d1"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains176.beats",
+        "2cc5339bd8faeeae832e718ab40c3ab2"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains176.bpm",
+        "f09286f9699225adb8c8ab6ca8bba8a3"
+      ]
+    },
+    "hains198": {
+      "audio": [
+        "H_1.0/audio/hains198.flac",
+        "f559a9a0bb8915cbdc6983e1facf776a"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains198.beats",
+        "fd729e3f280c1486860180ef62905ef4"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains198.bpm",
+        "04ae26cd7bcb2de9e77dd1c588f094d9"
+      ]
+    },
+    "hains177": {
+      "audio": [
+        "H_1.0/audio/hains177.flac",
+        "af9f1e0f8ce3a9825c53af5334aa8ac6"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains177.beats",
+        "bedc4db0003bf2e638bbc9552e90f4a0"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains177.bpm",
+        "434b11d0e62e3e255eb35a96cfb1ce7f"
+      ]
+    },
+    "hains209": {
+      "audio": [
+        "H_1.0/audio/hains209.flac",
+        "387d972f48c6a8d8210bd771a36fea93"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains209.beats",
+        "dba786fafe4574d32d550aee4c3a7849"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains209.bpm",
+        "774201b0134ef04264aef0228ade7ae8"
+      ]
+    },
+    "hains065": {
+      "audio": [
+        "H_1.0/audio/hains065.flac",
+        "6eb9fd5e18d5c2c08a8230a4d607c763"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains065.beats",
+        "920db1875e622ee439678aa2607d35b2"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains065.bpm",
+        "f42a5ccf7aa049457d0dce0554ee4d37"
+      ]
+    },
+    "hains120": {
+      "audio": [
+        "H_1.0/audio/hains120.flac",
+        "1ddf39764d77c9a844d98b7242742533"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains120.beats",
+        "d890cf1955ccfb9387f9ff331ea7296a"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains120.bpm",
+        "35ec397ee0e3941d77354f86fd182a2b"
+      ]
+    },
+    "hains073": {
+      "audio": [
+        "H_1.0/audio/hains073.flac",
+        "4b6140709c2aa0001146275ae6a97761"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains073.beats",
+        "a02aaf2735836afcd0f02bebbbe14c89"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains073.bpm",
+        "355f0568b20244c73253901f1df17e8e"
+      ]
+    },
+    "hains024": {
+      "audio": [
+        "H_1.0/audio/hains024.flac",
+        "cb24f103cd6bbe0e6e40298d6dc3c410"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains024.beats",
+        "c04187c7075b1bc0f72f0a36b3f0ca2b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains024.bpm",
+        "eb66e7319636606d03f733e20709eb80"
+      ]
+    },
+    "hains161": {
+      "audio": [
+        "H_1.0/audio/hains161.flac",
+        "805be7da053baded1bf34493e7b33a70"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains161.beats",
+        "f1041608dc6d8520c0643a8d5dc82336"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains161.bpm",
+        "cd00947f44b268077ed063b193e2c91a"
+      ]
+    },
+    "hains233": {
+      "audio": [
+        "H_1.0/audio/hains233.flac",
+        "844e0ec01b92969aeb927bf3338099ad"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains233.beats",
+        "5a66d21f1e8c6809317a55619e09ee9d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains233.bpm",
+        "0aa1567b9f5529fb18e0a2edc22888e0"
+      ]
+    },
+    "hains008": {
+      "audio": [
+        "H_1.0/audio/hains008.flac",
+        "93a246eb4efa0341b111c4570a3e83ce"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains008.beats",
+        "6017b133c42dd6454bb3fcf233be1d90"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains008.bpm",
+        "45c3fc1ea6e54351b8194721ed1671da"
+      ]
+    },
+    "hains225": {
+      "audio": [
+        "H_1.0/audio/hains225.flac",
+        "947d3207855e37f2723b2a01644cd54b"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains225.beats",
+        "c14bfa0d616237d674f88a841efc4a6b"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains225.bpm",
+        "c6ce5928bad0ab81ab746710a14b7d4a"
+      ]
+    },
+    "hains049": {
+      "audio": [
+        "H_1.0/audio/hains049.flac",
+        "fd55371d8c4df30acc4646097321a56c"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains049.beats",
+        "3012efc5bc3927deb8d898593569ca83"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains049.bpm",
+        "2b49738c030b5d9d72d9366b851077e6"
+      ]
+    },
+    "hains194": {
+      "audio": [
+        "H_1.0/audio/hains194.flac",
+        "626f44308aa42bb47384109931d48eb7"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains194.beats",
+        "8d7bd695ab160000856118301c86f760"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains194.bpm",
+        "797ec4ed7e9794defba75bfc849a43d4"
+      ]
+    },
+    "hains069": {
+      "audio": [
+        "H_1.0/audio/hains069.flac",
+        "d8a245a5bf4c5dea6ba71e679ce4ad9f"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains069.beats",
+        "7a316b9bc9448fd91ef3c920eb5b992a"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains069.bpm",
+        "b35ffcae022b2671eb3cda1a67cf34a3"
+      ]
+    },
+    "hains086": {
+      "audio": [
+        "H_1.0/audio/hains086.flac",
+        "f67ac83ddd39ca31678b80bbc7015cf7"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains086.beats",
+        "661baae4b437342e62687a1a468c4e65"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains086.bpm",
+        "73c33224a06e5d28d8e3e3622cc8ffba"
+      ]
+    },
+    "hains205": {
+      "audio": [
+        "H_1.0/audio/hains205.flac",
+        "38df5dff668afc48aa02a2fc11fa499a"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains205.beats",
+        "46a57cadfe91ab5551d87d6d039b454d"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains205.bpm",
+        "81bacf351c1879826c0d173c028ecd61"
+      ]
+    },
+    "hains090": {
+      "audio": [
+        "H_1.0/audio/hains090.flac",
+        "1051682e1a1b344afabf27a1189cbd39"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains090.beats",
+        "cf49fddaa86619a0fbfc33bbd3a590f1"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains090.bpm",
+        "2da2d4b6d04754cbf973c3abd8169002"
+      ]
+    },
+    "hains213": {
+      "audio": [
+        "H_1.0/audio/hains213.flac",
+        "2bc2d0e87cc49bb312576df1d861bccf"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains213.beats",
+        "cf0865b909c619c1943a960ffb8647f1"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains213.bpm",
+        "22bd09c479f82a5f15dade5cc95baa1f"
+      ]
+    },
+    "hains182": {
+      "audio": [
+        "H_1.0/audio/hains182.flac",
+        "d6056d8661cd0adda53988e313ee6361"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains182.beats",
+        "6cdca63deab1e0ba513388d801671df3"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains182.bpm",
+        "1f590d1e3677dbbbe04b182438d2d085"
+      ]
+    },
+    "hains244": {
+      "audio": [
+        "H_1.0/audio/hains244.flac",
+        "9e7f6165a8e313d8452399a8b54122f3"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains244.beats",
+        "8636707bb6937d59e568f8bf266e09b1"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains244.bpm",
+        "cb57721ca34aeb744b641100518b73f1"
+      ]
+    },
+    "hains053": {
+      "audio": [
+        "H_1.0/audio/hains053.flac",
+        "13b621c6f21a3d24b853fd7a1a2eba8d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains053.beats",
+        "4f1e1b208dfc433617c20d6588556e55"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains053.bpm",
+        "71ca85dbbba5b50ca8aee81754f338d9"
+      ]
+    },
+    "hains141": {
+      "audio": [
+        "H_1.0/audio/hains141.flac",
+        "61ab70b83384f455509f981d6171112d"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains141.beats",
+        "a2bfe5eea049db120960c54af0a24051"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains141.bpm",
+        "dac6df16bb598d86a9e1ca9e7dffa7cb"
+      ]
+    },
+    "hains157": {
+      "audio": [
+        "H_1.0/audio/hains157.flac",
+        "491f69b979db22b485f37b146c98c368"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains157.beats",
+        "11a9c7351f1ee83dc0abe230f64c7126"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains157.bpm",
+        "069e955295da6a50c85c50c34af42a34"
+      ]
+    },
+    "hains012": {
+      "audio": [
+        "H_1.0/audio/hains012.flac",
+        "09c3867cb6bb1aaba9549fb5bcde3567"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains012.beats",
+        "a8d78818ea0cafa19b31a0c1a7990c4f"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains012.bpm",
+        "6c390041a61fe2cd342c9c15f19e0e74"
+      ]
+    },
+    "hains100": {
+      "audio": [
+        "H_1.0/audio/hains100.flac",
+        "d1cd4b603cc6c3129a23be3459b03795"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains100.beats",
+        "3192e2191d5e0215f4d18fb8247cfec1"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains100.bpm",
+        "d8467b8e163fa5d5ae409f184fe8f906"
+      ]
+    },
+    "hains045": {
+      "audio": [
+        "H_1.0/audio/hains045.flac",
+        "50740a2be1196f342ae66048181cfccf"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains045.beats",
+        "c7a6b0cfbb099350264808bc2dc5cc55"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains045.bpm",
+        "f97645536a15dda0521896391ea9a629"
+      ]
+    },
+    "hains229": {
+      "audio": [
+        "H_1.0/audio/hains229.flac",
+        "17744718f4fa584e277af051bd525ac6"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains229.beats",
+        "d9c5c74c7d414656a4be27841cb59883"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains229.bpm",
+        "ec5dc620b1909985052f82107e3ea1eb"
+      ]
+    }
+  }
+}
