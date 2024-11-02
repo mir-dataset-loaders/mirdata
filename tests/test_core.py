@@ -720,7 +720,7 @@ def test_dataset_splits():
             this_split = set(split)
             assert not this_split.intersection(used)
             used.update(this_split)
-        # check that the split is reproducable
+        # check that the split is reproducible
         splits2 = empty_dataset._get_partitions(items, right_combination, 42)
         for split, split2 in zip(splits.values(), splits2.values()):
             assert np.array_equal(split, split2)
@@ -761,7 +761,7 @@ def test_dataset_splits():
 
     track_mtrack_dataset = core.Dataset(
         name="test",
-        indexes={"default": core.Index("slakh_index_baby.json")},
+        indexes={"default": core.Index("slakh_index_baby_sample.json")},
         track_class=core.Track,
         multitrack_class=core.MultiTrack,
     )
@@ -773,7 +773,7 @@ def test_dataset_splits():
         track_mtrack_dataset.get_mtrack_splits()
 
     # test one real dataset
-    test_dataset = mirdata.initialize("slakh", version="2100-redux")
+    test_dataset = mirdata.initialize("slakh", version="sample_2100-redux")
     splits = test_dataset.get_track_splits()
     assert set(splits.keys()) == set(["train", "validation", "test", "omitted"])
 
