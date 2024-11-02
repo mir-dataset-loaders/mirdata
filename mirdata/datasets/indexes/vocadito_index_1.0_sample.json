@@ -1,0 +1,33 @@
+{
+  "version": "1",
+  "tracks": {
+    "1": {
+      "audio": [
+        "Audio/vocadito_1.wav",
+        "4df70945fd1765eae8c70d252f06c13a"
+      ],
+      "f0": [
+        "Annotations/F0/vocadito_1_f0.csv",
+        "cfd6617c82cc2fc8911cdac767b8d046"
+      ],
+      "notesA1": [
+        "Annotations/Notes/vocadito_1_notesA1.csv",
+        "9634dcad9d13c65b6753d381502bb813"
+      ],
+      "notesA2": [
+        "Annotations/Notes/vocadito_1_notesA2.csv",
+        "c13a0248850c262626fe5662c91287b8"
+      ],
+      "lyrics": [
+        "Annotations/Lyrics/vocadito_1_lyrics.txt",
+        "37132cbc2daa7a5fb285e34e45eb3376"
+      ]
+    }
+  },
+  "metadata": {
+    "vocadito_metadata": [
+      "vocadito_metadata.csv",
+      "dc3992579aa5f02154e615585be2bbd5"
+    ]
+  }
+}
