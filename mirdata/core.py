@@ -104,10 +104,12 @@ class Dataset(object):
 
         Args:
             data_home (str or None): path where mirdata will look for the dataset
+            version (str): dataset version
             name (str or None): the identifier of the dataset
             track_class (mirdata.core.Track or None): a Track class
             multitrack_class (mirdata.core.Multitrack or None): a Multitrack class
             bibtex (str or None): dataset citation/s in bibtex format
+            indexes (dict or None): indexes to be downloaded
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
             license_info (str or None): license of the dataset
