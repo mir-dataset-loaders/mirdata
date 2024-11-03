@@ -129,7 +129,7 @@ class Dataset(object):
             self.version = version
 
         self._index_data = indexes[self.version]
-        self.index_path = self._index_data.get_path(self.data_home)
+        self.index_path = self._index_data.get_path()
 
         self._track_class = track_class
         self._multitrack_class = multitrack_class
@@ -829,7 +829,7 @@ class Index(object):
 
         self.partial_download = partial_download
 
-    def get_path(self, data_home) -> str:
+    def get_path(self) -> str:
         """Get the absolute path to the index file
         Returns:
             str: absolute path to the index file
