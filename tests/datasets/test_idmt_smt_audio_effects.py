@@ -13,7 +13,7 @@ TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/idmt_smt_audio_e
 
 def test_track():
     default_trackid = "G73-45200-3341-33944"
-    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME)
+    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -48,7 +48,7 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "G73-45200-3341-33944"
-    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME)
+    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -62,7 +62,7 @@ def test_to_jams():
 
 
 def test_metadata():
-    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME)
+    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME, version="test")
     metadata = dataset._metadata
     track_metadata = metadata["G73-45200-3341-33944"]
     assert track_metadata["fx_group"] == 3
@@ -78,7 +78,7 @@ def test_metadata():
 
     # Test for FileNotFoundError
     with pytest.raises(FileNotFoundError):
-        dataset = idmt_smt_audio_effects.Dataset(fake_data_home)
+        dataset = idmt_smt_audio_effects.Dataset(fake_data_home, version="test")
         if hasattr(dataset, "_metadata"):
             del dataset._metadata
         metadata = dataset._metadata
@@ -90,7 +90,7 @@ def test_metadata():
     with open(os.path.join(corrupted_data_home, "corrupted.xml"), "w") as f:
         f.write("<root><corrupted>")
 
-    dataset = idmt_smt_audio_effects.Dataset(corrupted_data_home)
+    dataset = idmt_smt_audio_effects.Dataset(corrupted_data_home, version="test")
     with pytest.raises(ValueError):
         metadata = dataset._metadata
 
@@ -115,7 +115,7 @@ def test_download(httpserver):
         )
     }
 
-    dataset = idmt_smt_audio_effects.Dataset(data_home)
+    dataset = idmt_smt_audio_effects.Dataset(data_home, version="test")
     dataset.remotes = remotes
     dataset.download(None, False, False)
 

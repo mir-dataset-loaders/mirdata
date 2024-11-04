@@ -113,8 +113,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="irmas_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="irmas_index_1.0.json",
+        url="https://zenodo.org/records/13930466/files/irmas_index_1.0.json?download=1",
+        checksum="87327f90124d36750037df6c80b19749",
+    ),
+    "sample": core.Index(filename="irmas_index_1.0_sample.json"),
 }
 
 REMOTES = {

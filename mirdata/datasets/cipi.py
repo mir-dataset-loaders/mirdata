@@ -55,8 +55,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="cipi_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="cipi_index_1.0.json",
+        url="https://zenodo.org/records/13993323/files/cipi_index_1.0.json?download=1",
+        checksum="dfc4dad2f1089049f99bfc7f4dd2595e",
+    ),
+    "sample": core.Index(filename="cipi_index_1.0_sample.json"),
 }
 
 LICENSE_INFO = (

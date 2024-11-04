@@ -138,6 +138,12 @@ compmusic_raga
    :members:
    :inherited-members:
 
+cuidado
+^^^^^^^
+
+.. automodule:: mirdata.datasets.cuidado
+   :members:
+   :inherited-members:
 
 dagstuhl_choirset
 ^^^^^^^^^^^^^^^^^

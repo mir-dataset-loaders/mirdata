@@ -9,7 +9,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "113"
     data_home = os.path.normpath("tests/resources/mir_datasets/giantsteps_tempo")
-    dataset = giantsteps_tempo.Dataset(data_home)
+    dataset = giantsteps_tempo.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {

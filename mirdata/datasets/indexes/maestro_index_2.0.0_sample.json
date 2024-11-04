@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tracks": {
+    "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1": {
+      "midi": [
+        "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi",
+        "4901b1578ee4fe8c1696e02f60924949"
+      ],
+      "audio": [
+        "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav",
+        "1694d8431f01eeb2a18444196550b99d"
+      ]
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "version": "2.0-corrected",
+  "tracks": {
+    "1015": {
+      "annotator_1_lowercase": [
+        null,
+        null
+      ],
+      "annotator_1_uppercase": [
+        null,
+        null
+      ],
+      "annotator_2_lowercase": [
+        "salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_lowercase.txt",
+        "201642fcea4a27c60f7b48de46a82234"
+      ],
+      "annotator_2_uppercase": [
+        "salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_uppercase.txt",
+        "e4a268342a45fdffd8ec9c3b8287ad8b"
+      ],
+      "audio": [
+        "audio/1015.mp3",
+        "811a4a6b46f0c15a61bfb299b21ebdc4"
+      ]
+    },
+    "192": {
+      "annotator_1_lowercase": [
+        "salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_lowercase.txt",
+        "6640237e7844d0d9d37bf21cf96a2690"
+      ],
+      "annotator_1_uppercase": [
+        "salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_uppercase.txt",
+        "4d268cfd27fe011dbe579f25f8d125ce"
+      ],
+      "annotator_2_lowercase": [
+        null,
+        null
+      ],
+      "annotator_2_uppercase": [
+        null,
+        null
+      ],
+      "audio": [
+        "audio/192.mp3",
+        "d954d5dc9f17d66155d3310d838756b8"
+      ]
+    },
+    "2": {
+      "annotator_1_lowercase": [
+        "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt",
+        "30ff127ff68c61039b94a44ab6ddda34"
+      ],
+      "annotator_1_uppercase": [
+        "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt",
+        "54ba0804f720d85d195dcd7ffaec0794"
+      ],
+      "annotator_2_lowercase": [
+        "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt",
+        "546a783c7b8bf96f2d718c7a4f114699"
+      ],
+      "annotator_2_uppercase": [
+        "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt",
+        "e9dca8577f028d3505ff1e5801397b2f"
+      ],
+      "audio": [
+        "audio/2.mp3",
+        "76789a17bda0dd4d1d7e77424099c814"
+      ]
+    }
+  }
+}
