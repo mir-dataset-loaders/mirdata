@@ -175,7 +175,7 @@ class Dataset(object):
                 )
             raise FileNotFoundError(
                 f"Dataset index for {self.name} was expected "
-                + "to be packaged with mirdata, but not found."
+                + "but not found. Make sure your sample indexes for testing are in mirdata/tests/indexes/"
             )
 
         return index
