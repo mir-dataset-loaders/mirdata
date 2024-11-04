@@ -9,8 +9,8 @@ import io
 def test_track():
     default_trackid = "simac_01_H_mikri_Rallou"
     data_home = os.path.normpath("tests/resources/mir_datasets/simac")
-    dataset = simac.Dataset(data_home)
-    track = dataset.track(default_trackid, version="test")
+    dataset = simac.Dataset(data_home, version="test")
+    track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "simac_01_H_mikri_Rallou",
