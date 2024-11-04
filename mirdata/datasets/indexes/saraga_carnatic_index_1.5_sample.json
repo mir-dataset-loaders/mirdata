@@ -1,0 +1,191 @@
+{
+  "version": 1.5,
+  "tracks": {
+    "116_Bhuvini_Dasudane": {
+      "audio-mix": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.mp3.mp3",
+        "f124c3686274f3ffd28db564c8089dea"
+      ],
+      "audio-ghatam": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.multitrack-ghatam.mp3",
+        "a908cf1e1b264738de77ef2ba11daebf"
+      ],
+      "audio-mridangam-left": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-left.mp3",
+        "cc345ee78b42d484a37209a3f7277141"
+      ],
+      "audio-mridangam-right": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-right.mp3",
+        "49995bbde061dcaa2a177b93e1632204"
+      ],
+      "audio-violin": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.multitrack-violin.mp3",
+        "6e2d13096fb91c8057790f643b7da4cc"
+      ],
+      "audio-vocal-s": [
+        null,
+        null
+      ],
+      "audio-vocal": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.multitrack-vocal.mp3",
+        "f148ac3a2fe3e2fbc11cbf8e14157652"
+      ],
+      "ctonic": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.ctonic.txt",
+        "89ebddc897ea7bcd0d4d563386efa0c7"
+      ],
+      "pitch": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.pitch.txt",
+        "83bbde0d1e74d37dc3721e8c74ce8f8d"
+      ],
+      "pitch-vocal": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.pitch-vocal.txt",
+        "fd3a15a0ebbfc98ed45c11646c4a7c78"
+      ],
+      "tempo": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.tempo-manual.txt",
+        "57b657e6d2490f1e329883436bba3f59"
+      ],
+      "sama": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.sama-manual.txt",
+        "72007da7ce690dc9818213e8602786d6"
+      ],
+      "sections": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.sections-manual-p.txt",
+        "d4025bc47e36f9ae055cce97f9564a05"
+      ],
+      "phrases": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.mphrases-manual.txt",
+        "a091d5fb3b6485c0c355ec2985de74e9"
+      ],
+      "metadata": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Bhuvini Dasudane/Bhuvini Dasudane.json",
+        "d142e87a7052fca7cd958d07b26a32ae"
+      ]
+    },
+    "117_Karuna_Nidhi_Illalo": {
+      "audio-mix": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.mp3.mp3",
+        "a4e3a25d182889717e0b3529d5b58b03"
+      ],
+      "audio-ghatam": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.multitrack-ghatam.mp3",
+        "9b4485c458d9db90d206fc7dd8b31ee7"
+      ],
+      "audio-mridangam-left": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.multitrack-mridangam-left.mp3",
+        "3e975c00f7781d467c7d76d72cdefc24"
+      ],
+      "audio-mridangam-right": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.multitrack-mridangam-right.mp3",
+        "37bce9d00e9bbdb5d122cc4550e81ab9"
+      ],
+      "audio-violin": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.multitrack-violin.mp3",
+        "971b2dcde158dad52a5827e6cd3ee2b2"
+      ],
+      "audio-vocal-s": [
+        null,
+        null
+      ],
+      "audio-vocal": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.multitrack-vocal.mp3",
+        "bb73996fd5e1a369d3ffd398a55c47fb"
+      ],
+      "ctonic": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.ctonic.txt",
+        "62544d8bf30a111363b85fa415c93f16"
+      ],
+      "pitch": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.pitch.txt",
+        "7cfd8dbbc58b3f121924e573b5de0f1f"
+      ],
+      "pitch-vocal": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.pitch-vocal.txt",
+        "532527402390d8676f3f69d4f0391c31"
+      ],
+      "tempo": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.tempo-manual.txt",
+        "2d404a120cd6dae4714972f90402962c"
+      ],
+      "sama": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.sama-manual.txt",
+        "30ba6afe47826bc39abf3aea2566734e"
+      ],
+      "sections": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.sections-manual-p.txt",
+        "9bb23d758eceba4824a40e1e513a48db"
+      ],
+      "phrases": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.mphrases-manual.txt",
+        "85170c6b8492316abdc589b566b640d3"
+      ],
+      "metadata": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Karuna Nidhi Illalo/Karuna Nidhi Illalo.json",
+        "90b1f10b2d1f68ba67298ee6cfbd2711"
+      ]
+    },
+    "115_Idhu_Thaano_Thillai_Sthalam": {
+      "audio-mix": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.mp3.mp3",
+        "1ff8faa7962e300c3b1522167fb72684"
+      ],
+      "audio-ghatam": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.multitrack-ghatam.mp3",
+        "ec0cf9d01916f59bd1ec9e3cdc0d8c8e"
+      ],
+      "audio-mridangam-left": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.multitrack-mridangam-left.mp3",
+        "6c6e07580ebd67223c8870c022cb4346"
+      ],
+      "audio-mridangam-right": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.multitrack-mridangam-right.mp3",
+        "56a94ada45f6ddfb0e9c5aba7f6f334d"
+      ],
+      "audio-violin": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.multitrack-violin.mp3",
+        "b61c349578fef2eb6a6675a4f7ca0012"
+      ],
+      "audio-vocal-s": [
+        null,
+        null
+      ],
+      "audio-vocal": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.multitrack-vocal.mp3",
+        "80d235075f2cb188d0d61c233b0be9ee"
+      ],
+      "ctonic": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.ctonic.txt",
+        "01e9d22835f6867a9a5ff7c807ae6077"
+      ],
+      "pitch": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.pitch.txt",
+        "50d2e5827f6ae6ef98e1e707cdde72c9"
+      ],
+      "pitch-vocal": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.pitch-vocal.txt",
+        "598062324e9bfd44ee01ac61363458b6"
+      ],
+      "tempo": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.tempo-manual.txt",
+        "37654baad82b2e6eaa7fab8f9c9bc834"
+      ],
+      "sama": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.sama-manual.txt",
+        "1e0133d5a1abdb1920dd88e001d58fb9"
+      ],
+      "sections": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.sections-manual-p.txt",
+        "94b7b4891ceb9ab45a77aba766103cfd"
+      ],
+      "phrases": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.mphrases-manual.txt",
+        "028479319568208309cb9c5d37f13731"
+      ],
+      "metadata": [
+        "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/Idhu Thaano Thillai Sthalam/Idhu Thaano Thillai Sthalam.json",
+        "0fd43a40ee1faa6fdb08a8507ef57ace"
+      ]
+    }
+  }
+}

@@ -7,7 +7,7 @@ from mirdata import annotations
 def test_track():
     default_trackid = "3"
     data_home = "tests/resources/mir_datasets/billboard"
-    dataset = billboard.Dataset(data_home)
+    dataset = billboard.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     # test attributes are loaded as expected
@@ -72,7 +72,7 @@ def test_track():
 def test_to_jams():
     default_trackid = "3"
     data_home = "tests/resources/mir_datasets/billboard"
-    dataset = billboard.Dataset(data_home)
+    dataset = billboard.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     jam = track.to_jams()
@@ -142,7 +142,7 @@ def test_to_jams():
 def test_load_chords():
     default_trackid = "35"
     data_home = "tests/resources/mir_datasets/billboard"
-    dataset = billboard.Dataset(data_home)
+    dataset = billboard.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     full_chords = track.chords_full
@@ -194,7 +194,7 @@ def test_load_chords():
 def test_load_sections():
     default_trackid = "35"
     data_home = "tests/resources/mir_datasets/billboard"
-    dataset = billboard.Dataset(data_home)
+    dataset = billboard.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     sections = track.sections
@@ -240,7 +240,7 @@ def test_load_sections():
 def test_load_chroma():
     default_trackid = "35"
     data_home = "tests/resources/mir_datasets/billboard"
-    dataset = billboard.Dataset(data_home)
+    dataset = billboard.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     chroma = track.chroma
@@ -249,7 +249,7 @@ def test_load_chroma():
 
     default_trackid = "3"
     data_home = "tests/resources/mir_datasets/billboard"
-    dataset = billboard.Dataset(data_home)
+    dataset = billboard.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     chroma = track.chroma
@@ -260,7 +260,7 @@ def test_load_chroma():
 def test_load_tuning():
     default_trackid = "35"
     data_home = "tests/resources/mir_datasets/billboard"
-    dataset = billboard.Dataset(data_home)
+    dataset = billboard.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     tuning = track.tuning
@@ -271,7 +271,7 @@ def test_load_tuning():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/billboard"
-    dataset = billboard.Dataset(data_home)
+    dataset = billboard.Dataset(data_home, version="test")
 
     metadata = dataset._metadata
 

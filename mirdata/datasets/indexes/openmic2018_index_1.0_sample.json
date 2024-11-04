@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "tracks": {
+    "000046_3840": {
+      "audio": [
+        "audio/000/000046_3840.ogg",
+        "c72d759c5347ecf30bf3783c7ae039cf"
+      ],
+      "vggish": [
+        "vggish/000/000046_3840.json",
+        "b20f72a1c11adb11c31165c34d3abe28"
+      ]
+    }
+  }
+}
