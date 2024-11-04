@@ -324,14 +324,14 @@ and ``LICENSE_INFO`` (including the license that protects the dataset in the dat
 
     .. code-block:: javascript
         REMOTES = {
-            "all": download_utils.RemoteFileMetadata(
-                filename="UrbanSound8K.tar.gz",
-                url="https://zenodo.org/record/1203745/files/UrbanSound8K.tar.gz?download=1",
-                checksum="9aa69802bbf37fb986f71ec1483a196e",
-                unpack_directories=["UrbanSound8K"],
+            "annotations": download_utils.RemoteFileMetadata(
+                filename="The Beatles Annotations.tar.gz",
+                url="http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz",
+                checksum="62425c552d37c6bb655a78e4603828cc",
+                destination_dir="annotations",
             ),
         }
-        #TODO Change UrbanSound8K by another dataset in Mirdata
+
     Add more ``RemoteFileMetadata`` objects to the ``REMOTES`` dictionary if the dataset is split into multiple files.
     Please use ``download_utils.RemoteFileMetadata`` to parse the dataset from an online repository, which takes cares of the download process and the checksum validation, and addresses corner carses.
     Please do NOT use specific functions like ``download_zip_file`` or ``download_and_extract`` individually in your loader.
@@ -511,7 +511,7 @@ therefore there is no need to remove it when pushing to the remote branch during
 * Add your index in the ``Upload files`` section.
 * Let Zenodo create a DOI for your index, so click *No*.
 * Resource type is *Other*.
-* Title should be *mirdata-<dataset-id>_index_<version>*, e.g. mirdata-baf_index_1.0.
+* Title should be *mirdata-<dataset-id>_index_<version>*, e.g. mirdata-beatles_index_1.2.
 * Add yourself as the Creator of this entry.
 * The license of the index should be the `same as Soundata <https://github.com/mir-dataset-loaders/mirdata/blob/main/LICENSE>`_. 
 * Visibility should be set as *Public*.
