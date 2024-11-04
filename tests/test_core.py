@@ -235,7 +235,7 @@ def test_dataset_versions():
     dataset_test = VersionTest("asdf", version="test")
     assert dataset_test.version == "0"
     assert dataset_test.index_path == os.path.join(
-        local_index_path, "mirdata/datasets/", "indexes", "blah_0.json"
+        local_index_path, "tests", "indexes", "blah_0.json"
     )
 
     with pytest.raises(IOError):
@@ -244,14 +244,14 @@ def test_dataset_versions():
     dataset_0 = VersionTest("asdf", version="0")
     assert dataset_0.version == "0"
     assert dataset_0.index_path == os.path.join(
-        local_index_path, "mirdata/datasets/", "indexes", "blah_0.json"
+        local_index_path, "tests", "indexes", "blah_0.json"
     )
 
     dataset_real = VersionTest("asdf", version="real")
     assert dataset_real.version == "real"
     assert dataset_real.index_path == os.path.join(
         local_index_path,
-        "mirdata/datasets/",
+        "tests",
         "indexes",
         "beatles_index_1.2_sample.json",
     )
