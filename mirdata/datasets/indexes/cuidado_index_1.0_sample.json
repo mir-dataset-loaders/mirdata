@@ -1,0 +1,19 @@
+{
+  "version": "sample",
+  "tracks": {
+    "cuidado_FallaCancion": {
+      "audio": [
+        "C_1.0/audio/cuidado_FallaCancion.flac",
+        "3b18b3c2c460842ca52a5bea82f3a649"
+      ],
+      "beats": [
+        "C_1.0/annotations/beats/cuidado_FallaCancion.beats",
+        "d3b686403d23c3a15ca71d5cdbf138d5"
+      ],
+      "tempo": [
+        "C_1.0/annotations/tempo/cuidado_FallaCancion.bpm",
+        "efbfcc140b5eceef344279305f674272"
+      ]
+    }
+  }
+}

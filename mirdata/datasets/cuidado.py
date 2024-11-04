@@ -56,8 +56,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="cuidado_full_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="cuidado_index_1.0.json",
+        url="https://zenodo.org/records/14036277/files/cuidado_index_1.0.json?download=1",
+        checksum="12848795ae341273d29ed2243f26af7f",
+    ),
+    "sample": core.Index(filename="cuidado_index_1.0_sample.json"),
 }
 
 REMOTES = None
