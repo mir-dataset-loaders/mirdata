@@ -18,7 +18,7 @@ to, please tag your PR with ``please-do-not-edit``.
 Installing mirdata for development purposes
 ###########################################
 
-To install ``mirdata`` for development purposes:
+To install Mirdata for development purposes:
 
     - First, run ``git clone https://github.com/mir-dataset-loaders/mirdata.git``
 
@@ -31,7 +31,7 @@ To install ``mirdata`` for development purposes:
 
 
 We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
-and install all ``mirdata`` requirements. You will want to install the latest supported Python versions (see README.md).
+and install all Mirdata requirements. You will want to install the latest supported Python versions (see README.md).
 Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the necessary pytest
 plugins to automatically test your code successfully (e.g. `pytest-cov`). Finally, run:
 
@@ -64,7 +64,7 @@ Writing a new dataset loader
 #############################
 
 
-The steps to add a new dataset loader to ``mirdata`` are:
+The steps to add a new dataset loader to Mirdata are:
 
 1. `Create an index <create_index_>`_
 2. `Create a module <create_module_>`_
@@ -87,8 +87,8 @@ Before starting, check if your dataset falls into one of these non-standard case
 1. Create an index
 ------------------
 
-``mirdata``'s structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
-dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
+Mirdata's structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
+dataset which is necessary for the loading and validating functionalities of Mirdata. In particular, indexes contain
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
 1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.

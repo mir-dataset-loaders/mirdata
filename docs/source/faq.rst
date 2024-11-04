@@ -59,6 +59,11 @@ If I find a mistake in an annotation, should I fix it in the loader?
 No. All datasets have "mistakes", and we do not want to create another version of each dataset ourselves. The loaders should load the data as released. After that, it's up to the user what they want to do with it.
 
 
+What is the canonical version of a loader?
+------------------------------------------
+The canonical version of a loader is the source version of a dataset, i.e. the version that you get directly from the creators of the dataset or similar oficial source.
+
+
 Does mirdata support data which lives off-disk?
 -----------------------------------------------
 Yes! We use the smart_open_ library, which supports non-local filesystems such as GCS and AWS. 
