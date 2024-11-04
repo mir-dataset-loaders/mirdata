@@ -18,14 +18,12 @@
     The project involved more than 15 collaborators and was led by teams from Universitat Pompeu Fabra Barcelona, Queen Mary University London, the Austrian Research Institute for Artificial Intelligence Vienna, and Philips Research Eindhoven. For detailed information, visit [http://www.semanticaudio.org](http://www.semanticaudio.org).
 """
 
-import os
 import csv
-import logging
 import librosa
 import numpy as np
 from typing import BinaryIO, Optional, TextIO, Tuple
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, io, jams_utils
 
 
 BIBTEX = """
@@ -44,7 +42,7 @@ BIBTEX = """
 INDEXES = {
     "default": "1.0",
     "test": "1.0",
-    "1.0": core.Index(filename="simac_full_index_1.0.json"),
+    "1.0": core.Index(filename="simac_index_1.0.json"),
 }
 
 REMOTES = None

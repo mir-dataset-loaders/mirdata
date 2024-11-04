@@ -24,18 +24,12 @@ def test_track():
 
     expected_attributes = {
         "track_id": "c-1",
-        "annotations": {
-            "lh_fingering": [
-                "ArGNNThumb-s/lh/c-1.pt",
-                "ecb8a0dcb70a4331708baf9141cedfd1",
-            ],
-            "rh_fingering": [
-                "ArGNNThumb-s/rh/c-1.pt",
-                "cdb1ba84bc21572c35d299291fca8442",
-            ],
-            "expressiviness": ["virtuoso/c-1.pt", "fb6eb47c9ee21051559325e217b9b0a1"],
-            "notes": ["k/c-1.pt", "9816f5c88488925c019283e29f00b536"],
-        },
+        "expressiveness_path": "tests/resources/mir_datasets/cipi/virtuoso/c-1.pt",
+        "fingering_path": (
+            "tests/resources/mir_datasets/cipi/ArGNNThumb-s/rh/c-1.pt",
+            "tests/resources/mir_datasets/cipi/ArGNNThumb-s/lh/c-1.pt",
+        ),
+        "notes_path": "tests/resources/mir_datasets/cipi/k/c-1.pt",
     }
 
     expected_property_types = {
@@ -47,7 +41,7 @@ def test_track():
         "difficulty_annotation": int,
         "scores": list,
         "fingering": tuple,
-        "expressiviness": str,
+        "expressiveness_path": str,
         "notes": str,
     }
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -91,6 +85,6 @@ def test_load_score():
         "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.musicxml"
     )
     data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
-    score = cipi.load_score(path, data_home, version="test")
+    score = cipi.load_score(path, data_home)
     assert isinstance(score, music21.stream.Score)
     assert len(score.parts) == 2

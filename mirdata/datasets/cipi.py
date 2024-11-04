@@ -101,7 +101,7 @@ class Track(core.Track):
         notes_path (str): Path of note features from notation dimension. Use torch.load(...) for loading the embeddings.
 
     Cached Properties:
-        scores (list[music21.stream.Score]): music21 scores. If the work is splited in several movements the list will contain multiple scores.
+        scores (list[music21.stream.Score]): music21 scores. If the work is split in several movements the list will contain multiple scores.
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
