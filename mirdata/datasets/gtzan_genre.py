@@ -45,6 +45,7 @@ INDEXES = {
         filename="gtzan_genre_1.0_mini_index.json",
         url="https://zenodo.org/records/14004436/files/gtzan_genre_1.0_mini_index.json?download=1",
         checksum="ac97f5a783d7843cf92ed8875d85af3d",
+        partial_download=["mini", "tempo_beat_annotations"],
     ),
     "sample": core.Index(filename="gtzan_genre_index_1.0_sample.json"),
 }
