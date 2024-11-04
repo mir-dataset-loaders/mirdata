@@ -69,11 +69,15 @@ BIBTEX = """@article{Gulati2014,
     year = {2014}
 }"""
 
-
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="compmusic_indian_tonic_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="compmusic_indian_tonic_1.0.json",
+        url="https://zenodo.org/records/13993293/files/compmusic_indian_tonic_1.0.json?download=1",
+        checksum="67b1b25169bc7e5f7e2eb279197c08cc",
+    ),
+    "sample": core.Index(filename="compmusic_indian_tonic_1.0_sample.json"),
 }
 
 REMOTES = {

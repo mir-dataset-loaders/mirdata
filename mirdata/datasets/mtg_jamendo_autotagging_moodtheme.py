@@ -54,10 +54,18 @@ BIBTEX = """@conference {bogdanov2019mtg,
     address = "Long Beach, CA, United States",
     url = "http://hdl.handle.net/10230/42015"
 }"""
+
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="mtg_jamendo_autotagging_moodtheme_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="mtg_jamendo_autotagging_moodtheme_index_1.0.json",
+        url="https://zenodo.org/records/13930488/files/mtg_jamendo_autotagging_moodtheme_index_1.0.json?download=1",
+        checksum="a6f7b654d3ebccf3388e9e93a5e58239",
+    ),
+    "sample": core.Index(
+        filename="mtg_jamendo_autotagging_moodtheme_index_1.0_sample.json"
+    ),
 }
 DOWNLOAD_INFO = """
     The audio files can be downloaded following the path described in https://github.com/MTG/mtg-jamendo-dataset#downloading-the-data

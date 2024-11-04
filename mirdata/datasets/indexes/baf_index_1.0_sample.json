@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "query_0001": {
+      "audio": [
+        "queries/query_0001.wav",
+        "16b5446bf37df1909e441f531c7a5a57"
+      ]
+    },
+    "query_0002": {
+      "audio": [
+        "queries/query_0002.wav",
+        "c0fe1b61835d7ec04b401e72f67c4178"
+      ]
+    }
+  }
+}

@@ -9,7 +9,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "Enta_Bhagyamu_2"
     data_home = "tests/resources/mir_datasets/scms"
-    dataset = scms.Dataset(data_home)
+    dataset = scms.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -42,7 +42,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/scms"
-    dataset = scms.Dataset(data_home)
+    dataset = scms.Dataset(data_home, version="test")
     track = dataset.track("Enta_Bhagyamu_2")
     jam = track.to_jams()
 
@@ -114,7 +114,7 @@ def test_load_activations():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/scms"
-    dataset = scms.Dataset(data_home)
+    dataset = scms.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["Enta_Bhagyamu_2"] == {
         "tonic": 165.1176,
@@ -125,13 +125,13 @@ def test_load_metadata():
     }
     with pytest.raises(FileNotFoundError):
         data_home = "a/fake/path"
-        dataset = scms.Dataset(data_home)
+        dataset = scms.Dataset(data_home, version="test")
         metadata = dataset._artists_to_track_mapping
 
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/scms"
-    dataset = scms.Dataset(data_home)
+    dataset = scms.Dataset(data_home, version="test")
     track = dataset.track("Enta_Bhagyamu_2")
     audio_path = track.audio_path
     audio, sr = scms.load_audio(audio_path)
