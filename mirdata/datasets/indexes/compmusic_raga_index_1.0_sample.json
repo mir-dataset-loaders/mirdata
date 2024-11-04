@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "Aruna_Sairam.Valli_Kanavan": {
+      "audio": [
+        "RagaDataset/Carnatic/audio/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/Valli_Kanavan.mp3",
+        "836c4e4f71f6ae955506ed211d32d134"
+      ],
+      "tonic": [
+        "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/Valli_Kanavan.tonic",
+        "ca618d3151fd83965ad4b7f9908c50ce"
+      ],
+      "tonic_fine_tuned": [
+        "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/Valli_Kanavan.tonicFine",
+        "346455b3c7d766ffbc5dd4d9e320a58a"
+      ],
+      "pitch": [
+        "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/Valli_Kanavan.pitch",
+        "7649cab3d0ec590fc8353aa107de9a3f"
+      ],
+      "pitch_post_processed": [
+        "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/Valli_Kanavan.pitchSilIntrpPP",
+        "8447ebfd5bb92d4ff72d473640d7ffab"
+      ],
+      "nyas_segments": [
+        "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/Valli_Kanavan.flatSegNyas",
+        "36807d89efec1ee49559ac29c10ee5c1"
+      ],
+      "tani_segments": [
+        "RagaDataset/Carnatic/features/3af5a361-923a-465d-864d-9c7ba0c04a47/Aruna_Sairam/December_Season_2001/Valli_Kanavan/Valli_Kanavan.taniSegKNN",
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ]
+    }
+  }
+}

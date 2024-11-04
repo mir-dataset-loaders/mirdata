@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "tracks": {
+    "benchmark#W_163930#P_546633": {
+      "cens": [
+        "da-tacos_benchmark_subset_cens/W_163930_cens/P_546633_cens.h5",
+        "bfb1931676887eab32b7d2ba5aab804d"
+      ],
+      "crema": [
+        "da-tacos_benchmark_subset_crema/W_163930_crema/P_546633_crema.h5",
+        "9921705880671ee73d101a1e9625f48e"
+      ],
+      "hpcp": [
+        "da-tacos_benchmark_subset_hpcp/W_163930_hpcp/P_546633_hpcp.h5",
+        "1a2232a9644873eb8ceaf4f504c474c2"
+      ],
+      "key": [
+        "da-tacos_benchmark_subset_key/W_163930_key/P_546633_key.h5",
+        "5bd4adaa044f0524b3fd65fc130729ff"
+      ],
+      "madmom": [
+        "da-tacos_benchmark_subset_madmom/W_163930_madmom/P_546633_madmom.h5",
+        "074c317a2e4e2ebaf127916a9fde2d63"
+      ],
+      "mfcc": [
+        "da-tacos_benchmark_subset_mfcc/W_163930_mfcc/P_546633_mfcc.h5",
+        "a4e16c57204542ebefb5e4cd8d1d99fb"
+      ],
+      "tags": [
+        null,
+        null
+      ]
+    },
+    "coveranalysis#W_163992#P_547131": {
+      "cens": [
+        "da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5",
+        "0600f6cad14b51368d05a436dd0f78b2"
+      ],
+      "crema": [
+        "da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5",
+        "57091f986b7ef858d9dd315f2dc39539"
+      ],
+      "hpcp": [
+        "da-tacos_coveranalysis_subset_hpcp/W_163992_hpcp/P_547131_hpcp.h5",
+        "cd13c1abf937297a3bbdea0a4309ea8c"
+      ],
+      "key": [
+        "da-tacos_coveranalysis_subset_key/W_163992_key/P_547131_key.h5",
+        "8d88ca0e4b1aea6bf860ee87daa8fb88"
+      ],
+      "madmom": [
+        "da-tacos_coveranalysis_subset_madmom/W_163992_madmom/P_547131_madmom.h5",
+        "4d153ab9bba8d32ab152e421de93e140"
+      ],
+      "mfcc": [
+        "da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5",
+        "49412e269d097c4d89ea4d37694808f2"
+      ],
+      "tags": [
+        "da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5",
+        "7d32634fdf9d7f571e0a28658a32c5c7"
+      ]
+    }
+  }
+}

@@ -8,7 +8,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "2"
     data_home = os.path.normpath("tests/resources/mir_datasets/salami")
-    dataset = salami.Dataset(data_home)
+    dataset = salami.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -122,7 +122,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/salami"
-    dataset = salami.Dataset(data_home)
+    dataset = salami.Dataset(data_home, version="test")
     track = dataset.track("2")
     jam = track.to_jams()
 
@@ -213,7 +213,7 @@ def test_load_sections():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/salami"
-    dataset = salami.Dataset(data_home)
+    dataset = salami.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["2"] == {
         "source": "Codaich",

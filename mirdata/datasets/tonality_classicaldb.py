@@ -50,10 +50,16 @@ BIBTEX = """@article{gomez2006tonal,
   journal={Department of Information and Communication Technologies},
   year={2006}
 }"""
+
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="tonality_classicaldb_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="tonality_classicaldb_index_1.0.json",
+        url="https://zenodo.org/records/13993012/files/tonality_classicaldb_index_1.0.json?download=1",
+        checksum="5f73a3bf0beb43d3ecae414888d5bdf5",
+    ),
+    "sample": core.Index(filename="tonality_classicaldb_index_1.0_sample.json"),
 }
 REMOTES = {
     "keys": download_utils.RemoteFileMetadata(

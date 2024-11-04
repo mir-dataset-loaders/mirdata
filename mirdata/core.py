@@ -104,10 +104,12 @@ class Dataset(object):
 
         Args:
             data_home (str or None): path where mirdata will look for the dataset
+            version (str): dataset version
             name (str or None): the identifier of the dataset
             track_class (mirdata.core.Track or None): a Track class
             multitrack_class (mirdata.core.Multitrack or None): a Multitrack class
             bibtex (str or None): dataset citation/s in bibtex format
+            indexes (dict or None): indexes to be downloaded
             remotes (dict or None): data to be downloaded
             download_info (str or None): download instructions or caveats
             license_info (str or None): license of the dataset
@@ -127,7 +129,7 @@ class Dataset(object):
             self.version = version
 
         self._index_data = indexes[self.version]
-        self.index_path = self._index_data.get_path(self.data_home)
+        self.index_path = self._index_data.get_path()
 
         self._track_class = track_class
         self._multitrack_class = multitrack_class
@@ -784,7 +786,6 @@ class MultiTrack(Track):
 
 class Index(object):
     """Class for storing information about dataset indexes.
-
     Args:
         filename (str): The index filename (not path), e.g. "example_dataset_index_1.2.json"
         url (str or None): None if index is not remote, or a url to download from
@@ -792,12 +793,10 @@ class Index(object):
         partial_download (list or None): if provided, specifies a subset of Dataset.remotes
             corresponding to this index to be downloaded. If None, all Dataset.remotes will
             be downloaded when calling Dataset.download()
-
     Attributes:
         remote (download_utils.RemoteFileMetadata or None): None if index is not remote, or
             a RemoteFileMetadata object
         partial_download (list or None): a list of keys to partially download, or None
-
     """
 
     def __init__(
@@ -809,12 +808,17 @@ class Index(object):
     ):
         self.filename = filename
         self.remote: Optional[download_utils.RemoteFileMetadata]
+        self.indexes_dir = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            "datasets",
+            "indexes",
+        )
         if url and checksum:
             self.remote = download_utils.RemoteFileMetadata(
                 filename=filename,
                 url=url,
                 checksum=checksum,
-                destination_dir="mirdata_indexes",
+                destination_dir=self.indexes_dir,
             )
         elif url or checksum:
             raise ValueError(
@@ -825,24 +829,9 @@ class Index(object):
 
         self.partial_download = partial_download
 
-    def get_path(self, data_home: str) -> str:
+    def get_path(self) -> str:
         """Get the absolute path to the index file
-
-        Args:
-            data_home (str): Path where the dataset's data lives
-
         Returns:
             str: absolute path to the index file
         """
-        # if the index is downloaded from remote, it is in the same folder
-        # as the data
-        if self.remote:
-            return os.path.join(data_home, "mirdata_indexes", self.filename)
-        # if the index is part of mirdata locally, it is in the indexes folder
-        # of the repository
-        else:
-            return os.path.join(
-                os.path.dirname(os.path.realpath(__file__)),
-                "datasets/indexes",
-                self.filename,
-            )
+        return os.path.join(self.indexes_dir, self.filename)

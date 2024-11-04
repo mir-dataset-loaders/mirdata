@@ -19,7 +19,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "c-1"
     data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
-    dataset = cipi.Dataset(data_home)
+    dataset = cipi.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -55,7 +55,7 @@ def test_track():
 
 def test_to_jam():
     data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
-    dataset = cipi.Dataset(data_home)
+    dataset = cipi.Dataset(data_home, version="test")
     track = dataset.track("c-1")
     jam = track.to_jams()
     assert (
@@ -91,6 +91,6 @@ def test_load_score():
         "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.musicxml"
     )
     data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
-    score = cipi.load_score(path, data_home)
+    score = cipi.load_score(path, data_home, version="test")
     assert isinstance(score, music21.stream.Score)
     assert len(score.parts) == 2

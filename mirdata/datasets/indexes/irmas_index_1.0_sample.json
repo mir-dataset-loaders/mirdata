@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "0189__2": {
+      "audio": [
+        "IRMAS-TrainingData/cla/[cla][cla]0189__2.wav",
+        "d4e2e0db4b72d5e5a54b06ce75f2f5d6"
+      ],
+      "annotation": [
+        "IRMAS-TrainingData/cla/[cla][cla]0189__2.wav",
+        "d4e2e0db4b72d5e5a54b06ce75f2f5d6"
+      ]
+    },
+    "1": {
+      "audio": [
+        "IRMAS-TestingData-Part1/Part1/02 - And The Body Will Die-8.wav",
+        "7e1e3bcf7730424d00220fdd8733b161"
+      ],
+      "annotation": [
+        "IRMAS-TestingData-Part1/Part1/02 - And The Body Will Die-8.txt",
+        "95b1e0089d41c6e784fb3f0424e92cc1"
+      ]
+    }
+  }
+}

@@ -173,6 +173,15 @@ def test_dataset():
     print(dataset)  # test that repr doesn't fail
 
 
+def test_list_versions():
+    assert (
+        mirdata.list_dataset_versions("acousticbrainz_genre")
+        == "Available versions for acousticbrainz_genre: ['1.0']. Default version: 1.0"
+    )
+    with pytest.raises(ValueError):
+        mirdata.list_dataset_versions("asdf")
+
+
 def test_dataset_versions():
     class VersionTest(core.Dataset):
         def __init__(self, data_home=None, version="default"):
@@ -186,36 +195,46 @@ def test_dataset_versions():
                     "1": core.Index(
                         "blah_1.json", url="https://google.com", checksum="asdf"
                     ),
-                    "2": core.Index("blah_2.json"),
-                    "real": core.Index("beatles_index_1.2.json"),
+                    "real": core.Index("acousticbrainz_genre_index_sample.json"),
+                },
+            )
+
+    class VersionTest2(core.Dataset):
+        def __init__(self, data_home=None, version="default"):
+            super().__init__(
+                data_home,
+                version,
+                indexes={
+                    "default": "2",
+                    "2": core.Index("blah_2.json", url="https://google.com"),
                 },
             )
 
     dataset = VersionTest("asdf")
     assert dataset.version == "1"
-    assert os.path.normpath(dataset.index_path) == os.path.normpath(
-        "asdf/mirdata_indexes/blah_1.json"
-    )
+    assert os.path.join(
+        *dataset.index_path.split(os.path.sep)[-4:]
+    ) == os.path.normpath("mirdata/datasets/indexes/blah_1.json")
 
-    dataset_default = VersionTest("asdf", version="default")
+    dataset_default = VersionTest("asdf")
     assert dataset_default.version == "1"
-    assert os.path.normpath(dataset_default.index_path) == os.path.normpath(
-        "asdf/mirdata_indexes/blah_1.json"
-    )
+    assert os.path.join(
+        *dataset.index_path.split(os.path.sep)[-4:]
+    ) == os.path.normpath("mirdata/datasets/indexes/blah_1.json")
 
     dataset_1 = VersionTest("asdf", version="1")
     assert dataset_1.version == "1"
-    assert os.path.normpath(dataset_1.index_path) == os.path.normpath(
-        "asdf/mirdata_indexes/blah_1.json"
-    )
+    assert os.path.join(
+        *dataset_1.index_path.split(os.path.sep)[-4:]
+    ) == os.path.normpath("mirdata/datasets/indexes/blah_1.json")
     with pytest.raises(FileNotFoundError):
         dataset_1._index
 
     local_index_path = os.path.dirname(os.path.realpath(__file__))[:-5]
     dataset_test = VersionTest("asdf", version="test")
     assert dataset_test.version == "0"
-    assert os.path.normpath(dataset_test.index_path) == os.path.join(
-        local_index_path, os.path.normpath("mirdata/datasets/indexes/blah_0.json")
+    assert dataset_test.index_path == os.path.join(
+        local_index_path, "mirdata/datasets/", "indexes", "blah_0.json"
     )
 
     with pytest.raises(IOError):
@@ -223,27 +242,26 @@ def test_dataset_versions():
 
     dataset_0 = VersionTest("asdf", version="0")
     assert dataset_0.version == "0"
-    assert os.path.normpath(dataset_0.index_path) == os.path.join(
-        local_index_path, os.path.normpath("mirdata/datasets/indexes/blah_0.json")
-    )
-
-    dataset_2 = VersionTest("asdf", version="2")
-    assert dataset_2.version == "2"
-    assert os.path.normpath(dataset_2.index_path) == os.path.join(
-        local_index_path, os.path.normpath("mirdata/datasets/indexes/blah_2.json")
+    assert dataset_0.index_path == os.path.join(
+        local_index_path, "mirdata/datasets/", "indexes", "blah_0.json"
     )
 
     dataset_real = VersionTest("asdf", version="real")
     assert dataset_real.version == "real"
-    assert os.path.normpath(dataset_real.index_path) == os.path.join(
+    assert dataset_real.index_path == os.path.join(
         local_index_path,
-        os.path.normpath("mirdata/datasets/indexes/beatles_index_1.2.json"),
+        "mirdata/datasets/",
+        "indexes",
+        "acousticbrainz_genre_index_sample.json",
     )
     idx_test = dataset_real._index
     assert isinstance(idx_test, dict)
 
     with pytest.raises(ValueError):
         VersionTest("asdf", version="not_a_version")
+
+    with pytest.raises(ValueError):
+        VersionTest2("asdf", version="2")
 
 
 def test_dataset_errors():

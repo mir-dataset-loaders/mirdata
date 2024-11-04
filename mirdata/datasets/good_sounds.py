@@ -45,10 +45,16 @@ BIBTEX = """@inproceedings{romani2015real,
   year={2015},
   organization={Audio Engineering Society}
 }"""
+
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="good_sounds_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="good_sounds_index_1.0.json",
+        url="https://zenodo.org/records/13916510/files/good_sounds_index_1.0.json?download=1",
+        checksum="9cda4e4ab46effbdfcc2be744d593d06",
+    ),
+    "sample": core.Index(filename="good_sounds_index_1.0_sample.json"),
 }
 REMOTES = {
     "packs": download_utils.RemoteFileMetadata(

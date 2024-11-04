@@ -8,7 +8,7 @@ def test_track():
     default_trackid = "1"
     default_trackid_train = "0189__2"
     data_home = os.path.normpath("tests/resources/mir_datasets/irmas")
-    dataset = irmas.Dataset(data_home)
+    dataset = irmas.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     track_train = dataset.track(default_trackid_train)
     expected_attributes = {
@@ -61,7 +61,7 @@ def test_to_jams():
     # Training samples
     default_trackid_train = "0189__2"
     data_home = "tests/resources/mir_datasets/irmas"
-    dataset = irmas.Dataset(data_home)
+    dataset = irmas.Dataset(data_home, version="test")
     track_train = dataset.track(default_trackid_train)
     jam_train = track_train.to_jams()
 
@@ -76,7 +76,7 @@ def test_to_jams():
     # Testing samples
     default_trackid_test = "1"
     data_home = "tests/resources/mir_datasets/irmas"
-    dataset = irmas.Dataset(data_home)
+    dataset = irmas.Dataset(data_home, version="test")
     track_test = dataset.track(default_trackid_test)
     jam_test = track_test.to_jams()
 
