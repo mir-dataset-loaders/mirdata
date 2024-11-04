@@ -65,8 +65,13 @@ BIBTEX = """@inproceedings{cella2020preprint,
 
 INDEXES = {
     "default": "6.0",
-    "test": "6.0",
-    "6.0": core.Index(filename="tinysol_index_6.0.json"),
+    "test": "sample",
+    "6.0": core.Index(
+        filename="tinysol_index_6.0.json",
+        url="https://zenodo.org/records/13993273/files/tinysol_index_6.0.json?download=1",
+        checksum="dba7aab99081f66d6a46f2bcfc1a3296",
+    ),
+    "sample": core.Index(filename="tinysol_index_6.0_sample.json"),
 }
 
 REMOTES = {

@@ -38,8 +38,13 @@ BIBTEX = """@inproceedings{smith2011salami,
 
 INDEXES = {
     "default": "2.0-corrected",
-    "test": "2.0-corrected",
-    "2.0-corrected": core.Index(filename="salami_index_2.0-corrected.json"),
+    "test": "sample",
+    "2.0-corrected": core.Index(
+        filename="salami_index_2.0-corrected.json",
+        url="https://zenodo.org/records/13930530/files/salami_index_2.0-corrected.json?download=1",
+        checksum="0a804127c0e9909abd4ea6c437b4133f",
+    ),
+    "sample": core.Index(filename="salami_index_2.0-corrected_sample.json"),
 }
 
 REMOTES = {

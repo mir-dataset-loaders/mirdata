@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "tracks": {
+    "drummer1/eval_session/1": {
+      "midi": [
+        "drummer1/eval_session/1_funk-groove1_138_beat_4-4.mid",
+        "b01a609cee84cfbc2c154bb9b6566955"
+      ],
+      "audio": [
+        "drummer1/eval_session/1_funk-groove1_138_beat_4-4.wav",
+        "7f94a191506f70ac9d313b7978203c3c"
+      ]
+    },
+    "drummer1/eval_session/10": {
+      "midi": [
+        "drummer1/eval_session/10_soul-groove10_102_beat_4-4.mid",
+        "fe268e791203e633814b8deffb2df55a"
+      ],
+      "audio": [
+        "drummer1/eval_session/10_soul-groove10_102_beat_4-4.wav",
+        "0a5b44e201f15b614a475564fc91d8e7"
+      ]
+    }
+  }
+}

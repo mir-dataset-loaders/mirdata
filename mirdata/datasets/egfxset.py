@@ -106,9 +106,14 @@ BIBTEX = """
 """
 
 INDEXES = {
-    "default": "1",
-    "test": "1",
-    "1": core.Index(filename="egfxset_index_1.json"),
+    "default": "1.0",
+    "test": "sample",
+    "1.0": core.Index(
+        filename="egfxset_index_1.0.json",
+        url="https://zenodo.org/records/13930501/files/egfxset_index_1.json?download=1",
+        checksum="c72222f93e03fce0f6135a60aefe5312",
+    ),
+    "sample": core.Index(filename="egfxset_index_1.0_sample.json"),
 }
 
 REMOTES = {

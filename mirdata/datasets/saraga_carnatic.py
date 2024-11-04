@@ -57,8 +57,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.5",
-    "test": "1.5",
-    "1.5": core.Index(filename="saraga_carnatic_index_1.5.json"),
+    "test": "sample",
+    "1.5": core.Index(
+        filename="saraga_carnatic_index_1.5.json",
+        url="https://zenodo.org/records/13993042/files/saraga_carnatic_index_1.5.json?download=1",
+        checksum="4cac461c0baba0dde95061d5bc84a875",
+    ),
+    "sample": core.Index(filename="saraga_carnatic_index_1.5_sample.json"),
 }
 
 REMOTES = {
