@@ -1,8 +1,8 @@
 .. _tutorial:
 
-###############
-Getting started
-###############
+########
+Tutorial
+########
 
 Installation
 ------------
