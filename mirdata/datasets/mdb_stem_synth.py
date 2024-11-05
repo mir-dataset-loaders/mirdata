@@ -100,8 +100,8 @@ class Track(core.Track):
         """The track's audio
 
         Returns:
-            * np.ndarray: audio signal
-            * float: sample rate
+            * np.ndarray - audio signal
+            * float - sample rate
 
         """
         return load_audio(self.audio_path)
