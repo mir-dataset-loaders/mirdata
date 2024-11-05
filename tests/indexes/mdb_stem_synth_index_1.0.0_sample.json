@@ -1,0 +1,15 @@
+{
+  "version": "sample",
+  "tracks": {
+    "AClassicEducation_NightOwl_STEM_08": {
+      "audio": [
+        "audio_stems/AClassicEducation_NightOwl_STEM_08.RESYN.wav",
+        "698afb048e8bc2d22b8db86792a799cf"
+      ],
+      "f0": [
+        "annotation_stems/AClassicEducation_NightOwl_STEM_08.RESYN.csv",
+        "759614c33da2cb4fce3e81773df2a52c"
+      ]
+    }
+  }
+}
