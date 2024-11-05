@@ -20,7 +20,7 @@ Installing mirdata for development purposes
 
 To install Mirdata for development purposes:
 
-    - First, run ``git clone https://github.com/mir-dataset-loaders/mirdata.git``
+    - First, fork the Mirdata repository on GitHub and clone your fork locally.
 
     - Then, after opening source data library you have to install all the dependencies:
 
