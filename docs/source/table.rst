@@ -361,6 +361,14 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
+   * - MDB-stem-synth
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+     - 230
+     - .. image:: https://licensebuttons.net/l/by-nc/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc/4.0
+
    * - Medley-solos-DB
      - - audio: ✅
        - annotations: ✅

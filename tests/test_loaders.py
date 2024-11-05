@@ -36,6 +36,7 @@ CUSTOM_TEST_TRACKS = {
     "irmas": "1",
     "medley_solos_db": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
     "medleydb_melody": "MusicDelta_Beethoven",
+    "mdb_stem_synth": "AClassicEducation_NightOwl_STEM_08",
     "mridangam_stroke": "224030",
     "rwc_classical": "RM-C003",
     "rwc_jazz": "RM-J004",
