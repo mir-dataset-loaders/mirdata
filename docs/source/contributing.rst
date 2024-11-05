@@ -113,7 +113,7 @@ Here there is an example of an index to use as guideline:
 More examples of scripts used to create dataset indexes can be found in the `scripts <https://github.com/mir-dataset-loaders/mirdata/tree/master/scripts>`_ folder.
 
 .. note::
-    Users should be able to create the dataset indexes without the need for additional dependencies that are not included in soundata by default. Should you need an additional dependency for a specific reason, please open an issue to discuss with the Soundata maintainers the need for it.
+    Users should be able to create the dataset indexes without the need for additional dependencies that are not included in Mirdata by default. Should you need an additional dependency for a specific reason, please open an issue to discuss with the Mirdata maintainers the need for it.
 
 tracks
 ^^^^^^
@@ -339,7 +339,7 @@ and ``LICENSE_INFO`` (including the license that protects the dataset in the dat
 .. note::
     Direct url for download and checksum can be found in the Zenodo entries of the dataset and index. Bear in mind that the url and checksum for the index will be available once a maintainer of the Audio Data Loaders Zenodo community has accepted the index upload.
     For other repositories, you may need to generate the checksum yourself.
-    You may use the function provided in ``soundata.validate.py``.
+    You may use the function provided in ``mirdata.validate.py``.
 
 
 Make sure to include, in the docstring of the dataloader, information about the following list of relevant aspects about the dataset you are integrating:
@@ -359,7 +359,7 @@ It is important that the docstring is clean, and the information is very clear t
 This will also engage users to use the dataloader!
 For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
 .. note::  
-    If the dataset you are trying to integrate stores every clip in a separated compressed file, it cannot be currently supported by soundata. Feel free to open and issue to discuss a solution (hopefully for the near future!)
+    If the dataset you are trying to integrate stores every clip in a separated compressed file, it cannot be currently supported by Mirdata. Feel free to open and issue to discuss a solution (hopefully for the near future!)
 
 
 .. _add_tests:
@@ -492,17 +492,17 @@ An example of this for the ``Beatport EDM key`` dataset:
 badges images and links `here <https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba>`_.
 
 
-. _upload_index:
+.. _upload_index:
 
 5. Uploading the index to Zenodo
 --------------------------------
 
 We store all dataset indexes in an online repository on Zenodo.
 To use a dataloader, users may retrieve the index running the ``dataset.download()`` function that is also used to download the dataset.
-To download only the index, you may run ``.download(["index"])``. The index will be automatically downloaded and stored in the expected folder in Soundata.
+To download only the index, you may run ``.download(["index"])``. The index will be automatically downloaded and stored in the expected folder in Mirdata.
 
 From a contributor point of view, you may create the index, store it locally, and develop the dataloader.
-All JSON files in ``soundata/indexes/`` are included in the .gitignore file, 
+All JSON files in ``mirdata/indexes/`` are included in the .gitignore file, 
 therefore there is no need to remove it when pushing to the remote branch during development, since it will be ignored by git.
 
 **Important!** When creating the PR, please `submit your index to our Zenodo community <https://zenodo.org/communities/audio-data-loaders/>`_:
@@ -513,7 +513,7 @@ therefore there is no need to remove it when pushing to the remote branch during
 * Resource type is *Other*.
 * Title should be *mirdata-<dataset-id>_index_<version>*, e.g. mirdata-beatles_index_1.2.
 * Add yourself as the Creator of this entry.
-* The license of the index should be the `same as Soundata <https://github.com/mir-dataset-loaders/mirdata/blob/main/LICENSE>`_. 
+* The license of the index should be the `same as Mirdata <https://github.com/mir-dataset-loaders/mirdata/blob/main/LICENSE>`_. 
 * Visibility should be set as *Public*.
 
 .. note::

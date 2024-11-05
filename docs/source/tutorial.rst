@@ -44,7 +44,7 @@ Now ``orchset`` is a ``Dataset`` object containing common methods, described bel
 You can specify the directory where the Mirdata data is stored by passing a path to ``data_home``.
 
 Mirdata supports working with multiple dataset versions.
-To see all available versions of a specific dataset, run ``soundata.list_dataset_versions('orchset')``.
+To see all available versions of a specific dataset, run ``mirdata.list_dataset_versions('orchset')``.
 Use ``version`` parameter if you wish to use a version other than the default one.
 
 .. code-block:: python
