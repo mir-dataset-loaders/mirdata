@@ -79,7 +79,6 @@ Before starting, check if your dataset falls into one of these non-standard case
     * Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
     * Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
     * Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
-    * Is the index large (e.g. > 5 MB)? If so, see `this section <large_index_>`_
 
 
 .. _create_index:
@@ -318,6 +317,18 @@ and ``LICENSE_INFO`` (including the license that protects the dataset in the dat
 
     **Important:** We do recommend to set the highest version of the dataset as the default version in the ``INDEXES`` variable.
     However, if there is a reason for having a different version as the default, please do so.
+
+    When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and ``checksum`` to the ``Index`` class:
+
+    .. code-block:: python
+
+        "1.0": core.Index(
+            filename="example_index_1.0.json",  # the name of the index file
+            url=<url>,  # the download link
+            checksum=<checksum>,  # the md5 checksum
+        )
+
+    Remote indexes get downloaded along with the data when calling ``.download()``, and are stored in ``<data_home>/mirdata/datasets/indexes``.
 
 ``REMOTES``
     Should be a list of ``RemoteFileMetadata`` objects, which are used to download the dataset files. See an example below:
@@ -674,30 +685,6 @@ could look like:
         "1.0": core.Index(filename="example_index_1.0.json", partial_download=['audio', 'v1-annotations']),
         "2.0": core.Index(filename="example_index_2.0.json", partial_download=['audio', 'v2-annotations']),
     }
-
-
-.. _large_index:
-
-Datasets with large indexes
----------------------------
-
-Large indexes should be stored remotely, rather than checked in to the mirdata repository.
-mirdata has a `zenodo community <https://zenodo.org/communities/mirdata/?page=1&size=20>`_
-where larger indexes can be uploaded as "datasets".
-
-When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and
-``checksum`` to the ``Index`` class:
-
-.. code-block:: python
-
-    "1.0": core.Index(
-        filename="example_index_1.0.json",  # the name of the index file
-        url=<url>,  # the download link
-        checksum=<checksum>,  # the md5 checksum
-    )
-
-Remote indexes get downloaded along with the data when calling ``.download()``,
-and are stored in ``<data_home>/mirdata_indexes``.
 
 
 Documentation
