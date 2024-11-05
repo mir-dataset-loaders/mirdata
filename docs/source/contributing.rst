@@ -524,7 +524,7 @@ therefore there is no need to remove it when pushing to the remote branch during
 * Resource type is *Other*.
 * Title should be *mirdata-<dataset-id>_index_<version>*, e.g. mirdata-beatles_index_1.2.
 * Add yourself as the Creator of this entry.
-* The license of the index should be the `same as Mirdata <https://github.com/mir-dataset-loaders/mirdata/blob/main/LICENSE>`_. 
+* The license of the index should be the `same as Mirdata <https://github.com/mir-dataset-loaders/mirdata/blob/master/LICENSE>`_.
 * Visibility should be set as *Public*.
 
 .. note::
