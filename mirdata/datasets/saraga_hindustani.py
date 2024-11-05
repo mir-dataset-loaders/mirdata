@@ -61,7 +61,7 @@ INDEXES = {
     "default": "1.5",
     "test": "sample",
     "1.5": core.Index(
-        filename="saraga_hindustani_index_1.5",
+        filename="saraga_hindustani_index_1.5.json",
         url="https://zenodo.org/records/14007799/files/saraga_hindustani_index_1.5.json?download=1",
         checksum="f4fad49798d36c9aa6411b797335192f",
     ),

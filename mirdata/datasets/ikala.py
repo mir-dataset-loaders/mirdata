@@ -40,13 +40,13 @@ INDEXES = {
     "default": "2.0",
     "test": "sample",
     "1.0": core.Index(
-        filename="ikala_index_1.0",
+        filename="ikala_index_1.0.json",
         partial_download=["metadata"],
         url="https://zenodo.org/records/14007846/files/ikala_index_1.0.json?download=1",
         checksum="9894ae52479181e61279b6c6664aa0df",
     ),
     "2.0": core.Index(
-        filename="fikala_index_2.0",
+        filename="ikala_index_2.0.json",
         url="https://zenodo.org/records/14007846/files/ikala_index_2.0.json?download=1",
         checksum="dd664542f760f9c5d41641eb5eb8d3aa",
     ),

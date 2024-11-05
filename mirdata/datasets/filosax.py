@@ -66,22 +66,22 @@ INDEXES = {
     "lite_sax": "lite_sax_1.0",
     "test": "sample",
     "full_1.0": core.Index(
-        filename="filosax_index_full_1.0",
+        filename="filosax_index_full_1.0.json",
         url="https://zenodo.org/records/14008017/files/filosax_index_full_1.0.json?download=1",
         checksum="e5cc1082f9b5d901c002278f7176bf3e",
     ),
     "full_sax_1.0": core.Index(
-        filename="filosax_index_full_sax_1.0",
+        filename="filosax_index_full_sax_1.0.json",
         url="https://zenodo.org/records/14008057/files/filosax_index_full_sax_1.0.json?download=1",
         checksum="04acdfd8247f380a434010eb73e509f6",
     ),
     "lite_1.0": core.Index(
-        filename="filosax_index_lite_1.0",
+        filename="filosax_index_lite_1.0.json",
         url="https://zenodo.org/records/14008071/files/filosax_index_lite_1.0.json?download=1",
         checksum="98030506c5d853d6c875beb98b4b113e",
     ),
     "lite_sax_1.0": core.Index(
-        filename="filosax_index_lite_sax_1.0",
+        filename="filosax_index_lite_sax_1.0.json",
         url="https://zenodo.org/records/14008077/files/filosax_index_lite_sax_1.0.json?download=1",
         checksum="4608b757698fa26ff36bbb2cb8135c4f",
     ),
