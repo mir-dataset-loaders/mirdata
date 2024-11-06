@@ -55,9 +55,15 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="brid_full_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="brid_full_index_1.0.json",
+        url="https://zenodo.org/records/14048016/files/brid_full_index_1.0.json?download=1",
+        checksum="18701a7b6c20e549c0394bbd80c01699",
+    ),
+    "sample": core.Index(filename="brid_full_index_1.0_sample.json"),
 }
+
 
 REMOTES = None
 

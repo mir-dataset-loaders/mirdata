@@ -9,7 +9,7 @@ import io
 def test_track():
     default_trackid = "[0001] M4-01-SA"
     data_home = os.path.normpath("tests/resources/mir_datasets/brid")
-    dataset = brid.Dataset(data_home)
+    dataset = brid.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -43,7 +43,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/brid"
-    dataset = brid.Dataset(data_home)
+    dataset = brid.Dataset(data_home, version="test")
     track = dataset.track("[0001] M4-01-SA")
     jam = track.to_jams()
     tempo = jam.search(namespace="tempo")[0]["data"]
@@ -58,7 +58,7 @@ def test_to_jams():
 
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/brid"
-    dataset = brid.Dataset(data_home)
+    dataset = brid.Dataset(data_home, version="test")
     track = dataset.track("[0001] M4-01-SA")
     tempo_path = track.tempo_path
     parsed_tempo = brid.load_tempo(tempo_path)
@@ -68,7 +68,7 @@ def test_load_tempo():
 
 def test_load_beats():
     data_home = "tests/resources/mir_datasets/brid"
-    dataset = brid.Dataset(data_home)
+    dataset = brid.Dataset(data_home, version="test")
     track = dataset.track("[0001] M4-01-SA")
     beats_path = track.beats_path
     parsed_beats = brid.load_beats(beats_path)
@@ -86,7 +86,7 @@ def test_load_beats():
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/brid"
-    dataset = brid.Dataset(data_home)
+    dataset = brid.Dataset(data_home, version="test")
     track = dataset.track("[0001] M4-01-SA")
     audio_path = track.audio_path
     audio, sr = brid.load_audio(audio_path)
