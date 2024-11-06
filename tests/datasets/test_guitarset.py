@@ -11,7 +11,7 @@ TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/guitarset")
 
 def test_track():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -67,7 +67,7 @@ def test_track():
 
 
 def test_notes_and_all_notes():
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("03_BN3-119-G_solo")
     notes_all = track.notes_all
     for note in track.notes.values():
@@ -82,7 +82,7 @@ def test_notes_and_all_notes():
 
 
 def test_contours_and_multif0():
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("03_BN3-119-G_solo")
     multif0 = track.multif0
     for contour in track.pitch_contours.values():
@@ -119,7 +119,7 @@ def test_fill_pitch_contour():
 
 def test_load_beats():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     assert np.allclose(track.beats.times, [0.50420168, 1.00840336, 1.51260504])
     assert np.allclose(track.beats.positions, np.array([2, 3, 4]))
@@ -127,7 +127,7 @@ def test_load_beats():
 
 def test_load_chords():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     assert np.allclose(track.leadsheet_chords.intervals[:, 0], [0])
     assert np.allclose(track.leadsheet_chords.intervals[:, 1], [2])
@@ -140,7 +140,7 @@ def test_load_chords():
 
 def test_load_keys():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     assert np.allclose(track.key_mode.intervals[:, 0], [0])
     assert np.allclose(track.key_mode.intervals[:, 1], [2])
@@ -149,7 +149,7 @@ def test_load_keys():
 
 def test_load_contours():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     assert np.allclose(
         track.pitch_contours["e"].times[:10],
@@ -175,7 +175,7 @@ def test_load_contours():
 
 def test_load_notes():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     assert np.allclose(
         track.notes["e"].intervals[:, 0],
@@ -193,7 +193,7 @@ def test_load_notes():
 
 def test_audio_mono():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     # test audio loading functions
     y, sr = track.audio_mic
@@ -206,7 +206,7 @@ def test_audio_mono():
 
 def test_audio_hex():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     y, sr = track.audio_hex
     assert sr == 44100
@@ -215,7 +215,7 @@ def test_audio_hex():
 
 def test_audio_hex_cln():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(TEST_DATA_HOME)
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
     y, sr = track.audio_hex_cln
     assert sr == 44100
@@ -224,7 +224,9 @@ def test_audio_hex_cln():
 
 def test_to_jams():
     default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset("tests/resources/mir_datasets/guitarset")
+    dataset = guitarset.Dataset(
+        "tests/resources/mir_datasets/guitarset", version="test"
+    )
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 

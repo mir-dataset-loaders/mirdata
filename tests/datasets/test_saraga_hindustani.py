@@ -8,7 +8,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "50_Irani_Bhairavi_Thumri"
     data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -69,7 +69,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     jam = track.to_jams()
 
@@ -122,7 +122,7 @@ def test_to_jams():
 
 def test_load_tonic():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     tonic_path = track.ctonic_path
     parsed_tonic = saraga_hindustani.load_tonic(tonic_path)
@@ -132,7 +132,7 @@ def test_load_tonic():
 
 def test_load_pitch():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     pitch_path = track.pitch_path
     parsed_pitch = saraga_hindustani.load_pitch(pitch_path)
@@ -179,7 +179,7 @@ def test_load_pitch():
 
 def test_load_sama():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     sama_path = track.sama_path
     parsed_sama = saraga_hindustani.load_sama(sama_path)
@@ -205,7 +205,7 @@ def test_load_sama():
 
 def test_load_sections():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     sections_path = track.sections_path
     parsed_sections = saraga_hindustani.load_sections(sections_path)
@@ -240,7 +240,7 @@ def test_load_sections():
 
 def test_load_phrases():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     phrases_path = track.phrases_path
     parsed_phrases = saraga_hindustani.load_phrases(phrases_path)
@@ -273,7 +273,7 @@ def test_load_phrases():
 
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     tempo_path = track.tempo_path
     parsed_tempo = saraga_hindustani.load_tempo(tempo_path)
@@ -315,7 +315,7 @@ def test_load_tempo():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     metadata_path = track.metadata_path
     parsed_metadata = saraga_hindustani.load_metadata(metadata_path)
@@ -414,7 +414,7 @@ def test_load_metadata():
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home)
+    dataset = saraga_hindustani.Dataset(data_home, version="test")
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     audio_path = track.audio_path
     audio, sr = saraga_hindustani.load_audio(audio_path)

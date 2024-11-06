@@ -9,7 +9,7 @@ import io
 def test_track():
     default_trackid = "cuidado_FallaCancion"
     data_home = os.path.normpath("tests/resources/mir_datasets/cuidado")
-    dataset = cuidado.Dataset(data_home)
+    dataset = cuidado.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -43,7 +43,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/cuidado"
-    dataset = cuidado.Dataset(data_home)
+    dataset = cuidado.Dataset(data_home, version="test")
     track = dataset.track("cuidado_FallaCancion")
     jam = track.to_jams()
     tempo = jam.search(namespace="tempo")[0]["data"]
@@ -58,7 +58,7 @@ def test_to_jams():
 
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/cuidado"
-    dataset = cuidado.Dataset(data_home)
+    dataset = cuidado.Dataset(data_home, version="test")
     track = dataset.track("cuidado_FallaCancion")
     tempo_path = track.tempo_path
     parsed_tempo = cuidado.load_tempo(tempo_path)
@@ -68,7 +68,7 @@ def test_load_tempo():
 
 def test_load_beats():
     data_home = "tests/resources/mir_datasets/cuidado"
-    dataset = cuidado.Dataset(data_home)
+    dataset = cuidado.Dataset(data_home, version="test")
     track = dataset.track("cuidado_FallaCancion")
     beats_path = track.beats_path
     parsed_beats = cuidado.load_beats(beats_path)
@@ -101,7 +101,7 @@ def test_load_beats():
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/cuidado"
-    dataset = cuidado.Dataset(data_home)
+    dataset = cuidado.Dataset(data_home, version="test")
     track = dataset.track("cuidado_FallaCancion")
     audio_path = track.audio_path
     audio, sr = cuidado.load_audio(audio_path)

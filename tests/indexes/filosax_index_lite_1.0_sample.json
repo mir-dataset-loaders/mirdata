@@ -1,0 +1,129 @@
+{
+  "version": "sample",
+  "tracks": {
+    "multitrack_01_bass_drums": {
+      "audio": [
+        "Backing/01/Bass_Drums.wav",
+        "6671fc38cb650df9a109f940c838202e"
+      ],
+      "annotation": [
+        null,
+        null
+      ],
+      "midi": [
+        null,
+        null
+      ],
+      "musicXML": [
+        null,
+        null
+      ],
+      "pdf": [
+        null,
+        null
+      ]
+    },
+    "multitrack_01_piano_drums": {
+      "audio": [
+        "Backing/01/Piano_Drums.wav",
+        "98c89d96ecee38d8b847412190a232a9"
+      ],
+      "annotation": [
+        null,
+        null
+      ],
+      "midi": [
+        null,
+        null
+      ],
+      "musicXML": [
+        null,
+        null
+      ],
+      "pdf": [
+        null,
+        null
+      ]
+    },
+    "multitrack_01_sax_1": {
+      "audio": [
+        "Participant 1/01/Sax.wav",
+        "2c40445f9a2aaf88731e273c688fa366"
+      ],
+      "annotation": [
+        "Participant 1/01/annotations.json",
+        "1072915c57230d009055e9ffec0714c2"
+      ],
+      "midi": [
+        "Participant 1/01/Sax.mid",
+        "c4e7284df10ff5dafce3e5db5ffb1f87"
+      ],
+      "musicXML": [
+        "Participant 1/01/Sax.musicxml",
+        "d6ed4d1b593db1cf60374d0622ad7ce8"
+      ],
+      "pdf": [
+        "Participant 1/01/Sax.pdf",
+        "d764cb6d44e8d2f103d44d7a7fde95ca"
+      ]
+    },
+    "multitrack_01_sax_2": {
+      "audio": [
+        "Participant 2/01/Sax.wav",
+        "3a3539ed1e24c634b7e0be531fbf22bf"
+      ],
+      "annotation": [
+        "Participant 2/01/annotations.json",
+        "a43c75238ac7e89d056a9d97649ef07a"
+      ],
+      "midi": [
+        "Participant 2/01/Sax.mid",
+        "f9a5668e6a1eb21a1415304941c830a7"
+      ],
+      "musicXML": [
+        "Participant 2/01/Sax.musicxml",
+        "3b9c6e2d5eef049abead7514ee2043bc"
+      ],
+      "pdf": [
+        "Participant 2/01/Sax.pdf",
+        "c0190fa5c6d36f9f99581ed477e9b585"
+      ]
+    },
+    "multitrack_02_sax_1": {
+      "audio": [
+        "Participant 1/02/Sax.wav",
+        "c62cd9d2ec8085461cb2ffc9deeda176"
+      ],
+      "annotation": [
+        "Participant 1/02/annotations.json",
+        "8424df983f30e927c5a72b3d9bb94466"
+      ],
+      "midi": [
+        "Participant 1/02/Sax.mid",
+        "007beb3b84dfaafbc8767148bc00c0ff"
+      ],
+      "musicXML": [
+        "Participant 1/02/Sax.musicxml",
+        "3846ef79efc36448ea0a8059c43935ac"
+      ],
+      "pdf": [
+        "Participant 1/02/Sax.pdf",
+        "69b20b5b95b8807137cc86e7c72cc861"
+      ]
+    }
+  },
+  "multitracks": {
+    "multitrack_01": {
+      "tracks": [
+        "multitrack_01_bass_drums",
+        "multitrack_01_piano_drums",
+        "multitrack_01_sax_1",
+        "multitrack_01_sax_2"
+      ],
+      "annotations": [
+        "Backing/01/annotations.jams",
+        "3a9ea0acdcf9bcf1abb4cf658d359c37"
+      ]
+    }
+  }
+}

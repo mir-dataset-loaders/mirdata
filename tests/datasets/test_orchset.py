@@ -10,7 +10,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "Beethoven-S3-I-ex1"
     data_home = os.path.normpath("tests/resources/mir_datasets/orchset")
-    dataset = orchset.Dataset(data_home)
+    dataset = orchset.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -59,7 +59,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/orchset"
-    dataset = orchset.Dataset(data_home)
+    dataset = orchset.Dataset(data_home, version="test")
     track = dataset.track("Beethoven-S3-I-ex1")
     jam = track.to_jams()
 
@@ -95,7 +95,7 @@ def test_load_melody():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/orchset"
-    dataset = orchset.Dataset(data_home)
+    dataset = orchset.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["Beethoven-S3-I-ex1"] == {
         "predominant_melodic_instruments-raw": "strings+winds",
@@ -186,7 +186,7 @@ def test_download(httpserver):
             unpack_directories=["Orchset"],
         )
     }
-    dataset = orchset.Dataset(data_home)
+    dataset = orchset.Dataset(data_home, version="test")
     dataset.remotes = remotes
     dataset.download(None, False, False)
 

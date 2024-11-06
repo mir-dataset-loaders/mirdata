@@ -1,0 +1,23 @@
+{
+  "version": "sample",
+  "tracks": {
+    "0": {
+      "audio": [
+        "audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
+        "9b129e72ae143115b03da2a6b857d7c7"
+      ],
+      "chords": [
+        "annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "4650afab9ebdf3958aa8596a56f49e2b"
+      ],
+      "keys": [
+        "annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "3d95f67b9cafb4c6554af048ac11df03"
+      ],
+      "sections": [
+        "annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "dd5e10558aaad0aec7797167d0139285"
+      ]
+    }
+  }
+}

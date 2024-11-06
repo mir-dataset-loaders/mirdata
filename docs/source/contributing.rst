@@ -18,28 +18,20 @@ to, please tag your PR with ``please-do-not-edit``.
 Installing mirdata for development purposes
 ###########################################
 
-To install ``mirdata`` for development purposes:
+To install Mirdata for development purposes:
 
-    * First run:
+    - First, fork the Mirdata repository on GitHub and clone your fork locally.
 
-      .. code-block:: console
+    - Then, after opening source data library you have to install all the dependencies:
 
-          git clone https://github.com/mir-dataset-loaders/mirdata.git
-
-    * Then, after opening source data library you have to install the dependencies for updating the documentation
-      and running tests:
-
-      .. code-block:: console
-
-          pip install .
-          pip install ."[tests]"
-          pip install ."[docs]"
-          pip install ."[dali]"
-          pip install ."[haydn_op20]"
+      - Install Core dependencies with ``pip install .``
+      - Install Testing dependencies with ``pip install ."[tests]"``
+      - Install Docs dependencies with ``pip install ."[docs]"``
+      - Install dataset-specific dependencies with ``pip install ."[dataset]"`` where ``dataset`` can be ``dali | haydn_op20 | cipi ...`` 
 
 
 We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
-and install all ``mirdata`` requirements. You will want to install the latest supported Python versions (see README.md).
+and install all Mirdata requirements. You will want to install the latest supported Python versions (see README.md).
 Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the necessary pytest
 plugins to automatically test your code successfully (e.g. `pytest-cov`). Finally, run:
 
@@ -72,12 +64,14 @@ Writing a new dataset loader
 #############################
 
 
-The steps to add a new dataset loader to ``mirdata`` are:
+The steps to add a new dataset loader to Mirdata are:
 
 1. `Create an index <create_index_>`_
 2. `Create a module <create_module_>`_
 3. `Add tests <add_tests_>`_
-4. `Submit your loader <submit_loader_>`_
+4. `Update Mirdata documentation <update_docs_>`_
+5. `Upload index to Zenodo <upload_index_>`_
+6. `Create a Pull Request on GitHub <create_pr_>`_
 
 
 Before starting, check if your dataset falls into one of these non-standard cases:
@@ -85,7 +79,6 @@ Before starting, check if your dataset falls into one of these non-standard case
     * Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
     * Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
     * Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
-    * Is the index large (e.g. > 5 MB)? If so, see `this section <large_index_>`_
 
 
 .. _create_index:
@@ -93,14 +86,18 @@ Before starting, check if your dataset falls into one of these non-standard case
 1. Create an index
 ------------------
 
-``mirdata``'s structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
-dataset which is necessary for the loading and validating functionalities of ``mirdata``. In particular, indexes contain
+Mirdata's structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
+dataset which is necessary for the loading and validating functionalities of Mirdata. In particular, indexes contain
 information about the files included in the dataset, their location and checksums. The necessary steps are:
 
 1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
 2. Then run the script on the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index_<version>.json``.
    where <version> indicates which version of the dataset was used (e.g. 1.0).
+3. When the dataloader is completed and the PR is accepted, upload the index in our `Zenodo community <https://zenodo.org/communities/audio-data-loaders/>`_. See more details `here <upload_index_>`_.
 
+
+The function ``make_<datasetname>_index.py`` should automate the generation of an index by computing the MD5 checksums for given files in a dataset located at data_path. 
+Users can adapt this function to create an index for their dataset by adding their file paths and using the md5 function to generate checksums for their files.
 
 .. _index example:
 
@@ -113,6 +110,9 @@ Here there is an example of an index to use as guideline:
         :language: python
 
 More examples of scripts used to create dataset indexes can be found in the `scripts <https://github.com/mir-dataset-loaders/mirdata/tree/master/scripts>`_ folder.
+
+.. note::
+    Users should be able to create the dataset indexes without the need for additional dependencies that are not included in Mirdata by default. Should you need an additional dependency for a specific reason, please open an issue to discuss with the Mirdata maintainers the need for it.
 
 tracks
 ^^^^^^
@@ -302,6 +302,77 @@ You may find these examples useful as references:
 For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
 
 
+Declare constant variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Please, include the variables ``BIBTEX``, ``INDEXES``, ``REMOTES``, and ``LICENSE_INFO`` at the beginning of your module.
+While ``BIBTEX`` (including the bibtex-formatted citation of the dataset), ``INDEXES`` (indexes urls, checksums and versions),
+and ``LICENSE_INFO`` (including the license that protects the dataset in the dataloader) are mandatory, ``REMOTES`` is only defined if the dataset is openly downloadable.
+
+``INDEXES``
+    As seen in the example, we have two ways to define an index:
+    providing a URL to download the index file, or by providing the filename of the index file, assuming it is available locally (like sample indexes).
+
+    * The full indexes for each version of the dataset should be retrieved from our Zenodo community. See more details `here <upload_index_>`_.
+    * The sample indexes should be locally stored in the ``tests/indexes/`` folder, and directly accessed through filename. See more details `here <add_tests_>`_.
+
+    **Important:** We do recommend to set the highest version of the dataset as the default version in the ``INDEXES`` variable.
+    However, if there is a reason for having a different version as the default, please do so.
+
+    When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and ``checksum`` to the ``Index`` class:
+
+    .. code-block:: python
+
+        "1.0": core.Index(
+            filename="example_index_1.0.json",  # the name of the index file
+            url=<url>,  # the download link
+            checksum=<checksum>,  # the md5 checksum
+        )
+
+    Remote indexes get downloaded along with the data when calling ``.download()``, and are stored in ``<data_home>/mirdata/datasets/indexes``.
+
+``REMOTES``
+    Should be a list of ``RemoteFileMetadata`` objects, which are used to download the dataset files. See an example below:
+
+    .. code-block:: javascript
+        REMOTES = {
+            "annotations": download_utils.RemoteFileMetadata(
+                filename="The Beatles Annotations.tar.gz",
+                url="http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz",
+                checksum="62425c552d37c6bb655a78e4603828cc",
+                destination_dir="annotations",
+            ),
+        }
+
+    Add more ``RemoteFileMetadata`` objects to the ``REMOTES`` dictionary if the dataset is split into multiple files.
+    Please use ``download_utils.RemoteFileMetadata`` to parse the dataset from an online repository, which takes cares of the download process and the checksum validation, and addresses corner carses.
+    Please do NOT use specific functions like ``download_zip_file`` or ``download_and_extract`` individually in your loader.
+
+.. note::
+    Direct url for download and checksum can be found in the Zenodo entries of the dataset and index. Bear in mind that the url and checksum for the index will be available once a maintainer of the Audio Data Loaders Zenodo community has accepted the index upload.
+    For other repositories, you may need to generate the checksum yourself.
+    You may use the function provided in ``mirdata.validate.py``.
+
+
+Make sure to include, in the docstring of the dataloader, information about the following list of relevant aspects about the dataset you are integrating:
+
+* The dataset name.
+* A general purpose description, the task it is used for.
+* Details about the coverage: how many clips, how many hours of audio, how many classes, the annotations available, etc.
+* The license of the dataset (even if you have included the ``LICENSE_INFO`` variable already).
+* The authors of the dataset, the organization in which it was created, and the year of creation (even if you have included the ``BIBTEX`` variable already).
+* Please reference also any relevant link or website that users can check for more information.
+.. note::  
+    In addition to the module docstring, you should write docstrings for every new class and function you write. See :ref:`the documentation tutorial <documentation_tutorial>` for practical information on best documentation practices.
+This docstring is important for users to understand the dataset and its purpose.
+Having proper documentation also enhances transparency, and helps users to understand the dataset better.
+Please do not include complicated tables, big pieces of text, or unformatted copy-pasted text pieces. 
+It is important that the docstring is clean, and the information is very clear to users.
+This will also engage users to use the dataloader!
+For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
+.. note::  
+    If the dataset you are trying to integrate stores every clip in a separated compressed file, it cannot be currently supported by Mirdata. Feel free to open and issue to discuss a solution (hopefully for the near future!)
+
+
 .. _add_tests:
 
 3. Add tests
@@ -399,9 +470,7 @@ kindly ask the contributors to **reduce the size of the testing data** if possib
 csv files).
 
 
-.. _submit_loader:
-
-4. Submit your loader
+4. Update Mirdata documentation
 ---------------------
 
 Before you submit your loader make sure to:
@@ -433,15 +502,49 @@ An example of this for the ``Beatport EDM key`` dataset:
 (you can check that this was done correctly by clicking on the readthedocs check when you open a PR). You can find license
 badges images and links `here <https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba>`_.
 
-Pull Request template
-^^^^^^^^^^^^^^^^^^^^^
 
-When starting your PR please use the `new_loader.md template <https://github.com/mir-dataset-loaders/mirdata/blob/master/.github/PULL_REQUEST_TEMPLATE/new_loader.md>`_,
+.. _upload_index:
+
+5. Uploading the index to Zenodo
+--------------------------------
+
+We store all dataset indexes in an online repository on Zenodo.
+To use a dataloader, users may retrieve the index running the ``dataset.download()`` function that is also used to download the dataset.
+To download only the index, you may run ``.download(["index"])``. The index will be automatically downloaded and stored in the expected folder in Mirdata.
+
+From a contributor point of view, you may create the index, store it locally, and develop the dataloader.
+All JSON files in ``mirdata/indexes/`` are included in the .gitignore file, 
+therefore there is no need to remove it when pushing to the remote branch during development, since it will be ignored by git.
+
+**Important!** When creating the PR, please `submit your index to our Zenodo community <https://zenodo.org/communities/audio-data-loaders/>`_:
+
+* First, click on ``New upload``. 
+* Add your index in the ``Upload files`` section.
+* Let Zenodo create a DOI for your index, so click *No*.
+* Resource type is *Other*.
+* Title should be *mirdata-<dataset-id>_index_<version>*, e.g. mirdata-beatles_index_1.2.
+* Add yourself as the Creator of this entry.
+* The license of the index should be the `same as Mirdata <https://github.com/mir-dataset-loaders/mirdata/blob/master/LICENSE>`_.
+* Visibility should be set as *Public*.
+
+.. note::
+    *<dataset-id>* is the identifier we use to initialize the dataset using ``mirdata.initialize()``. It's also the filename of your dataset module.
+
+
+.. _create_pr:
+
+6. Create a Pull Request
+------------------------
+
+Please, create a Pull Request with all your development. When starting your PR please use the `new_loader.md template <https://github.com/mir-dataset-loaders/mirdata/blob/master/.github/PULL_REQUEST_TEMPLATE/new_loader.md>`_,
 it will simplify the reviewing process and also help you make a complete PR. You can do that by adding
 ``&template=new_loader.md`` at the end of the url when you are creating the PR :
 
 ``...mir-dataset-loaders/mirdata/compare?expand=1`` will become
 ``...mir-dataset-loaders/mirdata/compare?expand=1&template=new_loader.md``.
+
+.. _update_docs:
+
 
 Docs
 ^^^^
@@ -582,30 +685,6 @@ could look like:
         "1.0": core.Index(filename="example_index_1.0.json", partial_download=['audio', 'v1-annotations']),
         "2.0": core.Index(filename="example_index_2.0.json", partial_download=['audio', 'v2-annotations']),
     }
-
-
-.. _large_index:
-
-Datasets with large indexes
----------------------------
-
-Large indexes should be stored remotely, rather than checked in to the mirdata repository.
-mirdata has a `zenodo community <https://zenodo.org/communities/mirdata/?page=1&size=20>`_
-where larger indexes can be uploaded as "datasets".
-
-When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and
-``checksum`` to the ``Index`` class:
-
-.. code-block:: python
-
-    "1.0": core.Index(
-        filename="example_index_1.0.json",  # the name of the index file
-        url=<url>,  # the download link
-        checksum=<checksum>,  # the md5 checksum
-    )
-
-Remote indexes get downloaded along with the data when calling ``.download()``,
-and are stored in ``<data_home>/mirdata_indexes``.
 
 
 Documentation

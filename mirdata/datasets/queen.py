@@ -53,8 +53,13 @@ LICENSE_INFO = (
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="queen_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="queen_index_1.0.json",
+        url="https://zenodo.org/records/14024444/files/queen_index_1.0.json?download=1",
+        checksum="1422a1448f9b4b856099d7d583765b71",
+    ),
+    "sample": core.Index(filename="queen_index_1.0_sample.json"),
 }
 
 REMOTES = {

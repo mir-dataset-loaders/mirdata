@@ -50,11 +50,22 @@ BIBTEX = """
 
 INDEXES = {
     "default": "2100-redux",
-    "test": "baby",
+    "test": "sample",
+    "test_2100-redux": "sample_2100-redux",
     "2100-redux": core.Index(
-        filename="slakh_index_2100-redux.json", partial_download=["2100-redux"]
+        filename="slakh_index_2100-redux.json",
+        partial_download=["2100-redux"],
+        url="https://zenodo.org/records/14009687/files/slakh_index_2100-redux.json?download=1",
+        checksum="7eaefceadb16f1d3621b5dce4b7867c3",
     ),
-    "baby": core.Index(filename="slakh_index_baby.json", partial_download=["baby"]),
+    "baby": core.Index(
+        filename="slakh_index_baby.json",
+        partial_download=["baby"],
+        url="https://zenodo.org/records/14007867/files/slakh_index_baby.json?download=1",
+        checksum="be5032ff25a64dc3eb6ab63032490968",
+    ),
+    "sample": core.Index(filename="slakh_index_baby_sample.json"),
+    "sample_2100-redux": core.Index(filename="slakh_index_2100-redux_sample.json"),
 }
 
 REMOTES = {
@@ -137,7 +148,7 @@ class Track(core.Track):
 
         # split (train/validation/test/omitted) is part of the relative filepath in the index
         self.split = None  # for baby_slakh, there are no data splits - set to None
-        if index["version"] == "2100-redux":
+        if "2100-redux" in index["version"]:  # Adding also option for test
             self.split = os.path.normpath(self._track_paths["metadata"][0]).split(
                 os.sep
             )[1]
@@ -266,7 +277,7 @@ class MultiTrack(core.MultiTrack):
 
         # split (train/validation/test) is determined by the relative filepath in the index
         self.split = None  # for baby_slakh, there are no data splits - set to None
-        if index["version"] == "2100-redux":
+        if "2100-redux" in index["version"]:  # Adding also option for test
             self.split = os.path.normpath(self._multitrack_paths["mix"][0]).split(
                 os.sep
             )[1]

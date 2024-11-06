@@ -45,7 +45,7 @@ but it is difficult to generically categorize annotation types, as they depend o
 definitions and their meaning can change depending on the type of music they correspond to.
 Here we provide a rough guide to the types in this table, but we **strongly recommend** reading
 the dataset specific documentation to ensure the data is as you expect. To see how these annotation
-types are implemented in ``mirdata`` see :ref:`annotations`.
+types are implemented in Mirdata see :ref:`annotations`.
 
 .. _events:
 

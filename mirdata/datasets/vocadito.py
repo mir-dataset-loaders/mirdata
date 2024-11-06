@@ -39,9 +39,14 @@ BIBTEX = """
 """
 
 INDEXES = {
-    "default": "1",
-    "test": "1",
-    "1": core.Index(filename="vocadito_index_1.json"),
+    "default": "1.0",
+    "test": "sample",
+    "1.0": core.Index(
+        filename="vocadito_index_1.0.json",
+        url="https://zenodo.org/records/14024397/files/vocadito_index_1.0.json?download=1",
+        checksum="ff83648dc2311c0c11fe8f304bbb62d4",
+    ),
+    "sample": core.Index(filename="vocadito_index_1.0_sample.json"),
 }
 
 REMOTES = {

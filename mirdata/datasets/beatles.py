@@ -35,8 +35,13 @@ BIBTEX = """@inproceedings{mauch2009beatles,
 
 INDEXES = {
     "default": "1.2",
-    "test": "1.2",
-    "1.2": core.Index(filename="beatles_index_1.2.json"),
+    "test": "sample",
+    "1.2": core.Index(
+        filename="beatles_index_1.2.json",
+        url="https://zenodo.org/records/14007830/files/beatles_index_1.2.json?download=1",
+        checksum="6e1276bdab6de05446ddbbc75e6f6cbe",
+    ),
+    "sample": core.Index(filename="beatles_index_1.2_sample.json"),
 }
 
 REMOTES = {
