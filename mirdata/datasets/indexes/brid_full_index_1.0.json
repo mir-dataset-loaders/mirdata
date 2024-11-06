@@ -3,1304 +3,5140 @@
   "tracks": {
     "[0042] M3-23-SE": {
       "audio": [
-        "BRID_1.0/audio/[0042] M3-23-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0042] M3-23-SE.wav",
         "c976bc00d55317f97e1ba40017d00d33"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0042] M3-23-SE.beats",
+        "BRID_1.0/Annotations/beats/[0042] M3-23-SE.beats",
         "7c3cb6cb8ffdc410bfc6f49141ea142c"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0042] M3-23-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0042] M3-23-SE.bpm",
         "fd0463fa57278e151e213e5e177460a0"
-      ]
-    },
-    "[0015] M4-15-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0015] M4-15-SA.wav",
-        "ae6a48466b09f0fc5e972fffd239cecd"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0015] M4-15-SA.beats",
-        "6e177649ee32727f6c79509170f93506"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0015] M4-15-SA.bpm",
-        "59199fa70c28b2507a35f7aa09eaf3e6"
       ]
     },
     "[0024] M3-05-PA": {
       "audio": [
-        "BRID_1.0/audio/[0024] M3-05-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0024] M3-05-PA.wav",
         "4d5045dd0b39549999cde7a18093570e"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0024] M3-05-PA.beats",
+        "BRID_1.0/Annotations/beats/[0024] M3-05-PA.beats",
         "b4ae5a0944c21e2d91fd4f38406185a0"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0024] M3-05-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0024] M3-05-PA.bpm",
         "f02a69d66ec83a139bcfcace592bbfa8"
-      ]
-    },
-    "[0051] M2-03-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0051] M2-03-SA.wav",
-        "3f6de7377dabf5f541f94a11f221930a"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0051] M2-03-SA.beats",
-        "7d7aba6535ac6c28252afb0b4217b4a0"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0051] M2-03-SA.bpm",
-        "8f62c379c2763a350620e99709e1e612"
-      ]
-    },
-    "[0060] M2-12-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0060] M2-12-SA.wav",
-        "414d6bce5c5f0228cb7959b9a0d4a397"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0060] M2-12-SA.beats",
-        "270eca6bfe0b406ec6d059349156fed7"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0060] M2-12-SA.bpm",
-        "b46590ebdda938664df35796bb40b207"
-      ]
-    },
-    "[0063] M2-15-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0063] M2-15-PA.wav",
-        "47000a0e395b07dce7281f095d2a54bc"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0063] M2-15-PA.beats",
-        "53ab9075ac9de9390f7e1619d1c00d76"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0063] M2-15-PA.bpm",
-        "b77f7f5dc3e976c17020baee35c9e309"
-      ]
-    },
-    "[0017] M4-17-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0017] M4-17-PA.wav",
-        "02d75ec3a5f7b0021c09682b31ba7722"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0017] M4-17-PA.beats",
-        "98e615b0ffaef194bc37b748fe2e97b2"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0017] M4-17-PA.bpm",
-        "65e8a4a0fa6763da2b6bb1f51969a2e5"
       ]
     },
     "[0040] M3-21-PA": {
       "audio": [
-        "BRID_1.0/audio/[0040] M3-21-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0040] M3-21-PA.wav",
         "6aa6d993756ff42656f5b02df4234e83"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0040] M3-21-PA.beats",
+        "BRID_1.0/Annotations/beats/[0040] M3-21-PA.beats",
         "37654cef0201b8017ace31a277794b38"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0040] M3-21-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0040] M3-21-PA.bpm",
         "cc8ec2fe57fe81df43847c2cf2039b57"
       ]
     },
     "[0028] M3-09-MA": {
       "audio": [
-        "BRID_1.0/audio/[0028] M3-09-MA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0028] M3-09-MA.wav",
         "7b3ad943393a0cb35d88977d55646429"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0028] M3-09-MA.beats",
+        "BRID_1.0/Annotations/beats/[0028] M3-09-MA.beats",
         "caa82daa26a97a2fd29e89cba5c6b71f"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0028] M3-09-MA.bpm",
+        "BRID_1.0/Annotations/tempo/[0028] M3-09-MA.bpm",
         "74febd9477f2929317267161f41237bd"
-      ]
-    },
-    "[0089] M2-41-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0089] M2-41-SA.wav",
-        "f401e1e65e6fa9c4dd4b700db9c17473"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0089] M2-41-SA.beats",
-        "8b35174753ce0c7843c1b42edf84c928"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0089] M2-41-SA.bpm",
-        "314b6ae67795865a92f8ebb26336936d"
       ]
     },
     "[0048] M3-29-SE": {
       "audio": [
-        "BRID_1.0/audio/[0048] M3-29-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0048] M3-29-SE.wav",
         "97c9df3e8a7654bc627881c9989390c5"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0048] M3-29-SE.beats",
+        "BRID_1.0/Annotations/beats/[0048] M3-29-SE.beats",
         "7f487ce4afc99c58474aeda2a1b6be56"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0048] M3-29-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0048] M3-29-SE.bpm",
         "3e1b5c8f2bad2f5e7dbd80059fba75c3"
       ]
     },
     "[0047] M3-28-SE": {
       "audio": [
-        "BRID_1.0/audio/[0047] M3-28-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0047] M3-28-SE.wav",
         "31991ea7e4214dc10f9e35a427fd3982"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0047] M3-28-SE.beats",
+        "BRID_1.0/Annotations/beats/[0047] M3-28-SE.beats",
         "42e1efaa79d9742116e65048623ff53e"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0047] M3-28-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0047] M3-28-SE.bpm",
         "12078ad79bc0dc7479096f2b54fc4df7"
-      ]
-    },
-    "[0078] M2-30-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0078] M2-30-PA.wav",
-        "6936f508ef5334c5f86bf399386ffdfb"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0078] M2-30-PA.beats",
-        "edd6d097b63e115086a1c1c38a2fcca3"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0078] M2-30-PA.bpm",
-        "146b50d202899a1773874608bec25fd4"
-      ]
-    },
-    "[0010] M4-10-SE": {
-      "audio": [
-        "BRID_1.0/audio/[0010] M4-10-SE.wav",
-        "484f3f509c088b83fcd0477524790264"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0010] M4-10-SE.beats",
-        "8d6a91bd439ec7a5125824afaefd9f1c"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0010] M4-10-SE.bpm",
-        "cfcbc36a033f8deb7f2e20a324415c56"
       ]
     },
     "[0043] M3-24-SE": {
       "audio": [
-        "BRID_1.0/audio/[0043] M3-24-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0043] M3-24-SE.wav",
         "b372eb9f47268f8eff782eedc3e77a10"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0043] M3-24-SE.beats",
+        "BRID_1.0/Annotations/beats/[0043] M3-24-SE.beats",
         "3a2461792a5971c306d6762076ceefdf"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0043] M3-24-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0043] M3-24-SE.bpm",
         "24e3d27082b52b839fc412b998f34956"
-      ]
-    },
-    "[0081] M2-33-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0081] M2-33-SA.wav",
-        "fcafb2ce2edd6da361834ee117843169"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0081] M2-33-SA.beats",
-        "f44658cb3e09a94a659f665036a3776e"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0081] M2-33-SA.bpm",
-        "40e5e7be94f7997bfa5c8f4fe3d44b21"
       ]
     },
     "[0039] M3-20-SE": {
       "audio": [
-        "BRID_1.0/audio/[0039] M3-20-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0039] M3-20-SE.wav",
         "e4a5bb0db2326491eac6573fa16969fd"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0039] M3-20-SE.beats",
+        "BRID_1.0/Annotations/beats/[0039] M3-20-SE.beats",
         "c69ead43b39b21b8c2e8786ca82f5d54"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0039] M3-20-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0039] M3-20-SE.bpm",
         "3711c5e1f68273db544274a39896cb95"
       ]
     },
     "[0035] M3-16-PA": {
       "audio": [
-        "BRID_1.0/audio/[0035] M3-16-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0035] M3-16-PA.wav",
         "03c94186132c68b4551e8b3af6cfe3a9"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0035] M3-16-PA.beats",
+        "BRID_1.0/Annotations/beats/[0035] M3-16-PA.beats",
         "af21f9c478709f4cea07211c9681bf82"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0035] M3-16-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0035] M3-16-PA.bpm",
         "078fa6146f9d7b5ca378b97fbcd5c0a6"
       ]
     },
     "[0025] M3-06-PA": {
       "audio": [
-        "BRID_1.0/audio/[0025] M3-06-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0025] M3-06-PA.wav",
         "5ceb33a79170669f8d509e2ddbad7673"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0025] M3-06-PA.beats",
+        "BRID_1.0/Annotations/beats/[0025] M3-06-PA.beats",
         "7de771418be4d97114270ee6cba4b122"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0025] M3-06-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0025] M3-06-PA.bpm",
         "9b46eaf9bf48b0a0148a21f783eefb14"
-      ]
-    },
-    "[0049] M2-01-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0049] M2-01-PA.wav",
-        "9ccac00de6dd8777b54c3d5ec55e5189"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0049] M2-01-PA.beats",
-        "18f019d2a830173a0ba82781a450a685"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0049] M2-01-PA.bpm",
-        "b78267d392ad53a4af9275a4724e50ce"
-      ]
-    },
-    "[0014] M4-14-SE": {
-      "audio": [
-        "BRID_1.0/audio/[0014] M4-14-SE.wav",
-        "439a61d429e697c1e9aa463a919db601"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0014] M4-14-SE.beats",
-        "b75b1b6603328533b37ef4be8eea1e7d"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0014] M4-14-SE.bpm",
-        "a21a73f34de9c2074cc288182e898e16"
       ]
     },
     "[0033] M3-14-SA": {
       "audio": [
-        "BRID_1.0/audio/[0033] M3-14-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0033] M3-14-SA.wav",
         "b70f21babb462fb690562b12d00daffe"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0033] M3-14-SA.beats",
+        "BRID_1.0/Annotations/beats/[0033] M3-14-SA.beats",
         "d97b9004cbeed034d19dc7964d8359f7"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0033] M3-14-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0033] M3-14-SA.bpm",
         "2a8a42faead199f312cd2c18ae8e5db7"
-      ]
-    },
-    "[0079] M2-31-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0079] M2-31-PA.wav",
-        "5f38bd43948606f8ae7593e4c6819a6f"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0079] M2-31-PA.beats",
-        "80c690261fc5ccfa396c8bc9d23d04d8"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0079] M2-31-PA.bpm",
-        "95396e86f04dcdcb0ccb1a1b3a1cd6c6"
-      ]
-    },
-    "[0061] M2-13-SE": {
-      "audio": [
-        "BRID_1.0/audio/[0061] M2-13-SE.wav",
-        "1ffe4e7f4d6010c4b00ba255dfa97564"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0061] M2-13-SE.beats",
-        "63fedc0fc241a86bb089cb2f795585a0"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0061] M2-13-SE.bpm",
-        "a3df8d1f478416fc7e8d0b025fc262fe"
-      ]
-    },
-    "[0088] M2-40-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0088] M2-40-SA.wav",
-        "c83a84893a0e9b4f0bafbb41433052dd"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0088] M2-40-SA.beats",
-        "d473f1b0525f542df9d7a5b10410c524"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0088] M2-40-SA.bpm",
-        "949d47873cd3b5a7764ad6bb3adc95c4"
       ]
     },
     "[0023] M3-04-SA": {
       "audio": [
-        "BRID_1.0/audio/[0023] M3-04-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0023] M3-04-SA.wav",
         "c87a3592cb89ee9c18a1d4069ee17503"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0023] M3-04-SA.beats",
+        "BRID_1.0/Annotations/beats/[0023] M3-04-SA.beats",
         "0f36a3de39e664e59dbbd8cb03d770e7"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0023] M3-04-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0023] M3-04-SA.bpm",
         "aba30ea901946dc10a7c2a4587d7e993"
       ]
     },
     "[0038] M3-19-SA": {
       "audio": [
-        "BRID_1.0/audio/[0038] M3-19-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0038] M3-19-SA.wav",
         "84bfe57a12015dfd32fda594336bf742"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0038] M3-19-SA.beats",
+        "BRID_1.0/Annotations/beats/[0038] M3-19-SA.beats",
         "e6a644e82d54999c1006c738c1aad60a"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0038] M3-19-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0038] M3-19-SA.bpm",
         "a79269d1bc65eaf1037e2767c1292983"
-      ]
-    },
-    "[0011] M4-11-SE": {
-      "audio": [
-        "BRID_1.0/audio/[0011] M4-11-SE.wav",
-        "04fb4b884c9c6c5616063e21951469c9"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0011] M4-11-SE.beats",
-        "98fc219534a6928b675928464c754164"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0011] M4-11-SE.bpm",
-        "654d9751739a8c09bdb1c2d52fc8c1ed"
       ]
     },
     "[0037] M3-18-SA": {
       "audio": [
-        "BRID_1.0/audio/[0037] M3-18-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0037] M3-18-SA.wav",
         "518b1c8eccf3eea238ca381b75ebf163"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0037] M3-18-SA.beats",
+        "BRID_1.0/Annotations/beats/[0037] M3-18-SA.beats",
         "01620296c75fb6f03b42525d07ab6a45"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0037] M3-18-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0037] M3-18-SA.bpm",
         "b9958a4c8f6651c5f820806908c66c10"
-      ]
-    },
-    "[0066] M2-18-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0066] M2-18-PA.wav",
-        "b73927a1989739054ef3bc163cc63773"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0066] M2-18-PA.beats",
-        "259a88cc363c07228dd80c646dbe95e6"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0066] M2-18-PA.bpm",
-        "8fca206dadea26940d726c77e1f8877d"
       ]
     },
     "[0046] M3-27-SE": {
       "audio": [
-        "BRID_1.0/audio/[0046] M3-27-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0046] M3-27-SE.wav",
         "9d67a63b51b791b9988dc1de20d9f1fc"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0046] M3-27-SE.beats",
+        "BRID_1.0/Annotations/beats/[0046] M3-27-SE.beats",
         "a402735aa316b7d0bd8a6854580bf385"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0046] M3-27-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0046] M3-27-SE.bpm",
         "bbdc9c81c4615f1083093111e9cb3934"
       ]
     },
     "[0030] M3-11-PA": {
       "audio": [
-        "BRID_1.0/audio/[0030] M3-11-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0030] M3-11-PA.wav",
         "7611ded82c6dfb141d6334b524f936a8"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0030] M3-11-PA.beats",
+        "BRID_1.0/Annotations/beats/[0030] M3-11-PA.beats",
         "c91815287ce68a2e66bf3ed9c9316cea"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0030] M3-11-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0030] M3-11-PA.bpm",
         "6f3ea80f8583c06b712fa42760db8686"
-      ]
-    },
-    "[0050] M2-02-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0050] M2-02-SA.wav",
-        "57a3883089d101b4b6b39186a54ed293"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0050] M2-02-SA.beats",
-        "837ab524a573db5979226f50228720dc"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0050] M2-02-SA.bpm",
-        "72184340f98d5d9b50193208d817b944"
-      ]
-    },
-    "[0001] M4-01-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0001] M4-01-SA.wav",
-        "7b5605eabd42493158c3a250ddbb1810"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0001] M4-01-SA.beats",
-        "d37a01c33a34597a0e60fb5e3d8a89a6"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0001] M4-01-SA.bpm",
-        "4aa10c8164de322246e624fd7c920402"
       ]
     },
     "[0027] M3-08-SE": {
       "audio": [
-        "BRID_1.0/audio/[0027] M3-08-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0027] M3-08-SE.wav",
         "53780e8bcc08d2596b43e114c8d97d2e"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0027] M3-08-SE.beats",
+        "BRID_1.0/Annotations/beats/[0027] M3-08-SE.beats",
         "d27ae16125d22b8aade62525dca678f0"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0027] M3-08-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0027] M3-08-SE.bpm",
         "89ddfb18dab0ef8184754c8748817e0f"
-      ]
-    },
-    "[0016] M4-16-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0016] M4-16-PA.wav",
-        "2f3a37920acb6c29e5d41c075950f36a"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0016] M4-16-PA.beats",
-        "8358c81afdac75fef78d9135903e14b3"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0016] M4-16-PA.bpm",
-        "ee03786bff2a52686592754bb03e08eb"
       ]
     },
     "[0020] M3-01-PA": {
       "audio": [
-        "BRID_1.0/audio/[0020] M3-01-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0020] M3-01-PA.wav",
         "be7bcea3f97d933b35e1d7a762cfda69"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0020] M3-01-PA.beats",
+        "BRID_1.0/Annotations/beats/[0020] M3-01-PA.beats",
         "47b96fe3700730502aef60ac44e9e0d9"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0020] M3-01-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0020] M3-01-PA.bpm",
         "bfdf8883393e4897f3ab0dc9c3214a33"
+      ]
+    },
+    "[0022] M3-03-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0022] M3-03-SA.wav",
+        "c33dfdf03ae6bb120759fb861306ee3b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0022] M3-03-SA.beats",
+        "556f7aac38c0b0e7365ffd9a3914682d"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0022] M3-03-SA.bpm",
+        "ea969e61773a6572204f851965586785"
+      ]
+    },
+    "[0032] M3-13-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0032] M3-13-SA.wav",
+        "f2208966c972eac724327b9d38a82120"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0032] M3-13-SA.beats",
+        "4433fed8c85bce04294f8ccf956e128a"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0032] M3-13-SA.bpm",
+        "8f317920aa23628cde8133b0cf1d90e5"
+      ]
+    },
+    "[0044] M3-25-SE": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0044] M3-25-SE.wav",
+        "206fa5dc3899c756c9cacbc2db6d12a0"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0044] M3-25-SE.beats",
+        "a1b9901a250a319abe368f6ae7664ebd"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0044] M3-25-SE.bpm",
+        "ef7d6955b06703105dbba9b3e5e4c327"
+      ]
+    },
+    "[0029] M3-10-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0029] M3-10-PA.wav",
+        "05957cf5cb87d4260389365e362c58ad"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0029] M3-10-PA.beats",
+        "a20ab555ebd20a719eca513160bd0d0d"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0029] M3-10-PA.bpm",
+        "5690d8fe3a55e1ca4fbf5bee6c7bc72a"
+      ]
+    },
+    "[0041] M3-22-SE": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0041] M3-22-SE.wav",
+        "81dec4e08c87a5429a8f1982ae5d09ea"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0041] M3-22-SE.beats",
+        "904fa25d8f3fd370bb63cb41a3069320"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0041] M3-22-SE.bpm",
+        "eb7deece0a97117e3d4ea0692b452c68"
+      ]
+    },
+    "[0045] M3-26-SE": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0045] M3-26-SE.wav",
+        "f2e01d3d4d9bad56de04135b1c251942"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0045] M3-26-SE.beats",
+        "3057062ade173b65c7f9440b26f59932"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0045] M3-26-SE.bpm",
+        "73f09c584f9020307978777cff95c348"
+      ]
+    },
+    "[0031] M3-12-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0031] M3-12-SA.wav",
+        "c4c0e3d88cdf04c2bb0c11dfc6737a2e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0031] M3-12-SA.beats",
+        "a5db3d5902a9f1227735d17c56d6c563"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0031] M3-12-SA.bpm",
+        "53d8b5d6d36fc3945acf2da9e107c3ff"
+      ]
+    },
+    "[0021] M3-02-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0021] M3-02-SA.wav",
+        "7c5fdd773a3251607ea778b46cc1c22c"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0021] M3-02-SA.beats",
+        "27e5f4f6b4c6560b334eb0681644c167"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0021] M3-02-SA.bpm",
+        "2f3e377b5b1c3ce0da8cd2873366d2bd"
+      ]
+    },
+    "[0026] M3-07-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0026] M3-07-PA.wav",
+        "3c76ce219dbbd7c81206d53b27750f27"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0026] M3-07-PA.beats",
+        "d73a039d09410464f10ad54f4aa0c43a"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0026] M3-07-PA.bpm",
+        "e1e660c43f8c532670d56d66fab39e23"
+      ]
+    },
+    "[0036] M3-17-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0036] M3-17-PA.wav",
+        "593f4d89b0e59564da749ba200dd495a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0036] M3-17-PA.beats",
+        "0656728c79313d5e85fb93024bc2dc02"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0036] M3-17-PA.bpm",
+        "e79b18a8a33591bb329dab22936bb858"
+      ]
+    },
+    "[0034] M3-15-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/3 Instruments/[0034] M3-15-SA.wav",
+        "ac44eb8cfbe2b0f1e6d797291c62bb4a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0034] M3-15-SA.beats",
+        "0679823328fd4f6fe24ca0bebc8f1d0f"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0034] M3-15-SA.bpm",
+        "f63004df5534994f0a712454d888bb11"
+      ]
+    },
+    "[0015] M4-15-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0015] M4-15-SA.wav",
+        "ae6a48466b09f0fc5e972fffd239cecd"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0015] M4-15-SA.beats",
+        "6e177649ee32727f6c79509170f93506"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0015] M4-15-SA.bpm",
+        "59199fa70c28b2507a35f7aa09eaf3e6"
+      ]
+    },
+    "[0017] M4-17-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0017] M4-17-PA.wav",
+        "02d75ec3a5f7b0021c09682b31ba7722"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0017] M4-17-PA.beats",
+        "98e615b0ffaef194bc37b748fe2e97b2"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0017] M4-17-PA.bpm",
+        "65e8a4a0fa6763da2b6bb1f51969a2e5"
+      ]
+    },
+    "[0010] M4-10-SE": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0010] M4-10-SE.wav",
+        "484f3f509c088b83fcd0477524790264"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0010] M4-10-SE.beats",
+        "8d6a91bd439ec7a5125824afaefd9f1c"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0010] M4-10-SE.bpm",
+        "cfcbc36a033f8deb7f2e20a324415c56"
+      ]
+    },
+    "[0014] M4-14-SE": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0014] M4-14-SE.wav",
+        "439a61d429e697c1e9aa463a919db601"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0014] M4-14-SE.beats",
+        "b75b1b6603328533b37ef4be8eea1e7d"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0014] M4-14-SE.bpm",
+        "a21a73f34de9c2074cc288182e898e16"
+      ]
+    },
+    "[0011] M4-11-SE": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0011] M4-11-SE.wav",
+        "04fb4b884c9c6c5616063e21951469c9"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0011] M4-11-SE.beats",
+        "98fc219534a6928b675928464c754164"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0011] M4-11-SE.bpm",
+        "654d9751739a8c09bdb1c2d52fc8c1ed"
+      ]
+    },
+    "[0001] M4-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0001] M4-01-SA.wav",
+        "7b5605eabd42493158c3a250ddbb1810"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0001] M4-01-SA.beats",
+        "d37a01c33a34597a0e60fb5e3d8a89a6"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0001] M4-01-SA.bpm",
+        "4aa10c8164de322246e624fd7c920402"
+      ]
+    },
+    "[0016] M4-16-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0016] M4-16-PA.wav",
+        "2f3a37920acb6c29e5d41c075950f36a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0016] M4-16-PA.beats",
+        "8358c81afdac75fef78d9135903e14b3"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0016] M4-16-PA.bpm",
+        "ee03786bff2a52686592754bb03e08eb"
       ]
     },
     "[0003] M4-03-PA": {
       "audio": [
-        "BRID_1.0/audio/[0003] M4-03-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0003] M4-03-PA.wav",
         "61f382a86c9823963932347e651eec90"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0003] M4-03-PA.beats",
+        "BRID_1.0/Annotations/beats/[0003] M4-03-PA.beats",
         "cc9a9997e5abdad0cb343644153a1cf0"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0003] M4-03-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0003] M4-03-PA.bpm",
         "921bc3407cdeea4324f8384e737d06e2"
+      ]
+    },
+    "[0004] M4-04-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0004] M4-04-PA.wav",
+        "0641a07b8164a0d718535cba2be664ef"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0004] M4-04-PA.beats",
+        "025a841152a4652eef7b982146485f32"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0004] M4-04-PA.bpm",
+        "06e6513cc5514239b8cc7f1827dd0e0c"
+      ]
+    },
+    "[0006] M4-06-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0006] M4-06-SA.wav",
+        "658ee31a7eef17f6ffa749c9d36719a6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0006] M4-06-SA.beats",
+        "bd5bd0f38be72ffc4bfa64e7a9901dfe"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0006] M4-06-SA.bpm",
+        "b91257f950d7a98859d955c49a224a8f"
+      ]
+    },
+    "[0009] M4-09-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0009] M4-09-SA.wav",
+        "e121f38e145c740ab83bbd02b26222b6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0009] M4-09-SA.beats",
+        "ef46474daa8328c71b15a670d94d5321"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0009] M4-09-SA.bpm",
+        "ac81853094ee0408c84740dfc1a30ba1"
+      ]
+    },
+    "[0019] M4-19-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0019] M4-19-SA.wav",
+        "af3eb8e7d24994f1abf1e7e784cc1830"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0019] M4-19-SA.beats",
+        "bfd089f176faf981febf549df3ea6d4b"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0019] M4-19-SA.bpm",
+        "35cd99c7144221908dd347e5be1c2cbc"
+      ]
+    },
+    "[0013] M4-13-SE": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0013] M4-13-SE.wav",
+        "bdd2fb1c0bab9332db51d6187452138e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0013] M4-13-SE.beats",
+        "c4c0cd1154d39474b77e978f0cbc2ce7"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0013] M4-13-SE.bpm",
+        "39a5d79ebca6383b5d18c19fb4f4e1dd"
+      ]
+    },
+    "[0012] M4-12-SE": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0012] M4-12-SE.wav",
+        "4ae0a3053884f0f6eb8a0ad789800112"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0012] M4-12-SE.beats",
+        "289712f59af597dd9558d88ffd8f07ed"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0012] M4-12-SE.bpm",
+        "c726e26c61f95ab973c9e263b18d3dca"
+      ]
+    },
+    "[0008] M4-08-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0008] M4-08-SA.wav",
+        "2515437f79148cfb2ee3a0ccfc914268"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0008] M4-08-SA.beats",
+        "02d12d9401e79f20beee5947b208064c"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0008] M4-08-SA.bpm",
+        "49cc758b292d597a0a593553c62ca52d"
+      ]
+    },
+    "[0018] M4-18-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0018] M4-18-SA.wav",
+        "23193950f659cef281caaa1fccdff2d7"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0018] M4-18-SA.beats",
+        "3056d15e76850e0f3559e5e4da260b3f"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0018] M4-18-SA.bpm",
+        "070eb1e162cb1e294cabd5282de8d00c"
+      ]
+    },
+    "[0007] M4-07-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0007] M4-07-SA.wav",
+        "cede21da2ab9daa3d42475b7be4ab167"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0007] M4-07-SA.beats",
+        "b2bfd71a1a535c56a677342fa523f4fd"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0007] M4-07-SA.bpm",
+        "2485650b144673de8269ab9b5c136dbe"
+      ]
+    },
+    "[0002] M4-02-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0002] M4-02-SA.wav",
+        "84b5b335fe402a8a62404a0477e5826b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0002] M4-02-SA.beats",
+        "c76c67d2eb3f9d2111a13892c27d9ae3"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0002] M4-02-SA.bpm",
+        "545e2dd23c179b1af7590709ced2f7a0"
+      ]
+    },
+    "[0005] M4-05-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0005] M4-05-PA.wav",
+        "c63cc8d8c146f6ba134b3d658d2206ae"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0005] M4-05-PA.beats",
+        "e6f6e5d38278ddb8782ba18a18c81f6e"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0005] M4-05-PA.bpm",
+        "3758ffe0aeb6c77518aed3d380588921"
+      ]
+    },
+    "[0051] M2-03-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0051] M2-03-SA.wav",
+        "3f6de7377dabf5f541f94a11f221930a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0051] M2-03-SA.beats",
+        "7d7aba6535ac6c28252afb0b4217b4a0"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0051] M2-03-SA.bpm",
+        "8f62c379c2763a350620e99709e1e612"
+      ]
+    },
+    "[0060] M2-12-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0060] M2-12-SA.wav",
+        "414d6bce5c5f0228cb7959b9a0d4a397"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0060] M2-12-SA.beats",
+        "270eca6bfe0b406ec6d059349156fed7"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0060] M2-12-SA.bpm",
+        "b46590ebdda938664df35796bb40b207"
+      ]
+    },
+    "[0063] M2-15-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0063] M2-15-PA.wav",
+        "47000a0e395b07dce7281f095d2a54bc"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0063] M2-15-PA.beats",
+        "53ab9075ac9de9390f7e1619d1c00d76"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0063] M2-15-PA.bpm",
+        "b77f7f5dc3e976c17020baee35c9e309"
+      ]
+    },
+    "[0089] M2-41-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0089] M2-41-SA.wav",
+        "f401e1e65e6fa9c4dd4b700db9c17473"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0089] M2-41-SA.beats",
+        "8b35174753ce0c7843c1b42edf84c928"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0089] M2-41-SA.bpm",
+        "314b6ae67795865a92f8ebb26336936d"
+      ]
+    },
+    "[0078] M2-30-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0078] M2-30-PA.wav",
+        "6936f508ef5334c5f86bf399386ffdfb"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0078] M2-30-PA.beats",
+        "edd6d097b63e115086a1c1c38a2fcca3"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0078] M2-30-PA.bpm",
+        "146b50d202899a1773874608bec25fd4"
+      ]
+    },
+    "[0081] M2-33-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0081] M2-33-SA.wav",
+        "fcafb2ce2edd6da361834ee117843169"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0081] M2-33-SA.beats",
+        "f44658cb3e09a94a659f665036a3776e"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0081] M2-33-SA.bpm",
+        "40e5e7be94f7997bfa5c8f4fe3d44b21"
+      ]
+    },
+    "[0049] M2-01-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0049] M2-01-PA.wav",
+        "9ccac00de6dd8777b54c3d5ec55e5189"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0049] M2-01-PA.beats",
+        "18f019d2a830173a0ba82781a450a685"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0049] M2-01-PA.bpm",
+        "b78267d392ad53a4af9275a4724e50ce"
+      ]
+    },
+    "[0079] M2-31-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0079] M2-31-PA.wav",
+        "5f38bd43948606f8ae7593e4c6819a6f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0079] M2-31-PA.beats",
+        "80c690261fc5ccfa396c8bc9d23d04d8"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0079] M2-31-PA.bpm",
+        "95396e86f04dcdcb0ccb1a1b3a1cd6c6"
+      ]
+    },
+    "[0061] M2-13-SE": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0061] M2-13-SE.wav",
+        "1ffe4e7f4d6010c4b00ba255dfa97564"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0061] M2-13-SE.beats",
+        "63fedc0fc241a86bb089cb2f795585a0"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0061] M2-13-SE.bpm",
+        "a3df8d1f478416fc7e8d0b025fc262fe"
+      ]
+    },
+    "[0088] M2-40-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0088] M2-40-SA.wav",
+        "c83a84893a0e9b4f0bafbb41433052dd"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0088] M2-40-SA.beats",
+        "d473f1b0525f542df9d7a5b10410c524"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0088] M2-40-SA.bpm",
+        "949d47873cd3b5a7764ad6bb3adc95c4"
+      ]
+    },
+    "[0066] M2-18-PA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0066] M2-18-PA.wav",
+        "b73927a1989739054ef3bc163cc63773"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0066] M2-18-PA.beats",
+        "259a88cc363c07228dd80c646dbe95e6"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0066] M2-18-PA.bpm",
+        "8fca206dadea26940d726c77e1f8877d"
+      ]
+    },
+    "[0050] M2-02-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0050] M2-02-SA.wav",
+        "57a3883089d101b4b6b39186a54ed293"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0050] M2-02-SA.beats",
+        "837ab524a573db5979226f50228720dc"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0050] M2-02-SA.bpm",
+        "72184340f98d5d9b50193208d817b944"
       ]
     },
     "[0055] M2-07-SA": {
       "audio": [
-        "BRID_1.0/audio/[0055] M2-07-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0055] M2-07-SA.wav",
         "668590e07484ce3924e9c825d986751c"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0055] M2-07-SA.beats",
+        "BRID_1.0/Annotations/beats/[0055] M2-07-SA.beats",
         "0d8be1572a159e3f14bd96a4220c9752"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0055] M2-07-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0055] M2-07-SA.bpm",
         "f31f36194cdfbaab37bb8f64655a4a42"
       ]
     },
     "[0070] M2-22-SA": {
       "audio": [
-        "BRID_1.0/audio/[0070] M2-22-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0070] M2-22-SA.wav",
         "47326f7550be4f4d981480137d24cd62"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0070] M2-22-SA.beats",
+        "BRID_1.0/Annotations/beats/[0070] M2-22-SA.beats",
         "8aa9eda69dd87d84a11c8cbb8eb8ef4a"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0070] M2-22-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0070] M2-22-SA.bpm",
         "c712293d310895ea10c51a388ddf2e0b"
-      ]
-    },
-    "[0022] M3-03-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0022] M3-03-SA.wav",
-        "c33dfdf03ae6bb120759fb861306ee3b"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0022] M3-03-SA.beats",
-        "556f7aac38c0b0e7365ffd9a3914682d"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0022] M3-03-SA.bpm",
-        "ea969e61773a6572204f851965586785"
       ]
     },
     "[0085] M2-37-SE": {
       "audio": [
-        "BRID_1.0/audio/[0085] M2-37-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0085] M2-37-SE.wav",
         "53ae9d0a624c6ba7df02bc58ab09d588"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0085] M2-37-SE.beats",
+        "BRID_1.0/Annotations/beats/[0085] M2-37-SE.beats",
         "5df615fdfe3462786693195ed73d8b47"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0085] M2-37-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0085] M2-37-SE.bpm",
         "ac1ac0e5a9bcf4ae96ad2ebd9e5a88ed"
       ]
     },
     "[0092] M2-44-SA": {
       "audio": [
-        "BRID_1.0/audio/[0092] M2-44-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0092] M2-44-SA.wav",
         "be39b27b979d1db53aa07b957cdbee90"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0092] M2-44-SA.beats",
+        "BRID_1.0/Annotations/beats/[0092] M2-44-SA.beats",
         "bdebc7923e06061ab8c92013d22a97b0"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0092] M2-44-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0092] M2-44-SA.bpm",
         "6735935f2a97646f146b7db39a1f69f1"
-      ]
-    },
-    "[0032] M3-13-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0032] M3-13-SA.wav",
-        "f2208966c972eac724327b9d38a82120"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0032] M3-13-SA.beats",
-        "4433fed8c85bce04294f8ccf956e128a"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0032] M3-13-SA.bpm",
-        "8f317920aa23628cde8133b0cf1d90e5"
       ]
     },
     "[0073] M2-25-SA": {
       "audio": [
-        "BRID_1.0/audio/[0073] M2-25-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0073] M2-25-SA.wav",
         "0faa659a52b77637bf7d777ddb419177"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0073] M2-25-SA.beats",
+        "BRID_1.0/Annotations/beats/[0073] M2-25-SA.beats",
         "7f3afabbfc7fb35a76d88e7dd15dac46"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0073] M2-25-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0073] M2-25-SA.bpm",
         "1c02144843e1fb951cd93237f5f2f0ac"
-      ]
-    },
-    "[0004] M4-04-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0004] M4-04-PA.wav",
-        "0641a07b8164a0d718535cba2be664ef"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0004] M4-04-PA.beats",
-        "025a841152a4652eef7b982146485f32"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0004] M4-04-PA.bpm",
-        "06e6513cc5514239b8cc7f1827dd0e0c"
-      ]
-    },
-    "[0044] M3-25-SE": {
-      "audio": [
-        "BRID_1.0/audio/[0044] M3-25-SE.wav",
-        "206fa5dc3899c756c9cacbc2db6d12a0"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0044] M3-25-SE.beats",
-        "a1b9901a250a319abe368f6ae7664ebd"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0044] M3-25-SE.bpm",
-        "ef7d6955b06703105dbba9b3e5e4c327"
       ]
     },
     "[0091] M2-43-SA": {
       "audio": [
-        "BRID_1.0/audio/[0091] M2-43-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0091] M2-43-SA.wav",
         "359c31694778518ff7313b2326d881e0"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0091] M2-43-SA.beats",
+        "BRID_1.0/Annotations/beats/[0091] M2-43-SA.beats",
         "bf33986e94243d2e75e6e0732e771508"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0091] M2-43-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0091] M2-43-SA.bpm",
         "449ce3dca122acf8e16dfe791b20eef1"
-      ]
-    },
-    "[0029] M3-10-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0029] M3-10-PA.wav",
-        "05957cf5cb87d4260389365e362c58ad"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0029] M3-10-PA.beats",
-        "a20ab555ebd20a719eca513160bd0d0d"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0029] M3-10-PA.bpm",
-        "5690d8fe3a55e1ca4fbf5bee6c7bc72a"
       ]
     },
     "[0064] M2-16-PA": {
       "audio": [
-        "BRID_1.0/audio/[0064] M2-16-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0064] M2-16-PA.wav",
         "37b840e60702152d7e72e01a892695c8"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0064] M2-16-PA.beats",
+        "BRID_1.0/Annotations/beats/[0064] M2-16-PA.beats",
         "36f1ac1fa68a0365b9018f6ae3649c7d"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0064] M2-16-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0064] M2-16-PA.bpm",
         "ca8729ce8897f0e995607f5f7c9731ab"
-      ]
-    },
-    "[0006] M4-06-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0006] M4-06-SA.wav",
-        "658ee31a7eef17f6ffa749c9d36719a6"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0006] M4-06-SA.beats",
-        "bd5bd0f38be72ffc4bfa64e7a9901dfe"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0006] M4-06-SA.bpm",
-        "b91257f950d7a98859d955c49a224a8f"
       ]
     },
     "[0053] M2-05-SA": {
       "audio": [
-        "BRID_1.0/audio/[0053] M2-05-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0053] M2-05-SA.wav",
         "7dc54cc0e7bedeea2ec3b578d94773bb"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0053] M2-05-SA.beats",
+        "BRID_1.0/Annotations/beats/[0053] M2-05-SA.beats",
         "3edb57f392c5a6e97a84dde64a4c2228"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0053] M2-05-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0053] M2-05-SA.bpm",
         "064870814ded47f0aaf2376dc48ffb1e"
       ]
     },
     "[0075] M2-27-PA": {
       "audio": [
-        "BRID_1.0/audio/[0075] M2-27-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0075] M2-27-PA.wav",
         "f9dffa81bb399718d1a1a475def586ad"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0075] M2-27-PA.beats",
+        "BRID_1.0/Annotations/beats/[0075] M2-27-PA.beats",
         "e353155ca6c88306c4928cd2731e00f6"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0075] M2-27-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0075] M2-27-PA.bpm",
         "3881adbfcd7228b7b3c3577be39854b2"
       ]
     },
     "[0083] M2-35-SE": {
       "audio": [
-        "BRID_1.0/audio/[0083] M2-35-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0083] M2-35-SE.wav",
         "558d7ada523eefd14155ddc16b88691c"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0083] M2-35-SE.beats",
+        "BRID_1.0/Annotations/beats/[0083] M2-35-SE.beats",
         "dc29420794ffa4f08630ffb6b08c55be"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0083] M2-35-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0083] M2-35-SE.bpm",
         "eee0cf25254eb67ba9e0af6b311dcefd"
       ]
     },
     "[0057] M2-09-SA": {
       "audio": [
-        "BRID_1.0/audio/[0057] M2-09-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0057] M2-09-SA.wav",
         "203988d5ff1c936a86cbaeabbc201e3e"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0057] M2-09-SA.beats",
+        "BRID_1.0/Annotations/beats/[0057] M2-09-SA.beats",
         "bec834e1a0431ca2a6b8f624da898255"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0057] M2-09-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0057] M2-09-SA.bpm",
         "7b56fbc4e3e0f34fdac66a415753b82c"
       ]
     },
     "[0087] M2-39-SE": {
       "audio": [
-        "BRID_1.0/audio/[0087] M2-39-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0087] M2-39-SE.wav",
         "61d6e14e0914c99dc1247f4ddda4fbfe"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0087] M2-39-SE.beats",
+        "BRID_1.0/Annotations/beats/[0087] M2-39-SE.beats",
         "4044710ec0dd60deca7211e6c889a632"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0087] M2-39-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0087] M2-39-SE.bpm",
         "7d3ab21c7f90a5614fa6dd961c7144a4"
       ]
     },
     "[0056] M2-08-MA": {
       "audio": [
-        "BRID_1.0/audio/[0056] M2-08-MA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0056] M2-08-MA.wav",
         "10a1ed9b4ee9d86731915f21fc9ae6ba"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0056] M2-08-MA.beats",
+        "BRID_1.0/Annotations/beats/[0056] M2-08-MA.beats",
         "e9ceefc79f0cfa1d6b9f9c8250b77dfc"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0056] M2-08-MA.bpm",
+        "BRID_1.0/Annotations/tempo/[0056] M2-08-MA.bpm",
         "88b8b4aa1655498eb2bfd756f68b1b3e"
-      ]
-    },
-    "[0009] M4-09-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0009] M4-09-SA.wav",
-        "e121f38e145c740ab83bbd02b26222b6"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0009] M4-09-SA.beats",
-        "ef46474daa8328c71b15a670d94d5321"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0009] M4-09-SA.bpm",
-        "ac81853094ee0408c84740dfc1a30ba1"
       ]
     },
     "[0069] M2-21-SA": {
       "audio": [
-        "BRID_1.0/audio/[0069] M2-21-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0069] M2-21-SA.wav",
         "4cfd7ec2b0f00eb219fa8f3f5634a19e"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0069] M2-21-SA.beats",
+        "BRID_1.0/Annotations/beats/[0069] M2-21-SA.beats",
         "5b67b3290035149ea671eb0ddb36edfa"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0069] M2-21-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0069] M2-21-SA.bpm",
         "74d1572245c00e4f86a2007dcf95d8c6"
       ]
     },
     "[0080] M2-32-PA": {
       "audio": [
-        "BRID_1.0/audio/[0080] M2-32-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0080] M2-32-PA.wav",
         "e9014d70c7234f33c6660070ad691263"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0080] M2-32-PA.beats",
+        "BRID_1.0/Annotations/beats/[0080] M2-32-PA.beats",
         "8311b1b2ff219e295d00134684bf7ce9"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0080] M2-32-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0080] M2-32-PA.bpm",
         "43ec73fa2bd8559ca1276122e167c45d"
-      ]
-    },
-    "[0041] M3-22-SE": {
-      "audio": [
-        "BRID_1.0/audio/[0041] M3-22-SE.wav",
-        "81dec4e08c87a5429a8f1982ae5d09ea"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0041] M3-22-SE.beats",
-        "904fa25d8f3fd370bb63cb41a3069320"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0041] M3-22-SE.bpm",
-        "eb7deece0a97117e3d4ea0692b452c68"
-      ]
-    },
-    "[0019] M4-19-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0019] M4-19-SA.wav",
-        "af3eb8e7d24994f1abf1e7e784cc1830"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0019] M4-19-SA.beats",
-        "bfd089f176faf981febf549df3ea6d4b"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0019] M4-19-SA.bpm",
-        "35cd99c7144221908dd347e5be1c2cbc"
       ]
     },
     "[0059] M2-11-SA": {
       "audio": [
-        "BRID_1.0/audio/[0059] M2-11-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0059] M2-11-SA.wav",
         "a1500ee790bcc632a5bcf0b7c22cad89"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0059] M2-11-SA.beats",
+        "BRID_1.0/Annotations/beats/[0059] M2-11-SA.beats",
         "5127db4df0b383654ebc155813ee8132"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0059] M2-11-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0059] M2-11-SA.bpm",
         "30cb59f8f3381277877336302ccb2d26"
       ]
     },
     "[0077] M2-29-SE": {
       "audio": [
-        "BRID_1.0/audio/[0077] M2-29-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0077] M2-29-SE.wav",
         "693957a6dbaa3b0dec0d1523094d7c2b"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0077] M2-29-SE.beats",
+        "BRID_1.0/Annotations/beats/[0077] M2-29-SE.beats",
         "6364c939ef306db850f7a0d70b4177c3"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0077] M2-29-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0077] M2-29-SE.bpm",
         "834ecb5bea88fcb8d19b5baa7eed3329"
-      ]
-    },
-    "[0013] M4-13-SE": {
-      "audio": [
-        "BRID_1.0/audio/[0013] M4-13-SE.wav",
-        "bdd2fb1c0bab9332db51d6187452138e"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0013] M4-13-SE.beats",
-        "c4c0cd1154d39474b77e978f0cbc2ce7"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0013] M4-13-SE.bpm",
-        "39a5d79ebca6383b5d18c19fb4f4e1dd"
       ]
     },
     "[0076] M2-28-SE": {
       "audio": [
-        "BRID_1.0/audio/[0076] M2-28-SE.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0076] M2-28-SE.wav",
         "60c539435eac037887a677238b1fb748"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0076] M2-28-SE.beats",
+        "BRID_1.0/Annotations/beats/[0076] M2-28-SE.beats",
         "6700b87c48e0eb5ef6c8b72e9a0862f7"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0076] M2-28-SE.bpm",
+        "BRID_1.0/Annotations/tempo/[0076] M2-28-SE.bpm",
         "eec89715b9bf1edaefd49f53ba132428"
-      ]
-    },
-    "[0012] M4-12-SE": {
-      "audio": [
-        "BRID_1.0/audio/[0012] M4-12-SE.wav",
-        "4ae0a3053884f0f6eb8a0ad789800112"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0012] M4-12-SE.beats",
-        "289712f59af597dd9558d88ffd8f07ed"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0012] M4-12-SE.bpm",
-        "c726e26c61f95ab973c9e263b18d3dca"
       ]
     },
     "[0058] M2-10-SA": {
       "audio": [
-        "BRID_1.0/audio/[0058] M2-10-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0058] M2-10-SA.wav",
         "a1fd2c5c9f4c9d7f82974654a9ac0d85"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0058] M2-10-SA.beats",
+        "BRID_1.0/Annotations/beats/[0058] M2-10-SA.beats",
         "2f82b2130c346e4940c61e9c5f975446"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0058] M2-10-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0058] M2-10-SA.bpm",
         "31e947026275b3218cd675ccafd4f1b6"
-      ]
-    },
-    "[0045] M3-26-SE": {
-      "audio": [
-        "BRID_1.0/audio/[0045] M3-26-SE.wav",
-        "f2e01d3d4d9bad56de04135b1c251942"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0045] M3-26-SE.beats",
-        "3057062ade173b65c7f9440b26f59932"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0045] M3-26-SE.bpm",
-        "73f09c584f9020307978777cff95c348"
       ]
     },
     "[0084] M2-36-PA": {
       "audio": [
-        "BRID_1.0/audio/[0084] M2-36-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0084] M2-36-PA.wav",
         "1274e8064ae2d50f6dea1aaf40d8d980"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0084] M2-36-PA.beats",
+        "BRID_1.0/Annotations/beats/[0084] M2-36-PA.beats",
         "1a3e70039572ab9bcf5b9ee95fe64b3a"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0084] M2-36-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0084] M2-36-PA.bpm",
         "eb56f417798e746dad101d2384c32a81"
       ]
     },
     "[0086] M2-38-SA": {
       "audio": [
-        "BRID_1.0/audio/[0086] M2-38-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0086] M2-38-SA.wav",
         "82af96a0514fcc1772a7117f4ec7d095"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0086] M2-38-SA.beats",
+        "BRID_1.0/Annotations/beats/[0086] M2-38-SA.beats",
         "12045eecf5a66126d7d620ef560fa84f"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0086] M2-38-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0086] M2-38-SA.bpm",
         "ca415d67c656099a3077549b37c40e10"
-      ]
-    },
-    "[0008] M4-08-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0008] M4-08-SA.wav",
-        "2515437f79148cfb2ee3a0ccfc914268"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0008] M4-08-SA.beats",
-        "02d12d9401e79f20beee5947b208064c"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0008] M4-08-SA.bpm",
-        "49cc758b292d597a0a593553c62ca52d"
-      ]
-    },
-    "[0031] M3-12-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0031] M3-12-SA.wav",
-        "c4c0e3d88cdf04c2bb0c11dfc6737a2e"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0031] M3-12-SA.beats",
-        "a5db3d5902a9f1227735d17c56d6c563"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0031] M3-12-SA.bpm",
-        "53d8b5d6d36fc3945acf2da9e107c3ff"
-      ]
-    },
-    "[0018] M4-18-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0018] M4-18-SA.wav",
-        "23193950f659cef281caaa1fccdff2d7"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0018] M4-18-SA.beats",
-        "3056d15e76850e0f3559e5e4da260b3f"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0018] M4-18-SA.bpm",
-        "070eb1e162cb1e294cabd5282de8d00c"
       ]
     },
     "[0082] M2-34-SA": {
       "audio": [
-        "BRID_1.0/audio/[0082] M2-34-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0082] M2-34-SA.wav",
         "4d897b536cf204b144177f624e36fb18"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0082] M2-34-SA.beats",
+        "BRID_1.0/Annotations/beats/[0082] M2-34-SA.beats",
         "b423d3ab9dc564015576226e3557fad1"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0082] M2-34-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0082] M2-34-SA.bpm",
         "1ba00336e8e99978d4b967a17a04e5f3"
-      ]
-    },
-    "[0021] M3-02-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0021] M3-02-SA.wav",
-        "7c5fdd773a3251607ea778b46cc1c22c"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0021] M3-02-SA.beats",
-        "27e5f4f6b4c6560b334eb0681644c167"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0021] M3-02-SA.bpm",
-        "2f3e377b5b1c3ce0da8cd2873366d2bd"
       ]
     },
     "[0068] M2-20-SA": {
       "audio": [
-        "BRID_1.0/audio/[0068] M2-20-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0068] M2-20-SA.wav",
         "ab686de12af6f5b11863d6fc34ae3140"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0068] M2-20-SA.beats",
+        "BRID_1.0/Annotations/beats/[0068] M2-20-SA.beats",
         "fb1a7dc61fbea4ab9037ecadd1d44a22"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0068] M2-20-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0068] M2-20-SA.bpm",
         "655f18d788c73c1d6421b48a0a1b94cb"
-      ]
-    },
-    "[0026] M3-07-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0026] M3-07-PA.wav",
-        "3c76ce219dbbd7c81206d53b27750f27"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0026] M3-07-PA.beats",
-        "d73a039d09410464f10ad54f4aa0c43a"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0026] M3-07-PA.bpm",
-        "e1e660c43f8c532670d56d66fab39e23"
       ]
     },
     "[0052] M2-04-SA": {
       "audio": [
-        "BRID_1.0/audio/[0052] M2-04-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0052] M2-04-SA.wav",
         "c18670dd038726303a9443895cb94922"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0052] M2-04-SA.beats",
+        "BRID_1.0/Annotations/beats/[0052] M2-04-SA.beats",
         "b959071ff8332d29e7a78a7cb14298cf"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0052] M2-04-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0052] M2-04-SA.bpm",
         "e9e5e1a6a1597633762f59a862a398f8"
       ]
     },
     "[0074] M2-26-PA": {
       "audio": [
-        "BRID_1.0/audio/[0074] M2-26-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0074] M2-26-PA.wav",
         "68c7fd359ae5fddf7d5168c585137f63"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0074] M2-26-PA.beats",
+        "BRID_1.0/Annotations/beats/[0074] M2-26-PA.beats",
         "00570728c72b99135ab7633c36ab8c5f"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0074] M2-26-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0074] M2-26-PA.bpm",
         "91834bf173564cb9acd114f20986a776"
       ]
     },
     "[0067] M2-19-SA": {
       "audio": [
-        "BRID_1.0/audio/[0067] M2-19-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0067] M2-19-SA.wav",
         "2805b84ad67f2c4209a0cf36dd0e0d9f"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0067] M2-19-SA.beats",
+        "BRID_1.0/Annotations/beats/[0067] M2-19-SA.beats",
         "2fc3d5662f0c43ba50c389cb3dd63a54"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0067] M2-19-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0067] M2-19-SA.bpm",
         "28b49e5acf9cc403eb4741642481377e"
-      ]
-    },
-    "[0007] M4-07-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0007] M4-07-SA.wav",
-        "cede21da2ab9daa3d42475b7be4ab167"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0007] M4-07-SA.beats",
-        "b2bfd71a1a535c56a677342fa523f4fd"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0007] M4-07-SA.bpm",
-        "2485650b144673de8269ab9b5c136dbe"
-      ]
-    },
-    "[0036] M3-17-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0036] M3-17-PA.wav",
-        "593f4d89b0e59564da749ba200dd495a"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0036] M3-17-PA.beats",
-        "0656728c79313d5e85fb93024bc2dc02"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0036] M3-17-PA.bpm",
-        "e79b18a8a33591bb329dab22936bb858"
       ]
     },
     "[0062] M2-14-MA": {
       "audio": [
-        "BRID_1.0/audio/[0062] M2-14-MA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0062] M2-14-MA.wav",
         "75485e7dc76378966d6fe6a4b54f7e45"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0062] M2-14-MA.beats",
+        "BRID_1.0/Annotations/beats/[0062] M2-14-MA.beats",
         "246b94ea6d980b2c54ac487a2957fa77"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0062] M2-14-MA.bpm",
+        "BRID_1.0/Annotations/tempo/[0062] M2-14-MA.bpm",
         "6cc5a4ec3634e9e059c3da766a520142"
       ]
     },
     "[0071] M2-23-PA": {
       "audio": [
-        "BRID_1.0/audio/[0071] M2-23-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0071] M2-23-PA.wav",
         "bf3addcaf50de147c414416eb94fba81"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0071] M2-23-PA.beats",
+        "BRID_1.0/Annotations/beats/[0071] M2-23-PA.beats",
         "9f8da294e78a2dd9a8f2cc898d25d290"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0071] M2-23-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0071] M2-23-PA.bpm",
         "cec6e40835f7ffa60256ef16f929d221"
       ]
     },
     "[0054] M2-06-PA": {
       "audio": [
-        "BRID_1.0/audio/[0054] M2-06-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0054] M2-06-PA.wav",
         "7ff062a0b7c664687a5bf0c6271cb386"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0054] M2-06-PA.beats",
+        "BRID_1.0/Annotations/beats/[0054] M2-06-PA.beats",
         "d0b1b39e33db748eedad41a613eb404f"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0054] M2-06-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0054] M2-06-PA.bpm",
         "9c68cac6033c0ba7fafc80eedc19d18b"
-      ]
-    },
-    "[0034] M3-15-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0034] M3-15-SA.wav",
-        "ac44eb8cfbe2b0f1e6d797291c62bb4a"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0034] M3-15-SA.beats",
-        "0679823328fd4f6fe24ca0bebc8f1d0f"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0034] M3-15-SA.bpm",
-        "f63004df5534994f0a712454d888bb11"
       ]
     },
     "[0072] M2-24-SA": {
       "audio": [
-        "BRID_1.0/audio/[0072] M2-24-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0072] M2-24-SA.wav",
         "b3b2ce248669ab459f0ea4734e7c3599"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0072] M2-24-SA.beats",
+        "BRID_1.0/Annotations/beats/[0072] M2-24-SA.beats",
         "c86fad73b16158937cb1a83450f10506"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0072] M2-24-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0072] M2-24-SA.bpm",
         "597d195e8ae73dc0a71866bbe5fbad64"
-      ]
-    },
-    "[0002] M4-02-SA": {
-      "audio": [
-        "BRID_1.0/audio/[0002] M4-02-SA.wav",
-        "84b5b335fe402a8a62404a0477e5826b"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0002] M4-02-SA.beats",
-        "c76c67d2eb3f9d2111a13892c27d9ae3"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0002] M4-02-SA.bpm",
-        "545e2dd23c179b1af7590709ced2f7a0"
       ]
     },
     "[0065] M2-17-PA": {
       "audio": [
-        "BRID_1.0/audio/[0065] M2-17-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0065] M2-17-PA.wav",
         "3cb1252c269461ee915815bb58784b44"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0065] M2-17-PA.beats",
+        "BRID_1.0/Annotations/beats/[0065] M2-17-PA.beats",
         "66168e45ef529f43fba155f4c02630e8"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0065] M2-17-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0065] M2-17-PA.bpm",
         "dad3e2c143a01e4e2104d1e09a8d7dd9"
-      ]
-    },
-    "[0005] M4-05-PA": {
-      "audio": [
-        "BRID_1.0/audio/[0005] M4-05-PA.wav",
-        "c63cc8d8c146f6ba134b3d658d2206ae"
-      ],
-      "beats": [
-        "BRID_1.0/annotations/beats/[0005] M4-05-PA.beats",
-        "e6f6e5d38278ddb8782ba18a18c81f6e"
-      ],
-      "tempo": [
-        "BRID_1.0/annotations/tempo/[0005] M4-05-PA.bpm",
-        "3758ffe0aeb6c77518aed3d380588921"
       ]
     },
     "[0090] M2-42-SA": {
       "audio": [
-        "BRID_1.0/audio/[0090] M2-42-SA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0090] M2-42-SA.wav",
         "7d5eb5275fb6be6b1ec7bcf397ea47ee"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0090] M2-42-SA.beats",
+        "BRID_1.0/Annotations/beats/[0090] M2-42-SA.beats",
         "8f8af6c6512aa7448375436299590237"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0090] M2-42-SA.bpm",
+        "BRID_1.0/Annotations/tempo/[0090] M2-42-SA.bpm",
         "8e4b793a9325bde3f5f81bf986ba1cb4"
       ]
     },
     "[0093] M2-45-PA": {
       "audio": [
-        "BRID_1.0/audio/[0093] M2-45-PA.wav",
+        "BRID_1.0/Data/Acoustic Mixtures/2 Instruments/[0093] M2-45-PA.wav",
         "09bce1b782871dbbdbbb05d59e7bff11"
       ],
       "beats": [
-        "BRID_1.0/annotations/beats/[0093] M2-45-PA.beats",
+        "BRID_1.0/Annotations/beats/[0093] M2-45-PA.beats",
         "f7c372e8afac537e449b32a47619b028"
       ],
       "tempo": [
-        "BRID_1.0/annotations/tempo/[0093] M2-45-PA.bpm",
+        "BRID_1.0/Annotations/tempo/[0093] M2-45-PA.bpm",
         "19631174d07862ce1f88266c8b9ecc3d"
+      ]
+    },
+    "[0150] S1-RP2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0150] S1-RP2-01-SA.wav",
+        "4d0a06d0fe12cb435c90d656ea91ddd9"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0150] S1-RP2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0150] S1-RP2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0161] S1-RP3-04-VSA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0161] S1-RP3-04-VSA.wav",
+        "d07e6c84628a33d612b8b60692bba439"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0161] S1-RP3-04-VSA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0161] S1-RP3-04-VSA.bpm",
+        null
+      ]
+    },
+    "[0160] S1-RP3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0160] S1-RP3-03-SE.wav",
+        "faacfd3d2eefc266f5d347c8c78a4552"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0160] S1-RP3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0160] S1-RP3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0151] S1-RP2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0151] S1-RP2-02-PA.wav",
+        "b3d5ae6d22d540aa5e50dc9a19c3cddf"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0151] S1-RP2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0151] S1-RP2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0153] S1-RP2-04-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0153] S1-RP2-04-VSE.wav",
+        "fe4ecbc511b3e6006feeb938ebc27b1d"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0153] S1-RP2-04-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0153] S1-RP2-04-VSE.bpm",
+        null
+      ]
+    },
+    "[0152] S1-RP2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0152] S1-RP2-03-SE.wav",
+        "7b9f8fb5fe43f4872cb67b76eb3c8061"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0152] S1-RP2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0152] S1-RP2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0156] S1-RP1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0156] S1-RP1-03-SE.wav",
+        "a701f248be357fef4a362f938c03e7cd"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0156] S1-RP1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0156] S1-RP1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0158] S1-RP3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0158] S1-RP3-01-SA.wav",
+        "4013dc5d30252f6f86b92eda965be5a2"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0158] S1-RP3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0158] S1-RP3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0155] S1-RP1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0155] S1-RP1-02-PA.wav",
+        "614ea9c9c0b11532f112c13b9bd8b97a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0155] S1-RP1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0155] S1-RP1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0154] S1-RP1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0154] S1-RP1-01-SA.wav",
+        "5eaa79e07f744fe0972d135d575e8a79"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0154] S1-RP1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0154] S1-RP1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0159] S1-RP3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0159] S1-RP3-02-PA.wav",
+        "9cd388870105413f89ca63bc069e4caa"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0159] S1-RP3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0159] S1-RP3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0157] S1-RP1-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Repique/[0157] S1-RP1-04-VPA.wav",
+        "cdd858ca9d22e830d7d538e7555de30d"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0157] S1-RP1-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0157] S1-RP1-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0173] S1-SK2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Shaker/[0173] S1-SK2-01-SA.wav",
+        "2a108fc7b2763aba4de19d7a8c2e7915"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0173] S1-SK2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0173] S1-SK2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0174] S1-SK2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Shaker/[0174] S1-SK2-02-PA.wav",
+        "f613873e881b54b5604251edc9f0199b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0174] S1-SK2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0174] S1-SK2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0175] S1-SK2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Shaker/[0175] S1-SK2-03-SE.wav",
+        "605edff38a399f94e43c6b9011215a21"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0175] S1-SK2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0175] S1-SK2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0170] S1-SK1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Shaker/[0170] S1-SK1-01-SA.wav",
+        "811c030f6f8fc0635aa58c2bd5c6b81a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0170] S1-SK1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0170] S1-SK1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0171] S1-SK1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Shaker/[0171] S1-SK1-02-PA.wav",
+        "9440fb7fa9aaf9f2b8cf74f491fa3d72"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0171] S1-SK1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0171] S1-SK1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0172] S1-SK1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Shaker/[0172] S1-SK1-03-SE.wav",
+        "785b679fd60749f3c00cd53aad2ab670"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0172] S1-SK1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0172] S1-SK1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0144] S1-RR4-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Reco-reco/[0144] S1-RR4-04-VPA.wav",
+        "b8beab4c7dad3120c3d703282c6b50a0"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0144] S1-RR4-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0144] S1-RR4-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0140] S1-RR2-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Reco-reco/[0140] S1-RR2-04-VPA.wav",
+        "e1bb36d0caedccb060de07486584b31d"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0140] S1-RR2-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0140] S1-RR2-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0137] S1-RR2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Reco-reco/[0137] S1-RR2-01-SA.wav",
+        "4a322514fa857cf8d78be79c79b3f9f0"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0137] S1-RR2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0137] S1-RR2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0138] S1-RR2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Reco-reco/[0138] S1-RR2-02-PA.wav",
+        "0510df50b8123151832b703ea819e4a0"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0138] S1-RR2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0138] S1-RR2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0141] S1-RR4-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Reco-reco/[0141] S1-RR4-01-SA.wav",
+        "742cfe72af96f3c27191303cfe90dfd7"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0141] S1-RR4-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0141] S1-RR4-01-SA.bpm",
+        null
+      ]
+    },
+    "[0142] S1-RR4-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Reco-reco/[0142] S1-RR4-02-PA.wav",
+        "49ae448e13425d1d264c7930791b3dea"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0142] S1-RR4-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0142] S1-RR4-02-PA.bpm",
+        null
+      ]
+    },
+    "[0143] S1-RR4-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Reco-reco/[0143] S1-RR4-03-SE.wav",
+        "f5c1d53cd9d428360897ec87fdebb538"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0143] S1-RR4-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0143] S1-RR4-03-SE.bpm",
+        null
+      ]
+    },
+    "[0139] S1-RR2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Reco-reco/[0139] S1-RR2-03-SE.wav",
+        "80ccba2d27086ebc4be46f67ffb7744a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0139] S1-RR2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0139] S1-RR2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0166] S1-AG1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Agogo/[0166] S1-AG1-01-SA.wav",
+        "8f9f614d96c660c525f8dcdbf4ded57f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0166] S1-AG1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0166] S1-AG1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0169] S1-AG1-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Agogo/[0169] S1-AG1-04-VPA.wav",
+        "4c70c60bd464224f4e177c0cb643a48d"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0169] S1-AG1-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0169] S1-AG1-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0167] S1-AG1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Agogo/[0167] S1-AG1-02-PA.wav",
+        "5070b957b897f571551f83a0546c7573"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0167] S1-AG1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0167] S1-AG1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0168] S1-AG1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Agogo/[0168] S1-AG1-03-SE.wav",
+        "9b7264e4270467d070a580385d327d6f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0168] S1-AG1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0168] S1-AG1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0149] S1-CX1-05-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Caixa/[0149] S1-CX1-05-VSE.wav",
+        "e6907434133358102f1766cbf0ad9f93"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0149] S1-CX1-05-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0149] S1-CX1-05-VSE.bpm",
+        null
+      ]
+    },
+    "[0147] S1-CX1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Caixa/[0147] S1-CX1-03-SE.wav",
+        "26006f7fa84d05119b4661416b097023"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0147] S1-CX1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0147] S1-CX1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0148] S1-CX1-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Caixa/[0148] S1-CX1-04-MA.wav",
+        "08562cb0a44e85c406be76168ae5e64e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0148] S1-CX1-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0148] S1-CX1-04-MA.bpm",
+        null
+      ]
+    },
+    "[0145] S1-CX1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Caixa/[0145] S1-CX1-01-SA.wav",
+        "49b2db7335ecf796cc891966607b70ca"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0145] S1-CX1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0145] S1-CX1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0146] S1-CX1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Caixa/[0146] S1-CX1-02-PA.wav",
+        "4f15c66a6e60c978a0508563d6d4db71"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0146] S1-CX1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0146] S1-CX1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0177] S1-TT2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tanta/[0177] S1-TT2-02-PA.wav",
+        "410f2f54dd133c8af476c011fe4d8f89"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0177] S1-TT2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0177] S1-TT2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0176] S1-TT2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tanta/[0176] S1-TT2-01-SA.wav",
+        "dd2c30460c4fdda18b36c2e5e66484e6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0176] S1-TT2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0176] S1-TT2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0179] S1-TT2-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tanta/[0179] S1-TT2-04-VPA.wav",
+        "c450e6a935cc758cc2354de0b9485020"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0179] S1-TT2-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0179] S1-TT2-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0178] S1-TT2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tanta/[0178] S1-TT2-03-SE.wav",
+        "c107c89c754bb949dbe4f22ca2f0486f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0178] S1-TT2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0178] S1-TT2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0162] S1-CU2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Cuica/[0162] S1-CU2-01-SA.wav",
+        "8b916828de53a3f3fb8c955fad14b8ff"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0162] S1-CU2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0162] S1-CU2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0165] S1-CU2-04-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Cuica/[0165] S1-CU2-04-VSE.wav",
+        "4b4ad3c599b608957b00f18bfeda0a0e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0165] S1-CU2-04-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0165] S1-CU2-04-VSE.bpm",
+        null
+      ]
+    },
+    "[0163] S1-CU2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Cuica/[0163] S1-CU2-02-PA.wav",
+        "7ecbe791468657dac456c72516b71001"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0163] S1-CU2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0163] S1-CU2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0164] S1-CU2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Cuica/[0164] S1-CU2-03-SE.wav",
+        "2b30535b0bb15e10a6c029849e66197a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0164] S1-CU2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0164] S1-CU2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0121] S1-PD4-07-VSA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0121] S1-PD4-07-VSA.wav",
+        "3d6fc3e1135a101113006cc1d3e91cd9"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0121] S1-PD4-07-VSA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0121] S1-PD4-07-VSA.bpm",
+        null
+      ]
+    },
+    "[0105] S1-PD2-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0105] S1-PD2-05-CA.wav",
+        "a88c4276db38edcd6b19ab1afc45b1f2"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0105] S1-PD2-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0105] S1-PD2-05-CA.bpm",
+        null
+      ]
+    },
+    "[0115] S1-PD4-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0115] S1-PD4-01-SA.wav",
+        "f1fb0c00cbbd36a4b5b6e0ead4b11be3"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0115] S1-PD4-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0115] S1-PD4-01-SA.bpm",
+        null
+      ]
+    },
+    "[0127] S1-PD5-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0127] S1-PD5-06-VPA.wav",
+        "4eb45596fdee89fc4d8e25acb262dde2"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0127] S1-PD5-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0127] S1-PD5-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0120] S1-PD4-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0120] S1-PD4-06-VPA.wav",
+        "f32f716eb9779487f6533ae72f083bce"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0120] S1-PD4-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0120] S1-PD4-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0122] S1-PD5-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0122] S1-PD5-01-SA.wav",
+        "445967a43b18d6c686a3454c5b5baef3"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0122] S1-PD5-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0122] S1-PD5-01-SA.bpm",
+        null
+      ]
+    },
+    "[0114] S1-PD3-07-VSA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0114] S1-PD3-07-VSA.wav",
+        "895d87d96fccf255b8070bfc99d11c8a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0114] S1-PD3-07-VSA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0114] S1-PD3-07-VSA.bpm",
+        null
+      ]
+    },
+    "[0119] S1-PD4-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0119] S1-PD4-05-CA.wav",
+        "d6ea6dcb761efeee21161cb6fbea6355"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0119] S1-PD4-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0119] S1-PD4-05-CA.bpm",
+        null
+      ]
+    },
+    "[0116] S1-PD4-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0116] S1-PD4-02-PA.wav",
+        "5ef3094bbad4457a46501b3d5996bedf"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0116] S1-PD4-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0116] S1-PD4-02-PA.bpm",
+        null
+      ]
+    },
+    "[0109] S1-PD3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0109] S1-PD3-02-PA.wav",
+        "27c62ba7c86c963b5479e25f49e61506"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0109] S1-PD3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0109] S1-PD3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0117] S1-PD4-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0117] S1-PD4-03-SE.wav",
+        "1373291fd03e9f5dcebae92e55dc7e53"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0117] S1-PD4-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0117] S1-PD4-03-SE.bpm",
+        null
+      ]
+    },
+    "[0118] S1-PD4-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0118] S1-PD4-04-MA.wav",
+        "291080b818761ba1341f8f4b83b5033f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0118] S1-PD4-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0118] S1-PD4-04-MA.bpm",
+        null
+      ]
+    },
+    "[0108] S1-PD3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0108] S1-PD3-01-SA.wav",
+        "98fedfebfbd5f301f60434c27b5da6fa"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0108] S1-PD3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0108] S1-PD3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0124] S1-PD5-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0124] S1-PD5-03-SE.wav",
+        "0b76fac6a3e38f45b5c3759fe42559c7"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0124] S1-PD5-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0124] S1-PD5-03-SE.bpm",
+        null
+      ]
+    },
+    "[0123] S1-PD5-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0123] S1-PD5-02-PA.wav",
+        "d7950c72e777d62e097e2ffb374f81b0"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0123] S1-PD5-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0123] S1-PD5-02-PA.bpm",
+        null
+      ]
+    },
+    "[0104] S1-PD2-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0104] S1-PD2-04-MA.wav",
+        "621100b5f11916f03beabd5b52368ac6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0104] S1-PD2-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0104] S1-PD2-04-MA.bpm",
+        null
+      ]
+    },
+    "[0097] S1-PD1-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0097] S1-PD1-04-MA.wav",
+        "08e5afb886c7ff60cbcda08a9b338014"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0097] S1-PD1-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0097] S1-PD1-04-MA.bpm",
+        null
+      ]
+    },
+    "[0113] S1-PD3-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0113] S1-PD3-06-VPA.wav",
+        "b1a06aeaca046ea9d294e4b3d35f7cb1"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0113] S1-PD3-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0113] S1-PD3-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0110] S1-PD3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0110] S1-PD3-03-SE.wav",
+        "f71d819a79d4e5ecf876e7ba950b5dca"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0110] S1-PD3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0110] S1-PD3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0094] S1-PD1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0094] S1-PD1-01-SA.wav",
+        "5717a7c2327a738b7fbf06c25031d97e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0094] S1-PD1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0094] S1-PD1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0106] S1-PD2-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0106] S1-PD2-06-VPA.wav",
+        "7cb3c1a2f84339b11abfe8ae572316e5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0106] S1-PD2-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0106] S1-PD2-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0099] S1-PD1-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0099] S1-PD1-06-VPA.wav",
+        "12ba39f13ba73cedff9801b43997ccbf"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0099] S1-PD1-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0099] S1-PD1-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0098] S1-PD1-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0098] S1-PD1-05-CA.wav",
+        "f6d54a9e20090104810c399c705cb4a6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0098] S1-PD1-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0098] S1-PD1-05-CA.bpm",
+        null
+      ]
+    },
+    "[0100] S1-PD1-07-VMA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0100] S1-PD1-07-VMA.wav",
+        "869c7d40ad22776d2f0ed70fdd4df3b4"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0100] S1-PD1-07-VMA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0100] S1-PD1-07-VMA.bpm",
+        null
+      ]
+    },
+    "[0103] S1-PD2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0103] S1-PD2-03-SE.wav",
+        "56c72e0fa42e460758a5701afb51adfd"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0103] S1-PD2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0103] S1-PD2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0107] S1-PD2-07-VMA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0107] S1-PD2-07-VMA.wav",
+        "4bf70c9378e5717ce1fe0841639df656"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0107] S1-PD2-07-VMA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0107] S1-PD2-07-VMA.bpm",
+        null
+      ]
+    },
+    "[0102] S1-PD2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0102] S1-PD2-02-PA.wav",
+        "a1c94cd59cdcbd5a3f53adea4e844fb6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0102] S1-PD2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0102] S1-PD2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0096] S1-PD1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0096] S1-PD1-03-SE.wav",
+        "1aa8d473eb4ff766215bf2ce32c303cd"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0096] S1-PD1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0096] S1-PD1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0126] S1-PD5-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0126] S1-PD5-05-CA.wav",
+        "b262dc80a26751580d314194031e24bc"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0126] S1-PD5-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0126] S1-PD5-05-CA.bpm",
+        null
+      ]
+    },
+    "[0111] S1-PD3-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0111] S1-PD3-04-MA.wav",
+        "dd62f324e9ccb9f831c89769683da035"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0111] S1-PD3-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0111] S1-PD3-04-MA.bpm",
+        null
+      ]
+    },
+    "[0112] S1-PD3-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0112] S1-PD3-05-CA.wav",
+        "92114db88c7cf8edb951c0a2548b22cc"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0112] S1-PD3-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0112] S1-PD3-05-CA.bpm",
+        null
+      ]
+    },
+    "[0095] S1-PD1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0095] S1-PD1-02-PA.wav",
+        "9ddd426023982c794aeea91db78cf6fe"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0095] S1-PD1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0095] S1-PD1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0125] S1-PD5-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0125] S1-PD5-04-MA.wav",
+        "64d3950f92cfe4e39f295bdd7e525d50"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0125] S1-PD5-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0125] S1-PD5-04-MA.bpm",
+        null
+      ]
+    },
+    "[0128] S1-PD5-07-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0128] S1-PD5-07-VPA.wav",
+        "36074cd6f17b83b433fc3be5663fff84"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0128] S1-PD5-07-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0128] S1-PD5-07-VPA.bpm",
+        null
+      ]
+    },
+    "[0101] S1-PD2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Pandeiro/[0101] S1-PD2-01-SA.wav",
+        "57deb265f67bb78c083a705d2be94b68"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0101] S1-PD2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0101] S1-PD2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0136] S1-TB1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tamborim/[0136] S1-TB1-03-SE.wav",
+        "9e6ac1b2813be49a4b2a8f8c950ed9f6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0136] S1-TB1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0136] S1-TB1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0135] S1-TB1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tamborim/[0135] S1-TB1-02-PA.wav",
+        "38cc3174c233fbd2e8aa1dbc8d820f15"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0135] S1-TB1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0135] S1-TB1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0134] S1-TB1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tamborim/[0134] S1-TB1-01-SA.wav",
+        "28d7907c6e061a7f5d6c4719a4b46c53"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0134] S1-TB1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0134] S1-TB1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0132] S1-TB3-01-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tamborim/[0132] S1-TB3-01-SE.wav",
+        "23c52a3f2eeab0075ae1d4f571179d95"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0132] S1-TB3-01-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0132] S1-TB3-01-SE.bpm",
+        null
+      ]
+    },
+    "[0131] S1-TB2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tamborim/[0131] S1-TB2-03-SE.wav",
+        "f091064688ee605b33d6a036a03aa458"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0131] S1-TB2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0131] S1-TB2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0129] S1-TB2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tamborim/[0129] S1-TB2-01-SA.wav",
+        "aa886362244edd3e8c8eaf5e5e3774ed"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0129] S1-TB2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0129] S1-TB2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0130] S1-TB2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tamborim/[0130] S1-TB2-02-PA.wav",
+        "d6283a43fbc6cc1187ac4b64b9f4d6b1"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0130] S1-TB2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0130] S1-TB2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0133] S1-TB3-02-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Tamborim/[0133] S1-TB3-02-VSE.wav",
+        "00f824502e0adfd59816c4db3339e282"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0133] S1-TB3-02-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0133] S1-TB3-02-VSE.bpm",
+        null
+      ]
+    },
+    "[0180] S1-SU2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Surdo/[0180] S1-SU2-01-SA.wav",
+        "da4f0142ae7644dbf2fd8be25026c22b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0180] S1-SU2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0180] S1-SU2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0181] S1-SU2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Surdo/[0181] S1-SU2-02-PA.wav",
+        "ad62e594bce465bf06eebca5912a77f1"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0181] S1-SU2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0181] S1-SU2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0183] S1-SU2-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Surdo/[0183] S1-SU2-04-VPA.wav",
+        "5e873d9884ed0c9666f4f5d10737820b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0183] S1-SU2-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0183] S1-SU2-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0184] S1-SU2-05-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Surdo/[0184] S1-SU2-05-SE.wav",
+        "627f77b5b8ba65be210c59d3e2bb173c"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0184] S1-SU2-05-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0184] S1-SU2-05-SE.bpm",
+        null
+      ]
+    },
+    "[0182] S1-SU2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #1/Surdo/[0182] S1-SU2-03-SE.wav",
+        "36a10ab50614c6a5d1fa7856c9191ac7"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0182] S1-SU2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0182] S1-SU2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0234] S2-RP2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0234] S2-RP2-02-PA.wav",
+        "dc190602141a33a3378d58a163d748b2"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0234] S2-RP2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0234] S2-RP2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0233] S2-RP2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0233] S2-RP2-01-SA.wav",
+        "4452e4b4b9f846054ebf364b2d460ae6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0233] S2-RP2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0233] S2-RP2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0244] S2-RP3-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0244] S2-RP3-04-VPA.wav",
+        "623fdefca8ab38648c7e7eba4d973997"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0244] S2-RP3-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0244] S2-RP3-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0238] S2-RP1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0238] S2-RP1-02-PA.wav",
+        "0188a05d20926855559bd9a4007fd1f7"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0238] S2-RP1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0238] S2-RP1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0239] S2-RP1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0239] S2-RP1-03-SE.wav",
+        "f59bd5b78b496e29543f6bdf84c99f2e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0239] S2-RP1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0239] S2-RP1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0235] S2-RP2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0235] S2-RP2-03-SE.wav",
+        "917a4ec68e5d8acb9dc73e87be253157"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0235] S2-RP2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0235] S2-RP2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0241] S2-RP3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0241] S2-RP3-01-SA.wav",
+        "b33d09ab1bc694cb1b8d1c34a26e9abd"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0241] S2-RP3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0241] S2-RP3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0236] S2-RP2-04-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0236] S2-RP2-04-VSE.wav",
+        "c106a8e61af8a6da41a03d9b89ebd0b5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0236] S2-RP2-04-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0236] S2-RP2-04-VSE.bpm",
+        null
+      ]
+    },
+    "[0242] S2-RP3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0242] S2-RP3-02-PA.wav",
+        "8797ed092f9f338d1cb5d298d437cc3d"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0242] S2-RP3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0242] S2-RP3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0240] S2-RP1-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0240] S2-RP1-04-VPA.wav",
+        "5b1c79af8f00a8ce9eaf3ef571049c33"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0240] S2-RP1-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0240] S2-RP1-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0243] S2-RP3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0243] S2-RP3-03-SE.wav",
+        "16f8bd394834e46127f1a0c7d90f66c0"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0243] S2-RP3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0243] S2-RP3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0237] S2-RP1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Repique/[0237] S2-RP1-01-SA.wav",
+        "103eeb558af2a869dd2ca3e9f692827c"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0237] S2-RP1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0237] S2-RP1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0258] S2-SK2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Shaker/[0258] S2-SK2-02-PA.wav",
+        "f0e05433765a97d9fa9f8379b4f156ef"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0258] S2-SK2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0258] S2-SK2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0260] S2-SK2-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Shaker/[0260] S2-SK2-04-MA.wav",
+        "ca1f12fbed97b36d8db1ca7ca9502de5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0260] S2-SK2-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0260] S2-SK2-04-MA.bpm",
+        null
+      ]
+    },
+    "[0256] S2-SK3-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Shaker/[0256] S2-SK3-04-MA.wav",
+        "cbdb2433f54da59d30f9e758e216cdcc"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0256] S2-SK3-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0256] S2-SK3-04-MA.bpm",
+        null
+      ]
+    },
+    "[0259] S2-SK2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Shaker/[0259] S2-SK2-03-SE.wav",
+        "98a06b2d1e38b274e02906ab81a0d08f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0259] S2-SK2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0259] S2-SK2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0254] S2-SK3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Shaker/[0254] S2-SK3-02-PA.wav",
+        "730bf0caea2ceb6e975f229d531c2c23"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0254] S2-SK3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0254] S2-SK3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0253] S2-SK3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Shaker/[0253] S2-SK3-01-SA.wav",
+        "e8e6ae9ecce5006a543bdee4c053bfbb"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0253] S2-SK3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0253] S2-SK3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0255] S2-SK3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Shaker/[0255] S2-SK3-03-SE.wav",
+        "9ffd0edf94b311e597cbcd7d2841b762"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0255] S2-SK3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0255] S2-SK3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0257] S2-SK2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Shaker/[0257] S2-SK2-01-SA.wav",
+        "e80e76beab4fb1c0d08b46b10414b189"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0257] S2-SK2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0257] S2-SK2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0223] S2-RR3-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Reco-reco/[0223] S2-RR3-04-VPA.wav",
+        "7cc838fd8b1249e9f5574f9722d05cfa"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0223] S2-RR3-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0223] S2-RR3-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0220] S2-RR3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Reco-reco/[0220] S2-RR3-01-SA.wav",
+        "ee56ae333d523ef59fc7c2d9ff208eff"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0220] S2-RR3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0220] S2-RR3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0227] S2-RR4-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Reco-reco/[0227] S2-RR4-04-VPA.wav",
+        "755d180e963923daae844fa11e843926"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0227] S2-RR4-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0227] S2-RR4-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0226] S2-RR4-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Reco-reco/[0226] S2-RR4-03-SE.wav",
+        "64d228b49c1a492dadce13d89017b5c6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0226] S2-RR4-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0226] S2-RR4-03-SE.bpm",
+        null
+      ]
+    },
+    "[0225] S2-RR4-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Reco-reco/[0225] S2-RR4-02-PA.wav",
+        "525ead5865c533e15d26f9e705c96b63"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0225] S2-RR4-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0225] S2-RR4-02-PA.bpm",
+        null
+      ]
+    },
+    "[0222] S2-RR3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Reco-reco/[0222] S2-RR3-03-SE.wav",
+        "3418b1ebfd969ebe768c47eead4034c0"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0222] S2-RR3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0222] S2-RR3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0224] S2-RR4-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Reco-reco/[0224] S2-RR4-01-SA.wav",
+        "d7cb91df58d22225a1569b4dfdf1545b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0224] S2-RR4-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0224] S2-RR4-01-SA.bpm",
+        null
+      ]
+    },
+    "[0221] S2-RR3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Reco-reco/[0221] S2-RR3-02-PA.wav",
+        "47aef16a092bbe238dbbc447e712b61e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0221] S2-RR3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0221] S2-RR3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0250] S2-AG1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Agogo/[0250] S2-AG1-02-PA.wav",
+        "b125e07308b771caa018d67fb54fd02a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0250] S2-AG1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0250] S2-AG1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0251] S2-AG1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Agogo/[0251] S2-AG1-03-SE.wav",
+        "8ebed7aa52f19c3414607ddd6949420f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0251] S2-AG1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0251] S2-AG1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0249] S2-AG1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Agogo/[0249] S2-AG1-01-SA.wav",
+        "a19a77caeb80aefd18270a9c0b61a222"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0249] S2-AG1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0249] S2-AG1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0252] S2-AG1-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Agogo/[0252] S2-AG1-04-VPA.wav",
+        "b8dc998f49f748afdaea2a32ce937881"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0252] S2-AG1-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0252] S2-AG1-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0231] S2-CX2-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Caixa/[0231] S2-CX2-04-MA.wav",
+        "4caffc22acaac576ace3933d70fbc484"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0231] S2-CX2-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0231] S2-CX2-04-MA.bpm",
+        null
+      ]
+    },
+    "[0232] S2-CX2-05-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Caixa/[0232] S2-CX2-05-VSE.wav",
+        "adf8780d4073996c028dab167efbd828"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0232] S2-CX2-05-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0232] S2-CX2-05-VSE.bpm",
+        null
+      ]
+    },
+    "[0228] S2-CX2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Caixa/[0228] S2-CX2-01-SA.wav",
+        "ce2af5e964915a28d558c8c6ba8352fa"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0228] S2-CX2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0228] S2-CX2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0230] S2-CX2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Caixa/[0230] S2-CX2-03-SE.wav",
+        "dd7b11c70cad7083cc3d5f47297817ea"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0230] S2-CX2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0230] S2-CX2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0229] S2-CX2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Caixa/[0229] S2-CX2-02-PA.wav",
+        "1df51b3a3a24f81e9037f51a4380aaf8"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0229] S2-CX2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0229] S2-CX2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0264] S2-TT3-04-VMA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tanta/[0264] S2-TT3-04-VMA.wav",
+        "a724303dce55b94f261b3fd293313094"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0264] S2-TT3-04-VMA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0264] S2-TT3-04-VMA.bpm",
+        null
+      ]
+    },
+    "[0269] S2-TT4-05-VMA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tanta/[0269] S2-TT4-05-VMA.wav",
+        "d18eccff3e60d69b3ec2b2b207412d95"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0269] S2-TT4-05-VMA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0269] S2-TT4-05-VMA.bpm",
+        null
+      ]
+    },
+    "[0268] S2-TT4-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tanta/[0268] S2-TT4-04-MA.wav",
+        "e8c8ff71a07af477c3387572cd96b80b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0268] S2-TT4-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0268] S2-TT4-04-MA.bpm",
+        null
+      ]
+    },
+    "[0267] S2-TT4-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tanta/[0267] S2-TT4-03-SE.wav",
+        "006977659e27c2cbe67f223d8906a123"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0267] S2-TT4-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0267] S2-TT4-03-SE.bpm",
+        null
+      ]
+    },
+    "[0261] S2-TT3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tanta/[0261] S2-TT3-01-SA.wav",
+        "b665a4bcdc03f99da24e368a7adae9fb"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0261] S2-TT3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0261] S2-TT3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0262] S2-TT3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tanta/[0262] S2-TT3-02-PA.wav",
+        "f44ca000bcca5d3829d64bda85692378"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0262] S2-TT3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0262] S2-TT3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0265] S2-TT4-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tanta/[0265] S2-TT4-01-SA.wav",
+        "ec5c7c026dfeae5fa1cac1c0bc587eff"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0265] S2-TT4-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0265] S2-TT4-01-SA.bpm",
+        null
+      ]
+    },
+    "[0263] S2-TT3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tanta/[0263] S2-TT3-03-SE.wav",
+        "a8967b2d63480c4f1c7817b960c00ab6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0263] S2-TT3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0263] S2-TT3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0266] S2-TT4-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tanta/[0266] S2-TT4-02-PA.wav",
+        "1e4792bbc54e6cc906c7dd7c5bd44361"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0266] S2-TT4-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0266] S2-TT4-02-PA.bpm",
+        null
+      ]
+    },
+    "[0247] S2-CU3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Cuica/[0247] S2-CU3-03-SE.wav",
+        "ac0918db9258653316ab28c5405d11fd"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0247] S2-CU3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0247] S2-CU3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0246] S2-CU3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Cuica/[0246] S2-CU3-02-PA.wav",
+        "091a809825a7a67ca867f18ef3abdee1"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0246] S2-CU3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0246] S2-CU3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0248] S2-CU3-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Cuica/[0248] S2-CU3-04-VPA.wav",
+        "9208281c35b8e47af1200cf0c80d6e0d"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0248] S2-CU3-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0248] S2-CU3-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0245] S2-CU3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Cuica/[0245] S2-CU3-01-SA.wav",
+        "d5f41fce30262a1eecbf8310621d7e1b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0245] S2-CU3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0245] S2-CU3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0207] S2-PD6-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0207] S2-PD6-01-SA.wav",
+        "5f30de455150f3c0c301cae8d375a64f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0207] S2-PD6-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0207] S2-PD6-01-SA.bpm",
+        null
+      ]
+    },
+    "[0212] S2-PD6-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0212] S2-PD6-06-VPA.wav",
+        "d77cabaf3d68920b88411598ccab05e5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0212] S2-PD6-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0212] S2-PD6-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0193] S2-PD3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0193] S2-PD3-02-PA.wav",
+        "3dfd8a47ce7bf816a4d3aaab6cbc9444"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0193] S2-PD3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0193] S2-PD3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0194] S2-PD3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0194] S2-PD3-03-SE.wav",
+        "d60902a516ae649df8c3c495aa68f273"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0194] S2-PD3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0194] S2-PD3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0210] S2-PD6-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0210] S2-PD6-04-MA.wav",
+        "9af228c1e389a73ee2bb3a4296702c3d"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0210] S2-PD6-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0210] S2-PD6-04-MA.bpm",
+        null
+      ]
+    },
+    "[0213] S2-PD6-07-VMA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0213] S2-PD6-07-VMA.wav",
+        "f832e33e400bb612e23b5e9fbcc26208"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0213] S2-PD6-07-VMA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0213] S2-PD6-07-VMA.bpm",
+        null
+      ]
+    },
+    "[0192] S2-PD3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0192] S2-PD3-01-SA.wav",
+        "9605f4f1a0dcc870e441921d2cddb255"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0192] S2-PD3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0192] S2-PD3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0211] S2-PD6-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0211] S2-PD6-05-CA.wav",
+        "5d0fc4e9a182b8acd8397fbcf9de748b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0211] S2-PD6-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0211] S2-PD6-05-CA.bpm",
+        null
+      ]
+    },
+    "[0204] S2-PD5-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0204] S2-PD5-05-CA.wav",
+        "5180c283bcfb2c43c958f46d3fdce0d0"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0204] S2-PD5-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0204] S2-PD5-05-CA.bpm",
+        null
+      ]
+    },
+    "[0203] S2-PD5-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0203] S2-PD5-04-MA.wav",
+        "52c0ddfaaaae1bebdad243e112dc1470"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0203] S2-PD5-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0203] S2-PD5-04-MA.bpm",
+        null
+      ]
+    },
+    "[0186] S2-PD2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0186] S2-PD2-02-PA.wav",
+        "aa2536a0231f7c003b8fdf6b1d55e0c5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0186] S2-PD2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0186] S2-PD2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0189] S2-PD2-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0189] S2-PD2-05-CA.wav",
+        "f3b02748f2b5adafd6d0d859b5a12194"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0189] S2-PD2-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0189] S2-PD2-05-CA.bpm",
+        null
+      ]
+    },
+    "[0195] S2-PD3-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0195] S2-PD3-04-MA.wav",
+        "f9bf836b2a487c71da860c8d7c35254b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0195] S2-PD3-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0195] S2-PD3-04-MA.bpm",
+        null
+      ]
+    },
+    "[0200] S2-PD5-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0200] S2-PD5-01-SA.wav",
+        "f83fd6ff1faa9eeaede527ecc36d1404"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0200] S2-PD5-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0200] S2-PD5-01-SA.bpm",
+        null
+      ]
+    },
+    "[0191] S2-PD2-07-VMA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0191] S2-PD2-07-VMA.wav",
+        "32e1aca3e55e20939486684e19ab6c29"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0191] S2-PD2-07-VMA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0191] S2-PD2-07-VMA.bpm",
+        null
+      ]
+    },
+    "[0198] S2-PD3-07-VMA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0198] S2-PD3-07-VMA.wav",
+        "7beafb16ae5cec25c99e03874bd9c3a5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0198] S2-PD3-07-VMA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0198] S2-PD3-07-VMA.bpm",
+        null
+      ]
+    },
+    "[0209] S2-PD6-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0209] S2-PD6-03-SE.wav",
+        "ce36aaa7ca7250d7a8166007b75d65b5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0209] S2-PD6-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0209] S2-PD6-03-SE.bpm",
+        null
+      ]
+    },
+    "[0185] S2-PD2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0185] S2-PD2-01-SA.wav",
+        "3f18ea58d740d98a72e6514899854bb7"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0185] S2-PD2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0185] S2-PD2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0199] S2-PD3-08-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0199] S2-PD3-08-VSE.wav",
+        "22bcd638a12de0d162ee1d7a2b9db831"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0199] S2-PD3-08-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0199] S2-PD3-08-VSE.bpm",
+        null
+      ]
+    },
+    "[0205] S2-PD5-06-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0205] S2-PD5-06-PA.wav",
+        "6dc46537c216a4cce8c4d72bbd2e721e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0205] S2-PD5-06-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0205] S2-PD5-06-PA.bpm",
+        null
+      ]
+    },
+    "[0196] S2-PD3-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0196] S2-PD3-05-CA.wav",
+        "f50fa7f1d46ed309801faa838da4eb2a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0196] S2-PD3-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0196] S2-PD3-05-CA.bpm",
+        null
+      ]
+    },
+    "[0197] S2-PD3-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0197] S2-PD3-06-VPA.wav",
+        "13c96ff918ef50f26bc9fca00f09f217"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0197] S2-PD3-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0197] S2-PD3-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0202] S2-PD5-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0202] S2-PD5-03-SE.wav",
+        "2b88899ee261ec3cfa03a65150c5e189"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0202] S2-PD5-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0202] S2-PD5-03-SE.bpm",
+        null
+      ]
+    },
+    "[0208] S2-PD6-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0208] S2-PD6-02-PA.wav",
+        "542f5506a1ee84418e00dcae10e8983a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0208] S2-PD6-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0208] S2-PD6-02-PA.bpm",
+        null
+      ]
+    },
+    "[0206] S2-PD5-07-VMA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0206] S2-PD5-07-VMA.wav",
+        "665f5fe99f9324af7107088ddb48afd3"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0206] S2-PD5-07-VMA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0206] S2-PD5-07-VMA.bpm",
+        null
+      ]
+    },
+    "[0201] S2-PD5-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0201] S2-PD5-02-PA.wav",
+        "9c008b092e37e6124703ddeb938623c1"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0201] S2-PD5-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0201] S2-PD5-02-PA.bpm",
+        null
+      ]
+    },
+    "[0188] S2-PD2-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0188] S2-PD2-04-MA.wav",
+        "d9052a6565f866762eef5bbe24ce46ee"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0188] S2-PD2-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0188] S2-PD2-04-MA.bpm",
+        null
+      ]
+    },
+    "[0190] S2-PD2-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0190] S2-PD2-06-VPA.wav",
+        "8226c5cdd5355d923be5f13c4d0f78a5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0190] S2-PD2-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0190] S2-PD2-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0187] S2-PD2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Pandeiro/[0187] S2-PD2-03-SE.wav",
+        "8dff8b423762f28ac2133bf409d62650"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0187] S2-PD2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0187] S2-PD2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0215] S2-TB2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tamborim/[0215] S2-TB2-02-PA.wav",
+        "a0e600fda6b83fef66e63b9edd43dd27"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0215] S2-TB2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0215] S2-TB2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0217] S2-TB2-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tamborim/[0217] S2-TB2-04-VPA.wav",
+        "9d5483449621b8474c94539d7962f60b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0217] S2-TB2-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0217] S2-TB2-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0216] S2-TB2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tamborim/[0216] S2-TB2-03-SE.wav",
+        "1f3a28e3998abb4843546b210857ad24"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0216] S2-TB2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0216] S2-TB2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0214] S2-TB2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tamborim/[0214] S2-TB2-01-SA.wav",
+        "a9c79980be0c1e6b389dd8c7d6a7a02f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0214] S2-TB2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0214] S2-TB2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0219] S2-TB3-02-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tamborim/[0219] S2-TB3-02-VSE.wav",
+        "270201468e695081f234a90d56632205"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0219] S2-TB3-02-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0219] S2-TB3-02-VSE.bpm",
+        null
+      ]
+    },
+    "[0218] S2-TB3-01-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Tamborim/[0218] S2-TB3-01-SE.wav",
+        "43aa511f2143e43747e109e8067c153e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0218] S2-TB3-01-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0218] S2-TB3-01-SE.bpm",
+        null
+      ]
+    },
+    "[0279] S2-SU3-06-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0279] S2-SU3-06-SE.wav",
+        "a19e17b33b81f4c6f0b5e15d2454e034"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0279] S2-SU3-06-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0279] S2-SU3-06-SE.bpm",
+        null
+      ]
+    },
+    "[0273] S2-SU2-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0273] S2-SU2-04-VPA.wav",
+        "62949d894dd08739663de48c56fa3a31"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0273] S2-SU2-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0273] S2-SU2-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0274] S2-SU3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0274] S2-SU3-01-SA.wav",
+        "e0f7b2bdd11e8d695d5e88850b9322bc"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0274] S2-SU3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0274] S2-SU3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0271] S2-SU2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0271] S2-SU2-02-PA.wav",
+        "b4d1ff59c2b0cd287b6d1ac596d10854"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0271] S2-SU2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0271] S2-SU2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0270] S2-SU2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0270] S2-SU2-01-SA.wav",
+        "a656db501631db138d8cdaecc32ed104"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0270] S2-SU2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0270] S2-SU2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0272] S2-SU2-03-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0272] S2-SU2-03-MA.wav",
+        "5ffa779c07bef85128d0eba13fa3fdd5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0272] S2-SU2-03-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0272] S2-SU2-03-MA.bpm",
+        null
+      ]
+    },
+    "[0275] S2-SU3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0275] S2-SU3-02-PA.wav",
+        "51da3dc92d65e7d72ceba6fad0413c41"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0275] S2-SU3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0275] S2-SU3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0276] S2-SU3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0276] S2-SU3-03-SE.wav",
+        "b031ac464ca74726bde2e7ba4fa64a00"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0276] S2-SU3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0276] S2-SU3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0280] S2-SU2-05-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0280] S2-SU2-05-SE.wav",
+        "e45369419d0844f3beacd61b93cbef67"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0280] S2-SU2-05-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0280] S2-SU2-05-SE.bpm",
+        null
+      ]
+    },
+    "[0277] S2-SU3-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0277] S2-SU3-04-MA.wav",
+        "59ab58a3551de799b24d97bf47e78ca2"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0277] S2-SU3-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0277] S2-SU3-04-MA.bpm",
+        null
+      ]
+    },
+    "[0278] S2-SU3-05-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #2/Surdo/[0278] S2-SU3-05-VPA.wav",
+        "4f6868fce65144c2a4d56c256e462597"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0278] S2-SU3-05-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0278] S2-SU3-05-VPA.bpm",
+        null
+      ]
+    },
+    "[0329] S3-RP1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0329] S3-RP1-02-PA.wav",
+        "207acd2f5d0832000ade48bb362b8a1f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0329] S3-RP1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0329] S3-RP1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0323] S3-RP2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0323] S3-RP2-01-SA.wav",
+        "0447dab5a13c687166382a7dcdd0b8b5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0323] S3-RP2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0323] S3-RP2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0324] S3-RP2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0324] S3-RP2-02-PA.wav",
+        "6a83c04e354fdbfb163fd70b6708cd19"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0324] S3-RP2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0324] S3-RP2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0326] S3-RP2-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0326] S3-RP2-04-VPA.wav",
+        "8c14cd1514a515854bc81e7b652efc12"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0326] S3-RP2-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0326] S3-RP2-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0327] S3-RP2-05-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0327] S3-RP2-05-VSE.wav",
+        "6224c01f55ac4b5dc116c4fece9343c1"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0327] S3-RP2-05-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0327] S3-RP2-05-VSE.bpm",
+        null
+      ]
+    },
+    "[0330] S3-RP1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0330] S3-RP1-03-SE.wav",
+        "ea167aaceb3a2bc8d45317ca60711973"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0330] S3-RP1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0330] S3-RP1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0331] S3-RP1-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0331] S3-RP1-04-VPA.wav",
+        "970589a66ea857def9d17a20c43c9333"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0331] S3-RP1-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0331] S3-RP1-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0325] S3-RP2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0325] S3-RP2-03-SE.wav",
+        "1d6456918bf72ab1f3f306564e0e3ab2"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0325] S3-RP2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0325] S3-RP2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0328] S3-RP1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0328] S3-RP1-01-SA.wav",
+        "26e4e4a63de5f3b1b4bbbb1c1d6dc216"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0328] S3-RP1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0328] S3-RP1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0332] S3-RP3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0332] S3-RP3-01-SA.wav",
+        "89c72cc3402eed1663e4cc3753a38eb4"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0332] S3-RP3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0332] S3-RP3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0335] S3-RP3-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0335] S3-RP3-04-VPA.wav",
+        "e011eb7cf9099b81cc0d15a72d25380b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0335] S3-RP3-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0335] S3-RP3-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0334] S3-RP3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0334] S3-RP3-03-SE.wav",
+        "aa20936e3fb06d3633def1bda0f6cfee"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0334] S3-RP3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0334] S3-RP3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0333] S3-RP3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Repique/[0333] S3-RP3-02-PA.wav",
+        "08caab8d2ad42c8106aae77982e73529"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0333] S3-RP3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0333] S3-RP3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0342] S3-SK1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Shaker/[0342] S3-SK1-03-SE.wav",
+        "7d1ae5e25a3b6206ad2601072463ade6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0342] S3-SK1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0342] S3-SK1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0341] S3-SK1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Shaker/[0341] S3-SK1-02-PA.wav",
+        "eb75c4bfb07f300f49c822a5263cb64b"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0341] S3-SK1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0341] S3-SK1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0347] S3-SK2-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Shaker/[0347] S3-SK2-04-MA.wav",
+        "d2d6ca180fce47aeef7c471a486c83c3"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0347] S3-SK2-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0347] S3-SK2-04-MA.bpm",
+        null
+      ]
+    },
+    "[0340] S3-SK1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Shaker/[0340] S3-SK1-01-SA.wav",
+        "3b0872f7eb5d3aeee5cf3ea7c829b039"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0340] S3-SK1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0340] S3-SK1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0344] S3-SK2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Shaker/[0344] S3-SK2-01-SA.wav",
+        "7c63cb3ade72b95a455bdffde8206094"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0344] S3-SK2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0344] S3-SK2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0343] S3-SK1-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Shaker/[0343] S3-SK1-04-MA.wav",
+        "c05c0037a32bf52b11ab5499f6aeae77"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0343] S3-SK1-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0343] S3-SK1-04-MA.bpm",
+        null
+      ]
+    },
+    "[0345] S3-SK2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Shaker/[0345] S3-SK2-02-PA.wav",
+        "b815154d3bc0438056ecad06bec6af77"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0345] S3-SK2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0345] S3-SK2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0346] S3-SK2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Shaker/[0346] S3-SK2-03-SE.wav",
+        "36eff84204ffc55812e3ac921c56bd4a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0346] S3-SK2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0346] S3-SK2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0314] S3-RR1-07-OT": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Reco-reco/[0314] S3-RR1-07-OT.wav",
+        "7feaf611add442082db333cb6d022695"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0314] S3-RR1-07-OT.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0314] S3-RR1-07-OT.bpm",
+        null
+      ]
+    },
+    "[0315] S3-RR1-08-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Reco-reco/[0315] S3-RR1-08-VSE.wav",
+        "af5c825987703359d0046284bfe2be73"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0315] S3-RR1-08-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0315] S3-RR1-08-VSE.bpm",
+        null
+      ]
+    },
+    "[0311] S3-RR1-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Reco-reco/[0311] S3-RR1-04-MA.wav",
+        "730b8a1126949955624d86caeb8818f7"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0311] S3-RR1-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0311] S3-RR1-04-MA.bpm",
+        null
+      ]
+    },
+    "[0309] S3-RR1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Reco-reco/[0309] S3-RR1-02-PA.wav",
+        "761236dd50ae22a418cfe3982f9ef47d"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0309] S3-RR1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0309] S3-RR1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0312] S3-RR1-05-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Reco-reco/[0312] S3-RR1-05-VPA.wav",
+        "135523287477ddbfd0f7ba2c3697044f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0312] S3-RR1-05-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0312] S3-RR1-05-VPA.bpm",
+        null
+      ]
+    },
+    "[0310] S3-RR1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Reco-reco/[0310] S3-RR1-03-SE.wav",
+        "86a24763f6409c618301d2c49a981423"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0310] S3-RR1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0310] S3-RR1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0313] S3-RR1-06-OT": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Reco-reco/[0313] S3-RR1-06-OT.wav",
+        "0f58fdd13b1b506dff8d51e1238e14d9"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0313] S3-RR1-06-OT.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0313] S3-RR1-06-OT.bpm",
+        null
+      ]
+    },
+    "[0308] S3-RR1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Reco-reco/[0308] S3-RR1-01-SA.wav",
+        "fa19297927635eb077d48200c7318108"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0308] S3-RR1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0308] S3-RR1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0338] S3-AG1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Agogo/[0338] S3-AG1-03-SE.wav",
+        "4e27298e88288cf1c87f79ceb534ef2e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0338] S3-AG1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0338] S3-AG1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0336] S3-AG1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Agogo/[0336] S3-AG1-01-SA.wav",
+        "4ecfde380eaa6d3294a94df8cd81c584"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0336] S3-AG1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0336] S3-AG1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0339] S3-AG1-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Agogo/[0339] S3-AG1-04-VPA.wav",
+        "b5f8e786a8f542706f87495ff28bf6e2"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0339] S3-AG1-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0339] S3-AG1-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0337] S3-AG1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Agogo/[0337] S3-AG1-02-PA.wav",
+        "d88193e4191f095c6082c4c0f55d7be6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0337] S3-AG1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0337] S3-AG1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0319] S3-CX1-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Caixa/[0319] S3-CX1-04-MA.wav",
+        "2709dd45c335ccfba6757fa11b02d474"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0319] S3-CX1-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0319] S3-CX1-04-MA.bpm",
+        null
+      ]
+    },
+    "[0316] S3-CX1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Caixa/[0316] S3-CX1-01-SA.wav",
+        "c235a3f00d426bbeaf2ce57a190e02fe"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0316] S3-CX1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0316] S3-CX1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0317] S3-CX1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Caixa/[0317] S3-CX1-02-PA.wav",
+        "74bb36ead536e9cc7f64392830970ef4"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0317] S3-CX1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0317] S3-CX1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0320] S3-CX1-05-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Caixa/[0320] S3-CX1-05-MA.wav",
+        "b559ef68f8cdaa65992260073beae473"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0320] S3-CX1-05-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0320] S3-CX1-05-MA.bpm",
+        null
+      ]
+    },
+    "[0318] S3-CX1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Caixa/[0318] S3-CX1-03-SE.wav",
+        "2e1920ea4f05f1132ef77b4a39a725f4"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0318] S3-CX1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0318] S3-CX1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0322] S3-CX1-07-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Caixa/[0322] S3-CX1-07-VSE.wav",
+        "2d1462d3b469845a537c15236d9af00e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0322] S3-CX1-07-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0322] S3-CX1-07-VSE.bpm",
+        null
+      ]
+    },
+    "[0321] S3-CX1-06-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Caixa/[0321] S3-CX1-06-MA.wav",
+        "39c04fe35db05ef1f6fc207d5f37647d"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0321] S3-CX1-06-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0321] S3-CX1-06-MA.bpm",
+        null
+      ]
+    },
+    "[0355] S3-TT4-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0355] S3-TT4-03-SE.wav",
+        "ae1dd2a6655ab78d26b4dd5667dd027c"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0355] S3-TT4-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0355] S3-TT4-03-SE.bpm",
+        null
+      ]
+    },
+    "[0352] S3-TT1-05-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0352] S3-TT1-05-VSE.wav",
+        "098b265184f683413da3d0c2e4017e73"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0352] S3-TT1-05-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0352] S3-TT1-05-VSE.bpm",
+        null
+      ]
+    },
+    "[0357] S3-TT4-05-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0357] S3-TT4-05-VSE.wav",
+        "67a98af71d4a7bf5047f3aab9e4fc6d1"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0357] S3-TT4-05-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0357] S3-TT4-05-VSE.bpm",
+        null
+      ]
+    },
+    "[0354] S3-TT4-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0354] S3-TT4-02-PA.wav",
+        "0e7a920b6ef274c1b80847454b6644d0"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0354] S3-TT4-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0354] S3-TT4-02-PA.bpm",
+        null
+      ]
+    },
+    "[0353] S3-TT4-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0353] S3-TT4-01-SA.wav",
+        "ed7f675df8cc9073288e49f2c461d587"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0353] S3-TT4-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0353] S3-TT4-01-SA.bpm",
+        null
+      ]
+    },
+    "[0349] S3-TT1-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0349] S3-TT1-02-PA.wav",
+        "d89176b70c0b2ec91d69e6d1f1125a28"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0349] S3-TT1-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0349] S3-TT1-02-PA.bpm",
+        null
+      ]
+    },
+    "[0348] S3-TT1-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0348] S3-TT1-01-SA.wav",
+        "db4dd7d61638a0352c3e5d348b5b48f9"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0348] S3-TT1-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0348] S3-TT1-01-SA.bpm",
+        null
+      ]
+    },
+    "[0350] S3-TT1-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0350] S3-TT1-03-SE.wav",
+        "647c2fb6be9a1e1429c6d61c1833913e"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0350] S3-TT1-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0350] S3-TT1-03-SE.bpm",
+        null
+      ]
+    },
+    "[0351] S3-TT1-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0351] S3-TT1-04-VPA.wav",
+        "90050a7d5c4b0105cee18724a2aaded6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0351] S3-TT1-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0351] S3-TT1-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0356] S3-TT4-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tanta/[0356] S3-TT4-04-MA.wav",
+        "11b3632518176302447dc9104d2e72c9"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0356] S3-TT4-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0356] S3-TT4-04-MA.bpm",
+        null
+      ]
+    },
+    "[0283] S3-PD2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0283] S3-PD2-03-SE.wav",
+        "0e4439cc079742fff2ab76f12f4d31fb"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0283] S3-PD2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0283] S3-PD2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0300] S3-PD5-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0300] S3-PD5-06-VPA.wav",
+        "fa954b5bf892a305aee460b6f1e679c5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0300] S3-PD5-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0300] S3-PD5-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0286] S3-PD2-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0286] S3-PD2-06-VPA.wav",
+        "c72f8f7f801d0e2d2d9547fb19e0a125"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0286] S3-PD2-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0286] S3-PD2-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0282] S3-PD2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0282] S3-PD2-02-PA.wav",
+        "57d57cebbada3c229b49b7b9194509e5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0282] S3-PD2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0282] S3-PD2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0287] S3-PD2-07-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0287] S3-PD2-07-VSE.wav",
+        "4dc937a5bfe27312d054926a9aec83e5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0287] S3-PD2-07-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0287] S3-PD2-07-VSE.bpm",
+        null
+      ]
+    },
+    "[0291] S3-PD3-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0291] S3-PD3-04-MA.wav",
+        "c5648635877e95cee181663f337139bd"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0291] S3-PD3-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0291] S3-PD3-04-MA.bpm",
+        null
+      ]
+    },
+    "[0301] S3-PD5-07-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0301] S3-PD5-07-VSE.wav",
+        "8fb38498a14ff1d612f43ee4772f9434"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0301] S3-PD5-07-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0301] S3-PD5-07-VSE.bpm",
+        null
+      ]
+    },
+    "[0281] S3-PD2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0281] S3-PD2-01-SA.wav",
+        "dc16dd4d5bac49b8743834bdafb1f6d6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0281] S3-PD2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0281] S3-PD2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0292] S3-PD3-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0292] S3-PD3-05-CA.wav",
+        "0630898cc781e0e8312ad8a15fea48a1"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0292] S3-PD3-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0292] S3-PD3-05-CA.bpm",
+        null
+      ]
+    },
+    "[0285] S3-PD2-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0285] S3-PD2-05-CA.wav",
+        "63b6cf0d9337cb6168bb40c59b40786c"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0285] S3-PD2-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0285] S3-PD2-05-CA.bpm",
+        null
+      ]
+    },
+    "[0298] S3-PD5-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0298] S3-PD5-04-MA.wav",
+        "e2293b009cc2aa1b21e206cbae5012b3"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0298] S3-PD5-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0298] S3-PD5-04-MA.bpm",
+        null
+      ]
+    },
+    "[0297] S3-PD5-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0297] S3-PD5-03-SE.wav",
+        "70cdbf1f1b1a21b671ab6d70ed9b0a50"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0297] S3-PD5-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0297] S3-PD5-03-SE.bpm",
+        null
+      ]
+    },
+    "[0293] S3-PD3-06-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0293] S3-PD3-06-VPA.wav",
+        "72a31d9719518819533367025ab79c12"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0293] S3-PD3-06-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0293] S3-PD3-06-VPA.bpm",
+        null
+      ]
+    },
+    "[0289] S3-PD3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0289] S3-PD3-02-PA.wav",
+        "381ba32d63d9b0b16186db3e3a95ab5a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0289] S3-PD3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0289] S3-PD3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0288] S3-PD3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0288] S3-PD3-01-SA.wav",
+        "8dbe91bc0b21301640659b33aedee868"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0288] S3-PD3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0288] S3-PD3-01-SA.bpm",
+        null
+      ]
+    },
+    "[0295] S3-PD5-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0295] S3-PD5-01-SA.wav",
+        "eb4cac9397ba377a7012a5ea1a7c2efd"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0295] S3-PD5-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0295] S3-PD5-01-SA.bpm",
+        null
+      ]
+    },
+    "[0294] S3-PD3-07-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0294] S3-PD3-07-VSE.wav",
+        "0de87b28783ea6cdffc3d0ee4f1d11b4"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0294] S3-PD3-07-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0294] S3-PD3-07-VSE.bpm",
+        null
+      ]
+    },
+    "[0299] S3-PD5-05-CA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0299] S3-PD5-05-CA.wav",
+        "01afd710d19921c7c76ec7fa19b577cf"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0299] S3-PD5-05-CA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0299] S3-PD5-05-CA.bpm",
+        null
+      ]
+    },
+    "[0284] S3-PD2-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0284] S3-PD2-04-MA.wav",
+        "eb9d2436b1f93e4f634b056a0a4e2e16"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0284] S3-PD2-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0284] S3-PD2-04-MA.bpm",
+        null
+      ]
+    },
+    "[0290] S3-PD3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0290] S3-PD3-03-SE.wav",
+        "16691b277952953a1beb0438107738d6"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0290] S3-PD3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0290] S3-PD3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0296] S3-PD5-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Pandeiro/[0296] S3-PD5-02-PA.wav",
+        "fefb3b05b7939ff122adcc522ee32cc1"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0296] S3-PD5-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0296] S3-PD5-02-PA.bpm",
+        null
+      ]
+    },
+    "[0302] S3-TB2-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tamborim/[0302] S3-TB2-01-SA.wav",
+        "f44d3df9eb1ee9ae9e33fe8c14e98c8a"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0302] S3-TB2-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0302] S3-TB2-01-SA.bpm",
+        null
+      ]
+    },
+    "[0306] S3-TB3-01-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tamborim/[0306] S3-TB3-01-SE.wav",
+        "7cce60398da2e500eccd8495c6173777"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0306] S3-TB3-01-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0306] S3-TB3-01-SE.bpm",
+        null
+      ]
+    },
+    "[0304] S3-TB2-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tamborim/[0304] S3-TB2-03-SE.wav",
+        "689a866404b08efb03d08d2eb8132abc"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0304] S3-TB2-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0304] S3-TB2-03-SE.bpm",
+        null
+      ]
+    },
+    "[0303] S3-TB2-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tamborim/[0303] S3-TB2-02-PA.wav",
+        "3c927d3e7f6c98bbfb4b6322010c4249"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0303] S3-TB2-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0303] S3-TB2-02-PA.bpm",
+        null
+      ]
+    },
+    "[0307] S3-TB3-02-VSE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tamborim/[0307] S3-TB3-02-VSE.wav",
+        "51618d81223171be389d8ecc168553df"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0307] S3-TB3-02-VSE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0307] S3-TB3-02-VSE.bpm",
+        null
+      ]
+    },
+    "[0305] S3-TB2-04-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Tamborim/[0305] S3-TB2-04-VPA.wav",
+        "ae573f9ebdf718361ee58a825362fa8f"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0305] S3-TB2-04-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0305] S3-TB2-04-VPA.bpm",
+        null
+      ]
+    },
+    "[0360] S3-SU3-03-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0360] S3-SU3-03-SE.wav",
+        "a2ed5a37bc6771beb0994f87315521d9"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0360] S3-SU3-03-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0360] S3-SU3-03-SE.bpm",
+        null
+      ]
+    },
+    "[0362] S3-SU3-05-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0362] S3-SU3-05-VPA.wav",
+        "f025a7e499d52f8c795381931c62f522"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0362] S3-SU3-05-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0362] S3-SU3-05-VPA.bpm",
+        null
+      ]
+    },
+    "[0366] S3-SU3-09-VPA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0366] S3-SU3-09-VPA.wav",
+        "2f03f18b9b932460660294365a991d93"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0366] S3-SU3-09-VPA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0366] S3-SU3-09-VPA.bpm",
+        null
+      ]
+    },
+    "[0364] S3-SU3-07-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0364] S3-SU3-07-PA.wav",
+        "a0e5dc8a209a3d98101a8a4846f9f175"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0364] S3-SU3-07-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0364] S3-SU3-07-PA.bpm",
+        null
+      ]
+    },
+    "[0359] S3-SU3-02-PA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0359] S3-SU3-02-PA.wav",
+        "7f28d95ada9065bf8a9ecbe8ea58c4d8"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0359] S3-SU3-02-PA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0359] S3-SU3-02-PA.bpm",
+        null
+      ]
+    },
+    "[0363] S3-SU3-06-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0363] S3-SU3-06-SA.wav",
+        "7e3ea9d9e0ad22d91a74497008e35bf3"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0363] S3-SU3-06-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0363] S3-SU3-06-SA.bpm",
+        null
+      ]
+    },
+    "[0361] S3-SU3-04-MA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0361] S3-SU3-04-MA.wav",
+        "6091117ebe472a3657e6b7b67ce714b7"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0361] S3-SU3-04-MA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0361] S3-SU3-04-MA.bpm",
+        null
+      ]
+    },
+    "[0367] S3-SU3-10-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0367] S3-SU3-10-SE.wav",
+        "27e19309c1b151da4bb9e827e23af8e5"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0367] S3-SU3-10-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0367] S3-SU3-10-SE.bpm",
+        null
+      ]
+    },
+    "[0365] S3-SU3-08-SE": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0365] S3-SU3-08-SE.wav",
+        "3082cb58803b39a50f85bbef56c0ceb4"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0365] S3-SU3-08-SE.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0365] S3-SU3-08-SE.bpm",
+        null
+      ]
+    },
+    "[0358] S3-SU3-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Solo Tracks/Instrumentalist #3/Surdo/[0358] S3-SU3-01-SA.wav",
+        "efc50662b3c27b597edcb0849fa11edb"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0358] S3-SU3-01-SA.beats",
+        null
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0358] S3-SU3-01-SA.bpm",
+        null
       ]
     }
   }

@@ -16,15 +16,15 @@ def test_track():
         "track_id": "[0001] M4-01-SA",
         "audio_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/brid/"),
-            "BRID_1.0/audio/[0001] M4-01-SA.wav",
+            "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0001] M4-01-SA.wav",
         ),
         "beats_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/brid/"),
-            "BRID_1.0/annotations/beats/[0001] M4-01-SA.beats",
+            "BRID_1.0/Annotations/beats/[0001] M4-01-SA.beats",
         ),
         "tempo_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/brid/"),
-            "BRID_1.0/annotations/tempo/[0001] M4-01-SA.bpm",
+            "BRID_1.0/Annotations/tempo/[0001] M4-01-SA.bpm",
         ),
     }
 
