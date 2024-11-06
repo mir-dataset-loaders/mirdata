@@ -1,0 +1,19 @@
+{
+  "version": "sample",
+  "tracks": {
+    "20001": {
+      "audio": [
+        "HMR_1.0/audio/01_20001_02_Raag_Multani.wav",
+        "cf804bf816f2f252cd6cd44dbe2f9f07"
+      ],
+      "beats": [
+        "HMR_1.0/annotations/beats/01_20001_02_Raag_Multani.beats",
+        "4db8de9fc1b31100bf9ea113a948b8b4"
+      ],
+      "meter": [
+        "HMR_1.0/annotations/meter/01_20001_02_Raag_Multani.meter",
+        "8683633f9c3c6cc8d5e619c4691453c8"
+      ]
+    }
+  }
+}

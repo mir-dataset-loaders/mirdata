@@ -23,9 +23,6 @@ from typing import BinaryIO, Optional, TextIO, Tuple
 import librosa
 import numpy as np
 
-import os
-import glob
-
 from mirdata import io, jams_utils, core, annotations, download_utils
 
 BIBTEX = """
@@ -39,8 +36,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.0.0",
-    "test": "1.0.0",
-    "1.0.0": core.Index(filename="mdb_stem_synth_index_1.0.0.json"),
+    "test": "sample",
+    "1.0.0": core.Index(
+        filename="mdb_stem_synth_index_1.0.0.json",
+        url="https://zenodo.org/records/14042058/files/mdb_stem_synth_index_1.0.0.json?download=1",
+        checksum="4a1e8ebecfa76e6fbdaa9aa8a1ca382a",
+    ),
+    "sample": core.Index(filename="mdb_stem_synth_index_1.0.0_sample.json"),
 }
 
 REMOTES = {

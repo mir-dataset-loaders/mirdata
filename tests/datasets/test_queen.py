@@ -9,7 +9,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "0"
     data_home = os.path.normpath("tests/resources/mir_datasets/queen")
-    dataset = queen.Dataset(data_home)
+    dataset = queen.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -51,7 +51,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/queen"
-    dataset = queen.Dataset(data_home)
+    dataset = queen.Dataset(data_home, version="test")
     track = dataset.track("0")
     jam = track.to_jams()
     segments = jam.search(namespace="segment")[0]["data"]

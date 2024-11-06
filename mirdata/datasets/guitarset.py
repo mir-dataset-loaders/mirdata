@@ -74,8 +74,13 @@ year={2018}
 
 INDEXES = {
     "default": "1.1.0",
-    "test": "1.1.0",
-    "1.1.0": core.Index(filename="guitarset_index_1.1.0.json"),
+    "test": "sample",
+    "1.1.0": core.Index(
+        filename="guitarset_index_1.1.0.json",
+        url="https://zenodo.org/records/14007634/files/guitarset_index_1.1.0.json?download=1",
+        checksum="f6708ca6006da40c671c4bfc141bad51",
+    ),
+    "sample": core.Index(filename="guitarset_index_1.1.0_sample.json"),
 }
 
 REMOTES = {

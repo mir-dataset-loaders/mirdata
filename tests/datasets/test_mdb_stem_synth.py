@@ -12,7 +12,7 @@ DATA_HOME = os.path.normpath("tests/resources/mir_datasets/mdb_stem_synth")
 
 
 def test_track():
-    dataset = mdb_stem_synth.Dataset(DATA_HOME)
+    dataset = mdb_stem_synth.Dataset(DATA_HOME, version="test")
     track = dataset.track(DEFAULT_TRACK_ID)
 
     expected_attributes = {
@@ -52,7 +52,7 @@ def test_track():
 
 
 def test_to_jams():
-    dataset = mdb_stem_synth.Dataset(DATA_HOME)
+    dataset = mdb_stem_synth.Dataset(DATA_HOME, version="test")
     track = dataset.track(DEFAULT_TRACK_ID)
     jam = track.to_jams()
 

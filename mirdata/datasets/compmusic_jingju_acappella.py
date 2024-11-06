@@ -83,9 +83,15 @@ BIBTEX = """
 
 INDEXES = {
     "default": "7.0",
-    "test": "7.0",
-    "7.0": core.Index(filename="compmusic_jingju_acappella_index_7.0.json"),
+    "test": "sample",
+    "7.0": core.Index(
+        filename="compmusic_jingju_acappella_index_7.0.json",
+        url="https://zenodo.org/records/14007937/files/compmusic_jingju_acappella_index_7.0.json?download=1",
+        checksum="3737ee6926528fd47af89654b931205a",
+    ),
+    "sample": core.Index(filename="compmusic_jingju_acappella_index_7.0_sample.json"),
 }
+
 
 REMOTES = {
     "annotation_txt": download_utils.RemoteFileMetadata(

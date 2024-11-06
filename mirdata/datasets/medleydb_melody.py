@@ -35,11 +35,18 @@ BIBTEX = """@inproceedings{bittner2014medleydb,
     Title = {Medley{DB}: A Multitrack Dataset for Annotation-Intensive {MIR} Research},
     Year = {2014}
 }"""
+
 INDEXES = {
     "default": "5.0",
-    "test": "5.0",
-    "5.0": core.Index(filename="medleydb_melody_index_5.0.json"),
+    "test": "sample",
+    "5.0": core.Index(
+        filename="medleydb_melody_index_5.0.json",
+        url="https://zenodo.org/records/14007914/files/medleydb_melody_index_5.0.json?download=1",
+        checksum="c8fa74205aec7917b1d977c93b2950da",
+    ),
+    "sample": core.Index(filename="medleydb_melody_index_5.0_sample.json"),
 }
+
 
 DOWNLOAD_INFO = """
     To download this dataset, visit:

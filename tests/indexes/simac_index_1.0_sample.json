@@ -1,0 +1,19 @@
+{
+  "version": "sample",
+  "tracks": {
+    "simac_01_H_mikri_Rallou": {
+      "audio": [
+        "S_1.0/audio/simac_01_H_mikri_Rallou.flac",
+        "eac55a0089eda919635914ce49703340"
+      ],
+      "beats": [
+        "S_1.0/annotations/beats/simac_01_H_mikri_Rallou.beats",
+        "2567423f34338e1caf78c3defddf32a1"
+      ],
+      "tempo": [
+        "S_1.0/annotations/tempo/simac_01_H_mikri_Rallou.bpm",
+        "b6bff7515532bf8c6b03341089a45407"
+      ]
+    }
+  }
+}

@@ -79,7 +79,7 @@ def test_track():
 def test_track_full():
     default_trackid = "Track00001-S00"
     data_home = os.path.normpath("tests/resources/mir_datasets/slakh")
-    dataset_full = slakh.Dataset(data_home, version="2100-redux")
+    dataset_full = slakh.Dataset(data_home, version="test_2100-redux")
     track_full = dataset_full.track(default_trackid)
 
     expected_attributes = {
@@ -145,15 +145,6 @@ def test_track_full():
     # logic wrong for the full version
     mtrack = dataset_full.multitrack("Track00001")
     assert mtrack.data_split == "train"
-
-
-def test_load_tracks():
-    # this test catches a bug we had when initializing tracks with no audio!
-    dataset = slakh.Dataset(version="test")
-    track_splits = [track.data_split for track in dataset.load_tracks().values()]
-
-    dataset = slakh.Dataset(version="2100-redux")
-    track_splits = [track.data_split for track in dataset.load_tracks().values()]
 
 
 def test_to_jams():

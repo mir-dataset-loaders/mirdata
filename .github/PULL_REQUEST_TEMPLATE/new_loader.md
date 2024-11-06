@@ -16,7 +16,8 @@ Please include the following information at the top level docstring for the data
 #### Dataset loaders checklist:
 
 - [ ] Create a script in `scripts/`, e.g. `make_my_dataset_index.py`, which generates an index file.
-- [ ] Run the script on the canonical version of the dataset and save the index in `mirdata/indexes/` e.g. `my_dataset_index.json`.
+- [ ] Run the script on the canonical version of the dataset and upload the index to [Zenodo Audio Data Loaders community](https://zenodo.org/communities/audio-data-loaders).
+- [ ] Create a sample version of the index with the necessary information for testing.
 - [ ] Create a module in mirdata, e.g. `mirdata/my_dataset.py`
 - [ ] Create tests for your loader in `tests/datasets/`, e.g. `test_my_dataset.py`
 - [ ] Add your module to `docs/source/mirdata.rst` and `docs/source/table.rst`

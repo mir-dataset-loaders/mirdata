@@ -52,8 +52,13 @@ BIBTEX = """@article{RohitMA2021,
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="four_way_tabla_index.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="four_way_tabla_index_1.0.json",
+        url="https://zenodo.org/records/14007743/files/four_way_tabla_index_1.0.json?download=1",
+        checksum="151ba1c2e69b65975b386b2bbccd791c",
+    ),
+    "sample": core.Index(filename="four_way_tabla_index_1.0_sample.json"),
 }
 
 REMOTES = {

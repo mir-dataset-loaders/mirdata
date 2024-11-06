@@ -1,0 +1,25 @@
+{
+  "version": "sample",
+  "tracks": {
+    "01-D_AMairena": {
+      "audio": [
+        "Deblas/01-D_AMairena.wav",
+        "16bb4018062ed0e99e60dbbd2d4bf5c7"
+      ],
+      "f0": [
+        "Deblas/01-D_AMairena.f0.Corrected",
+        "4add95af47286e40657bcbbf21c57dc8"
+      ],
+      "notes": [
+        "Deblas/01-D_AMairena.notes.Corrected",
+        "a827c3bdfb98ee851ffb3a008dd08dde"
+      ]
+    }
+  },
+  "metadata": {
+    "TONAS-Metadata": [
+      "TONAS-Metadata.txt",
+      "26f2387b99e51890d39a632eb7ed58a4"
+    ]
+  }
+}

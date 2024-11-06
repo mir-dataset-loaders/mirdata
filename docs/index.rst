@@ -7,7 +7,7 @@ mirdata
 
 
 
-``mirdata`` is an open-source Python library that provides tools for working with common Music Information Retrieval (MIR) datasets, including tools for:
+Mirdata is an open-source Python library that provides tools for working with common Music Information Retrieval (MIR) datasets, including tools for:
 
  * downloading datasets to a common location and format
  * validating that the files for a dataset are all present
@@ -41,7 +41,7 @@ If you refer to mirdata's design principles, motivation etc., please cite the fo
     "mirdata: Software for Reproducible Usage of Datasets."
     In Proceedings of the 20th International Society for Music Information Retrieval (ISMIR) Conference, 2019.:
 
-When working with datasets, please cite the version of ``mirdata`` that you are using (given by the ``DOI`` above)
+When working with datasets, please cite the version of Mirdata that you are using (given by the ``DOI`` above)
 **AND** include the reference of the dataset, which can be found in the respective dataset loader using the ``cite()`` method.
 
 

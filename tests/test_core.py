@@ -195,7 +195,8 @@ def test_dataset_versions():
                     "1": core.Index(
                         "blah_1.json", url="https://google.com", checksum="asdf"
                     ),
-                    "real": core.Index("acousticbrainz_genre_index_sample.json"),
+                    "2": core.Index("blah_2.json"),
+                    "real": core.Index("beatles_index_1.2_sample.json"),
                 },
             )
 
@@ -234,7 +235,7 @@ def test_dataset_versions():
     dataset_test = VersionTest("asdf", version="test")
     assert dataset_test.version == "0"
     assert dataset_test.index_path == os.path.join(
-        local_index_path, "mirdata/datasets/", "indexes", "blah_0.json"
+        local_index_path, "tests", "indexes", "blah_0.json"
     )
 
     with pytest.raises(IOError):
@@ -243,16 +244,16 @@ def test_dataset_versions():
     dataset_0 = VersionTest("asdf", version="0")
     assert dataset_0.version == "0"
     assert dataset_0.index_path == os.path.join(
-        local_index_path, "mirdata/datasets/", "indexes", "blah_0.json"
+        local_index_path, "tests", "indexes", "blah_0.json"
     )
 
     dataset_real = VersionTest("asdf", version="real")
     assert dataset_real.version == "real"
     assert dataset_real.index_path == os.path.join(
         local_index_path,
-        "mirdata/datasets/",
+        "tests",
         "indexes",
-        "acousticbrainz_genre_index_sample.json",
+        "beatles_index_1.2_sample.json",
     )
     idx_test = dataset_real._index
     assert isinstance(idx_test, dict)
@@ -268,7 +269,7 @@ def test_dataset_errors():
     with pytest.raises(ValueError):
         mirdata.initialize("not_a_dataset")
 
-    d = mirdata.initialize("orchset")
+    d = mirdata.initialize("orchset", version="test")
     d._track_class = None
     with pytest.raises(AttributeError):
         d.track("asdf")
@@ -288,11 +289,11 @@ def test_dataset_errors():
     with pytest.raises(AttributeError):
         d.choice_multitrack()
 
-    d = mirdata.initialize("acousticbrainz_genre")
+    d = mirdata.initialize("orchset")
     with pytest.raises(FileNotFoundError):
         d._index
 
-    d = mirdata.initialize("phenicx_anechoic")
+    d = mirdata.initialize("phenicx_anechoic", version="test")
     with pytest.raises(ValueError):
         d._multitrack("a")
 
@@ -738,7 +739,7 @@ def test_dataset_splits():
             this_split = set(split)
             assert not this_split.intersection(used)
             used.update(this_split)
-        # check that the split is reproducable
+        # check that the split is reproducible
         splits2 = empty_dataset._get_partitions(items, right_combination, 42)
         for split, split2 in zip(splits.values(), splits2.values()):
             assert np.array_equal(split, split2)
@@ -779,7 +780,7 @@ def test_dataset_splits():
 
     track_mtrack_dataset = core.Dataset(
         name="test",
-        indexes={"default": core.Index("slakh_index_baby.json")},
+        indexes={"default": core.Index("slakh_index_baby_sample.json")},
         track_class=core.Track,
         multitrack_class=core.MultiTrack,
     )
@@ -791,7 +792,7 @@ def test_dataset_splits():
         track_mtrack_dataset.get_mtrack_splits()
 
     # test one real dataset
-    test_dataset = mirdata.initialize("slakh", version="2100-redux")
+    test_dataset = mirdata.initialize("slakh", version="sample_2100-redux")
     splits = test_dataset.get_track_splits()
     assert set(splits.keys()) == set(["train", "validation", "test", "omitted"])
 

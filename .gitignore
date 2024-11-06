@@ -2,6 +2,7 @@ tests/resources/mir_datasets_full
 tests/data/output.wav
 tests/resources/mir_datasets/haydn_op20/op20n1-01.midi
 mirdata/datasets/indexes/__MACOSX
+mirdata/datasets/indexes/*.json
 *.DS_Store
 
 # Byte-compiled / optimized / DLL files

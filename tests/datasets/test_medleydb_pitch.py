@@ -9,7 +9,7 @@ from tests.test_utils import run_track_tests
 def test_track():
     default_trackid = "AClassicEducation_NightOwl_STEM_08"
     data_home = os.path.normpath("tests/resources/mir_datasets/medleydb_pitch")
-    dataset = medleydb_pitch.Dataset(data_home)
+    dataset = medleydb_pitch.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -47,7 +47,7 @@ def test_track():
 
 def test_to_jams():
     data_home = "tests/resources/mir_datasets/medleydb_pitch"
-    dataset = medleydb_pitch.Dataset(data_home)
+    dataset = medleydb_pitch.Dataset(data_home, version="test")
     track = dataset.track("AClassicEducation_NightOwl_STEM_08")
     jam = track.to_jams()
 
@@ -116,7 +116,7 @@ def test_load_notes():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/medleydb_pitch"
-    dataset = medleydb_pitch.Dataset(data_home)
+    dataset = medleydb_pitch.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["AClassicEducation_NightOwl_STEM_08"] == {
         "audio_path": "medleydb_pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",

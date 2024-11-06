@@ -107,8 +107,6 @@ def test_load_beats():
     assert np.array_equal(parsed_beats.positions, np.array([1, 2, 3]))
     assert compmusic_carnatic_rhythm.load_beats(None) is None
 
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
-    dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="full_dataset")
     track = dataset.track("10001")
     beats_path = track.beats_path
     parsed_beats = compmusic_carnatic_rhythm.load_beats(beats_path)

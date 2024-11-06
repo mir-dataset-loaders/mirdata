@@ -1,0 +1,29 @@
+{
+  "version": "sample",
+  "tracks": {
+    "008": {
+      "audio": [
+        "cante100audio/008_PacoToronjo_Fandangos.mp3",
+        "b5dad642d72a4ca4f6a09d6b48068a78"
+      ],
+      "spectrum": [
+        "cante100_spectrum/008_PacoToronjo_Fandangos.spectrum.csv",
+        "8b884013ea30a208da7df94423fbb42c"
+      ],
+      "f0": [
+        "cante100midi_f0/008_PacoToronjo_Fandangos.f0.csv",
+        "dbd1c1d7dcf8ac7514c464cd327d79de"
+      ],
+      "notes": [
+        "cante100_automaticTranscription/008_PacoToronjo_Fandangos.notes.csv",
+        "942fbdd73c3208afb84996f0f0d24ca7"
+      ]
+    }
+  },
+  "metadata": {
+    "cante100Meta": [
+      "cante100Meta.xml",
+      "6cce186ce77a06541cdb9f0a671afb46"
+    ]
+  }
+}

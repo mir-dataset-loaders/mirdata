@@ -10,7 +10,7 @@ from tests.test_utils import run_track_tests, run_multitrack_tests
 def test_track():
     default_trackid = "DCS_LI_QuartetB_Take04_B2"
     data_home = os.path.normpath("tests/resources/mir_datasets/dagstuhl_choirset")
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -81,7 +81,7 @@ def test_track():
 def test_audio_track():
     default_trackid = "DCS_LI_QuartetB_Take04_B2"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     y, sr = track.audio_dyn
@@ -98,7 +98,7 @@ def test_audio_track():
 
     default_trackid = "DCS_SE_QuartetB_Tuning02_S1"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     assert track.audio_hsm is None
 
@@ -106,7 +106,7 @@ def test_audio_track():
 def test_mtrack_no_notes():
     default_mtrackid = "DCS_SE_Basses_Tuning01"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     mtrack = dataset.multitrack(default_mtrackid)
     assert mtrack.notes is None
 
@@ -199,7 +199,7 @@ def test_load_beat():
 def test_score_track():
     default_trackid = "DCS_TP_FullChoir_Outtake_A1"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     assert track.score is None
@@ -208,7 +208,7 @@ def test_score_track():
 def test_to_jams_track():
     default_trackid = "DCS_LI_QuartetB_Take04_B2"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
 
@@ -245,7 +245,7 @@ def test_to_jams_track():
 def test_multitrack():
     default_trackid = "DCS_LI_QuartetB_Take04"
     data_home = os.path.normpath("tests/resources/mir_datasets/dagstuhl_choirset")
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     mtrack = dataset.multitrack(default_trackid)
 
     expected_attributes = {
@@ -301,7 +301,7 @@ def test_multitrack():
 def test_beat_multitrack():
     default_trackid = "DCS_LI_QuartetB_Solo03"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     mtrack = dataset.multitrack(default_trackid)
 
     assert mtrack.beat is None
@@ -310,7 +310,7 @@ def test_beat_multitrack():
 def test_audio_multitrack():
     default_trackid = "DCS_LI_QuartetB_Take04"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     mtrack = dataset.multitrack(default_trackid)
 
     y, sr = mtrack.audio_stm
@@ -335,7 +335,7 @@ def test_audio_multitrack():
 def test_to_jams_multitrack():
     default_trackid = "DCS_LI_QuartetB_Take04"
     data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home)
+    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
     mtrack = dataset.multitrack(default_trackid)
 
     jam = mtrack.to_jams()

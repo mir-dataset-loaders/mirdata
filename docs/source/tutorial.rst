@@ -7,16 +7,15 @@ Tutorial
 Installation
 ------------
 
-To install ``mirdata``:
+To install Mirdata:
 
     .. code-block:: console
 
         pip install mirdata
 
-Usage
------
+We recommend to do this inside a conda or virtual environment for reproducibility.
 
-``mirdata`` is easily imported into your Python code by:
+Mirdata is easily imported into your Python code by:
 
 .. code-block:: python
 
@@ -33,21 +32,37 @@ Print a list of all available dataset loaders by calling:
     import mirdata
     print(mirdata.list_datasets())
 
-To use a loader, (for example, 'orchset') you need to initialize it by calling:
+To use a loader, (for example, ``orchset`) you need to initialize it by calling:
 
 .. code-block:: python
 
     import mirdata
-    orchset = mirdata.initialize('orchset')
+    orchset = mirdata.initialize('orchset', data_home='/choose/where/data/live')
 
 Now ``orchset`` is a ``Dataset`` object containing common methods, described below.
+
+You can specify the directory where the Mirdata data is stored by passing a path to ``data_home``.
+
+Mirdata supports working with multiple dataset versions.
+To see all available versions of a specific dataset, run ``mirdata.list_dataset_versions('orchset')``.
+Use ``version`` parameter if you wish to use a version other than the default one.
+
+.. code-block:: python
+
+    import mirdata
+    dataset = mirdata.initialize('orchset', data_home='/choose/where/data/live', version="1.0")
+
 
 Downloading a dataset
 ^^^^^^^^^^^^^^^^^^^^^
 
-All dataset loaders in ``mirdata`` have a ``download()`` function that allows the user to download the canonical
-version of the dataset (when available). When initializing a dataset, by default, mirdata will download/read data to/from a
-default location ("~/mir_datasets"). This can be customized by specifying `data_home` in `mirdata.initialize`.
+All dataset loaders in Mirdata have a ``download()`` function that allows the user to download:
+
+* The :ref:`canonical <faq>` version of the dataset (when available).
+* The dataset index, which indicates the list of clips in the dataset and the paths to audio and annotation files.
+
+The index, which is considered part of the source files of Mirdata, is specifically downloaded by running ``download(["index"])``.
+Indexes will be directly stored in Mirdata's indexes folder (``mirdata/datasets/indexes``) whereas users can indicate where the dataset files will be stored via ``data_home``.
 
 Downloading a dataset into the default folder:
     In this first example, ``data_home`` is not specified. Thus, ORCHSET will be downloaded and retrieved from ``mir_datasets``
@@ -128,7 +143,7 @@ Validating a dataset
 Using the method ``validate()`` we can check if the files in the local version are the same than the available canonical version,
 and the files were downloaded correctly (none of them are corrupted).
 
-For big datasets: In future ``mirdata`` versions, a random validation will be included. This improvement will reduce validation time for very big datasets.
+For big datasets: In future Mirdata versions, a random validation will be included. This improvement will reduce validation time for very big datasets.
 
 Accessing annotations
 ^^^^^^^^^^^^^^^^^^^^^
@@ -231,7 +246,7 @@ when initializing a dataset. For example:
 Annotation classes
 ^^^^^^^^^^^^^^^^^^
 
-``mirdata`` defines annotation-specific data classes. These data classes are meant to standardize the format for
+Mirdata defines annotation-specific data classes. These data classes are meant to standardize the format for
 all loaders, and are compatibly with `jams <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
 The list and descriptions of available annotation classes can be found in :ref:`annotations`.
@@ -388,4 +403,4 @@ The following is a simple example of a generator that can be used to create a te
             }
         )
 
-In future ``mirdata`` versions, generators for Tensorflow and Pytorch will be included.
+In future Mirdata versions, generators for Tensorflow and Pytorch will be included.

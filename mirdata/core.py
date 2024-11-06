@@ -175,7 +175,7 @@ class Dataset(object):
                 )
             raise FileNotFoundError(
                 f"Dataset index for {self.name} was expected "
-                + "to be packaged with mirdata, but not found."
+                + "but not found. Make sure your sample indexes for testing are in mirdata/tests/indexes/"
             )
 
         return index
@@ -825,6 +825,11 @@ class Index(object):
                 "Remote indexes must have both a url and a checksum specified."
             )
         else:
+            self.indexes_dir = os.path.join(
+                os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
+                "tests",
+                "indexes",
+            )
             self.remote = None
 
         self.partial_download = partial_download
