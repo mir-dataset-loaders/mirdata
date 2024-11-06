@@ -7,7 +7,7 @@
 
     **Dataset Overview:**
 
-    BRID comprises a total of 367 short tracks, averaging about 30 seconds each, amounting to approximately 2 hours and 57 minutes of music. These tracks include recordings of various Brazilian instruments, played in different Brazilian rhythmic styles.
+    BRID comprises a total of 35 tracks, averaging about 30 seconds each, amounting to approximately 2 hours and 57 minutes of music. These tracks include recordings of various Brazilian instruments, played in different Brazilian rhythmic styles.
 
     **Instruments and Rhythms:**
 
