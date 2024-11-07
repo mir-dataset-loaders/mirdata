@@ -29,13 +29,15 @@ def make_brid_rhythm_index(dataset_data_path):
                 beat_file = f"{idx}.beats"
                 tempo_file = f"{idx}.bpm"
                 
-                relative_beat_path = os.path.join("Annotations", "beats", beat_file)
-                relative_tempo_path = os.path.join("Annotations", "tempo", tempo_file)
+                # Set relative paths to None if files do not exist
+                relative_beat_path = os.path.join("Annotations", "beats", beat_file) if os.path.exists(os.path.join(beats_path, beat_file)) else None
+                relative_tempo_path = os.path.join("Annotations", "tempo", tempo_file) if os.path.exists(os.path.join(tempo_path, tempo_file)) else None
+
                 
                 # Check if annotation files exist
-                beat_file_path = os.path.join(beats_path, beat_file)
-                tempo_file_path = os.path.join(tempo_path, tempo_file)
-                
+                beat_file_path = os.path.join(beats_path, beat_file) if relative_beat_path else None
+                tempo_file_path = os.path.join(tempo_path, tempo_file) if relative_tempo_path else None
+
                 # Add track information to index
                 cmr_index["tracks"][idx] = {
                     "audio": (
@@ -43,12 +45,12 @@ def make_brid_rhythm_index(dataset_data_path):
                         md5(os.path.join(root, filename)),
                     ),
                     "beats": (
-                        os.path.join(dataset_folder_name, relative_beat_path),
-                        md5(beat_file_path) if os.path.exists(beat_file_path) else None,
+                        os.path.join(dataset_folder_name, relative_beat_path) if relative_beat_path else None,
+                        md5(beat_file_path) if beat_file_path else None,
                     ),
                     "tempo": (
-                        os.path.join(dataset_folder_name, relative_tempo_path),
-                        md5(tempo_file_path) if os.path.exists(tempo_file_path) else None,
+                        os.path.join(dataset_folder_name, relative_tempo_path) if relative_tempo_path else None,
+                        md5(tempo_file_path) if tempo_file_path else None,
                     )
                 }
 

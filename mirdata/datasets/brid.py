@@ -7,7 +7,7 @@
 
     **Dataset Overview:**
 
-    BRID comprises a total of 35 tracks, averaging about 30 seconds each, amounting to approximately 2 hours and 57 minutes of music. These tracks include recordings of various Brazilian instruments, played in different Brazilian rhythmic styles.
+    BRID comprises a total of 367 tracks, averaging about 30 seconds each, amounting to approximately 2 hours and 57 minutes of music. These tracks include recordings of various Brazilian instruments, played in different Brazilian rhythmic styles.
 
     **Instruments and Rhythms:**
 
@@ -41,7 +41,7 @@ import librosa
 import numpy as np
 from typing import BinaryIO, Optional, TextIO, Tuple
 
-from mirdata import annotations, core, io, jams_utils
+from mirdata import annotations, core, download_utils, io, jams_utils
 
 
 BIBTEX = """
@@ -58,29 +58,32 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="brid_full_index_1.0.json",
-        url="https://zenodo.org/records/14048016/files/brid_full_index_1.0.json?download=1",
-        checksum="18701a7b6c20e549c0394bbd80c01699",
+        url="https://zenodo.org/records/14052434/files/brid_full_index_1.0.json?download=1",
+        checksum="6292a6d36d6ae267534107f4e5f6bcca",
     ),
     "sample": core.Index(filename="brid_full_index_1.0_sample.json"),
 }
 
 
-REMOTES = None
+REMOTES = {
+    "annotations": download_utils.RemoteFileMetadata(
+        filename="annotations.zip",
+        url="https://zenodo.org/records/14051323/files/annotations.zip?download=1",
+        checksum="678b2fa99c8d220cddd9f5e20d55d0c1",
+        destination_dir="BRID_1.0",
+    ),
+    "audio": download_utils.RemoteFileMetadata(
+        filename="audio.zip",
+        url="https://zenodo.org/records/14051323/files/audio.zip?download=1",
+        checksum="3514b53d66515181f95619adb71a59b4",
+        destination_dir="BRID_1.0",
+    ),
+}
+
 
 LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
-
-DOWNLOAD_INFO = """
-    Unfortunately the BRID dataset is not available for download.
-    If you have the BRID dataset, place the contents into a folder called
-    BRID with the following structure:
-        > BRID_1.0/
-            > audio/
-            > annotations/beats
-            > annotations/tempo
-    and copy the BRID folder to {}
-    """
 
 
 class Track(core.Track):
@@ -230,5 +233,4 @@ class Dataset(core.Dataset):
             indexes=INDEXES,
             remotes=REMOTES,
             license_info=LICENSE_INFO,
-            download_info=DOWNLOAD_INFO,
         )
