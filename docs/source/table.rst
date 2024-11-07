@@ -63,6 +63,15 @@
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
+   * - BRID
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`beats`
+       - :ref:`tempo`
+     - 367
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
    * - Candombe
      - - audio: ✅
        - annotations: ✅
