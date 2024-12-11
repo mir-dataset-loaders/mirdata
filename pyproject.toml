@@ -77,9 +77,13 @@ cipi = ["music21==6.7.1"]
 gcs = ["smart_open[gcs]"]
 s3 = ["smart_open[s3]"]
 http = ["smart_open[http]"]
+all = ["openpyxl==3.0.10", "dali-dataset==1.1", "music21==6.7.1", "smart_open[gcs,s3,http]"]
 
 [project.urls]
 Homepage = "https://github.com/mir-dataset-loaders/mirdata"
 Documentation = "https://mirdata.readthedocs.io/en/stable/"
 Issues = "https://github.com/mir-dataset-loaders/mirdata/issues"
 Releases = "https://github.com/mir-dataset-loaders/mirdata/releases"
+
+[tool.pytest.ini_options]
+testpaths = ['tests']
