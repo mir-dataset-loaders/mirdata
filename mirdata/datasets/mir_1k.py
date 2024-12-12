@@ -114,11 +114,11 @@ class Track(core.Track):
         return load_lyrics(self.lyrics_path)
 
     @core.cached_property
-    def vocal_activity(self) -> Optional[annotations.SectionData]:
+    def vocal_activity(self) -> Optional[annotations.EventData]:
         return load_event_labels(self.vocal_activity_path)
 
     @core.cached_property
-    def unvoiced_labels(self) -> Optional[annotations.SectionData]:
+    def unvoiced_labels(self) -> Optional[annotations.EventData]:
         return load_event_labels(self.unvoiced_labels_path)
 
     @property
