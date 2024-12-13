@@ -1,9 +1,5 @@
 import os
 import pytest
-from typing import Union, Optional
-
-from mypy.types_utils import NoneType
-
 from mirdata.datasets import emvd
 from tests.test_utils import run_track_tests
 
