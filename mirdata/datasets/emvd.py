@@ -48,7 +48,7 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="emvd_index_1.0.json",
-        url="https://zenodo.org/records/14042058/files/emvd_index_1.0.json?download=1",
+        url="https://zenodo.org/records/14456645/files/emvd_index_1.0.json?download=1",
         checksum="b105d81130061aa616988ff467cafd5e",
     ),
     "sample": core.Index(filename="emvd_index_1.0_sample.json"),
