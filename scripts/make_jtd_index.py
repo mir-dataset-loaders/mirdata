@@ -7,7 +7,7 @@ from tqdm import tqdm
 STEMS = ["piano", "bass", "drums"]    # every recording has annotations for these instruments
 CHANNELS = ["", "-lchan", "-rchan"]    # for some recordings (but not all), we have audio for individual channels
 
-DATASET_INDEX_PATH = "../mirdata/datasets/indexes/dataset_index.json"
+DATASET_INDEX_PATH = "../mirdata/datasets/indexes/jtd_index_2.0.json"
 
 
 def get_stem_audio_filepath(directory: str, recording_name: str, stem: str = "") -> str:
