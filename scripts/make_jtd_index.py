@@ -27,14 +27,14 @@ def get_stem_files(data_path: str, recording: str, instrument: str) -> dict:
     stem_multitracks = {}
     # Getting audio path for stem
     stem_audio = get_stem_audio_filepath(processed_audio_dir, recording, f'_{instrument}')
-    stem_multitracks["audio"] = (stem_audio.replace(data_path, ""), md5(stem_audio))
+    stem_multitracks["audio"] = (stem_audio.replace(data_path, "").lstrip("/"), md5(stem_audio))
     # Getting onsets for stem
     stem_onsets = os.path.join(annotation_dir, recording, f"{instrument}_onsets.csv")
-    stem_multitracks["onsets"] = (stem_onsets.replace(data_path, ""), md5(stem_onsets))
+    stem_multitracks["onsets"] = (stem_onsets.replace(data_path, "").lstrip("/"), md5(stem_onsets))
     # Getting MIDI for stem
     if instrument == "piano":
         stem_midi = os.path.join(annotation_dir, recording, f"{instrument}_midi.mid")
-        midi_out = (stem_midi.replace(data_path, ""), md5(stem_midi))
+        midi_out = (stem_midi.replace(data_path, "").lstrip("/"), md5(stem_midi))
     # We do not currently include MIDI for bass or drums
     else:
         midi_out = [None, None]
@@ -50,15 +50,15 @@ def get_mixed_files(data_path: str, recording: str) -> dict:
     recording_dict = {"tracks": [f'{recording}_{st}' for st in STEMS]}
     # Get metadata annotations
     metadata_file = os.path.join(annotation_dir, recording, "metadata.json")
-    recording_dict["metadata"] = (metadata_file.replace(data_path, ""), md5(metadata_file))
+    recording_dict["metadata"] = (metadata_file.replace(data_path, "").lstrip("/"), md5(metadata_file))
     # Get beats
     beats_file = os.path.join(annotation_dir, recording, "beats.csv")
-    recording_dict["beats"] = (beats_file.replace(data_path, ""), md5(beats_file))
+    recording_dict["beats"] = (beats_file.replace(data_path, "").lstrip("/"), md5(beats_file))
     # Get all raw audio files (can be multiple, if we have multiple channels)
     for channel in CHANNELS:
         aud_path = os.path.join(audio_dir, f'{recording}{channel}.wav')
         if os.path.exists(aud_path):
-            aud_output = (aud_path.replace(data_path, ""), md5(aud_path))
+            aud_output = (aud_path.replace(data_path, "").lstrip("/"), md5(aud_path))
         else:
             aud_output = [None, None]
         recording_dict[f"audio{channel}"] = aud_output
