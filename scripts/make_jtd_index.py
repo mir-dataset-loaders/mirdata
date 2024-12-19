@@ -37,7 +37,7 @@ def get_stem_files(data_path: str, recording: str, instrument: str) -> dict:
         midi_out = (stem_midi.replace(data_path, ""), md5(stem_midi))
     # We do not currently include MIDI for bass or drums
     else:
-        midi_out = None
+        midi_out = [None, None]
     stem_multitracks["midi"] = midi_out
     return stem_multitracks
 
@@ -60,7 +60,7 @@ def get_mixed_files(data_path: str, recording: str) -> dict:
         if os.path.exists(aud_path):
             aud_output = (aud_path.replace(data_path, ""), md5(aud_path))
         else:
-            aud_output = None
+            aud_output = [None, None]
         recording_dict[f"audio{channel}"] = aud_output
     return recording_dict
 
