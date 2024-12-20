@@ -571,6 +571,10 @@ class MultiTrack(core.MultiTrack):
         )
 
     @property
+    def track_audio_property(self):
+        return "audio"
+
+    @property
     def year(self) -> Optional[int]:
         """The year the recording was made
 
