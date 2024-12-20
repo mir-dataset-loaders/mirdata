@@ -239,6 +239,8 @@ class Track(core.Track):
             * annotations.NoteData
 
         """
+        if self.midi_path is None:
+            return None
         return io.load_notes_from_midi(self.midi_path)  # returns None if no MIDI
 
     @property

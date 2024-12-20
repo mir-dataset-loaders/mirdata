@@ -276,5 +276,5 @@ def test_no_midi():
     data_home = "tests/resources/mir_datasets/jtd"
     dataset = jtd.Dataset(data_home, version="sample")
     track = dataset.track(default_trackid)
-    with pytest.raises(ValueError):
-        _ = track.midi
+    midi = track.midi
+    assert midi is None
