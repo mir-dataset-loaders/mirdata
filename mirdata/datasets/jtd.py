@@ -54,7 +54,7 @@ import csv
 import functools
 import json
 from typing import BinaryIO, Optional, TextIO, Tuple, Union, Callable
-from io import StringIO
+from smart_open import open
 
 import librosa
 import numpy as np
