@@ -590,11 +590,18 @@ class MultiTrack(core.MultiTrack):
 
 
 def timestamp_to_seconds(ts: str) -> int:
-    """Coerces timestamp in form `%M:%S` to an integer"""
-    # Split the timestamp into minutes and seconds
-    minutes, seconds = map(int, ts.split(":"))
-    # Convert the entire timestamp to seconds
-    return int((minutes * 60) + seconds)
+    """Coerces timestamp in form `%M:%S` or `%H:%M:S` to an integer"""
+    # Timestamp is in format hours-minutes-seconds
+    if ts.count(':') == 2:
+        hours, minutes, seconds = map(int, ts.split(':'))
+        return int((hours * 60 * 60) + (minutes * 60) + seconds)
+    # Timestamp is in format minutes-seconds
+    elif ts.count(':') == 1:
+        minutes, seconds = map(int, ts.split(':'))
+        return int((minutes * 60) + seconds)
+    # Timestamp is in incorrect format
+    else:
+        raise ValueError('Timestamp must be in format %H:%M:%S or %M:%S')
 
 
 @io.coerce_to_bytes_io
