@@ -1,15 +1,15 @@
-"""Jazz Trio Database Loader
+"""Jazz Trio Database (JTD) Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The Jazz Trio Database (JTD) is a dataset composed of 1,294 multitrack jazz piano solos (about 45 hours total)
+    The Jazz Trio Database (JTD) is a dataset comprising 1,294 multitrack jazz performances (about 45 hours total)
     annotated by an automated signal processing pipeline. All performances are commercial recordings of jazz piano
     trios, comprising acoustic piano, upright bass, and drum kit, and are broadly in the "straight-ahead" jazz style.
 
     Its purpose is to serve as a reference database for the design, evaluation, and implementation of various music
     information retrieval systems related to jazz and improvised music, including (but not limited to) onset detection,
-    beat tracking, automatic music transcription, and automatic performer identification.
+    beat tracking, automatic music transcription, and performer identification.
 
     For every performance, the following audio files are included:
 
@@ -51,15 +51,13 @@
 
 import csv
 import json
-import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
-from smart_open import open
 from pretty_midi import PrettyMIDI
 
-from mirdata import download_utils, jams_utils, core, annotations
+from mirdata import download_utils, jams_utils, core, annotations, io
 
 
 BIBTEX = """
@@ -76,10 +74,10 @@ BIBTEX = """
 INDEXES = {
     "default": "2",
     "test": "sample",
-    "1.2": core.Index(
+    "2": core.Index(
         filename="jtd_index_2.0.json",
-        url=None,
-        checksum=None,
+        url="https://raw.githubusercontent.com/HuwCheston/Jazz-Trio-Database/refs/heads/main/references/jtd_index_2.0.json",
+        checksum="1a0b5bb0e5357bd6762407a5de710877",
     ),
     "sample": core.Index(filename="jtd_index_2.0_sample.json"),
 }
@@ -89,7 +87,8 @@ REMOTES = {
         filename='annotation.zip',
         url='https://github.com/HuwCheston/Jazz-Trio-Database/releases/download/v02-zenodo/jazz-trio-database-v02.zip',
         checksum='43f543fb286c6222ae1f52bcf7561f37',
-        destination_dir='jtd/annotations'
+        destination_dir='annotations',
+        unpack_directories=['jazz-trio-database-v02']    # removes a redundant extra subdirectory
     )
 }
 
@@ -98,7 +97,9 @@ To download the audio for files for JTD, visit: https://zenodo.org/records/13828
 
 After you've been granted access, press the "Download all" button on the Zenodo record.
 
-This will create a new file named files-archive (with no extension). Rename the file to files-archive.zip and extract using any unzipping tool (7zip, WinRAR, the unarchiver) or the command line. This will give you a list of multi-part zip files in the form [processed.zip.001, processed.zip.002, ...] and [raw.zip.001, raw.zip.002, ...]. 
+This will create a new file named files-archive (with no extension). Rename the file to files-archive.zip and extract 
+using any unzipping tool (7zip, WinRAR, the unarchiver) or the command line. This will give you a list of multi-part 
+zip files in the form [processed.zip.001, processed.zip.002, ...] and [raw.zip.001, raw.zip.002, ...]. 
 
 To extract these, use 7zip from the command line:
 
@@ -107,23 +108,26 @@ To extract these, use 7zip from the command line:
 7z x raw.zip.001
 ```
 
-Note that the default `unzip` command on Linux can't handle these files, so you'll need to use 7zip. You may also be able to use a GUI tool like WinRAR, which was used to create the archive in the first place. 
+Note that the default `unzip` command on Linux can't handle these files, so you'll need to use 7zip. You may also be 
+able to use a GUI tool like WinRAR, which was used to create the archive in the first place. 
 
-These commands will extract the audio to the current folder. You'll then need to move the result to `jtd/processed` and `jtd/raw`, respectively.
+These commands will extract the audio to the current folder. You'll then need to move the results to {0}/processed and 
+{0}/raw, respectively, creating these folders if they don't already exist.
 
-Combined with the annotation files, the end result should be a file structure that looks like:
+Combined with the annotation files (which can be obtained by calling `.download()` on the `mirdata.Dataset` instance 
+you've just initialized), the end result should be a file structure that looks like:
 
 ```
-jtd/
-├─ raw/
+{0}
+├─ raw
 │  ├─ barronk-allgodschildren-drummondrrileyb-1990-8b77c067.wav    # one to three audio files per performance
 │  ├─ ...
-├─ processed/
+├─ processed
 │  ├─ barronk-allgodschildren-drummondrrileyb-1990-8b77c067_piano.wav     # always three audio files per performance
 │  ├─ barronk-allgodschildren-drummondrrileyb-1990-8b77c067_bass.wav
 │  ├─ barronk-allgodschildren-drummondrrileyb-1990-8b77c067_drums.wav
 │  ├─ ...
-├─ annotations/
+├─ annotations
 │  ├─ barronk-allgodschildren-drummondrrileyb-1990-8b77c067    # one folder per performance
 │  │  ├─ bass_onsets.csv
 │  │  ├─ beats.csv
@@ -139,11 +143,18 @@ LICENSE_INFO = """
 The MIT License (MIT)
 Copyright (c) 2023, Huw Cheston
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation the 
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit 
+persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the 
+Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 """
 
@@ -159,8 +170,14 @@ class Track(core.Track):
         onsets_path (str): path to onsets file
         midi_path (str): path to MIDI file
 
+    Properties:
+        audio(tuple): audio signal and sample rate for the isolated instrument track of this performance
+        instrument (str): name of the instrument for this track, either "piano", "bass", or "drums"
+        musician (str): name of the musician playing the `instrument` on this track
+
     Cached Properties:
-        annotation (EventData): a description of this annotation
+        onsets (EventData): onset and offset times
+        midi (NoteData): midi pitches, onset, offset times, and velocities
 
     """
 
@@ -170,23 +187,29 @@ class Track(core.Track):
             data_home,
             dataset_name=dataset_name,
             index=index,
-            metadata=metadata,
+            metadata=lambda: json.load(open(self.get_path('metadata'), 'r')),
         )
 
         self.audio_path = self.get_path("audio")
         self.onsets_path = self.get_path("onsets")
         self.midi_path = self.get_path("midi")
 
-    # -- If the dataset has metadata that needs to be accessed by Tracks,
-    # -- such as a table mapping track ids to composers for the full dataset,
-    # -- add them as properties like instead of in the __init__.
-    @property
-    def composer(self) -> Optional[str]:
-        return self._track_metadata.get("composer")
+    def _get_instrument(self) -> Optional[str]:
+        """Helper function to get the name of the instrument for this track from the track ID"""
+        try:
+            instrument = self.track_id.split('_')[1]
+        except IndexError:
+            return None
+        else:
+            return (
+                instrument
+                if instrument in ["piano", "bass", "drums"]
+                else None
+            )
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """The track's audio
+        """The source-separated audio for this instrument
 
         Returns:
             * np.ndarray - audio signal
@@ -195,88 +218,144 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def midi(self) -> Optional[PrettyMIDI]:
-        pass
+    @property
+    def instrument(self) -> Optional[str]:
+        """The name of the instrument for this track, one of "piano", "bass", and "drums"
 
-    # -- we use the to_jams function to convert all the annotations in the JAMS format.
-    # -- The converter takes as input all the annotations in the proper format (e.g. beats
-    # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
-    # -- object with the annotations.
+        Returns:
+            * str - name of instrument
+
+        """
+        return self._get_instrument()
+
+    @core.cached_property
+    def midi(self) -> Optional[annotations.NoteData]:
+        """The MIDI for this instrument
+
+        Returns:
+            * annotations.NoteData
+
+        """
+        try:
+            return io.load_notes_from_midi(self.midi_path)
+        except ValueError:
+            return None
+
+    @property
+    def musician(self) -> Optional[str]:
+        """The name of the musician playing on this track
+
+        Returns:
+            * str - name of musician
+
+        """
+        # The `musicians` dictionary has a different mapping to the `instruments` one
+        instruments_and_roles = {'piano': 'pianist', 'bass': 'bassist', 'drums': 'drummer'}
+        # This maps e.g. "piano" -> "pianist", "bass" -> "bassist
+        instrument = self._get_instrument()
+        if instrument is None:
+            return None
+        else:
+            current_role = instruments_and_roles[self.instrument]
+            return (
+                self._track_metadata["musicians"][current_role]
+                if "musicians" in self._track_metadata
+                else None
+            )
+
+    @core.cached_property
+    def onsets(self) -> Optional[annotations.EventData]:
+        """The onsets for this instrument
+
+        Returns:
+            * annotations.EventData
+
+        """
+        return load_onsets(self.onsets_path)
+
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
-            annotation_data=[(self.annotation, None)],
-            metadata=self._metadata,
+            note_data=[(self.midi, "midi")],
+            event_data=[(self.onsets, "onsets")],
+            metadata=dict(
+                instrument=self.instrument,
+                musician=self.musician
+            )
         )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
 
 
-# -- if the dataset contains multitracks, you can define a MultiTrack similar to a Track
-# -- you can delete the block of code below if the dataset has no multitracks
 class MultiTrack(core.MultiTrack):
-    """Example multitrack class
+    """JTD multitrack class
 
     Args:
         mtrack_id (str): multitrack id
         data_home (str): Local path where the dataset is stored.
-            If `None`, looks for the data in the default directory, `~/mir_datasets/Example`
+            If `None`, looks for the data in the default directory, `~/mir_datasets/jtd`
 
     Attributes:
         mtrack_id (str): track id
         tracks (dict): {track_id: Track}
-        track_audio_property (str): the name of the attribute of Track which
-            returns the audio to be mixed
-        # -- Add any of the dataset specific attributes here
+
+    Properties:
+        album (str): The name of the album that this performance was taken from.
+        audio (Tuple[np.ndarray, float]): The track's audio, center channel.
+        audio_lchan (Tuple[np.ndarray, float]): The track's audio, left channel (if available).
+        audio_rchan (Tuple[np.ndarray, float]): The track's audio, right channel (if available).
+        bandleader (str): The full name of the bandleader who led the recording session.
+        bass (Track): The associated bass track for this recording.
+        drums (Track): The associated drums track for this recording.
+        duration (float): The duration of the piano solo in seconds.
+        jtd_300 (bool): Whether the track is contained in the smaller JTD-300 subset of 300 recordings.
+        musicbrainz_id (str): The MusicBrainz ID for the recording.
+        name (str): The track's name.
+        piano (Track): The associated piano track for this recording.
+        start (int): The start of the piano solo relative to the full recording (in seconds).
+        stop (int): The end of the piano solo relative to the full recording (in seconds).
+        tempo (float): The average tempo of the track in beats per minute.
+        time_signature (int): The time signature of the recording (3 or 4 quarter-note beats).
+        year (int): The year the recording was made.
 
     Cached Properties:
-        annotation (EventData): a description of this annotation
+        beats (annotations.BeatData): The times of quarter-note beats for the recording.
 
     """
 
     def __init__(
             self, mtrack_id, data_home, dataset_name, index, track_class, metadata
     ):
-        # -- this sets the following attributes:
-        # -- * mtrack_id
-        # -- * _dataset_name
-        # -- * _data_home
-        # -- * _multitrack_paths
-        # -- * _metadata
-        # -- * _track_class
-        # -- * _index
-        # -- * track_ids
         super().__init__(
             mtrack_id=mtrack_id,
             data_home=data_home,
             dataset_name=dataset_name,
             index=index,
             track_class=track_class,
-            metadata=metadata,
+            metadata=lambda: json.load(open(self.get_path('metadata'), 'r')),
         )
 
-        # -- optionally add any multitrack specific attributes here
-        self.mix_path = ...  # this can be called whatever makes sense for the datasets
-        self.annotation_path = ...
+        self.audio_path = self.get_path("audio")
+        self.audio_lchan_path = self.get_path("audio-lchan")
+        self.audio_rchan_path = self.get_path("audio-rchan")
+        self.beats_path = self.get_path("beats")
 
-        # -- if the dataset has an *official* e.g. train/test split, use this
-        # -- reserved attribute (can be a property if needed)
-        self.split = ...
-
-    # If you want to support multitrack mixing in this dataset, set this property
     @property
-    def track_audio_property(self):
-        return "audio"  # the attribute of Track, e.g. Track.audio, which returns the audio to mix
+    def album(self) -> Optional[str]:
+        """The name of the album that this performance was taken from
 
-    # -- multitracks can optionally have mix-level cached properties and properties
-    @core.cached_property
-    def annotation(self) -> Optional[annotations.EventData]:
-        """output type: description of output"""
-        return load_annotation(self.annotation_path)
+        Returns:
+            * str - name of the album
+
+        """
+        return (
+            self._multitrack_metadata['album_name']
+            if 'album_name' in self._multitrack_metadata
+            else None
+        )
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """The track's audio
+        """The track's audio, center channel
 
         Returns:
             * np.ndarray - audio signal
@@ -285,16 +364,236 @@ class MultiTrack(core.MultiTrack):
         """
         return load_audio(self.audio_path)
 
-    # -- multitrack classes are themselves Tracks, and also need a to_jams method
-    # -- for any mixture-level annotations
+    @property
+    def audio_lchan(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The track's audio, left channel (not present for all tracks)
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
+        return load_audio(self.audio_lchan_path)
+
+    @property
+    def audio_rchan(self) -> Optional[Tuple[np.ndarray, float]]:
+        """The track's audio, right channel (not present for all tracks)
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
+        return load_audio(self.audio_rchan_path)
+
+    @property
+    def bandleader(self) -> Optional[str]:
+        """The full name of the bandleader who led the recording session
+
+        Returns:
+            * str - name of the bandleader
+
+        """
+        return (
+            self._multitrack_metadata['bandleader']
+            if 'bandleader' in self._multitrack_metadata
+            else None
+        )
+
+    @property
+    def bass(self) -> Track:
+        """The associated bass track for this recording
+
+        Returns:
+            * Track
+
+        """
+        return self.tracks[self.mtrack_id + "_bass"]
+
+    @core.cached_property
+    def beats(self) -> Optional[annotations.BeatData]:
+        """The times of quarter-note beats for the recording
+
+        Returns:
+            * annotations.BeatData - timestamp, beat number (1-indexed to bar)
+
+        """
+        return load_beats(self.beats_path)
+
+    @property
+    def drums(self) -> Track:
+        """The associated drums track for this recording
+
+        Returns:
+            * Track
+
+        """
+        return self.tracks[self.mtrack_id + "_drums"]
+
+    @property
+    def duration(self) -> Optional[int]:
+        """The duration of the piano solo
+
+        Returns:
+            * float - solo duration (in seconds)
+
+        """
+        if 'timestamps' not in self._multitrack_metadata:
+            return None
+        else:
+            start = self._multitrack_metadata['timestamps']['start']
+            stop = self._multitrack_metadata['timestamps']['end']
+            return timestamp_to_seconds(stop) - timestamp_to_seconds(start)
+
+    @property
+    def jtd_300(self) -> Optional[bool]:
+        """Whether the track is contained in the smaller JTD-300 subset of 300 recordings
+
+        Returns:
+            * bool - True if contained in JTD-300, otherwise false
+
+        """
+        return (
+            self._multitrack_metadata['in_30_corpus']
+            if 'in_30_corpus' in self._multitrack_metadata
+            else None
+        )
+
+    @property
+    def musicbrainz_id(self) -> Optional[str]:
+        """The MusicBrainz ID for the recording
+
+        Returns:
+            * str - musicbrainz ID
+
+        """
+        return (
+            self._multitrack_metadata["mbz_id"]
+            if 'mbz_id' in self._multitrack_metadata
+            else None
+        )
+
+    @property
+    def name(self) -> Optional[str]:
+        """The track's name
+
+        Returns:
+            * str - track name
+
+        """
+        return (
+            self._multitrack_metadata['track_name']
+            if 'track_name' in self._multitrack_metadata
+            else None
+        )
+
+    @property
+    def piano(self) -> Track:
+        """The associated piano track for this recording
+
+        Returns:
+            * Track
+
+        """
+        return self.tracks[self.mtrack_id + "_piano"]
+
+    @property
+    def start(self) -> Optional[int]:
+        """The start of the piano solo relative to the full recording
+
+        Returns:
+            * int - start of performance, in seconds
+
+        """
+        return (
+            timestamp_to_seconds(self._multitrack_metadata['timestamps']['start'])
+            if 'timestamps' in self._multitrack_metadata
+            else None
+        )
+
+    @property
+    def stop(self) -> Optional[int]:
+        """The end of the piano solo relative to the full recording
+
+        Returns:
+            * int - end of performance, in seconds
+
+        """
+        return (
+            timestamp_to_seconds(self._multitrack_metadata['timestamps']['end'])
+            if 'timestamps' in self._multitrack_metadata
+            else None
+        )
+
+    @property
+    def tempo(self) -> Optional[float]:
+        """The average tempo of the track
+
+        Returns:
+            * float - the tempo, in beats-per-minute
+
+        """
+        return (
+            float(self._multitrack_metadata['tempo'])
+            if 'tempo' in self._multitrack_metadata
+            else None
+        )
+
+    @property
+    def time_signature(self) -> Optional[int]:
+        """The time signature of the recording, either 3 or 4 quarter-note beats
+
+        Returns:
+            * int - time signature
+
+        """
+        return (
+            int(self._multitrack_metadata["time_signature"])
+            if 'time_signature' in self._multitrack_metadata
+            else None
+        )
+
     def to_jams(self):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
-            audio_path=self.mix_path,
-            annotation_data=[(self.annotation, None)],
-            # ...
+            audio_path=self.audio_path,
+            beat_data=[(self.beats, "beats")],
+            tempo_data=[(self.tempo, "tempo")],
+            metadata=dict(
+                album=self.album,
+                bandleader=self.bandleader,
+                duration=self.duration,
+                jtd_300=self.jtd_300,
+                musicbrainz_id=self.musicbrainz_id,
+                name=self.name,
+                start=self.start,
+                stop=self.stop,
+                time_signature=self.time_signature,
+                year=self.year
+            )
         )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
+
+    @property
+    def year(self) -> Optional[int]:
+        """The year the recording was made
+
+        Returns:
+            * int - recording year
+
+        """
+        return (
+            int(self._multitrack_metadata['recording_year'])
+            if 'recording_year' in self._multitrack_metadata
+            else None
+        )
+
+
+def timestamp_to_seconds(ts: str) -> int:
+    """Coerces timestamp in form `%M:%S` to an integer"""
+    # Split the timestamp into minutes and seconds
+    minutes, seconds = map(int, ts.split(':'))
+    # Convert the entire timestamp to seconds
+    return int((minutes * 60) + seconds)
 
 
 @io.coerce_to_bytes_io
@@ -312,29 +611,53 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     return librosa.load(fhandle, sr=44100, mono=True)
 
 
-# -- Write any necessary loader functions for loading the dataset's data
-
-# -- this decorator allows this function to take a string or an open file as input
-# -- and in either case converts it to an open file handle.
-# -- It also checks if the file exists
-# -- and, if None is passed, None will be returned
 @io.coerce_to_string_io
-def load_annotation(fhandle: TextIO) -> Optional[annotations.EventData]:
-    # -- because of the decorator, the file is already open
-    reader = csv.reader(fhandle, delimiter=' ')
+def load_onsets(fhandle: TextIO) -> Optional[annotations.EventData]:
+    """Load a JTD onset file.
+
+    Args:
+        fhandle (str or file-like): path or file-like object pointing to an onset csv file
+
+    Returns:
+        * annotations.EventData - the onset data
+
+    """
+    reader = csv.reader(fhandle)
+    # Flatten list and evaluate items as floats
+    reader = [float(x) for xs in reader for x in xs]
     intervals = []
     annotation = []
-    for line in reader:
-        intervals.append([float(line[0]), float(line[1])])
-        annotation.append(line[2])
+    # Iterate over successive onset times
+    for line_num, (line1, line2) in enumerate(zip(reader, reader[1:])):
+        # Creates a list of (onset1, onset2), (onset2, onset3), ... (i.e., onset and offset times)
+        intervals.append([line1, line2])
+        # This is just the count of onsets, 0-indexed
+        annotation.append(str(line_num))
+    # Needs to be an array to pass validation
+    intervals = np.array(intervals)
+    return annotations.EventData(intervals, "s", annotation, "open")
 
-    # there are several annotation types in annotations.py
-    # They should be initialized with data, followed by their units
-    # see annotations.py for a complete list of types and units.
-    annotation_data = annotations.EventData(
-        np.array(intervals), "s", np.array(annotation), "open"
-    )
-    return annotation_data
+
+@io.coerce_to_string_io
+def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
+    """Load a JTD beat file.
+
+    Args:
+        fhandle (str or file-like): path or file-like object pointing to an beat csv file
+
+    Returns:
+        * annotations.BeatData - the beat data
+
+    """
+    reader = csv.reader(fhandle)
+    # The first line of the CSV is always a header so we can just skip it
+    reader.__next__()
+    timestamps, positions = [], []
+    # Iterating over each line of the CSV file (i.e., each 'beat')
+    for beat_number, beat_timestamp, _, __, ___, beat_position in reader:
+        timestamps.append(float(beat_timestamp))
+        positions.append(int(float(beat_position)))    # coerce string to float and then to int
+    return annotations.BeatData(np.array(timestamps), "s", np.array(positions), "bar_index")
 
 
 @core.docstring_inherit(core.Dataset)
@@ -349,6 +672,7 @@ class Dataset(core.Dataset):
             version,
             name="jtd",
             track_class=Track,
+            multitrack_class=MultiTrack,
             bibtex=BIBTEX,
             indexes=INDEXES,
             remotes=REMOTES,
