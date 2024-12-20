@@ -24,6 +24,7 @@
     1) MIDI transcription (frame-level)
         - currently piano only
     2) Onset timestamps
+    3) Onset timestamps matched to the nearest beat from the "raw" audio within a window of -32nd/+16th note
 
     For the "raw" audio, there are the following annotations:
 
@@ -50,12 +51,13 @@
 """
 
 import csv
+import functools
 import json
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, Union, Callable
+from io import StringIO
 
 import librosa
 import numpy as np
-from pretty_midi import PrettyMIDI
 
 from mirdata import download_utils, jams_utils, core, annotations, io
 
@@ -83,12 +85,14 @@ INDEXES = {
 }
 
 REMOTES = {
-    'annotations': download_utils.RemoteFileMetadata(
-        filename='annotation.zip',
-        url='https://github.com/HuwCheston/Jazz-Trio-Database/releases/download/v02-zenodo/jazz-trio-database-v02.zip',
-        checksum='43f543fb286c6222ae1f52bcf7561f37',
-        destination_dir='annotations',
-        unpack_directories=['jazz-trio-database-v02']    # removes a redundant extra subdirectory
+    "annotations": download_utils.RemoteFileMetadata(
+        filename="annotation.zip",
+        url="https://github.com/HuwCheston/Jazz-Trio-Database/releases/download/v02-zenodo/jazz-trio-database-v02.zip",
+        checksum="43f543fb286c6222ae1f52bcf7561f37",
+        destination_dir="annotations",
+        unpack_directories=[
+            "jazz-trio-database-v02"
+        ],  # removes a redundant extra subdirectory
     )
 }
 
@@ -169,6 +173,7 @@ class Track(core.Track):
         audio_path (str): path to audio file
         onsets_path (str): path to onsets file
         midi_path (str): path to MIDI file
+        beats_path (str): path to beats file
 
     Properties:
         audio(tuple): audio signal and sample rate for the isolated instrument track of this performance
@@ -176,6 +181,7 @@ class Track(core.Track):
         musician (str): name of the musician playing the `instrument` on this track
 
     Cached Properties:
+        beats (BeatData): beat times for this instrument
         onsets (EventData): onset and offset times
         midi (NoteData): midi pitches, onset, offset times, and velocities
 
@@ -187,25 +193,22 @@ class Track(core.Track):
             data_home,
             dataset_name=dataset_name,
             index=index,
-            metadata=lambda: json.load(open(self.get_path('metadata'), 'r')),
+            metadata=lambda: json.load(open(self.get_path("metadata"), "r")),
         )
 
         self.audio_path = self.get_path("audio")
         self.onsets_path = self.get_path("onsets")
         self.midi_path = self.get_path("midi")
+        self.beats_path = self.get_path("beats")
 
     def _get_instrument(self) -> Optional[str]:
         """Helper function to get the name of the instrument for this track from the track ID"""
         try:
-            instrument = self.track_id.split('_')[1]
+            instrument = self.track_id.split("_")[1]
         except IndexError:
             return None
         else:
-            return (
-                instrument
-                if instrument in ["piano", "bass", "drums"]
-                else None
-            )
+            return instrument if instrument in ["piano", "bass", "drums"] else None
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -217,6 +220,23 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
+
+    @core.cached_property
+    def beats(self) -> Optional[annotations.BeatData]:
+        """The times of onsets by this musician matched to the nearest quarter-note beat timestamp
+
+        Returns:
+            * annotations.BeatData - timestamp, beat number (1-indexed to bar)
+
+        """
+        # This maps instrument names onto columns of the CSV file
+        column_mapping = {"piano": 1, "bass": 2, "drums": 3}
+        # Return None if for whatever reason we don't have an instrument
+        instrument = self._get_instrument()
+        if instrument is None:
+            return None
+        else:
+            return load_beats(self.beats_path, column_mapping[instrument])
 
     @property
     def instrument(self) -> Optional[str]:
@@ -250,13 +270,17 @@ class Track(core.Track):
 
         """
         # The `musicians` dictionary has a different mapping to the `instruments` one
-        instruments_and_roles = {'piano': 'pianist', 'bass': 'bassist', 'drums': 'drummer'}
+        instruments_and_roles = {
+            "piano": "pianist",
+            "bass": "bassist",
+            "drums": "drummer",
+        }
         # This maps e.g. "piano" -> "pianist", "bass" -> "bassist
         instrument = self._get_instrument()
         if instrument is None:
             return None
         else:
-            current_role = instruments_and_roles[self.instrument]
+            current_role = instruments_and_roles[str(self.instrument)]
             return (
                 self._track_metadata["musicians"][current_role]
                 if "musicians" in self._track_metadata
@@ -277,12 +301,10 @@ class Track(core.Track):
         """Jams: the track's data in jams format"""
         return jams_utils.jams_converter(
             audio_path=self.audio_path,
+            beat_data=[(self.beats, "beats")],
             note_data=[(self.midi, "midi")],
             event_data=[(self.onsets, "onsets")],
-            metadata=dict(
-                instrument=self.instrument,
-                musician=self.musician
-            )
+            metadata=dict(instrument=self.instrument, musician=self.musician),
         )
 
 
@@ -323,7 +345,7 @@ class MultiTrack(core.MultiTrack):
     """
 
     def __init__(
-            self, mtrack_id, data_home, dataset_name, index, track_class, metadata
+        self, mtrack_id, data_home, dataset_name, index, track_class, metadata
     ):
         super().__init__(
             mtrack_id=mtrack_id,
@@ -331,7 +353,7 @@ class MultiTrack(core.MultiTrack):
             dataset_name=dataset_name,
             index=index,
             track_class=track_class,
-            metadata=lambda: json.load(open(self.get_path('metadata'), 'r')),
+            metadata=lambda: json.load(open(self.get_path("metadata"), "r")),
         )
 
         self.audio_path = self.get_path("audio")
@@ -348,8 +370,8 @@ class MultiTrack(core.MultiTrack):
 
         """
         return (
-            self._multitrack_metadata['album_name']
-            if 'album_name' in self._multitrack_metadata
+            self._multitrack_metadata["album_name"]
+            if "album_name" in self._multitrack_metadata
             else None
         )
 
@@ -395,8 +417,8 @@ class MultiTrack(core.MultiTrack):
 
         """
         return (
-            self._multitrack_metadata['bandleader']
-            if 'bandleader' in self._multitrack_metadata
+            self._multitrack_metadata["bandleader"]
+            if "bandleader" in self._multitrack_metadata
             else None
         )
 
@@ -418,7 +440,7 @@ class MultiTrack(core.MultiTrack):
             * annotations.BeatData - timestamp, beat number (1-indexed to bar)
 
         """
-        return load_beats(self.beats_path)
+        return load_beats(self.beats_path, 0)
 
     @property
     def drums(self) -> Track:
@@ -438,11 +460,11 @@ class MultiTrack(core.MultiTrack):
             * float - solo duration (in seconds)
 
         """
-        if 'timestamps' not in self._multitrack_metadata:
+        if "timestamps" not in self._multitrack_metadata:
             return None
         else:
-            start = self._multitrack_metadata['timestamps']['start']
-            stop = self._multitrack_metadata['timestamps']['end']
+            start = self._multitrack_metadata["timestamps"]["start"]
+            stop = self._multitrack_metadata["timestamps"]["end"]
             return timestamp_to_seconds(stop) - timestamp_to_seconds(start)
 
     @property
@@ -454,8 +476,8 @@ class MultiTrack(core.MultiTrack):
 
         """
         return (
-            self._multitrack_metadata['in_30_corpus']
-            if 'in_30_corpus' in self._multitrack_metadata
+            self._multitrack_metadata["in_30_corpus"]
+            if "in_30_corpus" in self._multitrack_metadata
             else None
         )
 
@@ -469,7 +491,7 @@ class MultiTrack(core.MultiTrack):
         """
         return (
             self._multitrack_metadata["mbz_id"]
-            if 'mbz_id' in self._multitrack_metadata
+            if "mbz_id" in self._multitrack_metadata
             else None
         )
 
@@ -482,8 +504,8 @@ class MultiTrack(core.MultiTrack):
 
         """
         return (
-            self._multitrack_metadata['track_name']
-            if 'track_name' in self._multitrack_metadata
+            self._multitrack_metadata["track_name"]
+            if "track_name" in self._multitrack_metadata
             else None
         )
 
@@ -506,8 +528,8 @@ class MultiTrack(core.MultiTrack):
 
         """
         return (
-            timestamp_to_seconds(self._multitrack_metadata['timestamps']['start'])
-            if 'timestamps' in self._multitrack_metadata
+            timestamp_to_seconds(self._multitrack_metadata["timestamps"]["start"])
+            if "timestamps" in self._multitrack_metadata
             else None
         )
 
@@ -520,8 +542,8 @@ class MultiTrack(core.MultiTrack):
 
         """
         return (
-            timestamp_to_seconds(self._multitrack_metadata['timestamps']['end'])
-            if 'timestamps' in self._multitrack_metadata
+            timestamp_to_seconds(self._multitrack_metadata["timestamps"]["end"])
+            if "timestamps" in self._multitrack_metadata
             else None
         )
 
@@ -534,8 +556,8 @@ class MultiTrack(core.MultiTrack):
 
         """
         return (
-            float(self._multitrack_metadata['tempo'])
-            if 'tempo' in self._multitrack_metadata
+            float(self._multitrack_metadata["tempo"])
+            if "tempo" in self._multitrack_metadata
             else None
         )
 
@@ -549,7 +571,7 @@ class MultiTrack(core.MultiTrack):
         """
         return (
             int(self._multitrack_metadata["time_signature"])
-            if 'time_signature' in self._multitrack_metadata
+            if "time_signature" in self._multitrack_metadata
             else None
         )
 
@@ -569,8 +591,8 @@ class MultiTrack(core.MultiTrack):
                 start=self.start,
                 stop=self.stop,
                 time_signature=self.time_signature,
-                year=self.year
-            )
+                year=self.year,
+            ),
         )
 
     @property
@@ -582,8 +604,8 @@ class MultiTrack(core.MultiTrack):
 
         """
         return (
-            int(self._multitrack_metadata['recording_year'])
-            if 'recording_year' in self._multitrack_metadata
+            int(self._multitrack_metadata["recording_year"])
+            if "recording_year" in self._multitrack_metadata
             else None
         )
 
@@ -591,7 +613,7 @@ class MultiTrack(core.MultiTrack):
 def timestamp_to_seconds(ts: str) -> int:
     """Coerces timestamp in form `%M:%S` to an integer"""
     # Split the timestamp into minutes and seconds
-    minutes, seconds = map(int, ts.split(':'))
+    minutes, seconds = map(int, ts.split(":"))
     # Convert the entire timestamp to seconds
     return int((minutes * 60) + seconds)
 
@@ -622,7 +644,7 @@ def load_onsets(fhandle: TextIO) -> Optional[annotations.EventData]:
         * annotations.EventData - the onset data
 
     """
-    reader = csv.reader(fhandle)
+    reader: list = list(csv.reader(fhandle))
     # Flatten list and evaluate items as floats
     reader = [float(x) for xs in reader for x in xs]
     intervals = []
@@ -634,16 +656,41 @@ def load_onsets(fhandle: TextIO) -> Optional[annotations.EventData]:
         # This is just the count of onsets, 0-indexed
         annotation.append(str(line_num))
     # Needs to be an array to pass validation
-    intervals = np.array(intervals)
-    return annotations.EventData(intervals, "s", annotation, "open")
+    intervals_arr = np.array(intervals)
+    return annotations.EventData(intervals_arr, "s", annotation, "open")
 
 
-@io.coerce_to_string_io
-def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
+def coerce_to_string_io_multiple_args(func) -> Callable:
+    """Little hack of the decorator in mirdata.io that allows for multiple args to be passed to the `func`"""
+
+    @functools.wraps(func)
+    def wrapper(
+        file_path_or_obj: Optional[Union[str, TextIO]], *args
+    ) -> Optional[io.T]:
+        if not file_path_or_obj:
+            return None
+        if isinstance(file_path_or_obj, str):
+            with open(file_path_or_obj, encoding="utf-8") as f:
+                return func(f, *args)
+        elif isinstance(file_path_or_obj, StringIO):
+            return func(file_path_or_obj, *args)
+        else:
+            raise ValueError(
+                "Invalid argument passed to {}, argument has the type {}",
+                func.__name__,
+                type(file_path_or_obj),
+            )
+
+    return wrapper
+
+
+@coerce_to_string_io_multiple_args
+def load_beats(fhandle: TextIO, col_idx: int) -> Optional[annotations.BeatData]:
     """Load a JTD beat file.
 
     Args:
-        fhandle (str or file-like): path or file-like object pointing to an beat csv file
+        fhandle (str or file-like): path or file-like object pointing to a beat csv file
+        col_idx (int, optional): index of the column to use (0=overall, 1=piano, 2=bass, 3=drums), defaults to 0
 
     Returns:
         * annotations.BeatData - the beat data
@@ -654,10 +701,20 @@ def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
     reader.__next__()
     timestamps, positions = [], []
     # Iterating over each line of the CSV file (i.e., each 'beat')
-    for beat_number, beat_timestamp, _, __, ___, beat_position in reader:
-        timestamps.append(float(beat_timestamp))
-        positions.append(int(float(beat_position)))    # coerce string to float and then to int
-    return annotations.BeatData(np.array(timestamps), "s", np.array(positions), "bar_index")
+    for beat_number, beat, piano, bass, drums, metre in reader:
+        # Get the required data from the row
+        desired_data = [beat, piano, bass, drums][col_idx]
+        # Coerce empty strings to NaN values
+        if desired_data == "":
+            desired_data_fmt = np.nan
+        else:
+            desired_data_fmt = float(desired_data)
+        # Append everything to the list with the required datatypes
+        timestamps.append(desired_data_fmt)
+        positions.append(int(float(metre)))  # coerce string to float and then to int
+    return annotations.BeatData(
+        np.array(timestamps), "s", np.array(positions), "bar_index"
+    )
 
 
 @core.docstring_inherit(core.Dataset)
