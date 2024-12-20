@@ -592,16 +592,16 @@ class MultiTrack(core.MultiTrack):
 def timestamp_to_seconds(ts: str) -> int:
     """Coerces timestamp in form `%M:%S` or `%H:%M:S` to an integer"""
     # Timestamp is in format hours-minutes-seconds
-    if ts.count(':') == 2:
-        hours, minutes, seconds = map(int, ts.split(':'))
+    if ts.count(":") == 2:
+        hours, minutes, seconds = map(int, ts.split(":"))
         return int((hours * 60 * 60) + (minutes * 60) + seconds)
     # Timestamp is in format minutes-seconds
-    elif ts.count(':') == 1:
-        minutes, seconds = map(int, ts.split(':'))
+    elif ts.count(":") == 1:
+        minutes, seconds = map(int, ts.split(":"))
         return int((minutes * 60) + seconds)
     # Timestamp is in incorrect format
     else:
-        raise ValueError('Timestamp must be in format %H:%M:%S or %M:%S')
+        raise ValueError("Timestamp must be in format %H:%M:%S or %M:%S")
 
 
 @io.coerce_to_bytes_io
@@ -719,4 +719,4 @@ class Dataset(core.Dataset):
         # Note: this needs to be added to pass `test_full_dataset.test_load_mtracks`
         #  currently this test fails on many other datasets, e.g., `dagstuhl_choirset`
         #  as the `mm` attribute is never set when calling `super().__init__()`
-        self.mm = list(self._index['multitracks'].keys())
+        self.mm = list(self._index["multitracks"].keys())

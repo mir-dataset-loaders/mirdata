@@ -193,12 +193,12 @@ def test_timestamp_to_seconds():
     actual = jtd.timestamp_to_seconds(ts3)
     assert actual == expected
     # test case 4
-    ts4 = '01:02:03'
+    ts4 = "01:02:03"
     expected = 3723
     actual = jtd.timestamp_to_seconds(ts4)
     assert actual == expected
     # test case 5
-    ts5 = 'asdfasgsegrijeaowfxgjflkawe'
+    ts5 = "asdfasgsegrijeaowfxgjflkawe"
     with pytest.raises(ValueError):
         _ = jtd.timestamp_to_seconds(ts5)
 
