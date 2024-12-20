@@ -228,7 +228,7 @@ class Track(core.Track):
         """
         # This maps instrument names onto columns of the CSV file
         column_mapping = {"piano": 1, "bass": 2, "drums": 3}
-        instrument = self._get_instrument()
+        instrument = self.instrument
         return load_beats(self.beats_path, column_mapping[instrument])
 
     @core.cached_property
@@ -256,8 +256,7 @@ class Track(core.Track):
             "drums": "drummer",
         }
         # This maps e.g. "piano" -> "pianist", "bass" -> "bassist
-        instrument = self._get_instrument()
-        current_role = instruments_and_roles[str(instrument)]
+        current_role = instruments_and_roles[self.instrument]
         return (
             self._track_metadata["musicians"][current_role]
             if "musicians" in self._track_metadata
