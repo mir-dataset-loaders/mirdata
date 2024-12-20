@@ -203,12 +203,8 @@ class Track(core.Track):
 
     def _get_instrument(self) -> Optional[str]:
         """Helper function to get the name of the instrument for this track from the track ID"""
-        try:
-            instrument = self.track_id.split("_")[1]
-        except IndexError:
-            return None
-        else:
-            return instrument if instrument in ["piano", "bass", "drums"] else None
+        instrument = self.track_id.split("_")[1]
+        return instrument if instrument in ["piano", "bass", "drums"] else None
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -231,12 +227,8 @@ class Track(core.Track):
         """
         # This maps instrument names onto columns of the CSV file
         column_mapping = {"piano": 1, "bass": 2, "drums": 3}
-        # Return None if for whatever reason we don't have an instrument
         instrument = self._get_instrument()
-        if instrument is None:
-            return None
-        else:
-            return load_beats(self.beats_path, column_mapping[instrument])
+        return load_beats(self.beats_path, column_mapping[instrument])
 
     @property
     def instrument(self) -> Optional[str]:
@@ -256,10 +248,7 @@ class Track(core.Track):
             * annotations.NoteData
 
         """
-        try:
-            return io.load_notes_from_midi(self.midi_path)
-        except ValueError:
-            return None
+        return io.load_notes_from_midi(self.midi_path)    # returns None if no MIDI
 
     @property
     def musician(self) -> Optional[str]:
@@ -277,15 +266,12 @@ class Track(core.Track):
         }
         # This maps e.g. "piano" -> "pianist", "bass" -> "bassist
         instrument = self._get_instrument()
-        if instrument is None:
-            return None
-        else:
-            current_role = instruments_and_roles[str(self.instrument)]
-            return (
-                self._track_metadata["musicians"][current_role]
-                if "musicians" in self._track_metadata
-                else None
-            )
+        current_role = instruments_and_roles[str(instrument)]
+        return (
+            self._track_metadata["musicians"][current_role]
+            if "musicians" in self._track_metadata
+            else None
+        )
 
     @core.cached_property
     def onsets(self) -> Optional[annotations.EventData]:
@@ -460,12 +446,9 @@ class MultiTrack(core.MultiTrack):
             * float - solo duration (in seconds)
 
         """
-        if "timestamps" not in self._multitrack_metadata:
-            return None
-        else:
-            start = self._multitrack_metadata["timestamps"]["start"]
-            stop = self._multitrack_metadata["timestamps"]["end"]
-            return timestamp_to_seconds(stop) - timestamp_to_seconds(start)
+        start = self._multitrack_metadata["timestamps"]["start"]
+        stop = self._multitrack_metadata["timestamps"]["end"]
+        return timestamp_to_seconds(stop) - timestamp_to_seconds(start)
 
     @property
     def jtd_300(self) -> Optional[bool]:
@@ -672,14 +655,8 @@ def coerce_to_string_io_multiple_args(func) -> Callable:
         if isinstance(file_path_or_obj, str):
             with open(file_path_or_obj, encoding="utf-8") as f:
                 return func(f, *args)
-        elif isinstance(file_path_or_obj, StringIO):
-            return func(file_path_or_obj, *args)
         else:
-            raise ValueError(
-                "Invalid argument passed to {}, argument has the type {}",
-                func.__name__,
-                type(file_path_or_obj),
-            )
+            return func(file_path_or_obj, *args)
 
     return wrapper
 

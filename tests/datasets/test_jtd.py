@@ -6,6 +6,7 @@ from typing import Tuple
 
 import numpy as np
 
+import pytest
 from mirdata import annotations
 from mirdata.datasets import jtd
 from tests.test_utils import run_track_tests, run_multitrack_tests
@@ -81,8 +82,28 @@ def test_multitrack():
     default_trackid = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067"
     data_home = "tests/resources/mir_datasets/jtd"
     dataset = jtd.Dataset(data_home, version="sample")
-    default_track = dataset.multitrack(default_trackid)
-    run_multitrack_tests(default_track)
+    multitrack = dataset.multitrack(default_trackid)
+    run_multitrack_tests(multitrack)
+    # test audio loading functions
+    audio, sr = multitrack.audio
+    assert sr == 44100
+    assert audio.shape == (44100 * 5,)  # five seconds of audio
+    # test getting individual tracks
+    # testing bass
+    bass = multitrack.bass
+    assert isinstance(bass, jtd.Track)
+    assert bass.instrument == "bass"
+    assert bass.musician == "Ray Drummond"
+    # testing piano
+    drums = multitrack.drums
+    assert isinstance(drums, jtd.Track)
+    assert drums.instrument == "drums"
+    assert drums.musician == "Ben Riley"
+    # testing piano
+    piano = multitrack.piano
+    assert isinstance(piano, jtd.Track)
+    assert piano.instrument == "piano"
+    assert piano.musician == "Kenny Barron"
 
 
 def test_track_to_jams():
@@ -248,3 +269,12 @@ def test_multitrack_properties():
     assert round(track.tempo, 2) == 297.62
     assert track.audio_rchan is None
     assert track.audio_lchan is None
+
+
+def test_no_midi():
+    default_trackid = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067_bass"
+    data_home = "tests/resources/mir_datasets/jtd"
+    dataset = jtd.Dataset(data_home, version="sample")
+    track = dataset.track(default_trackid)
+    with pytest.raises(ValueError):
+        _ = track.midi
