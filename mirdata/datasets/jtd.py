@@ -174,10 +174,10 @@ class Track(core.Track):
         onsets_path (str): path to onsets file
         midi_path (str): path to MIDI file
         beats_path (str): path to beats file
+        instrument (str): name of the instrument for this track, either "piano", "bass", or "drums"
 
     Properties:
         audio(tuple): audio signal and sample rate for the isolated instrument track of this performance
-        instrument (str): name of the instrument for this track, either "piano", "bass", or "drums"
         musician (str): name of the musician playing the `instrument` on this track
 
     Cached Properties:
@@ -200,6 +200,7 @@ class Track(core.Track):
         self.onsets_path = self.get_path("onsets")
         self.midi_path = self.get_path("midi")
         self.beats_path = self.get_path("beats")
+        self.instrument = self._get_instrument()
 
     def _get_instrument(self) -> Optional[str]:
         """Helper function to get the name of the instrument for this track from the track ID"""
@@ -230,16 +231,6 @@ class Track(core.Track):
         instrument = self._get_instrument()
         return load_beats(self.beats_path, column_mapping[instrument])
 
-    @property
-    def instrument(self) -> Optional[str]:
-        """The name of the instrument for this track, one of "piano", "bass", and "drums"
-
-        Returns:
-            * str - name of instrument
-
-        """
-        return self._get_instrument()
-
     @core.cached_property
     def midi(self) -> Optional[annotations.NoteData]:
         """The MIDI for this instrument
@@ -248,7 +239,7 @@ class Track(core.Track):
             * annotations.NoteData
 
         """
-        return io.load_notes_from_midi(self.midi_path)    # returns None if no MIDI
+        return io.load_notes_from_midi(self.midi_path)  # returns None if no MIDI
 
     @property
     def musician(self) -> Optional[str]:

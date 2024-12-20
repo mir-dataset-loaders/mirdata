@@ -36,13 +36,13 @@ def test_track():
             "tests/resources/mir_datasets/jtd",
             "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/beats.csv",
         ),
+        "instrument": "piano",
     }
 
     expected_property_types = {
         "audio": Tuple,
         "midi": annotations.NoteData,
         "onsets": annotations.EventData,
-        "instrument": str,
         "musician": str,
         "beats": annotations.BeatData,
     }
