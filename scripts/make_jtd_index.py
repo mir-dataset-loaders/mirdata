@@ -24,22 +24,25 @@ def get_stem_files(data_path: str, recording: str, instrument: str) -> dict:
     annotation_dir = os.path.join(data_path, "annotations")
     processed_audio_dir = os.path.join(data_path, "processed")
     # Dictionary where we'll store everything
-    stem_multitracks = {}
+    stem_dict = {}
+    # Get metadata annotations
+    metadata_file = os.path.join(annotation_dir, recording, "metadata.json")
+    stem_dict["metadata"] = (metadata_file.replace(data_path, "").lstrip("/"), md5(metadata_file))
     # Getting audio path for stem
     stem_audio = get_stem_audio_filepath(processed_audio_dir, recording, f'_{instrument}')
-    stem_multitracks["audio"] = (stem_audio.replace(data_path, "").lstrip("/"), md5(stem_audio))
+    stem_dict["audio"] = (stem_audio.replace(data_path, "").lstrip("/"), md5(stem_audio))
     # Getting onsets for stem
     stem_onsets = os.path.join(annotation_dir, recording, f"{instrument}_onsets.csv")
-    stem_multitracks["onsets"] = (stem_onsets.replace(data_path, "").lstrip("/"), md5(stem_onsets))
+    stem_dict["onsets"] = (stem_onsets.replace(data_path, "").lstrip("/"), md5(stem_onsets))
     # Getting MIDI for stem
     if instrument == "piano":
         stem_midi = os.path.join(annotation_dir, recording, f"{instrument}_midi.mid")
         midi_out = (stem_midi.replace(data_path, "").lstrip("/"), md5(stem_midi))
     # We do not currently include MIDI for bass or drums
     else:
-        midi_out = [None, None]
-    stem_multitracks["midi"] = midi_out
-    return stem_multitracks
+        midi_out = (None, None)
+    stem_dict["midi"] = midi_out
+    return stem_dict
 
 
 def get_mixed_files(data_path: str, recording: str) -> dict:
@@ -67,16 +70,17 @@ def get_mixed_files(data_path: str, recording: str) -> dict:
 
 def make_jtd_index(dataset_data_path: str):
     annotation_dir = os.path.join(dataset_data_path, "annotations")
-
+    # Dictionaries to hold indexes for tracks and multitracks
     index_tracks = {}
     index_multitracks = {}
-
+    # Iterate over each recording (a separate directory inside `annotation_dir`)`
     for recording in tqdm(sorted(os.listdir(annotation_dir)), desc='Making JTD indexes'):
+        # Create multitrack index for this recording
         index_multitracks[recording] = get_mixed_files(dataset_data_path, recording)
+        # Create stem index for each part (piano, bass, drums)
         for stem in STEMS:
             index_tracks[f"{recording}_{stem}"] = get_stem_files(dataset_data_path, recording, stem)
-
-    # combine everything together in dataset index
+    # Combine everything together in dataset index
     dataset_index = {"version": 2, "tracks": index_tracks, "multitracks": index_multitracks}
     with open(DATASET_INDEX_PATH, "w") as fhandle:
         json.dump(dataset_index, fhandle, indent=2)
