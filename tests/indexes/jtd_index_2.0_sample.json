@@ -14,6 +14,10 @@
         "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/piano_onsets.csv",
         "ad03567467f6c2212c98b2c02d6569cf"
       ],
+      "beats": [
+        "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/beats.csv",
+        "25f4ad5092b0381bb7472cde86db86cf"
+      ],
       "midi": [
         "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/piano_midi.mid",
         "c4e6659f654c1e28c12d31db5e29d5d2"
@@ -32,6 +36,10 @@
         "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/bass_onsets.csv",
         "b63270c65026256ea91e1064587e9772"
       ],
+      "beats": [
+        "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/beats.csv",
+        "25f4ad5092b0381bb7472cde86db86cf"
+      ],
       "midi": [
         null,
         null
@@ -49,6 +57,10 @@
       "onsets": [
         "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/drums_onsets.csv",
         "862794fbfdc45aa16382adc4bdb44189"
+      ],
+      "beats": [
+        "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/beats.csv",
+        "25f4ad5092b0381bb7472cde86db86cf"
       ],
       "midi": [
         null,
