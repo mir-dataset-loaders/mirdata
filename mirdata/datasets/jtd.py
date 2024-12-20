@@ -79,7 +79,7 @@ INDEXES = {
     "2": core.Index(
         filename="jtd_index_2.0.json",
         url="https://raw.githubusercontent.com/HuwCheston/Jazz-Trio-Database/refs/heads/main/references/jtd_index_2.0.json",
-        checksum="1a0b5bb0e5357bd6762407a5de710877",
+        checksum="cdf32f3751fd9d0351c45b6b94f91a0f",
     ),
     "sample": core.Index(filename="jtd_index_2.0_sample.json"),
 }
