@@ -34,6 +34,9 @@ def get_stem_files(data_path: str, recording: str, instrument: str) -> dict:
     # Getting onsets for stem
     stem_onsets = os.path.join(annotation_dir, recording, f"{instrument}_onsets.csv")
     stem_dict["onsets"] = (stem_onsets.replace(data_path, "").lstrip("/"), md5(stem_onsets))
+    # Get beats
+    beats_file = os.path.join(annotation_dir, recording, "beats.csv")
+    stem_dict["beats"] = (beats_file.replace(data_path, "").lstrip("/"), md5(beats_file))
     # Getting MIDI for stem
     if instrument == "piano":
         stem_midi = os.path.join(annotation_dir, recording, f"{instrument}_midi.mid")
