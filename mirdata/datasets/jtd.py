@@ -208,8 +208,7 @@ class Track(core.Track):
 
     def _get_instrument(self) -> Optional[str]:
         """Helper function to get the name of the instrument for this track from the track ID"""
-        instrument = self.track_id.split("_")[1]
-        return instrument if instrument in ["piano", "bass", "drums"] else None
+        return self.track_id.split("_")[1]
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -263,11 +262,7 @@ class Track(core.Track):
         }
         # This maps e.g. "piano" -> "pianist", "bass" -> "bassist
         current_role = instruments_and_roles[self.instrument]
-        return (
-            self._track_metadata["musicians"][current_role]
-            if "musicians" in self._track_metadata
-            else None
-        )
+        return self._track_metadata["musicians"][current_role]
 
     @core.cached_property
     def onsets(self) -> Optional[annotations.EventData]:
@@ -351,11 +346,7 @@ class MultiTrack(core.MultiTrack):
             * str - name of the album
 
         """
-        return (
-            self._multitrack_metadata["album_name"]
-            if "album_name" in self._multitrack_metadata
-            else None
-        )
+        return self._multitrack_metadata["album_name"]
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -398,11 +389,7 @@ class MultiTrack(core.MultiTrack):
             * str - name of the bandleader
 
         """
-        return (
-            self._multitrack_metadata["bandleader"]
-            if "bandleader" in self._multitrack_metadata
-            else None
-        )
+        return self._multitrack_metadata["bandleader"]
 
     @property
     def bass(self) -> Track:
@@ -454,11 +441,7 @@ class MultiTrack(core.MultiTrack):
             * bool - True if contained in JTD-300, otherwise false
 
         """
-        return (
-            self._multitrack_metadata["in_30_corpus"]
-            if "in_30_corpus" in self._multitrack_metadata
-            else None
-        )
+        return self._multitrack_metadata["in_30_corpus"]
 
     @property
     def musicbrainz_id(self) -> Optional[str]:
@@ -468,11 +451,7 @@ class MultiTrack(core.MultiTrack):
             * str - musicbrainz ID
 
         """
-        return (
-            self._multitrack_metadata["mbz_id"]
-            if "mbz_id" in self._multitrack_metadata
-            else None
-        )
+        return self._multitrack_metadata["mbz_id"]
 
     @property
     def name(self) -> Optional[str]:
@@ -482,11 +461,7 @@ class MultiTrack(core.MultiTrack):
             * str - track name
 
         """
-        return (
-            self._multitrack_metadata["track_name"]
-            if "track_name" in self._multitrack_metadata
-            else None
-        )
+        return self._multitrack_metadata["track_name"]
 
     @property
     def piano(self) -> Track:
@@ -506,11 +481,7 @@ class MultiTrack(core.MultiTrack):
             * int - start of performance, in seconds
 
         """
-        return (
-            timestamp_to_seconds(self._multitrack_metadata["timestamps"]["start"])
-            if "timestamps" in self._multitrack_metadata
-            else None
-        )
+        return timestamp_to_seconds(self._multitrack_metadata["timestamps"]["start"])
 
     @property
     def stop(self) -> Optional[int]:
@@ -520,11 +491,7 @@ class MultiTrack(core.MultiTrack):
             * int - end of performance, in seconds
 
         """
-        return (
-            timestamp_to_seconds(self._multitrack_metadata["timestamps"]["end"])
-            if "timestamps" in self._multitrack_metadata
-            else None
-        )
+        return timestamp_to_seconds(self._multitrack_metadata["timestamps"]["end"])
 
     @property
     def tempo(self) -> Optional[float]:
@@ -534,11 +501,7 @@ class MultiTrack(core.MultiTrack):
             * float - the tempo, in beats-per-minute
 
         """
-        return (
-            float(self._multitrack_metadata["tempo"])
-            if "tempo" in self._multitrack_metadata
-            else None
-        )
+        return float(self._multitrack_metadata["tempo"])
 
     @property
     def time_signature(self) -> Optional[int]:
@@ -548,11 +511,7 @@ class MultiTrack(core.MultiTrack):
             * int - time signature
 
         """
-        return (
-            int(self._multitrack_metadata["time_signature"])
-            if "time_signature" in self._multitrack_metadata
-            else None
-        )
+        return int(self._multitrack_metadata["time_signature"])
 
     def to_jams(self):
         """Jams: the track's data in jams format"""
@@ -586,11 +545,7 @@ class MultiTrack(core.MultiTrack):
             * int - recording year
 
         """
-        return (
-            int(self._multitrack_metadata["recording_year"])
-            if "recording_year" in self._multitrack_metadata
-            else None
-        )
+        return int(self._multitrack_metadata["recording_year"])
 
 
 def timestamp_to_seconds(ts: str) -> int:
