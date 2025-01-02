@@ -206,7 +206,7 @@ class Track(core.Track):
         self.beats_path = self.get_path("beats")
         self.instrument = self._get_instrument()
 
-    def _get_instrument(self) -> Optional[str]:
+    def _get_instrument(self) -> str:
         """Helper function to get the name of the instrument for this track from the track ID"""
         return self.track_id.split("_")[1]
 
@@ -247,7 +247,7 @@ class Track(core.Track):
         return io.load_notes_from_midi(self.midi_path)  # returns None if no MIDI
 
     @property
-    def musician(self) -> Optional[str]:
+    def musician(self) -> str:
         """The name of the musician playing on this track
 
         Returns:
@@ -339,7 +339,7 @@ class MultiTrack(core.MultiTrack):
         self.beats_path = self.get_path("beats")
 
     @property
-    def album(self) -> Optional[str]:
+    def album(self) -> str:
         """The name of the album that this performance was taken from
 
         Returns:
@@ -382,7 +382,7 @@ class MultiTrack(core.MultiTrack):
         return load_audio(self.audio_rchan_path)
 
     @property
-    def bandleader(self) -> Optional[str]:
+    def bandleader(self) -> str:
         """The full name of the bandleader who led the recording session
 
         Returns:
@@ -422,7 +422,7 @@ class MultiTrack(core.MultiTrack):
         return self.tracks[self.mtrack_id + "_drums"]
 
     @property
-    def duration(self) -> Optional[int]:
+    def duration(self) -> int:
         """The duration of the piano solo
 
         Returns:
@@ -434,7 +434,7 @@ class MultiTrack(core.MultiTrack):
         return timestamp_to_seconds(stop) - timestamp_to_seconds(start)
 
     @property
-    def jtd_300(self) -> Optional[bool]:
+    def jtd_300(self) -> bool:
         """Whether the track is contained in the smaller JTD-300 subset of 300 recordings
 
         Returns:
@@ -444,7 +444,7 @@ class MultiTrack(core.MultiTrack):
         return self._multitrack_metadata["in_30_corpus"]
 
     @property
-    def musicbrainz_id(self) -> Optional[str]:
+    def musicbrainz_id(self) -> str:
         """The MusicBrainz ID for the recording
 
         Returns:
@@ -454,7 +454,7 @@ class MultiTrack(core.MultiTrack):
         return self._multitrack_metadata["mbz_id"]
 
     @property
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """The track's name
 
         Returns:
@@ -474,7 +474,7 @@ class MultiTrack(core.MultiTrack):
         return self.tracks[self.mtrack_id + "_piano"]
 
     @property
-    def start(self) -> Optional[int]:
+    def start(self) -> int:
         """The start of the piano solo relative to the full recording
 
         Returns:
@@ -484,7 +484,7 @@ class MultiTrack(core.MultiTrack):
         return timestamp_to_seconds(self._multitrack_metadata["timestamps"]["start"])
 
     @property
-    def stop(self) -> Optional[int]:
+    def stop(self) -> int:
         """The end of the piano solo relative to the full recording
 
         Returns:
@@ -494,7 +494,7 @@ class MultiTrack(core.MultiTrack):
         return timestamp_to_seconds(self._multitrack_metadata["timestamps"]["end"])
 
     @property
-    def tempo(self) -> Optional[float]:
+    def tempo(self) -> float:
         """The average tempo of the track
 
         Returns:
@@ -504,7 +504,7 @@ class MultiTrack(core.MultiTrack):
         return float(self._multitrack_metadata["tempo"])
 
     @property
-    def time_signature(self) -> Optional[int]:
+    def time_signature(self) -> int:
         """The time signature of the recording, either 3 or 4 quarter-note beats
 
         Returns:
