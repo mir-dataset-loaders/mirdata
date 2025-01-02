@@ -13,31 +13,34 @@
 
     For every performance, the following audio files are included:
 
-    1) the "raw" audio from the piano solo in the performance (stereo, 44.1 kHz)
+    1) the "raw" audio from the piano solo, typically including piano, bass, and drums (stereo, 44.1 kHz)
         - for some performances, individual audio files for the left and right stereo channels are also included
     2) unmixed piano audio obtained by applying a music source separation model to the "raw" audio
     3) unmixed bass audio
     4) unmixed drums audio
 
-    For the three "unmixed" audio files, there are the following annotations:
-
-    1) MIDI transcription (frame-level)
-        - currently piano only
-    2) Onset timestamps
-    3) Onset timestamps matched to the nearest beat from the "raw" audio within a window of -32nd/+16th note
-
     For the "raw" audio, there are the following annotations:
 
     1) Beat timestamps for the start of each quarter note
-         - These are also "matched" to the nearest onset in each unmixed audio file
     2) Downbeat annotations for the start of each bar
+
+    For the three "unmixed" audio files, there are the following annotations:
+
+    1) MIDI transcription (frame-level, currently piano only)
+    2) Onset timestamps
+    3) Beat-matched onsets
+
+    To "match" onsets in the unmixed audio and beats in the "raw" audio, a window of -32nd/+16th note is applied to
+    every beat timestamp, and the nearest onset from every unmixed audio file is taken as the "match". In cases where
+    no onsets are contained inside the window, the beat is set to "missing" in the data, such that the number of
+    beat-matched onsets is always the same as the number of beats.
 
     Finally, there are the following piece-level annotations:
 
     1) Tempo, in quarter-note beats-per-minute
     2) Time signature (either three or four quarter-note beats)
     3) Timestamps for the duration of the piano solo within the performance
-    4) Metadata (e.g., recording year, performer names)
+    4) Metadata (e.g., recording year, performer names, album title)
 
     The JTD was created by researchers at the Centre for Music & Science, University of Cambridge, as part of Huw
     Cheston's PhD research, during the period 2023-2024.
@@ -46,7 +49,8 @@
     freely available. The database is made available for research and educational purposes under the MIT license
     (https://github.com/HuwCheston/Jazz-Trio-Database/blob/main/LICENSE).
 
-    For more details, please visit https://github.com/HuwCheston/Jazz-Trio-Database/ or our TISMIR publication.
+    For more details, please visit our GitHub repository (https://github.com/HuwCheston/Jazz-Trio-Database/) or
+    our TISMIR publication (https://doi.org/10.5334/tismir.186).
 
 """
 
