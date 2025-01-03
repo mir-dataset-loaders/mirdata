@@ -304,5 +304,5 @@ def test_decorator():
 
     func = jtd.coerce_to_string_io_multiple_args(simple_func)
     assert isinstance(func, Callable)
-    should_be_123 = func(1, 2, 3)    # calls the function with these arguments
+    should_be_123 = func(1, 2, 3)  # calls the function with these arguments
     assert should_be_123 == 6
