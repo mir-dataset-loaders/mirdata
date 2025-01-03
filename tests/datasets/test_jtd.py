@@ -2,7 +2,7 @@
 """
 
 import os
-from typing import Tuple
+from typing import Tuple, Callable
 
 import numpy as np
 
@@ -84,6 +84,8 @@ def test_multitrack():
     dataset = jtd.Dataset(data_home, version="sample")
     multitrack = dataset.multitrack(default_trackid)
     run_multitrack_tests(multitrack)
+    # test track audio property
+    assert multitrack.track_audio_property == "audio"
     # test audio loading functions
     audio, sr = multitrack.audio
     assert sr == 44100
@@ -287,3 +289,20 @@ def test_no_midi():
     track = dataset.track(default_trackid)
     midi = track.midi
     assert midi is None
+
+
+def test_decorator():
+    # Not passing a function should just give us None
+    func = jtd.coerce_to_string_io_multiple_args(None)
+    assert isinstance(func, Callable)
+    should_be_none = func(None)
+    assert should_be_none is None
+
+    # Passing a simple function
+    def simple_func(*args):
+        return sum(args)
+
+    func = jtd.coerce_to_string_io_multiple_args(simple_func)
+    assert isinstance(func, Callable)
+    should_be_123 = func(1, 2, 3)    # calls the function with these arguments
+    assert should_be_123 == 6
