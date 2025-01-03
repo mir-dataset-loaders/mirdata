@@ -204,11 +204,7 @@ class Track(core.Track):
         self.onsets_path = self.get_path("onsets")
         self.midi_path = self.get_path("midi")
         self.beats_path = self.get_path("beats")
-        self.instrument = self._get_instrument()
-
-    def _get_instrument(self) -> str:
-        """Helper function to get the name of the instrument for this track from the track ID"""
-        return self.track_id.split("_")[1]
+        self.instrument = self.track_id.split("_")[1]
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
