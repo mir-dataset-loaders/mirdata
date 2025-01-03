@@ -289,7 +289,7 @@ irmas
 
 
 jtd
-^^^^^^^^^^
+^^^
 
 .. automodule:: mirdata.datasets.jtd
    :members:

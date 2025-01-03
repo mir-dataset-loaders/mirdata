@@ -294,10 +294,6 @@ class MultiTrack(core.MultiTrack):
             If `None`, looks for the data in the default directory, `~/mir_datasets/jtd`
 
     Attributes:
-        mtrack_id (str): track id
-        tracks (dict): {track_id: Track}
-
-    Properties:
         album (str): The name of the album that this performance was taken from.
         audio (Tuple[np.ndarray, float]): The track's audio, center channel.
         audio_lchan (Tuple[np.ndarray, float]): The track's audio, left channel (if available).
@@ -307,6 +303,7 @@ class MultiTrack(core.MultiTrack):
         drums (Track): The associated drums track for this recording.
         duration (float): The duration of the piano solo in seconds.
         jtd_300 (bool): Whether the track is contained in the smaller JTD-300 subset of 300 recordings.
+        mtrack_id (str): track id
         musicbrainz_id (str): The MusicBrainz ID for the recording.
         name (str): The track's name.
         piano (Track): The associated piano track for this recording.
@@ -314,6 +311,7 @@ class MultiTrack(core.MultiTrack):
         stop (int): The end of the piano solo relative to the full recording (in seconds).
         tempo (float): The average tempo of the track in beats per minute.
         time_signature (int): The time signature of the recording (3 or 4 quarter-note beats).
+        tracks (dict): Dictionary of track IDs and `Track` instances
         year (int): The year the recording was made.
 
     Cached Properties:
