@@ -55,9 +55,8 @@
 """
 
 import csv
-import functools
 import json
-from typing import BinaryIO, Optional, TextIO, Tuple, Union, Callable
+from typing import BinaryIO, Optional, TextIO, Tuple
 from smart_open import open
 
 import librosa
@@ -599,25 +598,8 @@ def load_onsets(fhandle: TextIO) -> Optional[annotations.EventData]:
     return annotations.EventData(intervals_arr, "s", annotation, "open")
 
 
-def coerce_to_string_io_multiple_args(func) -> Callable:
-    """Little hack of the decorator in mirdata.io that allows for multiple args to be passed to the `func`"""
-
-    @functools.wraps(func)
-    def wrapper(
-        file_path_or_obj: Optional[Union[str, TextIO]], *args
-    ) -> Optional[io.T]:
-        if not file_path_or_obj:
-            return None
-        if isinstance(file_path_or_obj, str):
-            with open(file_path_or_obj, encoding="utf-8") as f:
-                return func(f, *args)
-        else:
-            return func(file_path_or_obj, *args)
-
-    return wrapper
-
-
-@coerce_to_string_io_multiple_args
+# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
+#  see also https://github.com/mir-dataset-loaders/mirdata/pull/652#discussion_r1927327838
 def load_beats(fhandle: TextIO, col_idx: int) -> Optional[annotations.BeatData]:
     """Load a JTD beat file.
 
@@ -629,25 +611,31 @@ def load_beats(fhandle: TextIO, col_idx: int) -> Optional[annotations.BeatData]:
         * annotations.BeatData - the beat data
 
     """
-    reader = csv.reader(fhandle)
-    # The first line of the CSV is always a header so we can just skip it
-    reader.__next__()
-    timestamps, positions = [], []
-    # Iterating over each line of the CSV file (i.e., each 'beat')
-    for beat_number, beat, piano, bass, drums, metre in reader:
-        # Get the required data from the row
-        desired_data = [beat, piano, bass, drums][col_idx]
-        # Coerce empty strings to NaN values
-        if desired_data == "":
-            desired_data_fmt = np.nan
-        else:
-            desired_data_fmt = float(desired_data)
-        # Append everything to the list with the required datatypes
-        timestamps.append(desired_data_fmt)
-        positions.append(int(float(metre)))  # coerce string to float and then to int
-    return annotations.BeatData(
-        np.array(timestamps), "s", np.array(positions), "bar_index"
-    )
+    try:
+        with open(fhandle, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            reader.__next__()  # The first line of the CSV is always a header so we can just skip it
+            timestamps, positions = [], []
+            # Iterating over each line of the CSV file (i.e., each 'beat')
+            for beat_number, beat, piano, bass, drums, metre in reader:
+                # Get the required data from the row
+                desired_data = [beat, piano, bass, drums][col_idx]
+                # Coerce empty strings to NaN values
+                if desired_data == "":
+                    desired_data_fmt = np.nan
+                else:
+                    desired_data_fmt = float(desired_data)
+                # Append everything to the list with the required datatypes
+                timestamps.append(desired_data_fmt)
+                positions.append(
+                    int(float(metre))
+                )  # coerce string to float and then to int
+    except FileNotFoundError:
+        raise FileNotFoundError("beats path {} does not exist".format(fhandle))
+    else:
+        return annotations.BeatData(
+            np.array(timestamps), "s", np.array(positions), "bar_index"
+        )
 
 
 @core.docstring_inherit(core.Dataset)
