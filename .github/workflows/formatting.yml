@@ -3,10 +3,10 @@ name: Formatting
 on:
   push:
     branches:
-    - removing-jams
+    - master
   pull_request:
     branches:
-    - removing-jams
+    - master
 
 jobs:
   black:

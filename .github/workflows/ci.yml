@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-    - removing-jams
+    - master
   pull_request:
     branches:
-    - removing-jams
+    - master
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}

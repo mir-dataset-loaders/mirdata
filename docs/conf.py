@@ -37,7 +37,6 @@ show_authors = False
 autodoc_mock_imports = [
     "librosa",
     "numpy",
-    "jams",
     "pretty_midi",
     "DALI",
     "music21",
@@ -76,7 +75,6 @@ extlinks = {
 
 intersphinx_mapping = {
     "np": ("https://numpy.org/doc/stable/", None),
-    "jams": ("https://jams.readthedocs.io/en/stable/", None),
     "mir_eval": ("https://craffel.github.io/mir_eval/", None),
     "pretty_midi": ("https://craffel.github.io/pretty-midi/", None),
 }
