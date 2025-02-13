@@ -52,7 +52,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, jams_utils, core, io
+from mirdata import annotations, core, io
 
 
 BIBTEX = """
@@ -187,20 +187,6 @@ class Track(core.Track):
     @core.cached_property
     def notes(self) -> Optional[annotations.NoteData]:
         return load_notes(self.notes_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.f0, "pitch_contour")],
-            note_data=[(self.notes, "note_hz")],
-            metadata=self._track_metadata,
-        )
 
 
 def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:

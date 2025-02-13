@@ -3,15 +3,15 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    The Synthesized Lakh (Slakh) Dataset is a dataset of multi-track audio and aligned 
-    MIDI for music source separation and multi-instrument automatic transcription. 
-    Individual MIDI tracks are synthesized from the Lakh MIDI Dataset v0.1 using 
-    professional-grade sample-based virtual instruments, and the resulting audio is 
-    mixed together to make musical mixtures. 
-    
-    The original release of Slakh, called Slakh2100, 
-    contains 2100 automatically mixed tracks and accompanying, aligned MIDI files, 
-    synthesized from 187 instrument patches categorized into 34 classes, totaling 
+    The Synthesized Lakh (Slakh) Dataset is a dataset of multi-track audio and aligned
+    MIDI for music source separation and multi-instrument automatic transcription.
+    Individual MIDI tracks are synthesized from the Lakh MIDI Dataset v0.1 using
+    professional-grade sample-based virtual instruments, and the resulting audio is
+    mixed together to make musical mixtures.
+
+    The original release of Slakh, called Slakh2100,
+    contains 2100 automatically mixed tracks and accompanying, aligned MIDI files,
+    synthesized from 187 instrument patches categorized into 34 classes, totaling
     145 hours of mixture data.
 
     This loader supports two versions of Slakh:
@@ -19,7 +19,7 @@
     - baby-slakh: a mini version with 16k wav audio and only the first 20 tracks
 
     This dataset was created at Mitsubishi Electric Research Labl (MERL) and
-    Interactive Audio Lab at Northwestern University by Ethan Manilow, 
+    Interactive Audio Lab at Northwestern University by Ethan Manilow,
     Gordon Wichern, Prem Seetharaman, and Jonathan Le Roux.
 
     For more information see http://www.slakh.com/
@@ -36,7 +36,7 @@ import pretty_midi
 from smart_open import open
 import yaml
 
-from mirdata import io, download_utils, jams_utils, core, annotations
+from mirdata import io, download_utils, core, annotations
 
 BIBTEX = """
 @inproceedings{manilow2019cutting,
@@ -225,12 +225,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path, note_data=[(self.notes, "Notes")]
-        )
-
 
 class MultiTrack(core.MultiTrack):
     """slakh multitrack class, containing information about the mix and
@@ -340,12 +334,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return load_audio(self.mix_path)
-
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.mix_path, note_data=[(self.notes, "Notes")]
-        )
 
     def get_submix_by_group(self, target_groups):
         """Create submixes grouped by instrument type. Creates one submix

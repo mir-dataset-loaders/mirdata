@@ -10,9 +10,9 @@
 
     - Section and tempo annotations stored as start and end timestamps together with the name of the section and
       tempo during the section (in a separate file)
-    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps. 
+    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps.
     - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
-      ({S, r, R, g, G, m, M, P, d, D, n, N}). 
+      ({S, r, R, g, G, m, M, P, d, D, n, N}).
     - Audio features automatically extracted and stored: pitch and tonic.
     - The annotations are stored in text files, named as the audio filename but with the respective extension at the
       end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
@@ -37,7 +37,7 @@ from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -192,26 +192,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.sama, "sama")],
-            f0_data=[(self.pitch, "pitch"), (self.pitch_vocal, "pitch_vocal")],
-            section_data=[(self.sections, "sections")],
-            event_data=[(self.phrases, "phrases")],
-            metadata={
-                "tempo": self.tempo,
-                "tonic": self.tonic,
-                "metadata": self.metadata,
-            },
-        )
 
 
 @io.coerce_to_string_io
