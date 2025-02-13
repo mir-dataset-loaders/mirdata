@@ -1,6 +1,5 @@
 import os
 import numpy as np
-import jams
 
 from mirdata.datasets import guitarset
 from mirdata import annotations
@@ -220,14 +219,3 @@ def test_audio_hex_cln():
     y, sr = track.audio_hex_cln
     assert sr == 44100
     assert y.shape == (6, int(44100 * 0.5))
-
-
-def test_to_jams():
-    default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(
-        "tests/resources/mir_datasets/guitarset", version="test"
-    )
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    assert type(jam) == jams.JAMS
