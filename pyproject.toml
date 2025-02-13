@@ -26,7 +26,6 @@ dependencies = [
     "chardet>=5.0.0",
     "Deprecated>=1.2.14",
     "h5py>=3.7.0",
-    "jams>=0.3.4",
     "librosa>=0.10.1",
     "numpy>=1.21.6,<2.0",
     "pandas>=1.3.5",

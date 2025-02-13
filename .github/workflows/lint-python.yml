@@ -3,10 +3,10 @@ name: Linting
 on:
   push:
     branches:
-    - master
+    - removing-jams
   pull_request:
     branches:
-    - master
+    - removing-jams
     
 jobs:
   lint_python:
