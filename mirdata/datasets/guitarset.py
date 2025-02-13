@@ -57,7 +57,7 @@ import os
 from typing import BinaryIO, Optional, TextIO, Tuple, Dict, List
 
 from deprecated.sphinx import deprecated
-import jams
+import json
 import librosa
 import numpy as np
 from smart_open import open
@@ -306,15 +306,6 @@ class Track(core.Track):
         """
         return load_multitrack_audio(self.audio_hex_cln_path)
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams.load(self.jams_path)
-
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
@@ -357,11 +348,18 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     Returns:
         BeatData: Beat data
     """
-    jam = jams.load(fhandle)
-    anno = jam.search(namespace="beat_position")[0]
-    times, values = anno.to_event_values()
-    positions = [int(v["position"]) for v in values]
-    return annotations.BeatData(times, "s", np.array(positions), "bar_index")
+    annotation = json.load(fhandle)
+    # Find the annotation with the namespace 'beat_position'
+    beat_annotation = next(
+        anno
+        for anno in annotation["annotations"]
+        if anno["namespace"] == "beat_position"
+    )
+
+    times = [event["time"] for event in beat_annotation["data"]]
+    positions = [int(event["value"]["position"]) for event in beat_annotation["data"]]
+
+    return annotations.BeatData(np.array(times), "s", np.array(positions), "bar_index")
 
 
 # no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
@@ -369,26 +367,43 @@ def load_chords(jams_path, leadsheet_version):
     """Load a guitarset chord annotation.
 
     Args:
-        jams_path (str): path to the jams annotation file
-        leadsheet_version (Bool):
-            Whether or not to load the leadsheet version of the chord annotation
-            If False, load the infered version.
+        jams_path (str): Path to the jams annotation file.
+        leadsheet_version (bool):
+            Whether or not to load the leadsheet version of the chord annotation.
+            If False, load the inferred version.
 
     Returns:
-        ChordData: Chord data
+        ChordData: Chord data.
 
+    Raises:
+        FileNotFoundError: If the jams_path does not exist.
     """
     try:
         with open(jams_path, "r") as fhandle:
-            jam = jams.load(fhandle)
+            annotation = json.load(fhandle)
     except FileNotFoundError:
-        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+        raise FileNotFoundError(f"jams_path {jams_path} does not exist")
 
+    chord_annotations = [
+        ann for ann in annotation["annotations"] if ann["namespace"] == "chord"
+    ]
+
+    if not chord_annotations:
+        raise ValueError("No chord annotations found in the JAMS file.")
+
+    # Select the appropriate annotation (leadsheet or inferred)
     if leadsheet_version:
-        anno = jam.search(namespace="chord")[0]
+        anno = chord_annotations[0]  # Leadsheet version is first
     else:
-        anno = jam.search(namespace="chord")[1]
-    intervals, values = anno.to_interval_values()
+        if len(chord_annotations) < 2:
+            raise ValueError("Inferred chord annotation not found in the JAMS file.")
+        anno = chord_annotations[1]  # Inferred version is second
+
+    intervals = np.array(
+        [[event["time"], event["time"] + event["duration"]] for event in anno["data"]]
+    )
+    values = [event["value"] for event in anno["data"]]
+
     return annotations.ChordData(intervals, "s", values, "jams")
 
 
@@ -403,9 +418,17 @@ def load_key_mode(fhandle: TextIO) -> annotations.KeyData:
         KeyData: Key data
 
     """
-    jam = jams.load(fhandle)
-    anno = jam.search(namespace="key_mode")[0]
-    intervals, values = anno.to_interval_values()
+    annotation = json.load(fhandle)
+    for ann in annotation["annotations"]:
+        if ann["namespace"] == "key_mode":
+            anno = ann
+            break
+    intervals = np.array(
+        [[event["time"], event["time"] + event["duration"]] for event in anno["data"]]
+    )
+
+    values = [event["value"] for event in anno["data"]]
+
     return annotations.KeyData(intervals, "s", values, "key_mode")
 
 
@@ -442,32 +465,53 @@ def _fill_pitch_contour(times, freqs, voicing, max_time, contour_hop, duration=N
 
 # no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
 def load_pitch_contour(jams_path, string_num):
-    """Load a guitarset pitch contour annotation for a given string
+    """Load a guitarset pitch contour annotation for a given string.
 
     Args:
-        jams_path (str): path to the jams annotation file
-        string_num (int), in range(6): Which string to load.
+        jams_path (str): Path to the jams annotation file.
+        string_num (int): Which string to load (0-5).
             0 is the Low E string, 5 is the high e string.
 
     Returns:
-        F0Data: Pitch contour data for the given string
+        F0Data: Pitch contour data for the given string, or None if no data is found.
 
+    Raises:
+        FileNotFoundError: If the jams_path does not exist.
     """
     try:
         with open(jams_path, "r") as fhandle:
-            jam = jams.load(fhandle)
+            annotation = json.load(fhandle)
     except FileNotFoundError:
-        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+        raise FileNotFoundError(f"jams_path {jams_path} does not exist")
 
-    anno_arr = jam.search(namespace="pitch_contour")
-    anno = anno_arr.search(data_source=str(string_num))[0]
-    times, values = anno.to_event_values()
+    # Find all pitch_contour annotations
+    pitch_annotations = [
+        ann for ann in annotation["annotations"] if ann["namespace"] == "pitch_contour"
+    ]
+
+    # Find the annotation for the specified string
+    anno = None
+    for ann in pitch_annotations:
+        if ann["annotation_metadata"]["data_source"] == str(string_num):
+            anno = ann
+            break
+
+    if anno is None:
+        return None
+
+    # Extract times and values
+    times = anno["data"]["time"]
+    values = anno["data"]["value"]
+
     if len(times) == 0:
         return None
+
+    # Extract frequencies and voicing
     frequencies = np.array([v["frequency"] for v in values])
     voicing = np.array([float(v["voiced"]) for v in values])
     voicing[frequencies == 0] = 0
 
+    # Fill the pitch contour
     filled_times, filled_freqs, filled_voicing = _fill_pitch_contour(
         times, frequencies, voicing, np.max(times), CONTOUR_HOP
     )
@@ -492,16 +536,35 @@ def load_notes(jams_path, string_num):
     """
     try:
         with open(jams_path) as fhandle:
-            jam = jams.load(fhandle)
+            annotation = json.load(fhandle)
     except FileNotFoundError:
         raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+        # Find all pitch_contour annotations
+    # print(annotation)
+    notes_annot = [
+        ann for ann in annotation["annotations"] if ann["namespace"] == "note_midi"
+    ]
+    print(notes_annot)
+    # Find the matching data source
+    anno = next(
+        (
+            entry
+            for entry in notes_annot
+            if str(entry.get("annotation_metadata", {}).get("data_source"))
+            == str(string_num)
+        ),
+        None,
+    )
 
-    anno_arr = jam.search(namespace="note_midi")
-    anno = anno_arr.search(data_source=str(string_num))[0]
-    intervals, values = anno.to_interval_values()
+    if not anno or "data" not in anno:
+        return None
+    intervals = [
+        (note["time"], note["time"] + note["duration"]) for note in anno["data"]
+    ]
+    values = [note["value"] for note in anno["data"]]
     if len(values) == 0:
         return None
-    return annotations.NoteData(intervals, "s", np.array(values), "midi")
+    return annotations.NoteData(np.array(intervals), "s", np.array(values), "midi")
 
 
 @core.docstring_inherit(core.Dataset)
