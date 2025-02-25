@@ -58,6 +58,7 @@ tests = [
     "black>=23.3.0",
     "flake8>=5.0.4",
     "mypy>=0.982",
+    "mir_eval>=0.7",
     "types-Deprecated"  # ensure type stubs for Deprecated are installed
 ]
 docs = [
