@@ -395,6 +395,9 @@ def load_chords(jams_path, leadsheet_version):
         anno = chord_annotations[0]  # Leadsheet version is first
     else:
         anno = chord_annotations[1]  # Inferred version is second
+    
+    if not anno["data"]:
+        raise ValueError("No chord annotations found in the JAMS file.")
 
     intervals = np.array(
         [[event["time"], event["time"] + event["duration"]] for event in anno["data"]]
