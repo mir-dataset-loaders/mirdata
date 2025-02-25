@@ -180,7 +180,7 @@ def test_load_chords_no_annotations():
     ):
         guitarset.load_chords(track.jams_path, leadsheet_version=True)
 
-        
+
 def test_load_pitch_contour_no_data():
     dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("00_BN1-129-Eb_comp")
