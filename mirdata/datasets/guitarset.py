@@ -53,7 +53,6 @@
 """
 
 import logging
-import os
 from typing import BinaryIO, Optional, TextIO, Tuple, Dict, List
 
 from deprecated.sphinx import deprecated
@@ -395,8 +394,6 @@ def load_chords(jams_path, leadsheet_version):
     if leadsheet_version:
         anno = chord_annotations[0]  # Leadsheet version is first
     else:
-        if len(chord_annotations) < 2:
-            raise ValueError("Inferred chord annotation not found in the JAMS file.")
         anno = chord_annotations[1]  # Inferred version is second
 
     intervals = np.array(
@@ -497,7 +494,7 @@ def load_pitch_contour(jams_path, string_num):
             break
 
     if anno is None:
-        return None
+        raise ValueError("Pitch contour annotation not found.")
 
     # Extract times and values
     times = anno["data"]["time"]
@@ -540,11 +537,9 @@ def load_notes(jams_path, string_num):
     except FileNotFoundError:
         raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
         # Find all pitch_contour annotations
-    # print(annotation)
     notes_annot = [
         ann for ann in annotation["annotations"] if ann["namespace"] == "note_midi"
     ]
-    print(notes_annot)
     # Find the matching data source
     anno = next(
         (
@@ -555,9 +550,8 @@ def load_notes(jams_path, string_num):
         ),
         None,
     )
-
     if not anno or "data" not in anno:
-        return None
+        raise ValueError("Note annotation not found or missing 'data' key.")
     intervals = [
         (note["time"], note["time"] + note["duration"]) for note in anno["data"]
     ]
