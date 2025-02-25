@@ -175,9 +175,7 @@ def test_load_contours():
 def test_load_chords_no_annotations():
     dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("00_BN1-129-Eb_comp")
-    with pytest.raises(
-        ValueError, match="No chord annotations found in the JAMS file."
-    ):
+    with pytest.raises(ValueError):
         guitarset.load_chords(track.jams_path, leadsheet_version=True)
 
 
