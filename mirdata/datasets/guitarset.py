@@ -494,7 +494,7 @@ def load_pitch_contour(jams_path, string_num):
             break
 
     if anno is None:
-        raise ValueError("Pitch contour annotation not found.")
+        raise ValueError("Pitch contour annotation not found in the JAMS file.")
 
     # Extract times and values
     times = anno["data"]["time"]
@@ -551,7 +551,7 @@ def load_notes(jams_path, string_num):
         None,
     )
     if not anno or "data" not in anno:
-        raise ValueError("Note annotation not found or missing 'data' key.")
+        raise ValueError("Note annotation or 'data' key not found in the JAMS file.")
     intervals = [
         (note["time"], note["time"] + note["duration"]) for note in anno["data"]
     ]
