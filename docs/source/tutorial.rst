@@ -5,7 +5,7 @@ Tutorial
 ########
 
 Installation
-------------
+^^^^^^^^^^^^
 
 To install Mirdata:
 
@@ -404,3 +404,26 @@ The following is a simple example of a generator that can be used to create a te
         )
 
 In future Mirdata versions, generators for Tensorflow and Pytorch will be included.
+
+
+Using mirdata with JAMS
+^^^^^^^^^^^^^^^^^^^^^^^
+
+An example of how you can integrate JAMS in reading annotations from mirdata:
+
+.. code-block:: python
+
+    def to_jams(self):
+        """the track's data in jams format
+
+        Returns:
+            jams.JAMS: return track data in jam format
+        """
+        return jams_utils.jams_converter(
+            audio_path=self.audio_path,
+            beat_data=[(self.beats, None)],
+            section_data=[(self.sections, None)],
+            chord_data=[(self.chords, None)],
+            key_data=[(self.key, None)],
+            metadata={"artist": "The Beatles", "title": self.title},
+        )

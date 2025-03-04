@@ -27,7 +27,7 @@ To install Mirdata for development purposes:
       - Install Core dependencies with ``pip install .``
       - Install Testing dependencies with ``pip install ."[tests]"``
       - Install Docs dependencies with ``pip install ."[docs]"``
-      - Install dataset-specific dependencies with ``pip install ."[dataset]"`` where ``dataset`` can be ``dali | haydn_op20 | cipi ...`` 
+      - Install dataset-specific dependencies with ``pip install ."[dataset]"`` where ``dataset`` can be ``dali | haydn_op20 | cipi ...``
 
 
 We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
@@ -333,7 +333,7 @@ and ``LICENSE_INFO`` (including the license that protects the dataset in the dat
 ``REMOTES``
     Should be a list of ``RemoteFileMetadata`` objects, which are used to download the dataset files. See an example below:
 
-    .. code-block:: javascript
+    .. code-block:: python
         REMOTES = {
             "annotations": download_utils.RemoteFileMetadata(
                 filename="The Beatles Annotations.tar.gz",
@@ -351,6 +351,7 @@ and ``LICENSE_INFO`` (including the license that protects the dataset in the dat
     Direct url for download and checksum can be found in the Zenodo entries of the dataset and index. Bear in mind that the url and checksum for the index will be available once a maintainer of the Audio Data Loaders Zenodo community has accepted the index upload.
     For other repositories, you may need to generate the checksum yourself.
     You may use the function provided in ``mirdata.validate.py``.
+    
 
 
 Make sure to include, in the docstring of the dataloader, information about the following list of relevant aspects about the dataset you are integrating:
@@ -361,6 +362,7 @@ Make sure to include, in the docstring of the dataloader, information about the 
 * The license of the dataset (even if you have included the ``LICENSE_INFO`` variable already).
 * The authors of the dataset, the organization in which it was created, and the year of creation (even if you have included the ``BIBTEX`` variable already).
 * Please reference also any relevant link or website that users can check for more information.
+
 .. note::  
     In addition to the module docstring, you should write docstrings for every new class and function you write. See :ref:`the documentation tutorial <documentation_tutorial>` for practical information on best documentation practices.
 This docstring is important for users to understand the dataset and its purpose.
@@ -471,7 +473,7 @@ csv files).
 
 
 4. Update Mirdata documentation
----------------------
+-------------------------------
 
 Before you submit your loader make sure to:
 
