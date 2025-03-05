@@ -5,7 +5,7 @@
 
     The Filosax dataset was conceived, curated and compiled by Dave Foster (a PhD student on the AIM programme at QMUL) and his supervisor Simon Dixon (C4DM @ QMUL).
     The dataset is a collection of 48 multitrack jazz recordings, where each piece has 8 corresponding audio files:
-    
+
     1) The original Aebersold backing track (stereo)
     2) Bass_Drums, a mono file of a mix of bass and drums
     3) Piano_Drums, a mono file of a mix of piano and drums
@@ -14,22 +14,22 @@
     6) Participant 3 Sax, a mono file of solo saxophone
     7) Participant 4 Sax, a mono file of solo saxophone
     8) Participant 5 Sax, a mono file of solo saxophone
-    
+
     Each piece is ~6mins long, so each of the 8 stems contains ~5hours of audio
-    
+
     For each piece, there is a corresponding .jams file containing piece-level annotations:
-    
+
     1) Beat annotation for the start of each bar and any mid-bar chord change
     2) Chord annotation for each bar, and mid-bar chord change
     3) Section annotation for when the solo changes between the 3 categories:
         a) head (melody)
         b) written solo (interpretation of transcribed solo)
         c) improvised solo
-        
+
     For each Sax recording (5 per piece), there is a corresponding .json file containing note annotations (see Note object).
-    
+
     The Participant folders also contain MIDI files of the transcriptions (frame level and score level) as well as a PDF and MusicXML of the typeset solo.
-    
+
     The dataset comes in 2 flavours: full (all 48 tracks and 5 sax players) and lite (5 tracks and 2 sax players).
     Both flavours can be used with or without the backing tracks (which need to be purchased online).
     Hence, when opening the dataset, use one of 4 versions: 'full', 'full_sax', 'lite', 'lite_sax'.

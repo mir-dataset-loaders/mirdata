@@ -3,26 +3,26 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    Rāga datasets from CompMusicomprise two sizable datasets, one for each music tradition, 
-    Carnatic and Hindustani. These datasets comprise full length audio recordings and their 
-    associated rāga labels. These two datasets can be used to develop and evaluate approaches 
+    Rāga datasets from CompMusicomprise two sizable datasets, one for each music tradition,
+    Carnatic and Hindustani. These datasets comprise full length audio recordings and their
+    associated rāga labels. These two datasets can be used to develop and evaluate approaches
     for performing automatic rāga recognition in Indian art music.
 
     These datasets are derived from the CompMusic corpora of Indian Art Music. Therefore, the
     dataset has been compiled at the Music Technology Group, by a group of researchers working
     on the computational analysis of Carnatic and Hindustani music within the framework of the
-    ERC-funded CompMusic project. 
-    
-    Each recording is associated with a MBID. With the MBID other information can be obtained 
-    using the Dunya API or pycompmusic. 
+    ERC-funded CompMusic project.
 
-    The Carnatic subset comprises 124 hours of audio recordings and editorial metadata that 
-    includes carefully curated and verified rāga labels. It contains 480 recordings belonging 
+    Each recording is associated with a MBID. With the MBID other information can be obtained
+    using the Dunya API or pycompmusic.
+
+    The Carnatic subset comprises 124 hours of audio recordings and editorial metadata that
+    includes carefully curated and verified rāga labels. It contains 480 recordings belonging
     to 40 rāgas with 12 recordings per rāga.
 
-    The Hindustani subset comprises 116 hours of audio recordings and editorial metadata that 
-    includes carefully curated and verified rāga labels. It contains 300 recordings belonging 
-    to 30 rāgas with 10 recordings per rāga. 
+    The Hindustani subset comprises 116 hours of audio recordings and editorial metadata that
+    includes carefully curated and verified rāga labels. It contains 300 recordings belonging
+    to 30 rāgas with 10 recordings per rāga.
 
     The dataset also includes features per each file:
     * Tonic: float indicating the recording tonic
@@ -32,9 +32,9 @@
     * Nyas segments: KNN-extracted segments of Nyas (start and end times provided)
     * Tani segments: KNN-extracted segments of Tanis (start and end times provided)
 
-    The dataset includes both txt files and json files that contain information about each audio 
-    recording in terms of its mbid, the path of the audio/feature files and the associated rāga 
-    identifier. Each rāga is assigned a unique identifier by Dunya, which is similar to the mbid 
+    The dataset includes both txt files and json files that contain information about each audio
+    recording in terms of its mbid, the path of the audio/feature files and the associated rāga
+    identifier. Each rāga is assigned a unique identifier by Dunya, which is similar to the mbid
     in terms of purpose. A mapping of the rāga id to its transliterated name is also provided.
 
     For more information about the dataset please refer to: https://compmusic.upf.edu/node/328
