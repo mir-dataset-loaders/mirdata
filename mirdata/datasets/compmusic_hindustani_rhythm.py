@@ -3,8 +3,8 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    CompMusic Hindustani Rhythm Dataset is a rhythm annotated test corpus for automatic rhythm analysis tasks in Hindustani Music. 
-    The collection consists of audio excerpts from the CompMusic Hindustani research corpus, manually annotated time aligned markers 
+    CompMusic Hindustani Rhythm Dataset is a rhythm annotated test corpus for automatic rhythm analysis tasks in Hindustani Music.
+    The collection consists of audio excerpts from the CompMusic Hindustani research corpus, manually annotated time aligned markers
     indicating the progression through the taal cycle, and the associated taal related metadata. A brief description of the dataset
     is provided below.
 
@@ -19,9 +19,9 @@
     The pieces are stereo, 160 kbps, mp3 files sampled at 44.1 kHz. The audio is also available as wav files for experiments.
 
     **SAM, VIBHAAG AND THE MAATRAS:** The primary annotations are audio synchronized time-stamps indicating the different metrical positions in the taal cycle.
-    The sam and matras of the cycle are annotated. The annotations were created using Sonic Visualizer by tapping to music and manually correcting the taps. 
+    The sam and matras of the cycle are annotated. The annotations were created using Sonic Visualizer by tapping to music and manually correcting the taps.
     Each annotation has a time-stamp and an associated numeric label that indicates the position of the beat marker in the taala cycle. The annotations and the
-    associated metadata have been verified for correctness and completeness by a professional Hindustani musician and musicologist. The long thick lines show 
+    associated metadata have been verified for correctness and completeness by a professional Hindustani musician and musicologist. The long thick lines show
     vibhaag boundaries. The numerals indicate the matra number in cycle. In each case, the sam (the start of the cycle, analogous to the downbeat) are indicated
     using the numeral 1.
 

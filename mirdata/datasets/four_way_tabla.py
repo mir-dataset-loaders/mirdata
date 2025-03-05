@@ -16,7 +16,7 @@
     * Bit-depth: 16 bit
     * Audio format: .wav
 
-    Dataset usage: This dataset may be used for the data-driven research of tabla stroke transcription and 
+    Dataset usage: This dataset may be used for the data-driven research of tabla stroke transcription and
     identification. In this dataset, four important tabla characteristic strokes are considered.
 
     Dataset structure: The dataset is split in two subsets, containing training and testing samples. Within each

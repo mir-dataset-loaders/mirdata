@@ -9,7 +9,7 @@
     The dataset contains the following manual annotations referring to audio files:
 
     - Section and tempo annotations stored as start and end timestamps together with the name of the section and
-      tempo during the section (in a separate file) 
+      tempo during the section (in a separate file)
     - Sama annotations referring to rhythmic cycle boundaries stored
       as timestamps
     - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols

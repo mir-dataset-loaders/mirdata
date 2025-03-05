@@ -10,9 +10,9 @@
 
     - Section and tempo annotations stored as start and end timestamps together with the name of the section and
       tempo during the section (in a separate file)
-    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps. 
+    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps.
     - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
-      ({S, r, R, g, G, m, M, P, d, D, n, N}). 
+      ({S, r, R, g, G, m, M, P, d, D, n, N}).
     - Audio features automatically extracted and stored: pitch and tonic.
     - The annotations are stored in text files, named as the audio filename but with the respective extension at the
       end, for instance: "Bhuvini Dasudane.tempo-manual.txt".

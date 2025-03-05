@@ -16,10 +16,10 @@
 
     We provide four datasets containing genre and subgenre annotations extracted from four different online metadata sources:
 
-    - AllMusic and Discogs are based on editorial metadata databases maintained by music experts and enthusiasts. These sources 
-      contain explicit genre/subgenre annotations of music releases (albums) following a predefined genre namespace and taxonomy. 
+    - AllMusic and Discogs are based on editorial metadata databases maintained by music experts and enthusiasts. These sources
+      contain explicit genre/subgenre annotations of music releases (albums) following a predefined genre namespace and taxonomy.
       We propagated release-level annotations to recordings (tracks) in AcousticBrainz to build the datasets.
-    - Lastfm and Tagtraum are based on collaborative music tagging platforms with large amounts of genre labels provided by their 
+    - Lastfm and Tagtraum are based on collaborative music tagging platforms with large amounts of genre labels provided by their
       users for music recordings (tracks). We have automatically inferred a genre/subgenre taxonomy and annotations from these labels.
 
     For details on format and contents, please refer to the data webpage.
@@ -34,7 +34,7 @@
         The AcousticBrainz Genre Dataset: Multi-Source, Multi-Level, Multi-Label, and Large-Scale.
         20th International Society for Music Information Retrieval Conference (ISMIR 2019).
 
-    This work is partially supported by the European Union’s Horizon 2020 research and innovation programme under 
+    This work is partially supported by the European Union’s Horizon 2020 research and innovation programme under
     grant agreement No 688382 AudioCommons.
 
 """

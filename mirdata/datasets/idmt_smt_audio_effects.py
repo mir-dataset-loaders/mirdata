@@ -12,7 +12,7 @@
     20592 monophonic guitar notes
     13860 polyphonic guitar sounds
     Overall, 11 different audio effects are incorporated:
-    feedback delay, slapback delay, reverb, chorus, flanger, phaser, tremolo, vibrato, 
+    feedback delay, slapback delay, reverb, chorus, flanger, phaser, tremolo, vibrato,
     distortion, overdrive, no effect (unprocessed notes/sounds)
 
     2 different electric guitars and 2 different electric bass guitars, each with two different pick-up settings and
@@ -25,8 +25,8 @@
     To organize the database, lists in XML format are used, which record all relevant information and are provided with
     the database as well as a summary of the used effect plugins and parameter settings.
 
-    In addition, most of this information is also encoded in the first part of the file name of the audio files using 
-    a simple alpha-numeric encoding scheme. The second part of the file name contains unique identification numbers. 
+    In addition, most of this information is also encoded in the first part of the file name of the audio files using
+    a simple alpha-numeric encoding scheme. The second part of the file name contains unique identification numbers.
     This provides an option for fast and flexible structuring of the data for various purposes.
 
     DOI

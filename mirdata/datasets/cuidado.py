@@ -11,7 +11,7 @@
 
     **Beat and Bar Annotations:**
 
-    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID. 
+    The beat annotations are structured as `.beats` files, where each line represents a beat with its timestamp and beat ID.
 
     **Annotation Methodology:**
 
@@ -24,11 +24,11 @@
     **Acknowledgments and References:**
 
     This dataset was created with the collaboration of experts in cuidado dance music. We extend our gratitude to those who contributed their knowledge and expertise to this project. For detailed information on the dataset and its creation, please refer to the associated research papers and documentation (https://zenodo.org/records/1416940).
-    
+
     [1] Gouyon F., A. Klapuri, S. Dixon, M. Alonso, G. Tzanetakis, C. Uhle, and P. Cano. An experimental comparison of audio tempo induction algorithms. Transactions on Audio, Speech and Language Processing 14(5), pp.1832-1844, 2006.
 
     [2] Böck, S., and M. Schedl. Enhanced beat tracking with context-aware neural networks. In Proceedings of the International Conference on Digital Audio Effects (DAFX), 2010.
-    
+
     [3] Dixon, S., F. Gouyon & G. Widmer. Towards Characterisation of Music via Rhythmic Patterns. In Proceedings of the 5th International Society for Music Information Retrieval Conference (ISMIR). 2004.
 """
 

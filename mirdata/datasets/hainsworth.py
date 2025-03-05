@@ -21,10 +21,10 @@
 
     For more detailed information about the dataset and its creation, please refer to Stephen Hainsworth's PhD thesis and the associated research papers and documentation.
 
-    [1] Hainsworth, Stephen. (PhD Thesis) 
+    [1] Hainsworth, Stephen. (PhD Thesis)
 
     [2] Böck, Sebastian, et al. "Enhanced beat tracking with context-aware neural networks." In Proceedings of the International Conference on Digital Audio Effects (DAFX), 2010.
-    
+
 """
 
 import os

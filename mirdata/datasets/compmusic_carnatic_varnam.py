@@ -28,7 +28,7 @@
     **Sections**
     The notation is given a single time per section, however, to align the svaras with the tala annotations, structure
     information is given. The structure is given in yaml format, specifying the order of the sections, and how many svaras
-    are sung per each tala tick. Broadly, there are just two only cases, 2 svaras per tick, and 4 svaras per tick. 
+    are sung per each tala tick. Broadly, there are just two only cases, 2 svaras per tick, and 4 svaras per tick.
     The structure information has been added in the 1.1 version of the dataset.
 
     **Possible uses of the dataset**
