@@ -67,7 +67,8 @@ docs = [
     "sphinx>=3.4.0",
     "sphinxcontrib-napoleon",
     "sphinx_rtd_theme",
-    "sphinx-togglebutton"
+    "sphinx-togglebutton",
+    "sphinx-copybutton",
 ]
 compmusic_hindustani_rhythm = ["openpyxl==3.0.10"]
 dali = ["dali-dataset==1.1"]

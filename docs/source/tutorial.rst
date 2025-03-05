@@ -9,7 +9,7 @@ Installation
 
 To install Mirdata:
 
-    .. code-block:: console
+    .. code-block:: bash
 
         pip install mirdata
 
@@ -32,7 +32,7 @@ Print a list of all available dataset loaders by calling:
     import mirdata
     print(mirdata.list_datasets())
 
-To use a loader, (for example, ``orchset`) you need to initialize it by calling:
+To use a loader, (for example, ``orchset``) you need to initialize it by calling:
 
 .. code-block:: python
 
@@ -405,25 +405,31 @@ The following is a simple example of a generator that can be used to create a te
 
 In future Mirdata versions, generators for Tensorflow and Pytorch will be included.
 
-
 Using mirdata with JAMS
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-An example of how you can integrate JAMS in reading annotations from mirdata:
+This section demonstrates how to use JAMS to load track's data.
 
-.. code-block:: python
+Ensure you have JAMS installed by running:
 
-    def to_jams(self):
-        """the track's data in jams format
+    .. code-block:: bash
 
-        Returns:
-            jams.JAMS: return track data in jam format
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, None)],
-            section_data=[(self.sections, None)],
-            chord_data=[(self.chords, None)],
-            key_data=[(self.key, None)],
-            metadata={"artist": "The Beatles", "title": self.title},
-        )
+        pip install jams
+
+For more information, visit the `JAMS documentation <https://jams.readthedocs.io/en/stable/index.html>`_.
+
+.. admonition:: jams_utils
+    :class: dropdown
+
+    The following code contains *jams_converter*, an utility function necessary to convert a track's data into JAMS format.
+
+    .. literalinclude:: tutorial_examples/jams_utils.py
+        :language: python
+
+
+.. admonition:: Using JAMS to Read Annotations
+
+    The following example shows how to convert a track's data into JAMS format by using the utility function above.
+
+    .. literalinclude:: tutorial_examples/to_jams.py
+        :language: python

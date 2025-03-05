@@ -61,6 +61,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx_togglebutton",
     "sphinx.ext.extlinks",
+    "sphinx_copybutton",
 ]
 
 # To shorten links of licenses and add to table
@@ -75,7 +76,7 @@ extlinks = {
 
 intersphinx_mapping = {
     "np": ("https://numpy.org/doc/stable/", None),
-    "mir_eval": ("https://craffel.github.io/mir_eval/", None),
+    "mir_eval": ("https://mir-eval.readthedocs.io/latest/", None),
     "pretty_midi": ("https://craffel.github.io/pretty-midi/", None),
 }
 
