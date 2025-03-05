@@ -19,7 +19,7 @@ import numpy as np
 from smart_open import open
 
 from mirdata import download_utils
-from mirdata import jams_utils
+
 from mirdata import core
 from mirdata import annotations
 from mirdata import io
@@ -227,29 +227,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            chord_data=[
-                (self.chords_full, "Full chords"),
-                (self.chords_majmin, "Major/minor chords"),
-                (self.chords_majmininv, "Major/minor chords with inversions"),
-                (self.chords_majmin7, "Major/minor chords with 7th"),
-                (self.chords_majmin7inv, "Major/minor chords with 7th and inversions"),
-            ],
-            section_data=[
-                (self.sections, "Sections annotated using section letters"),
-                (self.named_sections, "Sections annotated using section names"),
-            ],
-            metadata=self._track_metadata,
-        )
 
 
 @io.coerce_to_bytes_io

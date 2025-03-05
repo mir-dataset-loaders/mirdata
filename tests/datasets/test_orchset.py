@@ -57,25 +57,6 @@ def test_track():
     assert y_stereo.shape == (2, 44100 * 2)
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/orchset"
-    dataset = orchset.Dataset(data_home, version="test")
-    track = dataset.track("Beethoven-S3-I-ex1")
-    jam = track.to_jams()
-
-    f0s = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [f0.time for f0 in f0s] == [0.07, 0.08, 0.09]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 622.254, "index": 0, "voiced": True},
-    ]
-    assert [f0.confidence for f0 in f0s] == [None, None, None]
-
-    assert jam["sandbox"]["alternating_melody"] == True
-
-
 def test_load_melody():
     # load a file which exists
     melody_path = "tests/resources/mir_datasets/orchset/GT/Beethoven-S3-I-ex1.mel"

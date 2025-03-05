@@ -60,7 +60,6 @@ from mirdata import annotations
 from mirdata import core
 from mirdata import download_utils
 from mirdata import io
-from mirdata import jams_utils
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -299,20 +298,6 @@ class Track(core.Track):
     @core.cached_property
     def midi(self):
         return load_midi(self.midi_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            beat_data=[(self.beats, "midi beats")],
-            tempo_data=[(self.tempo, "midi tempo")],
-            event_data=[(self.drum_events, "annotated drum patterns")],
-            metadata=self._track_metadata,
-        )
 
 
 def load_audio(path: str) -> Tuple[Optional[np.ndarray], Optional[float]]:

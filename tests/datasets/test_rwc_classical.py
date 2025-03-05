@@ -50,46 +50,6 @@ def test_track():
     assert y.shape == (44100 * 2,)
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/rwc_classical"
-    dataset = rwc_classical.Dataset(data_home, version="test")
-    track = dataset.track("RM-C003")
-    jam = track.to_jams()
-
-    beats = jam.search(namespace="beat")[0]["data"]
-    assert [beat.time for beat in beats] == [
-        1.65,
-        2.58,
-        2.95,
-        3.33,
-        3.71,
-        4.09,
-        5.18,
-        6.28,
-    ]
-    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    assert [beat.value for beat in beats] == [2, 1, 2, 1, 2, 1, 2, 1]
-    assert [beat.confidence for beat in beats] == [
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-    ]
-
-    segments = jam.search(namespace="segment")[0]["data"]
-    assert [segment.time for segment in segments] == [0.29, 419.96]
-    assert [segment.duration for segment in segments] == [45.85, 13.75]
-    assert [segment.value for segment in segments] == ["chorus A", "ending"]
-    assert [segment.confidence for segment in segments] == [None, None]
-
-    assert jam["file_metadata"]["title"] == "Symphony no.5 in C minor, op.67. 1st mvmt."
-    assert jam["file_metadata"]["artist"] == "Tokyo City Philharmonic Orchestra"
-
-
 def test_load_sections():
     # load a file which exists
     section_path = (

@@ -45,7 +45,7 @@ import numpy as np
 import pandas as pd
 from smart_open import open
 
-from mirdata import download_utils, jams_utils, core, io
+from mirdata import download_utils, core, io
 
 BIBTEX = """
 @inproceedings{DBLP:conf/ismir/HumphreyDM18,
@@ -262,16 +262,6 @@ class Track(core.Track):
             times = np.asarray(data["time_points"], dtype=object)
             vgg = np.asarray(data["features"], dtype=object)
             return times, vgg
-
-    # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
-    # -- object with the annotations.
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata=self._track_metadata,
-            # tag_data=None,  # FIXME
-        )
 
 
 @io.coerce_to_bytes_io

@@ -45,25 +45,6 @@ def test_track():
     )
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/beatport_key"
-    dataset = beatport_key.Dataset(data_home, version="test")
-    track = dataset.track("1")
-    jam = track.to_jams()
-    assert jam["sandbox"]["key"] == ["D minor"], "key does not match expected"
-
-    assert (
-        jam["file_metadata"]["title"] == "100066 Lindstrom - Monsteer (Original Mix)"
-    ), "title does not match expected"
-    sand_box = {
-        "artists": ["Lindstrom"],
-        "genres": {"genres": ["Electronica / Downtempo"], "sub_genres": []},
-        "tempo": 115,
-        "key": ["D minor"],
-    }
-    assert dict(jam["sandbox"]) == sand_box, "sandbox does not match expected"
-
-
 def test_load_key():
     key_path = "tests/resources/mir_datasets/beatport_key/keys/100066 Lindstrom - Monsteer (Original Mix).txt"
     key_data = beatport_key.load_key(key_path)

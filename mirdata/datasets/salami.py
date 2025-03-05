@@ -24,7 +24,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """@inproceedings{smith2011salami,
@@ -178,34 +178,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            multi_section_data=[
-                (
-                    [
-                        (self.sections_annotator_1_uppercase, 0),
-                        (self.sections_annotator_1_lowercase, 1),
-                    ],
-                    "annotator_1",
-                ),
-                (
-                    [
-                        (self.sections_annotator_2_uppercase, 0),
-                        (self.sections_annotator_2_lowercase, 1),
-                    ],
-                    "annotator_2",
-                ),
-            ],
-            metadata=self._track_metadata,
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267

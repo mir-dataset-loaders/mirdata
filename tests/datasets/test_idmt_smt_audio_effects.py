@@ -46,21 +46,6 @@ def test_track():
     assert audio.shape == (88201,)
 
 
-def test_to_jams():
-    default_trackid = "G73-45200-3341-33944"
-    dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    # Validate idmt_smt_audio_effects jam schema
-    assert jam.validate()
-
-    assert jam["sandbox"]["fx_group"] == 3
-    assert jam["sandbox"]["fx_setting"] == 1
-    assert jam["sandbox"]["instrument"] == "G"
-    assert jam["sandbox"]["midi_nr"] == 45
-
-
 def test_metadata():
     dataset = idmt_smt_audio_effects.Dataset(TEST_DATA_HOME, version="test")
     metadata = dataset._metadata

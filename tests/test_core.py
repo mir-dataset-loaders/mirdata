@@ -32,9 +32,6 @@ def test_track():
     with pytest.raises(AttributeError):
         track._track_metadata
 
-    with pytest.raises(NotImplementedError):
-        track.to_jams()
-
     path_good = track.get_path("annotation")
     assert os.path.normpath(path_good) == os.path.normpath(
         "tests/resources/mir_datasets/asdf/asdd"
@@ -99,9 +96,6 @@ def test_track_repr():
     actual = test_track.__repr__()
     assert actual == expected1 + expected2 + expected3 + expected4
 
-    with pytest.raises(NotImplementedError):
-        test_track.to_jams()
-
 
 def test_multitrack_repr():
     class TestTrack(core.Track):
@@ -149,9 +143,6 @@ def test_multitrack_repr():
     assert (
         actual == expected1 + expected2 + expected3 + expected4 + expected5 + expected6
     )
-
-    with pytest.raises(NotImplementedError):
-        test_mtrack.to_jams()
 
 
 def test_dataset():
@@ -346,9 +337,6 @@ def test_multitrack():
     with pytest.raises(AttributeError):
         mtrack._multitrack_metadata
 
-    with pytest.raises(NotImplementedError):
-        mtrack.to_jams()
-
     with pytest.raises(KeyError):
         mtrack.get_target(["c"])
 
@@ -403,9 +391,6 @@ def test_multitrack():
                 mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
-        def to_jams(self):
-            return None
-
         @property
         def track_audio_property(self):
             return "f"
@@ -414,7 +399,6 @@ def test_multitrack():
     mtrack = TestMultiTrack1(
         mtrack_id, data_home, dataset_name, index, TestTrack, lambda: None
     )
-    mtrack.to_jams()
     mtrack.get_target(["a"])
     mtrack.get_random_target()
 
@@ -437,9 +421,6 @@ def test_multitrack_mixing():
             super().__init__(
                 mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
-
-        def to_jams(self):
-            return None
 
         @property
         def track_audio_property(self):
@@ -530,9 +511,6 @@ def test_multitrack_unequal_len():
                 mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
-        def to_jams(self):
-            return None
-
         @property
         def track_audio_property(self):
             return "f"
@@ -579,9 +557,6 @@ def test_multitrack_unequal_sr():
                 mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
-        def to_jams(self):
-            return None
-
         @property
         def track_audio_property(self):
             return "f"
@@ -623,9 +598,6 @@ def test_multitrack_mono():
                 mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
 
-        def to_jams(self):
-            return None
-
         @property
         def track_audio_property(self):
             return "f"
@@ -664,9 +636,6 @@ def test_multitrack_mono():
             super().__init__(
                 mtrack_id, data_home, dataset_name, index, track_class, metadata
             )
-
-        def to_jams(self):
-            return None
 
         @property
         def track_audio_property(self):

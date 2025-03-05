@@ -45,25 +45,6 @@ def test_track():
     assert y.shape == (44100 * 2,)
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/medleydb_pitch"
-    dataset = medleydb_pitch.Dataset(data_home, version="test")
-    track = dataset.track("AClassicEducation_NightOwl_STEM_08")
-    jam = track.to_jams()
-
-    f0s = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [f0.time for f0 in f0s] == [0.06965986394557823, 0.07546485260770976]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 191.877, "index": 0, "voiced": True},
-    ]
-    assert [f0.confidence for f0 in f0s] == [None, None]
-
-    assert jam["file_metadata"]["title"] == "NightOwl"
-    assert jam["file_metadata"]["artist"] == "AClassicEducation"
-
-
 def test_load_pitch():
     # load a file which exists
     pitch_path = (
