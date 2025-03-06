@@ -1,6 +1,6 @@
 import jams_utils
 
-def to_jam(track):
+def to_jams(track):
     """Convert the track's data into JAMS format.
 
     Args:
@@ -26,5 +26,5 @@ def to_jam(track):
 
 # Example usage
 track = ...  # load your track object here
-jams = to_jam(track)
+jams = to_jams(track)
 jams.save("example.jams")
