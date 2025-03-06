@@ -51,35 +51,6 @@ def test_track():
     assert sr == 44100
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
-    dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
-    track = dataset.track("10003")
-    jam = track.to_jams()
-
-    print(jam)
-
-    # Tonic
-    assert jam["sandbox"].meter == "8/4"
-
-    # Sama
-    beats = jam.search(namespace="beat")[0]["data"]
-    assert len(beats) == 3
-    assert [beat.time for beat in beats] == [1.124172, 1.788957, 2.502540]
-    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0]
-    assert [beat.value for beat in beats] == [1, 2, 3]
-    assert [beat.confidence for beat in beats] == [None, None, None]
-
-    # Metadata
-    assert jam["sandbox"]["mbid"] == "5769ea2f-aed4-4169-9a20-bae4cb733b8e"
-    assert jam["sandbox"]["raaga"] == "chaturdasha ragamalika"
-    assert jam["sandbox"]["taala"] == "adi"
-    assert jam["sandbox"]["name"] == "1-04_Shri_Visvanatham"
-    assert jam["sandbox"]["lead_instrument_code"] == "V"
-    assert jam["sandbox"]["num_of_beats"] == 162
-    assert jam["sandbox"]["num_of_samas"] == 21
-
-
 def test_load_meter():
     data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")

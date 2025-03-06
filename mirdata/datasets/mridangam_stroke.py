@@ -48,7 +48,7 @@ import librosa
 import numpy as np
 from typing import BinaryIO, Optional, Tuple
 
-from mirdata import core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io
 
 BIBTEX = """@article{Anantapadmanabhan2013,
     author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
@@ -150,19 +150,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            tags_open_data=[(self.stroke_name, "stroke_name")],
-            metadata={"tonic": self.tonic},
-        )
 
 
 @io.coerce_to_bytes_io

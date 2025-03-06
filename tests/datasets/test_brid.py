@@ -41,21 +41,6 @@ def test_track():
     assert sr == 44100
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/brid"
-    dataset = brid.Dataset(data_home, version="test")
-    track = dataset.track("[0001] M4-01-SA")
-    jam = track.to_jams()
-    tempo = jam.search(namespace="tempo")[0]["data"]
-    assert [temp.value for temp in tempo] == [79.988654]
-    beats = jam.search(namespace="beat")[0]["data"]
-    assert len(beats) == 3
-    assert [beat.time for beat in beats] == [0.025, 0.760, 1.490]
-    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0]
-    assert [beat.value for beat in beats] == [2, 1, 2]
-    assert [beat.confidence for beat in beats] == [None, None, None]
-
-
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/brid"
     dataset = brid.Dataset(data_home, version="test")

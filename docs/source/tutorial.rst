@@ -5,11 +5,11 @@ Tutorial
 ########
 
 Installation
-------------
+^^^^^^^^^^^^
 
 To install Mirdata:
 
-    .. code-block:: console
+    .. code-block:: bash
 
         pip install mirdata
 
@@ -32,7 +32,7 @@ Print a list of all available dataset loaders by calling:
     import mirdata
     print(mirdata.list_datasets())
 
-To use a loader, (for example, ``orchset`) you need to initialize it by calling:
+To use a loader, (for example, ``orchset``) you need to initialize it by calling:
 
 .. code-block:: python
 
@@ -247,7 +247,7 @@ Annotation classes
 ^^^^^^^^^^^^^^^^^^
 
 Mirdata defines annotation-specific data classes. These data classes are meant to standardize the format for
-all loaders, and are compatibly with `jams <https://jams.readthedocs.io/en/stable/>`_ and `mir_eval <https://craffel.github.io/mir_eval/>`_.
+all loaders, and are compatibly with `mir_eval <https://craffel.github.io/mir_eval/>`_.
 
 The list and descriptions of available annotation classes can be found in :ref:`annotations`.
 
@@ -404,3 +404,32 @@ The following is a simple example of a generator that can be used to create a te
         )
 
 In future Mirdata versions, generators for Tensorflow and Pytorch will be included.
+
+Using mirdata with JAMS
+^^^^^^^^^^^^^^^^^^^^^^^
+
+This section demonstrates how to use JAMS to load track's data.
+
+Ensure you have JAMS installed by running:
+
+    .. code-block:: bash
+
+        pip install jams
+
+For more information, visit the `JAMS documentation <https://jams.readthedocs.io/en/stable/index.html>`_.
+
+.. admonition:: jams_utils
+    :class: dropdown
+
+    The following code contains *jams_converter*, an utility function necessary to convert a track's data into JAMS format.
+
+    .. literalinclude:: tutorial_examples/jams_utils.py
+        :language: python
+
+
+.. admonition:: Using JAMS to Read Annotations
+
+    The following example shows how to convert a track's data into JAMS format by using the utility function above.
+
+    .. literalinclude:: tutorial_examples/to_jams.py
+        :language: python

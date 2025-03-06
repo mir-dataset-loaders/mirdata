@@ -12,7 +12,7 @@ T = TypeVar("T")  # Can be anything
 
 
 def coerce_to_string_io(
-    func: Callable[[TextIO], T]
+    func: Callable[[TextIO], T],
 ) -> Callable[[Optional[Union[str, TextIO]]], Optional[T]]:
     @functools.wraps(func)
     def wrapper(file_path_or_obj: Optional[Union[str, TextIO]]) -> Optional[T]:
@@ -34,7 +34,7 @@ def coerce_to_string_io(
 
 
 def coerce_to_bytes_io(
-    func: Callable[[BinaryIO], T]
+    func: Callable[[BinaryIO], T],
 ) -> Callable[[Optional[Union[str, BinaryIO]]], Optional[T]]:
     @functools.wraps(func)
     def wrapper(file_path_or_obj: Optional[Union[str, BinaryIO]]) -> Optional[T]:

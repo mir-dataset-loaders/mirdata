@@ -28,7 +28,7 @@
     **Sections**
     The notation is given a single time per section, however, to align the svaras with the tala annotations, structure
     information is given. The structure is given in yaml format, specifying the order of the sections, and how many svaras
-    are sung per each tala tick. Broadly, there are just two only cases, 2 svaras per tick, and 4 svaras per tick. 
+    are sung per each tala tick. Broadly, there are just two only cases, 2 svaras per tick, and 4 svaras per tick.
     The structure information has been added in the 1.1 version of the dataset.
 
     **Possible uses of the dataset**
@@ -46,7 +46,7 @@ import numpy as np
 from xml.dom import minidom
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """
 @dataset{koduri_g_k_2014_1257118,
@@ -166,27 +166,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.taala, "taala")],
-            section_data=[(self.sections, "sections")],
-            event_data=[(self.notation, "notation")],
-            metadata={
-                "performer": self.artist,
-                "raaga": self.raaga,
-                "tonic": self.tonic,
-                "arohanam": self.arohanam,
-                "avarohanam": self.avarohanam,
-            },
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267

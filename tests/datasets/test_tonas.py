@@ -49,46 +49,6 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
 
-def test_to_jams():
-    default_trackid = "01-D_AMairena"
-    dataset = tonas.Dataset(TEST_DATA_HOME, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    # Validate cante100 jam schema
-    assert jam.validate()
-
-    # Validate melody
-    f0 = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [note.time for note in f0] == [0.197, 0.209, 0.221, 0.232]
-    assert [note.duration for note in f0] == [0.0, 0.0, 0.0, 0.0]
-    assert [note.value for note in f0] == [
-        {"index": 0, "frequency": 0.0, "voiced": False},
-        {"index": 0, "frequency": 379.299, "voiced": True},
-        {"index": 0, "frequency": 379.299, "voiced": True},
-        {"index": 0, "frequency": 379.299, "voiced": True},
-    ]
-    print([note.confidence for note in f0])
-    assert [note.confidence for note in f0] == [3.09e-06, 2.86e-06, 7.15e-06, 1.545e-05]
-
-    # Validate note transciption
-    notes = jam.search(namespace="note_hz")[0]["data"]
-    assert [note.time for note in notes] == [0.216667, 0.65, 2.183333, 2.566667]
-    assert [note.duration for note in notes] == [
-        0.433333,
-        1.016667,
-        0.3833329999999999,
-        0.3333330000000001,
-    ]
-    assert [note.value for note in notes] == [
-        388.8382625732775,
-        411.9597888711769,
-        388.8382625732775,
-        411.9597888711769,
-    ]
-    assert [note.confidence for note in notes] == [None, None, None, None]
-
-
 def test_load_melody():
     default_trackid = "01-D_AMairena"
     dataset = tonas.Dataset(TEST_DATA_HOME, version="test")
