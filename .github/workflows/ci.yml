@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-    - update-py
+    - master
   pull_request:
     branches:
     - master
@@ -52,21 +52,6 @@ jobs:
                       envfile: ".github/environment-ci.yml"
 
                     - os: macos-latest
-                      python-version: "3.12"
-                      channel-priority: "strict"
-                      envfile: ".github/environment-ci.yml"
-
-                    - os: windows-latest
-                      python-version: "3.10"
-                      channel-priority: "strict"
-                      envfile: ".github/environment-ci.yml"
-
-                    - os: windows-latest
-                      python-version: "3.11"
-                      channel-priority: "strict"
-                      envfile: ".github/environment-ci.yml"
-
-                    - os: windows-latest
                       python-version: "3.12"
                       channel-priority: "strict"
                       envfile: ".github/environment-ci.yml"
