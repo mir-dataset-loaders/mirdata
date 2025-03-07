@@ -444,9 +444,11 @@ class Dataset(core.Dataset):
         )
         out_tonic = {}
         for taala_path in glob.glob(os.path.join(taalas_path, "*/")):
-            taala = taala_path.split("/")[-2]
+            taala = os.path.basename(
+                os.path.normpath(taala_path)
+            )  # Gets the directory name properly
             for track in glob.glob(os.path.join(taala_path, "*.svl")):
-                artist = track.split("/")[-1].replace(".svl", "")
+                artist = os.path.basename(track).replace(".svl", "")
                 idx = artist + "_" + taala
                 out_tonic[idx] = tonics_dict[artist]
         return out_tonic

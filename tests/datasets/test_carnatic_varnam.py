@@ -85,7 +85,7 @@ def test_load_taala():
     )
     dataset = compmusic_carnatic_varnam.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
-    taala_path = track.taala_path
+    taala_path = os.path.normpath(track.taala_path)
     parsed_taala = compmusic_carnatic_varnam.load_taala(taala_path)
 
     # Check types

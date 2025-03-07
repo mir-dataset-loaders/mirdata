@@ -20,7 +20,18 @@ def run_track_tests(track, expected_attributes, expected_property_types):
     # test track attributes
     for attr in track_attr["attributes"]:
         print("{}: {}".format(attr, getattr(track, attr)))
-        assert expected_attributes[attr] == getattr(track, attr)
+
+        # Get actual and expected values
+        actual_value = getattr(track, attr)
+        expected_value = expected_attributes[attr]
+
+        # Normalize paths if the attribute contains file paths
+        # this is for Windows compatibility
+        if isinstance(actual_value, str) and ("path" in attr.lower()):
+            actual_value = os.path.normpath(actual_value)
+            expected_value = os.path.normpath(expected_value)
+
+    assert expected_value == actual_value
 
     # test track property types
     for prop in track_attr["cached_properties"] + track_attr["properties"]:
@@ -135,7 +146,7 @@ def test_validate_index(test_index, expected_missing, expected_inv_checksum):
         test_index = json.load(index_file)
 
     missing_files, invalid_checksums = validate.validate_index(
-        test_index, os.path.normpath("tests/resources/")
+        test_index, os.path.normpath("tests/resources")
     )
 
     assert expected_missing == missing_files

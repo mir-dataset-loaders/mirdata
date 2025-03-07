@@ -40,7 +40,14 @@ def test_track():
         "midinote": annotations.NoteData,
     }
 
-    assert track._track_paths == {
+    track_paths = track._track_paths
+    normalized_track_paths = {
+        "audio": [
+            os.path.normpath(track_paths["audio"][0]),
+            track_paths["audio"][1],  # Keep the hash as is, no need to normalize
+        ]
+    }
+    assert normalized_track_paths == {
         "audio": [
             os.path.normpath("TapeEcho/Bridge/2-0.wav"),
             "bf9041e98fbc3c1145583d1601ab2d7b",
@@ -58,7 +65,7 @@ def test_track():
     assert sr == 48000
     assert audio.shape == (48000,)
 
-    default_trackid = "Clean_Middle/6-22"
+    default_trackid = os.path.normpath("Clean_Middle/6-22")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -82,7 +89,12 @@ def test_track():
         "midinote": annotations.NoteData,
     }
 
-    assert track._track_paths == {
+    track_paths = track._track_paths
+    normalized_track_paths = {
+        "audio": [os.path.normpath(track_paths["audio"][0]), track_paths["audio"][1]]
+    }
+
+    assert normalized_track_paths == {
         "audio": [
             os.path.normpath("Clean/Middle/6-22.wav"),
             "93c580d88d65400804f5c8f88f715ec1",
