@@ -72,7 +72,7 @@ jobs:
                       envfile: ".github/environment-ci.yml"
 
         steps:
-        - uses: actions/checkout@v3
+        - uses: actions/checkout@v4
           with:
             submodules: true
 
@@ -90,7 +90,7 @@ jobs:
             esac
 
         - name: Cache conda
-          uses: actions/cache@v3
+          uses: actions/cache@v4
           env:
             CACHE_NUMBER: 2      
           with:
@@ -102,7 +102,7 @@ jobs:
               ${{ runner.os }}-conda-
               
         - name: Setup conda
-          uses: conda-incubator/setup-miniconda@v2
+          uses: conda-incubator/setup-miniconda@v3
           with:
             miniforge-variant: Miniforge3  
             miniforge-version: latest
