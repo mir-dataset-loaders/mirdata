@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-    - master
+    - update-py
   pull_request:
     branches:
     - master
@@ -22,27 +22,52 @@ jobs:
             matrix:
                 include:
                     - os: ubuntu-latest
-                      python-version: "3.7"
-                      envfile: ".github/environment-ci.yml"
-                      channel-priority: "strict"
-
-                    - os: ubuntu-latest
-                      python-version: "3.8"
-                      channel-priority: "strict"
-                      envfile: ".github/environment-ci.yml"
-
-                    - os: ubuntu-latest
                       python-version: "3.9"
-                      channel-priority: "strict"
                       envfile: ".github/environment-ci.yml"
+                      channel-priority: "strict"
 
                     - os: ubuntu-latest
                       python-version: "3.10"
+                      channel-priority: "strict"
+                      envfile: ".github/environment-ci.yml"
+
+                    - os: ubuntu-latest
+                      python-version: "3.11"
+                      channel-priority: "strict"
+                      envfile: ".github/environment-ci.yml"
+
+                    - os: ubuntu-latest
+                      python-version: "3.12"
                       channel-priority: "strict"
                       envfile: ".github/environment-ci.yml"
 
                     - os: macos-latest
                       python-version: "3.10"
+                      channel-priority: "strict"
+                      envfile: ".github/environment-ci.yml"
+
+                    - os: macos-latest
+                      python-version: "3.11"
+                      channel-priority: "strict"
+                      envfile: ".github/environment-ci.yml"
+
+                    - os: macos-latest
+                      python-version: "3.12"
+                      channel-priority: "strict"
+                      envfile: ".github/environment-ci.yml"
+
+                    - os: windows-latest
+                      python-version: "3.10"
+                      channel-priority: "strict"
+                      envfile: ".github/environment-ci.yml"
+
+                    - os: windows-latest
+                      python-version: "3.11"
+                      channel-priority: "strict"
+                      envfile: ".github/environment-ci.yml"
+
+                    - os: windows-latest
+                      python-version: "3.12"
                       channel-priority: "strict"
                       envfile: ".github/environment-ci.yml"
 
@@ -87,7 +112,6 @@ jobs:
             python-version: ${{ matrix.python-version }}
             use-only-tar-bz2: false
 
-
         - name: Install conda dependencies
           run: mamba env update -n test -f ${{ matrix.envfile }}
           if: steps.cache.outputs.cache-hit != 'true'
@@ -102,14 +126,14 @@ jobs:
           shell: bash -l {0}
           run: pytest -n auto -vv --cov-report term-missing --cov-report=xml --cov=mirdata tests
 
-        - name: Upload coverage to Codecov
-          uses: codecov/codecov-action@v4
-          with:
-            token: ${{ secrets.CODECOV_TOKEN }}
-            files: ./coverage.xml
-            directory: ./coverage/reports/
-            flags: unittests
-            env_vars: OS,PYTHON
-            name: codecov-umbrella
-            fail_ci_if_error: true
-            verbose: true
+        # - name: Upload coverage to Codecov
+        #   uses: codecov/codecov-action@v4
+        #   with:
+        #     token: ${{ secrets.CODECOV_TOKEN }}
+        #     files: ./coverage.xml
+        #     directory: ./coverage/reports/
+        #     flags: unittests
+        #     env_vars: OS,PYTHON
+        #     name: codecov-umbrella
+        #     fail_ci_if_error: true
+        #     verbose: true
