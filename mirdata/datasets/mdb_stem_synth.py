@@ -23,7 +23,7 @@ from typing import BinaryIO, Optional, TextIO, Tuple
 import librosa
 import numpy as np
 
-from mirdata import io, jams_utils, core, annotations, download_utils
+from mirdata import io, core, annotations, download_utils
 
 BIBTEX = """
 @inproceedings{salamon2017analysis,
@@ -107,13 +107,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.f0, None)],
-        )
 
 
 @io.coerce_to_bytes_io

@@ -1,7 +1,6 @@
 chardet>=5.0.0
 dali-dataset>=1.0
 Deprecated>=1.2.13
-jams>=0.3.4
 librosa>=0.10.1
 numpy>=1.21.6
 sphinx>=5.2.0

@@ -27,7 +27,7 @@ To install Mirdata for development purposes:
       - Install Core dependencies with ``pip install .``
       - Install Testing dependencies with ``pip install ."[tests]"``
       - Install Docs dependencies with ``pip install ."[docs]"``
-      - Install dataset-specific dependencies with ``pip install ."[dataset]"`` where ``dataset`` can be ``dali | haydn_op20 | cipi ...`` 
+      - Install dataset-specific dependencies with ``pip install ."[dataset]"`` where ``dataset`` can be ``dali | haydn_op20 | cipi ...``
 
 
 We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
@@ -333,7 +333,8 @@ and ``LICENSE_INFO`` (including the license that protects the dataset in the dat
 ``REMOTES``
     Should be a list of ``RemoteFileMetadata`` objects, which are used to download the dataset files. See an example below:
 
-    .. code-block:: javascript
+    .. code-block:: python
+
         REMOTES = {
             "annotations": download_utils.RemoteFileMetadata(
                 filename="The Beatles Annotations.tar.gz",
@@ -351,6 +352,7 @@ and ``LICENSE_INFO`` (including the license that protects the dataset in the dat
     Direct url for download and checksum can be found in the Zenodo entries of the dataset and index. Bear in mind that the url and checksum for the index will be available once a maintainer of the Audio Data Loaders Zenodo community has accepted the index upload.
     For other repositories, you may need to generate the checksum yourself.
     You may use the function provided in ``mirdata.validate.py``.
+    
 
 
 Make sure to include, in the docstring of the dataloader, information about the following list of relevant aspects about the dataset you are integrating:
@@ -361,15 +363,19 @@ Make sure to include, in the docstring of the dataloader, information about the 
 * The license of the dataset (even if you have included the ``LICENSE_INFO`` variable already).
 * The authors of the dataset, the organization in which it was created, and the year of creation (even if you have included the ``BIBTEX`` variable already).
 * Please reference also any relevant link or website that users can check for more information.
+
 .. note::  
+
     In addition to the module docstring, you should write docstrings for every new class and function you write. See :ref:`the documentation tutorial <documentation_tutorial>` for practical information on best documentation practices.
-This docstring is important for users to understand the dataset and its purpose.
-Having proper documentation also enhances transparency, and helps users to understand the dataset better.
-Please do not include complicated tables, big pieces of text, or unformatted copy-pasted text pieces. 
-It is important that the docstring is clean, and the information is very clear to users.
-This will also engage users to use the dataloader!
-For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
-.. note::  
+    This docstring is important for users to understand the dataset and its purpose.
+    Having proper documentation also enhances transparency, and helps users to understand the dataset better.
+    Please do not include complicated tables, big pieces of text, or unformatted copy-pasted text pieces. 
+    It is important that the docstring is clean, and the information is very clear to users.
+    This will also engage users to use the dataloader!
+    For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
+
+.. note::
+
     If the dataset you are trying to integrate stores every clip in a separated compressed file, it cannot be currently supported by Mirdata. Feel free to open and issue to discuss a solution (hopefully for the near future!)
 
 
@@ -471,7 +477,7 @@ csv files).
 
 
 4. Update Mirdata documentation
----------------------
+-------------------------------
 
 Before you submit your loader make sure to:
 
@@ -690,6 +696,8 @@ could look like:
 Documentation
 #############
 
+.. _documentation_tutorial:
+
 This documentation is in `rst format <https://docutils.sourceforge.io/docs/user/rst/quickref.html>`_.
 It is built using `Sphinx <https://www.sphinx-doc.org/en/master/index.html>`_ and hosted on `readthedocs <https://readthedocs.org/>`_.
 The API documentation is built using `autodoc <https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html>`_, which autogenerates
@@ -842,8 +850,6 @@ We use the following libraries for loading data from files:
 | json                    | json        |
 +-------------------------+-------------+
 | csv                     | csv         |
-+-------------------------+-------------+
-| jams                    | jams        |
 +-------------------------+-------------+
 | yaml                    | pyyaml      |
 +-------------------------+-------------+

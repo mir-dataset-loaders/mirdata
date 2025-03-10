@@ -36,20 +36,6 @@ def test_track():
     assert sr == 44100
 
 
-def test_to_jams():
-    default_trackid = "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180"
-    data_home = "tests/resources/mir_datasets/compmusic_indian_tonic"
-    dataset = compmusic_indian_tonic.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    assert jam.validate()
-
-    # Test annotations
-    assert jam.sandbox.tonic == 131.436
-    assert jam.file_metadata.artist == "T. N. Seshagopalan"
-
-
 def test_load_audio():
     default_trackid = "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180"
     data_home = "tests/resources/mir_datasets/compmusic_indian_tonic"

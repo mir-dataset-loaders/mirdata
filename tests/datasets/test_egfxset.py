@@ -40,7 +40,14 @@ def test_track():
         "midinote": annotations.NoteData,
     }
 
-    assert track._track_paths == {
+    track_paths = track._track_paths
+    normalized_track_paths = {
+        "audio": [
+            os.path.normpath(track_paths["audio"][0]),
+            track_paths["audio"][1],  # Keep the hash as is, no need to normalize
+        ]
+    }
+    assert normalized_track_paths == {
         "audio": [
             os.path.normpath("TapeEcho/Bridge/2-0.wav"),
             "bf9041e98fbc3c1145583d1601ab2d7b",
@@ -58,7 +65,7 @@ def test_track():
     assert sr == 48000
     assert audio.shape == (48000,)
 
-    default_trackid = "Clean_Middle/6-22"
+    default_trackid = os.path.normpath("Clean_Middle/6-22")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -82,7 +89,12 @@ def test_track():
         "midinote": annotations.NoteData,
     }
 
-    assert track._track_paths == {
+    track_paths = track._track_paths
+    normalized_track_paths = {
+        "audio": [os.path.normpath(track_paths["audio"][0]), track_paths["audio"][1]]
+    }
+
+    assert normalized_track_paths == {
         "audio": [
             os.path.normpath("Clean/Middle/6-22.wav"),
             "93c580d88d65400804f5c8f88f715ec1",
@@ -99,52 +111,3 @@ def test_track():
     audio, sr = track.audio
     assert sr == 48000
     assert audio.shape == (48000,)
-
-
-def test_to_jams():
-    data_home = os.path.normpath("tests/resources/mir_datasets/egfxset")
-    dataset = egfxset.Dataset(data_home, version="test")
-
-    # Case with a TapeEcho track
-    track = dataset.track(os.path.normpath("TapeEcho_Bridge/2-0"))
-    jam = track.to_jams()
-
-    assert jam["sandbox"]["String-fret Tuple"] == [2, 0]
-    assert jam["sandbox"]["Note Name"] == ["B3"]
-    assert type(jam["sandbox"]["Midinote"]) == annotations.NoteData
-    assert jam["sandbox"]["Pickup Configuration"] == "Bridge"
-    assert jam["sandbox"]["Effect"] == "tape echo"
-    assert jam["sandbox"]["Model"] == "Line 6 DL4 Delay"
-    assert jam["sandbox"]["Effect Type"] == "delay"
-    assert jam["sandbox"]["Knob Names"] == [
-        "effect selector",
-        "delay time",
-        "repeats",
-        "tweak (bass)",
-        "tweez (treble)",
-        "mix",
-    ]
-    assert jam["sandbox"]["Knob Type"] == [
-        "selector",
-        "rate",
-        "effect decay",
-        "eq",
-        "eq",
-        "effect amount",
-    ]
-    assert jam["sandbox"]["Setting"] == ["tape echo", "120 bpm", 0.6, 0.5, 0.5, 0.5]
-
-    # Case with a Clean track
-    track = dataset.track(os.path.normpath("Clean_Middle/6-22"))
-    jam = track.to_jams()
-
-    assert jam["sandbox"]["String-fret Tuple"] == [6, 22]
-    assert jam["sandbox"]["Note Name"] == ["D4"]
-    assert type(jam["sandbox"]["Midinote"]) == annotations.NoteData
-    assert jam["sandbox"]["Pickup Configuration"] == "Middle"
-    assert jam["sandbox"]["Effect"] == "clean"
-    assert jam["sandbox"]["Model"] == "None"
-    assert jam["sandbox"]["Effect Type"] == "None"
-    assert jam["sandbox"]["Knob Names"] == "None"
-    assert jam["sandbox"]["Knob Type"] == "None"
-    assert jam["sandbox"]["Setting"] == "None"

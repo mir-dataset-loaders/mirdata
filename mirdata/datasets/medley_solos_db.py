@@ -35,7 +35,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io
 
 BIBTEX = """@inproceedings{lostanlen2019ismir,
     title={Deep Convolutional Networks in the Pitch Spiral for Musical Instrument Recognition},
@@ -120,17 +120,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path, metadata=self._track_metadata
-        )
 
 
 @io.coerce_to_bytes_io

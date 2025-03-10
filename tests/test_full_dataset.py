@@ -79,9 +79,6 @@ def test_load_tracks(skip_remote, dataset):
         for cprop in track_data["cached_properties"]:
             ret = getattr(track, cprop)
 
-        jam = track.to_jams()
-        assert jam.validate()
-
 
 def test_load_mtracks(skip_remote, dataset):
     if dataset is None or dataset._multitrack_class is None:
@@ -108,9 +105,6 @@ def test_load_mtracks(skip_remote, dataset):
 
         for cprop in mtrack_data["cached_properties"]:
             ret = getattr(mtrack, cprop)
-
-        jam = mtrack.to_jams()
-        assert jam.validate()
 
 
 def test_index(skip_remote, dataset):

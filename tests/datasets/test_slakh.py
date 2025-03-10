@@ -147,24 +147,6 @@ def test_track_full():
     assert mtrack.data_split == "train"
 
 
-def test_to_jams():
-    default_trackid = "Track00001-S00"
-    data_home = "tests/resources/mir_datasets/slakh"
-    dataset = slakh.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    notes = jam.annotations[0]["data"][:2]
-    assert [annotation.time for annotation in notes] == [
-        0.7811520833333333,
-        1.2420318125,
-    ]
-    assert [annotation.duration for annotation in notes] == [
-        0.4765027708333335,
-        0.25778018749999987,
-    ]
-
-
 def test_multitrack():
     default_trackid = "Track00001"
     data_home = os.path.normpath("tests/resources/mir_datasets/slakh")
@@ -255,22 +237,4 @@ def test_multitrack():
         "Track00001-S08",
         "Track00001-S09",
         "Track00001-S10",
-    ]
-
-
-def test_multitrack_to_jams():
-    default_mtrackid = "Track00001"
-    data_home = "tests/resources/mir_datasets/slakh"
-    dataset = slakh.Dataset(data_home, version="test")
-    track = dataset.multitrack(default_mtrackid)
-    jam = track.to_jams()
-
-    notes = jam.annotations[0]["data"][:2]
-    assert [annotation.time for annotation in notes] == [
-        0.7811520833333333,
-        1.2420318125,
-    ]
-    assert [annotation.duration for annotation in notes] == [
-        0.4765027708333335,
-        0.25778018749999987,
     ]

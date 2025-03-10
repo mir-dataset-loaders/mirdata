@@ -67,59 +67,6 @@ def test_track():
     assert audio.shape[0] == 2
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
-    dataset = saraga_hindustani.Dataset(data_home, version="test")
-    track = dataset.track("50_Irani_Bhairavi_Thumri")
-    jam = track.to_jams()
-
-    assert jam["sandbox"].tonic == 138.591315
-
-    # Tempo
-    parsed_tempo = jam["sandbox"].tempo
-    assert parsed_tempo == {
-        "Ālāp": {
-            "tempo": -1,
-            "matra_interval": -1,
-            "sama_interval": -1,
-            "matras_per_cycle": -1,
-            "start_time": 3.298,
-            "duration": 58.236,
-        },
-        "Khyāl (vilambit ēktāl)": {
-            "tempo": 13,
-            "matra_interval": 4.605,
-            "sama_interval": 55.265,
-            "matras_per_cycle": 12,
-            "start_time": 59.49,
-            "duration": 678.009,
-        },
-        "Khyāl (dr̥t ēktāl)": {
-            "tempo": 185,
-            "matra_interval": 0.324,
-            "sama_interval": 3.885,
-            "matras_per_cycle": 12,
-            "start_time": 679.834,
-            "duration": 894.433,
-        },
-    }
-
-    # Sections
-    sections = jam.search(namespace="segment_open")[0]["data"]
-    assert [section.time for section in sections] == [3.298, 59.49, 679.834]
-    assert [section.duration for section in sections] == [
-        56.192,
-        620.344,
-        218.83048979600005,
-    ]
-    assert [section.value for section in sections] == [
-        "Ālāp-1",
-        "Khyāl (vilambit ēktāl)-2",
-        "Khyāl (dr̥t ēktāl)-3",
-    ]
-    assert [section.confidence for section in sections] == [None, None, None]
-
-
 def test_load_tonic():
     data_home = "tests/resources/mir_datasets/saraga_hindustani"
     dataset = saraga_hindustani.Dataset(data_home, version="test")

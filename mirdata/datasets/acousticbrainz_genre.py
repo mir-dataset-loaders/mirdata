@@ -16,10 +16,10 @@
 
     We provide four datasets containing genre and subgenre annotations extracted from four different online metadata sources:
 
-    - AllMusic and Discogs are based on editorial metadata databases maintained by music experts and enthusiasts. These sources 
-      contain explicit genre/subgenre annotations of music releases (albums) following a predefined genre namespace and taxonomy. 
+    - AllMusic and Discogs are based on editorial metadata databases maintained by music experts and enthusiasts. These sources
+      contain explicit genre/subgenre annotations of music releases (albums) following a predefined genre namespace and taxonomy.
       We propagated release-level annotations to recordings (tracks) in AcousticBrainz to build the datasets.
-    - Lastfm and Tagtraum are based on collaborative music tagging platforms with large amounts of genre labels provided by their 
+    - Lastfm and Tagtraum are based on collaborative music tagging platforms with large amounts of genre labels provided by their
       users for music recordings (tracks). We have automatically inferred a genre/subgenre taxonomy and annotations from these labels.
 
     For details on format and contents, please refer to the data webpage.
@@ -34,7 +34,7 @@
         The AcousticBrainz Genre Dataset: Multi-Source, Multi-Level, Multi-Label, and Large-Scale.
         20th International Society for Music Information Retrieval Conference (ISMIR 2019).
 
-    This work is partially supported by the European Union’s Horizon 2020 research and innovation programme under 
+    This work is partially supported by the European Union’s Horizon 2020 research and innovation programme under
     grant agreement No 688382 AudioCommons.
 
 """
@@ -45,7 +45,6 @@ import os
 from deprecated.sphinx import deprecated
 
 from mirdata import download_utils, core, io
-from mirdata import jams_utils
 
 
 NAME = "acousticbrainz_genre"
@@ -346,22 +345,6 @@ class Track(core.Track):
     @core.cached_property
     def acousticbrainz_metadata(self):
         return load_extractor(os.path.normpath(self.path))
-
-    def to_jams(self):
-        """the track's data in jams format
-
-        Returns:
-             jams.JAMS: return track data in jam format
-
-        """
-        return jams_utils.jams_converter(
-            metadata={
-                "features": load_extractor(os.path.normpath(self.path)),
-                "duration": self.acousticbrainz_metadata["metadata"][
-                    "audio_properties"
-                ]["length"],
-            }
-        )
 
 
 @io.coerce_to_string_io

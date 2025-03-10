@@ -44,7 +44,7 @@ from deprecated.sphinx import deprecated
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """
@@ -135,24 +135,6 @@ class Track(core.Track):
     @core.cached_property
     def mb_tags(self):
         return load_mb_tags(self.mb_tags_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            f0_data=[(self.pitch, "pitch")],
-            metadata={
-                "makam": self.makam,
-                "tonic": self.tonic,
-                "mbid": self.mbid,
-                "duration": self.mb_tags["duration"],
-                "metadata": self.mb_tags,
-            },
-        )
 
 
 @io.coerce_to_string_io

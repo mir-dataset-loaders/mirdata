@@ -121,7 +121,6 @@ import pandas as pd
 
 from mirdata import annotations
 from mirdata import core
-from mirdata import jams_utils
 
 
 BIBTEX = """@inproceedings{cortes2022BAF,
@@ -301,18 +300,6 @@ class Track(core.Track):
     @property
     def matches(self) -> Optional[EventDataExtended]:
         return load_matches(self._track_metadata)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata=self._track_metadata,
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
