@@ -26,7 +26,6 @@ def extract_audio_files(dataset_data_path):
     os.makedirs(audio_dir, exist_ok=True)
     os.makedirs(temp_extract_dir, exist_ok=True)
 
-    # 1️⃣ Extraction du fichier ZIP principal (ex: 10719860.zip)
     zip_files = glob.glob(os.path.join(archives_dir, "*.zip"))
 
     if not zip_files:
@@ -38,15 +37,13 @@ def extract_audio_files(dataset_data_path):
             z.extractall(temp_extract_dir)
             print(f"Extracted {zip_file} into temp_extracted/")
 
-    # 2️⃣ Recherche des sous-archives (ex: 000-019.zip, 110-124.zip) et extraction
     sub_zip_files = glob.glob(os.path.join(temp_extract_dir, "*.zip"))
 
     for sub_zip in sub_zip_files:
         with zipfile.ZipFile(sub_zip, "r") as z:
-            z.extractall(temp_extract_dir)  # Directement dans temp_extracted
+            z.extractall(temp_extract_dir)
             print(f"Extracted {sub_zip}")
 
-    # 3️⃣ Recherche et déplacement des fichiers MP3
     for root, _, files in os.walk(temp_extract_dir):
         for file in files:
             if file.endswith(".mp3"):
@@ -57,7 +54,7 @@ def extract_audio_files(dataset_data_path):
                     shutil.move(src_path, dest_path)
                     print(f"Moved {file} to audio/")
 
-    print("✅ Finished extracting and moving audio files.")
+    print("finished extracting and moving audio files.")
 
 def make_dataset_index(dataset_data_path):
     metadata_path = os.path.join(dataset_data_path, "metadata", "metadata_fmakv2.csv")
