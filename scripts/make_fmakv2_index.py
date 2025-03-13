@@ -6,7 +6,7 @@ import zipfile
 import pandas as pd
 from mirdata.validate import md5
 
-DATASET_INDEX_PATH = os.path.abspath("../mirdata/datasets/indexes/dataset_index.json")
+DATASET_INDEX_PATH = os.path.abspath("../mirdata/datasets/indexes/fmakv2_index_1.0.json")
 
 import os
 import zipfile
@@ -72,7 +72,8 @@ def make_dataset_index(dataset_data_path):
         track_id = str(row["track_id"]).strip()
         key_and_mode = row["key_and_mode"]
         spotify_uri = row["spotify_uri"]
-        print(f"track_id: {track_id}")
+        key_and_mode = None if pd.isna(key_and_mode) else key_and_mode
+        spotify_uri = None if pd.isna(spotify_uri) else spotify_uri
 
         # finding matching mp3
         audio_files = glob.glob(os.path.join(audio_dir, f"{track_id}.*"))
