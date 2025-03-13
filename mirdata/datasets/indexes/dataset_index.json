@@ -1,0 +1,6779 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "metadata_fmakv2.csv": [
+      "metadata/metadata_fmakv2.csv",
+      "3b2d16784ffbda850c8ddf0519478bfd"
+    ]
+  },
+  "tracks": {
+    "100523": {
+      "audio": [
+        "100523.mp3",
+        "9c2f8ed2b418d0599a3a64da9a5e793a"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:0nvH7SkIgpV52fK6a8Q6fW"
+    },
+    "100524": {
+      "audio": [
+        "100524.mp3",
+        "10e50cbd41befef4e64fffe469c268b3"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:1h0tlRCXLDmxwPlka8HRqh"
+    },
+    "100527": {
+      "audio": [
+        "100527.mp3",
+        "d2a9c4a9ce501fe1982eb6ac6b2dac0c"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:6kYO8eg1VXuIm4r7i8Tzvk"
+    },
+    "100529": {
+      "audio": [
+        "100529.mp3",
+        "005ca73649903832a0748c4841ea7ff2"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:16BEpvpNrQVswVvfuZl7sV"
+    },
+    "100530": {
+      "audio": [
+        "100530.mp3",
+        "7867264a80a04bb90e2c0edf22b809de"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:6mksK13eWXonlIRJlDrYHd"
+    },
+    "100539": {
+      "audio": [
+        "100539.mp3",
+        "934c147da2ee892bcce4732f25e90c6f"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:36ZaO974BOAIXdA3LHdtHg"
+    },
+    "100696": {
+      "audio": [
+        "100696.mp3",
+        "a488427a8910884adedd637bb4b7c449"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:73p7Neg8AHPEpqowTIq9EP"
+    },
+    "100697": {
+      "audio": [
+        "100697.mp3",
+        "202cd6aacd6abc0959b1f6a4f71747c2"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:51vcx8IPl9fs1fn8F8mAND"
+    },
+    "100698": {
+      "audio": [
+        "100698.mp3",
+        "1db706fab755b479e45740254e0a6a26"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:5obhJ71YpC802YuIvnpOpv"
+    },
+    "100701": {
+      "audio": [
+        "100701.mp3",
+        "8480206daf957969ce6f4828daa94f21"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:0sO7VCowSdBnJcQUEUITBT"
+    },
+    "100704": {
+      "audio": [
+        "100704.mp3",
+        "5ef0c1d93550ced00b007342089b7600"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:4pNGRj6s5TlhHvLWHPQC4l"
+    },
+    "100709": {
+      "audio": [
+        "100709.mp3",
+        "0df4dadba3c3b4d7284633547c5cc053"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:3Z3CggHXaxIgfCW4KGivZD"
+    },
+    "100711": {
+      "audio": [
+        "100711.mp3",
+        "51873819f122c5aa05d0981b0c72331d"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:4W60Nee0uD2RnM9EUP24Xd"
+    },
+    "100715": {
+      "audio": [
+        "100715.mp3",
+        "654e85753fd95a6fcd753e44ac9ecd6c"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:7E6v8TsZnGtqpqQGCbtOLP"
+    },
+    "100717": {
+      "audio": [
+        "100717.mp3",
+        "dada6fd7d859fac63d0ca2ed6e193e6e"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4UvAHLiBezLz2DKCsM6THX"
+    },
+    "100719": {
+      "audio": [
+        "100719.mp3",
+        "3501b1a3cbf6026b597ff2b369ea755d"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:12ftihBjAWyVMk71nkroJK"
+    },
+    "100768": {
+      "audio": [
+        "100768.mp3",
+        "9259276773425bab8aa0e05e0564e40e"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:09ChofjuP03vkq4HJeUU03"
+    },
+    "100769": {
+      "audio": [
+        "100769.mp3",
+        "d2b8edcee9809382223aa4b4c43edd22"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:2Lt64xlHeCNUBqBEkJJdwG"
+    },
+    "100770": {
+      "audio": [
+        "100770.mp3",
+        "ce1f5562e9233ca6acb03a9e0d6d9a21"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:362u3GYODS2NcumwIItIcp"
+    },
+    "100771": {
+      "audio": [
+        "100771.mp3",
+        "a5f037cd1733763ebb3a69caa72f3c13"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:6moLgdDWKRJPJjD6GczsQp"
+    },
+    "100774": {
+      "audio": [
+        "100774.mp3",
+        "02bdb4147f217c6d39b4ce5f2a5e8cb4"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4hWLWKeHvOm1ChKKyBz7ny"
+    },
+    "100775": {
+      "audio": [
+        "100775.mp3",
+        "32d0aeaf5d83e30b64b6208d5d457bfa"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:6Z1WWSEWEXyFWSDxp8sasz"
+    },
+    "100776": {
+      "audio": [
+        "100776.mp3",
+        "4d09d1988bd3d8b298645e05db426b65"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4p1EcFmEi7CzgT7OX7lPS6"
+    },
+    "100778": {
+      "audio": [
+        "100778.mp3",
+        "0f92a8bcf9c60f482ec3e86fb3499bf9"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:2IdkGnvGcBCYAT85bz0PXv"
+    },
+    "100779": {
+      "audio": [
+        "100779.mp3",
+        "90b09c9e939238b952893511f2f6c8b4"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:3MUm6YXjC8PZGHTbffILCh"
+    },
+    "100783": {
+      "audio": [
+        "100783.mp3",
+        "a0d575c81452c2eba9989434d3f8f8dc"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:4AL0UuQNf1HjX0u179b8y7"
+    },
+    "100784": {
+      "audio": [
+        "100784.mp3",
+        "cb8c20156202b885e4233bb5dc528849"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:7j8bgMH4GDNecaBPqyY3oo"
+    },
+    "100786": {
+      "audio": [
+        "100786.mp3",
+        "dba7d77915fbd7c5ba8de9c25d2cff3c"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:0FAopZoe3bvpC0H7ppzP3C"
+    },
+    "100787": {
+      "audio": [
+        "100787.mp3",
+        "31b577dff995b641183b451a6626b396"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2cU9GwtiSnsUt2CkQRrW3U"
+    },
+    "100788": {
+      "audio": [
+        "100788.mp3",
+        "ff9c22ad713e0bd98b9c445fd68534a7"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:0hPp0rYQL78d1R5RoNWCfw"
+    },
+    "100790": {
+      "audio": [
+        "100790.mp3",
+        "e6a4fd452fc000488f81e9a77a083b0b"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:4UgC86gqdo2PwKHofPKUd4"
+    },
+    "100791": {
+      "audio": [
+        "100791.mp3",
+        "888c7ef13727ec2980d19d4005f686f0"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:4TJ3SBFBnrK8GC7OwVg71u"
+    },
+    "100835": {
+      "audio": [
+        "100835.mp3",
+        "c0395199e4c536f8c2fb089c6d1b0188"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:1qee7pJ1tBa8hHOylkYSKH"
+    },
+    "100843": {
+      "audio": [
+        "100843.mp3",
+        "ee72ae0c35786bab07423415b2bf7009"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:7JhuO7wXPk6IExcEt8e8mD"
+    },
+    "100844": {
+      "audio": [
+        "100844.mp3",
+        "18e5c95dfaa3477fb95c0cb1a7193ba4"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:2WkbjJsmwcJFKZeoO4WO1T"
+    },
+    "100848": {
+      "audio": [
+        "100848.mp3",
+        "4b02fbe56cf2d43d9b5de1b1c52b2b43"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:3Iw3RcHb0mdbt3caOm6aJk"
+    },
+    "100853": {
+      "audio": [
+        "100853.mp3",
+        "a713879f897c918daadcfe83ecca135c"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:6ek4ei5BihSFiEWYrl3Xrb"
+    },
+    "100856": {
+      "audio": [
+        "100856.mp3",
+        "2a6edde8d42f347332e25f12f35a1c9c"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:2NOXtwWrupPUAEKE3apoOA"
+    },
+    "100857": {
+      "audio": [
+        "100857.mp3",
+        "d608b3abe7008c90368fba990698b344"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:4soJPA9yfB1o68ybMygEcM"
+    },
+    "100860": {
+      "audio": [
+        "100860.mp3",
+        "32ab3f2163ddff0eadf8e9c407d361ab"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:5QblhKzgcsXD52zP6KqZm3"
+    },
+    "100862": {
+      "audio": [
+        "100862.mp3",
+        "3bc751701dffbded878139f7b23baae0"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:5ZdBdNs1g0XbmfVSbpBRl6"
+    },
+    "100863": {
+      "audio": [
+        "100863.mp3",
+        "c9a89f1e27a6e60e5fe5d584fb3c8c8c"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:5IyjOdJhchkugxeUWDgFgG"
+    },
+    "100865": {
+      "audio": [
+        "100865.mp3",
+        "d5c9ebcbec8a99a3735f308697683a73"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2AEdPwZ7RSkevwVj4GTW3o"
+    },
+    "100866": {
+      "audio": [
+        "100866.mp3",
+        "e74d5f0ba8931f4343f44ef4631f7405"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:3nfVdYgcUBoYK0qyIcmmWj"
+    },
+    "100868": {
+      "audio": [
+        "100868.mp3",
+        "065ff1196e0373904f06521f0561390f"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:58Dp0rvdDaeiTDbSih9FJM"
+    },
+    "100876": {
+      "audio": [
+        "100876.mp3",
+        "e2c63872be304ed877958febfbf35e53"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:5V6lDVuqrFO7HnNHQj31HR"
+    },
+    "100882": {
+      "audio": [
+        "100882.mp3",
+        "918970b16f10848c63459a061c2542fe"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4Fksf2dUOE5HE4qjObAt3B"
+    },
+    "101078": {
+      "audio": [
+        "101078.mp3",
+        "1d26042392937569ed0a03257c256abd"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:5nCzXHQX7Oz8535VZN3avQ"
+    },
+    "101265": {
+      "audio": [
+        "101265.mp3",
+        "3ce72133d20a23f93bcaab73c0977df4"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:4zhxwU9vQdiHC8E8ypDyy9"
+    },
+    "101266": {
+      "audio": [
+        "101266.mp3",
+        "4aaf06904a16207df5d5170d75090959"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:46z5MMqlbJ5LyMf2UATOJp"
+    },
+    "101269": {
+      "audio": [
+        "101269.mp3",
+        "b5147a124bfd5b70610f772582cce279"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:3JPXMfocRrlpN0vkTN4AsP"
+    },
+    "101271": {
+      "audio": [
+        "101271.mp3",
+        "e99d4e2b775dce1da0e970b23430cca0"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:6KA7ZhVAueGj39MUdDP8zQ"
+    },
+    "101272": {
+      "audio": [
+        "101272.mp3",
+        "eb043105d7eb97348c5aca4aea00ccc2"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:5I4OG6C96qXd9JmeaVK5Qq"
+    },
+    "101275": {
+      "audio": [
+        "101275.mp3",
+        "5276b9dffcd64750dc7f0e6f03d9bcb4"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:0CbYoaR4agXzOXUkdWY7Hh"
+    },
+    "101276": {
+      "audio": [
+        "101276.mp3",
+        "dbfa8b4392097e23c907ac4cfb526c44"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:4oNbugwRG9hBVG4ElTMeNr"
+    },
+    "101277": {
+      "audio": [
+        "101277.mp3",
+        "cb39c02af241a13705c721028bb9ee67"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:1YBO5mqW3xBA9KWZAtus9d"
+    },
+    "101278": {
+      "audio": [
+        "101278.mp3",
+        "15f94d504f865498f92b8fdcc673bd3b"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:1GhXl4PZYyJZzq7O2FtYcN"
+    },
+    "101394": {
+      "audio": [
+        "101394.mp3",
+        "400cc5edfcff068d819d98b5643908ba"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:3a7ndJR8AaxO3qUCLovHBU"
+    },
+    "101442": {
+      "audio": [
+        "101442.mp3",
+        "e1235cb471f62ba409fa5ded330e909f"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:5Rgq5b1oe1pg0BrXd8wEfY"
+    },
+    "101443": {
+      "audio": [
+        "101443.mp3",
+        "26311884c68a5c72491889512e7bbf14"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:1TjamTeBy1lYi6cvlLzaMD"
+    },
+    "101451": {
+      "audio": [
+        "101451.mp3",
+        "fb093292c16561079101ae760e25649c"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:1EDlrGMaV5YsVoYuujkAS4"
+    },
+    "101479": {
+      "audio": [
+        "101479.mp3",
+        "a8d4d39ce0c399cf24f18b68d8456d83"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:5rAoDU3lj1jKNF3D1lFR45"
+    },
+    "101483": {
+      "audio": [
+        "101483.mp3",
+        "babdcea18790e6560159d7e6ce6630f8"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:0Pen3q7rv3MNFlI5dFDp84"
+    },
+    "101505": {
+      "audio": [
+        "101505.mp3",
+        "889b5d826bea3fdb519bdf29f3b8e888"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:2MoX1QwDkwqEAYThtZsdqY"
+    },
+    "101507": {
+      "audio": [
+        "101507.mp3",
+        "1cd74148778f50cefe5f663e0285c12b"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:1JdfUYkWNxGbM7weV1mzrG"
+    },
+    "101615": {
+      "audio": [
+        "101615.mp3",
+        "88af45f09b221fe9c39ec0e105a73dd3"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2J7FoJMPq8SBvu8lOX5p5P"
+    },
+    "101618": {
+      "audio": [
+        "101618.mp3",
+        "b7de31d34e0e4d180fcf7e78cb6267ff"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:3zkikXjMyUknLY89CNm25B"
+    },
+    "101715": {
+      "audio": [
+        "101715.mp3",
+        "c2e2283383a7edc82b1e78a025a44637"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:2RLn5sIOEXaUjSf3c15qmp"
+    },
+    "101731": {
+      "audio": [
+        "101731.mp3",
+        "532f38edd7257a34099e9cacaff8d8bf"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:5Wq58zDoiFMvW8FIkC30nf"
+    },
+    "101733": {
+      "audio": [
+        "101733.mp3",
+        "b874386d4f1e20e65c80f3373fc1d694"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:5T98ZXnz8NYvFCCgT4kvj4"
+    },
+    "101734": {
+      "audio": [
+        "101734.mp3",
+        "35c7c6aab2a6e0f73e00c8c027ae9a4d"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:1sEVWmjrhHWFtCabhIhtwa"
+    },
+    "101738": {
+      "audio": [
+        "101738.mp3",
+        "ea23ae2a10ba19cfb5d42a2d80cf99ca"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:0Q8E0K232g8FlPqOeVE9ra"
+    },
+    "101740": {
+      "audio": [
+        "101740.mp3",
+        "ad766705ff6d8e70999a3b97ce650255"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:5qOxTzBwFK4oQVhRaVgpIN"
+    },
+    "101743": {
+      "audio": [
+        "101743.mp3",
+        "a7ea50dae26b1795c819560260d135a0"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:2a6noVEbaTJyz8Gd3pT1jl"
+    },
+    "102115": {
+      "audio": [
+        "102115.mp3",
+        "95b6715009e43f770198d841d2bbff36"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:5NDSVyBOeVf5oh6o6X958u"
+    },
+    "102116": {
+      "audio": [
+        "102116.mp3",
+        "aa6d7f7094f27844fdbb2b25b75c5212"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:4ecNoFW6fnCJnWwr4JMtFB"
+    },
+    "102117": {
+      "audio": [
+        "102117.mp3",
+        "bd7139a2f8720f9e1f9bf46b4f200c86"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:0OqPNxEAEoCI0Qk7AJOezt"
+    },
+    "102118": {
+      "audio": [
+        "102118.mp3",
+        "c59a5580240a23b7bebf1a38532016ce"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:0ZoZ39ABtIkf0aMsr1HmUC"
+    },
+    "102119": {
+      "audio": [
+        "102119.mp3",
+        "417dfe5bbd2536f7da39aa4048572c1a"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:57quuTJcy5N3sdZPNjj4TI"
+    },
+    "102153": {
+      "audio": [
+        "102153.mp3",
+        "c1d29ed2a7c4176d7a3b461587803b87"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:1dWdDPUvGykWQRRM7ch7my"
+    },
+    "102154": {
+      "audio": [
+        "102154.mp3",
+        "c05db02a4cb26a3bf6ea7a9b4a3cd008"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:7EHrH3zGsNBRqORmPsO8MA"
+    },
+    "102157": {
+      "audio": [
+        "102157.mp3",
+        "e05a2bd882a526ca77d5e7f5d46a6b1b"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:7aa66OgrGEy4GlX9aVZS3M"
+    },
+    "102158": {
+      "audio": [
+        "102158.mp3",
+        "c31a63f18e3636495c0660c52b91068e"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:40ntXTpSxuDY8WXQIv5hDp"
+    },
+    "102159": {
+      "audio": [
+        "102159.mp3",
+        "7c31f1d82429bdb961e11153306bf3b4"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:4d5cWZifmncP4rFiT16Qvq"
+    },
+    "102160": {
+      "audio": [
+        "102160.mp3",
+        "30df285d9b7861422f51be24f8ac6cbe"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:7rX4jTHK13GtPlABme11AS"
+    },
+    "102163": {
+      "audio": [
+        "102163.mp3",
+        "e0afc40c3452b81670c5d26ac1e5696f"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:24Pgf0UUThBajPrQ7V63PM"
+    },
+    "102165": {
+      "audio": [
+        "102165.mp3",
+        "43b4671cf65932fe925017c8929b69aa"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:2qOTATnFyTMZI79K2h00wp"
+    },
+    "102167": {
+      "audio": [
+        "102167.mp3",
+        "c609bc3572fdff175a35f7db21b591f0"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:4qJf8Us9H77q6AsRtL4hpt"
+    },
+    "102168": {
+      "audio": [
+        "102168.mp3",
+        "58213c23e1512bccf9479072e77815b6"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:7eHg0AUpiuT6CXs81mFtDd"
+    },
+    "102170": {
+      "audio": [
+        "102170.mp3",
+        "919877308e6def034c282ca5612d5f90"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:3o7NYJmSTxB2mHwBQGXzp4"
+    },
+    "102172": {
+      "audio": [
+        "102172.mp3",
+        "45124e41da82f51c736586a1aff70bf8"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:64rhhZvDfPKV3svh0JZAaW"
+    },
+    "102177": {
+      "audio": [
+        "102177.mp3",
+        "c2e2283383a7edc82b1e78a025a44637"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:2RLn5sIOEXaUjSf3c15qmp"
+    },
+    "102184": {
+      "audio": [
+        "102184.mp3",
+        "3e6b9de55c11ec99ff94cecbc264aa0f"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:0XxFtaHjO3cgMove44ZYnN"
+    },
+    "102204": {
+      "audio": [
+        "102204.mp3",
+        "7828b06f9c39265b0c96298b6768cdd5"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:2AoW7T5UuicSmbX9GJyLfu"
+    },
+    "102210": {
+      "audio": [
+        "102210.mp3",
+        "fd0fdf9f0a5cb73380b9a65ef477ce9e"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:3aNnm2JXPTA3p59iLSTAHy"
+    },
+    "102265": {
+      "audio": [
+        "102265.mp3",
+        "f793ac69378929f49bd4ee20a64b913d"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:7ipiXzS2bntcbSorEK22nh"
+    },
+    "102266": {
+      "audio": [
+        "102266.mp3",
+        "02f94c1356ea674f7bdc3d8f871e1914"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:6WNGyYQyR2VVE1iLsr64F8"
+    },
+    "102268": {
+      "audio": [
+        "102268.mp3",
+        "72a20c840adf737f4a50de233c3c48c8"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:0Jof0PWckBXSvbcPZ4HZV3"
+    },
+    "102270": {
+      "audio": [
+        "102270.mp3",
+        "1a363f08154468f452237c0655d2bdfc"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:73UCPoOi9JWXr7LFtJopGw"
+    },
+    "102271": {
+      "audio": [
+        "102271.mp3",
+        "38acffe96136f9e6b64df46632af9c24"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:4PYFBdr114huQcMzRygNO4"
+    },
+    "102273": {
+      "audio": [
+        "102273.mp3",
+        "4cf5358073ad8ee334a1476723a3e276"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:7CWvJvmIjIdkdJ4sdpEcXJ"
+    },
+    "102274": {
+      "audio": [
+        "102274.mp3",
+        "3f205c69bb65385fe2ccea48c9f5b6b4"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2DM1gQLFXr7APKq26TpTSb"
+    },
+    "102275": {
+      "audio": [
+        "102275.mp3",
+        "71b8277293a267be92fcae7cb47e171f"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:5T4fIcsrPn1w6ESVJF91gV"
+    },
+    "102278": {
+      "audio": [
+        "102278.mp3",
+        "cee208278ce0998181745d1e81473b81"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:2SNDtcjmLVwog5j9qlssLc"
+    },
+    "102305": {
+      "audio": [
+        "102305.mp3",
+        "5c00dc2909f0582b75d8ee41ed655f74"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:2MXy8C8px0aEa6QewExsyL"
+    },
+    "102342": {
+      "audio": [
+        "102342.mp3",
+        "c16b5bd6176e3a29b4236936bca06059"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:2meNEUtnarDOAPmCixVzC3"
+    },
+    "102343": {
+      "audio": [
+        "102343.mp3",
+        "db017779dc3d11ac800fcbeb85cc256d"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:2F03slM5Uh5GpW1dihra78"
+    },
+    "102345": {
+      "audio": [
+        "102345.mp3",
+        "57882adbb275193cae18aedc5455a614"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:58FspyDhXKOnA95py5J8kQ"
+    },
+    "102353": {
+      "audio": [
+        "102353.mp3",
+        "4a3fcb0681f62fd597bea49669c69086"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:3n51Ew7ashTcaAUp6tReT3"
+    },
+    "103518": {
+      "audio": [
+        "103518.mp3",
+        "8871be07ae4a1bbc46a94ac822fb1f77"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:49mLXeMvyvHx4370SixImr"
+    },
+    "103519": {
+      "audio": [
+        "103519.mp3",
+        "d5cc5cf0d0b39a7099a3c23ecb24001b"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:3XUmypT3lNIYYJKwSmB5Me"
+    },
+    "103520": {
+      "audio": [
+        "103520.mp3",
+        "52df0ae698b587ade7e58212f5b57396"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:0TtV998hMSp2LbKuIpEtTK"
+    },
+    "103555": {
+      "audio": [
+        "103555.mp3",
+        "ab2635b2bb53f6441bbece8aff3d27f9"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:4RX1IC4VcaUxegoeLyNMqH"
+    },
+    "103556": {
+      "audio": [
+        "103556.mp3",
+        "4144a7829703389f17872024869a9690"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:54mHAMPUV21TAQ2Gg4pMiA"
+    },
+    "103557": {
+      "audio": [
+        "103557.mp3",
+        "88ffcb170af169ad746ef171f2cc6aeb"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:5s8w6uNS6BRf4x0QAT5g4G"
+    },
+    "103561": {
+      "audio": [
+        "103561.mp3",
+        "a923c2ef91756f801d3d7c16e909637a"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:4jxUa4D9wnPCVTBMjU1KxS"
+    },
+    "103595": {
+      "audio": [
+        "103595.mp3",
+        "efa7d9ac7dba0d73f306c0a18b51304d"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:4SpGQVOpI2X6PoohnItnKP"
+    },
+    "103596": {
+      "audio": [
+        "103596.mp3",
+        "ea5c9f833aa41f7d3e7c145ed5c2763d"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:3F8FPTbc30fgQtddntk6q2"
+    },
+    "103597": {
+      "audio": [
+        "103597.mp3",
+        "bda00d0d2a8f2e0daad4cf8383b4540c"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:0ctW7FErXt9mojBmzReR8X"
+    },
+    "103598": {
+      "audio": [
+        "103598.mp3",
+        "bd7e40fd2faa9ccf11b66774fb42d13d"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:0JQs7MHPjo314Q7zGtfj4c"
+    },
+    "103602": {
+      "audio": [
+        "103602.mp3",
+        "a466d22d2d48c611f1a23d38a11453e5"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:6T6EfG49v0i0qCv8rgPT9n"
+    },
+    "103605": {
+      "audio": [
+        "103605.mp3",
+        "242c4658f424fc7edc1782786bf2c8d4"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:3BbRAkk9cltoNiCoZnTnap"
+    },
+    "103621": {
+      "audio": [
+        "103621.mp3",
+        "4fcaee6e7082babaf612618b2f31b946"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:04Lj3kLX1OHVVWonWQy8E0"
+    },
+    "103624": {
+      "audio": [
+        "103624.mp3",
+        "0aa9e3145724e75c01991c6cd9c7ac2a"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:5QY0PUcQ9qbilO2Nxd0AUp"
+    },
+    "103739": {
+      "audio": [
+        "103739.mp3",
+        "837dcc68b4ea4bb4ef7b8806fde194db"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:68ueJC6Yg2qA1mwd1m67Eu"
+    },
+    "103818": {
+      "audio": [
+        "103818.mp3",
+        "4c8f7f30fa304f3c4c7c98c79361aef3"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:3zUZhzcxPqiGjYVb1yPrXa"
+    },
+    "103819": {
+      "audio": [
+        "103819.mp3",
+        "38a9c5811cf14cdf123abf96fc1329c2"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:7K9rPw2WjfVEjArwFi0w9U"
+    },
+    "103820": {
+      "audio": [
+        "103820.mp3",
+        "45f534f8387b66bea925d060c22096c9"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:5anMN4408f9ylqMvNzPVHu"
+    },
+    "103821": {
+      "audio": [
+        "103821.mp3",
+        "b1f055a9fb5a5a66a101b092566b28da"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:0DFbh9fDacOsNc6tVUSN1d"
+    },
+    "103828": {
+      "audio": [
+        "103828.mp3",
+        "2105d79d9723913aac9b5310aaa85722"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:0JRN3K2RllzQy7MVpLImCI"
+    },
+    "103829": {
+      "audio": [
+        "103829.mp3",
+        "f6e7510521d055b14a604e91665ae49f"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:3ydwcJz7PNL0lNv5ia1pRE"
+    },
+    "103830": {
+      "audio": [
+        "103830.mp3",
+        "334bb402d18625e1e625a04d7517cf28"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:5lwiLnGbAbGcOrg6dYJ9Ta"
+    },
+    "103831": {
+      "audio": [
+        "103831.mp3",
+        "872812176c9b1e6c656438701d5efe5f"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:4ekDN8QWcuSuC2Spb5HrT7"
+    },
+    "104146": {
+      "audio": [
+        "104146.mp3",
+        "38aedf2726d919f381f016381cfa4659"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:1bgNabMiCSlO2B0ZOKLguF"
+    },
+    "104181": {
+      "audio": [
+        "104181.mp3",
+        "7b87b700e8b29b2e9f95eb8f4955701a"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:23EhT6IwEQuOdEmp0al2P6"
+    },
+    "104182": {
+      "audio": [
+        "104182.mp3",
+        "2525d282d8920de2ef0edcbe81d3ec16"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:49ZEliRi0Bi7bBjSflTcz3"
+    },
+    "104183": {
+      "audio": [
+        "104183.mp3",
+        "a9947e0f25aa7f30e1b05d9189b938bb"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:08B6TU58xELUMJIYRCczjz"
+    },
+    "104184": {
+      "audio": [
+        "104184.mp3",
+        "12bac29dd6ed9ee05247212db6e67cfa"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:4atOgAlDS1MMTSFLPcKIfS"
+    },
+    "104185": {
+      "audio": [
+        "104185.mp3",
+        "386a8de959e6bc3a36861df6a31400cf"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:5gXGubSkCcKrCChDzAixBk"
+    },
+    "104187": {
+      "audio": [
+        "104187.mp3",
+        "5cac33677e3ac1ddf6f00faca8ad7871"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:6wuw2eaLbpa2LEVSPXIlbf"
+    },
+    "104249": {
+      "audio": [
+        "104249.mp3",
+        "3362da01116a6c60807b57204ec3e9ac"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:0biG9V600lC1n4fzKPt4sJ"
+    },
+    "104252": {
+      "audio": [
+        "104252.mp3",
+        "5a8a2063cf366a8390412aba79db25fc"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:2Z1r3ErOtfgLcO9lnZ0FY9"
+    },
+    "104253": {
+      "audio": [
+        "104253.mp3",
+        "5328627d983b3b9e8920963d086973b2"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:1A9r3T1G9ro8p7gJ0VvXss"
+    },
+    "104282": {
+      "audio": [
+        "104282.mp3",
+        "2232007343b6a5d9cef08e625bc0ba16"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:3Sh86dxWBEBPOmi2FiENKY"
+    },
+    "104284": {
+      "audio": [
+        "104284.mp3",
+        "a46574a162536399c1c1ea9260efec9b"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:1wwgVGpXuVDy4mGIJIaplY"
+    },
+    "104286": {
+      "audio": [
+        "104286.mp3",
+        "2948175fcc94aa0fcaa0d7e36fb36af2"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:7o5u3T91IivOAijIMuYJXz"
+    },
+    "104287": {
+      "audio": [
+        "104287.mp3",
+        "530271fb937c3d448605414d1f44a8ee"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:1wLVulilff0LNPBcZ6jaEd"
+    },
+    "104289": {
+      "audio": [
+        "104289.mp3",
+        "623b8ca76b9ea4488d7bf76a7d5421b0"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:7cZ9H5ScxWqaEHmzlkJGvN"
+    },
+    "104290": {
+      "audio": [
+        "104290.mp3",
+        "ab94d609da06d1eecfba4758ad1b6cf1"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:6cqO3JbIPrV9VLWt5vfnqG"
+    },
+    "104293": {
+      "audio": [
+        "104293.mp3",
+        "8541d1627358a0c3e884e53bd2aab5d5"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:1RdzTHOylqOAEvVNRyw8YS"
+    },
+    "104294": {
+      "audio": [
+        "104294.mp3",
+        "8b509f0e1acdacd7428f746510af0289"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:0AZ5EK9O73oPMTbTf2ijvV"
+    },
+    "104295": {
+      "audio": [
+        "104295.mp3",
+        "400f62123214232de4112b7b05faf3d1"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:43zI98LPKtENIQD9ZxMawQ"
+    },
+    "104352": {
+      "audio": [
+        "104352.mp3",
+        "a125573d4443089b1b8f27f6eb629dde"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:7bZruBYqNMbHDntE2W0xif"
+    },
+    "104384": {
+      "audio": [
+        "104384.mp3",
+        "432479d4b2557129142f5c335a907521"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:7BgeiQTdl71RYyNUQfRSgc"
+    },
+    "104385": {
+      "audio": [
+        "104385.mp3",
+        "838245a860295e4a6cb5582db63cac1e"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:3ijajKlPlNoWucJEsSvs0P"
+    },
+    "104386": {
+      "audio": [
+        "104386.mp3",
+        "9d14e6c1691972b8804e655079307a28"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:6kvYGJOBS2kyFIsJnLk6sd"
+    },
+    "104392": {
+      "audio": [
+        "104392.mp3",
+        "4b1b8cd538972e581178f525b5e2d6eb"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:3FOUOdyJk4Au3nAy7lKaqO"
+    },
+    "104579": {
+      "audio": [
+        "104579.mp3",
+        "1f947c1e098b400d57dacad276ab78e6"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:5pzw4dwgKMFzjk9Lx6eeN4"
+    },
+    "104580": {
+      "audio": [
+        "104580.mp3",
+        "89e24475f2b2796a4ca61dbc4c9cd830"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:0bhaFzWsTk3GIRm6DQvivw"
+    },
+    "104585": {
+      "audio": [
+        "104585.mp3",
+        "39b2b67f84471ff1eb7cf6c28d1fd952"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:3j3ntCN0nXjjq2OX7ufVnF"
+    },
+    "104586": {
+      "audio": [
+        "104586.mp3",
+        "cce33c1b2ab5377859e5ea3c5c7a5a53"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:1GDAy2VUouM7KeKaOBG0Mb"
+    },
+    "104591": {
+      "audio": [
+        "104591.mp3",
+        "86009f2e9bcc855b334bc1652fcb4a16"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:4KHsZom9ggQho8AZJUUmSh"
+    },
+    "104592": {
+      "audio": [
+        "104592.mp3",
+        "62e59a9c870e2cc85ccddee9c8098294"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:6zGqruiKjTZGzfWBnUi9k1"
+    },
+    "104593": {
+      "audio": [
+        "104593.mp3",
+        "39807c527948a2f1281f5976986e9169"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:0tDdOWunYLQPgQh87PLLYe"
+    },
+    "104594": {
+      "audio": [
+        "104594.mp3",
+        "41c9699a5d70540243c01c2739112342"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:3Oe1doefQg3iGRTA9oIc5o"
+    },
+    "104596": {
+      "audio": [
+        "104596.mp3",
+        "2ba29b337ca3ecc831dc0bd7cf1b5f85"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:6qFjIAQuYnrZt3e7vdZkrg"
+    },
+    "104598": {
+      "audio": [
+        "104598.mp3",
+        "2ba906f755abc66ab9a06cca0678aa64"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:4fokqAhpRjEn7SLaIgVuNY"
+    },
+    "104600": {
+      "audio": [
+        "104600.mp3",
+        "124737ed026aa29cceb8188d6cd00148"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:2ukUulfmws1GfM7lCvGznM"
+    },
+    "104648": {
+      "audio": [
+        "104648.mp3",
+        "412f5a1f3d5b84aeddc23c0e6669532d"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:7fJlNdK2M66SYfp0WGOFi4"
+    },
+    "104680": {
+      "audio": [
+        "104680.mp3",
+        "bac09dcee691e91e6a637e96b55c7448"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:7hsQs3SLt2TlNeWUYWSHBa"
+    },
+    "104683": {
+      "audio": [
+        "104683.mp3",
+        "52fa1a747bbea7d5577829aaa1b6bc9f"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:5mLxR0sfiHjcQwA1sn9GcY"
+    },
+    "104690": {
+      "audio": [
+        "104690.mp3",
+        "d116d6c6f02b2ff61ce6237aa09d9d23"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:4niPxBKNy6goHE7ypA8pte"
+    },
+    "104737": {
+      "audio": [
+        "104737.mp3",
+        "5d6c7650a775283e423cd19672eb3c05"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:5VTj1eU2a3jqEyUvZaTmVv"
+    },
+    "104738": {
+      "audio": [
+        "104738.mp3",
+        "93bcd8b678cc3c00f4272f232f61b03a"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:4Z67YkL0Alz1MfjisYDkoo"
+    },
+    "104740": {
+      "audio": [
+        "104740.mp3",
+        "b9faf48d30bade39338bdc052a4813c0"
+      ],
+      "key_and_mode": "G# minor",
+      "spotify_uri": "spotify:track:5oYnQZ1qvwSBa4SldbcbPF"
+    },
+    "104750": {
+      "audio": [
+        "104750.mp3",
+        "ca67884ef18029eb265ab58ca5381283"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:7jOdDzAVZP0iofbP1boCtg"
+    },
+    "104753": {
+      "audio": [
+        "104753.mp3",
+        "7cfec2e8b0447b135ef16fc65bf107ab"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:0tyqAV54NZOFwfhxmFqq5e"
+    },
+    "104763": {
+      "audio": [
+        "104763.mp3",
+        "d70ab68d152ab19aa63e38774390d6bd"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:5OyXUUbkqKDNiElfRlnUBV"
+    },
+    "104764": {
+      "audio": [
+        "104764.mp3",
+        "fc2c7ba5085d27b61b132622101556be"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:6gpmPMJnjkDqYiv8bQxZla"
+    },
+    "104817": {
+      "audio": [
+        "104817.mp3",
+        "a04b0dc454ff5232480c5c5e5c693c46"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2asa71klPX52WXGMmqmQlD"
+    },
+    "104818": {
+      "audio": [
+        "104818.mp3",
+        "8efb3e811e74811fd52261b042ef8c6d"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:5MCCHkYtWROHHK6TZDMXVi"
+    },
+    "104819": {
+      "audio": [
+        "104819.mp3",
+        "9152a4990641892ff965f60326a8d208"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:2D9n39cPRMnZWEfEDoI5mV"
+    },
+    "104823": {
+      "audio": [
+        "104823.mp3",
+        "40e6663df98d5e13bac16e37acde2014"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:6uR9j5dtijn7VOVkg7AIky"
+    },
+    "104825": {
+      "audio": [
+        "104825.mp3",
+        "4ab6a50390994715137a03490737c168"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:5ci3HueHsBBQT6k4Bz9DFB"
+    },
+    "104930": {
+      "audio": [
+        "104930.mp3",
+        "34c79aef807054267ed0b67b1eabb822"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:75cQoLKHRLa0bQlF9kYT4S"
+    },
+    "104931": {
+      "audio": [
+        "104931.mp3",
+        "3e743280f7f1cde80b301ab095283c9b"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:7fu2FZJDR9fsZOqh96EjGN"
+    },
+    "105010": {
+      "audio": [
+        "105010.mp3",
+        "76482d81f622bf7387b9d5a0107575e6"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:4uNO0iPqg2MS9YgsvuHxUr"
+    },
+    "105011": {
+      "audio": [
+        "105011.mp3",
+        "9d414e6bc54c58694a2865f5f0e0de66"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2YZSPTG1rQUgT3MnITCsoM"
+    },
+    "105012": {
+      "audio": [
+        "105012.mp3",
+        "9cd95517e0e3bc2c5a9c81ffa86bba5a"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:5RpfmWTMeAZlsgWuuclGwy"
+    },
+    "105014": {
+      "audio": [
+        "105014.mp3",
+        "9b28e7461a572b79b7b2218f778f3c35"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:7Ho0FoVkzvEuYvNqafCws9"
+    },
+    "105015": {
+      "audio": [
+        "105015.mp3",
+        "06d35556724374ff25cda56a70e47832"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:7LAFaEDx7NSYQ62zAPFSNN"
+    },
+    "105016": {
+      "audio": [
+        "105016.mp3",
+        "22330bb8aa6d6ceef9235b7727358f37"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:5GjYr0irNTfAoz1mhIaz5D"
+    },
+    "105017": {
+      "audio": [
+        "105017.mp3",
+        "29c87fc8bfe5dc5afa2fa55713beccef"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:7f6ptOcryjYnqQnhzcZAjt"
+    },
+    "105018": {
+      "audio": [
+        "105018.mp3",
+        "5a307ee9fd5ce67463178147866fb98a"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:3j7bIW0K45K8k5cxgMfR5y"
+    },
+    "105019": {
+      "audio": [
+        "105019.mp3",
+        "ca21e74e09d737a5cd5068b2dde9d2ba"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:02qSD9K0XTXvEU2iU9DJXM"
+    },
+    "105028": {
+      "audio": [
+        "105028.mp3",
+        "35546c4f0bb578b2a259793e5a0ebc67"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:0YhHme29tIC6ClKbndi5HP"
+    },
+    "105030": {
+      "audio": [
+        "105030.mp3",
+        "2d0ede3a8afc6d05b118f714f6a4843b"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:1GyAsxtMiVucMHn83Eh8vJ"
+    },
+    "105050": {
+      "audio": [
+        "105050.mp3",
+        "35546c4f0bb578b2a259793e5a0ebc67"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:0YhHme29tIC6ClKbndi5HP"
+    },
+    "105051": {
+      "audio": [
+        "105051.mp3",
+        "8c48aea37476bf5f9baba2c5bb71d6eb"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:524GJWrmU0mcW5QeDqgsjL"
+    },
+    "105052": {
+      "audio": [
+        "105052.mp3",
+        "2d0ede3a8afc6d05b118f714f6a4843b"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:1GyAsxtMiVucMHn83Eh8vJ"
+    },
+    "105053": {
+      "audio": [
+        "105053.mp3",
+        "b45ed4eca507de896a1bd7b977156504"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:3HRM8odC1gDo3CpAGIDUfW"
+    },
+    "105054": {
+      "audio": [
+        "105054.mp3",
+        "4a36912978d0c6ea98a538f2bc9f7c91"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:0s11NQFIAk4QuTWhA5AtWW"
+    },
+    "105055": {
+      "audio": [
+        "105055.mp3",
+        "45870f1935111d06a3a76a096ff9d2a9"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:5LtYLtYTMKV5pKvkj2yYYU"
+    },
+    "105059": {
+      "audio": [
+        "105059.mp3",
+        "1012c7a2cc925dc6a5fbbcb57cc589e4"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:2FA7n4vqVgThr0OQLfyg7l"
+    },
+    "105060": {
+      "audio": [
+        "105060.mp3",
+        "ce8f6aa8e965336f74a294099bd948ff"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2ZCPqh6FHpRMh8ZDXpbbD0"
+    },
+    "105081": {
+      "audio": [
+        "105081.mp3",
+        "52061601e037db4f9d25e20413fd5a89"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:1vhjWjSuZjR0SxqOCHxwcP"
+    },
+    "105256": {
+      "audio": [
+        "105256.mp3",
+        "9694fd42bdb4905e39a3184a7b4a7884"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:5ecun7938sgWZgtYzU8JlN"
+    },
+    "105275": {
+      "audio": [
+        "105275.mp3",
+        "fbc35f177e2acf1df96abdc2269b9083"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:6EBbPyzCckqLQnUjK7jERw"
+    },
+    "105292": {
+      "audio": [
+        "105292.mp3",
+        "24d0bed8211342a7b7f31ef6a6698e3b"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:7DCottekhO82v9RJfox0c5"
+    },
+    "105365": {
+      "audio": [
+        "105365.mp3",
+        "3d8e0c7db190328b1c790ce241d0dd5d"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:5PzNpYux13kYPSsm2sb6X6"
+    },
+    "105366": {
+      "audio": [
+        "105366.mp3",
+        "1ce3e29ac0f07a29a3fc9cfcc6368bf4"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:0WgJsrCfpAkZlNFUzlbPDD"
+    },
+    "105367": {
+      "audio": [
+        "105367.mp3",
+        "9fa0e3fdd165ee49c0a4beaf21927801"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:3fKUHip7ZnwyUloLfLURbG"
+    },
+    "105368": {
+      "audio": [
+        "105368.mp3",
+        "d219a957fd6daf959d1b90b31f7ef46f"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:1uTLgj0WSFD1agTuLCoNIA"
+    },
+    "105369": {
+      "audio": [
+        "105369.mp3",
+        "61e896db84bcd3544bf84afda13a4c3f"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:1exmqqLAUAhvSubTtb67Cd"
+    },
+    "105372": {
+      "audio": [
+        "105372.mp3",
+        "0672f41322063c5b06fa4b1068a8bb81"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:3xvgKJukhlXvxqfjlVvA05"
+    },
+    "105373": {
+      "audio": [
+        "105373.mp3",
+        "605e955ed4459e35ce69521a2790760b"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:30ydmd5B66Kb4IsGe0qfdk"
+    },
+    "105374": {
+      "audio": [
+        "105374.mp3",
+        "692926d0cb49fcc245cf3f7464596bc3"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:5yXwAWXbRl3Ei218FnlFuU"
+    },
+    "105375": {
+      "audio": [
+        "105375.mp3",
+        "7ba30126b8a393c59b1a94f9e1ad698d"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:2z7m4C7Z4ZVZR2CBXtZIdA"
+    },
+    "105377": {
+      "audio": [
+        "105377.mp3",
+        "f09224e1c975b4c448d64e2d686af9e2"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:2jQdbbH57wfazBnX2PsgBI"
+    },
+    "105379": {
+      "audio": [
+        "105379.mp3",
+        "6bebdc182653a9fc75e18535a638adc1"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:6Q8WJT5C50G177rw2lkO5p"
+    },
+    "105380": {
+      "audio": [
+        "105380.mp3",
+        "525c61baef5fe3164a12b57afda8d92a"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:6v9Z2y23d3TEatvQ7lzme3"
+    },
+    "105381": {
+      "audio": [
+        "105381.mp3",
+        "660b631cae1ae84d654f191f42ecbc98"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:4Y3xAaQkHNFTUanHlwiFA5"
+    },
+    "105382": {
+      "audio": [
+        "105382.mp3",
+        "75ae2e876ddf64a5101d60cda5d3af6c"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:696BBa1BqyRj1FBU18yQVp"
+    },
+    "105383": {
+      "audio": [
+        "105383.mp3",
+        "c089f57ff17f0f0558877c6e47101dd4"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:00MONNORnJzOvNTqgxCE8I"
+    },
+    "105385": {
+      "audio": [
+        "105385.mp3",
+        "21765cd6cc0f20e6f166827df4ec930c"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:5TNWE78JOQ6182Gni68uEe"
+    },
+    "105536": {
+      "audio": [
+        "105536.mp3",
+        "fcc551e6097b1bceb03e7d108dfd412f"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:5KVuXYuF8YLSBEte27Pluk"
+    },
+    "105538": {
+      "audio": [
+        "105538.mp3",
+        "18ebbb8030ea4b41b343a368582bb166"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:4TTKsjBiwVXuDkzerSEVFN"
+    },
+    "105539": {
+      "audio": [
+        "105539.mp3",
+        "e0980957fd48174b8eb6e7f8c0c9a288"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:7CHntnrrcD3SDlPxOxidDQ"
+    },
+    "105540": {
+      "audio": [
+        "105540.mp3",
+        "12538c8e1c62b389cae2064582d12cb8"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:7kBpuqLoX3WKiMTg1t2QWs"
+    },
+    "105541": {
+      "audio": [
+        "105541.mp3",
+        "013e33e1239872974f79447ca1b9f514"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:28Up2XjLp7vLecuwTVcqMq"
+    },
+    "105543": {
+      "audio": [
+        "105543.mp3",
+        "f67a0f7c348b9b21fe23b69b64655452"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:5RgNNUVjfpUDtRG8VuFG2a"
+    },
+    "105544": {
+      "audio": [
+        "105544.mp3",
+        "4e3f3d164a0188c9d55ddc2dcddc0011"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:6N4Ctm2UQYR4XdtQDpsTVv"
+    },
+    "105559": {
+      "audio": [
+        "105559.mp3",
+        "df90ec40313209a14c2076541f568fc0"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:1DEQKAABGTJ2Np3y9xmrGM"
+    },
+    "105560": {
+      "audio": [
+        "105560.mp3",
+        "ff7b090513151dba10a47dc0c2c60db2"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:0F5zeuVgHpQjuWeqlASgZF"
+    },
+    "105663": {
+      "audio": [
+        "105663.mp3",
+        "eb6dadde6c567194d02f422c62a3d9c7"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:6v1zarDKCtvq2jCGTK4uYA"
+    },
+    "105664": {
+      "audio": [
+        "105664.mp3",
+        "998788ec2ac3c91541ea41a3c3bab52f"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:2BgAqq1Hw10JO2ZvD0PSnm"
+    },
+    "105666": {
+      "audio": [
+        "105666.mp3",
+        "efc0eb65fe229f08f20226a3c0f5a2a4"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:3oYTLvfRmEDUqtcEv9l3vB"
+    },
+    "105667": {
+      "audio": [
+        "105667.mp3",
+        "d66d2ccc3229e8c9c8a7f29757ea6a71"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:0XBP9uxrcmPxeJ4Bc3S0le"
+    },
+    "105668": {
+      "audio": [
+        "105668.mp3",
+        "82fe89abd6af501fef0eff113d5a2b4d"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:6c8u5zVio4QTt2ikMF1kbv"
+    },
+    "105674": {
+      "audio": [
+        "105674.mp3",
+        "27036f00fd25ee61d9df7aef3f5ce499"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:57NeFyfQuLHsIY3oPH7WZN"
+    },
+    "105699": {
+      "audio": [
+        "105699.mp3",
+        "3152579efbcde3b2c576ee7bf4c9d64c"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:71jdUVIzeQ0VJiSGYGxDHw"
+    },
+    "105703": {
+      "audio": [
+        "105703.mp3",
+        "7c180839a0847cf59f21d32a03dcb111"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:2eMjKKooCgGLIecLbxEpgU"
+    },
+    "105757": {
+      "audio": [
+        "105757.mp3",
+        "b61c687ec7f0d90d4c6deb1361cdc227"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:0sHp6xMX2v38pIAFfPIOwL"
+    },
+    "105758": {
+      "audio": [
+        "105758.mp3",
+        "b2fb81274d95f52bb3d86718c4d063e5"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:1gljTshEp2vIn8GRUYVlLV"
+    },
+    "105860": {
+      "audio": [
+        "105860.mp3",
+        "0ea40f4d5515da6c25f16cffa480edcc"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:5gTUvDIXzRRJWXzZWqRuRu"
+    },
+    "105976": {
+      "audio": [
+        "105976.mp3",
+        "923caa034e48c482a8ff397865c796e6"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:0oOaYl2et4nKbswZZB4ZwX"
+    },
+    "106181": {
+      "audio": [
+        "106181.mp3",
+        "68fc2920907a33c4b0da41cad8710a71"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4wNS4nbFGG5jLYG1shAleK"
+    },
+    "106190": {
+      "audio": [
+        "106190.mp3",
+        "7cc99ce2c752bca1c055eea2d37f81b9"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:27pKO0lEXHUQ1ui8YGWsiK"
+    },
+    "106194": {
+      "audio": [
+        "106194.mp3",
+        "a590de6fe3e20670086525a728cc7000"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:1Jvdj2WofYzcbvhOeRT1a2"
+    },
+    "106242": {
+      "audio": [
+        "106242.mp3",
+        "7fc99fe4742c0ce3e1cfad47ecc29190"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:14oNYEXvQyZiyGogfR4s6x"
+    },
+    "106243": {
+      "audio": [
+        "106243.mp3",
+        "fe8028e329e49981757020900ff399bc"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:7wrz3Jws3snH3XLR4E3gbp"
+    },
+    "106244": {
+      "audio": [
+        "106244.mp3",
+        "f71e2b51690a892481ab91fe91e867fc"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:3XuRMIzbENiCKFSHb1aebL"
+    },
+    "106245": {
+      "audio": [
+        "106245.mp3",
+        "00bb6142a259395e2afef2fb1cc0578f"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:1qcoD2m7I6U7O2yTryH9gp"
+    },
+    "106246": {
+      "audio": [
+        "106246.mp3",
+        "66e4e55217c6c7021761002c3cace4c0"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:0UpHtKbVGZqZwlDbF9KKbP"
+    },
+    "106247": {
+      "audio": [
+        "106247.mp3",
+        "51c9ba3cb94f65b18354f851a30a9fa5"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:3giI6cCkDSqBaPw46bGjLR"
+    },
+    "106248": {
+      "audio": [
+        "106248.mp3",
+        "d6a632785932736ca2fecdb368415512"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:2cFrF6PaRAaHv6nVKQyIGi"
+    },
+    "106249": {
+      "audio": [
+        "106249.mp3",
+        "52e570abb1174e566b5dc349676943b7"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:1Wc9MK1wvNnjtYcqWa3QjL"
+    },
+    "106250": {
+      "audio": [
+        "106250.mp3",
+        "13df26191f4478cc103ba0a727aacb9d"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4mIaLYqLHL6bB0EjaHtAoR"
+    },
+    "106251": {
+      "audio": [
+        "106251.mp3",
+        "8dc2bfe7d744d3e665744cb3684da86a"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:2MveY5zDO54wfK8z3BilKl"
+    },
+    "106254": {
+      "audio": [
+        "106254.mp3",
+        "6d7271f3ac961912402376acc6b29aa3"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:0HQrwn3vm6QoTNgHimjfQr"
+    },
+    "106255": {
+      "audio": [
+        "106255.mp3",
+        "9f5971fb996de036c4f9c996dcfabf12"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:2hz1tQZy4pRK3rxEi7OZnL"
+    },
+    "106256": {
+      "audio": [
+        "106256.mp3",
+        "ce817c9a75c8d61b4234eb178441dc54"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:7wpZMiNpVRdnDF8ehyU4PN"
+    },
+    "106303": {
+      "audio": [
+        "106303.mp3",
+        "d12304e0c1e8df2f0177051739d08c52"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:70NEAtSgNSvWpIhPyC5dSL"
+    },
+    "106336": {
+      "audio": [
+        "106336.mp3",
+        "8a72dfa78e4587d22eba5eaa402fb190"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:5pVuo14FI6wmamxd1d2bDp"
+    },
+    "106385": {
+      "audio": [
+        "106385.mp3",
+        "3435c94351584988da3ed714f436c20f"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:1WmKGsHx2qjEY51DrPts58"
+    },
+    "106387": {
+      "audio": [
+        "106387.mp3",
+        "c46398bc29453f061ddfb8bff9e0954b"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:2Jax7yf9YM9YYh8EieuLaw"
+    },
+    "106391": {
+      "audio": [
+        "106391.mp3",
+        "56c92897d9d94ec5fc36aaef7348b5e7"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:4MseBM3ZgfFc8cUJCNsbhS"
+    },
+    "106392": {
+      "audio": [
+        "106392.mp3",
+        "cb86a4d4d8bf043a7e28984373c964dd"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:30RNFWCibrxUPtzZLhj1ud"
+    },
+    "106393": {
+      "audio": [
+        "106393.mp3",
+        "7912cf9955aef4e95c66104d67454e6d"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:3gTNt8qmoBCEC1XfKVqGe6"
+    },
+    "106418": {
+      "audio": [
+        "106418.mp3",
+        "1a8a4492bc256de9443389dcc9652fea"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:7n8Z8w0Z2BflIxw2PLaAwh"
+    },
+    "106419": {
+      "audio": [
+        "106419.mp3",
+        "541e1370647866fcd1975644e172e215"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:4Gu4xN74kjaIfG6Xm8iuL7"
+    },
+    "106423": {
+      "audio": [
+        "106423.mp3",
+        "1e533fa24cb545ed7dddd2154da5259b"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:5Df0VZIjKN1MOAqQx0GZUl"
+    },
+    "106424": {
+      "audio": [
+        "106424.mp3",
+        "488c1dd2533008e2d88eabf4a89a1752"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:2e5fEIhEYUetC7h5nDoajv"
+    },
+    "106426": {
+      "audio": [
+        "106426.mp3",
+        "e87e5fdfcfb1d11e8eeb5a7551fcc333"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:7ueeLQAW7XBfXDa6zMs2A7"
+    },
+    "106433": {
+      "audio": [
+        "106433.mp3",
+        "0d3c5c6b50d65ddb38347b9f6f0f2afa"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:6Higj6b4rDx1axGBoR6ojM"
+    },
+    "106436": {
+      "audio": [
+        "106436.mp3",
+        "99e03df6b9a956b92b5be6ea77526206"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:6OvqiJPmS5nP37fvBUkiwy"
+    },
+    "106441": {
+      "audio": [
+        "106441.mp3",
+        "662ec354818e55635d551008cc51d094"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:2JafzSUmyBhLVgXHgzFmDU"
+    },
+    "106495": {
+      "audio": [
+        "106495.mp3",
+        "988a547b3694a94efdad9c460d5ba629"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:6XHoJ8VYR8UR6ZiNdR8Ois"
+    },
+    "106496": {
+      "audio": [
+        "106496.mp3",
+        "0b3800b099093d23192af24e712d00e7"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:3BY1pWff2ankpqpPtdfY4n"
+    },
+    "106514": {
+      "audio": [
+        "106514.mp3",
+        "c23909df55128964cb855e6551731df8"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:4Nn9Scl8cPuA3wPGCZhcya"
+    },
+    "106518": {
+      "audio": [
+        "106518.mp3",
+        "5bd2b700de39d06f9b1a6a93221f2503"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:0jfBX0d5JJyZ04tHJpQuXt"
+    },
+    "106576": {
+      "audio": [
+        "106576.mp3",
+        "01942d4d78a69a19bf6321382491cd30"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:1GXO1RCsL8FKEj0OCGZADl"
+    },
+    "106577": {
+      "audio": [
+        "106577.mp3",
+        "47030556958dbce495fe8f392a30f397"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:2EgnRm4mCgQRbih7AETxLm"
+    },
+    "106578": {
+      "audio": [
+        "106578.mp3",
+        "b819322948cb8bd13b50134bc478ecb5"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:4eqphErSozER5vA6dM1B4e"
+    },
+    "106580": {
+      "audio": [
+        "106580.mp3",
+        "78a21e23f63fff38e157156188c5200d"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:0KzjNY4FyGkgz5oFqSEfVZ"
+    },
+    "106581": {
+      "audio": [
+        "106581.mp3",
+        "95bd82c64503c4353f3a21ecf28f686d"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:5LX7MQdBVzNe3iGcCmtS8U"
+    },
+    "106582": {
+      "audio": [
+        "106582.mp3",
+        "80c1d072a50bcda95f08f93cd126521c"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:3PNJgUX4SciCX31Vg773x4"
+    },
+    "106583": {
+      "audio": [
+        "106583.mp3",
+        "263db5536a95493756dfc2026b55d1af"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:1X1tzsxByI64behBKBZSxA"
+    },
+    "106584": {
+      "audio": [
+        "106584.mp3",
+        "4d72b52bac2dd3211e17f5acbdb010a8"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:2BKMRDxgbH1wB2uybNdnEv"
+    },
+    "106603": {
+      "audio": [
+        "106603.mp3",
+        "276cac0e76205e7fd41aa4306b0de47e"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:5be5pqiYHVnLgtrtin3Re6"
+    },
+    "106607": {
+      "audio": [
+        "106607.mp3",
+        "8e3b4001c905e6e4ed5a89026d945d7a"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:1vZ2CxrhObJTswsVHRpctM"
+    },
+    "106609": {
+      "audio": [
+        "106609.mp3",
+        "483661fdd6dc824b9270bb3d46a3d104"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:4ySYt4TUee6BrMV8nV2e6r"
+    },
+    "106633": {
+      "audio": [
+        "106633.mp3",
+        "1fd034fd694466ec4fbf0cf3e970d1eb"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:5zVmti5ZftyCH06AicUB7p"
+    },
+    "106637": {
+      "audio": [
+        "106637.mp3",
+        "3de1c907e4285e88dbb5202ade86d852"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:6pwqmTp1qL3FaXgqV5Gr1C"
+    },
+    "106639": {
+      "audio": [
+        "106639.mp3",
+        "ac0088dc3bea515d4b6a2f1831529237"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:22KYLTk04Y7KnsLmCZVAF0"
+    },
+    "106667": {
+      "audio": [
+        "106667.mp3",
+        "e100a6dcb0b7cb6128a507dee923b977"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:2zWeqD4bdUk5nrauYN8aaE"
+    },
+    "106703": {
+      "audio": [
+        "106703.mp3",
+        "f69f9d3a1750754990c5d6e4ba80e4c8"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:4ovFf7xLCXLRyURiF7MRgw"
+    },
+    "106716": {
+      "audio": [
+        "106716.mp3",
+        "4784a62aab27dd5b2dc590e8e397958e"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:46zax2Ba5BNTwK2Na06ZEx"
+    },
+    "106857": {
+      "audio": [
+        "106857.mp3",
+        "0d26028f8ef528693bce9961565b1a12"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:0Jyz1dUGLJrkGW3pKzyMai"
+    },
+    "106878": {
+      "audio": [
+        "106878.mp3",
+        "b02e1b7a126076c4f604f346834301c7"
+      ],
+      "key_and_mode": "G# minor",
+      "spotify_uri": "spotify:track:4PSHYJEpmZGBIeZByKs9d8"
+    },
+    "106880": {
+      "audio": [
+        "106880.mp3",
+        "839a8f39df7c7c94ab3cdfb5e407d77d"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:4aq1dMwb13FCCSk2oziuNN"
+    },
+    "106881": {
+      "audio": [
+        "106881.mp3",
+        "59640822c9f88d42e6933f6176cf4456"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:68ZsMGT2aLQ99LeefVxvEm"
+    },
+    "106899": {
+      "audio": [
+        "106899.mp3",
+        "9d702f4153642aa46c80063615b087c4"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:6gEY7SE7hNwJ9JtSQOo79c"
+    },
+    "106905": {
+      "audio": [
+        "106905.mp3",
+        "da59953ea348eab6870018ab6e8053bc"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:3ompVd6kBCr1em6I2waz2q"
+    },
+    "106907": {
+      "audio": [
+        "106907.mp3",
+        "4c1770a388f124d5019e5af694fef8f3"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:7Gdnp1H5Z1ivbxxNXDoGFH"
+    },
+    "106909": {
+      "audio": [
+        "106909.mp3",
+        "151ab8d4e57ea8230328bd4afe982720"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:72m04pisKKgBAFw3kV79xz"
+    },
+    "106910": {
+      "audio": [
+        "106910.mp3",
+        "deaed89554ec7d627759247188f7f4ad"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:3nzUlJSa3WDST4kZ8qX27x"
+    },
+    "106927": {
+      "audio": [
+        "106927.mp3",
+        "4ecd9488ebc64f208b1855dd27d28ddf"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:5Hd0bt9njlpxxyq0yihAj4"
+    },
+    "106971": {
+      "audio": [
+        "106971.mp3",
+        "829063c45fc535fa1ec5272df2b69b90"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:0qoa8ufbRTzmWPyGzAVLJT"
+    },
+    "107033": {
+      "audio": [
+        "107033.mp3",
+        "6aeabbcb8eb0ca138880c209663d762c"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:54pAexc8Ea5EAzFcKhvivP"
+    },
+    "107034": {
+      "audio": [
+        "107034.mp3",
+        "f3f994520e22d61017a41ebaa14241b9"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:5JSqmBru6sCqWrPdn0vlGR"
+    },
+    "107036": {
+      "audio": [
+        "107036.mp3",
+        "0c82d040af45c017710ee33e7e959b83"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:3pcdRqbM1j9jlX9t3LEPcA"
+    },
+    "107037": {
+      "audio": [
+        "107037.mp3",
+        "1d7afc5e8338c8053848ec433348b450"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:566AFx2pDDxua6Ff2xNmih"
+    },
+    "107038": {
+      "audio": [
+        "107038.mp3",
+        "90f4cf81953119e5d37fdc3dd8532000"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:7IKlhzyn0qQz4H7Gp8E2FN"
+    },
+    "107039": {
+      "audio": [
+        "107039.mp3",
+        "6e7420b7efc05d234ed1ca8c13de9cef"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:46FCFrsXnTG8bn5VWXKSMA"
+    },
+    "107040": {
+      "audio": [
+        "107040.mp3",
+        "08b3f2cbd19926e6086d8808b9118b19"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:3SfNMOezy7cGXJtynFhJri"
+    },
+    "107041": {
+      "audio": [
+        "107041.mp3",
+        "02dae5c617fbee4776624fba50d2168a"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:7G8FkHa9VYxPm2Nr6N0pcJ"
+    },
+    "107042": {
+      "audio": [
+        "107042.mp3",
+        "0ddb31518ad5775dfa8923e8383f8362"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:6uyicMtOtexz5PoZT6UmkM"
+    },
+    "107043": {
+      "audio": [
+        "107043.mp3",
+        "0f178173c73687afce752e202135d2dc"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:4KjiDbboSskF43pdJWpenM"
+    },
+    "107101": {
+      "audio": [
+        "107101.mp3",
+        "bdc94dcccd3f96041a9114613f8437af"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:6cZLg3qMr0689WUFVnzL0h"
+    },
+    "107102": {
+      "audio": [
+        "107102.mp3",
+        "284db4c5d1b17f539115fb77f4e8537d"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:2wveW3fXaQhZYGJNdtPKSh"
+    },
+    "107103": {
+      "audio": [
+        "107103.mp3",
+        "7d51d4c23fbd1d13c867981757cd943b"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:0X7BIXCIzyrtCfawu7SZuJ"
+    },
+    "107104": {
+      "audio": [
+        "107104.mp3",
+        "98e3f71ca850de03db7a5b6924533d66"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:5pNNIH0p0Xf7tEA3FRXCsN"
+    },
+    "107105": {
+      "audio": [
+        "107105.mp3",
+        "627e4604b2da44e78e61aa1e061aa504"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:6OCuVyf2qdjtr5QfrfdLvZ"
+    },
+    "107170": {
+      "audio": [
+        "107170.mp3",
+        "b69b954f7733d9a963c70ea9dadc6b02"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:1BpgsVnHPA5EEASQHm38oM"
+    },
+    "107171": {
+      "audio": [
+        "107171.mp3",
+        "875c3b57fa4a6ac718a1875c0b28b277"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:2DyquTbaR3yqbMI0z5mtVK"
+    },
+    "107172": {
+      "audio": [
+        "107172.mp3",
+        "06073ddf46915bf2cc57fac86f8e89bb"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:3fF8J9r3hnj09WkWVwKq90"
+    },
+    "107173": {
+      "audio": [
+        "107173.mp3",
+        "2ffa776c1c1895464d2e86ba4742628a"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:5iwlPVAl5wuaSiwaMafFZd"
+    },
+    "107174": {
+      "audio": [
+        "107174.mp3",
+        "ca47ad715b4800dde86e1d06eae215ba"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:0Lk76ohhK0ctNzZLGhxXMD"
+    },
+    "107175": {
+      "audio": [
+        "107175.mp3",
+        "90e81d65ecfbbe4ae241010434f095f5"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:5Zytibi06EKEUAXvJWhRQ3"
+    },
+    "107219": {
+      "audio": [
+        "107219.mp3",
+        "66b3bf431121636676351dfc9c563695"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:1WVgg5QAIIPIhvQ1GhE0RK"
+    },
+    "107222": {
+      "audio": [
+        "107222.mp3",
+        "6aa38558ad4984d56913c82b8855f15e"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:2Bo9lZbJvGlJrmI7HZofhA"
+    },
+    "107259": {
+      "audio": [
+        "107259.mp3",
+        "9ffecf176ca33922ccf81af06bef8cff"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:18GeGsqPpifdiqrYFOFnVG"
+    },
+    "107261": {
+      "audio": [
+        "107261.mp3",
+        "1583c1447a83fe140737979f1806ff54"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:42Ks7IbcOvkDRHOSaQZ4XJ"
+    },
+    "107265": {
+      "audio": [
+        "107265.mp3",
+        "9cc64192f2a90b498ad3471f1a9800c5"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:6G6btmLm8l7jGSBaz8JnO5"
+    },
+    "107342": {
+      "audio": [
+        "107342.mp3",
+        "c55c29a561da3ce7eea4279ee56d2b68"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:6Xn9vkq4nvHOWhagf3168L"
+    },
+    "107344": {
+      "audio": [
+        "107344.mp3",
+        "feb3009283128d48f4fe9a5f1a5da3c2"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:06rXhfp6EyuPhisypU3eAV"
+    },
+    "107345": {
+      "audio": [
+        "107345.mp3",
+        "b43b41bb64cbd60cb57af3fbb628946a"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:3dvfJMKVPbwxIvukqwWLTI"
+    },
+    "107346": {
+      "audio": [
+        "107346.mp3",
+        "54dc851e9818e2d447b473683659cd10"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:7vhSk7bLrzC1cpgRwa5uVt"
+    },
+    "107347": {
+      "audio": [
+        "107347.mp3",
+        "27a113005be65843e5896c391fe6907b"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:6M7Ql9PRXrM1CX2EZSlkFR"
+    },
+    "107348": {
+      "audio": [
+        "107348.mp3",
+        "fa86b08da542f5c29681fcf4881c43fa"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:4es2aiFJ3zIFitLpVKGJeM"
+    },
+    "107350": {
+      "audio": [
+        "107350.mp3",
+        "5d010305a3413d4e8c6965b37e3e172a"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:2NefE6B0kKssKqGp6Cxd95"
+    },
+    "107351": {
+      "audio": [
+        "107351.mp3",
+        "718eb5d1d26debce7fdba74f851cbd42"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:4Piz3X660g9bu8fymDOy9h"
+    },
+    "107352": {
+      "audio": [
+        "107352.mp3",
+        "037316c9712080ceae5b485c3a04af7e"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:43QG9uEsuQv0K8C3CMg5iM"
+    },
+    "107353": {
+      "audio": [
+        "107353.mp3",
+        "44a4a565a66c6f0f2aebd80239a94ed5"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:6wBCK9lwqL92THZrM2RE8z"
+    },
+    "107354": {
+      "audio": [
+        "107354.mp3",
+        "706647f48609beedb0e9ecaf16a606ff"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:5yz3PTBGu7hCqUolt0xYgs"
+    },
+    "107367": {
+      "audio": [
+        "107367.mp3",
+        "3cffd21be334ad77dc84a7000b015b3f"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:2c9sUpUjb5YMsGFHln8cPp"
+    },
+    "107373": {
+      "audio": [
+        "107373.mp3",
+        "690c06a3896e9d0d90a2a4930552946b"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:1IgPzBtD1K3a5gBb6kMyrm"
+    },
+    "107376": {
+      "audio": [
+        "107376.mp3",
+        "58277d9c162e563e9d26a5e2762898a6"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:7BWMtBAWhmI8wtJPf5D0YJ"
+    },
+    "107383": {
+      "audio": [
+        "107383.mp3",
+        "d8ec569a574286ed33383a0d2c1d2dbe"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:75Hzfmp8jCYRLFoemtsFgZ"
+    },
+    "107403": {
+      "audio": [
+        "107403.mp3",
+        "e8b9a167a3c0d06de0c30ee2ae8d00c5"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:6QMHu5PJVrKXLpkDDQvs2I"
+    },
+    "107404": {
+      "audio": [
+        "107404.mp3",
+        "d108e90e13736228f53c3904a71c97ee"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:09qYVxUuD1XhXNIqLDBERE"
+    },
+    "107424": {
+      "audio": [
+        "107424.mp3",
+        "438d74e4207826c497d7fd3fed7f8eff"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:4ozwCrHAmG4AfbPjozZFuK"
+    },
+    "107473": {
+      "audio": [
+        "107473.mp3",
+        "161c4ba9ccbbe318ddcb75f679f3f680"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:3IEo5LXiBhDF0gskNIW9vT"
+    },
+    "107475": {
+      "audio": [
+        "107475.mp3",
+        "396ba2d010fc77dbbe096c18396965c4"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:60kyTM7xhHl7EkGdk2zL1Q"
+    },
+    "107477": {
+      "audio": [
+        "107477.mp3",
+        "6d8b2efb08d6b79cbbde7e9441a9d26c"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:6gzBSqqZDlRI2lXnz3igtB"
+    },
+    "107480": {
+      "audio": [
+        "107480.mp3",
+        "266a9115b4865b901d8f7d4cd5e975df"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:2necgoUpA8eLRcvFpX0wFf"
+    },
+    "107481": {
+      "audio": [
+        "107481.mp3",
+        "66a035b5723d0b558311b745a69eece9"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:2wEryVllDXO0mjVcPaIW1r"
+    },
+    "107482": {
+      "audio": [
+        "107482.mp3",
+        "e5e2f2213f5abfb7152b5fba6d5ef3c5"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:567pxveR1TEm1CusEwcTi1"
+    },
+    "107483": {
+      "audio": [
+        "107483.mp3",
+        "1becb3fa836c4d5be4ce966ded38b330"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:3W4HcXMivijJ9r9iVUjvgj"
+    },
+    "107499": {
+      "audio": [
+        "107499.mp3",
+        "86141bc2856d07be45db613ebefd12e3"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:31DtuEXDuelgjhdRGUDSW6"
+    },
+    "107502": {
+      "audio": [
+        "107502.mp3",
+        "077cd3dba98a1637f4ee8130180f90ec"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:3ABZESop6JJFsoeiNFW8uZ"
+    },
+    "107503": {
+      "audio": [
+        "107503.mp3",
+        "a48e063a9e4fb77a2b9d83c1ce2da9d5"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:70bJgx3E2lCbNHbpwEROnc"
+    },
+    "107504": {
+      "audio": [
+        "107504.mp3",
+        "a7512dc85aa09ecd3e277689819c0f19"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:1Jm9o2nmTMDzbMFhBvrAmX"
+    },
+    "107505": {
+      "audio": [
+        "107505.mp3",
+        "e0b35f8c8dcc274e83f025acb70269c5"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:1e50qmMCJFOtCXGAGmOjjt"
+    },
+    "107506": {
+      "audio": [
+        "107506.mp3",
+        "6c3fcff83817ea51002205e0531c4a26"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:48xhszbEHY45UIXLGaoXrg"
+    },
+    "107507": {
+      "audio": [
+        "107507.mp3",
+        "e77ea8f08698f8076e50677080f3eacc"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:0lvrsQbDOA7yvMbUVgxGzA"
+    },
+    "107515": {
+      "audio": [
+        "107515.mp3",
+        "9dcb94bb2018683cf07ccf215eb4499f"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:0wFCDDwp4ybgsBX9XT22E9"
+    },
+    "107516": {
+      "audio": [
+        "107516.mp3",
+        "2698441c3cb5331163503d70e9baec15"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:1FKDDeOGguyigebuEAyfxO"
+    },
+    "107517": {
+      "audio": [
+        "107517.mp3",
+        "336037d32eb05f07227a259ce5d4013c"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:6lKbajl4bUlejT89pnP7Gt"
+    },
+    "107519": {
+      "audio": [
+        "107519.mp3",
+        "60afe8cd6ec4e5aa507de6b850b990d9"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:1pipMsoH3VvBDCwxPBfwg9"
+    },
+    "107520": {
+      "audio": [
+        "107520.mp3",
+        "7fba4e3b93a8470c6cdfbefe22eb5e49"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:2ceVkj1pa8Uc9tJVvGx1mb"
+    },
+    "107521": {
+      "audio": [
+        "107521.mp3",
+        "e5509ff0fe78fd300b732612b185a1e7"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:0Io9qUAYV9Y0ZiJpwE01ti"
+    },
+    "107522": {
+      "audio": [
+        "107522.mp3",
+        "1c0ba5fada869214c750a11050d56f16"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:00BubyM3YH29MYTqWN5UgM"
+    },
+    "107523": {
+      "audio": [
+        "107523.mp3",
+        "811cf6a2fc41749f76fbbcbffc4c27e3"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:5JepjYDzPwUHgVoXi616TB"
+    },
+    "107524": {
+      "audio": [
+        "107524.mp3",
+        "dfc144659045960e7f880777e2092b72"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:62c51hy0ibb0Xn8jVUP7SC"
+    },
+    "107525": {
+      "audio": [
+        "107525.mp3",
+        "da859400b79fffa0de4f25e78f7ea9bf"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:05u3awmEO2gmpCkeYFSvtY"
+    },
+    "107526": {
+      "audio": [
+        "107526.mp3",
+        "d657b6fca721ec14740f2283e0a5cd0c"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:3rWe9q0hU4gwMb8AeOIlJQ"
+    },
+    "107527": {
+      "audio": [
+        "107527.mp3",
+        "3012baa257139d8642488a6344bc5ff2"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:0FFy2MsDrIg4QJR6107FIT"
+    },
+    "107529": {
+      "audio": [
+        "107529.mp3",
+        "c652e1c1bcd0e5228ab9a4f23da44088"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:4aEH9qycxNWoi7ky3RUsp6"
+    },
+    "107613": {
+      "audio": [
+        "107613.mp3",
+        "f215233d3c5b59bf6e27e0cca3176aca"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:0HMwYyuDiDKBl5B7KH4gYs"
+    },
+    "107614": {
+      "audio": [
+        "107614.mp3",
+        "f8c29635f746cdcbe3cec038b73844ed"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:4thaYZDXfglsQ3yrNTlsgi"
+    },
+    "107616": {
+      "audio": [
+        "107616.mp3",
+        "204a4df03f4cad855dbe33572b12ebf0"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:3CxUONa9lSrNt2jFje5dWp"
+    },
+    "107617": {
+      "audio": [
+        "107617.mp3",
+        "a87d8da1b1cb8aad6ac6b01db233e4f5"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:3zkeZnaPmX0SOMlGyLUZsf"
+    },
+    "107764": {
+      "audio": [
+        "107764.mp3",
+        "d1a7d9ea696ffdc46e89040214424e4a"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:2oSDQr1UCaSmF2WRXku0Cp"
+    },
+    "107802": {
+      "audio": [
+        "107802.mp3",
+        "51307feb4475cf519b032c070b65543b"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:0nEqaGPwBDcwGra61D5tq1"
+    },
+    "107803": {
+      "audio": [
+        "107803.mp3",
+        "3dca54982b331fb6fbb7749c72bc4fba"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:4nJF0zg8Pw0Zpu6YMkIyNH"
+    },
+    "107807": {
+      "audio": [
+        "107807.mp3",
+        "ddd976fb1a192957b790ce282dab978d"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:4Hb3I3GZa1o6XAsvkaLPOE"
+    },
+    "107852": {
+      "audio": [
+        "107852.mp3",
+        "59da4c4755560f68515018bffd11a0db"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:3gmoUOYobEbD18cvwOTRNn"
+    },
+    "107853": {
+      "audio": [
+        "107853.mp3",
+        "b3c4862fdc0eaca6a007a0781687c5cf"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:2u96sTAjaTwn8MuNclpLqa"
+    },
+    "107854": {
+      "audio": [
+        "107854.mp3",
+        "1c47cfdf91a38a74f4533baa24124dd0"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:1xdGUN8rk2ufKatJGC4qUK"
+    },
+    "107856": {
+      "audio": [
+        "107856.mp3",
+        "bb9d93d2b792e7f7a274ec7a6ec8082e"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:1oNlGf3GzgSma7kIljy3Nu"
+    },
+    "107872": {
+      "audio": [
+        "107872.mp3",
+        "4d8102c37c9166eb7471bdab1602156a"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:6yfQYiBamQs5L6jqTNDb2O"
+    },
+    "107874": {
+      "audio": [
+        "107874.mp3",
+        "3c70d8722855e1c37d0e80e2f9ec3332"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:7Ho8HLQZbHh6xzMDueyIsi"
+    },
+    "107877": {
+      "audio": [
+        "107877.mp3",
+        "0896be68b0a895bd0f223f2130556782"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:5VSS6CFMmPcbrJX1xzHktJ"
+    },
+    "107878": {
+      "audio": [
+        "107878.mp3",
+        "2dbe6e59447da4387bfe24fe3cd213cb"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:4pT2nRRLa6D7DkQVGtnX3I"
+    },
+    "107881": {
+      "audio": [
+        "107881.mp3",
+        "5caae158094b071b1b9a188a55af0ad3"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:1wAR1B5TynO2E3aqspM0aE"
+    },
+    "107883": {
+      "audio": [
+        "107883.mp3",
+        "08663f1337e74814ab41d59d3f73c616"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:76RvwqAxu37MlNJaGJAfa8"
+    },
+    "107884": {
+      "audio": [
+        "107884.mp3",
+        "0f1af647340b05dede772cb5f84b177b"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:71LzwogbPGgQH1KpVkVGxs"
+    },
+    "107885": {
+      "audio": [
+        "107885.mp3",
+        "ba0bb926d770f3c38369bb23914f0644"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:6hfxkImjGqKjG0UfvomBpj"
+    },
+    "107891": {
+      "audio": [
+        "107891.mp3",
+        "15df05cb20891929e622b5ec2b49eae5"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:4cLRejNgHvXyBVEtunQxNB"
+    },
+    "107892": {
+      "audio": [
+        "107892.mp3",
+        "6b7db70dc7ed57623d6dbdc0339b9889"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:1JAihlWCOUyJzleu3bptuL"
+    },
+    "107896": {
+      "audio": [
+        "107896.mp3",
+        "512790f36287cde52a96e746feb50683"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:74f20vtfXzwORpaIZ7PRer"
+    },
+    "107898": {
+      "audio": [
+        "107898.mp3",
+        "4c48ca2d784a63ce0aeecf93e2359327"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:3rEt6am82wUoMFUP0OeDs3"
+    },
+    "107914": {
+      "audio": [
+        "107914.mp3",
+        "3a9a69d688c9112b63a6d1787577c1b1"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:6LbWJUPpttxsKXPQdNmTML"
+    },
+    "107915": {
+      "audio": [
+        "107915.mp3",
+        "e5da93a7e66123ee62f9e7b4386e3f87"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:77VhdUInxmR3eTZDVu4F07"
+    },
+    "107917": {
+      "audio": [
+        "107917.mp3",
+        "023310740be5bcb6858727e750d6594a"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:4Y4HE6L13xwJsbxXI61bsq"
+    },
+    "107918": {
+      "audio": [
+        "107918.mp3",
+        "357895d563bc791bdc08d0b67a7812c4"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:16sk3TzO5TqWzPwAS4pfHj"
+    },
+    "107920": {
+      "audio": [
+        "107920.mp3",
+        "543cc77e6b8c3a7dd1a1973bf2445f3b"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:1ED3XBz9B2hcEc3yGzTKAu"
+    },
+    "107921": {
+      "audio": [
+        "107921.mp3",
+        "7bae4d6b299c0ef94dc9076f82b9ba4a"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:1lDaXnbGQpSfOgv5xm1VUE"
+    },
+    "107922": {
+      "audio": [
+        "107922.mp3",
+        "890fa5c1e0b1945397cc2d8771a495d1"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:2j9OIWp9k6s2kMzVgGLIz6"
+    },
+    "107923": {
+      "audio": [
+        "107923.mp3",
+        "28369a5b89c33bc6a0bc448ba9901bc2"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:1moo6YUT2WiU871Q8tPeTm"
+    },
+    "107930": {
+      "audio": [
+        "107930.mp3",
+        "2b8244026f93f9cc42aa950d065fd69f"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:2XM3ioLzEJGmLCMZinyWDo"
+    },
+    "107935": {
+      "audio": [
+        "107935.mp3",
+        "f6050b6532e1d89eacaecab7d768332f"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:15Uu0yrWw0FTAErb5p0toN"
+    },
+    "107936": {
+      "audio": [
+        "107936.mp3",
+        "4534c5430aaab5865e1a5acf6856c6d9"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:1k1XHD7TnC0EhvzZ14aM3X"
+    },
+    "107937": {
+      "audio": [
+        "107937.mp3",
+        "e04ef96eeee1076e33b8b12ba639c672"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:4moMc47QQqvAOpqmf2Iniy"
+    },
+    "107939": {
+      "audio": [
+        "107939.mp3",
+        "a93d2e3283beaad347476d1eb0a5b503"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:1BKtYzewLfryXnNj8OU7Fd"
+    },
+    "107941": {
+      "audio": [
+        "107941.mp3",
+        "10abb1321105cdcc8132af9ec990be8f"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:4yCbBK3xkzsl9RUhsiGk5X"
+    },
+    "107943": {
+      "audio": [
+        "107943.mp3",
+        "130fda9e42feef6aee7bdaef7990256f"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:7Iu1izeFTqoMTDz4nPT20z"
+    },
+    "107945": {
+      "audio": [
+        "107945.mp3",
+        "f6764d677acf926110bd8157663019f9"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:2COlWzch2jh1pYynMSTsga"
+    },
+    "107946": {
+      "audio": [
+        "107946.mp3",
+        "255eca0f827be5eecbd9c038de851125"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:3Bw1njPkVVfwvcu1GodwNL"
+    },
+    "107949": {
+      "audio": [
+        "107949.mp3",
+        "335edee5a118e5111459661373f525a0"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:38aCcz88RglSK7qwZg6bod"
+    },
+    "107950": {
+      "audio": [
+        "107950.mp3",
+        "8d5132aac242d497e9aa3c57631d7055"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:7K3lUMXjfa9dL3RzTbK3EX"
+    },
+    "107951": {
+      "audio": [
+        "107951.mp3",
+        "a4299496ca0fa418397511c75623daf1"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:3g7AhDZfKZJamc2MFvnDVG"
+    },
+    "107952": {
+      "audio": [
+        "107952.mp3",
+        "a1aee6a4aedb2b5059f25abca9776a98"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:0CWHcCkc4sEOIAeZqEditN"
+    },
+    "107953": {
+      "audio": [
+        "107953.mp3",
+        "cf981d49de900435b902df975d8fca6a"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:56tuh1wO8SHzQUTBWdaJBz"
+    },
+    "107954": {
+      "audio": [
+        "107954.mp3",
+        "49cacfd0a21352b740ad2747d7c26f9d"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:1vRHpVmqHFuVFvz0lhDr1N"
+    },
+    "107955": {
+      "audio": [
+        "107955.mp3",
+        "487cd150d1a46d24ac8c2ed210a58471"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:506nbJcBb9CHkUQDf0Bt2u"
+    },
+    "107956": {
+      "audio": [
+        "107956.mp3",
+        "23e563e000ceb9c2a3da4e4df6d2b967"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:6dgtuf7nzMTb8EkyyjyGEy"
+    },
+    "107957": {
+      "audio": [
+        "107957.mp3",
+        "79ddcd40f672e05254c2a4c51a428b6a"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:4nAD0I6kut53LA5QFLmvZl"
+    },
+    "107985": {
+      "audio": [
+        "107985.mp3",
+        "8d93e13a53bcd006d86af93da7868718"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:2uY8tC2htv4ApevSbyWC1J"
+    },
+    "107986": {
+      "audio": [
+        "107986.mp3",
+        "3215e26aae56f06866cb0814942ba9bb"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:6ZLyCdNpjP8AiRSNJ2pBQV"
+    },
+    "107987": {
+      "audio": [
+        "107987.mp3",
+        "0a9e61349c80db481d3a0d08d054a045"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:58WYsP6qX7Zgn3apVvJSrH"
+    },
+    "107988": {
+      "audio": [
+        "107988.mp3",
+        "888e15317c891d027f7e627cb003f04d"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:70qemSWl6w6vh7aHqMI7ne"
+    },
+    "107989": {
+      "audio": [
+        "107989.mp3",
+        "f5af0ecb6b41aa17ba317532737a0263"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:6epNuspR5W92k6uOrVeh1u"
+    },
+    "107991": {
+      "audio": [
+        "107991.mp3",
+        "ed6cc69615ae0e5ed40c4a0dc4421ac6"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:3uJ6rbscKaY4i1RfcH52YR"
+    },
+    "107992": {
+      "audio": [
+        "107992.mp3",
+        "ada1f86071a1dbee14f4b2169aaad395"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:3QX8hDa0Bz78Vjb3VailC4"
+    },
+    "107993": {
+      "audio": [
+        "107993.mp3",
+        "9e3e4e91f5caf8f6f29e5b0a83355b56"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:6mzkmA5WWTgFSd7yGpblly"
+    },
+    "107994": {
+      "audio": [
+        "107994.mp3",
+        "71dd83126709b732087f725b9db19e7e"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:63K9bNmkcuLzC8QTeEdhDA"
+    },
+    "107995": {
+      "audio": [
+        "107995.mp3",
+        "70e5fd4d2ebeba8ea56868f9e048db4f"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:7mmlehJCBZYZQ0PCWUncUC"
+    },
+    "107996": {
+      "audio": [
+        "107996.mp3",
+        "17d39d44321872f70141df24141f128f"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:4HBUgSdEOzciCqMIGHczTV"
+    },
+    "107997": {
+      "audio": [
+        "107997.mp3",
+        "b242a53dd8f1bca3d0d8f037164cc32b"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:0qTPsGbl0DbBzdzdr6FdGg"
+    },
+    "108002": {
+      "audio": [
+        "108002.mp3",
+        "d35a3991dff8e8794023e7be702896f1"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:0Yv6qnwyKsKRy9cbNFGtBv"
+    },
+    "108004": {
+      "audio": [
+        "108004.mp3",
+        "a5733dfff1092077a91b0c6e121a4fdd"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:3DJeR7etjDnxXkJZ7aDt9l"
+    },
+    "108006": {
+      "audio": [
+        "108006.mp3",
+        "287101c488aec6df57e9fd5c0926a1ca"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2aLyssr41JtYFzDENUpoyC"
+    },
+    "108009": {
+      "audio": [
+        "108009.mp3",
+        "cfbbfe1b8795792be7b56bd464d9332c"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:1kARJcmrSHtldyT5BO2jJq"
+    },
+    "108010": {
+      "audio": [
+        "108010.mp3",
+        "8d3e92472ddedbb8c2f56d91991b1bf6"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:5CAXcQ0eH8JeQHRN7hleyx"
+    },
+    "108011": {
+      "audio": [
+        "108011.mp3",
+        "ebf9ffb55bd03d671e450eeb4a38a1dc"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:5MssSt2ggeYFxx6K9WtEG5"
+    },
+    "108013": {
+      "audio": [
+        "108013.mp3",
+        "87e67299712ed7756c167178909310e1"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:03oTHsdU6NZv6gqzERUcKF"
+    },
+    "108019": {
+      "audio": [
+        "108019.mp3",
+        "244a8497fa959924ff03e998b235d1e3"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:1QFNlEogjQOq8cwhZtgbvc"
+    },
+    "108020": {
+      "audio": [
+        "108020.mp3",
+        "2bb73e4c6d8ae82a8e7387cf34bbdff9"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:5tq7d46vE1DvOI0zEX0MEg"
+    },
+    "108021": {
+      "audio": [
+        "108021.mp3",
+        "0c49a2d1e966192fb0434c0cef8a8eac"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4uUpjquoCDj1OQ1ONekNfT"
+    },
+    "108024": {
+      "audio": [
+        "108024.mp3",
+        "1c93dc6b239442f7f7dafbf802fbfdb9"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:4eggWQq1vpKz12TNtwtJt2"
+    },
+    "108025": {
+      "audio": [
+        "108025.mp3",
+        "9d1f09832f58ae447d524371960293dd"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:0gy39UmdAqXTsIUeEsJfhQ"
+    },
+    "108029": {
+      "audio": [
+        "108029.mp3",
+        "e3a25b09a27dcc72c5166cf1c89586b6"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4R7s55CiNfoXej4D3S4sTq"
+    },
+    "108030": {
+      "audio": [
+        "108030.mp3",
+        "ee4b029f43267e4dfe79ee57ba9b9a17"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:2TOWOX0mO1U4GHgyNL1E5t"
+    },
+    "108031": {
+      "audio": [
+        "108031.mp3",
+        "47f6ed0791cfd636281f7858e2740003"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:12Rzu8SnXYPxUPt9aiAXee"
+    },
+    "108032": {
+      "audio": [
+        "108032.mp3",
+        "ba8a6077fea0c47077a0b8938f7a98f2"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:1iiACcdHl99BKeWOzXYLa3"
+    },
+    "108034": {
+      "audio": [
+        "108034.mp3",
+        "292412b89c47fd3de988883d51ceed21"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:1619Ie7T4dDstXmWFF1nTc"
+    },
+    "108035": {
+      "audio": [
+        "108035.mp3",
+        "8e0bd3854784107314ab39d7a210d76c"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:6KplgIzKDoLR7SefPwLtcu"
+    },
+    "108046": {
+      "audio": [
+        "108046.mp3",
+        "e27480f278e5eded73fb4a1cfe3cf680"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:3p0N4QmSa26AzacN3es6gS"
+    },
+    "108149": {
+      "audio": [
+        "108149.mp3",
+        "5440706575994b5a76f3e3b46937d457"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:2g7Ws7ir4eChkFXpXOwhUY"
+    },
+    "108150": {
+      "audio": [
+        "108150.mp3",
+        "e5c6cced1d08f25440c8c3d176b60902"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:4uMLc54qx89F05YJJ0OVVi"
+    },
+    "108151": {
+      "audio": [
+        "108151.mp3",
+        "e5555fdbeb65b65d2e628581de3c02ad"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4H69qtgXMNbMk2QpazHkCz"
+    },
+    "108152": {
+      "audio": [
+        "108152.mp3",
+        "ed3ee1c60dd56fc50d8685350297c64a"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:5SROLyV3EZM6TxVpxVTEkV"
+    },
+    "108153": {
+      "audio": [
+        "108153.mp3",
+        "77df2daf4ab61ef67bed6ba4768a8201"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:3UWYthSQ7OxWfC0UpfOVPN"
+    },
+    "108154": {
+      "audio": [
+        "108154.mp3",
+        "5b91ca5ee07d0dacb3ffbd2120df161a"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:3ASPrV7Z8Tn23AxDVKIBge"
+    },
+    "108155": {
+      "audio": [
+        "108155.mp3",
+        "e70243e3609948409cbe2e5340b3de06"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:6yOTlFXT7sHNco9wto38bB"
+    },
+    "108156": {
+      "audio": [
+        "108156.mp3",
+        "ec327201c03906a888ea4a341fc9dc3c"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:4qsV5MXTegNZcczMbjG48f"
+    },
+    "108157": {
+      "audio": [
+        "108157.mp3",
+        "a85fd6fd58ebeebe833accd01442b47a"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:71Q3okK9W3iKw2uLhhJgy9"
+    },
+    "108158": {
+      "audio": [
+        "108158.mp3",
+        "f20be19d5146dadd4ca1daa395dcdab6"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:5Oo5J1dnxhagPGC1wKQ43H"
+    },
+    "108159": {
+      "audio": [
+        "108159.mp3",
+        "b41a559163d45b4d8ff25667789c8421"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:1hNvKJpdQfoTPJJalVHkyV"
+    },
+    "108160": {
+      "audio": [
+        "108160.mp3",
+        "bea475ec73ea893d1a277bd2eaa43d11"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:48CaIDfLULOoOF0bQv2SJR"
+    },
+    "108161": {
+      "audio": [
+        "108161.mp3",
+        "6fb98b016db35e1eb593da5fdb49e276"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:4ePSxvcPwdXlz9qDg7i4Qs"
+    },
+    "108162": {
+      "audio": [
+        "108162.mp3",
+        "30de906f9e34eb48332e6e7c510a9e98"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:70CCKqHxrQBbNQWD39HQVY"
+    },
+    "108163": {
+      "audio": [
+        "108163.mp3",
+        "fbea525f3aa5ef9a2722739d28dd9fcf"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:0UcZMzFuWKD4LCUxGyxDO4"
+    },
+    "108164": {
+      "audio": [
+        "108164.mp3",
+        "6dd48338fdd151512d1f6b87a662e9a9"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:1DLGjafPIaxH1tDhSzICbP"
+    },
+    "108165": {
+      "audio": [
+        "108165.mp3",
+        "1ab9b50330c8d966cb573760fb80cc56"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:6uZMyBqCnxLwwtam1T4Kz4"
+    },
+    "108166": {
+      "audio": [
+        "108166.mp3",
+        "8e59a13f64bb99dfb0082c37c7cbe43a"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:1N9neIPkwEtUe5w2AwAKdm"
+    },
+    "108167": {
+      "audio": [
+        "108167.mp3",
+        "40da76ef2b9f1d0f9852f2db23f2bda9"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:0IHgKpBuboWPEPrQDeQygQ"
+    },
+    "108267": {
+      "audio": [
+        "108267.mp3",
+        "1c0e2ebb7bcfc3147a01b02d60c4d98f"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:3JsbLoPETseftsJTHMsfyj"
+    },
+    "108268": {
+      "audio": [
+        "108268.mp3",
+        "379799450f4da8046f93e623a9fcd3cb"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:4GzXAtlC49WdMLmsNk1jNo"
+    },
+    "108269": {
+      "audio": [
+        "108269.mp3",
+        "8a86bca7430c0b9eb01bc9fab1af90fc"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:5vzZsrEovAhRGPvZhir1SP"
+    },
+    "108270": {
+      "audio": [
+        "108270.mp3",
+        "b38ebf11d2c550eb6bc5faa1dd7af030"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:4RTa5Od3ibBSLMCcFtVqeB"
+    },
+    "108272": {
+      "audio": [
+        "108272.mp3",
+        "3c745006d1d85a0126563b6b1214f52f"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:0yrA0D9jdaqLzR6ZHcvVaP"
+    },
+    "108279": {
+      "audio": [
+        "108279.mp3",
+        "37c743f6266c98a100e2104acf5a56d9"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:6bUmsvmAAxUIjMnO2tXB5s"
+    },
+    "108280": {
+      "audio": [
+        "108280.mp3",
+        "22e34978fea1aeac37339092fbce21db"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:0C9RUMLLuD1wVvPIsFzPxO"
+    },
+    "108281": {
+      "audio": [
+        "108281.mp3",
+        "d4cad5b324ed7569c41973f237454a1d"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:2KoezcxaAj8wddEsQ81p2Y"
+    },
+    "108282": {
+      "audio": [
+        "108282.mp3",
+        "419af195da3c4269f4dd34d6f94a1ac0"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:6Wj3W0RT2oHR7j5QNOOVdU"
+    },
+    "108291": {
+      "audio": [
+        "108291.mp3",
+        "2705bc88f1796bf5808ea85694a8f5a1"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:0xXriIw16sGrXknvK0HDGq"
+    },
+    "108294": {
+      "audio": [
+        "108294.mp3",
+        "4bb8d9c4d23e0966a3fc0c200beb73e7"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:369pNX3DCBcbRl9VBilowD"
+    },
+    "108295": {
+      "audio": [
+        "108295.mp3",
+        "e965db6df39b56d4e8aee13d02132eb3"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:5lUYuZ2yxZm7oDnjNFbUgX"
+    },
+    "108297": {
+      "audio": [
+        "108297.mp3",
+        "4f40d14f758845835fc070aaca5668df"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:4xBSuk6YMcN4WaM4fa3LRy"
+    },
+    "108328": {
+      "audio": [
+        "108328.mp3",
+        "eff7579639134ed276e8a034121be6b2"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:5pU7xrosrlPYx0J3dxcYnu"
+    },
+    "108337": {
+      "audio": [
+        "108337.mp3",
+        "adf84469c1e2e8139ece0420c5d66c4f"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:6X0HA6zYEydQCPGyK6ADN9"
+    },
+    "108339": {
+      "audio": [
+        "108339.mp3",
+        "4527504a593236147947af9b62897fa4"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:4vUuthMTUDapcWT7UFtSyo"
+    },
+    "108367": {
+      "audio": [
+        "108367.mp3",
+        "38727ccc4c03757456903858f4fc6143"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:2y9t9nfuwGnrTOcXl9NkUH"
+    },
+    "108369": {
+      "audio": [
+        "108369.mp3",
+        "bb25e6199de7769142bda84b9a6bfc6d"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:1hf0FGZp0uHcogks4JyYqZ"
+    },
+    "108370": {
+      "audio": [
+        "108370.mp3",
+        "433281f7fc092834ce18d76e46b05cff"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:4X42RNy9e0kFYsctG5b1iD"
+    },
+    "108371": {
+      "audio": [
+        "108371.mp3",
+        "56a9c65644e998ea1698caf1270ebcfa"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:7bbIgXfyN1MGDgXETkoRPb"
+    },
+    "108373": {
+      "audio": [
+        "108373.mp3",
+        "dcb4c23eaa679918261d2878a008ab99"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:30dkElgxjSG8OxUdsclPSv"
+    },
+    "108374": {
+      "audio": [
+        "108374.mp3",
+        "2f14a0a067682814e528095b2da5dd82"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:5Mt2qntvaKHpUtqiEUFcIP"
+    },
+    "108375": {
+      "audio": [
+        "108375.mp3",
+        "5748b6b3ca76f6df25b422830e236ad3"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:5N77zfEekneup6IdJZzoKK"
+    },
+    "108376": {
+      "audio": [
+        "108376.mp3",
+        "1ba110854e284cd5d0b434b68e444964"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:25hMnRq0sll1KTeCQKRZWf"
+    },
+    "108391": {
+      "audio": [
+        "108391.mp3",
+        "a8a312179684459cbc344b89ce2c5c9e"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:3x2NbUwoae7PArSIFTyIME"
+    },
+    "108393": {
+      "audio": [
+        "108393.mp3",
+        "399ec893fc79c3321e251185cd76ff1b"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:6VK7Fgjo805COMcGiRi7Ub"
+    },
+    "108394": {
+      "audio": [
+        "108394.mp3",
+        "111073233be7cf24c26e050f262f1ea8"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:62SzykolqYypcT1q9ompsG"
+    },
+    "108395": {
+      "audio": [
+        "108395.mp3",
+        "31980a352d5467a90c26e9eafe1c650b"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:4ozwCrHAmG4AfbPjozZFuK"
+    },
+    "108396": {
+      "audio": [
+        "108396.mp3",
+        "d85044f378f65113a0918fae8ec45500"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": "spotify:track:6NkRF1nThPL7IaZ2EMjy5d"
+    },
+    "108397": {
+      "audio": [
+        "108397.mp3",
+        "93de0c4a1330871493370b35d1c2cfd7"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:5Xlt7hxs5oIZsIjTmvrPVt"
+    },
+    "108398": {
+      "audio": [
+        "108398.mp3",
+        "508d3ce73e0b7da0bad422b5ca5f5603"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:3vvmfIB2PClkD1zuuXCOJh"
+    },
+    "108399": {
+      "audio": [
+        "108399.mp3",
+        "7b9077ef31b6c36a9fd952c981d477b1"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:3Rf7icAh9jP5BoHGivBz2x"
+    },
+    "108400": {
+      "audio": [
+        "108400.mp3",
+        "4174c9feacfc15a3e9b7168a0f7a39b0"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:6jvZUj9td0xEg0AOrt6AE3"
+    },
+    "108401": {
+      "audio": [
+        "108401.mp3",
+        "1b8205f49da67a830b40f5576a1a759c"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:4JXCDvqzvNMcnThvioWpsc"
+    },
+    "108402": {
+      "audio": [
+        "108402.mp3",
+        "1f7b2ae884e35a859c5276cb96672e87"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:6xjSVAkFnfi1gwX38V1LtQ"
+    },
+    "108403": {
+      "audio": [
+        "108403.mp3",
+        "b3eb5b71d86a8ae81209221c86a7caf5"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:2TWafoYFLMRXSyU7tJlMb2"
+    },
+    "108404": {
+      "audio": [
+        "108404.mp3",
+        "502e98419f6e52f7073df8d5729fd3d5"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:2zMcrdIzoP3ZamuomPuF8z"
+    },
+    "108456": {
+      "audio": [
+        "108456.mp3",
+        "6b163b381477091dbcbf0d130ae636bf"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:45UNeO3yRnbvj1SSvy2PEv"
+    },
+    "108457": {
+      "audio": [
+        "108457.mp3",
+        "b5037eb5586d637e87fd17c6322d16c2"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:6SByitZ1eyzAiSwq3eHvSC"
+    },
+    "108458": {
+      "audio": [
+        "108458.mp3",
+        "aab7e671980c83adfa733472b2d76861"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:1pQMZr60rpV3TYKTzgDtaR"
+    },
+    "108461": {
+      "audio": [
+        "108461.mp3",
+        "eaa6f79dc4242ccf7f45b4430f0756a5"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:5QGy2wPhi211o8l0z3uWXQ"
+    },
+    "108466": {
+      "audio": [
+        "108466.mp3",
+        "4d3fd1ce1b5a3e8d6d20311004a91284"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2ok0WGKNViRBiSwqAdBs7W"
+    },
+    "108469": {
+      "audio": [
+        "108469.mp3",
+        "7248faa1109845eb588198df85bb36ff"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:1BYEOR20shdkaULyXMb5ms"
+    },
+    "108470": {
+      "audio": [
+        "108470.mp3",
+        "8787a9b8508eeafe7f9fedaf22bd1342"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:4w6vFttlNqMJGvAIF8FC0N"
+    },
+    "108471": {
+      "audio": [
+        "108471.mp3",
+        "9a79ad8cd02df453d09879e64142b0f6"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:5fxIsvp3OdoX1EvP9prYJs"
+    },
+    "108472": {
+      "audio": [
+        "108472.mp3",
+        "6156ef24fc20e3604e0de3e24485add0"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:25ThxLbXMfARP60svixjvV"
+    },
+    "108473": {
+      "audio": [
+        "108473.mp3",
+        "182111a691e0d6b7e1f3bd3b0da5f417"
+      ],
+      "key_and_mode": "G# minor",
+      "spotify_uri": "spotify:track:3EgG4d50u0UYShemFXnrKG"
+    },
+    "108475": {
+      "audio": [
+        "108475.mp3",
+        "a2c9c918110682c25092fb90d96c6a3c"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:6xItaEnTZKT40iTxmAs0zh"
+    },
+    "108476": {
+      "audio": [
+        "108476.mp3",
+        "42c3eec25c0b4607b75bf519cacc0188"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:1Nv1LKP453TzFA8OuUeaww"
+    },
+    "108477": {
+      "audio": [
+        "108477.mp3",
+        "c407dbbbb1848cc5c35ec7e724f71787"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:2flBjBmoFnZov6eZvrzMDN"
+    },
+    "108479": {
+      "audio": [
+        "108479.mp3",
+        "cce522b481a6d97e947b9867ba3be70b"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:13CLtfTMm9rEaImch6WVpx"
+    },
+    "108480": {
+      "audio": [
+        "108480.mp3",
+        "7b4b5807e31b5ecd46ec78a5ba9d1501"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:4vK2T2nKc3TwhKfh1irABZ"
+    },
+    "108482": {
+      "audio": [
+        "108482.mp3",
+        "e9daa945c7a29b0bb209e37c90288ff9"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:4889gL3dkRa04im3fe55yk"
+    },
+    "108483": {
+      "audio": [
+        "108483.mp3",
+        "52096580d5aaa28adf1f259d1afe7247"
+      ],
+      "key_and_mode": "G# minor",
+      "spotify_uri": "spotify:track:2HEek0rZForma2l4q7e7t6"
+    },
+    "108484": {
+      "audio": [
+        "108484.mp3",
+        "ca6e5ccb397176e1b8e850c67fe74768"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:2BdcE1HAWOJfa56fSsk1Ir"
+    },
+    "108505": {
+      "audio": [
+        "108505.mp3",
+        "222b609f945dead8a26438fd2837a2b6"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:4kVAH2KTLd9LwIs6vbfJGh"
+    },
+    "108845": {
+      "audio": [
+        "108845.mp3",
+        "47efbf43a3620d11892196fe1db40fd7"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:0nEqaGPwBDcwGra61D5tq1"
+    },
+    "108938": {
+      "audio": [
+        "108938.mp3",
+        "90d553517ce16fb728b16ec869316250"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:0GE4UgZn6f3KR5OufFgESL"
+    },
+    "108939": {
+      "audio": [
+        "108939.mp3",
+        "5a99f607af6002c2ec9b7641eb0bddee"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:75NrC5pnCmg2NidZM3gOlG"
+    },
+    "108941": {
+      "audio": [
+        "108941.mp3",
+        "ec74d301555563d49faaec219427e48e"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:6713I1kvFSdx1wynkXDviU"
+    },
+    "108951": {
+      "audio": [
+        "108951.mp3",
+        "edf22af2a34cb39b4fc3fcb8bee0d351"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:1A9m7TI0r9hwRXgrgt3NTc"
+    },
+    "108953": {
+      "audio": [
+        "108953.mp3",
+        "87ab773c70f3bdb9d0624d735957f05f"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:5ovqYsI7FNGYnrblYS6BCj"
+    },
+    "108954": {
+      "audio": [
+        "108954.mp3",
+        "a52b20c5609b125c3a4e363a6a52f61e"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:7CURxKMeXEDNk3Xlt8YoZJ"
+    },
+    "108956": {
+      "audio": [
+        "108956.mp3",
+        "c80482a250d547c5e29bbda73345c95c"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:0LC7hWWjZNVpGkM7PTd958"
+    },
+    "108957": {
+      "audio": [
+        "108957.mp3",
+        "2300ef678bc70f65234bb6be4081bf83"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:2kpjXapYnucOgw4an5xHIn"
+    },
+    "108958": {
+      "audio": [
+        "108958.mp3",
+        "af6ca214a6661916b8485fe73bd385f8"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:4BmmQUdblQP8jJC5EYn7RN"
+    },
+    "108959": {
+      "audio": [
+        "108959.mp3",
+        "05322a8df790ce69fa1c1231e1fba07c"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:2xkHhIbzQmyjx3A1MuIrwq"
+    },
+    "108961": {
+      "audio": [
+        "108961.mp3",
+        "e94a3bb96bf73307b31571625a7fca4f"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:7rZVOSNUdYPn71hp0hC2Ci"
+    },
+    "108962": {
+      "audio": [
+        "108962.mp3",
+        "1cbd11ae6394917b68b463047d7214ac"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:0Vj6RmiV3aftpLFCGc9NGV"
+    },
+    "109006": {
+      "audio": [
+        "109006.mp3",
+        "5cf43c058b5c96d67a89d3be3ffcd0b8"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:435QHxr9CRLYgscy1UH1ju"
+    },
+    "109007": {
+      "audio": [
+        "109007.mp3",
+        "0a66646d75c5a8b8f9bd7c34aa2c4f40"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": "spotify:track:30qkdvZjgTVheib5MMkwXm"
+    },
+    "109022": {
+      "audio": [
+        "109022.mp3",
+        "86da19ea2ceb7c4df9ceaae1be23c665"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:5CXDqIQkkpzvAihxUu2X7J"
+    },
+    "109023": {
+      "audio": [
+        "109023.mp3",
+        "0aa2ba1127de015f7b1633ecc3328067"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:0ftSWv0YJmK2MGXabfneXG"
+    },
+    "109026": {
+      "audio": [
+        "109026.mp3",
+        "b68f35091eecc38059ab3f160037c5c4"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:7uAQnsmx88GL4owX9tPSYn"
+    },
+    "109027": {
+      "audio": [
+        "109027.mp3",
+        "64d18fc226d296164f28a4390488b079"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:5bDWs8xyqkdU7k1M0WSX6f"
+    },
+    "109028": {
+      "audio": [
+        "109028.mp3",
+        "429d3621e892f35b25f7df27fef78c4e"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:4vuIABsl2qFoaM5SvWQReV"
+    },
+    "109029": {
+      "audio": [
+        "109029.mp3",
+        "d4a9bbe57d75d0cf0f4eb3fe1725695a"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:6YoZriwvTxeUBGVSuamJff"
+    },
+    "109030": {
+      "audio": [
+        "109030.mp3",
+        "d45e4157ae037382edb4275f4aeee1b7"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": "spotify:track:1j95lju3d0FJ9pjEJSWyVq"
+    },
+    "109031": {
+      "audio": [
+        "109031.mp3",
+        "c6af84bc04dbdffcadb5e9424ab16e1f"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": "spotify:track:2ecYna43mRufWt4rPBd9LB"
+    },
+    "109032": {
+      "audio": [
+        "109032.mp3",
+        "57f7d13c25bcde7956694908ef32e8e7"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:4t7U0bW73Rdr5qiYzvXMqm"
+    },
+    "109033": {
+      "audio": [
+        "109033.mp3",
+        "4a30002ab8e50010884d39562ad70843"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": "spotify:track:100xc2VQR4SW3nhVbkQY7p"
+    },
+    "109034": {
+      "audio": [
+        "109034.mp3",
+        "44ecda6381e3b43163d9b42cf05d9c31"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:2Nfn5Nt8n6zUxFC6l4gElI"
+    },
+    "109035": {
+      "audio": [
+        "109035.mp3",
+        "1b885b9c8e51ed1393917e9edf552bae"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:38oFiBtIsR2REXusrZKr8I"
+    },
+    "109092": {
+      "audio": [
+        "109092.mp3",
+        "36e53ee36a5fd43e3104a4db6ebcd076"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:6uDsdTZeaqdP9pyuVN4ms1"
+    },
+    "109095": {
+      "audio": [
+        "109095.mp3",
+        "985f3005e7fb19f2040ebf670421342f"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:3JMhA7OaFsF9VCgSnMbe4J"
+    },
+    "109098": {
+      "audio": [
+        "109098.mp3",
+        "41797a3f9cb8ff45047eab230e93f334"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:7w2iL0emrStc65yae7VRNj"
+    },
+    "109101": {
+      "audio": [
+        "109101.mp3",
+        "0ec6ba26ab1e067e9aabfc45c13830a7"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:1SODe8qXJpVp6zDc0t271h"
+    },
+    "109102": {
+      "audio": [
+        "109102.mp3",
+        "963739ac65d3efd5e33613ef579670b9"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:4QDacCgvx7gmmAQDUEqpHb"
+    },
+    "109104": {
+      "audio": [
+        "109104.mp3",
+        "17972407622de3166a6a1df37d7e21a4"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:5nzJa0kt9iFNKETOacaIp4"
+    },
+    "109114": {
+      "audio": [
+        "109114.mp3",
+        "d269a93d9e4a395adeeb8ec433133870"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:6X0HA6zYEydQCPGyK6ADN9"
+    },
+    "109116": {
+      "audio": [
+        "109116.mp3",
+        "77023b06827435eb32586a8d812d1a69"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:1gqr68MZ7APhXDWZKsVn6W"
+    },
+    "109118": {
+      "audio": [
+        "109118.mp3",
+        "a50eef12aee1e90b2a0140e901e4fa78"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:0WWviODQw6qI2HO02AYFL3"
+    },
+    "109119": {
+      "audio": [
+        "109119.mp3",
+        "357357907432be9fca54b82cb2ffd31e"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:1seUMtqVPQKrBVTvpytbRM"
+    },
+    "109123": {
+      "audio": [
+        "109123.mp3",
+        "1045a65b3a7f94fad50098789ccafb1f"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:3DnyQG1Xs1Oz6gnLclEYs1"
+    },
+    "109124": {
+      "audio": [
+        "109124.mp3",
+        "00bf59ec09519a25868a89fac18751ca"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:4O0DLQj5NKX9AVg1t6t54I"
+    },
+    "109125": {
+      "audio": [
+        "109125.mp3",
+        "45ea9b7357b95e126f6391f4ec734faf"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:4lj0R6bS0FAyAgaQQFntHw"
+    },
+    "109127": {
+      "audio": [
+        "109127.mp3",
+        "3dea7133a96cc46c63e9a301359e80f4"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:59FteXBups6h0zbY1BXsZG"
+    },
+    "109128": {
+      "audio": [
+        "109128.mp3",
+        "dba541adef831bd67cb58a2b411b79f6"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": "spotify:track:3BUCiNoDp5kP3HbPbDIlNG"
+    },
+    "109152": {
+      "audio": [
+        "109152.mp3",
+        "4e36656adc8adac218a110396012bdb7"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:4ctTZI1qUiyPgoQCffXCIr"
+    },
+    "109193": {
+      "audio": [
+        "109193.mp3",
+        "5f345eff72958a8fcc3be6dce166701e"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:1nghThzLOenKEEQnqnMRYR"
+    },
+    "109195": {
+      "audio": [
+        "109195.mp3",
+        "452a201f9498122708eb27172e2d70e4"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:6Z8rddxayhpalrSj4ITblS"
+    },
+    "109196": {
+      "audio": [
+        "109196.mp3",
+        "91da53f12458af0617e3829049cb7199"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:63dDfj8Njklrl0RSIzI2zP"
+    },
+    "109200": {
+      "audio": [
+        "109200.mp3",
+        "99bb8bb10a367eaacf1fc8010a987f6b"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:4KIKByWoWbphPMPB2yTYua"
+    },
+    "109207": {
+      "audio": [
+        "109207.mp3",
+        "e5cc96d9d01bece8adc91fa6c107a9e1"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:3ZXnm7e4aTPRXhbRUGGoOg"
+    },
+    "109240": {
+      "audio": [
+        "109240.mp3",
+        "b2f7b7f62db63fc4dfef40c174d5b07d"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:7oBSTUyo3BjFwJkymkV4wO"
+    },
+    "109252": {
+      "audio": [
+        "109252.mp3",
+        "52ad06c5a6c83b19611c6d0aa31f34d5"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:2upH7RchDf7hJ2qdFh6pmB"
+    },
+    "109277": {
+      "audio": [
+        "109277.mp3",
+        "c6b9926493d0b6fff025c42001c6c572"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:3rJVi65iQcIpQ2c1bymnHZ"
+    },
+    "109286": {
+      "audio": [
+        "109286.mp3",
+        "d096111951c12a21ad1699a3b3399468"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:0bFftv9TgZhaDYN7iRKhqr"
+    },
+    "109293": {
+      "audio": [
+        "109293.mp3",
+        "9ecaaf6bdd5a5d39f509095eaae79112"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:6kMo6zdHVmxJKgNYwd9OKS"
+    },
+    "109296": {
+      "audio": [
+        "109296.mp3",
+        "0af9016af631a1353c295e5f1cebc5f6"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": "spotify:track:2aWblxqRJRVA6G30wEDI9u"
+    },
+    "109313": {
+      "audio": [
+        "109313.mp3",
+        "af715611a1dfd1f7e6e95a1cf46463e6"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:6bPK8nZBLlFoszZUjXJC0J"
+    },
+    "109349": {
+      "audio": [
+        "109349.mp3",
+        "c4c33e417a35d68283517ae45e6f5bdb"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:4UCSQUmTHOOodBvZG0Jejc"
+    },
+    "109441": {
+      "audio": [
+        "109441.mp3",
+        "321100885d14eee900bca7cf6c55e541"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:2yJsK0G4meko6hJIWnu2Li"
+    },
+    "109472": {
+      "audio": [
+        "109472.mp3",
+        "d741f0906164c25a6b9a31e292b77ccb"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": "spotify:track:35oO4bn7hIcIpuVwnhoRX4"
+    },
+    "109501": {
+      "audio": [
+        "109501.mp3",
+        "ddac5f6bbece378f3d4a793ed2cedcf8"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:7MRtW5S6sqnq1NKDw8lujn"
+    },
+    "109514": {
+      "audio": [
+        "109514.mp3",
+        "940dd3f5896f41ca2f693b2c69ad174c"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:5aKO4R0BfD1n8IWj1kimk3"
+    },
+    "109515": {
+      "audio": [
+        "109515.mp3",
+        "d6413524711d3e82a4dcf6c490a5599e"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:6Reiz6QEZ1aZZL5uIHB99S"
+    },
+    "109516": {
+      "audio": [
+        "109516.mp3",
+        "808d8f1992c207f7f678e8a40e21c3db"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:0ZrKLnurd6oTuO9CWWWRO3"
+    },
+    "109517": {
+      "audio": [
+        "109517.mp3",
+        "a5870e861ad81f4fcd7d16ff0bb851ff"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:2dJByt4SkdJzhigIGcKCXa"
+    },
+    "109518": {
+      "audio": [
+        "109518.mp3",
+        "9b14c47b9924f12bf8c300f906831f1d"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:29L0kPJPyBCvRllxon9IQH"
+    },
+    "109520": {
+      "audio": [
+        "109520.mp3",
+        "ea4dd340bd428f90f34f0c2015dc0fda"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:7rIldp9l19ljzePLrMbJG6"
+    },
+    "109521": {
+      "audio": [
+        "109521.mp3",
+        "669f06d3678ed7c5e623ece30c3e629a"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": "spotify:track:2uUhBkEmcJc497DpXufkWT"
+    },
+    "109522": {
+      "audio": [
+        "109522.mp3",
+        "b90c9e9dc812e19debe8f30bf7b56a27"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": "spotify:track:5Ol8IJHHPgX35MPWeg9eby"
+    },
+    "109523": {
+      "audio": [
+        "109523.mp3",
+        "2247a0feb572d4e0daa0ca5363119079"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:3LDC8yOaNe5s0LkCSkxItL"
+    },
+    "109634": {
+      "audio": [
+        "109634.mp3",
+        "a2a192b9de73bbd93f95223e6a420763"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:3vWmO0kCbQWubq7aONFIWn"
+    },
+    "109635": {
+      "audio": [
+        "109635.mp3",
+        "8b9f46abc89a37220d218667c4838505"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": "spotify:track:5neNFwS2Dm2Z0o08sHxApY"
+    },
+    "109671": {
+      "audio": [
+        "109671.mp3",
+        "70755d906f01983a9e1e7ddfb99f3997"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": "spotify:track:0JWj0DIufaDch0LbzdLjOY"
+    },
+    "109673": {
+      "audio": [
+        "109673.mp3",
+        "0a9a90a1437ebe63875681f7f02d82a5"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": "spotify:track:17GUOZW4aHbbdx4Dlr3cwl"
+    },
+    "109674": {
+      "audio": [
+        "109674.mp3",
+        "3da418013567f91811c08fa38ac2b7e5"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": "spotify:track:0JX9yeGAbmMsJvRpM8Jth8"
+    },
+    "109688": {
+      "audio": [
+        "109688.mp3",
+        "58d147b4dc5abf2719d09029dd6a4dc7"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:7G3IItqiuLUijcz7a5LffK"
+    },
+    "109690": {
+      "audio": [
+        "109690.mp3",
+        "5c56810a84ef7de45afc2088de9560a9"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": "spotify:track:5Midziy712p3cW76jKSP1P"
+    },
+    "109691": {
+      "audio": [
+        "109691.mp3",
+        "39a169e6e8524dde6af0b346f297fda7"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": "spotify:track:2yhq5IBwUrM1y1PeUuZ5Dd"
+    },
+    "109717": {
+      "audio": [
+        "109717.mp3",
+        "84051d5bf8ef324196bdde29bc2f2c52"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:1pF35mg5R3he937uISRy56"
+    },
+    "109897": {
+      "audio": [
+        "109897.mp3",
+        "8c22dcd2a64cf44d4cc4b997e7c245b0"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": "spotify:track:2KhCDRzohhIbzjyr6ROY1z"
+    },
+    "109926": {
+      "audio": [
+        "109926.mp3",
+        "71a9190dde0f33e6c774c3835805db5c"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:2uoSJPPzCXJH80W4jVNeSE"
+    },
+    "109927": {
+      "audio": [
+        "109927.mp3",
+        "858ab2ef53e06899e0f4ef284c442b1a"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:1YEsDN963c9s7THpVXtwdd"
+    },
+    "109929": {
+      "audio": [
+        "109929.mp3",
+        "fdb54a8a50cdf4cc0fcc12c51b7946e8"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:6SxNti1TFSYqH0pKlZNVSM"
+    },
+    "109930": {
+      "audio": [
+        "109930.mp3",
+        "b59b6ca84e51cb701a04b83b71146bb7"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:46CVoboTSxAI5kzmC0xmpv"
+    },
+    "109932": {
+      "audio": [
+        "109932.mp3",
+        "98ce7d50f18c7dbd72228f6333cdd3c5"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": "spotify:track:5qvKfIXz1bFoSB5nyAHyaE"
+    },
+    "109933": {
+      "audio": [
+        "109933.mp3",
+        "66959c6ae527fdcaa603b673ecdd7f43"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": "spotify:track:434EZV4nJ1PdJWEoVZ2wco"
+    },
+    "109934": {
+      "audio": [
+        "109934.mp3",
+        "0393c483c014b34aa423d8f745cb519e"
+      ],
+      "key_and_mode": "G# minor",
+      "spotify_uri": "spotify:track:3xbTbHKcSzKGivfUQT7cXq"
+    },
+    "109956": {
+      "audio": [
+        "109956.mp3",
+        "ea322518612d204dab3712e436d14dcb"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": "spotify:track:467tvXE7cdyjRinYEc7evD"
+    },
+    "103522": {
+      "audio": [
+        "103522.mp3",
+        "2444c7831aa071f1e5a3a9b2884a38ba"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "110544": {
+      "audio": [
+        "110544.mp3",
+        "bf5972141034334c0a53560607634732"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "110943": {
+      "audio": [
+        "110943.mp3",
+        "04715d7783a14467fa5ea4a9a65c709f"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "110980": {
+      "audio": [
+        "110980.mp3",
+        "12a8422adbae5dede5ac59023fd8d12e"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "110981": {
+      "audio": [
+        "110981.mp3",
+        "b9370f81c803b8a1431812096d79637b"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "110982": {
+      "audio": [
+        "110982.mp3",
+        "7ac7bbd18551447495c4d896acf32072"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "110983": {
+      "audio": [
+        "110983.mp3",
+        "c3175965f38df69768fdea5fc340d2a7"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": NaN
+    },
+    "111208": {
+      "audio": [
+        "111208.mp3",
+        "7353c9a347dbbb7926c9768046ca59b3"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "111211": {
+      "audio": [
+        "111211.mp3",
+        "674c944f783df6ba7d88163c06df5fb6"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": NaN
+    },
+    "111213": {
+      "audio": [
+        "111213.mp3",
+        "a0ef45931127b931cd169a2e263aa57a"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "111269": {
+      "audio": [
+        "111269.mp3",
+        "235569f3a818dd29ac7beed0488ff042"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "111270": {
+      "audio": [
+        "111270.mp3",
+        "3ebbbf59982418e0c427dd04de4ef751"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": NaN
+    },
+    "111271": {
+      "audio": [
+        "111271.mp3",
+        "6b328a58c230b8b6e67dc5e16e5fd924"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "111272": {
+      "audio": [
+        "111272.mp3",
+        "6726d29b81e178932a55003818931d1b"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "111273": {
+      "audio": [
+        "111273.mp3",
+        "8c77ed17c6a8bf390b377638bad516c8"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "111274": {
+      "audio": [
+        "111274.mp3",
+        "0fba0af1e24109cb553cba9730cda3e7"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "111275": {
+      "audio": [
+        "111275.mp3",
+        "08060006e51b72ee497d82bebbbb3616"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": NaN
+    },
+    "111276": {
+      "audio": [
+        "111276.mp3",
+        "81be7b719ee4fc699e114407cdfb37d1"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": NaN
+    },
+    "111277": {
+      "audio": [
+        "111277.mp3",
+        "ab0727d56ed3f014d32baef2407cd630"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "111278": {
+      "audio": [
+        "111278.mp3",
+        "0f5c1c6d04d7ca263a4695268d09ffd6"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "111279": {
+      "audio": [
+        "111279.mp3",
+        "8ce53858b2d9e867744feef268d0929b"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": NaN
+    },
+    "111667": {
+      "audio": [
+        "111667.mp3",
+        "f2a4a35ac42e7fb725dde0dffa317700"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "111902": {
+      "audio": [
+        "111902.mp3",
+        "2040cb6d6d2f03058500f2d1a5819f1b"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": NaN
+    },
+    "111904": {
+      "audio": [
+        "111904.mp3",
+        "685aba6ac2cc138bc9018c684caa01f2"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": NaN
+    },
+    "111905": {
+      "audio": [
+        "111905.mp3",
+        "e71e7c66b16ac7ad0b51780dfebfc490"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "111906": {
+      "audio": [
+        "111906.mp3",
+        "c7f9caad4679a493d02c81542e6e235b"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": NaN
+    },
+    "111907": {
+      "audio": [
+        "111907.mp3",
+        "eab59df349e6d97c4fe9e480589474a8"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": NaN
+    },
+    "111908": {
+      "audio": [
+        "111908.mp3",
+        "ffc74e833b953838f571d49f517f291d"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "111909": {
+      "audio": [
+        "111909.mp3",
+        "c05a6fc00599a46f3d718938a57bde68"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "111910": {
+      "audio": [
+        "111910.mp3",
+        "5232562b2765adb41d9e0d4cc871aef9"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "111911": {
+      "audio": [
+        "111911.mp3",
+        "1e7bf7f393e281ed089790f6b914e51b"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": NaN
+    },
+    "112313": {
+      "audio": [
+        "112313.mp3",
+        "667e831da949d2608f82bcb221a21c7e"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": NaN
+    },
+    "112314": {
+      "audio": [
+        "112314.mp3",
+        "d9e2895f9917f8286e5e18e849c13c83"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "112315": {
+      "audio": [
+        "112315.mp3",
+        "8e21f142a224638f1ba9097ce8645f04"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": NaN
+    },
+    "112316": {
+      "audio": [
+        "112316.mp3",
+        "3823cb706f00d62351126702581ed7c1"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "112318": {
+      "audio": [
+        "112318.mp3",
+        "38e45d35fb7cd45af7f6c2b163dfb05c"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "112352": {
+      "audio": [
+        "112352.mp3",
+        "e9f22a0e3fcb118cf30ac4b6d8a1d28a"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "112353": {
+      "audio": [
+        "112353.mp3",
+        "5eb95e1f3b3e60eff18ad029c88feaf3"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": NaN
+    },
+    "112355": {
+      "audio": [
+        "112355.mp3",
+        "63792cc91d52230aefe5d647e31fad28"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "112357": {
+      "audio": [
+        "112357.mp3",
+        "3195559e85eede7652ce95106cdd6cb9"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "112358": {
+      "audio": [
+        "112358.mp3",
+        "c6762ffd2cae4d8e9c1c5325758f9f5f"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "112359": {
+      "audio": [
+        "112359.mp3",
+        "7e997b6b9588efe8cfee284a07538c1e"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "112361": {
+      "audio": [
+        "112361.mp3",
+        "ba3f7dd01e645186a52a7296eaa2bb6b"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "112362": {
+      "audio": [
+        "112362.mp3",
+        "69dbc9f62b24e234def95cc5543445f3"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "112363": {
+      "audio": [
+        "112363.mp3",
+        "a79a6924b815f11fca94147caf330170"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "112364": {
+      "audio": [
+        "112364.mp3",
+        "4c9138dc625adec62fb669466fb57330"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "112369": {
+      "audio": [
+        "112369.mp3",
+        "d37faafc3389aeedf85565d4dd3ddd66"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "112535": {
+      "audio": [
+        "112535.mp3",
+        "468b65d0a3ab5153c8dea1e4bfb0c9e6"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "112559": {
+      "audio": [
+        "112559.mp3",
+        "b77a2e75e02064af37ed53acf160b72b"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": NaN
+    },
+    "112560": {
+      "audio": [
+        "112560.mp3",
+        "cb9f50f51951750918acb7473f12e9c6"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": NaN
+    },
+    "112562": {
+      "audio": [
+        "112562.mp3",
+        "748069d85350a5f5bd68846866c7eed9"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": NaN
+    },
+    "112563": {
+      "audio": [
+        "112563.mp3",
+        "ded25b2d6a0be029b803825d03767063"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": NaN
+    },
+    "112564": {
+      "audio": [
+        "112564.mp3",
+        "8983db956577ff009d605e8145d4c5ad"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "112565": {
+      "audio": [
+        "112565.mp3",
+        "62ea36b6f48088f0e94ba38e6ed86ae5"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "112566": {
+      "audio": [
+        "112566.mp3",
+        "c1899a799cbc43e496e5902d0360634f"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": NaN
+    },
+    "112567": {
+      "audio": [
+        "112567.mp3",
+        "8447fe656fbc18732be2a2459189d0a2"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": NaN
+    },
+    "113298": {
+      "audio": [
+        "113298.mp3",
+        "fba4de78f6bf4008fb23eaeca8ce9f22"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "113326": {
+      "audio": [
+        "113326.mp3",
+        "953fd55f7fd5d4a1d9e2d0bd0f55c3b5"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "113327": {
+      "audio": [
+        "113327.mp3",
+        "230a28666a60ffbf8ecdbcdd2bb00bd2"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": NaN
+    },
+    "113955": {
+      "audio": [
+        "113955.mp3",
+        "86421c73c9abce4447cdef25d11be757"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "114198": {
+      "audio": [
+        "114198.mp3",
+        "cebf1531677630358e398753c571f238"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "114200": {
+      "audio": [
+        "114200.mp3",
+        "69cef50bb137b383b29eac9d4a5d67ea"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "114201": {
+      "audio": [
+        "114201.mp3",
+        "bbf231d446332afccea3305921b52d71"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "114312": {
+      "audio": [
+        "114312.mp3",
+        "950d711e1e1087e16317717baeed3240"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "114322": {
+      "audio": [
+        "114322.mp3",
+        "19b3cb2101207c2da5a4e74085fc7853"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": NaN
+    },
+    "114861": {
+      "audio": [
+        "114861.mp3",
+        "d19ead56d2ee4b65de2c489d245ad91b"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": NaN
+    },
+    "115356": {
+      "audio": [
+        "115356.mp3",
+        "e9deff1ab760490355c4ad61b60fefab"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "115357": {
+      "audio": [
+        "115357.mp3",
+        "ef4dac126938b02e9e5483c6d90c8123"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115358": {
+      "audio": [
+        "115358.mp3",
+        "93c727095ed96113e787766f566227e4"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115359": {
+      "audio": [
+        "115359.mp3",
+        "5fbf152cd445c7c737c7a48c32210415"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115361": {
+      "audio": [
+        "115361.mp3",
+        "efd3ad4e48c24a8d9342ba1dbce46195"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115362": {
+      "audio": [
+        "115362.mp3",
+        "c3401104ff63743d17f2adde4d79eecd"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "115363": {
+      "audio": [
+        "115363.mp3",
+        "39e0faa0803a3cbb05c04e74aef73d4f"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115364": {
+      "audio": [
+        "115364.mp3",
+        "e4d0d13a6dd17fe7188888c6cf5fad28"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115366": {
+      "audio": [
+        "115366.mp3",
+        "45223a389f9f691f488b5110ae49fae4"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115367": {
+      "audio": [
+        "115367.mp3",
+        "e239dc178d83017f838bcc555ee7091b"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115368": {
+      "audio": [
+        "115368.mp3",
+        "e00a223edeb4a6df26bf4bc231550a98"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115369": {
+      "audio": [
+        "115369.mp3",
+        "d23dfb9424ee1b61973137890d1a9a42"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115370": {
+      "audio": [
+        "115370.mp3",
+        "c0d754d54a76f10657c962e2f2506291"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115371": {
+      "audio": [
+        "115371.mp3",
+        "3a1b29dc05dc005878b35f2f083d9d73"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115372": {
+      "audio": [
+        "115372.mp3",
+        "c26b9ffe37333293f20aeca2d7c6390e"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "115373": {
+      "audio": [
+        "115373.mp3",
+        "209c8a94db5d49cdef6e15ee310fb589"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115375": {
+      "audio": [
+        "115375.mp3",
+        "6edd3e53d3dab623f80a9e82d89c78bd"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "115376": {
+      "audio": [
+        "115376.mp3",
+        "42b8119ecad6761f4c7acb7cf58f9967"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115377": {
+      "audio": [
+        "115377.mp3",
+        "47b00c87b9a41fd7dddd6c4f1d715c6a"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115378": {
+      "audio": [
+        "115378.mp3",
+        "288e811445921845ff779c98f5867fe1"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115379": {
+      "audio": [
+        "115379.mp3",
+        "d3cf563474449844664e8f6bf9ed5e98"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115380": {
+      "audio": [
+        "115380.mp3",
+        "218c05e0e8f5f6a29ddaf88d3516508a"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115381": {
+      "audio": [
+        "115381.mp3",
+        "65b4653ad22b3478c334e1545772cd04"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "115382": {
+      "audio": [
+        "115382.mp3",
+        "d60505bfe613c4c9ec28fb0f2b0d7f94"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "115383": {
+      "audio": [
+        "115383.mp3",
+        "ec5734f8ed8f893ffc772927abbdd329"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "115384": {
+      "audio": [
+        "115384.mp3",
+        "db3b1bfd8bd253fbb2ff40b7b60a5f56"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "115385": {
+      "audio": [
+        "115385.mp3",
+        "e3de592d2aa1b3b9676adb80ac794e33"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "115386": {
+      "audio": [
+        "115386.mp3",
+        "508fefaa22e999ecd6c99f33029eb865"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115387": {
+      "audio": [
+        "115387.mp3",
+        "725e4bfac627fea24808b5ae279b4a44"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "115388": {
+      "audio": [
+        "115388.mp3",
+        "314a92d637b5db335e3485cea8edee3b"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "115389": {
+      "audio": [
+        "115389.mp3",
+        "d24d5676dccdd9452a9b4a0a215d0c95"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": NaN
+    },
+    "115391": {
+      "audio": [
+        "115391.mp3",
+        "f59013bb741ddc71940de73eeb946954"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": NaN
+    },
+    "115392": {
+      "audio": [
+        "115392.mp3",
+        "36c5ec40fce0eec53536a51a4da3aec5"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115663": {
+      "audio": [
+        "115663.mp3",
+        "d5caa1ac1560271dc647aef339c110c8"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "115664": {
+      "audio": [
+        "115664.mp3",
+        "ec295b896d764cda5ffcf323e6ed1a42"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": NaN
+    },
+    "115665": {
+      "audio": [
+        "115665.mp3",
+        "81a31a40389052057623281f80b20a3a"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": NaN
+    },
+    "115666": {
+      "audio": [
+        "115666.mp3",
+        "5159c0375975b3bfc30cacf57b53281f"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "115667": {
+      "audio": [
+        "115667.mp3",
+        "8d3dfbc5c570674e0af79960365c3aaf"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": NaN
+    },
+    "115668": {
+      "audio": [
+        "115668.mp3",
+        "a6e3d2fcb8ad2d3172ab17a407e0d212"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "115669": {
+      "audio": [
+        "115669.mp3",
+        "7b4d98cbb7add09914b501fb5be19703"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115670": {
+      "audio": [
+        "115670.mp3",
+        "04077f01d334fbf467d31a14afac7b55"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "115671": {
+      "audio": [
+        "115671.mp3",
+        "3f6084ae487a8b31d8ab347d475230a4"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "115672": {
+      "audio": [
+        "115672.mp3",
+        "fba6ac5b67a8f9bf13ba9b694d6a7eda"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "115673": {
+      "audio": [
+        "115673.mp3",
+        "d4a820c5b891a87c4cb9ae20f1abddb6"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": NaN
+    },
+    "115674": {
+      "audio": [
+        "115674.mp3",
+        "6f5a327eef7b375d04e59d2934e3d8e5"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "115675": {
+      "audio": [
+        "115675.mp3",
+        "c2b61798cb462b10e21a441ad7cf95fc"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "115676": {
+      "audio": [
+        "115676.mp3",
+        "c6d5823c37897d87144bc6643df4aea1"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "115677": {
+      "audio": [
+        "115677.mp3",
+        "7cc547f6eb976e0573377950cb62d7e3"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "115678": {
+      "audio": [
+        "115678.mp3",
+        "c0af7184d5382343b5735f01474a7352"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "115679": {
+      "audio": [
+        "115679.mp3",
+        "74bf61323b48a1516a58461ac64f14ec"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "115680": {
+      "audio": [
+        "115680.mp3",
+        "17b788bf8ccda9cdd05fc82b102d2382"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "115681": {
+      "audio": [
+        "115681.mp3",
+        "637e479f1697d14c8f926800bf50d662"
+      ],
+      "key_and_mode": "G# minor",
+      "spotify_uri": NaN
+    },
+    "116456": {
+      "audio": [
+        "116456.mp3",
+        "d2a45dad23980a805f52363ee128aa2b"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": NaN
+    },
+    "116549": {
+      "audio": [
+        "116549.mp3",
+        "b78d1dfc534371c77d07cc8f85ae9724"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "116563": {
+      "audio": [
+        "116563.mp3",
+        "ac382c60748887669fbb91ed326960aa"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": NaN
+    },
+    "116565": {
+      "audio": [
+        "116565.mp3",
+        "280b1e83e913666f3bd0c376b799f758"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "116570": {
+      "audio": [
+        "116570.mp3",
+        "4102b974d6c505c9a01636cf7a3c4e00"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "116571": {
+      "audio": [
+        "116571.mp3",
+        "ad76caabad3d1c7f13382d93e8ac06d7"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "116574": {
+      "audio": [
+        "116574.mp3",
+        "dfc6309a47f495384d38599995fa36a5"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": NaN
+    },
+    "116575": {
+      "audio": [
+        "116575.mp3",
+        "0ad2e94476dc123454cd33ab207e4919"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "116577": {
+      "audio": [
+        "116577.mp3",
+        "c22aeb761582f3bf83a3cceb84262bd6"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": NaN
+    },
+    "117517": {
+      "audio": [
+        "117517.mp3",
+        "b6d484449b2c6e22322195614d33f5e3"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "117519": {
+      "audio": [
+        "117519.mp3",
+        "e3bbe948ecb7a451a2370045e6ea35c5"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "117881": {
+      "audio": [
+        "117881.mp3",
+        "c07be3872a18500cd12ee2911feab8b8"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "118591": {
+      "audio": [
+        "118591.mp3",
+        "a5cebe35dc27112119b564fdb97abd3d"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": NaN
+    },
+    "118592": {
+      "audio": [
+        "118592.mp3",
+        "837d509ea26d21c42fea15db42a271e2"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "118593": {
+      "audio": [
+        "118593.mp3",
+        "a29d08d7a6029f5cc5637f17bd1fe777"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": NaN
+    },
+    "118594": {
+      "audio": [
+        "118594.mp3",
+        "8e5fcf07790ddb46b7e2c5c99dc952fc"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "118595": {
+      "audio": [
+        "118595.mp3",
+        "9f8785ef30dc5fc63e5841ea01d07c2d"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": NaN
+    },
+    "118598": {
+      "audio": [
+        "118598.mp3",
+        "00c5b842de43c29cf103b2f6f06f3554"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "118599": {
+      "audio": [
+        "118599.mp3",
+        "cfc2cace8c6c6d7810f83a76bb624f8b"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "119049": {
+      "audio": [
+        "119049.mp3",
+        "efa7fdc99b44d66293e14e9e59a872eb"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": NaN
+    },
+    "119050": {
+      "audio": [
+        "119050.mp3",
+        "bc16122d7ef356aebf28b23dbf15da72"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": NaN
+    },
+    "119232": {
+      "audio": [
+        "119232.mp3",
+        "0eca86ba2c6e843a4ab46d39e7e7a58c"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": NaN
+    },
+    "119233": {
+      "audio": [
+        "119233.mp3",
+        "a343530dc4f53725df763f4bbf26327d"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": NaN
+    },
+    "119234": {
+      "audio": [
+        "119234.mp3",
+        "f333ae4f773c1194799d2690afe2fde0"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": NaN
+    },
+    "119237": {
+      "audio": [
+        "119237.mp3",
+        "9d42e147967f808f1d6f4e2504390112"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": NaN
+    },
+    "119238": {
+      "audio": [
+        "119238.mp3",
+        "b2cd9db4d921a31b5cff90082ee7d99d"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": NaN
+    },
+    "119239": {
+      "audio": [
+        "119239.mp3",
+        "8f5077d63b0fb0a6acc2dc4ffb1b7951"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": NaN
+    },
+    "119241": {
+      "audio": [
+        "119241.mp3",
+        "a6b5635192f9acc2cda14aac04cccc67"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": NaN
+    },
+    "119242": {
+      "audio": [
+        "119242.mp3",
+        "2d8ff7ece63588098fcfd5237562219d"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "119243": {
+      "audio": [
+        "119243.mp3",
+        "335aa19832ea97a78b9de4f6663f96c4"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "119244": {
+      "audio": [
+        "119244.mp3",
+        "d38638da9435acea66763f66ce4bb54a"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "120424": {
+      "audio": [
+        "120424.mp3",
+        "497e39663777c1315285f2cc4419de2a"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": NaN
+    },
+    "120425": {
+      "audio": [
+        "120425.mp3",
+        "5c6848c9e8f72cda80c9189ecef111cc"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "120426": {
+      "audio": [
+        "120426.mp3",
+        "f6bb3ab8d1541ba8cbe96c750bbbedc0"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": NaN
+    },
+    "120427": {
+      "audio": [
+        "120427.mp3",
+        "222b3531e44f65470dce106f0e229e66"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": NaN
+    },
+    "120428": {
+      "audio": [
+        "120428.mp3",
+        "c93c242c66693498ab5d5f4e6dd3e302"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "120429": {
+      "audio": [
+        "120429.mp3",
+        "fc6eb339e908a8d233a7f8ef09982ef9"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "120430": {
+      "audio": [
+        "120430.mp3",
+        "d3d685abec86391e23bf05312aed0c71"
+      ],
+      "key_and_mode": "G# Major",
+      "spotify_uri": NaN
+    },
+    "120431": {
+      "audio": [
+        "120431.mp3",
+        "ff89060f6a68fe87a341b73b45db6de9"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "121207": {
+      "audio": [
+        "121207.mp3",
+        "7b0dbea3ea01f0f881bd8d093521d5a2"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "121208": {
+      "audio": [
+        "121208.mp3",
+        "9f64609debab29dd533d7ab39193360a"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "121209": {
+      "audio": [
+        "121209.mp3",
+        "bf0f99f8e0cbc95fabed1aa205c14fcc"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "121213": {
+      "audio": [
+        "121213.mp3",
+        "463f7456538f8261283d3b534aa58e3f"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": NaN
+    },
+    "121216": {
+      "audio": [
+        "121216.mp3",
+        "8f6cebb4d635bb3d84b654a525051da0"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "121256": {
+      "audio": [
+        "121256.mp3",
+        "afeca3c99b86984becff1849b5b13bd2"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "122041": {
+      "audio": [
+        "122041.mp3",
+        "8c135913e2d5b157d6f88d7bcdbc735b"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "122047": {
+      "audio": [
+        "122047.mp3",
+        "f190f7d332a0813174c3d475af9e7011"
+      ],
+      "key_and_mode": "G# minor",
+      "spotify_uri": NaN
+    },
+    "122048": {
+      "audio": [
+        "122048.mp3",
+        "5ee57df500bb790a6959ec153f42d427"
+      ],
+      "key_and_mode": "D# minor",
+      "spotify_uri": NaN
+    },
+    "122049": {
+      "audio": [
+        "122049.mp3",
+        "60de24071e8a583bf691c4fc32249e02"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "122050": {
+      "audio": [
+        "122050.mp3",
+        "57fa60675c9ebefbac7c243ce80d3a48"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": NaN
+    },
+    "122464": {
+      "audio": [
+        "122464.mp3",
+        "9f4844e423f1b9b6024265a607438b80"
+      ],
+      "key_and_mode": "F Major",
+      "spotify_uri": NaN
+    },
+    "122465": {
+      "audio": [
+        "122465.mp3",
+        "c42c61a3bec4413dd6a9f09f5a11e86c"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": NaN
+    },
+    "122466": {
+      "audio": [
+        "122466.mp3",
+        "5f343ba19aced7a284d8521cfb08c65a"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": NaN
+    },
+    "122467": {
+      "audio": [
+        "122467.mp3",
+        "5fd2a5ebc560487271bfcec0095383b0"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": NaN
+    },
+    "122468": {
+      "audio": [
+        "122468.mp3",
+        "7d63b0a166b47d0221b51fc2fd562113"
+      ],
+      "key_and_mode": "F# Major",
+      "spotify_uri": NaN
+    },
+    "122470": {
+      "audio": [
+        "122470.mp3",
+        "91dcddd56bf96e665e486a691348033f"
+      ],
+      "key_and_mode": "B Major",
+      "spotify_uri": NaN
+    },
+    "122471": {
+      "audio": [
+        "122471.mp3",
+        "93b071e81d876c7d80109eff60329585"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": NaN
+    },
+    "122472": {
+      "audio": [
+        "122472.mp3",
+        "410c57f3a129abb3fa4589426efcbef1"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "122625": {
+      "audio": [
+        "122625.mp3",
+        "41ef68ed63d18b949895c4b9aa5579da"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "122628": {
+      "audio": [
+        "122628.mp3",
+        "361296d5da389bb4c241c957fa2f3ff2"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "122631": {
+      "audio": [
+        "122631.mp3",
+        "9fc81416759ad8710434ba56464a3cad"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "122635": {
+      "audio": [
+        "122635.mp3",
+        "2ae5082124e1fe0161957a04f1cbb62c"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "122713": {
+      "audio": [
+        "122713.mp3",
+        "21a1c86512ba4c8a2fe8c7fd71200353"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "122765": {
+      "audio": [
+        "122765.mp3",
+        "5d9ed5750f8c5c2b689b9b5d09a558d0"
+      ],
+      "key_and_mode": "Bb minor",
+      "spotify_uri": NaN
+    },
+    "122767": {
+      "audio": [
+        "122767.mp3",
+        "6bc3a6acc11d0ea136441576eeec8428"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    },
+    "122883": {
+      "audio": [
+        "122883.mp3",
+        "503bdbcadaae327c47288424ba6591f3"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": NaN
+    },
+    "122999": {
+      "audio": [
+        "122999.mp3",
+        "f5d943771b80cebb5a4741ab5b4b1ffe"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": NaN
+    },
+    "123000": {
+      "audio": [
+        "123000.mp3",
+        "15d95566ea02d2faf398dc16d9a588ec"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": NaN
+    },
+    "123431": {
+      "audio": [
+        "123431.mp3",
+        "251be60189927d63f8d92081c907e756"
+      ],
+      "key_and_mode": "D Major",
+      "spotify_uri": NaN
+    },
+    "123470": {
+      "audio": [
+        "123470.mp3",
+        "a3f30c5e267ca5e7367edaf89dd54c52"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "123563": {
+      "audio": [
+        "123563.mp3",
+        "d32cd085a002cba07c469ddbaebcf7ed"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "123739": {
+      "audio": [
+        "123739.mp3",
+        "78c47c5ea50f1b9e2ac997a94ba09234"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "123741": {
+      "audio": [
+        "123741.mp3",
+        "0e94ffea27ee8b1130bc592966d5c28d"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "123742": {
+      "audio": [
+        "123742.mp3",
+        "334e01598ab46d17da590f78d57f0296"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "123743": {
+      "audio": [
+        "123743.mp3",
+        "63d5c48cffe04c3c4e1f4314cae84621"
+      ],
+      "key_and_mode": "C# Major",
+      "spotify_uri": NaN
+    },
+    "123823": {
+      "audio": [
+        "123823.mp3",
+        "63c93a9e14bb7c81d6bb828946ff67d3"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": NaN
+    },
+    "123903": {
+      "audio": [
+        "123903.mp3",
+        "46ba5fcdb5ee6c7752df9ed98f45f53f"
+      ],
+      "key_and_mode": "G# minor",
+      "spotify_uri": NaN
+    },
+    "123943": {
+      "audio": [
+        "123943.mp3",
+        "3c1474ecea999b090865a0a181887563"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": NaN
+    },
+    "123944": {
+      "audio": [
+        "123944.mp3",
+        "42aa6d7fadca4c66dc8ff202706ee3ce"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": NaN
+    },
+    "123945": {
+      "audio": [
+        "123945.mp3",
+        "d15dcc8e4cec042e6d5aa554b0671be6"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "123946": {
+      "audio": [
+        "123946.mp3",
+        "457d137a91ca3e5881cdf692f6f66181"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "123947": {
+      "audio": [
+        "123947.mp3",
+        "bebdc240ecb026d5b62f761433aa0bee"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": NaN
+    },
+    "123951": {
+      "audio": [
+        "123951.mp3",
+        "cd07c7637bfd9c3e31ded11b56470e03"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "123952": {
+      "audio": [
+        "123952.mp3",
+        "c5073235a09eaa769f6a13f182dc6abd"
+      ],
+      "key_and_mode": "Bb Major",
+      "spotify_uri": NaN
+    },
+    "123954": {
+      "audio": [
+        "123954.mp3",
+        "d9824460c70060081e503d3e5d215541"
+      ],
+      "key_and_mode": "E Major",
+      "spotify_uri": NaN
+    },
+    "123955": {
+      "audio": [
+        "123955.mp3",
+        "e435a9dd20d9f25bd0cf93f046245e55"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "123958": {
+      "audio": [
+        "123958.mp3",
+        "c1b9b02fdea5508661135bb01d786251"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": NaN
+    },
+    "123960": {
+      "audio": [
+        "123960.mp3",
+        "bde357bb8a4a61cc8765e82174d35ead"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "123961": {
+      "audio": [
+        "123961.mp3",
+        "81b6bb91248bac3517f12105191f8e55"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "123962": {
+      "audio": [
+        "123962.mp3",
+        "a200e7ccdb7c6be42906568140f1afa6"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "123963": {
+      "audio": [
+        "123963.mp3",
+        "78389b06c39c885143fe0b271a121500"
+      ],
+      "key_and_mode": "G Major",
+      "spotify_uri": NaN
+    },
+    "124137": {
+      "audio": [
+        "124137.mp3",
+        "381e11ab2317ddbd45ed1fd4a9eb7737"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "124184": {
+      "audio": [
+        "124184.mp3",
+        "e76a2560c9d0e520833a640ec743a193"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "124185": {
+      "audio": [
+        "124185.mp3",
+        "08c5532a5581a1315940cc084605c8ca"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "124186": {
+      "audio": [
+        "124186.mp3",
+        "7ce15b979051ae371e6029eccf6d9d0a"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "124523": {
+      "audio": [
+        "124523.mp3",
+        "4b36741dc47c9f9ddbccdcf8421d354d"
+      ],
+      "key_and_mode": "C Major",
+      "spotify_uri": NaN
+    },
+    "124525": {
+      "audio": [
+        "124525.mp3",
+        "cb701f8bb49890dd3c555d8d5fa98676"
+      ],
+      "key_and_mode": "A minor",
+      "spotify_uri": NaN
+    },
+    "124526": {
+      "audio": [
+        "124526.mp3",
+        "111eba6d75617df84d18f55f0867c6f5"
+      ],
+      "key_and_mode": "D# Major",
+      "spotify_uri": NaN
+    },
+    "124527": {
+      "audio": [
+        "124527.mp3",
+        "34a5772c136512f38e2379186ca89252"
+      ],
+      "key_and_mode": "E minor",
+      "spotify_uri": NaN
+    },
+    "124528": {
+      "audio": [
+        "124528.mp3",
+        "6f161dc13d302c35c1aaa20416ad53ea"
+      ],
+      "key_and_mode": "A Major",
+      "spotify_uri": NaN
+    },
+    "124530": {
+      "audio": [
+        "124530.mp3",
+        "75d869b2adec02198832da51e4bf5ac7"
+      ],
+      "key_and_mode": "F minor",
+      "spotify_uri": NaN
+    },
+    "124710": {
+      "audio": [
+        "124710.mp3",
+        "d5184e98b0d0e7a14dc4d7ab091109fd"
+      ],
+      "key_and_mode": "G# minor",
+      "spotify_uri": NaN
+    },
+    "124765": {
+      "audio": [
+        "124765.mp3",
+        "0e08af6fe00154de1f3559879075f4aa"
+      ],
+      "key_and_mode": "C# minor",
+      "spotify_uri": NaN
+    },
+    "124856": {
+      "audio": [
+        "124856.mp3",
+        "ea1c1811ce638997cffb6bbd75b6dd88"
+      ],
+      "key_and_mode": "D minor",
+      "spotify_uri": NaN
+    },
+    "124864": {
+      "audio": [
+        "124864.mp3",
+        "6b9004c91bf47f01c8d2479e771dfd09"
+      ],
+      "key_and_mode": "B minor",
+      "spotify_uri": NaN
+    },
+    "124911": {
+      "audio": [
+        "124911.mp3",
+        "c2849c27026d5be4dae0308cdbbf636f"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": NaN
+    }
+  }
+}
