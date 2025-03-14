@@ -1,0 +1,28 @@
+{"version": "1.0",
+"tracks": {
+    "100523": {
+      "audio": [
+        "audio/100523.mp3",
+        "9c2f8ed2b418d0599a3a64da9a5e793a"
+      ],
+      "key_and_mode": "C minor",
+      "spotify_uri": "spotify:track:0nvH7SkIgpV52fK6a8Q6fW"
+    },
+    "100524": {
+      "audio": [
+        "audio/100524.mp3",
+        "10e50cbd41befef4e64fffe469c268b3"
+      ],
+      "key_and_mode": "F# minor",
+      "spotify_uri": "spotify:track:1h0tlRCXLDmxwPlka8HRqh"
+    },
+    "100527": {
+      "audio": [
+        "audio/100527.mp3",
+        "d2a9c4a9ce501fe1982eb6ac6b2dac0c"
+      ],
+      "key_and_mode": "G minor",
+      "spotify_uri": "spotify:track:6kYO8eg1VXuIm4r7i8Tzvk"
+    }
+  }
+}
