@@ -54,6 +54,30 @@ def test_downloader(mocker, mock_path):
     )
     index = core.Index("asdf.json")
 
+    # Add this new test case for index in remotes during partial download
+    index_remote = download_utils.RemoteFileMetadata(
+        filename="index.json", url="a", checksum=("5678")
+    )
+
+    # Test partial download includes "index" from remotes
+    download_utils.downloader(
+        "a",
+        index=index,
+        remotes={
+            "b": zip_remote,
+            "c": tar_remote,
+            "d": file_remote,
+            "index": index_remote,  # Add index to remotes
+        },
+        partial_download=["b", "d"],
+    )
+    mock_zip.assert_called_once_with(zip_remote, "a", False, False, False)
+    # Verify both "d" (file) and "index" are downloaded
+    assert mock_download_from_remote.call_count == 2
+    mock_download_from_remote.assert_any_call(file_remote, "a", False, False)
+    mock_download_from_remote.assert_any_call(index_remote, "a", False, False)
+    mocker.resetall()
+
     # Zip only
     download_utils.downloader("a", index=index, remotes={"b": zip_remote})
     mock_zip.assert_called_once_with(zip_remote, "a", False, False, False)
