@@ -102,6 +102,8 @@ def downloader(
     partial_download = partial_download if partial_download else index.partial_download
 
     if remotes is not None:
+        # BUG: when partial_download is not None, the index is not downloaded
+        # that is because objs_to_download is set to the partial_download which does not contain index
         if partial_download is not None:
             # check the keys in partial_download are in the download dict
             if not isinstance(partial_download, list) or any(
@@ -113,6 +115,8 @@ def downloader(
                     )
                 )
             objs_to_download = partial_download
+            # BUG-FIX: add index to the list of objects to download
+            objs_to_download.append("index")
         else:
             objs_to_download = list(remotes.keys())
 
