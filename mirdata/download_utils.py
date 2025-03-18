@@ -116,7 +116,8 @@ def downloader(
                 )
             objs_to_download = partial_download
             # BUG-FIX: add index to the list of objects to download
-            objs_to_download.append("index")
+            if "index" in remotes:
+                objs_to_download.append("index")
         else:
             objs_to_download = list(remotes.keys())
 
