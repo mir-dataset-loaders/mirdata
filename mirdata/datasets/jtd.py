@@ -657,7 +657,3 @@ class Dataset(core.Dataset):
             download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
-        # Note: this needs to be added to pass `test_full_dataset.test_load_mtracks`
-        #  currently this test fails on many other datasets, e.g., `dagstuhl_choirset`
-        #  as the `mm` attribute is never set when calling `super().__init__()`
-        self.mm = list(self._index["multitracks"].keys())
