@@ -1,8 +1,10 @@
 def add_versions(module, lines):
-    if hasattr(module, 'INDEXES'):
-        indexes = module.INDEXES
-        lines.append('**Versions:** ' + ' '.join([f'``{v}``' for v in indexes.keys()]))
+    try:
+        lines.append('**Available Versions:** ' + ' '.join([f'``{v}``' for v in module.INDEXES.keys() if v not in ["default", "sample", "test"]]))
+        lines.append('Default version: ``{}``'.format(module.INDEXES["default"]))
         lines.append('')
+    except Exception as e:
+        lines.append(f"Error fetching versions: {e}")
 
 
 def add_partial_downloads(module, dataset_class, lines):
