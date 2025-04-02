@@ -27,10 +27,7 @@ def test_track():
             DEFAULT_TRACK_ID + "_piano.wav",
         ),
         "midi_path": os.path.join(
-            DATA_HOME,
-            "annotations",
-            DEFAULT_TRACK_ID,
-            "piano_midi.mid"
+            DATA_HOME, "annotations", DEFAULT_TRACK_ID, "piano_midi.mid"
         ),
         "onsets_path": os.path.join(
             DATA_HOME,
@@ -57,26 +54,15 @@ def test_track():
 
     assert track._track_paths == {
         "audio": [
-            os.path.join(
-                "processed",
-                DEFAULT_TRACK_ID + "_piano.wav"
-            ),
+            os.path.join("processed", DEFAULT_TRACK_ID + "_piano.wav"),
             "fe5f025813675f301b458dcad361db19",
         ],
         "midi": [
-            os.path.join(
-                "annotations",
-                DEFAULT_TRACK_ID,
-                "piano_midi.mid"
-            ),
+            os.path.join("annotations", DEFAULT_TRACK_ID, "piano_midi.mid"),
             "c4e6659f654c1e28c12d31db5e29d5d2",
         ],
         "beats": [
-            os.path.join(
-                "annotations",
-                DEFAULT_TRACK_ID,
-                "beats.csv"
-            ),
+            os.path.join("annotations", DEFAULT_TRACK_ID, "beats.csv"),
             "25f4ad5092b0381bb7472cde86db86cf",
         ],
         "onsets": [
@@ -88,11 +74,7 @@ def test_track():
             "ad03567467f6c2212c98b2c02d6569cf",
         ],
         "metadata": [
-            os.path.join(
-                "annotations",
-                DEFAULT_TRACK_ID,
-                "metadata.json"
-            ),
+            os.path.join("annotations", DEFAULT_TRACK_ID, "metadata.json"),
             "685a44e51b0f2991f84577de575a7186",
         ],
     }
@@ -229,10 +211,7 @@ def test_timestamp_to_seconds():
 def test_load_onsets():
     # load an onsets file which exists
     annotation_path = os.path.join(
-        DATA_HOME,
-        "annotations",
-        DEFAULT_TRACK_ID,
-        "bass_onsets.csv"
+        DATA_HOME, "annotations", DEFAULT_TRACK_ID, "bass_onsets.csv"
     )
     annotation_data = jtd.load_onsets(annotation_path)
     # check types
@@ -254,10 +233,7 @@ def test_load_onsets():
 def test_load_beats():
     # load a beats file which exists
     annotation_path = os.path.join(
-        DATA_HOME,
-        "annotations",
-        DEFAULT_TRACK_ID,
-        "beats.csv"
+        DATA_HOME, "annotations", DEFAULT_TRACK_ID, "beats.csv"
     )
     # get the beats for the overall mixture
     annotation_data = jtd.load_beats(annotation_path, 0)
