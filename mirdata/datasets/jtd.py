@@ -77,12 +77,12 @@ BIBTEX = """
 """
 
 INDEXES = {
-    "default": "2",
+    "default": "2.0",
     "test": "sample",
-    "2": core.Index(
+    "2.0": core.Index(
         filename="jtd_index_2.0.json",
-        url="https://raw.githubusercontent.com/HuwCheston/Jazz-Trio-Database/refs/heads/main/references/jtd_index_2.0.json",
-        checksum="cdf32f3751fd9d0351c45b6b94f91a0f",
+        url="https://zenodo.org/records/14546790/files/jtd_index_2.0.json?download=1",
+        checksum="fd31d02762fecadfd4615c3fdb41e225",
     ),
     "sample": core.Index(filename="jtd_index_2.0_sample.json"),
 }

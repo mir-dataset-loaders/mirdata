@@ -84,7 +84,7 @@ def make_jtd_index(dataset_data_path: str):
         for stem in STEMS:
             index_tracks[f"{recording}_{stem}"] = get_stem_files(dataset_data_path, recording, stem)
     # Combine everything together in dataset index
-    dataset_index = {"version": 2, "tracks": index_tracks, "multitracks": index_multitracks}
+    dataset_index = {"version": 2.0, "tracks": index_tracks, "multitracks": index_multitracks}
     with open(DATASET_INDEX_PATH, "w") as fhandle:
         json.dump(dataset_index, fhandle, indent=2)
 
