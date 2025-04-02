@@ -1,4 +1,5 @@
-"""Tests for Candombe dataset"""
+"""Tests for Candombe dataset
+"""
 
 import numpy as np
 from mirdata import annotations

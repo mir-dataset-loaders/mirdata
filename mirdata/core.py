@@ -1,4 +1,5 @@
-"""Core mirdata classes"""
+"""Core mirdata classes
+"""
 
 import json
 import os

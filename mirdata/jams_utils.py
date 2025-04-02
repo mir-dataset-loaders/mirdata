@@ -1,4 +1,5 @@
-"""Utilities for converting mirdata Annotation classes to jams format."""
+"""Utilities for converting mirdata Annotation classes to jams format.
+"""
 
 import logging
 import os
