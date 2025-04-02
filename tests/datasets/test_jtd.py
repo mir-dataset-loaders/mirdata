@@ -11,30 +11,38 @@ from mirdata import annotations
 from mirdata.datasets import jtd
 from tests.test_utils import run_track_tests, run_multitrack_tests
 
+DATA_HOME = "tests/resources/mir_datasets/jtd"
+DEFAULT_TRACK_ID = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067"
+
 
 def test_track():
-    default_trackid = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067_piano"
-    data_home = "tests/resources/mir_datasets/jtd"
-    dataset = jtd.Dataset(data_home, version="sample")
-    track = dataset.track(default_trackid)
+    dataset = jtd.Dataset(DATA_HOME, version="sample")
+    track = dataset.track(DEFAULT_TRACK_ID + "_piano")
 
     expected_attributes = {
-        "track_id": "barronk-allgodschildren-drummondrrileyb-1990-8b77c067_piano",
+        "track_id": DEFAULT_TRACK_ID + "_piano",
         "audio_path": os.path.join(  # using os.path.join allows this to work properly on both Windows and Linux
-            "tests/resources/mir_datasets/jtd",
-            "processed/barronk-allgodschildren-drummondrrileyb-1990-8b77c067_piano.wav",
+            DATA_HOME,
+            "processed",
+            DEFAULT_TRACK_ID + "_piano.wav",
         ),
         "midi_path": os.path.join(
-            "tests/resources/mir_datasets/jtd",
-            "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/piano_midi.mid",
+            DATA_HOME,
+            "annotations",
+            DEFAULT_TRACK_ID,
+            "piano_midi.mid"
         ),
         "onsets_path": os.path.join(
-            "tests/resources/mir_datasets/jtd",
-            "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/piano_onsets.csv",
+            DATA_HOME,
+            "annotations",
+            DEFAULT_TRACK_ID,
+            "piano_onsets.csv",
         ),
         "beats_path": os.path.join(
-            "tests/resources/mir_datasets/jtd",
-            "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/beats.csv",
+            DATA_HOME,
+            "annotations",
+            DEFAULT_TRACK_ID,
+            "beats.csv",
         ),
         "instrument": "piano",
     }
@@ -49,23 +57,42 @@ def test_track():
 
     assert track._track_paths == {
         "audio": [
-            "processed/barronk-allgodschildren-drummondrrileyb-1990-8b77c067_piano.wav",
+            os.path.join(
+                "processed",
+                DEFAULT_TRACK_ID + "_piano.wav"
+            ),
             "fe5f025813675f301b458dcad361db19",
         ],
         "midi": [
-            "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/piano_midi.mid",
+            os.path.join(
+                "annotations",
+                DEFAULT_TRACK_ID,
+                "piano_midi.mid"
+            ),
             "c4e6659f654c1e28c12d31db5e29d5d2",
         ],
         "beats": [
-            "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/beats.csv",
+            os.path.join(
+                "annotations",
+                DEFAULT_TRACK_ID,
+                "beats.csv"
+            ),
             "25f4ad5092b0381bb7472cde86db86cf",
         ],
         "onsets": [
-            "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/piano_onsets.csv",
+            os.path.join(
+                "annotations",
+                DEFAULT_TRACK_ID,
+                "piano_onsets.csv",
+            ),
             "ad03567467f6c2212c98b2c02d6569cf",
         ],
         "metadata": [
-            "annotations/barronk-allgodschildren-drummondrrileyb-1990-8b77c067/metadata.json",
+            os.path.join(
+                "annotations",
+                DEFAULT_TRACK_ID,
+                "metadata.json"
+            ),
             "685a44e51b0f2991f84577de575a7186",
         ],
     }
@@ -79,10 +106,8 @@ def test_track():
 
 
 def test_multitrack():
-    default_trackid = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067"
-    data_home = "tests/resources/mir_datasets/jtd"
-    dataset = jtd.Dataset(data_home, version="sample")
-    multitrack = dataset.multitrack(default_trackid)
+    dataset = jtd.Dataset(DATA_HOME, version="sample")
+    multitrack = dataset.multitrack(DEFAULT_TRACK_ID)
     run_multitrack_tests(multitrack)
     # test track audio property
     assert multitrack.track_audio_property == "audio"
@@ -109,10 +134,8 @@ def test_multitrack():
 
 
 def test_track_to_jams():
-    default_trackid = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067_piano"
-    data_home = "tests/resources/mir_datasets/jtd"
-    dataset = jtd.Dataset(data_home, version="sample")
-    track = dataset.track(default_trackid)
+    dataset = jtd.Dataset(DATA_HOME, version="sample")
+    track = dataset.track(DEFAULT_TRACK_ID + "_piano")
     jam = track.to_jams()
     # testing MIDI
     midi_annot = jam.search(namespace="note_hz")[0]["data"]
@@ -156,10 +179,8 @@ def test_track_to_jams():
 
 
 def test_multitrack_to_jams():
-    default_trackid = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067"
-    data_home = "tests/resources/mir_datasets/jtd"
-    dataset = jtd.Dataset(data_home, version="sample")
-    track = dataset.multitrack(default_trackid)
+    dataset = jtd.Dataset(DATA_HOME, version="sample")
+    track = dataset.multitrack(DEFAULT_TRACK_ID)
     jam = track.to_jams()
 
     # testing tempo
@@ -207,9 +228,11 @@ def test_timestamp_to_seconds():
 
 def test_load_onsets():
     # load an onsets file which exists
-    annotation_path = (
-        "tests/resources/mir_datasets/jtd/annotations/"
-        "barronk-allgodschildren-drummondrrileyb-1990-8b77c067/bass_onsets.csv"
+    annotation_path = os.path.join(
+        DATA_HOME,
+        "annotations",
+        DEFAULT_TRACK_ID,
+        "bass_onsets.csv"
     )
     annotation_data = jtd.load_onsets(annotation_path)
     # check types
@@ -230,9 +253,11 @@ def test_load_onsets():
 
 def test_load_beats():
     # load a beats file which exists
-    annotation_path = (
-        "tests/resources/mir_datasets/jtd/annotations/"
-        "barronk-allgodschildren-drummondrrileyb-1990-8b77c067/beats.csv"
+    annotation_path = os.path.join(
+        DATA_HOME,
+        "annotations",
+        DEFAULT_TRACK_ID,
+        "beats.csv"
     )
     # get the beats for the overall mixture
     annotation_data = jtd.load_beats(annotation_path, 0)
@@ -254,19 +279,15 @@ def test_load_beats():
 
 
 def test_track_properties():
-    default_trackid = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067_piano"
-    data_home = "tests/resources/mir_datasets/jtd"
-    dataset = jtd.Dataset(data_home, version="sample")
-    track = dataset.track(default_trackid)
+    dataset = jtd.Dataset(DATA_HOME, version="sample")
+    track = dataset.track(DEFAULT_TRACK_ID + "_piano")
     assert track.instrument == "piano"
     assert track.musician == "Kenny Barron"
 
 
 def test_multitrack_properties():
-    default_trackid = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067"
-    data_home = "tests/resources/mir_datasets/jtd"
-    dataset = jtd.Dataset(data_home, version="sample")
-    track = dataset.multitrack(default_trackid)
+    dataset = jtd.Dataset(DATA_HOME, version="sample")
+    track = dataset.multitrack(DEFAULT_TRACK_ID)
     assert track.name == "All Gods Children"
     assert track.album == "The Only One"
     assert track.year == 1990
@@ -283,9 +304,7 @@ def test_multitrack_properties():
 
 
 def test_no_midi():
-    default_trackid = "barronk-allgodschildren-drummondrrileyb-1990-8b77c067_bass"
-    data_home = "tests/resources/mir_datasets/jtd"
-    dataset = jtd.Dataset(data_home, version="sample")
-    track = dataset.track(default_trackid)
+    dataset = jtd.Dataset(DATA_HOME, version="sample")
+    track = dataset.track(DEFAULT_TRACK_ID + "_bass")
     midi = track.midi
     assert midi is None
