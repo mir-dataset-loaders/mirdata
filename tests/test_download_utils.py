@@ -153,7 +153,6 @@ def test_downloader(mocker, mock_path):
         "a", index=index, remotes={"b": zip_remote, "c": tar_remote, "d": file_remote}
     )
 
-
 def test_download_index_cases(mocker, mock_path):
     mock_zip = mocker.patch.object(download_utils, "download_zip_file")
     mock_download_from_remote = mocker.patch.object(
@@ -217,6 +216,24 @@ def test_download_index_cases(mocker, mock_path):
         remote_index.remote, "a", False, False
     )
     mocker.resetall()
+
+    mock_download_from_remote = mocker.patch.object(download_utils, "download_from_remote")
+
+    index_remote = download_utils.RemoteFileMetadata(
+        filename="index.json", url="a", checksum="1234"
+    )
+    file_remote = download_utils.RemoteFileMetadata(
+        filename="remote.txt", url="b", checksum="5678"
+    )
+    index = core.Index("asdf.json")
+
+    # Test with remotes containing "index"
+    remotes = {"index": index_remote, "file": file_remote}
+    download_utils.downloader("a", index=index, remotes=remotes, partial_download=["file"])
+
+    # Verify that "index" is downloaded
+    mock_download_from_remote.assert_any_call(index_remote, "a", False, False)
+    mock_download_from_remote.assert_any_call(file_remote, "a", False, False)
 
 
 def _clean(fpath):
