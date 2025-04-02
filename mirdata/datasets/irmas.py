@@ -109,6 +109,7 @@ BIBTEX = """
   version      = {1.0},
   doi          = {10.5281/zenodo.1290750},
   url          = {https://doi.org/10.5281/zenodo.1290750}
+}
 """
 
 INDEXES = {
