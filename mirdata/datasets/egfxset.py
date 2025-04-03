@@ -23,31 +23,31 @@
     Categories, Models and Effects:
 
         Distortion:
-            Boss BD-2: 
+            Boss BD-2:
                        Blues Driver
-            Ibanez Minitube Screamer: 
+            Ibanez Minitube Screamer:
                        Tube Screamer
-            ProCo RAT2: 
+            ProCo RAT2:
                        Distortion
 
         Modulation:
-            Boss CE-3: 
+            Boss CE-3:
                        Chorus
-            MXR Phase 45: 
+            MXR Phase 45:
                        Phaser
-            Mooer E-Lady: 
+            Mooer E-Lady:
                        Flanger
 
         Delays:
             Line6 DL-4:
-                        Digital Delay, 
-                        Tape Echo, 
+                        Digital Delay,
+                        Tape Echo,
                         Sweep Echo
 
         Reverb:
             Orange CR-60 Combo Amplifier:
-                                        Plate Reverb, 
-                                        Hall Reverb, 
+                                        Plate Reverb,
+                                        Hall Reverb,
                                         Spring Reverb
 
 
@@ -65,7 +65,7 @@
              - Effect type
 
              - Hardware modes
-    
+
              - Knob names
 
              - Knob types
@@ -361,7 +361,7 @@ class Dataset(core.Dataset):
                     ],
                     "Note Name": annotations.convert_pitch_units(
                         pitches=np.array(
-                            [(cuerdas[noteCord[0]] + int(float(noteCord[1])))],
+                            [cuerdas[noteCord[0]] + int(float(noteCord[1]))],
                             dtype=float,
                         ),
                         pitch_unit="midi",
@@ -371,7 +371,7 @@ class Dataset(core.Dataset):
                         intervals=np.array([[0, 5]], dtype=float),
                         interval_unit="s",
                         pitches=np.array(
-                            [(cuerdas[noteCord[0]] + int(float(noteCord[1])))],
+                            [cuerdas[noteCord[0]] + int(float(noteCord[1]))],
                             dtype=float,
                         ),
                         pitch_unit="midi",
@@ -392,7 +392,7 @@ class Dataset(core.Dataset):
                     ],
                     "Note Name": annotations.convert_pitch_units(
                         pitches=np.array(
-                            [(cuerdas[noteCord[0]] + int(float(noteCord[1])))],
+                            [cuerdas[noteCord[0]] + int(float(noteCord[1]))],
                             dtype=float,
                         ),
                         pitch_unit="midi",
@@ -402,7 +402,7 @@ class Dataset(core.Dataset):
                         intervals=np.array([[0, 5]], dtype=float),
                         interval_unit="s",
                         pitches=np.array(
-                            [(cuerdas[noteCord[0]] + int(float(noteCord[1])))],
+                            [cuerdas[noteCord[0]] + int(float(noteCord[1]))],
                             dtype=float,
                         ),
                         pitch_unit="midi",

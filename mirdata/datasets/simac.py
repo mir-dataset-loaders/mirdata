@@ -11,7 +11,7 @@
 
     **Musical Facets and Descriptors:**
 
-    - **Rhythm:** SIMAC investigates various aspects of automatic rhythm description, such as tempo induction, beat tracking, and rhythmic pattern characterization. 
+    - **Rhythm:** SIMAC investigates various aspects of automatic rhythm description, such as tempo induction, beat tracking, and rhythmic pattern characterization.
 
     **Acknowledgments and References:**
 

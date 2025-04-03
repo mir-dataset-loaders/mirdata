@@ -1,5 +1,4 @@
-"""Utilities for downloading from the web.
-"""
+"""Utilities for downloading from the web."""
 
 import chardet
 import glob
