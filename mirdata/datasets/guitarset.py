@@ -378,10 +378,9 @@ def load_chords(jams_path: TextIO, leadsheet_version):
         ChordData: Chord data
 
     """
-    try:
-        jam = jams.load(jams_path)
-    except FileNotFoundError:
-        raise FileNotFoundError("jams_path {} does not exist".format(jams_path.name))
+    # We no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    jam = jams.load(jams_path)
 
     if leadsheet_version:
         anno = jam.search(namespace="chord")[0]
@@ -452,10 +451,9 @@ def load_pitch_contour(jams_path: TextIO, string_num):
         F0Data: Pitch contour data for the given string
 
     """
-    try:
-        jam = jams.load(jams_path)
-    except FileNotFoundError:
-        raise FileNotFoundError("jams_path {} does not exist".format(jams_path.name))
+    # With the decorator, we no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    jam = jams.load(jams_path)
 
     anno_arr = jam.search(namespace="pitch_contour")
     anno = anno_arr.search(data_source=str(string_num))[0]
@@ -488,10 +486,9 @@ def load_notes(jams_path: TextIO, string_num):
         NoteData: Note data for the given string
 
     """
-    try:
-        jam = jams.load(jams_path)
-    except FileNotFoundError:
-        raise FileNotFoundError("jams_path {} does not exist".format(jams_path.name))
+    # With the decorator, we no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    jam = jams.load(jams_path)
 
     anno_arr = jam.search(namespace="note_midi")
     anno = anno_arr.search(data_source=str(string_num))[0]

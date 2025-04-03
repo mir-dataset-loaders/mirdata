@@ -261,12 +261,11 @@ def load_annotations_granularity(annotations_path: TextIO, granularity: str):
         NoteData for granularity='notes' or LyricData otherwise
 
     """
-    try:
-        with gzip.open(annotations_path.name, "rb") as f:
-            output = pickle.load(f)
-    except Exception as e:
-        with gzip.open(annotations_path.name, "r") as f:
-            output = pickle.load(f)
+    # We no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    with gzip.open(annotations_path.name, "rb") as f:
+        output = pickle.load(f)
+
     text = []
     notes = []
     begs = []
