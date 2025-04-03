@@ -364,12 +364,12 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     return annotations.BeatData(times, "s", np.array(positions), "bar_index")
 
 
-# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
-def load_chords(jams_path, leadsheet_version):
+@io.coerce_to_string_io
+def load_chords(jams_path: TextIO, leadsheet_version):
     """Load a guitarset chord annotation.
 
     Args:
-        jams_path (str): path to the jams annotation file
+        jams_path (str or file-like): path to the jams annotation file
         leadsheet_version (Bool):
             Whether or not to load the leadsheet version of the chord annotation
             If False, load the infered version.
@@ -378,11 +378,9 @@ def load_chords(jams_path, leadsheet_version):
         ChordData: Chord data
 
     """
-    try:
-        with open(jams_path, "r") as fhandle:
-            jam = jams.load(fhandle)
-    except FileNotFoundError:
-        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+    # We no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    jam = jams.load(jams_path)
 
     if leadsheet_version:
         anno = jam.search(namespace="chord")[0]
@@ -440,12 +438,12 @@ def _fill_pitch_contour(times, freqs, voicing, max_time, contour_hop, duration=N
     return filled_times, filled_freqs, filled_voicing
 
 
-# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
-def load_pitch_contour(jams_path, string_num):
+@io.coerce_to_string_io
+def load_pitch_contour(jams_path: TextIO, string_num):
     """Load a guitarset pitch contour annotation for a given string
 
     Args:
-        jams_path (str): path to the jams annotation file
+        jams_path (str or file-like): path to the jams annotation file
         string_num (int), in range(6): Which string to load.
             0 is the Low E string, 5 is the high e string.
 
@@ -453,11 +451,9 @@ def load_pitch_contour(jams_path, string_num):
         F0Data: Pitch contour data for the given string
 
     """
-    try:
-        with open(jams_path, "r") as fhandle:
-            jam = jams.load(fhandle)
-    except FileNotFoundError:
-        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+    # With the decorator, we no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    jam = jams.load(jams_path)
 
     anno_arr = jam.search(namespace="pitch_contour")
     anno = anno_arr.search(data_source=str(string_num))[0]
@@ -477,12 +473,12 @@ def load_pitch_contour(jams_path, string_num):
     )
 
 
-# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
-def load_notes(jams_path, string_num):
+@io.coerce_to_string_io
+def load_notes(jams_path: TextIO, string_num):
     """Load a guitarset note annotation for a given string
 
     Args:
-        jams_path (str): path to the jams annotation file
+        jams_path (str or file-like): path to the jams annotation file
         string_num (int), in range(6): Which string to load.
             0 is the Low E string, 5 is the high e string.
 
@@ -490,11 +486,9 @@ def load_notes(jams_path, string_num):
         NoteData: Note data for the given string
 
     """
-    try:
-        with open(jams_path) as fhandle:
-            jam = jams.load(fhandle)
-    except FileNotFoundError:
-        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+    # With the decorator, we no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    jam = jams.load(jams_path)
 
     anno_arr = jam.search(namespace="note_midi")
     anno = anno_arr.search(data_source=str(string_num))[0]

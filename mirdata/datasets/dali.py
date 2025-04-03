@@ -19,7 +19,7 @@ import gzip
 import logging
 import os
 import pickle
-from typing import BinaryIO, Optional, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -249,23 +249,23 @@ def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
     return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_annotations_granularity(annotations_path, granularity):
+@io.coerce_to_string_io
+def load_annotations_granularity(annotations_path: TextIO, granularity: str):
     """Load annotations at the specified level of granularity
 
     Args:
-        annotations_path (str): path to a DALI annotation file
+        annotations_path (str or file-like): path to a DALI annotation file
         granularity (str): one of 'notes', 'words', 'lines', 'paragraphs'
 
     Returns:
         NoteData for granularity='notes' or LyricData otherwise
 
     """
-    try:
-        with gzip.open(annotations_path, "rb") as f:
-            output = pickle.load(f)
-    except Exception as e:
-        with gzip.open(annotations_path, "r") as f:
-            output = pickle.load(f)
+    # We no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    with gzip.open(annotations_path.name, "rb") as f:
+        output = pickle.load(f)
+
     text = []
     notes = []
     begs = []
@@ -276,12 +276,11 @@ def load_annotations_granularity(annotations_path, granularity):
         ends.append(round(annot["time"][1], 3))
         text.append(annot["text"])
     if granularity == "notes":
-        annotation = annotations.NoteData(
+        return annotations.NoteData(
             np.array([begs, ends]).T, "s", np.array(notes), "hz"
         )
     else:
-        annotation = annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
-    return annotation
+        return annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
 
 
 def load_annotations_class(annotations_path):

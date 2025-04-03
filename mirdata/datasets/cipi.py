@@ -147,7 +147,7 @@ class Track(core.Track):
         )
 
     @property
-    def difficulty_annotation(self) -> int:
+    def difficulty_annotation(self) -> Optional[int]:
         return (
             self._track_metadata["henle"] if "henle" in self._track_metadata else None
         )
