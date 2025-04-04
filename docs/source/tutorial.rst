@@ -403,6 +403,11 @@ The following is a simple example of a generator that can be used to create a te
             }
         )
 
+.. _Using mirdata with pytorch:
+
+Using mirdata with pytorch
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Next is a simple example of a class that can be used to create a torch Dataset and DataLoader.
 
 .. admonition:: mirdata with torch.utils.data.Dataset example
