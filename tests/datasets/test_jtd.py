@@ -1,5 +1,4 @@
-"""Tests for Jazz Trio Database (JTD)
-"""
+"""Tests for Jazz Trio Database (JTD)"""
 
 import os
 from typing import Tuple
