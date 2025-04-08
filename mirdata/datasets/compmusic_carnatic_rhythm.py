@@ -11,7 +11,7 @@
 
     The dataset contains the following data:
 
-    **AUDIO:** The pieces are chosen from the CompMusic Carnatic music collection. The pieces were chosen in four popular taalas of 
+    **AUDIO:** The pieces are chosen from the CompMusic Carnatic music collection. The pieces were chosen in four popular taalas of
     Carnatic music, which encompasses a majority of Carnatic music. The pieces were chosen include a mix of vocal and instrumental recordings,
     new and old recordings, and to span a wide variety of forms. All pieces have a percussion accompaniment, predominantly Mridangam. The
     excerpts are full length pieces or a part of the full length pieces. There are also several different pieces by the same artist (or release
@@ -27,9 +27,9 @@
     **METADATA:** For each excerpt, the taala of the piece, edupu (offset of the start of the piece, relative to the sama, measured in aksharas)
     of the composition, and the kalai (the cycle length scaling factor) are recorded. Each excerpt can be uniquely identified and located with the
     MBID of the recording, and the relative start and end times of the excerpt within the whole recording. A separate 5 digit taala based unique ID
-    is also provided for each excerpt as a double check. The artist, release, the lead instrument, and the raaga of the piece are additional 
+    is also provided for each excerpt as a double check. The artist, release, the lead instrument, and the raaga of the piece are additional
     editorial metadata obtained from the release. A flag indicates if the excerpt is a full piece or only a part of a full piece. There are optional
-    comments on audio quality and annotation specifics. 
+    comments on audio quality and annotation specifics.
 
     Possible uses of the dataset: Possible tasks where the dataset can be used include taala, sama and beat tracking, tempo estimation and tracking,
     taala recognition, rhythm based segmentation of musical audio, structural segmentation, audio to score/lyrics alignment, and rhythmic pattern
