@@ -41,6 +41,7 @@ import os
 import csv
 import glob
 import librosa
+from typing import TextIO
 
 import numpy as np
 from xml.dom import minidom
@@ -240,8 +241,8 @@ def load_taala(fhandle):
     )
 
 
-# no decorator here because we need three paths
-def load_notation(note_path, taala_path, structure_path):
+@io.coerce_to_string_io
+def load_notation(note_path: TextIO, taala_path: str, structure_path: str):
     """Load notation and structure
 
     Args:
@@ -257,11 +258,12 @@ def load_notation(note_path, taala_path, structure_path):
 
     """
     try:
-        note_file = open(note_path, "r")
-        note_reader = csv.reader(note_file, delimiter="-")
+        note_reader = csv.reader(note_path, delimiter="-")
     except FileNotFoundError:
         raise FileNotFoundError(
-            "note_path {} does not exist, have you run .download()?".format(note_path)
+            "note_path {} does not exist, have you run .download()?".format(
+                note_path.name
+            )
         )
 
     try:
@@ -329,12 +331,12 @@ def load_notation(note_path, taala_path, structure_path):
         not_per_sec = notation_dict[section[0]]
         section_start = start_times[len(events)]
         if section[1] == 2:
-            for x in np.arange(len(not_per_sec), step=2):
+            for x in range(0, len(not_per_sec), 2):
                 # notes = [not_per_sec[x], not_per_sec[x+1]]
                 notes = not_per_sec[x] + not_per_sec[x + 1]
                 events.append(notes)
         if section[1] == 4:
-            for x in np.arange(len(not_per_sec), step=4):
+            for x in range(0, len(not_per_sec), 4):
                 # notes = [not_per_sec[x], not_per_sec[x+1], not_per_sec[x+2], not_per_sec[x+3]]
                 notes = (
                     not_per_sec[x]
@@ -347,11 +349,13 @@ def load_notation(note_path, taala_path, structure_path):
         intervals.append([section_start, section_end])
         section_labels.append(section[0])
 
-    notes = annotations.EventData(
+    notes_ = annotations.EventData(
         np.array([start_times, end_times]).T, "s", events, "open"
     )
-    sections = annotations.SectionData(np.array(intervals), "s", section_labels, "open")
-    return notes, sections
+    sections_ = annotations.SectionData(
+        np.array(intervals), "s", section_labels, "open"
+    )
+    return notes_, sections_
 
 
 @io.coerce_to_string_io
