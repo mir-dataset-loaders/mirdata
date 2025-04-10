@@ -1,5 +1,4 @@
-"""mirdata annotation data types
-"""
+"""mirdata annotation data types"""
 
 import logging
 import re
