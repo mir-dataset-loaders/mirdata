@@ -153,6 +153,7 @@ def test_downloader(mocker, mock_path):
         "a", index=index, remotes={"b": zip_remote, "c": tar_remote, "d": file_remote}
     )
 
+
 def test_download_index_cases(mocker, mock_path):
     mock_zip = mocker.patch.object(download_utils, "download_zip_file")
     mock_download_from_remote = mocker.patch.object(
@@ -217,7 +218,9 @@ def test_download_index_cases(mocker, mock_path):
     )
     mocker.resetall()
 
-    mock_download_from_remote = mocker.patch.object(download_utils, "download_from_remote")
+    mock_download_from_remote = mocker.patch.object(
+        download_utils, "download_from_remote"
+    )
 
     index_remote = download_utils.RemoteFileMetadata(
         filename="index.json", url="a", checksum="1234"
@@ -229,7 +232,9 @@ def test_download_index_cases(mocker, mock_path):
 
     # Test with remotes containing "index"
     remotes = {"index": index_remote, "file": file_remote}
-    download_utils.downloader("a", index=index, remotes=remotes, partial_download=["file"])
+    download_utils.downloader(
+        "a", index=index, remotes=remotes, partial_download=["file"]
+    )
 
     # Verify that "index" is downloaded
     mock_download_from_remote.assert_any_call(index_remote, "a", False, False)
