@@ -30,7 +30,7 @@ from typing import Optional, List
 from smart_open import open
 
 
-from mirdata import core, jams_utils
+from mirdata import core
 
 try:
     import music21
@@ -164,27 +164,6 @@ class Track(core.Track):
                 )
             )
         return scores
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            metadata={
-                "title": self.title,
-                "artist": self.composer,
-                "duration": 0.0,
-                "book": self.book,
-                "URI": self.URI,
-                "composer": self.composer,
-                "track_id": self.track_id,
-                "musicxml_paths": self.musicxml_paths,
-                "difficulty_annotation": self.difficulty_annotation,
-            }
-        )
 
 
 def load_score(

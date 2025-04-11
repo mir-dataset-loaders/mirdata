@@ -72,27 +72,6 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
 
-def test_to_jams():
-    default_trackid = "coveranalysis#W_163992#P_547131"
-    data_home = "tests/resources/mir_datasets/da_tacos"
-    dataset = da_tacos.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-
-    jam = track.to_jams()
-    assert len(jam["sandbox"].keys()) == 11
-    assert "work_id" in jam["sandbox"]
-    assert "performance_id" in jam["sandbox"]
-    assert "label" in jam["sandbox"]
-    assert "subset" in jam["sandbox"]
-    assert "cens" in jam["sandbox"]
-    assert "crema" in jam["sandbox"]
-    assert "hpcp" in jam["sandbox"]
-    assert "key" in jam["sandbox"]
-    assert "madmom" in jam["sandbox"]
-    assert "mfcc" in jam["sandbox"]
-    assert "tags" in jam["sandbox"]
-
-
 def test_load_tags():
     tags_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5"
     tags_data = da_tacos.load_tags(tags_path)

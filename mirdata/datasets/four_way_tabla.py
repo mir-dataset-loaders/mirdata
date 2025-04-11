@@ -41,7 +41,7 @@ from typing import BinaryIO, Optional, Tuple
 
 from deprecated.sphinx import deprecated
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """@article{RohitMA2021,
     author = {M.A, Rohit and Bhattacharjee, Amitrajit and Rao, Preeti},
@@ -163,24 +163,6 @@ class Track(core.Track):
 
         """
         return load_onsets(self.onsets_rt_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[
-                (self.onsets_b, "onsets_b"),
-                (self.onsets_d, "onsets_d"),
-                (self.onsets_rb, "onsets_rb"),
-                (self.onsets_rt, "onsets_rt"),
-            ],
-            metadata={"train": self.train},
-        )
 
 
 @io.coerce_to_bytes_io

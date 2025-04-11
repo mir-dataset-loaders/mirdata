@@ -36,7 +36,7 @@ import pretty_midi
 from smart_open import open
 import yaml
 
-from mirdata import io, download_utils, jams_utils, core, annotations
+from mirdata import io, download_utils, core, annotations
 
 BIBTEX = """
 @inproceedings{manilow2019cutting,
@@ -225,12 +225,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path, note_data=[(self.notes, "Notes")]
-        )
-
 
 class MultiTrack(core.MultiTrack):
     """slakh multitrack class, containing information about the mix and
@@ -340,12 +334,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return load_audio(self.mix_path)
-
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.mix_path, note_data=[(self.notes, "Notes")]
-        )
 
     def get_submix_by_group(self, target_groups):
         """Create submixes grouped by instrument type. Creates one submix

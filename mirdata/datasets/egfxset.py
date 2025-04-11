@@ -93,7 +93,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, jams_utils, io
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """
 @techreport{pedroza2022egfxset,
@@ -282,17 +282,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path, metadata=self._track_metadata
-        )
 
 
 @io.coerce_to_bytes_io

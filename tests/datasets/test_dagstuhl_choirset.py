@@ -205,43 +205,6 @@ def test_score_track():
     assert track.score is None
 
 
-def test_to_jams_track():
-    default_trackid = "DCS_LI_QuartetB_Take04_B2"
-    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    assert jam.validate()
-
-    notes = jam.annotations[0]["data"]
-    assert [note.time for note in notes] == [0.1600, 2.5165, 3.3487, 4.8130, 5.7252]
-    assert [note.duration for note in notes] == (
-        np.array([2.5165, 3.3487, 4.8130, 5.7252, 6.3774])
-        - np.array([0.1600, 2.5165, 3.3487, 4.8130, 5.7252])
-    ).tolist()
-    assert [note.value for note in notes] == (
-        2 ** ((np.array([48, 48, 48, 48, 48]) - 69) / 12) * 440
-    ).tolist()
-
-    f0s = jam.annotations[1]["data"]
-    assert [f0.time for f0 in f0s] == [0.0, 0.01, 0.02, 0.03, 0.04]
-    assert [f0.value["frequency"] for f0 in f0s] == [
-        204.329447420415,
-        205.1518935649711,
-        205.52465246964104,
-        205.45427855215388,
-        205.51663864023027,
-    ]
-    assert [f0.confidence for f0 in f0s] == [
-        0.050135254859924316,
-        0.02886691689491272,
-        0.0374043881893158,
-        0.04053276777267456,
-        0.053232729434967034,
-    ]
-
-
 def test_multitrack():
     default_trackid = "DCS_LI_QuartetB_Take04"
     data_home = os.path.normpath("tests/resources/mir_datasets/dagstuhl_choirset")
@@ -330,23 +293,3 @@ def test_audio_multitrack():
     assert y.shape == (22050,)
 
     assert mtrack.audio_spl is None
-
-
-def test_to_jams_multitrack():
-    default_trackid = "DCS_LI_QuartetB_Take04"
-    data_home = "tests/resources/mir_datasets/dagstuhl_choirset"
-    dataset = dagstuhl_choirset.Dataset(data_home, version="test")
-    mtrack = dataset.multitrack(default_trackid)
-
-    jam = mtrack.to_jams()
-    assert jam.validate()
-
-    beats = jam.annotations[0]["data"]
-    assert [beat.time for beat in beats] == [
-        0.174149660,
-        0.949115646,
-        1.724081633,
-        2.525170068,
-        3.308843537,
-    ]
-    assert [beat.value for beat in beats] == [1, 2, 3, 4, 1]

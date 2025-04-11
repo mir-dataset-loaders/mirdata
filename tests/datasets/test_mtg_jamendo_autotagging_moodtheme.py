@@ -56,19 +56,6 @@ def test_track_properties_and_attributes():
     assert track.tags == "mood/theme---background"
 
 
-def test_to_jams():
-    default_trackid = "track_0000948"
-    data_home = "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
-    dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-    assert jam["sandbox"].track_id == default_trackid
-    assert jam["sandbox"].artist_id == "artist_000087"
-    assert jam["sandbox"].album_id == "album_000149"
-    assert jam.file_metadata.duration == 212.7
-    assert jam["sandbox"].tags == "mood/theme---background"
-
-
 def test_get_track_splits():
     dataset = mtg_jamendo_autotagging_moodtheme.Dataset(
         "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"

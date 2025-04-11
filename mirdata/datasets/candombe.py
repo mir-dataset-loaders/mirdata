@@ -24,7 +24,7 @@ from typing import BinaryIO, Optional, TextIO, Tuple
 import librosa
 import numpy as np
 
-from mirdata import download_utils, jams_utils, core, annotations, io
+from mirdata import download_utils, core, annotations, io
 
 BIBTEX = """
 @inproceedings{Nunes2015,
@@ -109,17 +109,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path, beat_data=[(self.beats, None)], metadata=None
-        )
 
 
 @io.coerce_to_bytes_io

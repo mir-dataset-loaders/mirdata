@@ -5,7 +5,6 @@ import os
 
 
 giantsteps_tempo_INDEX_PATH = '../mirdata/indexes/giantsteps_tempo_index.json'
-BEATLES_ANNOTATION_SCHEMA = ['JAMS']
 
 
 def md5(file_path):

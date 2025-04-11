@@ -1,7 +1,6 @@
 import os
 import numpy as np
-import jams
-
+import pytest
 from mirdata.datasets import guitarset
 from mirdata import annotations
 from tests.test_utils import run_track_tests
@@ -173,6 +172,33 @@ def test_load_contours():
     assert track.pitch_contours["e"]._confidence is None
 
 
+def test_load_chords_no_annotations():
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
+    track = dataset.track("00_BN1-129-Eb_comp")
+    with pytest.raises(
+        ValueError, match="No chord annotations found in the JAMS file."
+    ):
+        guitarset.load_chords(track.jams_path, leadsheet_version=True)
+
+
+def test_load_pitch_contour_no_data():
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
+    track = dataset.track("00_BN1-129-Eb_comp")
+    with pytest.raises(
+        ValueError, match="Pitch contour annotation not found in the JAMS file."
+    ):
+        guitarset.load_pitch_contour(track.jams_path, 5)
+
+
+def test_load_notes_no_data():
+    dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
+    track = dataset.track("00_BN1-129-Eb_comp")
+    with pytest.raises(
+        ValueError, match="Note annotation or 'data' key not found in the JAMS file."
+    ):
+        guitarset.load_notes(track.jams_path, 5)
+
+
 def test_load_notes():
     default_trackid = "03_BN3-119-G_solo"
     dataset = guitarset.Dataset(TEST_DATA_HOME, version="test")
@@ -220,14 +246,3 @@ def test_audio_hex_cln():
     y, sr = track.audio_hex_cln
     assert sr == 44100
     assert y.shape == (6, int(44100 * 0.5))
-
-
-def test_to_jams():
-    default_trackid = "03_BN3-119-G_solo"
-    dataset = guitarset.Dataset(
-        "tests/resources/mir_datasets/guitarset", version="test"
-    )
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    assert type(jam) == jams.JAMS

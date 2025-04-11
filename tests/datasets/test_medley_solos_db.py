@@ -28,15 +28,3 @@ def test_track():
     y, sr = track.audio
     assert y.shape == (65536,)
     assert sr == 22050
-
-
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/medley_solos_db"
-    dataset = medley_solos_db.Dataset(data_home, version="test")
-    track = dataset.track("d07b1fc0-567d-52c2-fef4-239f31c9d40e")
-    jam = track.to_jams()
-
-    assert jam["sandbox"]["instrument"] == "flute"
-    assert jam["sandbox"]["instrument_id"] == 3
-    assert jam["sandbox"]["song_id"] == 210
-    assert jam["sandbox"]["subset"] == "validation"

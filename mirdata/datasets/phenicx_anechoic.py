@@ -51,7 +51,7 @@ from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """
@@ -202,17 +202,6 @@ class Track(core.Track):
         if id_voice >= self.n_voices:
             raise ValueError("id_voice={} is out of range".format(id_voice))
         return load_audio(self.audio_paths[id_voice])
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_paths[0], note_data=[(self.notes, "aligned notes")]
-        )
 
 
 class MultiTrack(core.MultiTrack):

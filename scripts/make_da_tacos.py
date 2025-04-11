@@ -8,7 +8,6 @@ import re
 
 
 DA_TACOS_INDEX_PATH = '../mirdata/datasets/indexes/da_tacos_index_1.1_crema.json'
-DA_TACOS_ANNOTATION_SCHEMA = ['JAMS']
 
 
 def md5(file_path):
