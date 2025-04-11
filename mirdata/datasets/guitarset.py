@@ -361,8 +361,8 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
     return annotations.BeatData(np.array(times), "s", np.array(positions), "bar_index")
 
 
-# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
-def load_chords(jams_path, leadsheet_version):
+@io.coerce_to_string_io
+def load_chords(jams_path: TextIO, leadsheet_version):
     """Load a guitarset chord annotation.
 
     Args:
@@ -460,13 +460,13 @@ def _fill_pitch_contour(times, freqs, voicing, max_time, contour_hop, duration=N
     return filled_times, filled_freqs, filled_voicing
 
 
-# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
-def load_pitch_contour(jams_path, string_num):
-    """Load a guitarset pitch contour annotation for a given string.
+@io.coerce_to_string_io
+def load_pitch_contour(jams_path: TextIO, string_num):
+    """Load a guitarset pitch contour annotation for a given string
 
     Args:
-        jams_path (str): Path to the jams annotation file.
-        string_num (int): Which string to load (0-5).
+        jams_path (str or file-like): path to the jams annotation file
+        string_num (int), in range(6): Which string to load.
             0 is the Low E string, 5 is the high e string.
 
     Returns:
@@ -518,12 +518,12 @@ def load_pitch_contour(jams_path, string_num):
     )
 
 
-# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
-def load_notes(jams_path, string_num):
+@io.coerce_to_string_io
+def load_notes(jams_path: TextIO, string_num):
     """Load a guitarset note annotation for a given string
 
     Args:
-        jams_path (str): path to the jams annotation file
+        jams_path (str or file-like): path to the jams annotation file
         string_num (int), in range(6): Which string to load.
             0 is the Low E string, 5 is the high e string.
 
