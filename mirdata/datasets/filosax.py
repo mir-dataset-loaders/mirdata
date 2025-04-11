@@ -389,30 +389,30 @@ class MultiTrack(core.MultiTrack):
     @property
     def name(self):
         """The track's name
-        
+
         Returns:
             * str - track name
-            
+
         """
         return self.annotation["file_metadata"]["title"]
 
     @property
     def duration(self):
         """The track's duration
-        
+
         Returns:
             * float - track duration (in seconds)
-        
+
         """
         return self.annotation["file_metadata"]["duration"]
 
     @property
     def beats(self):
         """The times of downbeats and chord changes
-        
+
         Returns:
             * (SortedKeyList, Observation) - timestamp, duration (seconds), beat
-            
+
         """
         return [
             x["data"]
@@ -423,10 +423,10 @@ class MultiTrack(core.MultiTrack):
     @property
     def chords(self):
         """The times and values of chord changes
-        
+
         Returns:
             * (SortedKeyList, Observation) - timestamp, duration (seconds), chord symbol
-        
+
         """
         return [
             x["data"]
@@ -438,10 +438,10 @@ class MultiTrack(core.MultiTrack):
     def segments(self):
         """
         The times of segment changes (values are 'head', 'written solo', 'improvised solo')
-        
+
         Returns:
             * (SortedKeyList, Observation) - timestamp, duration (seconds), beat
-        
+
         """
         return [
             x["data"]
