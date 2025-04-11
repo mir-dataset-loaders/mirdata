@@ -362,11 +362,11 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
 
 
 @io.coerce_to_string_io
-def load_chords(jams_path: TextIO, leadsheet_version):
+def load_chords(jams_fhandle: TextIO, leadsheet_version):
     """Load a guitarset chord annotation.
 
     Args:
-        jams_path (str): Path to the jams annotation file.
+        jams_fhandle (file-like): File-like object or path of the jams annotation file
         leadsheet_version (bool):
             Whether or not to load the leadsheet version of the chord annotation.
             If False, load the inferred version.
@@ -378,10 +378,9 @@ def load_chords(jams_path: TextIO, leadsheet_version):
         FileNotFoundError: If the jams_path does not exist.
     """
     try:
-        with open(jams_path, "r") as fhandle:
-            annotation = json.load(fhandle)
+        annotation = json.load(jams_fhandle)
     except FileNotFoundError:
-        raise FileNotFoundError(f"jams_path {jams_path} does not exist")
+        raise FileNotFoundError(f"jams_fhandle {jams_fhandle} does not exist")
 
     chord_annotations = [
         ann for ann in annotation["annotations"] if ann["namespace"] == "chord"
@@ -461,11 +460,11 @@ def _fill_pitch_contour(times, freqs, voicing, max_time, contour_hop, duration=N
 
 
 @io.coerce_to_string_io
-def load_pitch_contour(jams_path: TextIO, string_num):
+def load_pitch_contour(jams_fhandle: TextIO, string_num):
     """Load a guitarset pitch contour annotation for a given string
 
     Args:
-        jams_path (str or file-like): path to the jams annotation file
+        jams_fhandle (str or file-like): file like object to the annotation file
         string_num (int), in range(6): Which string to load.
             0 is the Low E string, 5 is the high e string.
 
@@ -476,10 +475,9 @@ def load_pitch_contour(jams_path: TextIO, string_num):
         FileNotFoundError: If the jams_path does not exist.
     """
     try:
-        with open(jams_path, "r") as fhandle:
-            annotation = json.load(fhandle)
+        annotation = json.load(jams_fhandle)
     except FileNotFoundError:
-        raise FileNotFoundError(f"jams_path {jams_path} does not exist")
+        raise FileNotFoundError(f"jams_path {jams_fhandle} does not exist")
 
     # Find all pitch_contour annotations
     pitch_annotations = [
@@ -519,11 +517,11 @@ def load_pitch_contour(jams_path: TextIO, string_num):
 
 
 @io.coerce_to_string_io
-def load_notes(jams_path: TextIO, string_num):
+def load_notes(jams_fhandle: TextIO, string_num):
     """Load a guitarset note annotation for a given string
 
     Args:
-        jams_path (str or file-like): path to the jams annotation file
+        jams_fhandle (str or file-like): file like object to the annotation file
         string_num (int), in range(6): Which string to load.
             0 is the Low E string, 5 is the high e string.
 
@@ -532,10 +530,9 @@ def load_notes(jams_path: TextIO, string_num):
 
     """
     try:
-        with open(jams_path) as fhandle:
-            annotation = json.load(fhandle)
+        annotation = json.load(jams_fhandle)
     except FileNotFoundError:
-        raise FileNotFoundError("jams_path {} does not exist".format(jams_path))
+        raise FileNotFoundError("jams_fhandle {} does not exist".format(jams_fhandle))
         # Find all pitch_contour annotations
     notes_annot = [
         ann for ann in annotation["annotations"] if ann["namespace"] == "note_midi"
