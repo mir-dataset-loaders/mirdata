@@ -39,7 +39,7 @@ Does mirdata provide data loaders for pytorch/Tensorflow?
 For now, no. Music datasets are very widely varied in their annotation types and supported tasks. 
 To make a data loader, there would need to be "standard" ways to encode the desired inputs/outputs - unfortunately this is not universal for most datasets and usages. 
 Still, this library provides the necessary first step for building data loaders and it is easy to build data loaders on top of this. 
-For more information, see :ref:`Using mirdata with tensorflow`.
+For more information, see :ref:`Using mirdata with tensorflow` and :ref:`Using mirdata with pytorch`.
 
 
 A download link is broken for a loader's ``.download()`` function. What do I do?
