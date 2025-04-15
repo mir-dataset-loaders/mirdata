@@ -383,6 +383,7 @@ EXCEPTIONS = {
             "structure_path": "a/fake/path",
         },
     },
+    "jtd": {"load_beats": {"col_idx": 0}},
 }
 SKIP = {
     "acousticbrainz_genre": [

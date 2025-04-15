@@ -1,6 +1,6 @@
 import functools
 import io
-from typing import BinaryIO, Callable, List, Optional, TextIO, TypeVar, Union
+from typing import Any, BinaryIO, Callable, List, Optional, TextIO, Union
 
 import numpy as np
 import pretty_midi
@@ -8,21 +8,21 @@ from smart_open import open
 
 from mirdata import annotations
 
-T = TypeVar("T")  # Can be anything
 
-
-def coerce_to_string_io(
-    func: Callable[[TextIO], T],
-) -> Callable[[Optional[Union[str, TextIO]]], Optional[T]]:
+def coerce_to_string_io(func: Callable[..., Any]) -> Callable[..., Any]:
     @functools.wraps(func)
-    def wrapper(file_path_or_obj: Optional[Union[str, TextIO]]) -> Optional[T]:
+    def wrapper(
+        file_path_or_obj: Optional[Union[str, TextIO]],
+        *args: Optional[Any],
+        **kwargs: Optional[Any],
+    ) -> Optional[Any]:
         if not file_path_or_obj:
             return None
         if isinstance(file_path_or_obj, str):
             with open(file_path_or_obj, encoding="utf-8") as f:
-                return func(f)
+                return func(f, *args, **kwargs)
         elif isinstance(file_path_or_obj, io.StringIO):
-            return func(file_path_or_obj)
+            return func(file_path_or_obj, *args, **kwargs)
         else:
             raise ValueError(
                 "Invalid argument passed to {}, argument has the type {}",
@@ -33,18 +33,20 @@ def coerce_to_string_io(
     return wrapper
 
 
-def coerce_to_bytes_io(
-    func: Callable[[BinaryIO], T],
-) -> Callable[[Optional[Union[str, BinaryIO]]], Optional[T]]:
+def coerce_to_bytes_io(func: Callable[..., Any]) -> Callable[..., Any]:
     @functools.wraps(func)
-    def wrapper(file_path_or_obj: Optional[Union[str, BinaryIO]]) -> Optional[T]:
+    def wrapper(
+        file_path_or_obj: Optional[Union[str, BinaryIO]],
+        *args: Optional[Any],
+        **kwargs: Optional[Any],
+    ) -> Optional[Any]:
         if not file_path_or_obj:
             return None
         if isinstance(file_path_or_obj, str):
             with open(file_path_or_obj, "rb") as f:
-                return func(f)
+                return func(f, *args, **kwargs)
         elif isinstance(file_path_or_obj, io.BytesIO):
-            return func(file_path_or_obj)
+            return func(file_path_or_obj, *args, **kwargs)
         else:
             raise ValueError(
                 "Invalid argument passed to {}, argument has the type {}",
