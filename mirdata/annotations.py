@@ -1188,6 +1188,21 @@ class EventData(Annotation):
         self.events = events
         self.event_unit = event_unit
 
+class GestureData(Annotation):
+    """ GestureData Class
+
+    Attributes:
+        keypoints (np.ndarray):
+        scores (np.ndarray):
+    """
+
+    def __init__(self, keypoints, scores):
+        validate_array_like(keypoints, np.ndarray, float)
+        validate_array_like(scores, np.ndarray, float)
+
+        self.keypoints = keypoints
+        self.scores = scores
+
 
 def convert_time_units(times, time_unit, target_time_unit):
     """Convert a time array from time_unit to target_time_unit

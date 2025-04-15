@@ -5,7 +5,7 @@ import os
 from mirdata.validate import md5
 
 
-SARAGA_CARNATIC_INDEX_PATH = '../mirdata/datasets/indexes/saraga_carnatic_index.json'
+SARAGA_CARNATIC_INDEX_PATH = '../mirdata/datasets/indexes/saraga_audiovisual_index.json'
 DATASET = 'saraga'
 
 def make_saraga_audiovisual_index(dataset_data_path):
@@ -48,6 +48,10 @@ def make_saraga_audiovisual_index(dataset_data_path):
                     for file in os.listdir(os.path.join(dataset_data_path, concert, song)):
                         # Audio
                         if '.wav' in file:
+                            if file == song + '.wav':
+                                audio_path = os.path.join(DATASET, concert, song, file)
+                                audio_checksum = md5(os.path.join(dataset_data_path_prev, audio_path))
+                                audio = (audio_path, audio_checksum)
                             if 'mridangam-left' in file:
                                 audio_mridangam_left_path = os.path.join(DATASET, concert, song, file)
                                 audio_mridangam_left_checksum = md5(os.path.join(dataset_data_path_prev, audio_mridangam_left_path))
@@ -60,7 +64,7 @@ def make_saraga_audiovisual_index(dataset_data_path):
                                 audio_violin_path = os.path.join(DATASET, concert, song, file)
                                 audio_violin_checksum = md5(os.path.join(dataset_data_path_prev, audio_violin_path))
                                 audio_violin = (audio_violin_path, audio_violin_checksum)
-                            if 'vocal.' in file:
+                            if 'vocal' in file:
                                 audio_vocal_path = os.path.join(DATASET, concert, song, file)
                                 audio_vocal_checksum = md5(os.path.join(dataset_data_path_prev, audio_vocal_path))
                                 audio_vocal = (audio_vocal_path, audio_vocal_checksum)
@@ -69,36 +73,36 @@ def make_saraga_audiovisual_index(dataset_data_path):
                         if '.mov' in file:
                             video_path = os.path.join(DATASET, concert, song, file)
                             video_checksum = md5(os.path.join(dataset_data_path_prev, video_path))
-                            ctonic = (video_path, video_checksum)
+                            video = (video_path, video_checksum)
 
                         # Gesture
                         if file == 'mridangam':
                             for gesture_file in os.listdir(os.path.join(dataset_data_path, concert, song, file)):
-                                if 'keypts' in gesture_file:
+                                if 'kpts.npy' in gesture_file:
                                     keypoints_mridangam_path = os.path.join(DATASET, concert, song, file, gesture_file)
                                     keypoints_mridangam_checksum = md5(os.path.join(dataset_data_path_prev, keypoints_mridangam_path))
                                     keypoints_mridangam = (keypoints_mridangam_path, keypoints_mridangam_checksum)
-                                if 'score' in gesture_file:
+                                if 'scores.npy' in gesture_file:
                                     scores_mridangam_path = os.path.join(DATASET, concert, song, file, gesture_file)
                                     scores_mridangam_checksum = md5(os.path.join(dataset_data_path_prev, scores_mridangam_path))
                                     scores_mridangam = (scores_mridangam_path, scores_mridangam_checksum)
                         if file == 'singer':
                             for gesture_file in os.listdir(os.path.join(dataset_data_path, concert, song, file)):
-                                if 'keypts' in gesture_file:
+                                if 'kpts.npy' in gesture_file:
                                     keypoints_singer_path = os.path.join(DATASET, concert, song, file, gesture_file)
                                     keypoints_singer_checksum = md5(os.path.join(dataset_data_path_prev, keypoints_singer_path))
                                     keypoints_singer = (keypoints_singer_path, keypoints_singer_checksum)
-                                if 'score' in gesture_file:
+                                if 'scores.npy' in gesture_file:
                                     scores_singer_path = os.path.join(DATASET, concert, song, file, gesture_file)
                                     scores_singer_checksum = md5(os.path.join(dataset_data_path_prev, scores_singer_path))
                                     scores_singer = (scores_singer_path, scores_singer_checksum)
                         if file == 'violin':
                             for gesture_file in os.listdir(os.path.join(dataset_data_path, concert, song, file)):
-                                if 'keypts' in gesture_file:
+                                if 'kpts.npy' in gesture_file:
                                     keypoints_violin_path = os.path.join(DATASET, concert, song, file, gesture_file)
                                     keypoints_violin_checksum = md5(os.path.join(dataset_data_path_prev, keypoints_violin_path))
                                     keypoints_violin = (keypoints_violin_path, keypoints_violin_checksum)
-                                if 'score' in gesture_file:
+                                if 'scores.npy' in gesture_file:
                                     scores_violin_path = os.path.join(DATASET, concert, song, file, gesture_file)
                                     scores_violin_checksum = md5(os.path.join(dataset_data_path_prev, scores_violin_path))
                                     scores_violin = (scores_violin_path, scores_violin_checksum)
@@ -111,6 +115,7 @@ def make_saraga_audiovisual_index(dataset_data_path):
 
                         saraga_index['tracks'][index] = {
                             'audio-mix': audio,
+                            'video': video,
                             'audio-mridangam-left': audio_mridangam_left,
                             'audio-mridangam-right': audio_mridangam_right,
                             'audio-violin': audio_violin,
