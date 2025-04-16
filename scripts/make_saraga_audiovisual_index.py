@@ -16,6 +16,7 @@ def make_saraga_audiovisual_index(dataset_data_path):
     }
     idx = 0
     dataset_data_path_prev = dataset_data_path.split(DATASET)[0]
+
     for concert in os.listdir(dataset_data_path):
         if '.' not in concert:
             for song in os.listdir(os.path.join(dataset_data_path, concert)):
@@ -49,29 +50,29 @@ def make_saraga_audiovisual_index(dataset_data_path):
                         # Audio
                         if '.wav' in file:
                             if file == song + '.wav':
-                                audio_path = os.path.join(DATASET, concert, song, file)
-                                audio_checksum = md5(os.path.join(dataset_data_path_prev, audio_path))
+                                audio_path = os.path.join(DATASET + ' audio', concert, song, file)
+                                audio_checksum = md5(os.path.join(audio_path))
                                 audio = (audio_path, audio_checksum)
                             if 'mridangam-left' in file:
-                                audio_mridangam_left_path = os.path.join(DATASET, concert, song, file)
+                                audio_mridangam_left_path = os.path.join(DATASET + ' audio', concert, song, file)
                                 audio_mridangam_left_checksum = md5(os.path.join(dataset_data_path_prev, audio_mridangam_left_path))
                                 audio_mridangam_left = (audio_mridangam_left_path, audio_mridangam_left_checksum)
                             if 'mridangam-right' in file:
-                                mridangam_right_path = os.path.join(DATASET, concert, song, file)
+                                mridangam_right_path = os.path.join(DATASET + ' audio', concert, song, file)
                                 mridangam_right_checksum = md5(os.path.join(dataset_data_path_prev, mridangam_right_path))
                                 audio_mridangam_right = (mridangam_right_path, mridangam_right_checksum)
                             if 'violin' in file:
-                                audio_violin_path = os.path.join(DATASET, concert, song, file)
+                                audio_violin_path = os.path.join(DATASET + ' audio', concert, song, file)
                                 audio_violin_checksum = md5(os.path.join(dataset_data_path_prev, audio_violin_path))
                                 audio_violin = (audio_violin_path, audio_violin_checksum)
                             if 'vocal' in file:
-                                audio_vocal_path = os.path.join(DATASET, concert, song, file)
+                                audio_vocal_path = os.path.join(DATASET + ' audio', concert, song, file)
                                 audio_vocal_checksum = md5(os.path.join(dataset_data_path_prev, audio_vocal_path))
                                 audio_vocal = (audio_vocal_path, audio_vocal_checksum)
 
                         # Video
                         if '.mov' in file:
-                            video_path = os.path.join(DATASET, concert, song, file)
+                            video_path = os.path.join(DATASET + ' visual', concert, song, file)
                             video_checksum = md5(os.path.join(dataset_data_path_prev, video_path))
                             video = (video_path, video_checksum)
 
@@ -79,37 +80,37 @@ def make_saraga_audiovisual_index(dataset_data_path):
                         if file == 'mridangam':
                             for gesture_file in os.listdir(os.path.join(dataset_data_path, concert, song, file)):
                                 if 'kpts.npy' in gesture_file:
-                                    keypoints_mridangam_path = os.path.join(DATASET, concert, song, file, gesture_file)
+                                    keypoints_mridangam_path = os.path.join(DATASET + ' gesture', concert, song, file, gesture_file)
                                     keypoints_mridangam_checksum = md5(os.path.join(dataset_data_path_prev, keypoints_mridangam_path))
                                     keypoints_mridangam = (keypoints_mridangam_path, keypoints_mridangam_checksum)
                                 if 'scores.npy' in gesture_file:
-                                    scores_mridangam_path = os.path.join(DATASET, concert, song, file, gesture_file)
+                                    scores_mridangam_path = os.path.join(DATASET + ' gesture', concert, song, file, gesture_file)
                                     scores_mridangam_checksum = md5(os.path.join(dataset_data_path_prev, scores_mridangam_path))
                                     scores_mridangam = (scores_mridangam_path, scores_mridangam_checksum)
                         if file == 'singer':
                             for gesture_file in os.listdir(os.path.join(dataset_data_path, concert, song, file)):
                                 if 'kpts.npy' in gesture_file:
-                                    keypoints_singer_path = os.path.join(DATASET, concert, song, file, gesture_file)
+                                    keypoints_singer_path = os.path.join(DATASET + ' gesture', concert, song, file, gesture_file)
                                     keypoints_singer_checksum = md5(os.path.join(dataset_data_path_prev, keypoints_singer_path))
                                     keypoints_singer = (keypoints_singer_path, keypoints_singer_checksum)
                                 if 'scores.npy' in gesture_file:
-                                    scores_singer_path = os.path.join(DATASET, concert, song, file, gesture_file)
+                                    scores_singer_path = os.path.join(DATASET + ' gesture', concert, song, file, gesture_file)
                                     scores_singer_checksum = md5(os.path.join(dataset_data_path_prev, scores_singer_path))
                                     scores_singer = (scores_singer_path, scores_singer_checksum)
                         if file == 'violin':
                             for gesture_file in os.listdir(os.path.join(dataset_data_path, concert, song, file)):
                                 if 'kpts.npy' in gesture_file:
-                                    keypoints_violin_path = os.path.join(DATASET, concert, song, file, gesture_file)
+                                    keypoints_violin_path = os.path.join(DATASET + ' gesture', concert, song, file, gesture_file)
                                     keypoints_violin_checksum = md5(os.path.join(dataset_data_path_prev, keypoints_violin_path))
                                     keypoints_violin = (keypoints_violin_path, keypoints_violin_checksum)
                                 if 'scores.npy' in gesture_file:
-                                    scores_violin_path = os.path.join(DATASET, concert, song, file, gesture_file)
+                                    scores_violin_path = os.path.join(DATASET + ' gesture', concert, song, file, gesture_file)
                                     scores_violin_checksum = md5(os.path.join(dataset_data_path_prev, scores_violin_path))
                                     scores_violin = (scores_violin_path, scores_violin_checksum)
 
                         # Metadata
                         if '.json' in file and not file.startswith('._'):
-                            metadata_path = os.path.join(DATASET, concert, song, file)
+                            metadata_path = os.path.join(DATASET + ' metadata', concert, song, file)
                             metadata_checksum = md5(os.path.join(dataset_data_path_prev, metadata_path))
                             metadata = (metadata_path, metadata_checksum)
 

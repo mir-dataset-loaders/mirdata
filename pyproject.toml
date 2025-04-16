@@ -7,7 +7,7 @@ name = "mirdata"
 dynamic = ["version"]
 description = "Common loaders for MIR datasets."
 readme = "README.md"
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 requires-python = ">=3.8"
 keywords = ["mir", "dataset", "loader", "music"]
 classifiers = [
@@ -19,7 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11"
+    "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
     "attrs>=23.1.0",
@@ -37,6 +37,7 @@ dependencies = [
     "scipy>=1.7.3",
     "tqdm>=4.66.1",
     "smart_open[all]>=5.0.0",
+    "opencv-python>=4.11.0",
 ]
 
 [tool.setuptools.package-data]
@@ -59,7 +60,7 @@ tests = [
     "black>=23.3.0",
     "flake8>=5.0.4",
     "mypy>=0.982",
-    "types-Deprecated"  # ensure type stubs for Deprecated are installed
+    "types-Deprecated",          # ensure type stubs for Deprecated are installed
 ]
 docs = [
     "numpydoc",
@@ -67,7 +68,7 @@ docs = [
     "sphinx>=3.4.0",
     "sphinxcontrib-napoleon",
     "sphinx_rtd_theme",
-    "sphinx-togglebutton"
+    "sphinx-togglebutton",
 ]
 compmusic_hindustani_rhythm = ["openpyxl==3.0.10"]
 dali = ["dali-dataset==1.1"]
