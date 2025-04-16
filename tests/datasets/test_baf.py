@@ -38,14 +38,6 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
 
-def test_to_jams():
-    default_trackid = TRACK_ID
-    dataset = baf.Dataset(TEST_DATA_HOME, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-    assert jam.validate()
-
-
 def test_load_audio():
     dataset = baf.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(TRACK_ID)

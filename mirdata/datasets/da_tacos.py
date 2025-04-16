@@ -101,11 +101,10 @@ from typing import Optional, BinaryIO
 
 from deprecated.sphinx import deprecated
 import h5py
-from jams import JAMS
 import numpy as np
 from smart_open import open
 
-from mirdata import download_utils, jams_utils, core, io
+from mirdata import download_utils, core, io
 
 LICENSE_INFO = """
 Creative Commons Attribution Non Commercial Share Alike 4.0 International
@@ -327,30 +326,6 @@ class Track(core.Track):
     @core.cached_property
     def tags(self) -> Optional[list]:
         return load_tags(self.tags_path)
-
-    def to_jams(self) -> JAMS:
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            metadata={
-                "duration": 0.0,
-                "work_id": self.work_id,
-                "performance_id": self.performance_id,
-                "subset": self.subset,
-                "label": self.label,
-                "cens": self.cens,
-                "crema": self.crema,
-                "hpcp": self.hpcp,
-                "key": self.key,
-                "madmom": self.madmom,
-                "mfcc": self.mfcc,
-                "tags": self.tags,
-            }
-        )
 
 
 @io.coerce_to_bytes_io

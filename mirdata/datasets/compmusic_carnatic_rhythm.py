@@ -52,7 +52,7 @@ import logging
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, io, jams_utils
+from mirdata import annotations, core, io
 from smart_open import open
 
 
@@ -216,30 +216,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, "beats")],
-            metadata={
-                "meter": self.meter,
-                "mbid": self.mbid,
-                "name": self.name,
-                "artist": self.artist,
-                "release": self.release,
-                "lead_instrument_code": self.lead_instrument_code,
-                "taala": self.taala,
-                "raaga": self.raaga,
-                "num_of_beats": self.num_of_beats,
-                "num_of_samas": self.num_of_samas,
-            },
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267

@@ -18,7 +18,7 @@ import librosa
 import numpy as np
 
 from mirdata import download_utils
-from mirdata import jams_utils
+
 from mirdata import core
 from mirdata import annotations
 from mirdata import io
@@ -129,22 +129,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """the track's data in jams format
-
-        Returns:
-            jams.JAMS: return track data in jam format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, None)],
-            section_data=[(self.sections, None)],
-            chord_data=[(self.chords, None)],
-            key_data=[(self.key, None)],
-            metadata={"artist": "The Beatles", "title": self.title},
-        )
 
 
 @io.coerce_to_bytes_io

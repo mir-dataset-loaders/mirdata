@@ -62,38 +62,6 @@ def test_track():
     assert sr == 44100
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
-    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
-    track = dataset.track("20001")
-    jam = track.to_jams()
-
-    # Tonic
-    assert jam["sandbox"].meter == "16/8"
-
-    # Sama
-    beats = jam.search(namespace="beat")[0]["data"]
-    assert len(beats) == 3
-    assert [beat.time for beat in beats] == [0.694, 3.233, 6.020]
-    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0]
-    assert [beat.value for beat in beats] == [13, 14, 15]
-    assert [beat.confidence for beat in beats] == [None, None, None]
-
-    # Metadata
-    assert jam["sandbox"]["mbid"] == "0bdad2a8-94d8-40c2-91ec-e77100fcaa02"
-    assert jam["sandbox"]["raaga"] == "Multani"
-    assert jam["sandbox"]["taala"] == "teentaal"
-    assert jam["sandbox"]["name"] == "02_Raag_Multani"
-    assert jam["sandbox"]["lead_instrument_code"] == "V"
-    assert jam["sandbox"]["laya"] == "Vilambit"
-    assert jam["sandbox"]["num_of_beats"] == 44
-    assert jam["sandbox"]["num_of_samas"] == 3
-    assert jam["sandbox"]["median_matra_period"] == 2.746
-    assert jam["sandbox"]["median_matras_per_min"] == 21.85
-    assert jam["sandbox"]["median_ISI"] == 43.936
-    assert jam["sandbox"]["median_avarts_per_min"] == 1.37
-
-
 def test_load_meter():
     data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
     dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")

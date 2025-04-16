@@ -288,10 +288,6 @@ def test_track():
             track_test, core.Track
         ), "{}.track must be an instance of type core.Track".format(dataset_name)
 
-        assert hasattr(
-            track_test, "to_jams"
-        ), "{}.track must have a to_jams method".format(dataset_name)
-
         # test calling all attributes, properties and cached properties
         track_data = get_attributes_and_properties(track_test)
 
@@ -303,16 +299,6 @@ def test_track():
 
         for cprop in track_data["cached_properties"]:
             ret = getattr(track_test, cprop)
-
-        # Validate JSON schema
-        try:
-            jam = track_test.to_jams()
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert jam.validate(), "Jams validation failed for {}.track({})".format(
-            dataset_name, trackid
-        )
 
         # will fail if something goes wrong with __repr__
         try:
@@ -470,20 +456,6 @@ def test_multitracks():
             mtrack_test, core.MultiTrack
         ), "{}.MultiTrack must be an instance of type core.MultiTrack".format(
             dataset_name
-        )
-
-        assert hasattr(
-            mtrack_test, "to_jams"
-        ), "{}.MultiTrack must have a to_jams method".format(dataset_name)
-
-        # Validate JSON schema
-        try:
-            jam = mtrack_test.to_jams()
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert jam.validate(), "Jams validation failed for {}.MultiTrack({})".format(
-            dataset_name, mtrack_id
         )
 
 

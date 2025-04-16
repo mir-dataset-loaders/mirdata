@@ -579,9 +579,6 @@ class Track(object):
         repr_str += ")"
         return repr_str
 
-    def to_jams(self):
-        raise NotImplementedError
-
     def get_path(self, key):
         """Get absolute path to track audio and annotations. Returns None if
         the path in the index is None

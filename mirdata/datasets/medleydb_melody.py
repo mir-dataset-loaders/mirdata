@@ -26,7 +26,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, core, io, jams_utils
+from mirdata import annotations, core, io
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
@@ -144,20 +144,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        # jams does not support multiF0, so we skip melody3
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.melody1, "melody1"), (self.melody2, "melody2")],
-            metadata=self._track_metadata,
-        )
 
 
 @io.coerce_to_bytes_io

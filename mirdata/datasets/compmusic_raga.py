@@ -48,7 +48,7 @@ import json
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 from smart_open import open
 
 
@@ -216,36 +216,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[
-                (self.pitch, "pitch"),
-                (self.pitch_post_processed, "pitch_post_processed"),
-            ],
-            event_data=[
-                (self.nyas_segments, "nyas_segments"),
-                (self.tani_segments, "tani_segments"),
-            ],
-            metadata={
-                "tonic": self.tonic,
-                "tonic_fine_tuned": self.tonic_fine_tuned,
-                "recording": self.recording,
-                "concert": self.concert,
-                "artist": self.artist,
-                "raga": self.raga,
-                "mbid": self.mbid,
-                "ragaid": self.ragaid,
-                "tradition": self.tradition,
-            },
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267

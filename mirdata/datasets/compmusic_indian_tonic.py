@@ -57,7 +57,7 @@ import librosa
 
 from smart_open import open
 
-from mirdata import core, download_utils, jams_utils
+from mirdata import core, download_utils
 
 BIBTEX = """@article{Gulati2014,
     author = {Gulati, S. and Bellur, A. and Salamon, J. and Ranjani, H. G. and Ishwar, V. and Murthy, H. A. and Serra, X.},
@@ -174,18 +174,6 @@ class Track(core.Track):
     @core.cached_property
     def tradition(self):
         return self._track_metadata.get("tradition")
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={"tonic": self.tonic, "artist": self.artist},
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267

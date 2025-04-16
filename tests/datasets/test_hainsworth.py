@@ -41,21 +41,6 @@ def test_track():
     assert sr == 44100
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/hainsworth"
-    dataset = hainsworth.Dataset(data_home)
-    track = dataset.track("hains001")
-    jam = track.to_jams()
-    tempo = jam.search(namespace="tempo")[0]["data"]
-    assert [temp.value for temp in tempo] == [100.16]
-    beats = jam.search(namespace="beat")[0]["data"]
-    assert len(beats) == 3
-    assert [beat.time for beat in beats] == [0.47, 1.06, 1.63]
-    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0]
-    assert [beat.value for beat in beats] == [2, 3, 4]
-    assert [beat.confidence for beat in beats] == [None, None, None]
-
-
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/hainsworth"
     dataset = hainsworth.Dataset(data_home)

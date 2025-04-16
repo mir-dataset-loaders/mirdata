@@ -39,14 +39,13 @@
 import csv
 import json
 import os
-import jams
 from typing import BinaryIO, Dict, Optional, TextIO, Tuple, List
 
 import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import download_utils, jams_utils, core, annotations, io
+from mirdata import download_utils, core, annotations, io
 
 BIBTEX = """
 @inproceedings{
@@ -336,9 +335,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        return jams_utils.jams_converter(audio_path=self.audio_path)
-
 
 class MultiTrack(core.MultiTrack):
     """Filosax multitrack class
@@ -385,9 +381,10 @@ class MultiTrack(core.MultiTrack):
         return "audio"
 
     @core.cached_property
-    def annotation(self) -> Optional[annotations.EventData]:
-        """output type: .jams file"""
-        return jams.load(self.annotation_path)
+    def annotation(self) -> Optional[dict]:
+        """output type: dictionary loaded from json file"""
+        with open(self.annotation_path, "r") as fhandle:
+            return json.load(fhandle)
 
     @property
     def name(self):
@@ -417,7 +414,11 @@ class MultiTrack(core.MultiTrack):
             * (SortedKeyList, Observation) - timestamp, duration (seconds), beat
 
         """
-        return self.annotation.search(namespace="beat")[0]["data"]
+        return [
+            x["data"]
+            for x in self.annotation["annotations"]
+            if x["namespace"] == "beat"
+        ][0]
 
     @property
     def chords(self):
@@ -427,17 +428,26 @@ class MultiTrack(core.MultiTrack):
             * (SortedKeyList, Observation) - timestamp, duration (seconds), chord symbol
 
         """
-        return self.annotation.search(namespace="chord")[0]["data"]
+        return [
+            x["data"]
+            for x in self.annotation["annotations"]
+            if x["namespace"] == "chord"
+        ][0]
 
     @property
     def segments(self):
-        """The times of segment changes (values are 'head', 'written solo', 'improvised solo')
+        """
+        The times of segment changes (values are 'head', 'written solo', 'improvised solo')
 
         Returns:
             * (SortedKeyList, Observation) - timestamp, duration (seconds), beat
 
         """
-        return self.annotation.search(namespace="segment_open")[0]["data"]
+        return [
+            x["data"]
+            for x in self.annotation["annotations"]
+            if x["namespace"] == "segment_open"
+        ][0]
 
     @property
     def bass_drums(self):
@@ -468,10 +478,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return [self.tracks["%s_sax_%d" % (self.mtrack_id, n)] for n in [1, 2, 3, 4, 5]]
-
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return self.annotation
 
 
 @io.coerce_to_bytes_io

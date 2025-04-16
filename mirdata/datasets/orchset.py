@@ -21,7 +21,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """@article{bosch2016evaluation,
     title={Evaluation and combination of pitch estimation methods for melody extraction in symphonic classical music},
@@ -164,19 +164,6 @@ class Track(core.Track):
 
         """
         return load_audio_stereo(self.audio_path_stereo)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path_mono,
-            f0_data=[(self.melody, "annotated melody")],
-            metadata=self._track_metadata,
-        )
 
 
 @io.coerce_to_bytes_io

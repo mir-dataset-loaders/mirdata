@@ -45,7 +45,6 @@ import os
 from deprecated.sphinx import deprecated
 
 from mirdata import download_utils, core, io
-from mirdata import jams_utils
 
 
 NAME = "acousticbrainz_genre"
@@ -346,22 +345,6 @@ class Track(core.Track):
     @core.cached_property
     def acousticbrainz_metadata(self):
         return load_extractor(os.path.normpath(self.path))
-
-    def to_jams(self):
-        """the track's data in jams format
-
-        Returns:
-             jams.JAMS: return track data in jam format
-
-        """
-        return jams_utils.jams_converter(
-            metadata={
-                "features": load_extractor(os.path.normpath(self.path)),
-                "duration": self.acousticbrainz_metadata["metadata"][
-                    "audio_properties"
-                ]["length"],
-            }
-        )
 
 
 @io.coerce_to_string_io

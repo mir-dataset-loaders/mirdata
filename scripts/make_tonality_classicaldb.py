@@ -6,7 +6,6 @@ from mirdata.validate import md5
 
 
 classicalDB_INDEX_PATH = '../mirdata/datasets/indexes/tonality_classicaldb_index.json'
-CLASSICALDB_ANNOTATION_SCHEMA = ['JAMS']
 
 
 def make_classicalDB_index(data_path):
