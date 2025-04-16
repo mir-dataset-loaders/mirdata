@@ -496,7 +496,6 @@ class MultiTrack(core.MultiTrack):
         """
         return int(self._multitrack_metadata["time_signature"])
 
-
     @property
     def track_audio_property(self):
         return "audio"
