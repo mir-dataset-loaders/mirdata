@@ -26,32 +26,32 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="saraga_audiovisual_index.json",
-        url="https://drive.google.com/uc?export=download&id=189tXfOi0CYtcz_RXHv_FxjJ6Pnd6dZuV",
-        checksum="4cac461c0baba0dde95061d5bc84a875",
+        url="", # TODO
+        checksum="", # TODO
     ),
     "sample": core.Index(filename="saraga_audiovisual.json"),
 }
 
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
-        filename="saraga_audiovisual.zip",
-        url="https://drive.google.com/uc?export=download&id=1cqx0bzXQQ4EQ8E4hG8drcoqDWzyDPQyf",
-        checksum="4cac461c0baba0dde95061d5bc84a875",
+        filename="saraga metadata.zip",
+        url="https://zenodo.org/records/15102483/files/saraga%20metadata.zip?download=1",
+        checksum="4f3a8e919593aa2b71f7a0b81cc8cc00",
     ),
     "audio": download_utils.RemoteFileMetadata(
         filename="saraga audio.zip",
-        url="https://drive.google.com/uc?export=download&id=13ERdgIqk5G1MInI8iFi8idhva477Hp_T",
-        checksum="4cac461c0baba0dde95061d5bc84a875",
+        url="https://zenodo.org/records/15102483/files/saraga%20audio.zip?download=1",
+        checksum="bf0a36f7fb59098ec0d4d303b407ea73",
     ),
     "visual": download_utils.RemoteFileMetadata(
         filename="saraga visual.zip",
-        url="https://drive.google.com/uc?export=download&id=1WcgF-FA6cGhaN_nIG19uB46a8ZcTEAGg",
-        checksum="4cac461c0baba0dde95061d5bc84a875",
+        url="https://zenodo.org/records/15102483/files/saraga%20visual.zip?download=1",
+        checksum="e411c0917e522c6ba527a9cfc8ee7e11",
     ),
     "gesture": download_utils.RemoteFileMetadata(
         filename="saraga gesture.zip",
-        url="https://drive.google.com/uc?export=download&id=1XmaFd6y5XzHZslugZv1aMvFQxpRh5V6v",
-        checksum="4cac461c0baba0dde95061d5bc84a875",
+        url="https://zenodo.org/records/15102483/files/saraga%20gesture.zip?download=1",
+        checksum="f58fe9e0c80760a0b31cb08b61624487",
     )
 }
 
