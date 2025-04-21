@@ -375,12 +375,9 @@ def load_chords(jams_fhandle: TextIO, leadsheet_version):
         ChordData: Chord data.
 
     Raises:
-        FileNotFoundError: If the jams_path does not exist.
+        FileNotFoundError: If the jams_fhandle does not exist.
     """
-    try:
-        annotation = json.load(jams_fhandle)
-    except FileNotFoundError:
-        raise FileNotFoundError(f"jams_fhandle {jams_fhandle} does not exist")
+    annotation = json.load(jams_fhandle)
 
     chord_annotations = [
         ann for ann in annotation["annotations"] if ann["namespace"] == "chord"
@@ -472,12 +469,9 @@ def load_pitch_contour(jams_fhandle: TextIO, string_num):
         F0Data: Pitch contour data for the given string, or None if no data is found.
 
     Raises:
-        FileNotFoundError: If the jams_path does not exist.
+        FileNotFoundError: If the jams_fhandle does not exist.
     """
-    try:
-        annotation = json.load(jams_fhandle)
-    except FileNotFoundError:
-        raise FileNotFoundError(f"jams_path {jams_fhandle} does not exist")
+    annotation = json.load(jams_fhandle)
 
     # Find all pitch_contour annotations
     pitch_annotations = [
@@ -529,11 +523,8 @@ def load_notes(jams_fhandle: TextIO, string_num):
         NoteData: Note data for the given string
 
     """
-    try:
-        annotation = json.load(jams_fhandle)
-    except FileNotFoundError:
-        raise FileNotFoundError("jams_fhandle {} does not exist".format(jams_fhandle))
-        # Find all pitch_contour annotations
+    annotation = json.load(jams_fhandle)
+    # Find all pitch_contour annotations
     notes_annot = [
         ann for ann in annotation["annotations"] if ann["namespace"] == "note_midi"
     ]

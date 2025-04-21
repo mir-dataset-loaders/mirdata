@@ -112,6 +112,10 @@ def test_multitrack():
     assert isinstance(piano, jtd.Track)
     assert piano.instrument == "piano"
     assert piano.musician == "Kenny Barron"
+    # testing beats on multitrack
+    beats = multitrack.beats
+    assert isinstance(beats, annotations.BeatData)
+    assert isinstance(beats.times, np.ndarray)
 
 
 def test_timestamp_to_seconds():
