@@ -24,7 +24,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, jams_utils, io
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """
@@ -132,29 +132,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.f0, None)],
-            note_data=[
-                (self.notes_a1, "notes - Annotator 1"),
-                (self.notes_a2, "notes - Annotator 2"),
-            ],
-            metadata={
-                "singer_id": self.singer_id,
-                "average_pitch_midi": int(self.average_pitch_midi),
-                "language": self.language,
-                "track_id": self.track_id,
-                "lyrics": self.lyrics,
-            },
-        )
 
 
 @io.coerce_to_bytes_io

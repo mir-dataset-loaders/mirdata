@@ -48,7 +48,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import download_utils, jams_utils, core, io
+from mirdata import download_utils, core, io
 
 
 BIBTEX = """
@@ -180,19 +180,6 @@ class Track(core.Track):
     @core.cached_property
     def file_metadata(self) -> Optional[dict]:
         return load_file_metadata(self.file_metadata_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        jams_metadata = dict(self._track_metadata)
-        jams_metadata.update(self.file_metadata)
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path, metadata=jams_metadata
-        )
 
 
 @io.coerce_to_bytes_io

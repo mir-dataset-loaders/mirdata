@@ -51,21 +51,6 @@ def test_track():
     assert audio.shape == (132351,)
 
 
-def test_to_jams():
-    dataset = mdb_stem_synth.Dataset(DATA_HOME, version="test")
-    track = dataset.track(DEFAULT_TRACK_ID)
-    jam = track.to_jams()
-
-    f0s = jam.search(namespace="pitch_contour")[0]["data"][:2]
-    assert [f0.time for f0 in f0s] == [0.0, 0.002902]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 0.0, "index": 0, "voiced": False},
-    ]
-    assert [f0.confidence for f0 in f0s] == [None, None]
-
-
 def test_load_f0():
     f0_path = os.path.join(
         DATA_HOME, "annotation_stems", f"{DEFAULT_TRACK_ID}.RESYN.csv"

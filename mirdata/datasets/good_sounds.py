@@ -36,7 +36,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import download_utils, jams_utils, core, io
+from mirdata import download_utils, core, io
 
 BIBTEX = """@inproceedings{romani2015real,
   title={A Real-Time System for Measuring Sound Goodness in Instrumental Sounds},
@@ -241,23 +241,6 @@ class Track(core.Track):
     @core.cached_property
     def pitch_reference(self) -> str:
         return self.sound_info["pitch_reference"]
-
-    def to_jams(self):
-        # Initialize top-level JAMS container
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "sound": self.sound_info,
-                "take": self.take_info,
-                "ratings": self.ratings_info,
-                "pack": self.pack_info,
-                "microphone": self.microphone,
-                "instrument": self.instrument,
-                "klass": self.klass,
-                "semitone": self.semitone,
-                "pitch_reference": self.pitch_reference,
-            },
-        )
 
 
 @io.coerce_to_bytes_io

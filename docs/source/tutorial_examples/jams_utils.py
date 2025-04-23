@@ -1,11 +1,8 @@
-"""Utilities for converting mirdata Annotation classes to jams format."""
-
-import logging
 import os
 
 import jams
 import librosa
-from smart_open import open, parse_uri
+from smart_open import parse_uri
 
 from mirdata import annotations
 
@@ -108,7 +105,7 @@ def jams_converter(
                 and metadata[key] != duration
                 and audio_path is not None
             ):
-                logging.warning(
+                print(
                     "Duration provided in metadata does not"
                     + "match the duration computed from the audio file."
                     + "Using the duration provided by the metadata."
