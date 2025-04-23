@@ -37,7 +37,7 @@ from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import download_utils, annotations, io, core, jams_utils
+from mirdata import download_utils, annotations, io, core
 
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
@@ -135,21 +135,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """the track's data in jams format
-
-        Returns:
-            jams.JAMS: return track data in jam format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            section_data=[(self.sections, None)],
-            chord_data=[(self.chords, None)],
-            key_data=[(self.key, None)],
-            metadata={"artist": "Queen", "title": self.title},
-        )
 
 
 @io.coerce_to_bytes_io

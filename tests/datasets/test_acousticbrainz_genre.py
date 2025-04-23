@@ -49,16 +49,6 @@ def test_load_extractor():
     assert isinstance(extractor_data, dict)
 
 
-def test_to_jams():
-    data_home = os.path.normpath("tests/resources/mir_datasets/acousticbrainz_genre")
-    trackid = "tagtraum#validation#be9e01e5-8f93-494d-bbaa-ddcc5a52f629#2b6bfcfd-46a5-3f98-a58f-2c51d7c9e960#trance########"
-
-    dataset = acousticbrainz_genre.Dataset(data_home, version="test")
-    track = dataset.track(trackid)
-
-    jam = track.to_jams()
-
-
 def test_filter_index():
     data_home = os.path.normpath("tests/resources/mir_datasets/acousticbrainz_genre")
     dataset = acousticbrainz_genre.Dataset(data_home, version="test")

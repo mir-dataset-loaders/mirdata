@@ -81,25 +81,6 @@ def test_get_onsets():
     assert parsed_onsets is None
 
 
-def test_to_jams():
-    default_trackid = "AHK_solo-tintal-1"
-    data_home = "tests/resources/mir_datasets/four_way_tabla"
-    dataset = four_way_tabla.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    # Validate Four-Way Tabla schema
-    assert jam.validate()
-
-    # Sama
-    onsets = jam.search(namespace="beat")[0]["data"]
-    assert len(onsets) == 3
-    assert [onset.time for onset in onsets] == [2.395, 2.885, 65.635]
-    assert [onset.duration for onset in onsets] == [0.0, 0.0, 0.0]
-    assert [onset.value for onset in onsets] == [0.0, 0.0, 0.0]
-    assert [onset.confidence for onset in onsets] == [None, None, None]
-
-
 def test_load_audio():
     default_trackid = "AHK_solo-tintal-1"
     data_home = "tests/resources/mir_datasets/four_way_tabla"

@@ -50,65 +50,6 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
 
-def test_to_jams():
-    default_trackid = "008"
-    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    # Validate cante100 jam schema
-    assert jam.validate()
-
-    # Validate melody
-    melody = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [note.time for note in melody] == [
-        0.023219954,
-        0.026122448,
-        0.029024942,
-        0.031927436,
-        0.034829931,
-        0.037732425,
-    ]
-    assert [note.duration for note in melody] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    assert [note.value for note in melody] == [
-        {"index": 0, "frequency": 0.0, "voiced": False},
-        {"index": 0, "frequency": 137.0, "voiced": True},
-        {"index": 0, "frequency": 220.34, "voiced": True},
-        {"index": 0, "frequency": 400.0, "voiced": True},
-        {"index": 0, "frequency": 110.0, "voiced": False},
-        {"index": 0, "frequency": 110.0, "voiced": False},
-    ]
-    assert [note.confidence for note in melody] == [None, None, None, None, None, None]
-
-    # Validate note transciption
-    notes = jam.search(namespace="note_hz")[0]["data"]
-    assert [note.time for note in notes] == [
-        25.7625,
-        26.1457,
-        37.3319,
-        37.5612,
-        37.7876,
-        44.8755,
-    ]
-    assert [note.duration for note in notes] == [
-        0.3453969999999984,
-        0.3947390000000013,
-        0.22349200000000025,
-        0.20317500000000166,
-        2.400359999999999,
-        0.2873469999999969,
-    ]
-    assert [note.value for note in notes] == [
-        207.65234878997256,
-        207.65234878997256,
-        311.1269837220809,
-        369.9944227116344,
-        415.3046975799452,
-        391.9954359817492,
-    ]
-    assert [note.confidence for note in notes] == [None, None, None, None, None, None]
-
-
 def test_load_melody():
     dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("008")
