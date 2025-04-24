@@ -40,7 +40,7 @@ import xml.etree.ElementTree as ET
 
 from deprecated.sphinx import deprecated
 from typing import BinaryIO, Tuple, Optional
-from mirdata import download_utils, jams_utils, core, io
+from mirdata import download_utils, core, io
 from smart_open import open
 
 BIBTEX = """
@@ -178,18 +178,6 @@ class Track(core.Track):
             raise FileNotFoundError(
                 f"Audio file {self.audio_path} not found. Did you run .download?"
             )
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata=self._track_metadata,
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267

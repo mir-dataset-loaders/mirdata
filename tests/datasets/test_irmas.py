@@ -57,37 +57,6 @@ def test_track():
     assert len(audio[1, :]) == 88200
 
 
-def test_to_jams():
-    # Training samples
-    default_trackid_train = "0189__2"
-    data_home = "tests/resources/mir_datasets/irmas"
-    dataset = irmas.Dataset(data_home, version="test")
-    track_train = dataset.track(default_trackid_train)
-    jam_train = track_train.to_jams()
-
-    # Validate Mridangam schema
-    assert jam_train.validate()
-
-    # Test the training data parsers
-    assert jam_train.sandbox["instrument"] == ["cla"]
-    assert jam_train.sandbox["genre"] == "cla"
-    assert jam_train.sandbox["train"] is True
-
-    # Testing samples
-    default_trackid_test = "1"
-    data_home = "tests/resources/mir_datasets/irmas"
-    dataset = irmas.Dataset(data_home, version="test")
-    track_test = dataset.track(default_trackid_test)
-    jam_test = track_test.to_jams()
-
-    # Validate Mridangam schema
-    assert jam_test.validate()
-
-    # Test the testing genre parser
-    assert jam_test.sandbox["instrument"] == ["gel", "voi"]
-    assert jam_test.sandbox["train"] is False
-
-
 def test_load_pred_inst():
     # Training samples
     pred_inst_audio_train = (

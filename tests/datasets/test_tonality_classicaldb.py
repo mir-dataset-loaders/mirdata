@@ -55,22 +55,6 @@ def test_track():
     )
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/tonality_classicaldb"
-    dataset = tonality_classicaldb.Dataset(data_home, version="test")
-    track = dataset.track("0")
-    jam = track.to_jams()
-    assert jam["sandbox"]["key"] == "D major", "key does not match expected"
-    assert (
-        jam["file_metadata"]["title"]
-        == "01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D"
-    ), "title does not match expected"
-
-    assert "spectrum" in jam["sandbox"]
-    assert "hpcp" in jam["sandbox"]
-    assert "musicbrainz_metatada" in jam["sandbox"]
-
-
 def test_load_key():
     key_path = "tests/resources/mir_datasets/tonality_classicaldb/keys/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.txt"
     key_data = tonality_classicaldb.load_key(key_path)

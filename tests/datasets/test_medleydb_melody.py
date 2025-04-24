@@ -52,25 +52,6 @@ def test_track():
     assert y.shape == (44100 * 2,)
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/medleydb_melody"
-    dataset = medleydb_melody.Dataset(data_home, version="test")
-    track = dataset.track("MusicDelta_Beethoven")
-    jam = track.to_jams()
-
-    f0s = jam.search(namespace="pitch_contour")[1]["data"]
-    assert [f0.time for f0 in f0s] == [0.046439909297052155, 0.052244897959183675]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 965.992, "index": 0, "voiced": True},
-    ]
-    assert [f0.confidence for f0 in f0s] == [None, None]
-
-    assert jam["file_metadata"]["title"] == "Beethoven"
-    assert jam["file_metadata"]["artist"] == "MusicDelta"
-
-
 def test_load_melody():
     # load a file which exists
     melody_path = (

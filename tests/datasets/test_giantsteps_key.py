@@ -45,26 +45,6 @@ def test_track():
     )
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/giantsteps_key"
-    dataset = giantsteps_key.Dataset(data_home, version="test")
-    track = dataset.track("3")
-    jam = track.to_jams()
-    assert jam["sandbox"]["key"] == "D major", "key does not match expected"
-
-    assert (
-        jam["file_metadata"]["title"]
-        == "10089 Jason Sparks - Close My Eyes feat. J. Little (Original Mix)"
-    ), "title does not match expected"
-    sand_box = {
-        "artists": ["Jason Sparks"],
-        "genres": {"genres": ["Breaks"], "sub_genres": []},
-        "tempo": 150,
-        "key": "D major",
-    }
-    assert dict(jam["sandbox"]) == sand_box, "title does not match expected"
-
-
 def test_load_key():
     key_path = (
         "tests/resources/mir_datasets/giantsteps_key/keys_gs+/10089 Jason Sparks - Close My Eyes feat. J. "

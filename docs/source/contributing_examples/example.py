@@ -24,7 +24,7 @@ import librosa
 import numpy as np
 from smart_open import open  # if you use the open function, make sure you include this line!
 
-from mirdata import download_utils, jams_utils, core, annotations
+from mirdata import download_utils,  core, annotations
 
 # -- Add any relevant citations here
 BIBTEX = """
@@ -161,20 +161,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    # -- we use the to_jams function to convert all the annotations in the JAMS format.
-    # -- The converter takes as input all the annotations in the proper format (e.g. beats
-    # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
-    # -- object with the annotations.
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            annotation_data=[(self.annotation, None)],
-            metadata=self._metadata,
-        )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
-
-
 # -- if the dataset contains multitracks, you can define a MultiTrack similar to a Track
 # -- you can delete the block of code below if the dataset has no multitracks
 class MultiTrack(core.MultiTrack):
@@ -246,18 +232,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return load_audio(self.audio_path)
-
-    # -- multitrack classes are themselves Tracks, and also need a to_jams method
-    # -- for any mixture-level annotations
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.mix_path,
-            annotation_data=[(self.annotation, None)],
-            #...
-        )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
-
 
 # -- this decorator allows this function to take a string or an open bytes file as input
 # -- and in either case converts it to an open file handle.
