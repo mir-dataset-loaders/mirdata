@@ -61,7 +61,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
     "sphinx_togglebutton",
-    "sphinx.ext.extli
+    "sphinx.ext.extlinks",
     "docstring_mod",
     "sphinx_copybutton",
 ]
