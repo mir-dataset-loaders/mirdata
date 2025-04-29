@@ -13,6 +13,7 @@
 import os
 import sys
 
+sys.path.insert(0, os.path.abspath("./source/_ext"))
 sys.path.insert(0, os.path.abspath("../"))
 
 # -- Project information -----------------------------------------------------
@@ -61,6 +62,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx_togglebutton",
     "sphinx.ext.extlinks",
+    "docstring_mod",
     "sphinx_copybutton",
 ]
 
