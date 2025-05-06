@@ -29,7 +29,7 @@ INDEXES = {
         url="", # TODO
         checksum="", # TODO
     ),
-    "sample": core.Index(filename="saraga_audiovisual.json"),
+    "sample": core.Index(filename="saraga_audiovisual_index_sample.json"),
 }
 
 REMOTES = {
@@ -118,25 +118,25 @@ class Track(core.Track):
     def metadata(self):
         return load_metadata(self.metadata_path)
 
-    @property
+    @core.cached_property
     def audio(self):
         return load_audio(self.audio_path)
 
-    @property
+    @core.cached_property
     def video(self):
         return load_video(self.video_path)
 
-    @property
+    @core.cached_property
     def mridangam_gesture(self):
-        return load_mridangam_gesture(self.keypoint_paths['mridangam'], self.score_paths['mridangam'])
+        return load_gesture(self.keypoint_paths['mridangam'], self.score_paths['mridangam'])
 
-    @property
+    @core.cached_property
     def singer_gesture(self):
-        return load_singer_gesture(self.keypoint_paths['singer'], self.score_paths['singer'])
+        return load_gesture(self.keypoint_paths['singer'], self.score_paths['singer'])
 
-    @property
+    @core.cached_property
     def violin_gesture(self):
-        return load_violin_gesture(self.keypoint_paths['violin'], self.score_paths['violin'])
+        return load_gesture(self.keypoint_paths['violin'], self.score_paths['violin'])
 
 
 @io.coerce_to_string_io
@@ -197,54 +197,12 @@ def load_video(video_path):
 
     return video, fps
 
-def load_mridangam_gesture(keypoints_path, scores_path):
-    """Load a Saraga Audiovisual mridangam gesture file.
+def load_gesture(keypoints_path, scores_path):
+    """Load a Saraga Audiovisual gesture file.
 
     Args:
         keypoints_path (str): path to keypoints file
-        keypoints_path (str): path to scores file
-
-    Returns:
-        * GestureData - gesture data
-
-    """
-    if keypoints_path is None or scores_path is None:
-        return None
-
-    keypoints = np.load(keypoints_path)
-    scores = np.load(scores_path)
-
-    gesture = annotations.GestureData(keypoints, scores)
-
-    return gesture
-
-def load_singer_gesture(keypoints_path, scores_path):
-    """Load a Saraga Audiovisual singer gesture file.
-
-    Args:
-        keypoints_path (str): path to keypoints file
-        keypoints_path (str): path to scores file
-
-    Returns:
-        * GestureData - gesture data
-
-    """
-    if keypoints_path is None or scores_path is None:
-        return None
-
-    keypoints = np.load(keypoints_path)
-    scores = np.load(scores_path)
-
-    gesture = annotations.GestureData(keypoints, scores)
-
-    return gesture
-
-def load_violin_gesture(keypoints_path, scores_path):
-    """Load a Saraga Audiovisual violin gesture file.
-
-    Args:
-        keypoints_path (str): path to keypoints file
-        keypoints_path (str): path to scores file
+        scores_path (str): path to scores file
 
     Returns:
         * GestureData - gesture data
@@ -295,19 +253,19 @@ class Dataset(core.Dataset):
         reason="Use mirdata.datasets.saraga_audiovisual.load_mridangam_gesture", version="0.3.4"
     )
     def load_mridangam_gesture(self, *args, **kwargs):
-        return load_mridangam_gesture(*args, **kwargs)
+        return load_gesture(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.saraga_audiovisual.load_singer_gesture", version="0.3.4"
     )
     def load_singer_gesture(self, *args, **kwargs):
-        return load_singer_gesture(*args, **kwargs)
+        return load_gesture(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.saraga_audiovisual.load_violin_gesture", version="0.3.4"
     )
     def load_violin_gesture(self, *args, **kwargs):
-        return load_violin_gesture(*args, **kwargs)
+        return load_gesture(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.saraga_audiovisual.load_metadata", version="0.3.4"

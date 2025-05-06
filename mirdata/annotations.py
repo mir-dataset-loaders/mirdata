@@ -126,7 +126,6 @@ class SectionData(Annotation):
             of TIME_UNITS.
         labels (list or None): list of section labels
         label_unit (str or None): label unit, one of SECTION_UNITS
-
     """
 
     def __init__(self, intervals, interval_unit, labels=None, label_unit=None):
