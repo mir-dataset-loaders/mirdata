@@ -51,22 +51,23 @@ class Track(core.Track):
 
     Attributes:
         audio_path (str): path to audio file
-        audio_mridangam_left_path (str): path to mridangam left audio file
-        audio_mridangam_right_path (str): path to mridangam right audio file
-        audio_violin_path (str): path to violin audio file
-        audio_vocal_path (str): path to vocal audio file
-        video_path (srt): path to video file
-        keypoints_path (dict): paths to keypoint annotation files
-        scores_path (dict): paths to scores annotation files
-        metadata_path (srt): path to metadata file
+        sections_path (str): path to sections annotation file
+        sections_finetuned_path (str): path to improved sections annotation file
+        nyas_path (str): path to nyas features
+        pitch_path (str): path to pitch annotation file
+        pitch_finetuned_path (str): path to improved pitch annotation file
+        tonic_path (str): path to tonic data file
+        tonic_finetuned_path (str): path to improved tonic data file
 
     Cached Properties:
         audio (numpy.ndarray, float): audio, samplerate
-        pitch (numpy.ndarray, float): video, framerate
-        mridangam_gesture (GesturData): gesture annotation for mridangam
-        singer_gesture (GesturData): gesture annotation for singer
-        violin_gesture (GesturData): gesture annotation for violin
-        metadata (dict): track metadata
+        sections (SectionData): section annotations
+        sections_finetuned (SectionData): improved section annotations
+        nyas (SectionData): nyas annotations
+        pitch (F0Data): pitch annotations
+        pitch_finetuned (F0Data): improved pitch annotations
+        tonic (float): tonic
+        tonic_finetuned (float): tonic finetuned
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -136,7 +137,7 @@ def load_audio(audio_path):
 
 @io.coerce_to_string_io
 def load_nyas(fhandle):
-    """Load a Saraga Audiovisual mridangam gesture file.
+    """Load a nyas annotation file.
 
     Args:
         fhandle (str): path to annotation file
@@ -159,7 +160,7 @@ def load_nyas(fhandle):
 
 @io.coerce_to_string_io
 def load_sections(fhandle):
-    """Load a Saraga Audiovisual mridangam gesture file.
+    """Load a sections annotation file.
 
     Args:
         fhandle (str): path to annotation file
@@ -225,14 +226,14 @@ def load_tonic(fhandle):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The saraga_audiovisual dataset
+    The iam melodic similarity dataset
     """
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
             version,
-            name="saraga_audiovisual",
+            name="iam_melodic_similarity",
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,
@@ -241,27 +242,32 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_audiovisual.load_audio", version="0.3.4"
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_audio", version="0.0.0"
     )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_audiovisual.load_sections", version="0.3.4"
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_sections", version="0.0.0"
     )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
+    @deprecated(
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_nyas", version="0.0.0"
+    )
+    def load_nyas(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_audiovisual.load_pitch", version="0.3.4"
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_pitch", version="0.0.0"
     )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
 
     @deprecated(
-        reason="Use mirdata.datasets.saraga_audiovisual.load_tonic", version="0.3.4"
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_tonic", version="0.0.0"
     )
     def load_tonic(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
