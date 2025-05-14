@@ -397,9 +397,9 @@ To finish your contribution, include tests that check the integrity of your load
    custom functions you wrote. See the `tests folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/tests>`_ for reference.
    If your loader has a custom download function, add tests similar to
    `this loader <https://github.com/mir-dataset-loaders/mirdata/blob/master/tests/datasets/test_groove_midi.py#L96>`_.
-3. Locally run ``pytest -s tests/datasets/test_full_dataset.py --local --dataset my_dataset`` before submitting your loader to make
+3. Locally run ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset`` before submitting your loader to make
    sure everything is working. If your dataset has `multiple versions <multiple_versions_>`_, test each (non-default) version
-   by running ``pytest -s tests/datasets/test_full_dataset.py --local --dataset my_dataset --dataset-version my_version``.
+   by running ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset --dataset-version my_version``.
 
 
 .. note::  We have written automated tests for all loader's ``cite``, ``download``, ``validate``, ``load``, ``track_ids`` functions,
@@ -453,7 +453,7 @@ Finally, there is one local test you should run, which we can't easily run in ou
 
 ::
 
-    pytest -s tests/datasets/test_full_dataset.py --local --dataset dataset
+    pytest -s tests/test_full_dataset.py --local --dataset dataset
 
 
 Where ``dataset`` is the name of the module of the dataset you added. The ``-s`` tells pytest not to skip print
