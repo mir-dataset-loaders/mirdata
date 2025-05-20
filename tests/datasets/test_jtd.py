@@ -112,72 +112,10 @@ def test_multitrack():
     assert isinstance(piano, jtd.Track)
     assert piano.instrument == "piano"
     assert piano.musician == "Kenny Barron"
-
-
-def test_track_to_jams():
-    dataset = jtd.Dataset(DATA_HOME, version="sample")
-    track = dataset.track(DEFAULT_TRACK_ID + "_piano")
-    jam = track.to_jams()
-    # testing MIDI
-    midi_annot = jam.search(namespace="note_hz")[0]["data"]
-    expected_pitches = [
-        74,
-        69,
-        54,
-    ]  # first two notes are D5, A4, F#3 (confirmed by checking MIDI in REAPER)
-    assert all(
-        [
-            round(annotation.value) == expected
-            for annotation, expected in zip(midi_annot, expected_pitches)
-        ]
-    )
-    # testing onsets
-    onset_annot = jam.search(namespace="tag_open")[0]["data"]
-    expected_onsets = [0.0, 0.08, 0.29]  # taken directly from source data .csv
-    assert all(
-        [
-            round(annotation.time, 2) == expected
-            for annotation, expected in zip(onset_annot, expected_onsets)
-        ]
-    )
-    # testing inter-onset intervals
-    expected_durations = [0.08, 0.21]
-    assert all(
-        [
-            round(annotation.duration, 2) == expected
-            for annotation, expected in zip(onset_annot, expected_durations)
-        ]
-    )
-    # testing beats
-    expected_beats = [0.08, 0.29, 0.51]
-    beat_annot = jam.search(namespace="beat")[0]["data"]
-    assert all(
-        [
-            round(annotation.time, 2) == expected
-            for annotation, expected in zip(beat_annot, expected_beats)
-        ]
-    )
-
-
-def test_multitrack_to_jams():
-    dataset = jtd.Dataset(DATA_HOME, version="sample")
-    track = dataset.multitrack(DEFAULT_TRACK_ID)
-    jam = track.to_jams()
-
-    # testing tempo
-    tempo_annot = jam.search(namespace="tempo")[0]["data"]
-    expected_tempo = 297.62
-    assert round(tempo_annot[0].value, 2) == expected_tempo
-
-    # testing beats
-    beat_annot = jam.search(namespace="beat")[0]["data"]
-    expected_beats = [0.08, 0.28, 0.5, 0.7, 0.91, 1.11]
-    assert all(
-        [
-            round(annotation.time, 2) == expected
-            for annotation, expected in zip(beat_annot, expected_beats)
-        ]
-    )
+    # testing beats on multitrack
+    beats = multitrack.beats
+    assert isinstance(beats, annotations.BeatData)
+    assert isinstance(beats.times, np.ndarray)
 
 
 def test_timestamp_to_seconds():

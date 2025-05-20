@@ -97,7 +97,7 @@ from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io
 
 BIBTEX = """
 @dataset{juan_j_bosch_2014_1290750,
@@ -238,23 +238,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """the track's data in jams format
-
-        Returns:
-            jams.JAMS: return track data in jam format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "instrument": self.instrument,
-                "genre": self.genre,
-                "drum": self.drum,
-                "train": self.train,
-            },
-        )
 
 
 @io.coerce_to_bytes_io

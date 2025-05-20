@@ -49,7 +49,7 @@ from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import download_utils, jams_utils, core, annotations, io
+from mirdata import download_utils, core, annotations, io
 
 BIBTEX = """
 @article{RosenzweigCWSGM20_DCS_TISMIR,
@@ -213,33 +213,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_lrx_path)
 
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-
-        f0_data = [
-            (self.f0_crepe_dyn, "crepe - DYN"),
-            (self.f0_crepe_hsm, "crepe - HSM"),
-            (self.f0_crepe_lrx, "crepe - LRX"),
-            (self.f0_pyin_dyn, "pyin - DYN"),
-            (self.f0_pyin_hsm, "pyin - HSM"),
-            (self.f0_pyin_lrx, "pyin - LRX"),
-            (self.f0_manual_lrx, "manual - LRX"),
-        ]
-        # remove missing annotations from the list
-        f0_data = [tup for tup in f0_data if tup[1]]
-        score_data = [(self.score, "score")] if self.score else None
-
-        if self.audio_hsm_path:
-            audio_path = self.audio_hsm_path
-        elif self.audio_dyn_path:
-            audio_path = self.audio_dyn_path
-        else:
-            audio_path = self.audio_lrx_path
-
-        return jams_utils.jams_converter(
-            audio_path=audio_path, f0_data=f0_data, note_data=score_data
-        )
-
 
 class MultiTrack(core.MultiTrack):
     """Dagstuhl ChoirSet multitrack class
@@ -397,15 +370,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return load_audio(self.audio_spr_path)
-
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-
-        beat_data = [(self.beat, "beat")] if self.beat else None
-
-        return jams_utils.jams_converter(
-            audio_path=self.audio_stm_path, beat_data=beat_data
-        )
 
 
 @io.coerce_to_bytes_io
