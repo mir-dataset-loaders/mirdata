@@ -396,7 +396,7 @@ To finish your contribution, include tests that check the integrity of your load
 2. Test all of the dataset specific code, e.g. the public attributes of the Track class, the load functions and any other
    custom functions you wrote. See the `tests folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/tests>`_ for reference.
    If your loader has a custom download function, add tests similar to
-   `this loader <https://github.com/mir-dataset-loaders/mirdata/blob/master/tests/test_groove_midi.py#L96>`_.
+   `this loader <https://github.com/mir-dataset-loaders/mirdata/blob/master/tests/datasets/test_groove_midi.py#L96>`_.
 3. Locally run ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset`` before submitting your loader to make
    sure everything is working. If your dataset has `multiple versions <multiple_versions_>`_, test each (non-default) version
    by running ``pytest -s tests/test_full_dataset.py --local --dataset my_dataset --dataset-version my_version``.
