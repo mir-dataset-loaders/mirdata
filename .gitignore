@@ -13,6 +13,8 @@ __pycache__/
 # C extensions
 *.so
 
+/saraga
+
 # Distribution / packaging
 .Python
 env/
