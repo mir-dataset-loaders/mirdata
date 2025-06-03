@@ -31,7 +31,7 @@ def test_track():
         "artist_id": str,
         "album_id": str,
         "duration": float,
-        "tags": str,
+        "tags": list,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -53,7 +53,7 @@ def test_track_properties_and_attributes():
     assert track.artist_id == "artist_000087"
     assert track.album_id == "album_000149"
     assert track.duration == 212.7
-    assert track.tags == "mood/theme---background"
+    assert track.tags == ["background"]
 
 
 def test_get_track_splits():
