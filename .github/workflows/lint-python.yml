@@ -3,10 +3,11 @@ name: Linting
 on:
   push:
     branches:
-    - master
+      - master
   pull_request:
     branches:
-    - master
+      - master
+  workflow_dispatch:
     
 jobs:
   lint_python:
