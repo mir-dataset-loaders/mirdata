@@ -358,7 +358,7 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
     """
 
     #### read start, end times
-    intervals = np.loadtxt(fhandle, delimiter=",", usecols=[0, 1], dtype=np.float_)
+    intervals = np.loadtxt(fhandle, delimiter=",", usecols=[0, 1], dtype=np.float64)
 
     #### read notes as string
     fhandle.seek(0)
