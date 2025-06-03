@@ -22,7 +22,6 @@ classifiers = [
     "Programming Language :: Python :: 3.11"
 ]
 dependencies = [
-    "attrs>=23.1.0",
     "chardet>=5.0.0",
     "Deprecated>=1.2.14",
     "h5py>=3.7.0",
@@ -32,7 +31,6 @@ dependencies = [
     "pretty_midi>=0.2.10",
     "pyyaml>=6.0",
     "openpyxl>=3.0.10",
-    "requests>=2.31.0",
     "scipy>=1.7.3",
     "tqdm>=4.66.1",
     "smart_open[all]>=5.0.0",
