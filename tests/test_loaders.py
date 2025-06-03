@@ -188,7 +188,9 @@ def test_download(mocker):
                 try:
                     req = urllib.request.Request(url, method="HEAD")
                     with urllib.request.urlopen(req, timeout=10) as response:
-                        assert response.status == 200, f"Link {url} for {dataset_name} does not return OK"
+                        assert (
+                            response.status == 200
+                        ), f"Link {url} for {dataset_name} does not return OK"
                 except urllib.error.URLError:
                     assert False, f"Link {url} for {dataset_name} is unreachable"
                 except Exception:
