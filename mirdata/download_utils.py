@@ -156,19 +156,27 @@ def downloader(
                 download_path = download_from_remote(
                     remotes[k], save_dir, force_overwrite, allow_invalid_checksum
                 )
-                
+
                 # Special handling for index files that might be zipped
                 # Check if this is an index file and if the downloaded file is actually a zip
                 if k == "index" and download_path and os.path.exists(download_path):
                     try:
                         # Check if the downloaded file is a zip file by reading the magic bytes
-                        with open(download_path, 'rb') as f:
+                        with open(download_path, "rb") as f:
                             magic_bytes = f.read(2)
-                            if magic_bytes == b'PK':  # ZIP file magic number
-                                logging.info("Index file {} appears to be a ZIP archive, extracting...".format(remotes[k].filename))
-                                unzip(download_path, cleanup=False)  # Always cleanup zip for index files
+                            if magic_bytes == b"PK":  # ZIP file magic number
+                                logging.info(
+                                    "Index file {} appears to be a ZIP archive, extracting...".format(
+                                        remotes[k].filename
+                                    )
+                                )
+                                unzip(
+                                    download_path, cleanup=False
+                                )  # Always cleanup zip for index files
                     except Exception as e:
-                        logging.warning("Could not check if index file is zipped: {}".format(e))
+                        logging.warning(
+                            "Could not check if index file is zipped: {}".format(e)
+                        )
 
             if remotes[k].unpack_directories:
                 for src_dir in remotes[k].unpack_directories:
