@@ -5,17 +5,17 @@ import os
 from mirdata.validate import md5
 
 FMAKV2_INDEX_PATH = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "mirdata", "datasets", "indexes", "fmakv2_index_1.0.json")
+    os.path.join(os.path.dirname(__file__), "..", "mirdata", "datasets", "indexes", "fmakv2_index_1.0_sample.json")
 )
 os.makedirs(os.path.dirname(FMAKV2_INDEX_PATH), exist_ok=True)
 
 
 def track_to_dict(t, dataset_root):
     track_id = "{:06d}".format(int(t["track_id"]))
-    audio_path = "/".join(["audio", track_id[:3], track_id + ".mp3"])
+    audio_path = "/".join(["000", track_id[:3], track_id + ".mp3"])
 
     return {
-        "audio": [audio_path, md5(os.path.join(dataset_root, audio_path))]
+        "000": [audio_path, md5(os.path.join(dataset_root, audio_path))]
     }
 
 
