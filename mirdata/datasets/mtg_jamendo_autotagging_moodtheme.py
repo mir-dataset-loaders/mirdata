@@ -43,7 +43,7 @@ from typing import Optional, Tuple, BinaryIO
 from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
-from mirdata import download_utils, jams_utils, core
+from mirdata import download_utils, core
 from smart_open import open
 
 BIBTEX = """@conference {bogdanov2019mtg,
@@ -142,19 +142,6 @@ class Track(core.Track):
     @core.cached_property
     def tags(self) -> str:
         return self._track_metadata.get("TAGS")
-
-    def to_jams(self):
-        # Initialize top-level JAMS container
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "track_id": self.track_id,
-                "artist_id": self.artist_id,
-                "album_id": self.album_id,
-                "duration": self.duration,
-                "tags": self.tags,
-            },
-        )
 
 
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:

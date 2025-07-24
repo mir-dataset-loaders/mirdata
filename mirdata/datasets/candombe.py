@@ -3,14 +3,14 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    This is a dataset of Candombe recordings with annotated beats and downbeats, totaling over 2 hours of audio. 
-    It comprises 35 complete performances by renowned players, in groups of three to five drums. 
+    This is a dataset of Candombe recordings with annotated beats and downbeats, totaling over 2 hours of audio.
+    It comprises 35 complete performances by renowned players, in groups of three to five drums.
     Recording sessions were conducted in studio, in the context of musicological research over the past two decades.
     A total of 26 tambor players took part, belonging to different generations and representing all the important traditional Candombe styles.
-    The audio files are stereo with a sampling rate of 44.1 kHz and 16-bit precision. 
+    The audio files are stereo with a sampling rate of 44.1 kHz and 16-bit precision.
     The location of beats and downbeats was annotated by an expert, adding to more than 4700 downbeats.
 
-    The audio is provided as .flac files and the annotations as .csv files. 
+    The audio is provided as .flac files and the annotations as .csv files.
     The values in the first column of the csv file are the time instants of the beats.
     The numbers on the second column indicate both the bar number and the beat number within the bar.
     For instance, 1.1, 1.2, 1.3 and 1.4 are the four beats of the first bar. Hence, each label ending with .1 indicates a downbeat.
@@ -24,7 +24,7 @@ from typing import BinaryIO, Optional, TextIO, Tuple
 import librosa
 import numpy as np
 
-from mirdata import download_utils, jams_utils, core, annotations, io
+from mirdata import download_utils, core, annotations, io
 
 BIBTEX = """
 @inproceedings{Nunes2015,
@@ -109,17 +109,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path, beat_data=[(self.beats, None)], metadata=None
-        )
 
 
 @io.coerce_to_bytes_io

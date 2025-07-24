@@ -40,26 +40,6 @@ def test_track():
     assert y.shape == (44100,)
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/scms"
-    dataset = scms.Dataset(data_home, version="test")
-    track = dataset.track("Enta_Bhagyamu_2")
-    jam = track.to_jams()
-
-    f0s = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [f0.time for f0 in f0s] == [0.0, 0.0029024943310657597, 0.005804988662131519]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 205.34705622484543, "index": 0, "voiced": True},
-        {"frequency": 205.5702056921407, "index": 0, "voiced": True},
-        {"frequency": 205.5604865955533, "index": 0, "voiced": True},
-    ]
-    assert [f0.confidence for f0 in f0s] == [None, None, None]
-
-    assert jam["file_metadata"]["artist"] == "Manda Sudharani"
-    assert jam["file_metadata"]["title"] == "Enta Bhagyamu"
-
-
 def test_load_pitch():
     # load a file which exists
     pitch_path = (

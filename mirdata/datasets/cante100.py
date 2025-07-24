@@ -56,7 +56,7 @@ import numpy as np
 from smart_open import open
 
 from mirdata import download_utils
-from mirdata import jams_utils
+
 from mirdata import core
 from mirdata import annotations
 from mirdata import io
@@ -235,21 +235,6 @@ class Track(core.Track):
     @core.cached_property
     def notes(self) -> Optional[annotations.NoteData]:
         return load_notes(self.notes_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            spectrogram_path=self.spectrogram_path,
-            f0_data=[(self.melody, "pitch_contour")],
-            note_data=[(self.notes, "note_hz")],
-            metadata=self._track_metadata,
-        )
 
 
 @io.coerce_to_string_io

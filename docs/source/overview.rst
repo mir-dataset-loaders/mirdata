@@ -34,7 +34,7 @@ Mirdata loaders contain methods to:
 
 - ``download()``: download (or give instructions to download) a dataset
 - ``load_*()``: load a dataset's files (audio, metadata, annotations, etc.) into standard formats, so you don't have to write them yourself
-  which are compatible with ``mir_eval`` and ``jams``.
+  which are compatible with ``mir_eval``.
 - ``validate()``: validate that a dataset is complete and correct
 - ``cite()``: quickly print a dataset's relevant citation
 - access ``track`` and ``multitrack`` objects for grouping multiple annotations for a particular track/multitrack
@@ -143,8 +143,8 @@ annotations
 ###########
 
 mirdata provides ``Annotation`` classes of various kinds which provide a standard interface to different
-annotation formats. These classes are compatible with the ``mir_eval`` library's expected format, as well
-as with the jams format. The format can be easily extended to other formats, if requested.
+annotation formats. These classes are compatible with the ``mir_eval`` library's expected format.
+The format can be easily extended to other formats, if requested.
 
 
 metadata

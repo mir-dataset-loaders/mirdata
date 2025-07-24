@@ -22,7 +22,7 @@ from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import download_utils, jams_utils, core, io, annotations
+from mirdata import download_utils, core, io, annotations
 
 
 BIBTEX = """@article{tzanetakis2002gtzan,
@@ -118,26 +118,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            tags_gtzan_data=[(self.genre, "gtzan-genre")],
-            beat_data=[(self.beats, None)],
-            tempo_data=[(self.tempo, None)],
-            metadata={
-                "title": "Unknown track",
-                "artist": "Unknown artist",
-                "release": "Unknown album",
-                "duration": 30.0,
-                "curator": "George Tzanetakis",
-            },
-        )
 
 
 @io.coerce_to_string_io
