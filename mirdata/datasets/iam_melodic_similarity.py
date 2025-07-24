@@ -24,7 +24,7 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="iam_melodic_similarity_index.json",
-        url="https://zenodo.org/records/15351055/files/iam_melodic_similarity_index.json?download=1",
+        url="https://zenodo.org/records/16410081/files/iam_melodic_similarity_index.json?download=1",
         checksum="7f968243e8acebaa6cbba05cf9218ae6",
     ),
     "sample": core.Index(filename="iam_melodic_similarity_index_sample.json"),
@@ -44,10 +44,11 @@ LICENSE_INFO = (
 
 class Track(core.Track):
     """
+    Track class for IAM Melodic Similarity dataset.
+
     Args:
         track_id (str): track id of the track
         data_home (str): Local path where the dataset is stored. default=None
-            If `None`, looks for the data in the default directory, `~/mir_datasets`
 
     Attributes:
         audio_path (str): path to audio file
@@ -60,10 +61,10 @@ class Track(core.Track):
         tonic_finetuned_path (str): path to improved tonic data file
 
     Cached Properties:
-        audio (numpy.ndarray, float): audio, samplerate
+        audio (tuple): (audio signal as np.ndarray, sample rate as float)
         sections (SectionData): section annotations
         sections_finetuned (SectionData): improved section annotations
-        nyas (SectionData): nyas annotations
+        nyas (EventData): nyas annotations
         pitch (F0Data): pitch annotations
         pitch_finetuned (F0Data): improved pitch annotations
         tonic (float): tonic
@@ -73,14 +74,9 @@ class Track(core.Track):
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
 
-        # Audio path
         self.audio_path = self.get_path("audio")
-
-        # Annotation paths
         self.sections_path = self.get_path("sections")
         self.sections_finetuned_path = self.get_path("sections-finetuned")
-
-        # Feature paths
         self.nyas_path = self.get_path("nyas")
         self.pitch_path = self.get_path("pitch")
         self.pitch_finetuned_path = self.get_path("pitch-finetuned")
@@ -97,7 +93,7 @@ class Track(core.Track):
 
     @core.cached_property
     def sections_finetuned(self):
-        return load_pitch(self.sections_finetuned_path)
+        return load_sections(self.sections_finetuned_path)
 
     @core.cached_property
     def nyas(self):
@@ -121,15 +117,14 @@ class Track(core.Track):
 
 
 def load_audio(audio_path):
-    """Load a Saraga Audiovisual audio file.
+    """
+    Load an audio file.
 
     Args:
         audio_path (str): path to audio file
 
     Returns:
-        * np.ndarray - the mono audio signal
-        * float - The sample rate of the audio file
-
+        tuple: np.ndarray - the stereo audio signal, float - sample rate
     """
     if audio_path is None:
         return None
@@ -137,71 +132,87 @@ def load_audio(audio_path):
 
 @io.coerce_to_string_io
 def load_nyas(fhandle):
-    """Load a nyas annotation file.
+    """
+        Load a nyas annotation.
 
-    Args:
-        fhandle (str): path to annotation file
+        Args:
+            fhandle (str): path to annotation file
 
-    Returns:
-        * SectionData - annotations
-
+        Returns:
+            EventData: nyas annotation intervals
     """
     intervals = []
-    section_labels = []
+    labels = []
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start = float(line[0])
         end = float(line[1])
-        label = 'Nyas'
+        if start > end:
+            continue
+        label = 'nyas'
         intervals.append([start, end])
-        section_labels.append(label)
+        labels.append(label)
 
-    return annotations.SectionData(np.array(intervals), "s", section_labels, "open")
+    return annotations.EventData(np.array(intervals), "s", labels, "open")
 
 @io.coerce_to_string_io
 def load_sections(fhandle):
-    """Load a sections annotation file.
+    """
+        Load a sections annotation file.
 
-    Args:
-        fhandle (str): path to annotation file
+        Args:
+            fhandle (str): path to annotation file
 
-    Returns:
-        * SectionData - annotations
-
+        Returns:
+            SectionData: section annotations with intervals (melodic phrasee) and labels (phrase identifier)
     """
     intervals = []
-    section_labels = []
+    labels = []
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start = float(line[0])
         end = float(line[1])
+        if start > end:
+            continue
         label = line[2]
         intervals.append([start, end])
-        section_labels.append(label)
+        labels.append(label)
 
-    return annotations.SectionData(np.array(intervals), "s", section_labels, "open")
+    return annotations.SectionData(np.array(intervals), "s", labels, "open")
 
 @io.coerce_to_string_io
 def load_pitch(fhandle):
-    """Load pitch
+    """
+    Load pitch annotations.
 
     Args:
-        fhandle (str or file-like): Local path where the pitch annotation is stored.
+        fhandle (str): path to pitch file
 
     Returns:
-        F0Data: pitch annotation
-
+        F0Data: pitch annotations
     """
     times = []
     freqs = []
+    first_line = fhandle.readline()
+    fhandle.seek(0)
 
-    reader = csv.reader(fhandle, delimiter="\t")
+    delimiter = '\t' if '\t' in first_line else ' '
+    reader = csv.reader(fhandle, delimiter=delimiter)
+
     for line in reader:
         times.append(float(line[0]))
         freqs.append(float(line[1]))
 
     if not times:
         return None
+
+    # Workaround for non-uniform time intervals in the dataset
+    try:
+        annotations.validate_uniform_times(times)
+    except:
+        time_diffs = np.diff(times)
+        mean_time_diff = np.mean(time_diffs)
+        times = np.arange(times[0], times[-1] + mean_time_diff, mean_time_diff)
 
     times = np.array(times)
     freqs = np.array(freqs)
@@ -210,14 +221,14 @@ def load_pitch(fhandle):
 
 @io.coerce_to_string_io
 def load_tonic(fhandle):
-    """Load track absolute tonic
+    """
+    Load track's tonic.
 
     Args:
-        fhandle (str or file-like): Local path where the tonic path is stored.
+        fhandle (str): path to tonic file
 
     Returns:
-        int: Tonic annotation in Hz
-
+        float: tonic frequency in Hz
     """
     reader = csv.reader(fhandle, delimiter=" ")
     tonic = float(next(reader)[0])
@@ -226,9 +237,12 @@ def load_tonic(fhandle):
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
-    The iam melodic similarity dataset
-    """
+    The IAM Melodic Similarity dataset.
 
+    This dataset contains Carnatic music recordings with annotations for
+    sections, pitch, nyas, and tonic. It is designed to support research
+    on melodic similarity with culturally relevant features.
+    """
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
@@ -242,32 +256,32 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(
-        reason="Use mirdata.datasets.iam_melodic_similarity.load_audio", version="0.0.0"
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_audio", version="1.0.0"
     )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.iam_melodic_similarity.load_sections", version="0.0.0"
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_sections", version="1.0.0"
     )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.iam_melodic_similarity.load_nyas", version="0.0.0"
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_nyas", version="1.0.0"
     )
     def load_nyas(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
     @deprecated(
-        reason="Use mirdata.datasets.iam_melodic_similarity.load_pitch", version="0.0.0"
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_pitch", version="1.0.0"
     )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
 
     @deprecated(
-        reason="Use mirdata.datasets.iam_melodic_similarity.load_tonic", version="0.0.0"
+        reason="Use mirdata.datasets.iam_melodic_similarity.load_tonic", version="1.0.0"
     )
     def load_tonic(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
