@@ -204,7 +204,7 @@ def load_video(video_path):
         video_path (str): path to video file
 
     Returns:
-        * np.ndarray - the video signal
+        * np.ndarray - the video signal (frames, height, width, channels)
         * float - The frame rate of the video file
 
     """
