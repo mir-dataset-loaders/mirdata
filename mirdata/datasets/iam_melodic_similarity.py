@@ -5,7 +5,7 @@ from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """
 @inproceedings{gulati2015improving,
@@ -24,8 +24,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="iam_melodic_similarity_index.json",
-        url="https://zenodo.org/records/16603437/files/iam_melodic_similarity_index.json?download=1",
-        checksum="0ca8d0493b1cbc18805539c015d596eb",
+        url="https://zenodo.org/records/16631606/files/iam_melodic_similarity_index.json?download=1",
+        checksum="3c8843f87b0fea83715058c5d8a84c22",
     ),
     "sample": core.Index(filename="iam_melodic_similarity_index_sample.json"),
 }
@@ -33,8 +33,8 @@ INDEXES = {
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
         filename="iam_melodic_similarity.zip",
-        url="https://zenodo.org/records/15350958/files/MelodicSimilarityDataset.zip?download=1",
-        checksum="96d35e07be5e8d5b680efac5248d37d2",
+        url="https://zenodo.org/records/16631794/files/MelodicSimilarityDataset.zip?download=1",
+        checksum="d02c3f329558f91de2fe3bd613f6f2f5",
     )
 }
 
@@ -147,8 +147,8 @@ def load_nyas(fhandle):
     for line in reader:
         start = float(line[0])
         end = float(line[1])
-        if start > end:
-            continue
+        #if start > end:
+        #    continue
         label = 'nyas'
         intervals.append([start, end])
         labels.append(label)
@@ -172,8 +172,8 @@ def load_sections(fhandle):
     for line in reader:
         start = float(line[0])
         end = float(line[1])
-        if start > end:
-            continue
+        #if start > end:
+        #    continue
         label = line[2]
         intervals.append([start, end])
         labels.append(label)
@@ -205,9 +205,6 @@ def load_pitch(fhandle):
 
     if not times:
         return None
-
-    # Workaround for non-uniform time intervals in the dataset
-    annotations.validate_uniform_times(times)
 
     times = np.array(times)
     freqs = np.array(freqs)
