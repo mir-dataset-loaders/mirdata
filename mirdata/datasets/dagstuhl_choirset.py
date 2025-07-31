@@ -41,13 +41,15 @@
     (3) University of Potsdam, DE
     (4) Joint Research Centre, European Commission, Seville, ES
 """
+
 import csv
 from typing import BinaryIO, Optional, TextIO, Tuple, List
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import download_utils, jams_utils, core, annotations, io
+from mirdata import download_utils, core, annotations, io
 
 BIBTEX = """
 @article{RosenzweigCWSGM20_DCS_TISMIR,
@@ -67,8 +69,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.2.3",
-    "test": "1.2.3",
-    "1.2.3": core.Index(filename="dagstuhl_choirset_index_1.2.3.json"),
+    "test": "sample",
+    "1.2.3": core.Index(
+        filename="dagstuhl_choirset_index_1.2.3.json",
+        url="https://zenodo.org/records/13992978/files/dagstuhl_choirset_index_1.2.3.json?download=1",
+        checksum="e55ac958f4d6a0bdaff1c7acbd7268db",
+    ),
+    "sample": core.Index(filename="dagstuhl_choirset_index_1.2.3_sample.json"),
 }
 
 REMOTES = {
@@ -77,7 +84,7 @@ REMOTES = {
         url="https://zenodo.org/record/4618287/files/DagstuhlChoirSet_V1.2.3.zip?download=1",
         checksum="82b95faa634d0c9fc05c81e0868f0217",
         unpack_directories=["DagstuhlChoirSet_V1.2.3"],
-    ),
+    )
 }
 
 LICENSE_INFO = """
@@ -117,7 +124,6 @@ class Track(core.Track):
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
-
         super().__init__(
             track_id=track_id,
             data_home=data_home,
@@ -207,35 +213,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_lrx_path)
 
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-
-        f0_data = [
-            (self.f0_crepe_dyn, "crepe - DYN"),
-            (self.f0_crepe_hsm, "crepe - HSM"),
-            (self.f0_crepe_lrx, "crepe - LRX"),
-            (self.f0_pyin_dyn, "pyin - DYN"),
-            (self.f0_pyin_hsm, "pyin - HSM"),
-            (self.f0_pyin_lrx, "pyin - LRX"),
-            (self.f0_manual_lrx, "manual - LRX"),
-        ]
-        # remove missing annotations from the list
-        f0_data = [tup for tup in f0_data if tup[1]]
-        score_data = [(self.score, "score")] if self.score else None
-
-        if self.audio_hsm_path:
-            audio_path = self.audio_hsm_path
-        elif self.audio_dyn_path:
-            audio_path = self.audio_dyn_path
-        else:
-            audio_path = self.audio_lrx_path
-
-        return jams_utils.jams_converter(
-            audio_path=audio_path,
-            f0_data=f0_data,
-            note_data=score_data,
-        )
-
 
 class MultiTrack(core.MultiTrack):
     """Dagstuhl ChoirSet multitrack class
@@ -264,7 +241,6 @@ class MultiTrack(core.MultiTrack):
     def __init__(
         self, mtrack_id, data_home, dataset_name, index, track_class, metadata
     ):
-
         super().__init__(
             mtrack_id=mtrack_id,
             data_home=data_home,
@@ -394,15 +370,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return load_audio(self.audio_spr_path)
-
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-
-        beat_data = [(self.beat, "beat")] if self.beat else None
-
-        return jams_utils.jams_converter(
-            audio_path=self.audio_stm_path, beat_data=beat_data
-        )
 
 
 @io.coerce_to_bytes_io
@@ -534,18 +501,26 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_f0)
+    @deprecated(
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_f0", version="0.3.4"
+    )
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
-    @core.copy_docs(load_score)
+    @deprecated(
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_score", version="0.3.4"
+    )
     def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)
 
-    @core.copy_docs(load_beat)
+    @deprecated(
+        reason="Use mirdata.datasets.dagstuhl_choirset.load_beat", version="0.3.4"
+    )
     def load_beat(self, *args, **kwargs):
         return load_beat(*args, **kwargs)

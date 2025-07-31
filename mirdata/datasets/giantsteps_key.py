@@ -33,12 +33,13 @@
 """
 
 import json
-from typing import BinaryIO, Dict, List, Optional, TextIO, Tuple
+from typing import Dict, List, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import core, download_utils, jams_utils, io
+from mirdata import core, download_utils, io
 
 
 BIBTEX = """@inproceedings{knees2015two,
@@ -51,8 +52,13 @@ BIBTEX = """@inproceedings{knees2015two,
 
 INDEXES = {
     "default": "+",
-    "test": "+",
-    "+": core.Index(filename="giantsteps_key_index_+.json"),
+    "test": "sample",
+    "+": core.Index(
+        filename="giantsteps_key_index_+.json",
+        url="https://zenodo.org/records/13993357/files/giantsteps_key_index_+.json?download=1",
+        checksum="abce33ea617809a0d534299b00412024",
+    ),
+    "sample": core.Index(filename="giantsteps_key_index_+_sample.json"),
 }
 
 REMOTES = {
@@ -100,21 +106,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.keys_path = self.get_path("key")
         self.metadata_path = self.get_path("meta")
@@ -149,24 +142,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "artists": self.artists,
-                "genres": self.genres,
-                "tempo": self.tempo,
-                "title": self.title,
-                "key": self.key,
-            },
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
@@ -265,22 +240,30 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_key.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @deprecated(reason="Use mirdata.datasets.giantsteps_key.load_key", version="0.3.4")
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_key.load_tempo", version="0.3.4"
+    )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
-    @core.copy_docs(load_genre)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_key.load_genre", version="0.3.4"
+    )
     def load_genre(self, *args, **kwargs):
         return load_genre(*args, **kwargs)
 
-    @core.copy_docs(load_artist)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_key.load_artist", version="0.3.4"
+    )
     def load_artist(self, *args, **kwargs):
         return load_artist(*args, **kwargs)

@@ -21,11 +21,13 @@ import os
 import pickle
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
-from mirdata import jams_utils
+
 from mirdata import core
 from mirdata import annotations
 from mirdata import io
@@ -55,6 +57,17 @@ INDEXES = {
     "default": "1.0",
     "test": "1.0",
     "1.0": core.Index(filename="dali_index_1.0.json"),
+}
+
+INDEXES = {
+    "default": "1.0",
+    "test": "sample",
+    "1.0": core.Index(
+        filename="dali_index_1.0.json",
+        url="https://zenodo.org/records/13930497/files/dali_index_1.0.json?download=1",
+        checksum="7091b6ce623aaa8a87351819f418a4ea",
+    ),
+    "sample": core.Index(filename="dali_index_1.0_sample.json"),
 }
 
 REMOTES = {
@@ -116,21 +129,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.annotation_path = self.get_path("annot")
 
@@ -215,24 +215,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            lyrics_data=[
-                (self.words, "word-aligned lyrics"),
-                (self.lines, "line-aligned lyrics"),
-                (self.paragraphs, "paragraph-aligned lyrics"),
-            ],
-            note_data=[(self.notes, "annotated vocal notes")],
-            metadata=self._track_metadata,
-        )
-
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
@@ -249,23 +231,23 @@ def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
     return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_annotations_granularity(annotations_path, granularity):
+@io.coerce_to_string_io
+def load_annotations_granularity(annotations_path: TextIO, granularity: str):
     """Load annotations at the specified level of granularity
 
     Args:
-        annotations_path (str): path to a DALI annotation file
+        annotations_path (str or file-like): path to a DALI annotation file
         granularity (str): one of 'notes', 'words', 'lines', 'paragraphs'
 
     Returns:
         NoteData for granularity='notes' or LyricData otherwise
 
     """
-    try:
-        with gzip.open(annotations_path, "rb") as f:
-            output = pickle.load(f)
-    except Exception as e:
-        with gzip.open(annotations_path, "r") as f:
-            output = pickle.load(f)
+    # We no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    with gzip.open(annotations_path.name, "rb") as f:
+        output = pickle.load(f)
+
     text = []
     notes = []
     begs = []
@@ -276,12 +258,11 @@ def load_annotations_granularity(annotations_path, granularity):
         ends.append(round(annot["time"][1], 3))
         text.append(annot["text"])
     if granularity == "notes":
-        annotation = annotations.NoteData(
+        return annotations.NoteData(
             np.array([begs, ends]).T, "s", np.array(notes), "hz"
         )
     else:
-        annotation = annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
-    return annotation
+        return annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
 
 
 def load_annotations_class(annotations_path):
@@ -294,12 +275,13 @@ def load_annotations_class(annotations_path):
         DALI.annotations: DALI annotations object
 
     """
-    if not os.path.exists(annotations_path):
-        raise IOError("annotations_path {} does not exist".format(annotations_path))
-
     try:
         with gzip.open(annotations_path, "rb") as f:
             output = pickle.load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            "annotations_path {} does not exist".format(annotations_path)
+        )
     except Exception as e:
         with gzip.open(annotations_path, "r") as f:
             output = pickle.load(f)
@@ -328,22 +310,27 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, os.path.join("dali_metadata.json"))
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        with open(metadata_path, "r") as fhandle:
-            metadata_index = json.load(fhandle)
+        try:
+            with open(metadata_path, "r") as fhandle:
+                metadata_index = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.dali.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_annotations_granularity)
+    @deprecated(
+        reason="Use mirdata.datasets.dali.load_annotations_granularity", version="0.3.4"
+    )
     def load_annotations_granularity(self, *args, **kwargs):
         return load_annotations_granularity(*args, **kwargs)
 
-    @core.copy_docs(load_annotations_class)
+    @deprecated(
+        reason="Use mirdata.datasets.dali.load_annotations_class", version="0.3.4"
+    )
     def load_annotations_class(self, *args, **kwargs):
         return load_annotations_class(*args, **kwargs)

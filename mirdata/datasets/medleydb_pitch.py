@@ -21,10 +21,12 @@ import json
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
@@ -36,16 +38,25 @@ BIBTEX = """@inproceedings{bittner2014medleydb,
 }"""
 INDEXES = {
     "default": "3.0",
-    "test": "3.0",
-    "2.0": core.Index(filename="medleydb_pitch_index_2.0.json", partial_download=[]),
-    "3.0": core.Index(filename="medleydb_pitch_index_3.0.json"),
+    "test": "sample",
+    "2.0": core.Index(
+        filename="medleydb_pitch_index_2.0.json",
+        url="https://zenodo.org/records/14022462/files/medleydb_pitch_index_2.0.json?download=1",
+        checksum="39d3175befbb2e3f817bc3d26785d5b2",
+    ),
+    "3.0": core.Index(
+        filename="medleydb_pitch_index_3.0.json",
+        url="https://zenodo.org/records/14023524/files/medleydb_pitch_index_3.0.json?download=1",
+        checksum="a5abc2c67c30b634aee87ed90f9fbaa4",
+    ),
+    "sample": core.Index(filename="medleydb_pitch_index_3.0_sample.json"),
 }
 REMOTES = {
     "notes_pyin": download_utils.RemoteFileMetadata(
         filename="medleydb-pitch-pyin-notes.zip",
         url="https://zenodo.org/record/4728793/files/medleydb-pitch-pyin-notes.zip?download=1",
         checksum="464af0c8db7b6e70d87f833eb551a8fb",
-    ),
+    )
 }
 DOWNLOAD_INFO = """
     To download this dataset, visit:
@@ -85,21 +96,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.pitch_path = self.get_path("pitch")
         self.notes_pyin_path = self.get_path("notes_pyin")
@@ -139,20 +137,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.pitch, "annotated pitch")],
-            note_data=[(self.notes_pyin, "pyin note estimate")],
-            metadata=self._track_metadata,
-        )
 
 
 @io.coerce_to_bytes_io
@@ -251,22 +235,28 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "medleydb_pitch_metadata.json")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                metadata = json.load(fhandle)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            metadata = json.load(fhandle)
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_pitch.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_pitch)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_pitch.load_pitch", version="0.3.4"
+    )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_pitch.load_notes", version="0.3.4"
+    )
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

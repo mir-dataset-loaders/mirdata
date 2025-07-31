@@ -10,9 +10,9 @@
 
     - Section and tempo annotations stored as start and end timestamps together with the name of the section and
       tempo during the section (in a separate file)
-    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps. 
+    - Sama annotations referring to rhythmic cycle boundaries stored as timestamps.
     - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
-      ({S, r, R, g, G, m, M, P, d, D, n, N}). 
+      ({S, r, R, g, G, m, M, P, d, D, n, N}).
     - Audio features automatically extracted and stored: pitch and tonic.
     - The annotations are stored in text files, named as the audio filename but with the respective extension at the
       end, for instance: "Bhuvini Dasudane.tempo-manual.txt".
@@ -32,10 +32,12 @@
 
 import csv
 import json
+
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -55,8 +57,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.5",
-    "test": "1.5",
-    "1.5": core.Index(filename="saraga_carnatic_index_1.5.json"),
+    "test": "sample",
+    "1.5": core.Index(
+        filename="saraga_carnatic_index_1.5.json",
+        url="https://zenodo.org/records/13993042/files/saraga_carnatic_index_1.5.json?download=1",
+        checksum="4cac461c0baba0dde95061d5bc84a875",
+    ),
+    "sample": core.Index(filename="saraga_carnatic_index_1.5_sample.json"),
 }
 
 REMOTES = {
@@ -119,21 +126,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         # Audio path
         self.audio_path = self.get_path("audio-mix")
@@ -198,26 +192,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.sama, "sama")],
-            f0_data=[(self.pitch, "pitch"), (self.pitch_vocal, "pitch_vocal")],
-            section_data=[(self.sections, "sections")],
-            event_data=[(self.phrases, "phrases")],
-            metadata={
-                "tempo": self.tempo,
-                "tonic": self.tonic,
-                "metadata": self.metadata,
-            },
-        )
 
 
 @io.coerce_to_string_io
@@ -396,16 +370,10 @@ def load_sections(fhandle):
     """
     intervals = []
     section_labels = []
-
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         if line != "\n":
-            intervals.append(
-                [
-                    float(line[0]),
-                    float(line[0]) + float(line[2]),
-                ]
-            )
+            intervals.append([float(line[0]), float(line[0]) + float(line[2])])
             section_labels.append(str(line[3]))
 
     if not intervals:
@@ -463,34 +431,50 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_carnatic.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_tonic)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_carnatic.load_tonic", version="0.3.4"
+    )
     def load_tonic(self, *args, **kwargs):
         return load_tonic(*args, **kwargs)
 
-    @core.copy_docs(load_pitch)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_carnatic.load_pitch", version="0.3.4"
+    )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_carnatic.load_tempo", version="0.3.4"
+    )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
-    @core.copy_docs(load_sama)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_carnatic.load_sama", version="0.3.4"
+    )
     def load_sama(self, *args, **kwargs):
         return load_sama(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_carnatic.load_sections", version="0.3.4"
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_phrases)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_carnatic.load_phrases", version="0.3.4"
+    )
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)
 
-    @core.copy_docs(load_metadata)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_carnatic.load_metadata", version="0.3.4"
+    )
     def load_metadata(self, *args, **kwargs):
         return load_metadata(*args, **kwargs)

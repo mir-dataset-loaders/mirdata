@@ -65,10 +65,11 @@
         3577631.LOFI.mp3  119
 
 """
-import os
-from typing import BinaryIO, Optional, TextIO, Tuple
 
-import jams
+from typing import Optional, TextIO, Tuple
+
+from deprecated.sphinx import deprecated
+import json
 import librosa
 import numpy as np
 
@@ -93,8 +94,13 @@ BIBTEX = """@inproceedings{knees2015two,
 
 INDEXES = {
     "default": "2.0",
-    "test": "2.0",
-    "2.0": core.Index(filename="giantsteps_tempo_index_2.0.json"),
+    "test": "sample",
+    "2.0": core.Index(
+        filename="giantsteps_tempo_index_2.0.json",
+        url="https://zenodo.org/records/13993327/files/giantsteps_tempo_index_2.0.json?download=1",
+        checksum="92e8db769a01def442b6bb89b700afb8",
+    ),
+    "sample": core.Index(filename="giantsteps_tempo_index_2.0_sample.json"),
 }
 
 REMOTES = {
@@ -137,21 +143,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.annotation_v1_path = self.get_path("annotation_v1")
         self.annotation_v2_path = self.get_path("annotation_v2")
@@ -183,24 +176,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams.load(self.annotation_v1_path)
-
-    def to_jams_v2(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams.load(self.annotation_v2_path)
-
 
 def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_tempo audio file.
@@ -221,13 +196,13 @@ def load_genre(fhandle: TextIO) -> str:
     """Load genre data from a file
 
     Args:
-        path (str): path to metadata annotation file
+        fhandle (TextIO): file handle to metadata annotation file
 
     Returns:
         str: loaded genre data
     """
-    annotation = jams.load(fhandle)
-    return annotation.search(namespace="tag_open")[0]["data"][0].value
+    annotation = json.load(fhandle)
+    return annotation["annotations"][1]["data"][0]["value"]
 
 
 @io.coerce_to_string_io
@@ -241,16 +216,16 @@ def load_tempo(fhandle: TextIO) -> annotations.TempoData:
         annotations.TempoData: Tempo data
 
     """
-    annotation = jams.load(fhandle)
-
-    tempo = annotation.search(namespace="tempo")[0]["data"]
-
+    annotation = json.load(fhandle)
+    tempo = annotation["annotations"][0]["data"]
     return annotations.TempoData(
-        np.array([[t.time for t in tempo], [t.time + t.duration for t in tempo]]).T,
+        np.array(
+            [[t["time"] for t in tempo], [t["time"] + t["duration"] for t in tempo]]
+        ).T,
         "s",
-        np.array([t.value for t in tempo]),
+        np.array([t["value"] for t in tempo]),
         "bpm",
-        np.array([t.confidence for t in tempo]),
+        np.array([t["confidence"] for t in tempo]),
         "likelihood",
     )
 
@@ -274,14 +249,20 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_tempo.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_genre)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_tempo.load_genre", version="0.3.4"
+    )
     def load_genre(self, *args, **kwargs):
         return load_genre(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(
+        reason="Use mirdata.datasets.giantsteps_tempo.load_tempo", version="0.3.4"
+    )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)

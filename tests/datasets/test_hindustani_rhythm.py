@@ -1,0 +1,123 @@
+import os
+import numpy as np
+from mirdata import annotations
+from mirdata.datasets import compmusic_hindustani_rhythm
+from tests.test_utils import run_track_tests
+
+
+def test_track():
+    default_trackid = "20001"
+    data_home = os.path.normpath(
+        "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
+    )
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
+    track = dataset.track(default_trackid)
+
+    expected_attributes = {
+        "track_id": "20001",
+        "audio_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_hindustani_rhythm/"
+            ),
+            "HMR_1.0/audio/01_20001_02_Raag_Multani.wav",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_hindustani_rhythm/"
+            ),
+            "HMR_1.0/annotations/beats/01_20001_02_Raag_Multani.beats",
+        ),
+        "meter_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_hindustani_rhythm/"
+            ),
+            "HMR_1.0/annotations/meter/01_20001_02_Raag_Multani.meter",
+        ),
+    }
+
+    expected_property_types = {
+        "meter": str,
+        "beats": annotations.BeatData,
+        "audio": tuple,
+        "mbid": str,
+        "name": str,
+        "artist": str,
+        "release": str,
+        "lead_instrument_code": str,
+        "taala": str,
+        "raaga": str,
+        "laya": str,
+        "num_of_beats": int,
+        "num_of_samas": int,
+        "median_matra_period": float,
+        "median_matras_per_min": float,
+        "median_ISI": float,
+        "median_avarts_per_min": float,
+    }
+
+    run_track_tests(track, expected_attributes, expected_property_types)
+
+    # test audio loading functions
+    _, sr = track.audio
+    assert sr == 44100
+
+
+def test_load_meter():
+    data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
+    track = dataset.track("20001")
+    meter_path = track.meter_path
+    parsed_meter = compmusic_hindustani_rhythm.load_meter(meter_path)
+    assert parsed_meter == "16/8"
+    assert compmusic_hindustani_rhythm.load_meter(None) is None
+
+
+def test_load_beats():
+    data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
+    track = dataset.track("20001")
+    beats_path = track.beats_path
+    parsed_beats = compmusic_hindustani_rhythm.load_beats(beats_path)
+
+    # Check types
+    assert type(parsed_beats) == annotations.BeatData
+    assert type(parsed_beats.times) is np.ndarray
+    assert type(parsed_beats.positions) is np.ndarray
+
+    # Check values
+    assert np.array_equal(parsed_beats.times, np.array([0.694, 3.233, 6.020]))
+    assert np.array_equal(parsed_beats.positions, np.array([13, 14, 15]))
+    assert compmusic_hindustani_rhythm.load_beats(None) is None
+
+
+def test_load_metadata():
+    data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
+    meta = dataset._metadata  # get dataset metadata
+    parsed_metadata = meta["20001"]  # get track metadata
+
+    assert parsed_metadata["mbid"] == "0bdad2a8-94d8-40c2-91ec-e77100fcaa02"
+    assert parsed_metadata["raaga"] == "Multani"
+    assert parsed_metadata["taala"] == "teentaal"
+    assert parsed_metadata["name"] == "02_Raag_Multani"
+    assert parsed_metadata["lead_instrument_code"] == "V"
+    assert parsed_metadata["laya"] == "Vilambit"
+    assert parsed_metadata["num_of_beats"] == 44
+    assert parsed_metadata["num_of_samas"] == 3
+    assert parsed_metadata["median_matra_period"] == 2.746
+    assert parsed_metadata["median_matras_per_min"] == 21.85
+    assert parsed_metadata["median_ISI"] == 43.936
+    assert parsed_metadata["median_avarts_per_min"] == 1.37
+
+
+def test_load_audio():
+    data_home = "tests/resources/mir_datasets/compmusic_hindustani_rhythm"
+    dataset = compmusic_hindustani_rhythm.Dataset(data_home, version="test")
+    track = dataset.track("20001")
+    audio_path = track.audio_path
+    audio, sr = compmusic_hindustani_rhythm.load_audio(audio_path)
+
+    assert sr == 44100
+    assert type(audio) == np.ndarray
+
+    assert compmusic_hindustani_rhythm.load_audio(None) is None

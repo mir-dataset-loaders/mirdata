@@ -44,16 +44,19 @@ cante100 Loader
     For more details, please visit: http://www.cofla-project.com/?page_id=134
 
 """
+
 import csv
 import os
 import xml.etree.ElementTree as ET
-from typing import BinaryIO, cast, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
-from mirdata import jams_utils
+
 from mirdata import core
 from mirdata import annotations
 from mirdata import io
@@ -89,8 +92,13 @@ BIBTEX = """@dataset{nadine_kroher_2018_1322542,
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="cante100_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="cante100_index_1.0.json",
+        url="https://zenodo.org/records/14007951/files/cante100_index_1.0.json?download=1",
+        checksum="0da98091223c1349ae2d60c5c0aabeed",
+    ),
+    "sample": core.Index(filename="cante100_index_1.0_sample.json"),
 }
 
 REMOTES = {
@@ -108,7 +116,9 @@ REMOTES = {
     ),
     "notes": download_utils.RemoteFileMetadata(
         filename="cante100_automaticTranscription.zip",
-        url="https://zenodo.org/record/1322542/files/cante100_automaticTranscription.zip?download=1",
+        url=(
+            "https://zenodo.org/record/1322542/files/cante100_automaticTranscription.zip?download=1"
+        ),
         checksum="47fea64c744f9fe678ae5642a8f0ee8e",  # the md5 checksum
         destination_dir="cante100_automaticTranscription",  # relative path for where to unzip the data, or None
     ),
@@ -169,21 +179,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.spectrogram_path = self.get_path("spectrum")
         self.f0_path = self.get_path("f0")
@@ -238,21 +235,6 @@ class Track(core.Track):
     @core.cached_property
     def notes(self) -> Optional[annotations.NoteData]:
         return load_notes(self.notes_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            spectrogram_path=self.spectrogram_path,
-            f0_data=[(self.melody, "pitch_contour")],
-            note_data=[(self.notes, "note_hz")],
-            metadata=self._track_metadata,
-        )
 
 
 @io.coerce_to_string_io
@@ -368,10 +350,12 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "cante100Meta.xml")
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        tree = ET.parse(metadata_path)
+        try:
+            with open(metadata_path, "r") as fhandle:
+                tree = ET.parse(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
         root = tree.getroot()
 
         # ids
@@ -418,18 +402,20 @@ class Dataset(core.Dataset):
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.cante100.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_spectrogram)
+    @deprecated(
+        reason="Use mirdata.datasets.cante100.load_spectrogram", version="0.3.4"
+    )
     def load_spectrogram(self, *args, **kwargs):
         return load_spectrogram(*args, **kwargs)
 
-    @core.copy_docs(load_melody)
+    @deprecated(reason="Use mirdata.datasets.cante100.load_melody", version="0.3.4")
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(reason="Use mirdata.datasets.cante100.load_notes", version="0.3.4")
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

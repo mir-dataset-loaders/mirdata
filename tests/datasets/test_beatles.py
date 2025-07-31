@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import beatles
@@ -7,21 +8,31 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "0111"
-    data_home = "tests/resources/mir_datasets/beatles"
-    dataset = beatles.Dataset(data_home)
+    data_home = os.path.normpath("tests/resources/mir_datasets/beatles")
+    dataset = beatles.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/beatles/"
-        + "audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav",
-        "beats_path": "tests/resources/mir_datasets/beatles/"
-        + "annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt",
-        "chords_path": "tests/resources/mir_datasets/beatles/"
-        + "annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
-        "keys_path": "tests/resources/mir_datasets/beatles/"
-        + "annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
-        "sections_path": "tests/resources/mir_datasets/beatles/"
-        + "annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "audio/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.wav",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "annotations/beat/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt",
+        ),
+        "chords_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "annotations/chordlab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        ),
+        "keys_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "annotations/keylab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatles/"),
+            "annotations/seglab/The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab",
+        ),
         "title": "11_-_Do_You_Want_To_Know_A_Secret",
         "track_id": "0111",
     }
@@ -49,111 +60,8 @@ def test_track():
     assert track.key is None, "expected track.key to be None, got {}".format(track.key)
 
 
-def test_to_jams():
-
-    data_home = "tests/resources/mir_datasets/beatles"
-    dataset = beatles.Dataset(data_home)
-    track = dataset.track("0111")
-    jam = track.to_jams()
-
-    beats = jam.search(namespace="beat")[0]["data"]
-    assert [beat.time for beat in beats] == [
-        13.249,
-        13.959,
-        14.416,
-        14.965,
-        15.453,
-        15.929,
-        16.428,
-    ], "beat times do not match expected"
-    assert [beat.duration for beat in beats] == [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-    ], "beat durations do not match expected"
-    assert [beat.value for beat in beats] == [
-        2,
-        3,
-        4,
-        1,
-        2,
-        3,
-        4,
-    ], "beat values do not match expected"
-    assert [beat.confidence for beat in beats] == [
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-    ], "beat confidence does not match expected"
-
-    segments = jam.search(namespace="segment")[0]["data"]
-    assert [segment.time for segment in segments] == [
-        0.0,
-        0.465,
-    ], "segment time does not match expected"
-    assert [segment.duration for segment in segments] == [
-        0.465,
-        14.466,
-    ], "segment duration does not match expected"
-    assert [segment.value for segment in segments] == [
-        "silence",
-        "intro",
-    ], "segment value does not match expected"
-    assert [segment.confidence for segment in segments] == [
-        None,
-        None,
-    ], "segment confidence does not match expected"
-
-    chords = jam.search(namespace="chord")[0]["data"]
-    assert [chord.time for chord in chords] == [
-        0.0,
-        4.586464,
-        6.98973,
-    ], "chord time does not match expected"
-    assert [chord.duration for chord in chords] == [
-        0.497838,
-        2.4032659999999995,
-        2.995374,
-    ], "chord duration does not match expected"
-    assert [chord.value for chord in chords] == [
-        "N",
-        "E:min",
-        "G",
-    ], "chord value does not match expected"
-    assert [chord.confidence for chord in chords] == [
-        None,
-        None,
-        None,
-    ], "chord confidence does not match expected"
-
-    keys = jam.search(namespace="key")[0]["data"]
-    assert [key.time for key in keys] == [0.0], "key time does not match expected"
-    assert [key.duration for key in keys] == [
-        119.333
-    ], "key duration does not match expected"
-    assert [key.value for key in keys] == ["E"], "key value does not match expected"
-    assert [key.confidence for key in keys] == [
-        None
-    ], "key confidence does not match expected"
-
-    assert (
-        jam["file_metadata"]["title"] == "11_-_Do_You_Want_To_Know_A_Secret"
-    ), "title does not match expected"
-    assert (
-        jam["file_metadata"]["artist"] == "The Beatles"
-    ), "artist does not match expected"
-
-
 def test_load_beats():
-    beats_path = (
+    beats_path = os.path.normpath(
         "tests/resources/mir_datasets/beatles/annotations/beat/"
         + "The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.txt"
     )
@@ -179,7 +87,7 @@ def test_load_beats():
 
 
 def test_load_chords():
-    chords_path = (
+    chords_path = os.path.normpath(
         "tests/resources/mir_datasets/beatles/annotations/chordlab/"
         + "The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab"
     )
@@ -201,7 +109,7 @@ def test_load_chords():
 
 
 def test_load_key():
-    key_path = (
+    key_path = os.path.normpath(
         "tests/resources/mir_datasets/beatles/annotations/keylab/"
         + "The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab"
     )
@@ -218,7 +126,7 @@ def test_load_key():
 
 
 def test_load_sections():
-    sections_path = (
+    sections_path = os.path.normpath(
         "tests/resources/mir_datasets/beatles/annotations/seglab/"
         + "The Beatles/01_-_Please_Please_Me/11_-_Do_You_Want_To_Know_A_Secret.lab"
     )

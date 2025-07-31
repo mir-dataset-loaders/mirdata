@@ -9,18 +9,24 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "Beethoven-S3-I-ex1"
-    data_home = "tests/resources/mir_datasets/orchset"
-    dataset = orchset.Dataset(data_home)
+    data_home = os.path.normpath("tests/resources/mir_datasets/orchset")
+    dataset = orchset.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "Beethoven-S3-I-ex1",
-        "audio_path_mono": "tests/resources/mir_datasets/orchset/"
-        + "audio/mono/Beethoven-S3-I-ex1.wav",
-        "audio_path_stereo": "tests/resources/mir_datasets/orchset/"
-        + "audio/stereo/Beethoven-S3-I-ex1.wav",
-        "melody_path": "tests/resources/mir_datasets/orchset/"
-        + "GT/Beethoven-S3-I-ex1.mel",
+        "audio_path_mono": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/orchset/"),
+            "audio/mono/Beethoven-S3-I-ex1.wav",
+        ),
+        "audio_path_stereo": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/orchset/"),
+            "audio/stereo/Beethoven-S3-I-ex1.wav",
+        ),
+        "melody_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/orchset/"),
+            "GT/Beethoven-S3-I-ex1.mel",
+        ),
         "composer": "Beethoven",
         "work": "S3-I",
         "excerpt": "1",
@@ -51,26 +57,6 @@ def test_track():
     assert y_stereo.shape == (2, 44100 * 2)
 
 
-def test_to_jams():
-
-    data_home = "tests/resources/mir_datasets/orchset"
-    dataset = orchset.Dataset(data_home)
-    track = dataset.track("Beethoven-S3-I-ex1")
-    jam = track.to_jams()
-
-    f0s = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [f0.time for f0 in f0s] == [0.07, 0.08, 0.09]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 622.254, "index": 0, "voiced": True},
-    ]
-    assert [f0.confidence for f0 in f0s] == [None, None, None]
-
-    assert jam["sandbox"]["alternating_melody"] == True
-
-
 def test_load_melody():
     # load a file which exists
     melody_path = "tests/resources/mir_datasets/orchset/GT/Beethoven-S3-I-ex1.mel"
@@ -90,7 +76,7 @@ def test_load_melody():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/orchset"
-    dataset = orchset.Dataset(data_home)
+    dataset = orchset.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["Beethoven-S3-I-ex1"] == {
         "predominant_melodic_instruments-raw": "strings+winds",
@@ -181,7 +167,7 @@ def test_download(httpserver):
             unpack_directories=["Orchset"],
         )
     }
-    dataset = orchset.Dataset(data_home)
+    dataset = orchset.Dataset(data_home, version="test")
     dataset.remotes = remotes
     dataset.download(None, False, False)
 

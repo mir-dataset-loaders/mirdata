@@ -16,10 +16,10 @@
 
     We provide four datasets containing genre and subgenre annotations extracted from four different online metadata sources:
 
-    - AllMusic and Discogs are based on editorial metadata databases maintained by music experts and enthusiasts. These sources 
-      contain explicit genre/subgenre annotations of music releases (albums) following a predefined genre namespace and taxonomy. 
+    - AllMusic and Discogs are based on editorial metadata databases maintained by music experts and enthusiasts. These sources
+      contain explicit genre/subgenre annotations of music releases (albums) following a predefined genre namespace and taxonomy.
       We propagated release-level annotations to recordings (tracks) in AcousticBrainz to build the datasets.
-    - Lastfm and Tagtraum are based on collaborative music tagging platforms with large amounts of genre labels provided by their 
+    - Lastfm and Tagtraum are based on collaborative music tagging platforms with large amounts of genre labels provided by their
       users for music recordings (tracks). We have automatically inferred a genre/subgenre taxonomy and annotations from these labels.
 
     For details on format and contents, please refer to the data webpage.
@@ -34,15 +34,17 @@
         The AcousticBrainz Genre Dataset: Multi-Source, Multi-Level, Multi-Label, and Large-Scale.
         20th International Society for Music Information Retrieval Conference (ISMIR 2019).
 
-    This work is partially supported by the European Union’s Horizon 2020 research and innovation programme under 
+    This work is partially supported by the European Union’s Horizon 2020 research and innovation programme under
     grant agreement No 688382 AudioCommons.
 
 """
 
 import json
+import os
+
+from deprecated.sphinx import deprecated
 
 from mirdata import download_utils, core, io
-from mirdata import jams_utils
 
 
 NAME = "acousticbrainz_genre"
@@ -62,18 +64,13 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="acousticbrainz_genre_index_1.0.json",
-        url="https://zenodo.org/record/4698408/files/acousticbrainz_genre_index_1.0.json.zip?download=1",
+        url="https://zenodo.org/records/14024655/files/acousticbrainz_genre_index_1.0.json.zip?download=1",
         checksum="ee2837b04d8dd6ab0507f5b975314b7e",
     ),
-    "sample": core.Index(filename="acousticbrainz_genre_index_sample.json"),
+    "sample": core.Index(filename="acousticbrainz_genre_index_1.0_sample.json"),
 }
 
 REMOTES = {
-    "index": download_utils.RemoteFileMetadata(
-        filename="acousticbrainz_genre_index.json.zip",
-        url="https://zenodo.org/record/4298580/files/acousticbrainz_genre_index.json.zip?download=1",
-        checksum="810f1c003f53cbe58002ba96e6d4d138",
-    ),
     "validation-01": download_utils.RemoteFileMetadata(
         filename="acousticbrainz-mediaeval-features-validation-01234567.tar.bz2",
         url="https://zenodo.org/record/2553414/files/acousticbrainz-mediaeval-features-validation-01234567.tar.bz2?download=1",
@@ -185,23 +182,10 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
-        self.path = self.get_path("data")
+        self.path = os.path.normpath(self.get_path("data"))
         self.genre = [genre for genre in self.track_id.split("#")[4:] if genre != ""]
         self.mbid = self.track_id.split("#")[2]
         self.mbid_group = self.track_id.split("#")[3]
@@ -360,23 +344,7 @@ class Track(core.Track):
 
     @core.cached_property
     def acousticbrainz_metadata(self):
-        return load_extractor(self.path)
-
-    def to_jams(self):
-        """the track's data in jams format
-
-        Returns:
-             jams.JAMS: return track data in jam format
-
-        """
-        return jams_utils.jams_converter(
-            metadata={
-                "features": load_extractor(self.path),
-                "duration": self.acousticbrainz_metadata["metadata"][
-                    "audio_properties"
-                ]["length"],
-            }
-        )
+        return load_extractor(os.path.normpath(self.path))
 
 
 @io.coerce_to_string_io
@@ -412,7 +380,10 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_extractor)
+    @deprecated(
+        reason="Use mirdata.datasets.acousticbrainz_genre.load_extractor",
+        version="0.3.4",
+    )
     def load_extractor(self, *args, **kwargs):
         return load_extractor(*args, **kwargs)
 

@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "[0001] M4-01-SA": {
+      "audio": [
+        "BRID_1.0/Data/Acoustic Mixtures/4 Instruments/[0001] M4-01-SA.wav",
+        "7b5605eabd42493158c3a250ddbb1810"
+      ],
+      "beats": [
+        "BRID_1.0/Annotations/beats/[0001] M4-01-SA.beats",
+        "d37a01c33a34597a0e60fb5e3d8a89a6"
+      ],
+      "tempo": [
+        "BRID_1.0/Annotations/tempo/[0001] M4-01-SA.bpm",
+        "4aa10c8164de322246e624fd7c920402"
+      ]
+    }
+  }
+}

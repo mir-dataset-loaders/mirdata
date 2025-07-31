@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from mirdata.datasets import salami
 from mirdata import annotations
@@ -5,23 +6,32 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-
     default_trackid = "2"
-    data_home = "tests/resources/mir_datasets/salami"
-    dataset = salami.Dataset(data_home)
+    data_home = os.path.normpath("tests/resources/mir_datasets/salami")
+    dataset = salami.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "2",
-        "audio_path": "tests/resources/mir_datasets/salami/" + "audio/2.mp3",
-        "sections_annotator1_uppercase_path": "tests/resources/mir_datasets/salami/"
-        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt",
-        "sections_annotator1_lowercase_path": "tests/resources/mir_datasets/salami/"
-        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt",
-        "sections_annotator2_uppercase_path": "tests/resources/mir_datasets/salami/"
-        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt",
-        "sections_annotator2_lowercase_path": "tests/resources/mir_datasets/salami/"
-        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"), "audio/2.mp3"
+        ),
+        "sections_annotator1_uppercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt",
+        ),
+        "sections_annotator1_lowercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt",
+        ),
+        "sections_annotator2_uppercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt",
+        ),
+        "sections_annotator2_lowercase_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/salami/"),
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt",
+        ),
         "source": "Codaich",
         "annotator_1_id": "5",
         "annotator_2_id": "8",
@@ -124,67 +134,6 @@ def test_track():
     assert type(track.sections_annotator_2_lowercase) is annotations.SectionData
 
 
-def test_to_jams():
-
-    data_home = "tests/resources/mir_datasets/salami"
-    dataset = salami.Dataset(data_home)
-    track = dataset.track("2")
-    jam = track.to_jams()
-
-    segments = jam.search(namespace="multi_segment")[0]["data"]
-    assert [segment.time for segment in segments] == [
-        0.0,
-        0.0,
-        0.464399092,
-        0.464399092,
-        5.191269841,
-        14.379863945,
-        254.821632653,
-        258.900453514,
-        263.205419501,
-        263.205419501,
-    ]
-    assert [segment.duration for segment in segments] == [
-        0.464399092,
-        0.464399092,
-        13.915464853,
-        4.726870749000001,
-        249.630362812,
-        248.82555555599998,
-        4.078820860999997,
-        4.304965987000003,
-        1.6797959180000248,
-        1.6797959180000248,
-    ]
-    assert [segment.value for segment in segments] == [
-        {"label": "Silence", "level": 0},
-        {"label": "Silence", "level": 1},
-        {"label": "A", "level": 0},
-        {"label": "b", "level": 1},
-        {"label": "b", "level": 1},
-        {"label": "B", "level": 0},
-        {"label": "ab", "level": 1},
-        {"label": "ab", "level": 1},
-        {"label": "Silence", "level": 0},
-        {"label": "Silence", "level": 1},
-    ]
-    assert [segment.confidence for segment in segments] == [
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-    ]
-
-    assert jam["file_metadata"]["title"] == "For_God_And_Country"
-    assert jam["file_metadata"]["artist"] == "The_Smashing_Pumpkins"
-
-
 def test_load_sections():
     # load a file which exists
     sections_path = (
@@ -227,7 +176,7 @@ def test_load_sections():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/salami"
-    dataset = salami.Dataset(data_home)
+    dataset = salami.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["2"] == {
         "source": "Codaich",

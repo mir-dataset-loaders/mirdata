@@ -7,27 +7,35 @@ from mirdata import annotations
 from mirdata.datasets import cante100
 from tests.test_utils import DEFAULT_DATA_HOME
 
-TEST_DATA_HOME = "tests/resources/mir_datasets/cante100"
+TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/cante100")
 
 
 def test_track():
     default_trackid = "008"
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "artist": "Toronjo",
         "duration": 179.0,
-        "audio_path": "tests/resources/mir_datasets/cante100/cante100audio/008_PacoToronjo_"
-        + "Fandangos.mp3",
-        "f0_path": "tests/resources/mir_datasets/cante100/cante100midi_f0/008_PacoToronjo_"
-        + "Fandangos.f0.csv",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/cante100/"),
+            "cante100audio/008_PacoToronjo_Fandangos.mp3",
+        ),
+        "f0_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/cante100/"),
+            "cante100midi_f0/008_PacoToronjo_Fandangos.f0.csv",
+        ),
         "identifier": "4eebe839-82bb-426e-914d-7c4525dd9dad",
-        "notes_path": "tests/resources/mir_datasets/cante100/cante100_automaticTranscription/008_PacoToronjo_"
-        + "Fandangos.notes.csv",
+        "notes_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/cante100/"),
+            "cante100_automaticTranscription/008_PacoToronjo_Fandangos.notes.csv",
+        ),
         "release": "Atlas del cante flamenco",
-        "spectrogram_path": "tests/resources/mir_datasets/cante100/cante100_spectrum/008_PacoToronjo_"
-        + "Fandangos.spectrum.csv",
+        "spectrogram_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/cante100/"),
+            "cante100_spectrum/008_PacoToronjo_Fandangos.spectrum.csv",
+        ),
         "title": "Huelva Como Capital",
         "track_id": "008",
     }
@@ -42,67 +50,8 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
 
-def test_to_jams():
-    default_trackid = "008"
-    dataset = cante100.Dataset(TEST_DATA_HOME)
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    # Validate cante100 jam schema
-    assert jam.validate()
-
-    # Validate melody
-    melody = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [note.time for note in melody] == [
-        0.023219954,
-        0.026122448,
-        0.029024942,
-        0.031927436,
-        0.034829931,
-        0.037732425,
-    ]
-    assert [note.duration for note in melody] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    assert [note.value for note in melody] == [
-        {"index": 0, "frequency": 0.0, "voiced": False},
-        {"index": 0, "frequency": 137.0, "voiced": True},
-        {"index": 0, "frequency": 220.34, "voiced": True},
-        {"index": 0, "frequency": 400.0, "voiced": True},
-        {"index": 0, "frequency": 110.0, "voiced": False},
-        {"index": 0, "frequency": 110.0, "voiced": False},
-    ]
-    assert [note.confidence for note in melody] == [None, None, None, None, None, None]
-
-    # Validate note transciption
-    notes = jam.search(namespace="note_hz")[0]["data"]
-    assert [note.time for note in notes] == [
-        25.7625,
-        26.1457,
-        37.3319,
-        37.5612,
-        37.7876,
-        44.8755,
-    ]
-    assert [note.duration for note in notes] == [
-        0.3453969999999984,
-        0.3947390000000013,
-        0.22349200000000025,
-        0.20317500000000166,
-        2.400359999999999,
-        0.2873469999999969,
-    ]
-    assert [note.value for note in notes] == [
-        207.65234878997256,
-        207.65234878997256,
-        311.1269837220809,
-        369.9944227116344,
-        415.3046975799452,
-        391.9954359817492,
-    ]
-    assert [note.confidence for note in notes] == [None, None, None, None, None, None]
-
-
 def test_load_melody():
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("008")
     f0_path = track.f0_path
     f0_data = cante100.load_melody(f0_path)
@@ -134,7 +83,7 @@ def test_load_melody():
 
 
 def test_load_notes():
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("008")
     notes_path = track.notes_path
     notes_data = cante100.load_notes(notes_path)
@@ -182,7 +131,7 @@ def test_load_notes():
 
 
 def test_load_spectrum():
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("008")
     spectrogram_path = track.spectrogram_path
     spectrogram = cante100.load_spectrogram(spectrogram_path)
@@ -193,7 +142,7 @@ def test_load_spectrum():
 
 
 def test_load_audio():
-    dataset = cante100.Dataset(TEST_DATA_HOME)
+    dataset = cante100.Dataset(TEST_DATA_HOME, version="test")
     track = dataset.track("008")
     audio_path = track.audio_path
     audio, sr = cante100.load_audio(audio_path)

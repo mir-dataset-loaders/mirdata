@@ -4,7 +4,7 @@
     :class: dropdown
 
     The Beatles Dataset includes beat and metric position, chord, key, and segmentation
-    annotations for 179 Beatles songs. Details can be found in http://matthiasmauch.net/_pdf/mauch_omp_2009.pdf and
+    annotations for 179 Beatles songs. Details can be found in https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.207.4076&rep=rep1&type=pdf and
     http://isophonics.net/content/reference-annotations-beatles.
 
 """
@@ -13,11 +13,12 @@ import csv
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
 from mirdata import download_utils
-from mirdata import jams_utils
+
 from mirdata import core
 from mirdata import annotations
 from mirdata import io
@@ -34,8 +35,13 @@ BIBTEX = """@inproceedings{mauch2009beatles,
 
 INDEXES = {
     "default": "1.2",
-    "test": "1.2",
-    "1.2": core.Index(filename="beatles_index_1.2.json"),
+    "test": "sample",
+    "1.2": core.Index(
+        filename="beatles_index_1.2.json",
+        url="https://zenodo.org/records/14007830/files/beatles_index_1.2.json?download=1",
+        checksum="6e1276bdab6de05446ddbbc75e6f6cbe",
+    ),
+    "sample": core.Index(filename="beatles_index_1.2_sample.json"),
 }
 
 REMOTES = {
@@ -85,21 +91,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.beats_path = self.get_path("beat")
         self.chords_path = self.get_path("chords")
@@ -136,22 +129,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """the track's data in jams format
-
-        Returns:
-            jams.JAMS: return track data in jam format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, None)],
-            section_data=[(self.sections, None)],
-            chord_data=[(self.chords, None)],
-            key_data=[(self.key, None)],
-            metadata={"artist": "The Beatles", "title": self.title},
-        )
 
 
 @io.coerce_to_bytes_io
@@ -309,18 +286,18 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.beatles.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(reason="Use mirdata.datasets.beatles.load_beats", version="0.3.4")
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(reason="Use mirdata.datasets.beatles.load_chords", version="0.3.4")
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(reason="Use mirdata.datasets.beatles.load_sections", version="0.3.4")
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)

@@ -44,12 +44,14 @@
     For more details, please visit: https://www.upf.edu/web/mtg/phenicx-anechoic
 
 """
+
 from typing import BinaryIO, Optional, TextIO, Tuple, cast
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """
@@ -74,9 +76,14 @@ BIBTEX = """
 """
 
 INDEXES = {
-    "default": "1",
-    "test": "1",
-    "1": core.Index(filename="phenicx_anechoic_index_1.json"),
+    "default": "1.0",
+    "test": "sample",
+    "1.0": core.Index(
+        filename="phenicx_anechoic_index_1.0.json",
+        url="https://zenodo.org/records/14024469/files/phenicx_anechoic_index_1.0.json?download=1",
+        checksum="f2e8106ef7a59d474fe3e26155144e6b",
+    ),
+    "sample": core.Index(filename="phenicx_anechoic_index_1.0_sample.json"),
 }
 
 REMOTES = {
@@ -122,25 +129,13 @@ class Track(core.Track):
         track_id (str): track id
 
     Cached Properties:
-        melody (F0Data): melody annotation
+        notes (NoteData): notes annotations that have been time-aligned to the audio
+        notes_original (NoteData): original score representation, not time-aligned
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.instrument = self.track_id.split("-")[1]
         self.piece = self.track_id.split("-")[0]
@@ -208,17 +203,6 @@ class Track(core.Track):
             raise ValueError("id_voice={} is out of range".format(id_voice))
         return load_audio(self.audio_paths[id_voice])
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_paths[0], note_data=[(self.notes, "aligned notes")]
-        )
-
 
 class MultiTrack(core.MultiTrack):
     """Phenicx-Anechoic MultiTrack class
@@ -239,22 +223,9 @@ class MultiTrack(core.MultiTrack):
     """
 
     def __init__(
-        self,
-        mtrack_id,
-        data_home,
-        dataset_name,
-        index,
-        track_class,
-        metadata,
+        self, mtrack_id, data_home, dataset_name, index, track_class, metadata
     ):
-        super().__init__(
-            mtrack_id,
-            data_home,
-            dataset_name,
-            index,
-            Track,
-            metadata,
-        )
+        super().__init__(mtrack_id, data_home, dataset_name, index, Track, metadata)
 
         #### parse the keys for the dictionary of instruments and strings
         self.instruments = {
@@ -387,7 +358,7 @@ def load_score(fhandle: TextIO) -> annotations.NoteData:
     """
 
     #### read start, end times
-    intervals = np.loadtxt(fhandle, delimiter=",", usecols=[0, 1], dtype=np.float_)
+    intervals = np.loadtxt(fhandle, delimiter=",", usecols=[0, 1], dtype=np.float64)
 
     #### read notes as string
     fhandle.seek(0)
@@ -418,10 +389,14 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.phenicx_anechoic.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_score)
+    @deprecated(
+        reason="Use mirdata.datasets.phenicx_anechoic.load_score", version="0.3.4"
+    )
     def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)

@@ -1,0 +1,86 @@
+{
+    "train": {
+        "Salem Gayatri Venkatesan": {
+            "tonic": 103.3373,
+            "gender": "female",
+            "number of tracks": 112
+        },
+        "Vasundara Rajagopal": {
+            "tonic": 170.6259,
+            "gender": "female",
+            "number of tracks": 163
+        },
+        "Kanakadurga Venkatesh": {
+            "tonic": 180.7718,
+            "gender": "female",
+            "number of tracks": 177
+        },
+        "Prema Rangarajan": {
+            "tonic": 176.9892,
+            "gender": "female",
+            "number of tracks": 165
+        },
+        "Modhumudi Sudhakar": {
+            "tonic": 130.8127,
+            "gender": "male",
+            "number of tracks": 174
+        },
+        "Vidya Subramanian": {
+            "tonic": 141.2368,
+            "gender": "female",
+            "number of tracks": 120
+        },
+        "Kuldeep Pai": {
+            "tonic": 146.8323,
+            "gender": "male",
+            "number of tracks": 149
+        },
+        "Angarai V K Rajasimhan": {
+            "tonic": 138.8064,
+            "gender": "male",
+            "number of tracks": 125
+        },
+        "Manda Sudharani": {
+            "tonic": 165.1176,
+            "gender": "female",
+            "number of tracks": 196
+        },
+        "Srividya Janakiraman": {
+            "tonic": 180.7718,
+            "gender": "female",
+            "number of tracks": 155
+        },
+        "KP Nandini": {
+            "tonic": 197.1331,
+            "gender": "female",
+            "number of tracks": 147
+        }
+    },
+    "test": {
+        "Sumitra Nitin": {
+            "tonic": 196.4161,
+            "gender": "female",
+            "number of tracks": 133
+        },
+        "Mahati": {
+            "tonic": 190.418,
+            "gender": "female",
+            "number of tracks": 199
+        },
+        "N J Nandini": {
+            "tonic": 103.9369,
+            "gender": "female",
+            "number of tracks": 107
+        },
+        "Cherthala Ranganatha Sharma": {
+            "tonic": 135.4258,
+            "gender": "male",
+            "number of tracks": 181
+        },
+        "Sumithra Vasudev": {
+            "tonic": 191.5211,
+            "gender": "female",
+            "number of tracks": 157
+        }
+    }
+}

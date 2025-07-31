@@ -1,3 +1,5 @@
+import os
+import math
 import numpy as np
 
 from mirdata.datasets import ikala
@@ -7,20 +9,31 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "10161_chorus"
-    data_home = "tests/resources/mir_datasets/ikala"
-    dataset = ikala.Dataset(data_home)
+    data_home = os.path.normpath("tests/resources/mir_datasets/ikala")
+    dataset = ikala.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "10161_chorus",
-        "audio_path": "tests/resources/mir_datasets/ikala/"
-        + "Wavfile/10161_chorus.wav",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "Wavfile/10161_chorus.wav",
+        ),
         "song_id": "10161",
         "section": "chorus",
         "singer_id": "1",
-        "f0_path": "tests/resources/mir_datasets/ikala/PitchLabel/10161_chorus.pv",
-        "lyrics_path": "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab",
-        "notes_pyin_path": "tests/resources/mir_datasets/ikala/ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
+        "f0_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "PitchLabel/10161_chorus.pv",
+        ),
+        "lyrics_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "Lyrics/10161_chorus.lab",
+        ),
+        "notes_pyin_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/ikala/"),
+            "ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
+        ),
     }
 
     expected_property_types = {
@@ -64,30 +77,6 @@ def test_track():
     assert np.array_equal(mix, instrumental + vocal)
 
 
-def test_to_jams():
-
-    data_home = "tests/resources/mir_datasets/ikala"
-    default_trackid = "10161_chorus"
-    dataset = ikala.Dataset(data_home)
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    lyrics = jam.search(namespace="lyric")[0]["data"]
-    assert [lyric.time for lyric in lyrics] == [0.027, 0.232]
-    assert [lyric.duration for lyric in lyrics] == [0.20500000000000002, 0.736]
-    assert [lyric.value for lyric in lyrics] == ["JUST", "WANNA"]
-    assert [lyric.confidence for lyric in lyrics] == [None, None]
-
-    f0s = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [f0.time for f0 in f0s] == [0.016, 0.048]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 260.946404518887, "index": 0, "voiced": True},
-    ]
-    assert [f0.confidence for f0 in f0s] == [None, None]
-
-
 def test_load_f0():
     # load a file which exists
     f0_path = "tests/resources/mir_datasets/ikala/PitchLabel/10161_chorus.pv"
@@ -101,7 +90,9 @@ def test_load_f0():
 
     # check values
     assert np.array_equal(f0_data.times, np.array([0.016, 0.048]))
-    assert np.array_equal(f0_data.frequencies, np.array([0.0, 260.946404518887]))
+    assert type(f0_data.frequencies) == np.ndarray
+    assert f0_data.frequencies[0] == 0.0
+    assert math.isclose(f0_data.frequencies[1], 260.94640451888694, rel_tol=1e-12)
     assert np.array_equal(f0_data.voicing, np.array([0.0, 1.0]))
 
 
@@ -165,7 +156,7 @@ def test_load_lyrics():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/ikala"
-    dataset = ikala.Dataset(data_home)
+    dataset = ikala.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["10161"] == "1"
     assert metadata["21025"] == "1"

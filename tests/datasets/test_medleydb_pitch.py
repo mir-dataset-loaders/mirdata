@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import medleydb_pitch
@@ -7,19 +8,24 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "AClassicEducation_NightOwl_STEM_08"
-    data_home = "tests/resources/mir_datasets/medleydb_pitch"
-    dataset = medleydb_pitch.Dataset(data_home)
+    data_home = os.path.normpath("tests/resources/mir_datasets/medleydb_pitch")
+    dataset = medleydb_pitch.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "AClassicEducation_NightOwl_STEM_08",
-        "audio_path": "tests/resources/mir_datasets/"
-        + "medleydb_pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",
-        "pitch_path": "tests/resources/mir_datasets/"
-        + "medleydb_pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv",
-        "notes_pyin_path": "tests/resources/mir_datasets/medleydb_pitch/"
-        + "medleydb-pitch-pyin-notes/AClassicEducation_"
-        + "NightOwl_STEM_08_vamp_pyin_pyin_notes.csv",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
+            "audio/AClassicEducation_NightOwl_STEM_08.wav",
+        ),
+        "pitch_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
+            "pitch/AClassicEducation_NightOwl_STEM_08.csv",
+        ),
+        "notes_pyin_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
+            "medleydb-pitch-pyin-notes/AClassicEducation_NightOwl_STEM_08_vamp_pyin_pyin_notes.csv",
+        ),
         "instrument": "male singer",
         "artist": "AClassicEducation",
         "title": "NightOwl",
@@ -37,26 +43,6 @@ def test_track():
     y, sr = track.audio
     assert sr == 44100
     assert y.shape == (44100 * 2,)
-
-
-def test_to_jams():
-
-    data_home = "tests/resources/mir_datasets/medleydb_pitch"
-    dataset = medleydb_pitch.Dataset(data_home)
-    track = dataset.track("AClassicEducation_NightOwl_STEM_08")
-    jam = track.to_jams()
-
-    f0s = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [f0.time for f0 in f0s] == [0.06965986394557823, 0.07546485260770976]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 191.877, "index": 0, "voiced": True},
-    ]
-    assert [f0.confidence for f0 in f0s] == [None, None]
-
-    assert jam["file_metadata"]["title"] == "NightOwl"
-    assert jam["file_metadata"]["artist"] == "AClassicEducation"
 
 
 def test_load_pitch():
@@ -111,7 +97,7 @@ def test_load_notes():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/medleydb_pitch"
-    dataset = medleydb_pitch.Dataset(data_home)
+    dataset = medleydb_pitch.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["AClassicEducation_NightOwl_STEM_08"] == {
         "audio_path": "medleydb_pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",

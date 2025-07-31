@@ -26,7 +26,9 @@ and may be homogeneous.
 
 * 🔑 : Available upon request
 
-* 📺 : Youtube Links only
+* 📺 : Do-it-yourself download
+
+* 🧮 : Features only
 
 * ❌ : Not available
 
@@ -43,8 +45,17 @@ but it is difficult to generically categorize annotation types, as they depend o
 definitions and their meaning can change depending on the type of music they correspond to.
 Here we provide a rough guide to the types in this table, but we **strongly recommend** reading
 the dataset specific documentation to ensure the data is as you expect. To see how these annotation
-types are implemented in ``mirdata`` see :ref:`annotations`.
+types are implemented in Mirdata see :ref:`annotations`.
 
+.. _events:
+
+Events
+^^^^^^
+A generic annotation to indicate whether a particular event is happening at a given time. 
+It can be used, for instance, to indicate whether a particular instrument is playing at a 
+given time-step or whether a particular note is being played at a given time-step. In fact,
+it is implicit in annotations such as F0_ or Vocal Notes_ (instrument is activated when the
+melody is non-0). However, some datasets provide it as a standalone event annotation.
 
 .. _beats:
 
@@ -73,9 +84,16 @@ one another, as multiple drums can be played at the same time.
 
 F0
 ^^
-Musical pitch contours, typically encoded as time series indidcating the musical pitch over time.
-The time series typically have evenly spaced timestamps, each with a correspoinding pitch value
+Musical pitch contours, typically encoded as time series indicating the musical pitch over time.
+The time series typically have evenly spaced timestamps, each with a corresponding pitch value
 which may be encoded in a number of formats/granularities, including midi note numbers and Hertz.
+
+.. _fx:
+
+Effect
+^^^^^^
+Effect applied to a track. It may refer to the effect applied to a single stroke or an entire track. 
+It can include the effect name, the effect type, the effect parameters, and the effect settings.
 
 .. _genre:
 
@@ -98,7 +116,6 @@ Key
 ^^^
 Musical key. This can be defined globally for an audio file or as a sequence of events.
 
-
 .. _lyrics:
 
 Lyrics
@@ -107,12 +124,27 @@ Lyrics corresponding to the singing voice of the audio. These may be raw text wi
 or they may be time-aligned events. They may have varying levels of granularity (paragraph, line, word,
 phoneme, character) depending on the dataset.
 
+.. _matches:
+
+Matches
+^^^^^^^
+Music identifications in a query audio. This term is used in Audio Fingerprinting to refer to
+identifications of music from a reference database. Matches include information about which reference
+audio has been identified and the start and end times of the query match.
+
+.. _meter:
+
+Meter
+^^^^^
+Rhythmic meter for each measure. A classical example of meter in Western music would be 4/4. Details how
+many subdivisions and the length of this subdivisions that we do have per each measure.
+
 .. _melody:
 
 Melody
 ^^^^^^
 The musical melody of a song. Melody has no universal definition and is typically defined per dataset.
-It is typically enocoded as F0_ or as Notes_. Other types of annotations such as Vocal F0 or Vocal Notes
+It is typically encoded as F0_ or as Notes_. Other types of annotations such as Vocal F0 or Vocal Notes
 can often be considered as melody annotations as well.
 
 .. _notes:
@@ -145,6 +177,13 @@ Sections
 Musical sections, which may be "flat" or "hierarchical", typically encoded by a sequence of
 timestamps indicating musical section boundary times. Section annotations sometimes also
 include labels for sections, which may indicate repetitions and/or the section type (e.g. Chorus, Verse).
+
+.. _segments:
+
+Segments
+^^^^^^^^
+Segments of particular musical events, e.g. segments of note stability, segments of particular melodic
+event, and many more.
 
 .. _technique:
 
@@ -196,7 +235,7 @@ strings, sometimes with associated weights/confidences.
 .. _tonic:
 
 Tonic
-^^^^^^^^^^^
+^^^^^
 The absolute tonic of a track. It may refer to the tonic a single stroke, or the tonal center of
 a track.
 

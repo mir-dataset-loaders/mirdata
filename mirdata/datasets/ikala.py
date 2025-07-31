@@ -13,14 +13,17 @@
     For more details, please visit: http://mac.citi.sinica.edu.tw/ikala/
 
 """
+
 import csv
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import annotations, core, download_utils, jams_utils, io
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """@inproceedings{chan2015vocal,
@@ -35,9 +38,19 @@ BIBTEX = """@inproceedings{chan2015vocal,
 
 INDEXES = {
     "default": "2.0",
-    "test": "2.0",
-    "1.0": core.Index(filename="ikala_index_1.0.json", partial_download=["metadata"]),
-    "2.0": core.Index(filename="ikala_index_2.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="ikala_index_1.0.json",
+        partial_download=["metadata"],
+        url="https://zenodo.org/records/14007846/files/ikala_index_1.0.json?download=1",
+        checksum="9894ae52479181e61279b6c6664aa0df",
+    ),
+    "2.0": core.Index(
+        filename="ikala_index_2.0.json",
+        url="https://zenodo.org/records/14007846/files/ikala_index_2.0.json?download=1",
+        checksum="dd664542f760f9c5d41641eb5eb8d3aa",
+    ),
+    "sample": core.Index(filename="ikala_index_2.0_sample.json"),
 }
 
 TIME_STEP = 0.032  # seconds
@@ -95,21 +108,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.f0_path = self.get_path("pitch")
         self.lyrics_path = self.get_path("lyrics")
@@ -172,26 +172,6 @@ class Track(core.Track):
 
         """
         return load_mix_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.f0, None)],
-            note_data=[(self.notes_pyin, "pyin estimated notes")],
-            lyrics_data=[(self.lyrics, None)],
-            metadata={
-                "section": self.section,
-                "singer_id": self.singer_id,
-                "track_id": self.track_id,
-                "song_id": self.song_id,
-            },
-        )
 
 
 @io.coerce_to_bytes_io
@@ -359,10 +339,7 @@ def load_pronunciations(fhandle: TextIO) -> annotations.LyricData:
             pronunciations.append("")
 
     lyrics_data = annotations.LyricData(
-        np.array([start_times, end_times]).T,
-        "s",
-        pronunciations,
-        "pronunciations_open",
+        np.array([start_times, end_times]).T, "s", pronunciations, "pronunciations_open"
     )
     return lyrics_data
 
@@ -389,43 +366,47 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         id_map_path = os.path.join(self.data_home, "id_mapping.txt")
-        if not os.path.exists(id_map_path):
+        try:
+            with open(id_map_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter="\t")
+                singer_map = {}
+                for line in reader:
+                    if line[0] == "singer":
+                        continue
+                    singer_map[line[1]] = line[0]
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(id_map_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter="\t")
-            singer_map = {}
-            for line in reader:
-                if line[0] == "singer":
-                    continue
-                singer_map[line[1]] = line[0]
 
         return singer_map
 
-    @core.copy_docs(load_vocal_audio)
+    @deprecated(reason="Use mirdata.datasets.ikala.load_vocal_audio", version="0.3.4")
     def load_vocal_audio(self, *args, **kwargs):
         return load_vocal_audio(*args, **kwargs)
 
-    @core.copy_docs(load_instrumental_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.ikala.load_instrumental_audio", version="0.3.4"
+    )
     def load_instrumental_audio(self, *args, **kwargs):
         return load_instrumental_audio(*args, **kwargs)
 
-    @core.copy_docs(load_mix_audio)
+    @deprecated(reason="Use mirdata.datasets.ikala.load_mix_audio", version="0.3.4")
     def load_mix_audio(self, *args, **kwargs):
         return load_mix_audio(*args, **kwargs)
 
-    @core.copy_docs(load_f0)
+    @deprecated(reason="Use mirdata.datasets.ikala.load_f0", version="0.3.4")
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(reason="Use mirdata.datasets.ikala.load_notes", version="0.3.4")
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)
 
-    @core.copy_docs(load_lyrics)
+    @deprecated(reason="Use mirdata.datasets.ikala.load_lyrics", version="0.3.4")
     def load_lyrics(self, *args, **kwargs):
         return load_lyrics(*args, **kwargs)
 
-    @core.copy_docs(load_pronunciations)
+    @deprecated(
+        reason="Use mirdata.datasets.ikala.load_pronunciations", version="0.3.4"
+    )
     def load_pronunciations(self, *args, **kwargs):
         return load_pronunciations(*args, **kwargs)

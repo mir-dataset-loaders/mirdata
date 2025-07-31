@@ -37,10 +37,11 @@ import csv
 import json
 from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io
 
 
 BIBTEX = """@article{gomez2006tonal,
@@ -49,10 +50,16 @@ BIBTEX = """@article{gomez2006tonal,
   journal={Department of Information and Communication Technologies},
   year={2006}
 }"""
+
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="tonality_classicaldb_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="tonality_classicaldb_index_1.0.json",
+        url="https://zenodo.org/records/13993012/files/tonality_classicaldb_index_1.0.json?download=1",
+        checksum="5f73a3bf0beb43d3ecae414888d5bdf5",
+    ),
+    "sample": core.Index(filename="tonality_classicaldb_index_1.0_sample.json"),
 }
 REMOTES = {
     "keys": download_utils.RemoteFileMetadata(
@@ -118,21 +125,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.key_path = self.get_path("key")
         self.spectrum_path = self.get_path("spectrum")
@@ -170,24 +164,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "title": self.title,
-                "key": self.key,
-                "spectrum": self.spectrum,
-                "hpcp": self.hpcp,
-                "musicbrainz_metatada": self.musicbrainz_metadata,
-            },
-        )
-
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
@@ -213,7 +189,6 @@ def load_key(fhandle: TextIO) -> str:
 
     Returns:
         str: musical key data
-
     """
     reader = csv.reader(fhandle, delimiter="\n")
     key = next(reader)[0]
@@ -285,22 +260,34 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_key", version="0.3.4"
+    )
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_spectrum)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_spectrum",
+        version="0.3.4",
+    )
     def load_spectrum(self, *args, **kwargs):
         return load_spectrum(*args, **kwargs)
 
-    @core.copy_docs(load_hpcp)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_hpcp", version="0.3.4"
+    )
     def load_hpcp(self, *args, **kwargs):
         return load_hpcp(*args, **kwargs)
 
-    @core.copy_docs(load_musicbrainz)
+    @deprecated(
+        reason="Use mirdata.datasets.tonality_classicaldb.load_musicbrainz",
+        version="0.3.4",
+    )
     def load_musicbrainz(self, *args, **kwargs):
         return load_musicbrainz(*args, **kwargs)

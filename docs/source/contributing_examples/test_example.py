@@ -1,4 +1,7 @@
+"""Tests for example dataset
+"""
 import numpy as np
+import pytest
 
 from mirdata import annotations
 from mirdata.datasets import example
@@ -31,23 +34,6 @@ def test_track():
     audio, sr = track.audio
     assert sr == 44100
     assert audio.shape == (44100 * 2,)
-
-
-def test_to_jams():
-
-    default_trackid = "some_id"
-    data_home = "tests/resources/mir_datasets/dataset"
-    dataset = example.Dataset(data_home, version="test"
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    annotations = jam.search(namespace="annotation")[0]["data"]
-    assert [annotation.time for annotation in annotations] == [0.027, 0.232]
-    assert [annotation.duration for annotation in annotations] == [
-        0.20500000000000002,
-        0.736,
-    ]
-    # ... etc
 
 
 def test_load_annotation():

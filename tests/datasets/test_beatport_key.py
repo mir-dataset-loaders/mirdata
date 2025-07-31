@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import beatport_key
@@ -6,14 +7,23 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "1"
-    data_home = "tests/resources/mir_datasets/beatport_key"
-    dataset = beatport_key.Dataset(data_home)
+    data_home = os.path.normpath("tests/resources/mir_datasets/beatport_key")
+    dataset = beatport_key.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/beatport_key/audio/100066 Lindstrom - Monsteer (Original Mix).mp3",
-        "keys_path": "tests/resources/mir_datasets/beatport_key/keys/100066 Lindstrom - Monsteer (Original Mix).txt",
-        "metadata_path": "tests/resources/mir_datasets/beatport_key/meta/100066 Lindstrom - Monsteer (Original Mix).json",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatport_key/"),
+            "audio/100066 Lindstrom - Monsteer (Original Mix).mp3",
+        ),
+        "keys_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatport_key/"),
+            "keys/100066 Lindstrom - Monsteer (Original Mix).txt",
+        ),
+        "metadata_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/beatport_key/"),
+            "meta/100066 Lindstrom - Monsteer (Original Mix).json",
+        ),
         "title": "100066 Lindstrom - Monsteer (Original Mix)",
         "track_id": "1",
     }
@@ -33,25 +43,6 @@ def test_track():
     assert audio.shape == (88200,), "audio shape {} was not (88200,)".format(
         audio.shape
     )
-
-
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/beatport_key"
-    dataset = beatport_key.Dataset(data_home)
-    track = dataset.track("1")
-    jam = track.to_jams()
-    assert jam["sandbox"]["key"] == ["D minor"], "key does not match expected"
-
-    assert (
-        jam["file_metadata"]["title"] == "100066 Lindstrom - Monsteer (Original Mix)"
-    ), "title does not match expected"
-    sand_box = {
-        "artists": ["Lindstrom"],
-        "genres": {"genres": ["Electronica / Downtempo"], "sub_genres": []},
-        "tempo": 115,
-        "key": ["D minor"],
-    }
-    assert dict(jam["sandbox"]) == sand_box, "sandbox does not match expected"
 
 
 def test_load_key():

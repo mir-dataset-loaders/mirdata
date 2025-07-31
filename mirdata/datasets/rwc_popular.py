@@ -12,13 +12,16 @@
     For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
 
 """
+
 import csv
 import os
 from typing import Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import numpy as np
+from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_classical import (
@@ -56,8 +59,13 @@ BIBTEX = """@inproceedings{goto2002rwc,
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="rwc_popular_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="rwc_popular_index_1.0.json",
+        url="https://zenodo.org/records/14007877/files/rwc_popular_index_1.0.json?download=1",
+        checksum="774540b4b2190214529fbdf8b1335c2a",
+    ),
+    "sample": core.Index(filename="rwc_popular_index_1.0_sample.json"),
 }
 
 REMOTES = {
@@ -74,7 +82,9 @@ REMOTES = {
     ),
     "annotations_sections": download_utils.RemoteFileMetadata(
         filename="AIST.RWC-MDB-P-2001.CHORUS.zip",
-        url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip",
+        url=(
+            "https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip"
+        ),
         checksum="f76b3a32701fbd9bf78baa608f692a77",
         destination_dir="annotations",
     ),
@@ -136,21 +146,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.sections_path = self.get_path("sections")
         self.beats_path = self.get_path("beats")
@@ -225,21 +222,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, None)],
-            section_data=[(self.sections, None)],
-            chord_data=[(self.chords, None)],
-            metadata=self._track_metadata,
-        )
 
 
 @io.coerce_to_string_io
@@ -318,20 +300,19 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-
         metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-p.csv")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                dialect = csv.Sniffer().sniff(fhandle.read(1024))
+                fhandle.seek(0)
+                reader = csv.reader(fhandle, dialect)
+                raw_data = []
+                for line in reader:
+                    if line[0] != "Piece No.":
+                        raw_data.append(line)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            dialect = csv.Sniffer().sniff(fhandle.read(1024))
-            fhandle.seek(0)
-            reader = csv.reader(fhandle, dialect)
-            raw_data = []
-            for line in reader:
-                if line[0] != "Piece No.":
-                    raw_data.append(line)
 
         metadata_index = {}
         for line in raw_data:
@@ -355,22 +336,26 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.rwc_popular.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_popular.load_sections", version="0.3.4"
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(reason="Use mirdata.datasets.rwc_popular.load_beats", version="0.3.4")
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(reason="Use mirdata.datasets.rwc_popular.load_chords", version="0.3.4")
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @core.copy_docs(load_vocal_activity)
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_popular.load_vocal_activity", version="0.3.4"
+    )
     def load_vocal_activity(self, *args, **kwargs):
         return load_vocal_activity(*args, **kwargs)

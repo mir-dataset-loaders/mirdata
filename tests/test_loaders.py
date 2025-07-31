@@ -1,10 +1,11 @@
+import importlib
 import inspect
-from inspect import signature
 import io
 import os
 import sys
 import pytest
-import requests
+import urllib.request
+import urllib.error
 
 
 import mirdata
@@ -14,31 +15,46 @@ from tests.test_utils import get_attributes_and_properties
 DATASETS = mirdata.DATASETS
 CUSTOM_TEST_TRACKS = {
     "beatles": "0111",
+    "brid": "[0001] M4-01-SA",
+    "ballroom": "Media-105901",
     "cante100": "008",
+    "compmusic_carnatic_rhythm": "10003",
+    "compmusic_carnatic_varnam": "dharini_abhogi",
+    "compmusic_hindustani_rhythm": "20001",
+    "compmusic_indian_tonic": "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180",
     "compmusic_jingju_acappella": "lseh-Tan_Yang_jia-Hong_yang_dong-qm",
     "compmusic_otmm_makam": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
+    "compmusic_raga": "Aruna_Sairam.Valli_Kanavan",
+    "four_way_tabla": "AHK_solo-tintal-1",
     "giantsteps_key": "3",
     "dali": "4b196e6c99574dd49ad00d56e132712b",
+    "da_tacos": "coveranalysis#W_163992#P_547131",
+    "filosax": "multitrack_02_sax_1",
     "freesound_one_shot_percussive_sounds": "183",
     "giantsteps_tempo": "113",
     "gtzan_genre": "country.00000",
     "guitarset": "03_BN3-119-G_solo",
+    "hainsworth": "hains001",
+    "idmt_smt_audio_effects": "G73-45200-3341-33944",
     "irmas": "1",
     "medley_solos_db": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
     "medleydb_melody": "MusicDelta_Beethoven",
+    "mdb_stem_synth": "AClassicEducation_NightOwl_STEM_08",
     "mridangam_stroke": "224030",
     "rwc_classical": "RM-C003",
     "rwc_jazz": "RM-J004",
     "rwc_popular": "RM-P001",
+    "openmic2018": "000046_3840",
     "salami": "2",
     "saraga_carnatic": "116_Bhuvini_Dasudane",
-    "saraga_hindustani": "59_Bairagi",
+    "saraga_hindustani": "50_Irani_Bhairavi_Thumri",
+    "simac": "simac_01_H_mikri_Rallou",
     "tinysol": "Fl-ord-C4-mf-N-T14d",
     "dagstuhl_choirset": "DCS_LI_QuartetB_Take04_B2",
     "tonas": "01-D_AMairena",
 }
 
-TEST_DATA_HOME = "tests/resources/mir_datasets"
+TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets")
 
 
 def test_dataset_attributes():
@@ -73,6 +89,35 @@ def test_dataset_attributes():
         )
 
 
+def test_smart_open():
+    for dataset_name in DATASETS:
+        # import module
+        dataset_module = importlib.import_module(f"mirdata.datasets.{dataset_name}")
+        code_lines = inspect.getsource(dataset_module)
+
+        # check if os.path.exists is called:
+        assert "os.path.exists" not in code_lines, (
+            f"{dataset_name} uses os.path.exists, "
+            + "which does not work with remote filesystems. Instead use a try/except. "
+            + "See orchset.py for an example."
+        )
+
+        # if open is called, make sure smart open is imported
+        not_overwritten_message = (
+            f"{dataset_name} uses open, but does not overwrite it with smart_open. "
+            + "Add the line `from smart_open import open` to the top of the module."
+        )
+        overwritten_wrong_message = (
+            f"{dataset_name} overwrites open using something other than smart_open. "
+            + "Add the line `from smart_open import open` to the top of the module."
+        )
+        if "open(" in code_lines:
+            assert hasattr(dataset_module, "open"), not_overwritten_message
+            assert (
+                dataset_module.open.__module__ == "smart_open.smart_open_lib"
+            ), overwritten_wrong_message
+
+
 def test_cite_and_license():
     for dataset_name in DATASETS:
         dataset = mirdata.initialize(
@@ -91,7 +136,7 @@ def test_cite_and_license():
 
 
 KNOWN_ISSUES = {}  # key is module, value is REMOTE key
-DOWNLOAD_EXCEPTIONS = ["maestro"]
+DOWNLOAD_EXCEPTIONS = ["maestro", "slakh", "gtzan_genre", "idmt_smt_audio_effects"]
 
 
 def test_download(mocker):
@@ -105,7 +150,7 @@ def test_download(mocker):
         assert callable(dataset.download), "{}.download is not callable".format(
             dataset_name
         )
-        params = signature(dataset.download).parameters
+        params = inspect.signature(dataset.download).parameters
 
         expected_params = [
             ("partial_download", None),
@@ -141,16 +186,15 @@ def test_download(mocker):
 
                 url = dataset.remotes[key].url
                 try:
-                    request = requests.head(url)
-                    assert request.ok, "Link {} for {} does not return OK".format(
-                        url, dataset_name
-                    )
-                except requests.exceptions.ConnectionError:
-                    assert False, "Link {} for {} is unreachable".format(
-                        url, dataset_name
-                    )
-                except:
-                    assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+                    req = urllib.request.Request(url, method="HEAD")
+                    with urllib.request.urlopen(req, timeout=10) as response:
+                        assert (
+                            response.status == 200
+                        ), f"Link {url} for {dataset_name} does not return OK"
+                except urllib.error.URLError:
+                    assert False, f"Link {url} for {dataset_name} is unreachable"
+                except Exception:
+                    assert False, f"{dataset_name}: {sys.exc_info()[0]}"
         else:
             try:
                 dataset.download()
@@ -193,7 +237,6 @@ def test_load_and_trackids():
         trackid_len = len(track_ids)
         # if the dataset has tracks, test the loaders
         if dataset._track_class is not None:
-
             try:
                 choice_track = dataset.choice_track()
             except:
@@ -212,17 +255,14 @@ def test_load_and_trackids():
             assert isinstance(
                 dataset_data, dict
             ), "{}.load should return a dictionary".format(dataset_name)
-            assert (
-                len(dataset_data.keys()) == trackid_len
-            ), "the dictionary returned {}.load() does not have the same number of elements as {}.track_ids()".format(
-                dataset_name, dataset_name
+            assert len(dataset_data.keys()) == trackid_len, (
+                "the dictionary returned {}.load() does not have the same number of elements as"
+                " {}.track_ids()".format(dataset_name, dataset_name)
             )
 
 
 def test_track():
-
     for dataset_name in DATASETS:
-
         dataset = mirdata.initialize(
             dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
         )
@@ -249,10 +289,6 @@ def test_track():
             track_test, core.Track
         ), "{}.track must be an instance of type core.Track".format(dataset_name)
 
-        assert hasattr(
-            track_test, "to_jams"
-        ), "{}.track must have a to_jams method".format(dataset_name)
-
         # test calling all attributes, properties and cached properties
         track_data = get_attributes_and_properties(track_test)
 
@@ -264,16 +300,6 @@ def test_track():
 
         for cprop in track_data["cached_properties"]:
             ret = getattr(track_test, cprop)
-
-        # Validate JSON schema
-        try:
-            jam = track_test.to_jams()
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert jam.validate(), "Jams validation failed for {}.track({})".format(
-            dataset_name, trackid
-        )
 
         # will fail if something goes wrong with __repr__
         try:
@@ -296,6 +322,7 @@ def test_track_placeholder_case():
     data_home_dir = "not/a/real/path"
 
     for dataset_name in DATASETS:
+        print(dataset_name)
         data_home = os.path.join(data_home_dir, dataset_name)
         dataset = mirdata.initialize(dataset_name, data_home, version="test")
 
@@ -336,6 +363,13 @@ EXCEPTIONS = {
         "load_chords": {"leadsheet_version": False},
     },
     "tonas": {"load_f0": {"corrected": True}},
+    "compmusic_carnatic_varnam": {
+        "load_notation": {
+            "taala_path": "a/fake/path",
+            "structure_path": "a/fake/path",
+        },
+    },
+    "jtd": {"load_beats": {"col_idx": 0}},
 }
 SKIP = {
     "acousticbrainz_genre": [
@@ -349,26 +383,21 @@ SKIP = {
         "load_lastfm_validation",
         "load_discogs_train",
         "load_discogs_validation",
-    ]
+    ],
+    "baf": ["load_matches"],
 }
 
 
 def test_load_methods():
     for dataset_name in DATASETS:
-        dataset = mirdata.initialize(
-            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
-        )
+        dataset_module = importlib.import_module(f"mirdata.datasets.{dataset_name}")
 
-        all_methods = dir(dataset)
+        all_methods = dir(dataset_module)
         load_methods = [
-            getattr(dataset, m) for m in all_methods if m.startswith("load_")
+            getattr(dataset_module, m) for m in all_methods if m.startswith("load_")
         ]
         for load_method in load_methods:
             method_name = load_method.__name__
-
-            # skip default methods
-            if method_name == "load_tracks" or method_name == "load_multitracks":
-                continue
 
             # skip overrides, add to the SKIP dictionary to skip a specific load method
             if dataset_name in SKIP and method_name in SKIP[dataset_name]:
@@ -380,12 +409,6 @@ def test_load_methods():
                         dataset_name, method_name
                     )
                 )
-
-            params = [
-                p
-                for p in signature(load_method).parameters.values()
-                if p.default == inspect._empty
-            ]  # get list of parameters that don't have defaults
 
             # add to the EXCEPTIONS dictionary above if your load_* function needs
             # more than one argument.
@@ -402,10 +425,9 @@ CUSTOM_TEST_MTRACKS = {}
 
 
 def test_multitracks():
-    data_home_dir = "tests/resources/mir_datasets"
+    data_home_dir = os.path.normpath("tests/resources/mir_datasets")
 
     for dataset_name in DATASETS:
-
         dataset = mirdata.initialize(
             dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
         )
@@ -437,16 +459,65 @@ def test_multitracks():
             dataset_name
         )
 
-        assert hasattr(
-            mtrack_test, "to_jams"
-        ), "{}.MultiTrack must have a to_jams method".format(dataset_name)
 
-        # Validate JSON schema
-        try:
-            jam = mtrack_test.to_jams()
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert jam.validate(), "Jams validation failed for {}.MultiTrack({})".format(
-            dataset_name, mtrack_id
+def test_random_splits():
+    split = [0.9, 0.1]
+    for dataset_name in DATASETS:
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
         )
+
+        # check wrong type of split function
+        if dataset._track_class is None:
+            with pytest.raises(AttributeError):
+                dataset.get_random_track_splits(split)
+
+        if dataset._multitrack_class is None:
+            with pytest.raises(AttributeError):
+                dataset.get_random_mtrack_splits(split)
+
+        # check splits for tracks
+        if dataset._track_class:
+            splits = dataset.get_random_track_splits(split)
+            assert len(dataset.track_ids) == sum([len(i) for i in splits.values()])
+
+        # check splits for multitracks
+        if dataset._multitrack_class:
+            splits = dataset.get_random_mtrack_splits(split)
+            assert len(dataset.mtrack_ids) == sum([len(i) for i in splits.values()])
+
+
+def test_predetermined_splits():
+    required_track = ["irmas", "mtg_jamendo_autotagging_moodtheme", "slakh", "tinysol"]
+    required_mtrack = ["slakh"]
+    for dataset_name in DATASETS:
+        print(dataset_name)
+        dataset = mirdata.initialize(
+            dataset_name, os.path.join(TEST_DATA_HOME, dataset_name), version="test"
+        )
+
+        # test custom get_track_splits functions
+        try:
+            splits = dataset.get_track_splits()
+            assert isinstance(splits, dict)
+            used_tracks = set()
+            for k in splits:
+                assert all([t in dataset.track_ids for t in splits[k]])
+                this_split = set(splits[k])
+                assert not used_tracks.intersection(this_split)
+                used_tracks.update(this_split)
+        except (AttributeError, NotImplementedError):
+            assert dataset_name not in required_track
+
+        # test custom get_mtrack_splits functions
+        try:
+            splits = dataset.get_mtrack_splits()
+            assert isinstance(splits, dict)
+            used_tracks = set()
+            for k in splits:
+                assert all([t in dataset.mtrack_ids for t in splits[k]])
+                this_split = set(splits[k])
+                assert not used_tracks.intersection(this_split)
+                used_tracks.update(this_split)
+        except (AttributeError, NotImplementedError):
+            assert dataset_name not in required_mtrack

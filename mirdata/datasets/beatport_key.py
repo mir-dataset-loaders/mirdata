@@ -23,13 +23,17 @@
     Data License: Creative Commons Attribution Share Alike 4.0 International
 
 """
+
 import csv
 import os
 import fnmatch
 import json
-import librosa
 
-from mirdata import core, download_utils, jams_utils, io
+from deprecated.sphinx import deprecated
+import librosa
+from smart_open import open
+
+from mirdata import core, download_utils, io
 
 BIBTEX = """@phdthesis {3897,
     title = {Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination},
@@ -44,10 +48,16 @@ BIBTEX = """@phdthesis {3897,
     author = {{\'A}ngel Faraldo}
 }"""
 
+
 INDEXES = {
     "default": "1.0.0",
-    "test": "1.0.0",
-    "1.0.0": core.Index(filename="beatport_key_index_1.0.0.json"),
+    "test": "sample",
+    "1.0.0": core.Index(
+        filename="beatport_key_index_1.0.0.json",
+        url="https://zenodo.org/records/13993022/files/beatport_key_index_1.0.0.json?download=1",
+        checksum="71291eec1a4791259d05fd9281c5cfbf",
+    ),
+    "sample": core.Index(filename="beatport_key_index_1.0.0_sample.json"),
 }
 
 REMOTES = {
@@ -96,21 +106,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.keys_path = self.get_path("key")
         self.metadata_path = self.get_path("meta")
@@ -144,24 +141,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "artists": self.artists,
-                "genres": self.genres,
-                "tempo": self.tempo,
-                "title": self.title,
-                "key": self.key,
-            },
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
@@ -267,23 +246,23 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.beatport_key.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @deprecated(reason="Use mirdata.datasets.beatport_key.load_key", version="0.3.4")
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(reason="Use mirdata.datasets.beatport_key.load_tempo", version="0.3.4")
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
-    @core.copy_docs(load_genre)
+    @deprecated(reason="Use mirdata.datasets.beatport_key.load_genre", version="0.3.4")
     def load_genre(self, *args, **kwargs):
         return load_genre(*args, **kwargs)
 
-    @core.copy_docs(load_artist)
+    @deprecated(reason="Use mirdata.datasets.beatport_key.load_artist", version="0.3.4")
     def load_artist(self, *args, **kwargs):
         return load_artist(*args, **kwargs)
 
@@ -324,7 +303,7 @@ class Dataset(core.Dataset):
             directory (str): path to directory
             find (str): string from replace
             replace (str): string to replace
-            pattern (str): regex that must match the directories searrched
+            pattern (str): regex that must match the directories searched
 
         """
         for path, dirs, files in os.walk(os.path.abspath(directory)):

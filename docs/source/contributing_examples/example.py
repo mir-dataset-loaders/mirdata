@@ -14,17 +14,17 @@
 
 """
 import csv
-import logging
 import json
 import os
 from typing import BinaryIO, Optional, TextIO, Tuple
 
-import librosa
-import numpy as np
 # -- import whatever you need here and remove
 # -- example imports you won't use
+import librosa
+import numpy as np
+from smart_open import open  # if you use the open function, make sure you include this line!
 
-from mirdata import download_utils, jams_utils, core, annotations
+from mirdata import download_utils,  core, annotations
 
 # -- Add any relevant citations here
 BIBTEX = """
@@ -43,18 +43,24 @@ BIBTEX = """
 """
 
 # -- INDEXES specifies different versions of a dataset
-# -- "default" and "test" specify which key should be used
-# -- by default, and when running tests.
-# -- Some datasets have a "sample" version, which is a mini-version
-# -- that makes it easier to try out a large dataset without needing
-# -- to download the whole thing.
-# -- If there is no sample version, simply set "test": "1.0".
-# -- If the default data is remote, there must be a local sample for tests!
+# -- "default" and "test" specify which key should be used by default and when running tests
+# -- Each index is defined by {"version": core.Index instance}
+# -- | filename: index name
+# -- | url: Zenodo direct download link of the index (will be available afer the index upload is
+# -- accepted to Audio Data Loaders Zenodo community).
+# -- | checksum: Checksum of the index hosted at Zenodo.
+# -- Direct url for download and checksum can be found in the Zenodo entry of the dataset.
+# -- Sample index is a mini-version that makes it easier to test a large datasets.
+# -- There must be a local sample index for testing for each remote index.
 INDEXES = {
-    "default": "1.0",
+    "default": "1.2",
     "test": "sample",
-    "1.0": core.Index(filename="example_index_1.0.json"),
-    "sample": core.Index(filename="example_index_sample.json")
+    "1.2": core.Index(
+        filename="beatles_index_1.2.json",
+        url="https://zenodo.org/records/14007830/files/beatles_index_1.2.json?download=1",
+        checksum="6e1276bdab6de05446ddbbc75e6f6cbe",
+    ),
+    "sample": core.Index(filename="beatles_index_1.2_sample.json"),
 }
 
 # -- REMOTES is a dictionary containing all files that need to be downloaded.
@@ -94,7 +100,8 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
-        track_id (str): track id
+        audio_path (str): path to audio file
+        annotation_path (str): path to annotation file
         # -- Add any of the dataset specific attributes here
 
     Cached Properties:
@@ -121,6 +128,10 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
         self.annotation_path = self.get_path("annotation")
 
+        # -- if the dataset has an *official* e.g. train/test split, use this
+        # -- reserved attribute (can be a property if needed)
+        self.split = ...
+
     # -- If the dataset has metadata that needs to be accessed by Tracks,
     # -- such as a table mapping track ids to composers for the full dataset,
     # -- add them as properties like instead of in the __init__.
@@ -134,7 +145,6 @@ class Track(core.Track):
     # -- series data loaded from a file a cached property
     @core.cached_property
     def annotation(self) -> Optional[annotations.EventData]:
-        """output type: description of output"""
         return load_annotation(self.annotation_path)
 
     # -- `audio` will behave like an attribute, but it will only be loaded
@@ -142,22 +152,14 @@ class Track(core.Track):
     # -- any memory heavy information (like audio) properties
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
-
-    # -- we use the to_jams function to convert all the annotations in the JAMS format.
-    # -- The converter takes as input all the annotations in the proper format (e.g. beats
-    # -- will be fed as beat_data=[(self.beats, None)], see jams_utils), and returns a jams
-    # -- object with the annotations.
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            annotation_data=[(self.annotation, None)],
-            metadata=self._metadata,
-        )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
-
 
 # -- if the dataset contains multitracks, you can define a MultiTrack similar to a Track
 # -- you can delete the block of code below if the dataset has no multitracks
@@ -172,7 +174,7 @@ class MultiTrack(core.MultiTrack):
     Attributes:
         mtrack_id (str): track id
         tracks (dict): {track_id: Track}
-        track_audio_attribute (str): the name of the attribute of Track which
+        track_audio_property (str): the name of the attribute of Track which
             returns the audio to be mixed
         # -- Add any of the dataset specific attributes here
 
@@ -180,17 +182,39 @@ class MultiTrack(core.MultiTrack):
         annotation (EventData): a description of this annotation
 
     """
-    def __init__(self, mtrack_id, data_home):
-        self.mtrack_id = mtrack_id
-        self._data_home = data_home
-        # these three attributes below must have exactly these names
-        self.track_ids = [...] # define which track_ids should be part of the multitrack
-        self.tracks = {t: Track(t, self._data_home) for t in self.track_ids}
-        self.track_audio_property = "audio" # the property of Track which returns the relevant audio file for mixing
+    def __init__(
+        self, mtrack_id, data_home, dataset_name, index, track_class, metadata
+    ):
+        # -- this sets the following attributes:
+        # -- * mtrack_id
+        # -- * _dataset_name
+        # -- * _data_home
+        # -- * _multitrack_paths
+        # -- * _metadata
+        # -- * _track_class
+        # -- * _index
+        # -- * track_ids
+        super().__init__(
+            mtrack_id=mtrack_id,
+            data_home=data_home,
+            dataset_name=dataset_name,
+            index=index,
+            track_class=track_class,
+            metadata=metadata,
+        )
 
         # -- optionally add any multitrack specific attributes here
         self.mix_path = ...  # this can be called whatever makes sense for the datasets
         self.annotation_path = ...
+
+        # -- if the dataset has an *official* e.g. train/test split, use this
+        # -- reserved attribute (can be a property if needed)
+        self.split = ...
+
+    # If you want to support multitrack mixing in this dataset, set this property
+    @property
+    def track_audio_property(self):
+        return "audio"  # the attribute of Track, e.g. Track.audio, which returns the audio to mix
 
     # -- multitracks can optionally have mix-level cached properties and properties
     @core.cached_property
@@ -200,20 +224,14 @@ class MultiTrack(core.MultiTrack):
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """(np.ndarray, float): DESCRIPTION audio signal, sample rate"""
+        """The track's audio
+
+        Returns:
+            * np.ndarray - audio signal
+            * float - sample rate
+
+        """
         return load_audio(self.audio_path)
-
-    # -- multitrack classes are themselves Tracks, and also need a to_jams method
-    # -- for any mixture-level annotations
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.mix_path,
-            annotation_data=[(self.annotation, None)],
-            ...
-        )
-        # -- see the documentation for `jams_utils.jams_converter for all fields
-
 
 # -- this decorator allows this function to take a string or an open bytes file as input
 # -- and in either case converts it to an open file handle.
@@ -281,22 +299,11 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    # -- Copy any loaders you wrote that should be part of the Dataset class
-    # -- use this core.copy_docs decorator to copy the docs from the original
-    # -- load_ function
-    @core.copy_docs(load_audio)
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
-
-    @core.copy_docs(load_annotation)
-    def load_annotation(self, *args, **kwargs):
-        return load_annotation(*args, **kwargs)
-
     # -- if your dataset has a top-level metadata file, write a loader for it here
     # -- you do not have to include this function if there is no metadata 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, 'example_metadta.csv')
+        metadata_path = os.path.join(self.data_home, 'example_metadata.csv')
 
         # load metadata however makes sense for your dataset
         metadata_path = os.path.join(data_home, 'example_metadata.json')

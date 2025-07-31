@@ -1,13 +1,18 @@
-"""mirdata annotation data types
-"""
+"""mirdata annotation data types"""
+
 import logging
 import re
 from typing import List, Optional, Tuple
 
-from jams.schema import namespace
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import scipy
+
+# Regex pattern needed to validate chords and keys
+KEY_MODE_PATTERN = r"^N|([A-G][b#]?)(:(major|minor|ionian|dorian|phrygian|lydian|mixolydian|aeolian|locrian))?$"
+HARTE_CHORD_PATTERN = r"^((N)|(([A-G][b#]*)((:(maj|min|dim|aug|maj7|min7|7|dim7|hdim7|minmaj7|maj6|min6|9|maj9|min9|sus4)(\((\*?([b#]*([1-9]|1[0-3]?))(,\*?([b#]*([1-9]|1[0-3]?)))*)\))?)|(:\((\*?([b#]*([1-9]|1[0-3]?))(,\*?([b#]*([1-9]|1[0-3]?)))*)\)))?((/([b#]*([1-9]|1[0-3]?)))?)?))$"
+JAMS_CHORD_PATTERN = r"^((N|X)|(([A-G](b*|#*))((:(maj|min|dim|aug|1|5|sus2|sus4|maj6|min6|7|maj7|min7|dim7|hdim7|minmaj7|aug7|9|maj9|min9|11|maj11|min11|13|maj13|min13)(\((\*?((b*|#*)([1-9]|1[0-3]?))(,\*?((b*|#*)([1-9]|1[0-3]?)))*)\))?)|(:\((\*?((b*|#*)([1-9]|1[0-3]?))(,\*?((b*|#*)([1-9]|1[0-3]?)))*)\)))?((/((b*|#*)([1-9]|1[0-3]?)))?)?))$"
 
 #: Beat position units
 BEAT_POSITION_UNITS = {
@@ -60,11 +65,7 @@ SECTION_UNITS = {"open": "no scrict schema or units"}
 TEMPO_UNITS = {"bpm": "beats per minute"}
 
 #: Time units
-TIME_UNITS = {
-    "s": "seconds",
-    "ms": "miliseconds",
-    "ticks": "MIDI ticks",
-}
+TIME_UNITS = {"s": "seconds", "ms": "miliseconds", "ticks": "MIDI ticks"}
 
 #: Voicing units
 VOICING_UNITS = {k: AMPLITUDE_UNITS[k] for k in ["binary", "likelihood"]}
@@ -374,8 +375,7 @@ class F0Data(Annotation):
         frequencies[frequencies == 0] = 1  # change zero frequency value to avoid NaN
         time_indexes = np.arange(len(time_scale))
         freq_indexes = closest_index(
-            np.log(frequencies)[:, np.newaxis],
-            np.log(frequency_scale)[:, np.newaxis],
+            np.log(frequencies)[:, np.newaxis], np.log(frequency_scale)[:, np.newaxis]
         )
 
         # create sparse index
@@ -575,9 +575,7 @@ class MultiF0Data(Annotation):
                 [c for c in clist] for clist in this_data.confidence_list
             ]
             other_confidence_list = convert_amplitude_units(
-                other_data.confidence_list,
-                other.confidence_unit,
-                self.confidence_unit,
+                other_data.confidence_list, other.confidence_unit, self.confidence_unit
             )
             for i, clist in enumerate(other_confidence_list):
                 this_confidence_list[i].extend(clist)
@@ -680,15 +678,20 @@ class MultiF0Data(Annotation):
 
         """
         multif0dat = self.resample(time_scale, time_scale_unit)
-        frequencies = convert_pitch_units(
-            multif0dat.frequency_list, self.frequency_unit, frequency_scale_unit
-        )
         time_indexes = np.arange(len(time_scale))
 
-        time_indexes_flattened = np.array(
-            [t for (t, f_list) in zip(time_indexes, frequencies) for f in f_list]
+        frequencies_flattened = convert_pitch_units(
+            np.array([f for f_list in multif0dat.frequency_list for f in f_list]),
+            self.frequency_unit,
+            frequency_scale_unit,
         )
-        frequencies_flattened = np.array([f for f_list in frequencies for f in f_list])
+        time_indexes_flattened = np.array(
+            [
+                t
+                for (t, f_list) in zip(time_indexes, multif0dat.frequency_list)
+                for f in f_list
+            ]
+        )
         if multif0dat.confidence_list is None:
             confidence_flattened = np.ones((len(time_indexes_flattened),))
             conf_unit = "binary"
@@ -702,9 +705,9 @@ class MultiF0Data(Annotation):
         nonzero_freqs = (
             frequencies_flattened > 0
         )  # find indexes for frequencies not equal to 0
-        frequencies_flattened[
-            frequencies_flattened == 0
-        ] = 1  # change zero frequency value to avoid NaN
+        frequencies_flattened[frequencies_flattened == 0] = (
+            1  # change zero frequency value to avoid NaN
+        )
         freq_indexes = closest_index(
             np.log(frequencies_flattened)[:, np.newaxis],
             np.log(frequency_scale)[:, np.newaxis],
@@ -826,8 +829,8 @@ class NoteData(Annotation):
     @property
     def notes(self) -> np.ndarray:
         logging.warning(
-            "Deprecation warning: NoteData.notes will be removed in a future version."
-            + "Use NoteData.pitches"
+            "NoteData.notes is deprecated as of 0.3.4 and will be removed in a future version. Use"
+            " NoteData.pitches."
         )
         return self.pitches
 
@@ -844,7 +847,6 @@ class NoteData(Annotation):
             self.confidence = self.confidence[unq_idx]
 
     def __add__(self, other):
-
         if other is None:
             return self
 
@@ -864,9 +866,7 @@ class NoteData(Annotation):
                 [
                     self.confidence,
                     convert_amplitude_units(
-                        other.confidence,
-                        other.confidence_unit,
-                        self.confidence_unit,
+                        other.confidence, other.confidence_unit, self.confidence_unit
                     ),
                 ]
             )
@@ -1029,7 +1029,6 @@ class NoteData(Annotation):
         frequency_list: List[List[float]] = [[] for _ in times]
         confidence_list: List[List[float]] = [[] for _ in times]
         if self.confidence is not None:
-
             for t0, t1, pch, conf in zip(
                 intervals[:, 0], intervals[:, 1], self.pitches, self.confidence
             ):
@@ -1116,13 +1115,7 @@ class LyricData(Annotation):
 
     """
 
-    def __init__(
-        self,
-        intervals,
-        interval_unit,
-        lyrics,
-        lyric_unit,
-    ):
+    def __init__(self, intervals, interval_unit, lyrics, lyric_unit):
         validate_array_like(intervals, np.ndarray, float)
         validate_array_like(lyrics, list, str)
         validate_lengths_equal([intervals, lyrics])
@@ -1137,8 +1130,8 @@ class LyricData(Annotation):
     @property
     def pronunciations(self):
         logging.warning(
-            "LyricData.pronunciations will be removed in a future version. "
-            + "Use LyricData.lyrics"
+            "LyricData.pronunciations is deprecated as of 0.3.4 and will be removed in a future"
+            " version. Use LyricData.lyrics."
         )
         return self.lyrics
 
@@ -1186,7 +1179,8 @@ class TempoData(Annotation):
     @property
     def value(self):
         logging.warning(
-            "Deprecation warning: TempoData.value will be removed in future versions. Use TempoData.tempos instead."
+            "TempoData.value is deprecated as of 0.3.4 and will be removed in a future version. Use"
+            " TempoData.tempos."
         )
         return self.tempos
 
@@ -1279,9 +1273,11 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
     # if input is a nested list, call this function recursively
     if isinstance(pitches, list) and isinstance(pitches[0], list):
         return [
-            []
-            if len(plist) == 0
-            else list(convert_pitch_units(plist, pitch_unit, target_pitch_unit))
+            (
+                []
+                if len(plist) == 0
+                else list(convert_pitch_units(plist, pitch_unit, target_pitch_unit))
+            )
             for plist in pitches
         ]
 
@@ -1316,7 +1312,9 @@ def convert_pitch_units(pitches, pitch_unit, target_pitch_unit):
             return pitches_midi
 
         if target_pitch_unit == "note_name":
-            return librosa.hz_to_note(pitches_hz)
+            # cast to np.array for compatibility with legacy python3.6 and
+            # librosa 0.9.2. It is redundant for librosa 0.10
+            return np.array(librosa.hz_to_note(pitches_hz))
 
         raise NotImplementedError
 
@@ -1347,11 +1345,13 @@ def convert_amplitude_units(amplitude, amplitude_unit, target_amplitude_unit):
     # if input is a nested list, call this function recursively
     if isinstance(amplitude, list) and isinstance(amplitude[0], list):
         return [
-            []
-            if len(alist) == 0
-            else list(
-                convert_amplitude_units(
-                    np.array(alist), amplitude_unit, target_amplitude_unit
+            (
+                []
+                if len(alist) == 0
+                else list(
+                    convert_amplitude_units(
+                        np.array(alist), amplitude_unit, target_amplitude_unit
+                    )
                 )
             )
             for alist in amplitude
@@ -1395,10 +1395,7 @@ def closest_index(input_array, target_array):
     Returns:
         np.ndarray: array of shape (n x 1) of indexes into target_array
     """
-    indexes = np.argmin(
-        scipy.spatial.distance.cdist(input_array, target_array),
-        axis=1,
-    )
+    indexes = np.argmin(scipy.spatial.distance.cdist(input_array, target_array), axis=1)
     indexes[input_array[:, 0] > np.max(target_array[:, 0])] = -1
     indexes[input_array[:, 0] < np.min(target_array[:, 0])] = -1
 
@@ -1456,7 +1453,7 @@ def validate_array_like(
             f"Array should have dtype {expected_dtype} but has {array_like.dtype}"
         )
 
-    if np.asarray(array_like).size == 0:
+    if np.asarray(array_like, dtype=object).size == 0:
         raise ValueError("Object should not be empty, use None instead")
 
 
@@ -1509,6 +1506,10 @@ def validate_beat_positions(positions, position_unit):
         ValueError: if positions values are incompatible with the unit
 
     """
+
+    if positions is None:
+        return
+
     validate_unit(position_unit, BEAT_POSITION_UNITS)
 
     position_shape = np.shape(positions)
@@ -1669,16 +1670,15 @@ def validate_chord_labels(chords, chord_unit):
 
     """
     validate_unit(chord_unit, CHORD_UNITS)
-
     if chord_unit in ["harte", "jams"]:
         if chord_unit == "harte":
-            pattern = namespace("chord_harte")["properties"]["value"]["pattern"]
+            pattern = HARTE_CHORD_PATTERN
         elif chord_unit == "jams":
-            pattern = namespace("chord")["properties"]["value"]["pattern"]
+            pattern = JAMS_CHORD_PATTERN
 
         matches = [re.match(pattern, c) for c in chords]
         if not all(matches):
-            non_matches = [c for (c, m) in zip(chords, matches) if not m]
+            non_matches = [c for c, m in zip(chords, matches) if not m]
             raise ValueError(
                 "chords {} don't conform to chord_unit {}".format(
                     non_matches, chord_unit
@@ -1698,12 +1698,11 @@ def validate_key_labels(keys, key_unit):
 
     """
     validate_unit(key_unit, KEY_UNITS)
-
     if key_unit == "key_mode":
-        pattern = namespace("key_mode")["properties"]["value"]["pattern"]
+        pattern = KEY_MODE_PATTERN
         matches = [re.match(pattern, c) for c in keys]
         if not all(matches):
-            non_matches = [k for (k, m) in zip(keys, matches) if not m]
+            non_matches = [k for k, m in zip(keys, matches) if not m]
             raise ValueError(
                 "keys {} don't conform to key_unit key-mode".format(non_matches)
             )

@@ -47,10 +47,12 @@ import csv
 import os
 from typing import BinaryIO, Optional, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io
 
 BIBTEX = """@inproceedings{cella2020preprint,
   author={Cella, Carmine Emanuele and Ghisi, Daniele and Lostanlen, Vincent and
@@ -63,8 +65,13 @@ BIBTEX = """@inproceedings{cella2020preprint,
 
 INDEXES = {
     "default": "6.0",
-    "test": "6.0",
-    "6.0": core.Index(filename="tinysol_index_6.0.json"),
+    "test": "sample",
+    "6.0": core.Index(
+        filename="tinysol_index_6.0.json",
+        url="https://zenodo.org/records/13993273/files/tinysol_index_6.0.json?download=1",
+        checksum="dba7aab99081f66d6a46f2bcfc1a3296",
+    ),
+    "sample": core.Index(filename="tinysol_index_6.0_sample.json"),
 }
 
 REMOTES = {
@@ -112,23 +119,14 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_path = self.get_path("audio")
+
+    @property
+    def split(self):
+        return self._track_metadata.get("Fold")
 
     @property
     def family(self):
@@ -189,17 +187,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path, metadata=self._track_metadata
-        )
-
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
@@ -240,34 +227,34 @@ class Dataset(core.Dataset):
             self.data_home, "annotation", "TinySOL_metadata.csv"
         )
 
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
         metadata_index = {}
-        with open(metadata_path, "r") as fhandle:
-            csv_reader = csv.reader(fhandle, delimiter=",")
-            next(csv_reader)
-            for row in csv_reader:
-                key = os.path.splitext(os.path.split(row[0])[1])[0]
-                metadata_index[key] = {
-                    "Fold": int(row[1]),
-                    "Family": row[2],
-                    "Instrument (abbr.)": row[3],
-                    "Instrument (in full)": row[4],
-                    "Technique (abbr.)": row[5],
-                    "Technique (in full)": row[6],
-                    "Pitch": row[7],
-                    "Pitch ID": int(row[8]),
-                    "Dynamics": row[9],
-                    "Dynamics ID": int(row[10]),
-                    "Instance ID": int(row[11]),
-                    "Resampled": (row[13] == "TRUE"),
-                }
-                if len(row[12]) > 0:
-                    metadata_index[key]["String ID"] = int(float(row[12]))
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.reader(fhandle, delimiter=",")
+                next(csv_reader)
+                for row in csv_reader:
+                    key = os.path.splitext(os.path.split(row[0])[1])[0]
+                    metadata_index[key] = {
+                        "Fold": int(row[1]),
+                        "Family": row[2],
+                        "Instrument (abbr.)": row[3],
+                        "Instrument (in full)": row[4],
+                        "Technique (abbr.)": row[5],
+                        "Technique (in full)": row[6],
+                        "Pitch": row[7],
+                        "Pitch ID": int(row[8]),
+                        "Dynamics": row[9],
+                        "Dynamics ID": int(row[10]),
+                        "Instance ID": int(row[11]),
+                        "Resampled": (row[13] == "TRUE"),
+                    }
+                    if len(row[12]) > 0:
+                        metadata_index[key]["String ID"] = int(float(row[12]))
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.tinysol.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

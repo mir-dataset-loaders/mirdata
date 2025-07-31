@@ -9,13 +9,15 @@
     This dataset contains 30 pieces composed by Joseph Haydn in symbolic format, which have each been manually
     annotated with harmonic analyses.
 """
+
 import logging
 import os
-from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, List
+from typing import Optional, TextIO, List
 
+from deprecated.sphinx import deprecated
 import numpy as np
 
-from mirdata import core, io, jams_utils, download_utils
+from mirdata import core, io, download_utils
 
 try:
     import music21
@@ -42,8 +44,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.3",
-    "test": "1.3",
-    "1.3": core.Index(filename="haydn_op20_index_1.3.json"),
+    "test": "sample",
+    "1.3": core.Index(
+        filename="haydn_op20_index_1.3.json",
+        url="https://zenodo.org/records/14024682/files/haydn_op20_index_1.3.json?download=1",
+        checksum="1a63b52c3273fe2b1b37dc96c50f7bf4",
+    ),
+    "sample": core.Index(filename="haydn_op20_index_1.3_sample.json"),
 }
 
 REMOTES = {
@@ -81,21 +88,8 @@ class Track(core.Track):
         score (music21.stream.Score): music21 score
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
         self.humdrum_annotated_path = self.get_path("annotations")
         self.title = os.path.splitext(self._track_paths["annotations"][0])[0]
 
@@ -129,28 +123,10 @@ class Track(core.Track):
 
     @core.cached_property
     def midi_path(self) -> Optional[str]:
-        return convert_and_save_to_midi(self.humdrum_annotated_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            metadata={
-                "duration": self.duration,
-                "title": self.title,
-                "key": self.keys,  # format is not the expected by keydata jams namespace
-                "chord": self.chords,  # format is not the expected by chorddata jams namespace
-                "keys_music21": self.keys_music21,
-                "chords_music21": self.chords_music21,
-                "roman_numerals": self.roman_numerals,
-                "midi_path": self.midi_path,
-                "humdrum_annotated_path": self.humdrum_annotated_path,
-            },
+        logging.warning(
+            "midi_path is deprecated as of 0.3.4 and will be removed in a future version."
         )
+        return convert_and_save_to_midi(self.humdrum_annotated_path)
 
 
 def _split_score_annotations(fhandle: TextIO):
@@ -166,7 +142,7 @@ def _split_score_annotations(fhandle: TextIO):
     score = music21.converter.parse(fhandle.name, format="humdrum")
 
     rna = {rn.offset: rn for rn in list(score.flat.getElementsByClass("RomanNumeral"))}
-    score.remove(rna, recurse=True)
+    score.remove(list(rna.values()), recurse=True)
     rna_clean = [(offset, rn) for offset, rn in rna.items() if rn]
     return score, rna_clean
 
@@ -266,21 +242,24 @@ def load_key_music21(fhandle: TextIO, resolution=28):
     return _load_key_base(fhandle, resolution)
 
 
+@deprecated(
+    reason="convert_and_save_to_midi is deprecated and will be removed in a future version",
+    version="0.3.4",
+)
 @io.coerce_to_string_io
-def convert_and_save_to_midi(fhandle: TextIO):
+def convert_and_save_to_midi(fpath: TextIO):
     """convert to midi file and return the midi path
 
     Args:
-        fhandle (str or file-like): path to score file
+        fpath (str or file-like): path to score file
 
     Returns:
         str: midi file path
 
     """
-    midi_path = os.path.splitext(fhandle.name)[0] + ".midi"
-    if not os.path.exists(midi_path):
-        score, _ = _split_score_annotations(fhandle)
-        score.write("midi", fp=midi_path)
+    midi_path = os.path.splitext(fpath.name)[0] + ".midi"
+    score, _ = _split_score_annotations(fpath)
+    score.write("midi", fp=midi_path)
     return midi_path
 
 
@@ -374,6 +353,7 @@ class Dataset(core.Dataset):
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
+            version=version,
             name="haydn_op20",
             track_class=Track,
             bibtex=BIBTEX,
@@ -382,30 +362,39 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_score)
+    @deprecated(reason="Use mirdata.datasets.haydn_op20.load_score", version="0.3.4")
     def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)
 
-    @core.copy_docs(load_key_music21)
+    @deprecated(
+        reason="Use mirdata.datasets.haydn_op20.load_key_music21", version="0.3.4"
+    )
     def load_key_music21(self, *args, **kwargs):
         return load_key_music21(*args, **kwargs)
 
-    @core.copy_docs(load_key)
+    @deprecated(reason="Use mirdata.datasets.haydn_op20.load_key", version="0.3.4")
     def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(reason="Use mirdata.datasets.haydn_op20.load_chords", version="0.3.4")
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
-    @core.copy_docs(load_chords_music21)
+    @deprecated(
+        reason="Use mirdata.datasets.haydn_op20.load_chords_music21", version="0.3.4"
+    )
     def load_chords_music21(self, *args, **kwargs):
         return load_chords_music21(*args, **kwargs)
 
-    @core.copy_docs(load_roman_numerals)
+    @deprecated(
+        reason="Use mirdata.datasets.haydn_op20.load_roman_numerals", version="0.3.4"
+    )
     def load_roman_numerals(self, *args, **kwargs):
         return load_roman_numerals(*args, **kwargs)
 
-    @core.copy_docs(convert_and_save_to_midi)
+    @deprecated(
+        reason="Use mirdata.datasets.haydn_op20.convert_and_save_to_midi",
+        version="0.3.4",
+    )
     def load_midi_path(self, *args, **kwargs):
         return convert_and_save_to_midi(*args, **kwargs)

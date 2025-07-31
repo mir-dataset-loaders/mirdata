@@ -45,22 +45,21 @@
     For more details, please visit: http://magenta.tensorflow.org/datasets/groove
 
 """
-import csv
-import glob
-import logging
-import os
-import shutil
-from typing import BinaryIO, Optional, TextIO, Tuple
 
+import csv
+import os
+from typing import BinaryIO, Optional, Tuple
+
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import pretty_midi
+from smart_open import open
 
 from mirdata import annotations
 from mirdata import core
 from mirdata import download_utils
 from mirdata import io
-from mirdata import jams_utils
 
 
 BIBTEX = """@inproceedings{groove2019,
@@ -73,8 +72,13 @@ BIBTEX = """@inproceedings{groove2019,
 
 INDEXES = {
     "default": "1.0.0",
-    "test": "1.0.0",
-    "1.0.0": core.Index(filename="groove_midi_index_1.0.0.json"),
+    "test": "sample",
+    "1.0.0": core.Index(
+        filename="groove_midi_index_1.0.0.json",
+        url="https://zenodo.org/records/13993337/files/groove_midi_index_1.0.0.json?download=1",
+        checksum="9ee6fd1b2f3d50570fc446d4b19814a3",
+    ),
+    "sample": core.Index(filename="groove_midi_index_1.0.0_sample.json"),
 }
 
 REMOTES = {
@@ -225,21 +229,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.midi_path = self.get_path("midi")
 
@@ -307,20 +298,6 @@ class Track(core.Track):
     @core.cached_property
     def midi(self):
         return load_midi(self.midi_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            beat_data=[(self.beats, "midi beats")],
-            tempo_data=[(self.tempo, "midi tempo")],
-            event_data=[(self.drum_events, "annotated drum patterns")],
-            metadata=self._track_metadata,
-        )
 
 
 def load_audio(path: str) -> Tuple[Optional[np.ndarray], Optional[float]]:
@@ -420,59 +397,45 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.groove_midi.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_midi)
+    @deprecated(reason="Use mirdata.datasets.groove_midi.load_midi", version="0.3.4")
     def load_midi(self, *args, **kwargs):
         return load_midi(*args, **kwargs)
 
-    @core.copy_docs(load_beats)
+    @deprecated(reason="Use mirdata.datasets.groove_midi.load_beats", version="0.3.4")
     def load_beats(self, *args, **kwargs):
         return load_beats(*args, **kwargs)
 
-    @core.copy_docs(load_drum_events)
+    @deprecated(
+        reason="Use mirdata.datasets.groove_midi.load_drum_events", version="0.3.4"
+    )
     def load_drum_events(self, *args, **kwargs):
         return load_drum_events(*args, **kwargs)
 
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "info.csv")
-
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
         metadata_index = {}
-        with open(metadata_path, "r") as fhandle:
-            csv_reader = csv.reader(fhandle, delimiter=",")
-            next(csv_reader)
-            for row in csv_reader:
-                (
-                    drummer,
-                    session,
-                    track_id,
-                    style,
-                    bpm,
-                    beat_type,
-                    time_signature,
-                    midi_filename,
-                    audio_filename,
-                    duration,
-                    split,
-                ) = row
-                metadata_index[str(track_id)] = {
-                    "drummer": str(drummer),
-                    "session": str(session),
-                    "track_id": str(track_id),
-                    "style": str(style),
-                    "tempo": int(bpm),
-                    "beat_type": str(beat_type),
-                    "time_signature": str(time_signature),
-                    "midi_filename": str(midi_filename),
-                    "audio_filename": str(audio_filename),
-                    "duration": float(duration),
-                    "split": str(split),
-                }
+        try:
+            with open(metadata_path, "r") as fhandle:
+                csv_reader = csv.DictReader(fhandle, delimiter=",")
+                for row in csv_reader:
+                    track_id = row["id"]
+                    metadata_index[track_id] = {
+                        key: row[key] for key in row.keys() if key != "id"
+                    }
+                    metadata_index[track_id]["tempo"] = int(
+                        metadata_index[track_id].pop("bpm")
+                    )
+                    metadata_index[track_id]["duration"] = float(
+                        metadata_index[track_id]["duration"]
+                    )
+                    metadata_index[track_id]["track_id"] = track_id
+
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata_index

@@ -5,11 +5,13 @@ import types
 
 import mirdata
 from mirdata import validate
-
+from smart_open import open
 
 import pytest
 
-DEFAULT_DATA_HOME = os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
+DEFAULT_DATA_HOME = os.path.normpath(
+    os.path.join(os.getenv("HOME", "/tmp"), "mir_datasets")
+)
 
 
 def run_track_tests(track, expected_attributes, expected_property_types):
@@ -93,11 +95,8 @@ def mock_validate_index(mocker):
 
 def test_md5(mocker):
     audio_file = b"audio1234"
-
     expected_checksum = "6dc00d1bac757abe4ea83308dde68aab"
-
-    mocker.patch("builtins.open", new=mocker.mock_open(read_data=audio_file))
-
+    mocker.patch("mirdata.validate.open", new=mocker.mock_open(read_data=audio_file))
     md5_checksum = validate.md5("test_file_path")
     assert expected_checksum == md5_checksum
 
@@ -108,23 +107,35 @@ def test_md5(mocker):
         ("test_index_valid.json", {"tracks": {}}, {"tracks": {}}),
         (
             "test_index_missing_file.json",
-            {"tracks": {"10161_chorus": ["tests/resources/10162_chorus.wav"]}},
+            {
+                "tracks": {
+                    "10161_chorus": [
+                        os.path.normpath("tests/resources/10162_chorus.wav")
+                    ]
+                }
+            },
             {"tracks": {}},
         ),
         (
             "test_index_invalid_checksum.json",
             {"tracks": {}},
-            {"tracks": {"10161_chorus": ["tests/resources/10161_chorus.wav"]}},
+            {
+                "tracks": {
+                    "10161_chorus": [
+                        os.path.normpath("tests/resources/10161_chorus.wav")
+                    ]
+                }
+            },
         ),
     ],
 )
 def test_validate_index(test_index, expected_missing, expected_inv_checksum):
-    index_path = os.path.join("tests/indexes", test_index)
-    with open(index_path) as index_file:
+    index_path = os.path.join(os.path.normpath("tests/indexes"), test_index)
+    with open(index_path, "r") as index_file:
         test_index = json.load(index_file)
 
     missing_files, invalid_checksums = validate.validate_index(
-        test_index, "tests/resources/"
+        test_index, os.path.normpath("tests/resources/")
     )
 
     assert expected_missing == missing_files
@@ -135,12 +146,24 @@ def test_validate_index(test_index, expected_missing, expected_inv_checksum):
     "missing_files,invalid_checksums",
     [
         (
-            {"tracks": {"10161_chorus": ["tests/resources/10162_chorus.wav"]}},
+            {
+                "tracks": {
+                    "10161_chorus": [
+                        os.path.normpath("tests/resources/10162_chorus.wav")
+                    ]
+                }
+            },
             {"tracks": {}},
         ),
         (
             {"tracks": {}},
-            {"tracks": {"10161_chorus": ["tests/resources/10161_chorus.wav"]}},
+            {
+                "tracks": {
+                    "10161_chorus": [
+                        os.path.normpath("tests/resources/10161_chorus.wav")
+                    ]
+                }
+            },
         ),
         ({"tracks": {}}, {"tracks": {}}),
     ],

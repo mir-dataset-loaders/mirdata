@@ -13,11 +13,13 @@ import os
 import re
 from typing import BinaryIO, TextIO, Optional, Tuple, Dict, List
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
 from mirdata import download_utils
-from mirdata import jams_utils
+
 from mirdata import core
 from mirdata import annotations
 from mirdata import io
@@ -40,8 +42,13 @@ booktitle={Proceedings of the 12th International Society for Music Information R
 
 INDEXES = {
     "default": "2.0",
-    "test": "2.0",
-    "2.0": core.Index(filename="billboard_index_2.0.json"),
+    "test": "sample",
+    "2.0": core.Index(
+        filename="billboard_index_2.0.json",
+        url="https://zenodo.org/records/13930536/files/billboard_index_2.0.json?download=1",
+        checksum="cafd738016a369550af23583e58a16c8",
+    ),
+    "sample": core.Index(filename="billboard_index_2.0_sample.json"),
 }
 
 REMOTES = {
@@ -110,21 +117,8 @@ class Track(core.Track):
         salami_metadata (dict): Metadata of the Salami LAB file
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_path = self.get_path("audio")
         self.salami_path = self.get_path("salami")
@@ -234,29 +228,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            chord_data=[
-                (self.chords_full, "Full chords"),
-                (self.chords_majmin, "Major/minor chords"),
-                (self.chords_majmininv, "Major/minor chords with inversions"),
-                (self.chords_majmin7, "Major/minor chords with 7th"),
-                (self.chords_majmin7inv, "Major/minor chords with 7th and inversions"),
-            ],
-            section_data=[
-                (self.sections, "Sections annotated using section letters"),
-                (self.named_sections, "Sections annotated using section names"),
-            ],
-            metadata=self._track_metadata,
-        )
-
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
@@ -328,7 +299,6 @@ def load_named_sections(fpath: str):
 
 
 def _load_sections(fpath: str, section_type: str):
-
     timed_sections = _parse_timed_sections(fpath)
     assert timed_sections is not None
 
@@ -493,16 +463,13 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "billboard-2.0-index.csv")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                next(reader, None)
+                raw_data = [line for line in reader if line != []]
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            next(reader, None)
-            raw_data = []
-            for line in reader:
-                if line != []:
-                    raw_data.append(line)
 
         metadata_index = {}
         for line in raw_data:
@@ -518,18 +485,20 @@ class Dataset(core.Dataset):
             }
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.billboard.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(reason="Use mirdata.datasets.billboard.load_sections", version="0.3.4")
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_named_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.billboard.load_named_sections", version="0.3.4"
+    )
     def load_named_sections(self, *args, **kwargs):
         return load_named_sections(*args, **kwargs)
 
-    @core.copy_docs(load_chords)
+    @deprecated(reason="Use mirdata.datasets.billboard.load_chords", version="0.3.4")
     def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)

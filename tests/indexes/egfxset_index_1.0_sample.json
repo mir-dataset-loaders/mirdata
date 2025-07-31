@@ -1,0 +1,17 @@
+{
+  "version": "1",
+  "tracks": {
+    "Clean_Middle/6-22": {
+      "audio": [
+        "Clean/Middle/6-22.wav",
+        "93c580d88d65400804f5c8f88f715ec1"
+      ]
+    },
+    "TapeEcho_Bridge/2-0": {
+      "audio": [
+        "TapeEcho/Bridge/2-0.wav",
+        "bf9041e98fbc3c1145583d1601ab2d7b"
+      ]
+    }
+  }
+}

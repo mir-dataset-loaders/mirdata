@@ -1,0 +1,25 @@
+name: Formatting
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: black on mirdata
+        uses: psf/black@stable
+        with:
+            options: "--check --verbose"
+            src: "mirdata"
+      - name: black on tests
+        uses: psf/black@stable
+        with:
+            options: "--check --verbose"
+            src: "tests"

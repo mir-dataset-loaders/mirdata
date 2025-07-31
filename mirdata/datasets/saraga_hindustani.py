@@ -9,7 +9,7 @@
     The dataset contains the following manual annotations referring to audio files:
 
     - Section and tempo annotations stored as start and end timestamps together with the name of the section and
-      tempo during the section (in a separate file) 
+      tempo during the section (in a separate file)
     - Sama annotations referring to rhythmic cycle boundaries stored
       as timestamps
     - Phrase annotations stored as timestamps and transcription of the phrases using solfège symbols
@@ -29,14 +29,17 @@
     https://mtg.github.io/saraga/, where a really detailed explanation of the data and annotations is published.
 
 """
+
 import os
 import csv
 import json
 
-import numpy as np
+from deprecated.sphinx import deprecated
 import librosa
+import numpy as np
+from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """
 @dataset{bozkurt_b_2018_4301737,
@@ -56,8 +59,13 @@ BIBTEX = """
 
 INDEXES = {
     "default": "1.5",
-    "test": "1.5",
-    "1.5": core.Index(filename="saraga_hindustani_index_1.5.json"),
+    "test": "sample",
+    "1.5": core.Index(
+        filename="saraga_hindustani_index_1.5.json",
+        url="https://zenodo.org/records/14007799/files/saraga_hindustani_index_1.5.json?download=1",
+        checksum="f4fad49798d36c9aa6411b797335192f",
+    ),
+    "sample": core.Index(filename="saraga_hindustani_index_1.5_sample.json"),
 }
 
 REMOTES = {
@@ -113,21 +121,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         # Audio path
         self.audio_path = self.get_path("audio")
@@ -179,26 +174,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.sama, "sama")],
-            event_data=[(self.phrases, "phrases")],
-            f0_data=[(self.pitch, "pitch")],
-            section_data=[(self.sections, "sections")],
-            metadata={
-                "tempo": self.tempo,
-                "tonic": self.tonic,
-                "metadata": self.metadata,
-            },
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
@@ -291,17 +266,19 @@ def load_tempo(fhandle):
     sections_abs_path = os.path.join(head, sections_path)
 
     sections = []
-    with open(sections_abs_path, "r") as fhandle2:
-        reader = csv.reader(fhandle2, delimiter=",")
-        for line in reader:
-            if line != "\n":
-                sections.append(line[3])
+    try:
+        with open(sections_abs_path, "r", encoding="utf-8") as fhandle2:
+            reader = csv.reader(fhandle2, delimiter=",")
+            for line in reader:
+                if line != "\n":
+                    sections.append(line[3])
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File {sections_abs_path} not found.")
 
     section_count = 0
 
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
-
         if "NaN" in line or " NaN" in line or "NaN " in line:
             return None
 
@@ -316,12 +293,14 @@ def load_tempo(fhandle):
         tempo_annotation[sections[section_count]] = {
             "tempo": float(tempo) if "." in tempo else int(tempo),
             "matra_interval": float(matra) if "." in matra else int(matra),
-            "sama_interval": float(sama_interval)
-            if "." in sama_interval
-            else int(sama_interval),
-            "matras_per_cycle": float(matras_per_cycle)
-            if "." in matras_per_cycle
-            else int(matras_per_cycle),
+            "sama_interval": (
+                float(sama_interval) if "." in sama_interval else int(sama_interval)
+            ),
+            "matras_per_cycle": (
+                float(matras_per_cycle)
+                if "." in matras_per_cycle
+                else int(matras_per_cycle)
+            ),
             "start_time": float(start_time) if "." in start_time else int(start_time),
             "duration": float(duration) if "." in duration else int(duration),
         }
@@ -374,16 +353,10 @@ def load_sections(fhandle):
     """
     intervals = []
     section_labels = []
-
     reader = csv.reader(fhandle, delimiter=",")
     for line in reader:
         if line:
-            intervals.append(
-                [
-                    float(line[0]),
-                    float(line[0]) + float(line[2]),
-                ]
-            )
+            intervals.append([float(line[0]), float(line[0]) + float(line[2])])
             section_labels.append(str(line[3]) + "-" + str(line[1]))
 
     # Return None if sections file is empty
@@ -469,30 +442,44 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_tonic)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_tonic", version="0.3.4"
+    )
     def load_tonic(self, *args, **kwargs):
         return load_tonic(*args, **kwargs)
 
-    @core.copy_docs(load_pitch)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_pitch", version="0.3.4"
+    )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
-    @core.copy_docs(load_tempo)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_tempo", version="0.3.4"
+    )
     def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
-    @core.copy_docs(load_sama)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_sama", version="0.3.4"
+    )
     def load_sama(self, *args, **kwargs):
         return load_sama(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_sections", version="0.3.4"
+    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @core.copy_docs(load_phrases)
+    @deprecated(
+        reason="Use mirdata.datasets.saraga_hindustani.load_phrases", version="0.3.4"
+    )
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)

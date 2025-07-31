@@ -49,11 +49,15 @@
 
 import csv
 import os
-
-import numpy as np
-import librosa
-from mirdata import annotations, core, download_utils, io, jams_utils
 from typing import BinaryIO, Optional, TextIO, Tuple
+
+from deprecated.sphinx import deprecated
+import librosa
+import numpy as np
+from smart_open import open
+
+from mirdata import annotations, core, download_utils, io
+
 
 BIBTEX = """
 @dataset{rong_gong_2018_1323561,
@@ -79,9 +83,15 @@ BIBTEX = """
 
 INDEXES = {
     "default": "7.0",
-    "test": "7.0",
-    "7.0": core.Index(filename="compmusic_jingju_acappella_index_7.0.json"),
+    "test": "sample",
+    "7.0": core.Index(
+        filename="compmusic_jingju_acappella_index_7.0.json",
+        url="https://zenodo.org/records/14007937/files/compmusic_jingju_acappella_index_7.0.json?download=1",
+        checksum="3737ee6926528fd47af89654b931205a",
+    ),
+    "sample": core.Index(filename="compmusic_jingju_acappella_index_7.0_sample.json"),
 }
+
 
 REMOTES = {
     "annotation_txt": download_utils.RemoteFileMetadata(
@@ -111,7 +121,8 @@ REMOTES = {
 }
 
 LICENSE_INFO = (
-    "audio files ending with upf or lon: Creative Commons Attribution Non-Commercial 4.0 International, "
+    "audio files ending with upf or lon: Creative Commons Attribution Non-Commercial 4.0"
+    " International, "
     + "audio files ending with qm: http://isophonics.org/SingingVoiceDataset"
 )
 
@@ -141,21 +152,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_path = self.get_path("audio")
 
@@ -198,27 +196,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            lyrics_data=[
-                (self.phrase, "phrases"),
-                (self.phrase_char, "phrases_char"),
-                (self.phoneme, "phoneme"),
-                (self.syllable, "syllable"),
-            ],
-            metadata={
-                "work": self.work,
-                "details": self.details,
-            },
-        )
 
 
 @io.coerce_to_bytes_io
@@ -276,7 +253,6 @@ def load_phrases(fhandle: TextIO) -> annotations.LyricData:
     start_times = []
     end_times = []
     lyrics = []
-
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start_times.append(float(line[0]))
@@ -303,7 +279,6 @@ def load_syllable(fhandle: TextIO) -> annotations.LyricData:
     start_times = []
     end_times = []
     events = []
-
     reader = csv.reader(fhandle, delimiter="\t")
     for line in reader:
         start_times.append(float(line[0]))
@@ -336,43 +311,46 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path_laosheng = os.path.join(
-            self.data_home,
-            "catalogue - laosheng.csv",
+            self.data_home, "catalogue - laosheng.csv"
         )
-        metadata_path_dan = os.path.join(
-            self.data_home,
-            "catalogue - dan.csv",
-        )
-        if not os.path.exists(metadata_path_laosheng):
+        # metadata_path_dan = os.path.join(
+        #     self.data_home,
+        #     "catalogue - dan.csv",
+        # )
+
+        metadata = {}
+        try:
+            with open(metadata_path_laosheng, "r", encoding="utf-8") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                next(reader)
+                for line in reader:
+                    work = line[1] if line[1] else None
+                    details = line[3] if line[3] else None
+                    metadata[line[0]] = {"work": work, "details": details}
+
+                data_home = os.path.dirname(metadata_path_laosheng)
+                metadata["data_home"] = data_home
+        except FileNotFoundError:
             raise FileNotFoundError(
                 "laosheng metadata not found. Did you run .download()?"
             )
 
-        if not os.path.exists(metadata_path_dan):
-            raise FileNotFoundError("dan metadata not found. Did you run .download()?")
-
-        metadata = {}
-        with open(metadata_path_laosheng, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            next(reader)
-            for line in reader:
-                work = line[1] if line[1] else None
-                details = line[3] if line[3] else None
-                metadata[line[0]] = {"work": work, "details": details}
-
-            data_home = os.path.dirname(metadata_path_laosheng)
-            metadata["data_home"] = data_home
-
         return metadata
 
-    @core.copy_docs(load_phonemes)
+    @deprecated(
+        reason="Use mirdata.datasets.jingju_acapella.load_phonemes", version="0.3.4"
+    )
     def load_phonemes(self, *args, **kwargs):
         return load_phonemes(*args, **kwargs)
 
-    @core.copy_docs(load_phrases)
+    @deprecated(
+        reason="Use mirdata.datasets.jingju_acapella.load_phrases", version="0.3.4"
+    )
     def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)
 
-    @core.copy_docs(load_syllable)
+    @deprecated(
+        reason="Use mirdata.datasets.jingju_acapella.load_syllable", version="0.3.4"
+    )
     def load_syllable(self, *args, **kwargs):
         return load_syllable(*args, **kwargs)

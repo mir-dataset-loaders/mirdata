@@ -20,6 +20,22 @@ acousticbrainz_genre
    :members:
    :inherited-members:
 
+
+baf
+^^^
+
+.. automodule:: mirdata.datasets.baf
+   :members:
+   :inherited-members:
+
+ballroom
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.ballroom
+   :members:
+   :inherited-members:
+   
+
 beatles
 ^^^^^^^
 
@@ -43,10 +59,58 @@ billboard
    :inherited-members:
 
 
+brid
+^^^^
+
+.. automodule:: mirdata.datasets.brid
+   :members:
+   :inherited-members:
+
+
+candombe
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.candombe
+   :members:
+   :inherited-members:
+   
+
 cante100
 ^^^^^^^^
 
 .. automodule:: mirdata.datasets.cante100
+   :members:
+   :inherited-members:
+
+
+cipi
+^^^^
+
+.. automodule:: mirdata.datasets.cipi
+   :members:
+   :inherited-members:
+
+
+compmusic_carnatic_rhythm
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_carnatic_rhythm
+   :members:
+   :inherited-members:
+
+
+compmusic_hindustani_rhythm
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_hindustani_rhythm
+   :members:
+   :inherited-members:
+
+
+compmusic_indian_tonic
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_indian_tonic
    :members:
    :inherited-members:
 
@@ -67,6 +131,20 @@ compmusic_otmm_makam
    :inherited-members:
 
 
+compmusic_raga
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_raga
+   :members:
+   :inherited-members:
+
+cuidado
+^^^^^^^
+
+.. automodule:: mirdata.datasets.cuidado
+   :members:
+   :inherited-members:
+
 dagstuhl_choirset
 ^^^^^^^^^^^^^^^^^
 
@@ -74,10 +152,42 @@ dagstuhl_choirset
    :members:
    :inherited-members:
 
+
 dali
 ^^^^
 
 .. automodule:: mirdata.datasets.dali
+   :members:
+   :inherited-members:
+
+
+da_tacos
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.da_tacos
+   :members:
+   :inherited-members:
+
+egfxset
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.egfxset
+   :members:
+   :inherited-members:
+   
+
+filosax
+^^^^^^^
+
+.. automodule:: mirdata.datasets.filosax
+   :members:
+   :inherited-members:
+
+
+four_way_tabla
+^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.four_way_tabla
    :members:
    :inherited-members:
 
@@ -138,6 +248,14 @@ guitarset
    :inherited-members:
 
 
+hainsworth
+^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.hainsworth
+   :members:
+   :inherited-members:
+
+
 haydn_op20
 ^^^^^^^^^^
 
@@ -146,6 +264,14 @@ haydn_op20
    :inherited-members:
 
 
+idmt_smt_audio_effects
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.idmt_smt_audio_effects
+   :members:
+   :inherited-members:
+
+   
 ikala
 ^^^^^
 
@@ -162,10 +288,34 @@ irmas
    :inherited-members:
 
 
+jtd
+^^^
+
+.. automodule:: mirdata.datasets.jtd
+   :members:
+   :inherited-members:
+
+
+mtg_jamendo_autotagging_moodtheme
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.mtg_jamendo_autotagging_moodtheme
+   :members:
+   :inherited-members:
+
+
 maestro
 ^^^^^^^
 
 .. automodule:: mirdata.datasets.maestro
+   :members:
+   :inherited-members:
+
+
+mdb_stem_synth
+^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.mdb_stem_synth
    :members:
    :inherited-members:
 
@@ -271,6 +421,28 @@ saraga_hindustani
 .. automodule:: mirdata.datasets.saraga_hindustani
    :members:
    :inherited-members:
+   
+   
+scms
+^^^^
+
+.. automodule:: mirdata.datasets.scms
+   :members:
+   :inherited-members:
+
+simac
+^^^^^
+
+.. automodule:: mirdata.datasets.simac
+   :members:
+   :inherited-members:
+
+slakh
+^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.slakh
+   :members:
+   :inherited-members:
 
 
 tinysol
@@ -293,6 +465,14 @@ tonas
 ^^^^^
 
 .. automodule:: mirdata.datasets.tonas
+   :members:
+   :inherited-members:
+
+
+vocadito
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.vocadito
    :members:
    :inherited-members:
 
@@ -327,12 +507,3 @@ mirdata.download_utils
 
 .. automodule:: mirdata.download_utils
    :members:
-
-
-mirdata.jams_utils
-^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.jams_utils
-   :members:
-
-

@@ -1,3 +1,6 @@
+.. _faq:
+
+
 ###
 FAQ
 ###
@@ -31,7 +34,7 @@ Very often, data fails vaildation because of how the files are named or how the 
 
 How do you choose the data that is used to create the checksums?
 ----------------------------------------------------------------
-Whenever possible, the data downloaded using :code:`.download()` is the same data used to create the checksums. If this isn't possible, we did our best to get the data from the original source (the dataset creator) in order to create the checksum. If this is again not possible, we found as many versions of the data as we could from different users of the dataset, computed checksums on all of them and used the version which was the most common amongst them.
+Whenever possible, the data downloaded using ``.download()`` is the same data used to create the checksums. If this isn't possible, we did our best to get the data from the original source (the dataset creator) in order to create the checksum. If this is again not possible, we found as many versions of the data as we could from different users of the dataset, computed checksums on all of them and used the version which was the most common amongst them.
 
 
 Does mirdata provide data loaders for pytorch/Tensorflow?
@@ -42,8 +45,8 @@ Still, this library provides the necessary first step for building data loaders 
 For more information, see :ref:`Using mirdata with tensorflow`.
 
 
-A download link is broken for a loader's :code:`.download()` function. What do I do?
-------------------------------------------------------------------------------------
+A download link is broken for a loader's ``.download()`` function. What do I do?
+--------------------------------------------------------------------------------------
 Please open an issue_ and tag it with the "broken link" label.
 
 .. _issue: https://github.com/mir-dataset-loaders/mirdata/issues
@@ -59,8 +62,14 @@ If I find a mistake in an annotation, should I fix it in the loader?
 No. All datasets have "mistakes", and we do not want to create another version of each dataset ourselves. The loaders should load the data as released. After that, it's up to the user what they want to do with it.
 
 
+What is the canonical version of a loader?
+------------------------------------------
+The canonical version of a loader is the source version of a dataset, i.e. the version that you get directly from the creators of the dataset or similar official source.
+
+
 Does mirdata support data which lives off-disk?
 -----------------------------------------------
-Yes. While the simple useage of mirdata assumes that data lives on-disk, it can be used for off-disk data as well. 
+Yes! We use the smart_open_ library, which supports non-local filesystems such as GCS and AWS. 
 See :ref:`Remote Data Example` for details.
 
+.. _smart_open: https://pypi.org/project/smart-open/

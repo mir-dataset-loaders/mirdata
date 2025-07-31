@@ -1,0 +1,25 @@
+{
+  "version": "dlfm2016-fix1",
+  "tracks": {
+    "cafcdeaf-e966-4ff0-84fb-f660d2b68365": {
+      "metadata": [
+        "MTG-otmm_makam_recognition_dataset-55ce75a/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json",
+        "57f56a02e8a750596b44b8e4b1e46c3d"
+      ],
+      "pitch": [
+        "MTG-otmm_makam_recognition_dataset-55ce75a/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch",
+        "ae477b0485dc9a4cc463f66cd72e9ba1"
+      ]
+    },
+    "2a3e1a6d-ab82-4a46-ae8b-0fb057b53de0": {
+      "metadata": [
+        "MTG-otmm_makam_recognition_dataset-55ce75a/data/Segah/2a3e1a6d-ab82-4a46-ae8b-0fb057b53de0.json",
+        "3c9b2d3bf2097c4212ff46443dc451ce"
+      ],
+      "pitch": [
+        "MTG-otmm_makam_recognition_dataset-55ce75a/data/Segah/2a3e1a6d-ab82-4a46-ae8b-0fb057b53de0.pitch",
+        "14418ee63ba341adfd7e1b54401dd39a"
+      ]
+    }
+  }
+}

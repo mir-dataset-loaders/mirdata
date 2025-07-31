@@ -1,0 +1,142 @@
+{
+  "annotations": [
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "beat",
+      "data": [
+        {
+          "time": 0.0,
+          "duration": 1.0,
+          "value": 1,
+          "confidence": null
+        },
+        {
+          "time": 1.0,
+          "duration": 1.6724480000000002,
+          "value": 1,
+          "confidence": null
+        },
+        {
+          "time": 2.672448,
+          "duration": 1.6070000000000002,
+          "value": 1,
+          "confidence": null
+        },
+        {
+          "time": 4.279448,
+          "duration": 1.6764999999999999,
+          "value": 1,
+          "confidence": null
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "chord",
+      "data": [
+        {
+          "time": 1.0,
+          "duration": 1.6724480000000002,
+          "value": "C#:7(b9)",
+          "confidence": null
+        },
+        {
+          "time": 2.672448,
+          "duration": 1.6070000000000002,
+          "value": "C#:7(b9)",
+          "confidence": null
+        },
+        {
+          "time": 4.279448,
+          "duration": 1.6764999999999999,
+          "value": "C:7(b9)",
+          "confidence": null
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    },
+    {
+      "annotation_metadata": {
+        "curator": {
+          "name": "",
+          "email": ""
+        },
+        "annotator": {},
+        "version": "",
+        "corpus": "",
+        "annotation_tools": "",
+        "annotation_rules": "",
+        "validation": "",
+        "data_source": ""
+      },
+      "namespace": "segment_open",
+      "data": [
+        {
+          "time": 1.0,
+          "duration": 13.046292,
+          "value": "improvised solo",
+          "confidence": null
+        },
+        {
+          "time": 14.046292,
+          "duration": 58.081026,
+          "value": "head",
+          "confidence": null
+        },
+        {
+          "time": 72.127318,
+          "duration": 65.382722,
+          "value": "written solo",
+          "confidence": null
+        },
+        {
+          "time": 137.51004,
+          "duration": 188.931246,
+          "value": "improvised solo",
+          "confidence": null
+        }
+      ],
+      "sandbox": {},
+      "time": 0,
+      "duration": null
+    }
+  ],
+  "file_metadata": {
+    "title": "All The Things You Are",
+    "artist": "",
+    "release": "",
+    "duration": 5.0,
+    "identifiers": {},
+    "jams_version": "0.3.4"
+  },
+  "sandbox": {}
+}

@@ -43,11 +43,12 @@
 
 import os
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 from typing import BinaryIO, Optional, Tuple
 
-from mirdata import core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io
 
 BIBTEX = """@article{Anantapadmanabhan2013,
     author = {Anantapadmanabhan, Akshay and Bellur, Ashwin and Murthy, Hema A.},
@@ -68,12 +69,23 @@ INDEXES = {
     "1.5": core.Index(filename="mridangam_stroke_index_1.5.json"),
 }
 
+INDEXES = {
+    "default": "1.5",
+    "test": "sample",
+    "1.5": core.Index(
+        filename="mridangam_stroke_index_1.5.json",
+        url="https://zenodo.org/records/13930511/files/mridangam_stroke_index_1.5.json?download=1",
+        checksum="b84b05f46839e2d4417cc59af377b0c2",
+    ),
+    "sample": core.Index(filename="mridangam_stroke_index_1.5_sample.json"),
+}
+
 REMOTES = {
     "remote_data": download_utils.RemoteFileMetadata(
         filename="mridangam_stroke_1.5.zip",
         url="https://zenodo.org/record/4068196/files/mridangam_stroke_1.5.zip?download=1",
         checksum="39af55b2476b94c7946bec24331ec01a",  # the md5 checksum
-    ),
+    )
 }
 
 
@@ -111,21 +123,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.audio_path = self.get_path("audio")
 
@@ -151,19 +150,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            tags_open_data=[(self.stroke_name, "stroke_name")],
-            metadata={"tonic": self.tonic},
-        )
 
 
 @io.coerce_to_bytes_io
@@ -198,6 +184,8 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.mridangam_stroke.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

@@ -19,12 +19,14 @@
 import csv
 import json
 import os
-from typing import BinaryIO, cast, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import annotations, core, io, jams_utils
+from mirdata import annotations, core, io
 
 BIBTEX = """@inproceedings{bittner2014medleydb,
     Author = {Bittner, Rachel M and Salamon, Justin and Tierney, Mike and Mauch, Matthias and Cannam, Chris and Bello, Juan P},
@@ -33,11 +35,18 @@ BIBTEX = """@inproceedings{bittner2014medleydb,
     Title = {Medley{DB}: A Multitrack Dataset for Annotation-Intensive {MIR} Research},
     Year = {2014}
 }"""
+
 INDEXES = {
     "default": "5.0",
-    "test": "5.0",
-    "5.0": core.Index(filename="medleydb_melody_index_5.0.json"),
+    "test": "sample",
+    "5.0": core.Index(
+        filename="medleydb_melody_index_5.0.json",
+        url="https://zenodo.org/records/14007914/files/medleydb_melody_index_5.0.json?download=1",
+        checksum="c8fa74205aec7917b1d977c93b2950da",
+    ),
+    "sample": core.Index(filename="medleydb_melody_index_5.0_sample.json"),
 }
+
 
 DOWNLOAD_INFO = """
     To download this dataset, visit:
@@ -80,21 +89,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.melody1_path = self.get_path("melody1")
         self.melody2_path = self.get_path("melody2")
@@ -148,20 +144,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        # jams does not support multiF0, so we skip melody3
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.melody1, "melody1"), (self.melody2, "melody2")],
-            metadata=self._track_metadata,
-        )
 
 
 @io.coerce_to_bytes_io
@@ -261,22 +243,28 @@ class Dataset(core.Dataset):
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "medleydb_melody_metadata.json")
 
-        if not os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, "r") as fhandle:
+                metadata = json.load(fhandle)
+        except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        with open(metadata_path, "r") as fhandle:
-            metadata = json.load(fhandle)
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_melody.load_audio", version="0.3.4"
+    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_melody)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_melody.load_melody", version="0.3.4"
+    )
     def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
-    @core.copy_docs(load_melody3)
+    @deprecated(
+        reason="Use mirdata.datasets.medleydb_melody.load_melody3", version="0.3.4"
+    )
     def load_melody3(self, *args, **kwargs):
         return load_melody3(*args, **kwargs)

@@ -14,15 +14,18 @@
     For more details, please visit: https://github.com/DDMAL/salami-data-public
 
 """
+
 import csv
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 import logging
+from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 
 BIBTEX = """@inproceedings{smith2011salami,
@@ -36,8 +39,13 @@ BIBTEX = """@inproceedings{smith2011salami,
 
 INDEXES = {
     "default": "2.0-corrected",
-    "test": "2.0-corrected",
-    "2.0-corrected": core.Index(filename="salami_index_2.0-corrected.json"),
+    "test": "sample",
+    "2.0-corrected": core.Index(
+        filename="salami_index_2.0-corrected.json",
+        url="https://zenodo.org/records/13930530/files/salami_index_2.0-corrected.json?download=1",
+        checksum="0a804127c0e9909abd4ea6c437b4133f",
+    ),
+    "sample": core.Index(filename="salami_index_2.0-corrected_sample.json"),
 }
 
 REMOTES = {
@@ -97,21 +105,8 @@ class Track(core.Track):
         sections_lowercase (annotations.MultiAnnotator): annotations in hierarchy level 1
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.sections_annotator1_uppercase_path = self.get_path("annotator_1_uppercase")
         self.sections_annotator1_lowercase_path = self.get_path("annotator_1_lowercase")
@@ -235,35 +230,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            multi_section_data=[
-                (
-                    [
-                        (self.sections_uppercase.annotations[0], 0),
-                        (self.sections_lowercase.annotations[0], 1),
-                    ],
-                    self.sections_lowercase.annotators[0],
-                ),
-                (
-                    [
-                        (self.sections_uppercase.annotations[1], 0),
-                        (self.sections_lowercase.annotations[1], 1),
-                    ],
-                    self.sections_lowercase.annotators[1],
-                ),
-            ],
-            metadata=self._track_metadata,
-        )
-
-
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a Salami audio file.
@@ -333,24 +299,24 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-
         metadata_path = os.path.join(
             self.data_home,
             os.path.join(
                 "salami-data-public-hierarchy-corrections", "metadata", "metadata.csv"
             ),
         )
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-        with open(metadata_path, "r") as fhandle:
-            reader = csv.reader(fhandle, delimiter=",")
-            raw_data = []
-            for line in reader:
-                if line != []:
-                    if line[0] == "SONG_ID":
-                        continue
-                    raw_data.append(line)
+        try:
+            with open(metadata_path, "r") as fhandle:
+                reader = csv.reader(fhandle, delimiter=",")
+                raw_data = []
+                for line in reader:
+                    if line != []:
+                        if line[0] == "SONG_ID":
+                            continue
+                        raw_data.append(line)
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata_index = {}
         for line in raw_data:
@@ -373,10 +339,10 @@ class Dataset(core.Dataset):
 
         return metadata_index
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.salami.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_sections)
+    @deprecated(reason="Use mirdata.datasets.salami.load_sections", version="0.3.4")
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)

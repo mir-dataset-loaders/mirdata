@@ -31,9 +31,12 @@ import json
 import os
 from typing import Optional, Tuple, BinaryIO
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
-from mirdata import download_utils, jams_utils, core, io
+from smart_open import open
+
+from mirdata import download_utils, core, io
 
 BIBTEX = """@inproceedings{romani2015real,
   title={A Real-Time System for Measuring Sound Goodness in Instrumental Sounds},
@@ -42,10 +45,16 @@ BIBTEX = """@inproceedings{romani2015real,
   year={2015},
   organization={Audio Engineering Society}
 }"""
+
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="good_sounds_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="good_sounds_index_1.0.json",
+        url="https://zenodo.org/records/13916510/files/good_sounds_index_1.0.json?download=1",
+        checksum="9cda4e4ab46effbdfcc2be744d593d06",
+    ),
+    "sample": core.Index(filename="good_sounds_index_1.0_sample.json"),
 }
 REMOTES = {
     "packs": download_utils.RemoteFileMetadata(
@@ -164,21 +173,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.track_id = track_id
         self.audio_path = self.get_path("audio")
@@ -246,27 +242,10 @@ class Track(core.Track):
     def pitch_reference(self) -> str:
         return self.sound_info["pitch_reference"]
 
-    def to_jams(self):
-        # Initialize top-level JAMS container
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "sound": self.sound_info,
-                "take": self.take_info,
-                "ratings": self.ratings_info,
-                "pack": self.pack_info,
-                "microphone": self.microphone,
-                "instrument": self.instrument,
-                "klass": self.klass,
-                "semitone": self.semitone,
-                "pitch_reference": self.pitch_reference,
-            },
-        )
-
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
-    """Load a Beatles audio file.
+    """Load a GOOD-SOUNDS audio file.
 
     Args:
         fhandle (str or file-like): path or file-like object pointing to an audio file
@@ -304,27 +283,40 @@ class Dataset(core.Dataset):
         sounds = os.path.join(self.data_home, "sounds.json")
         takes = os.path.join(self.data_home, "takes.json")
 
-        if (
-            not os.path.exists(packs)
-            or not os.path.exists(ratings)
-            or not os.path.exists(sounds)
-            or not os.path.exists(takes)
-        ):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-        with open(packs, "r") as fhandle:
-            packs = json.load(fhandle)
+        try:
+            with open(packs, "r") as fhandle:
+                packs = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                "Packs metadata not found. Did you run .download()?"
+            )
 
-        with open(ratings, "r") as fhandle:
-            ratings = json.load(fhandle)
+        try:
+            with open(ratings, "r") as fhandle:
+                ratings = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                "Ratings metadata not found. Did you run .download()?"
+            )
 
-        with open(sounds, "r") as fhandle:
-            sounds = json.load(fhandle)
+        try:
+            with open(sounds, "r") as fhandle:
+                sounds = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                "Sounds metadata not found. Did you run .download()?"
+            )
 
-        with open(takes, "r") as fhandle:
-            takes = json.load(fhandle)
+        try:
+            with open(takes, "r") as fhandle:
+                takes = json.load(fhandle)
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                "Takes metadata not found. Did you run .download()?"
+            )
 
         return {"packs": packs, "ratings": ratings, "sounds": sounds, "takes": takes}
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.good_sounds.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

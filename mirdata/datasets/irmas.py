@@ -88,14 +88,16 @@ IRMAS Loader
     For more details, please visit: https://www.upf.edu/web/mtg/irmas
 
 """
+
 import csv
 import os
 from typing import BinaryIO, List, Optional, TextIO, Tuple
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io
 
 BIBTEX = """
 @dataset{juan_j_bosch_2014_1290750,
@@ -107,12 +109,18 @@ BIBTEX = """
   version      = {1.0},
   doi          = {10.5281/zenodo.1290750},
   url          = {https://doi.org/10.5281/zenodo.1290750}
+}
 """
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="irmas_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="irmas_index_1.0.json",
+        url="https://zenodo.org/records/13930466/files/irmas_index_1.0.json?download=1",
+        checksum="87327f90124d36750037df6c80b19749",
+    ),
+    "sample": core.Index(filename="irmas_index_1.0_sample.json"),
 }
 
 REMOTES = {
@@ -174,74 +182,44 @@ class Track(core.Track):
         train (bool): flag to identify if the track is from the training of the testing dataset
         genre (str): string containing the namecode of the genre of the track.
         drum (bool): flag to identify if the track contains drums or not.
+        split (str): data split ("train" or "test")
 
     Cached Properties:
         instrument (list): list of predominant instruments as str
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.annotation_path = self.get_path("annotation")
 
         self.audio_path = self.get_path("audio")
-
-        # Dataset attributes
-        self.predominant_instrument = None
-        self.genre = None
-        self.drum = None
-        self.train = True
-
         self._audio_filename = self._track_paths["audio"][0]
 
-        # TRAINING TRACKS
-        if "__" in track_id:
-            self.predominant_instrument = os.path.basename(
-                os.path.dirname(self.audio_path)
-            )
-            assert (
-                self.predominant_instrument in INST_DICT
-            ), "Instrument {} not in instrument dict".format(
-                self.predominant_instrument
-            )
+        self.split = "train" if "__" in track_id else "test"
 
-            # Drum presence annotation is present
-            if "dru" in self._audio_filename or "nod" in self._audio_filename:
-                self.genre = (
-                    self._audio_filename.split(".")[0].split("[")[3].split("]")[0]
-                )
-                assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
-                    self.genre
-                )
-                self.drum = [True if "dru" in self._audio_filename else False][0]
-
-            # Drum presence annotation not present
-            else:
-                self.genre = (
-                    self._audio_filename.split(".")[0].split("[")[2].split("]")[0]
-                )
-                assert self.genre in GENRE_DICT, "Genre {} not in genre dict".format(
-                    self.genre
-                )
-                self.drum = None
-
-        # TESTING TRACKS
+        # Dataset attributes
+        self.predominant_instrument = (
+            os.path.basename(os.path.dirname(self.audio_path))
+            if self.split == "train"
+            else None
+        )
+        if self.split == "train" and (
+            "dru" in self._audio_filename or "nod" in self._audio_filename
+        ):
+            self.genre = self._audio_filename.split(".")[0].split("[")[3].split("]")[0]
+            self.drum = [True if "dru" in self._audio_filename else False][0]
+        elif self.split == "train" and not (
+            "dru" in self._audio_filename or "nod" in self._audio_filename
+        ):
+            self.genre = self._audio_filename.split(".")[0].split("[")[2].split("]")[0]
+            self.drum = None
         else:
-            self.train = False
+            self.genre = None
+            self.drum = None
+
+        self.train = True if self.split == "train" else False
 
     @core.cached_property
     def instrument(self):
@@ -260,23 +238,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """the track's data in jams format
-
-        Returns:
-            jams.JAMS: return track data in jam format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "instrument": self.instrument,
-                "genre": self.genre,
-                "drum": self.drum,
-                "train": self.train,
-            },
-        )
 
 
 @io.coerce_to_bytes_io
@@ -334,10 +295,10 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.irmas.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_pred_inst)
+    @deprecated(reason="Use mirdata.datasets.irmas.load_pred_inst", version="0.3.4")
     def load_pred_inst(self, *args, **kwargs):
         return load_pred_inst(*args, **kwargs)

@@ -3,6 +3,11 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
+    **NOTE**: From mirdata v0.3.8 on, the only version available of this dataset is dlfm2016-fix1, which is
+    basically the same as dlfm2016, but with a few fixes in some annotations. The original dlfm2016 version
+    is still available in mirdata versions <=0.3.7. Note that from dlfm2016 to dlfm2016-fix1, no new recordings
+    or annotation were added, only a few annotation files were fixed.
+
     This dataset is designed to test makam recognition methodologies on Ottoman-Turkish makam music.
     It is composed of 50 recording from each of the 20 most common makams in CompMusic Project's Dunya Ottoman-Turkish
     Makam Music collection. Currently the dataset is the largest makam recognition dataset.
@@ -35,8 +40,12 @@ import json
 import os
 from typing import TextIO
 
+from deprecated.sphinx import deprecated
 import numpy as np
-from mirdata import annotations, core, download_utils, io, jams_utils
+from smart_open import open
+
+from mirdata import annotations, core, download_utils, io
+
 
 BIBTEX = """
 @software{sertan_senturk_2016_58413,
@@ -54,16 +63,23 @@ BIBTEX = """
 """
 
 INDEXES = {
-    "default": "dlfm2016",
-    "test": "dlfm2016",
-    "dlfm2016": core.Index(filename="compmusic_otmm_makam_index_dlfm2016.json"),
+    "default": "dlfm2016-fix1",
+    "test": "sample",
+    "dlfm2016-fix1": core.Index(
+        filename="compmusic_otmm_makam_index_dlfm2016-fix1.json",
+        url="https://zenodo.org/records/13993317/files/compmusic_otmm_makam_index_dlfm2016-fix1.json?download=1",
+        checksum="4400d99c243a2f2d3748631abe05c311",
+    ),
+    "sample": core.Index(
+        filename="compmusic_otmm_makam_index_dlfm2016-fix1_sample.json"
+    ),
 }
 
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
-        filename="otmm_makam_recognition_dataset-dlfm2016.zip",
-        url="https://zenodo.org/record/58413/files/otmm_makam_recognition_dataset-dlfm2016.zip?download=1",
-        checksum="c2b9c8bdcbdcf15745b245adfc793145",
+        filename="otmm_makam_recognition_dataset-dlfm2016-fix1.zip",
+        url="https://zenodo.org/record/4883680/files/MTG/otmm_makam_recognition_dataset-dlfm2016-fix1.zip?download=1",
+        checksum="83724c889d36f684cff3f15f20ce0d34",
     )
 }
 
@@ -93,21 +109,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         # Annotation paths
         self.pitch_path = self.get_path("pitch")
@@ -132,24 +135,6 @@ class Track(core.Track):
     @core.cached_property
     def mb_tags(self):
         return load_mb_tags(self.mb_tags_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            f0_data=[(self.pitch, "pitch")],
-            metadata={
-                "makam": self.makam,
-                "tonic": self.tonic,
-                "mbid": self.mbid,
-                "duration": self.mb_tags["duration"],
-                "metadata": self.mb_tags,
-            },
-        )
 
 
 @io.coerce_to_string_io
@@ -185,8 +170,10 @@ def load_mb_tags(fhandle: TextIO) -> dict:
         Dict: metadata of the track
 
     """
-
-    return json.load(fhandle)
+    mb_tags = json.load(fhandle)
+    if "duration" not in mb_tags.keys():
+        mb_tags["duration"] = 0.0  # Few tracks have no duration information
+    return mb_tags
 
 
 @core.docstring_inherit(core.Dataset)
@@ -210,34 +197,39 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(
-            self.data_home,
-            "MTG-otmm_makam_recognition_dataset-f14c0d0",
+            os.path.normpath(self.data_home),
+            "MTG-otmm_makam_recognition_dataset-55ce75a",
             "annotations.json",
         )
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata = {}
-        with open(metadata_path) as f:
-            meta = json.load(f)
-            for i in meta:
-                index = i["mbid"].split("/")[-1]
-                metadata[index] = {
-                    "makam": i["makam"],
-                    "tonic": i["tonic"],
-                    "mbid": index,
-                }
+        try:
+            with open(metadata_path) as f:
+                meta = json.load(f)
+                for i in meta:
+                    index = i["mbid"].split("/")[-1]
+                    metadata[index] = {
+                        "makam": i["makam"],
+                        "tonic": i["tonic"],
+                        "mbid": index,
+                    }
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
-            temp = metadata_path.split("/")[-2]
-            data_home = metadata_path.split(temp)[0]
-            metadata["data_home"] = data_home
+        temp = os.path.split(metadata_path)[-2]
+        data_home = os.path.split(temp)[0]
+        metadata["data_home"] = data_home
 
         return metadata
 
-    @core.copy_docs(load_pitch)
+    @deprecated(
+        reason="Use mirdata.datasets.compmusic_otmm_makam.load_pitch", version="0.3.4"
+    )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
-    @core.copy_docs(load_mb_tags)
+    @deprecated(
+        reason="Use mirdata.datasets.compmusic_otmm_makam.load_mb_tags", version="0.3.4"
+    )
     def load_mb_tags(self, *args, **kwargs):
         return load_mb_tags(*args, **kwargs)

@@ -1,3 +1,4 @@
+import os
 import sys
 
 import librosa
@@ -9,16 +10,31 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "0"
-    data_home = "tests/resources/mir_datasets/tonality_classicaldb"
-    dataset = tonality_classicaldb.Dataset(data_home)
+    data_home = os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb")
+    dataset = tonality_classicaldb.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": "tests/resources/mir_datasets/tonality_classicaldb/audio/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.wav",
-        "key_path": "tests/resources/mir_datasets/tonality_classicaldb/keys/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.txt",
-        "spectrum_path": "tests/resources/mir_datasets/tonality_classicaldb/spectrums/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
-        "hpcp_path": "tests/resources/mir_datasets/tonality_classicaldb/HPCPs/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
-        "musicbrainz_path": "tests/resources/mir_datasets/tonality_classicaldb/musicbrainz_metadata/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "audio/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.wav",
+        ),
+        "key_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "keys/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.txt",
+        ),
+        "spectrum_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "spectrums/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        ),
+        "hpcp_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "HPCPs/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        ),
+        "musicbrainz_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/tonality_classicaldb/"),
+            "musicbrainz_metadata/01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D.json",
+        ),
         "title": "01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D",
         "track_id": "0",
     }
@@ -37,22 +53,6 @@ def test_track():
     assert audio.shape == (88200,), "audio shape {} was not (88200,)".format(
         audio.shape
     )
-
-
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/tonality_classicaldb"
-    dataset = tonality_classicaldb.Dataset(data_home)
-    track = dataset.track("0")
-    jam = track.to_jams()
-    assert jam["sandbox"]["key"] == "D major", "key does not match expected"
-    assert (
-        jam["file_metadata"]["title"]
-        == "01-Allegro__Gloria_in_excelsis_Deo_in_D_Major - D"
-    ), "title does not match expected"
-
-    assert "spectrum" in jam["sandbox"]
-    assert "hpcp" in jam["sandbox"]
-    assert "musicbrainz_metatada" in jam["sandbox"]
 
 
 def test_load_key():

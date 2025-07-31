@@ -41,15 +41,18 @@ TONAS Loader
 
 
 """
+
 import csv
 import logging
 import os
 from typing import TextIO, Tuple, Optional
 
+from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
+from smart_open import open
 
-from mirdata import annotations, jams_utils, core, io
+from mirdata import annotations, core, io
 
 
 BIBTEX = """
@@ -79,8 +82,13 @@ Transcriptions:
 
 INDEXES = {
     "default": "1.0",
-    "test": "1.0",
-    "1.0": core.Index(filename="tonas_index_1.0.json"),
+    "test": "sample",
+    "1.0": core.Index(
+        filename="tonas_index_1.0.json",
+        url="https://zenodo.org/records/14024167/files/tonas_index_1.0.json?download=1",
+        checksum="afa42c61f856471d2ef49609d894fb19",
+    ),
+    "sample": core.Index(filename="tonas_index_1.0_sample.json"),
 }
 
 DOWNLOAD_INFO = """
@@ -125,21 +133,8 @@ class Track(core.Track):
 
     """
 
-    def __init__(
-        self,
-        track_id,
-        data_home,
-        dataset_name,
-        index,
-        metadata,
-    ):
-        super().__init__(
-            track_id,
-            data_home,
-            dataset_name,
-            index,
-            metadata,
-        )
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
 
         self.f0_path = self.get_path("f0")
         self.notes_path = self.get_path("notes")
@@ -184,29 +179,14 @@ class Track(core.Track):
     @property
     def f0(self):
         logging.warning(
-            "Deprecation warning: Track.f0 is deprecated and will "
-            + "be removed in a future version. Use Track.f0_automatic "
-            + "or Track.f0_corrected"
+            "Track.f0 is deprecated as of 0.3.4 and will be removed in a future version. Use"
+            " Track.f0_automatic or Track.f0_corrected"
         )
         return self.f0_corrected
 
     @core.cached_property
     def notes(self) -> Optional[annotations.NoteData]:
         return load_notes(self.notes_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.f0, "pitch_contour")],
-            note_data=[(self.notes, "note_hz")],
-            metadata=self._track_metadata,
-        )
 
 
 def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
@@ -223,12 +203,12 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     return librosa.load(fhandle, sr=44100, mono=True)
 
 
-# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
-def load_f0(fpath: str, corrected: bool) -> Optional[annotations.F0Data]:
+@io.coerce_to_string_io
+def load_f0(fpath: TextIO, corrected: bool) -> Optional[annotations.F0Data]:
     """Load TONAS f0 annotations
 
     Args:
-        fpath (str): path pointing to f0 annotation file
+        fpath (str or file-like): path pointing to f0 annotation file
         corrected (bool): if True, loads manually corrected frequency values
             otherwise, loads automatically extracted frequency values
 
@@ -240,13 +220,12 @@ def load_f0(fpath: str, corrected: bool) -> Optional[annotations.F0Data]:
     freqs = []
     freqs_corr = []
     energies = []
-    with open(fpath, "r") as fhandle:
-        reader = np.genfromtxt(fhandle)
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[2]))
-            freqs_corr.append(float(line[3]))
-            energies.append(float(line[1]))
+    reader = np.genfromtxt(fpath)
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[2]))
+        freqs_corr.append(float(line[3]))
+        energies.append(float(line[1]))
 
     freq_array = np.array(freqs_corr if corrected else freqs, dtype="float")
     energy_array = np.array(energies, dtype="float")
@@ -359,33 +338,34 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _metadata(self):
         metadata_path = os.path.join(self.data_home, "TONAS-Metadata.txt")
-        if not os.path.exists(metadata_path):
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata = {}
-        with open(metadata_path, "r", errors="ignore") as f:
-            reader = csv.reader(
-                (x.replace("\0", "") for x in f), delimiter="\t"
-            )  # Fix wrong byte
-            for line in reader:
-                if line:  # Do not consider empty lines
-                    index = line[0].replace(".wav", "")
-                    metadata[index] = {
-                        "style": line[1],
-                        "title": line[2],
-                        "singer": line[3],
-                    }
+        try:
+            with open(metadata_path, "r", errors="ignore") as f:
+                reader = csv.reader(
+                    (x.replace("\0", "") for x in f), delimiter="\t"
+                )  # Fix wrong byte
+                for line in reader:
+                    if line:  # Do not consider empty lines
+                        index = line[0].replace(".wav", "")
+                        metadata[index] = {
+                            "style": line[1],
+                            "title": line[2],
+                            "singer": line[3],
+                        }
+        except FileNotFoundError:
+            raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         return metadata
 
-    @core.copy_docs(load_audio)
+    @deprecated(reason="Use mirdata.datasets.tonas.load_audio", version="0.3.4")
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @core.copy_docs(load_f0)
+    @deprecated(reason="Use mirdata.datasets.tonas.load_f0", version="0.3.4")
     def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
-    @core.copy_docs(load_notes)
+    @deprecated(reason="Use mirdata.datasets.tonas.load_notes", version="0.3.4")
     def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

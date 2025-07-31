@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 from mirdata.datasets import rwc_classical
@@ -7,18 +8,24 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "RM-C003"
-    data_home = "tests/resources/mir_datasets/rwc_classical"
-    dataset = rwc_classical.Dataset(data_home)
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_classical")
+    dataset = rwc_classical.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "RM-C003",
-        "audio_path": "tests/resources/mir_datasets/rwc_classical/"
-        + "audio/rwc-c-m01/3.wav",
-        "sections_path": "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
-        "beats_path": "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+        "audio_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "audio/rwc-c-m01/3.wav",
+        ),
+        "sections_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
+        ),
+        "beats_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+        ),
         "piece_number": "No. 3",
         "suffix": "M01",
         "track_number": "Tr. 03",
@@ -41,47 +48,6 @@ def test_track():
     y, sr = track.audio
     assert sr == 44100
     assert y.shape == (44100 * 2,)
-
-
-def test_to_jams():
-
-    data_home = "tests/resources/mir_datasets/rwc_classical"
-    dataset = rwc_classical.Dataset(data_home)
-    track = dataset.track("RM-C003")
-    jam = track.to_jams()
-
-    beats = jam.search(namespace="beat")[0]["data"]
-    assert [beat.time for beat in beats] == [
-        1.65,
-        2.58,
-        2.95,
-        3.33,
-        3.71,
-        4.09,
-        5.18,
-        6.28,
-    ]
-    assert [beat.duration for beat in beats] == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    assert [beat.value for beat in beats] == [2, 1, 2, 1, 2, 1, 2, 1]
-    assert [beat.confidence for beat in beats] == [
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-    ]
-
-    segments = jam.search(namespace="segment")[0]["data"]
-    assert [segment.time for segment in segments] == [0.29, 419.96]
-    assert [segment.duration for segment in segments] == [45.85, 13.75]
-    assert [segment.value for segment in segments] == ["chorus A", "ending"]
-    assert [segment.confidence for segment in segments] == [None, None]
-
-    assert jam["file_metadata"]["title"] == "Symphony no.5 in C minor, op.67. 1st mvmt."
-    assert jam["file_metadata"]["artist"] == "Tokyo City Philharmonic Orchestra"
 
 
 def test_load_sections():
@@ -186,7 +152,7 @@ def test_load_beats():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/rwc_classical"
-    dataset = rwc_classical.Dataset(data_home)
+    dataset = rwc_classical.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["RM-C003"] == {
         "piece_number": "No. 3",

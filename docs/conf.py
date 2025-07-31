@@ -33,18 +33,20 @@ release = mirdata_version.version
 # Show only copyright
 show_authors = False
 
-
 # -- Mock dependencies -------------------------------------------------------
 autodoc_mock_imports = [
     "librosa",
     "numpy",
-    "jams",
     "pretty_midi",
     "DALI",
     "music21",
+    "h5py",
+    "yaml",
     "scipy",
+    "smart_open",
+    "openpyxl",
+    "pandas",
 ]
-
 
 # # -- General configuration ---------------------------------------------------
 
@@ -59,22 +61,22 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx_togglebutton",
     "sphinx.ext.extlinks",
+    "sphinx_copybutton",
 ]
 
 # To shorten links of licenses and add to table
 extlinks = {
-    "acousticbrainz": ("https://zenodo.org/record/2554044#.X_ivJ-n7RUI%s", "Custom"),
-    "cante": ("https://zenodo.org/record/1324183#.X_nq7-n7RUI%s", "Custom"),
-    "ikala": ("http://mac.citi.sinica.edu.tw/ikala/%s", "Custom"),
-    "rwc": ("https://staff.aist.go.jp/m.goto/RWC-MDB/%s", "Custom"),
-    "tonas": ("https://www.upf.edu/web/mtg/tonas/%s", "Custom"),
+    "acousticbrainz": ("https://zenodo.org/record/2554044#.X_ivJ-n7RUI%s", "Custom%s"),
+    "cante": ("https://zenodo.org/record/1324183#.X_nq7-n7RUI%s", "Custom%s"),
+    "ikala": ("http://mac.citi.sinica.edu.tw/ikala/%s", "Custom%s"),
+    "rwc": ("https://staff.aist.go.jp/m.goto/RWC-MDB/%s", "Custom%s"),
+    "tonas": ("https://www.upf.edu/web/mtg/tonas/%s", "Custom%s"),
 }
 
 
 intersphinx_mapping = {
     "np": ("https://numpy.org/doc/stable/", None),
-    "jams": ("https://jams.readthedocs.io/en/stable/", None),
-    "mir_eval": ("https://craffel.github.io/mir_eval/", None),
+    "mir_eval": ("https://mir-eval.readthedocs.io/latest/", None),
     "pretty_midi": ("https://craffel.github.io/pretty-midi/", None),
 }
 
