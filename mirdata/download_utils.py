@@ -119,22 +119,22 @@ def downloader(
             objs_to_download = list(remotes.keys())
 
         if "index" in objs_to_download and len(objs_to_download) > 1:
-            logging.info(
+            logging.warning(
                 "Downloading {}. Index is being stored in {}, and the rest of files in {}".format(
                     objs_to_download, index.indexes_dir, save_dir
                 )
             )
         elif "index" in objs_to_download and len(objs_to_download) == 1:
-            logging.info(
+            logging.warning(
                 "Downloading {}. Index is being stored in {}".format(
                     objs_to_download, index.indexes_dir
                 )
             )
         else:
-            logging.info("Downloading {} to {}".format(objs_to_download, save_dir))
+            logging.warning("Downloading {} to {}".format(objs_to_download, save_dir))
 
         for k in objs_to_download:
-            logging.info("[{}] downloading {}".format(k, remotes[k].filename))
+            logging.warning("[{}] downloading {}".format(k, remotes[k].filename))
             extension = os.path.splitext(remotes[k].filename)[-1]
             if ".zip" in extension:
                 download_zip_file(
@@ -190,7 +190,7 @@ def downloader(
                     source_dir = os.path.join(destination_dir, src_dir)
 
                     if not os.path.exists(source_dir):
-                        logging.info(
+                        logging.warning(
                             "Data not downloaded, because it probably already exists on your computer. "
                             + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
                             + "existing files and download from scratch"
@@ -200,7 +200,7 @@ def downloader(
                     move_directory_contents(source_dir, destination_dir)
 
     if info_message is not None:
-        logging.info(info_message.format(save_dir))
+        logging.warning(info_message.format(save_dir))
 
 
 class DownloadProgressBar(tqdm):
@@ -280,7 +280,7 @@ def download_from_remote(remote, save_dir, force_overwrite, allow_invalid_checks
                 logging.error(error_msg)
                 raise exc
     else:
-        logging.info(
+        logging.warning(
             "{} already exists and will not be downloaded. ".format(download_path)
             + "Rerun with force_overwrite=True to delete this file and force the download."
         )
@@ -432,7 +432,7 @@ def move_directory_contents(source_dir, target_dir):
     for fpath in directory_contents:
         target_path = os.path.join(target_dir, os.path.basename(fpath))
         if os.path.exists(target_path):
-            logging.info(
+            logging.warning(
                 "{} already exists. Run with force_overwrite=True to download from scratch".format(
                     target_path
                 )
