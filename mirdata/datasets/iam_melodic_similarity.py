@@ -147,8 +147,6 @@ def load_nyas(fhandle):
     for line in reader:
         start = float(line[0])
         end = float(line[1])
-        #if start > end:
-        #    continue
         label = 'nyas'
         intervals.append([start, end])
         labels.append(label)
@@ -172,8 +170,6 @@ def load_sections(fhandle):
     for line in reader:
         start = float(line[0])
         end = float(line[1])
-        #if start > end:
-        #    continue
         label = line[2]
         intervals.append([start, end])
         labels.append(label)
