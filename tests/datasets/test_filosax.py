@@ -5,7 +5,6 @@ Tests for Filosax_Lite
 import os
 import numpy as np
 import pytest
-import jams
 
 from mirdata import annotations
 from mirdata.datasets import filosax
@@ -74,54 +73,6 @@ def test_multitrack():
     run_multitrack_tests(default_track)
 
 
-def test_to_jams():
-    default_trackid = "multitrack_01"
-    data_home = "tests/resources/mir_datasets/filosax"
-    dataset = filosax.Dataset(data_home, version="test")
-    default_track = dataset.multitrack(default_trackid)
-    jam = default_track.to_jams()
-
-    beats = jam.search(namespace="beat")[0]["data"]
-    chords = jam.search(namespace="chord")[0]["data"]
-    segments = jam.search(namespace="segment_open")[0]["data"]
-
-    assert [beat.time for beat in beats] == [0.0, 1.0, 2.672448, 4.279448]
-    assert [beat.duration for beat in beats] == [
-        1.0,
-        1.6724480000000002,
-        1.6070000000000002,
-        1.6764999999999999,
-    ]
-    assert [beat.value for beat in beats] == [1, 1, 1, 1]
-
-    assert [chord.time for chord in chords] == [1.0, 2.672448, 4.279448]
-    assert [chord.duration for chord in chords] == [
-        1.6724480000000002,
-        1.6070000000000002,
-        1.6764999999999999,
-    ]
-    assert [chord.value for chord in chords] == ["C#:7(b9)", "C#:7(b9)", "C:7(b9)"]
-
-    assert [segment.time for segment in segments] == [
-        1.0,
-        14.046292,
-        72.127318,
-        137.51004,
-    ]
-    assert [segment.duration for segment in segments] == [
-        13.046292,
-        58.081026,
-        65.382722,
-        188.931246,
-    ]
-    assert [segment.value for segment in segments] == [
-        "improvised solo",
-        "head",
-        "written solo",
-        "improvised solo",
-    ]
-
-
 def test_load_annotation():
     annotation_path = (
         "tests/resources/mir_datasets/filosax/Participant 1/01/annotations.json"
@@ -178,7 +129,6 @@ def test_metadata():
     dataset = filosax.Dataset(data_home, version="test")
     filosax_data = dataset.load_multitracks()
     default_multitrack = filosax_data[default_multitrackid]
-
     name = default_multitrack.name
     duration = default_multitrack.duration
     beats = default_multitrack.beats
@@ -186,49 +136,43 @@ def test_metadata():
     segments = default_multitrack.segments
     bass_drums = default_multitrack.bass_drums
     piano_drums = default_multitrack.piano_drums
-
     assert name == "All The Things You Are"
     assert duration == 5.0
-
-    assert [beat.time for beat in beats] == [0.0, 1.0, 2.672448, 4.279448]
-    assert [beat.duration for beat in beats] == [
+    assert [beat["time"] for beat in beats] == [0.0, 1.0, 2.672448, 4.279448]
+    assert [beat["duration"] for beat in beats] == [
         1.0,
         1.6724480000000002,
         1.6070000000000002,
         1.6764999999999999,
     ]
-    assert [beat.value for beat in beats] == [1, 1, 1, 1]
-
-    assert [chord.time for chord in chords] == [1.0, 2.672448, 4.279448]
-    assert [chord.duration for chord in chords] == [
+    assert [beat["value"] for beat in beats] == [1, 1, 1, 1]
+    assert [chord["time"] for chord in chords] == [1.0, 2.672448, 4.279448]
+    assert [chord["duration"] for chord in chords] == [
         1.6724480000000002,
         1.6070000000000002,
         1.6764999999999999,
     ]
-    assert [chord.value for chord in chords] == ["C#:7(b9)", "C#:7(b9)", "C:7(b9)"]
-
-    assert [segment.time for segment in segments] == [
+    assert [chord["value"] for chord in chords] == ["C#:7(b9)", "C#:7(b9)", "C:7(b9)"]
+    assert [segment["time"] for segment in segments] == [
         1.0,
         14.046292,
         72.127318,
         137.51004,
     ]
-    assert [segment.duration for segment in segments] == [
+    assert [segment["duration"] for segment in segments] == [
         13.046292,
         58.081026,
         65.382722,
         188.931246,
     ]
-    assert [segment.value for segment in segments] == [
+    assert [segment["value"] for segment in segments] == [
         "improvised solo",
         "head",
         "written solo",
         "improvised solo",
     ]
-
     assert bass_drums.track_id == "multitrack_01_bass_drums"
     assert piano_drums.track_id == "multitrack_01_piano_drums"
-
     annotation_data = bass_drums.notes
     assert type(annotation_data) == list
     assert type(annotation_data[0]) is filosax.Note

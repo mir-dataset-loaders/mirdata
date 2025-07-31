@@ -77,38 +77,6 @@ def test_track():
     assert np.array_equal(mix, instrumental + vocal)
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/ikala"
-    default_trackid = "10161_chorus"
-    dataset = ikala.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    lyrics = jam.search(namespace="lyric")[0]["data"]
-    assert [lyric.time for lyric in lyrics] == [0.027, 0.232]
-    assert [lyric.duration for lyric in lyrics] == [0.20500000000000002, 0.736]
-    assert [lyric.value for lyric in lyrics] == ["JUST", "WANNA"]
-    assert [lyric.confidence for lyric in lyrics] == [None, None]
-
-    f0s = jam.search(namespace="pitch_contour")[0]["data"]
-    assert [f0.time for f0 in f0s] == [0.016, 0.048]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    expected_f0s = [
-        {"frequency": 0.0, "index": 0, "voiced": 0.0},
-        {"frequency": 260.94640451888694, "index": 0, "voiced": 1.0},
-    ]
-    for i, f0 in enumerate(f0s):
-        assert "frequency" in f0.value
-        assert "index" in f0.value
-        assert "voiced" in f0.value
-        assert math.isclose(
-            f0.value["frequency"], expected_f0s[i]["frequency"], rel_tol=1e-12
-        )
-        assert f0.value["index"] == expected_f0s[i]["index"]
-        assert f0.value["voiced"] == expected_f0s[i]["voiced"]
-    assert [f0.confidence for f0 in f0s] == [None, None]
-
-
 def test_load_f0():
     # load a file which exists
     f0_path = "tests/resources/mir_datasets/ikala/PitchLabel/10161_chorus.pv"
