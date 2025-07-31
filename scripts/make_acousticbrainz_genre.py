@@ -9,7 +9,6 @@ from mirdata.validate import md5
 
 
 acousticbrainz_genre_INDEX_PATH = '../mirdata/datasets/indexes/test_acousticbrainz_genre_index.json'
-ACOUSTICBRAINZ_GENRE_ANNOTATION_SCHEMA = ['JAMS']
 
 
 def make_acousticbrainz_genre_index(data_path):
