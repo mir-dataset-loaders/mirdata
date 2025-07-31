@@ -404,7 +404,78 @@ The following is a simple example of a generator that can be used to create a te
             }
         )
 
-In future Mirdata versions, generators for Tensorflow and Pytorch will be included.
+.. _Using mirdata with pytorch:
+
+Using mirdata with pytorch
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Next is a simple example of a class that can be used to create a torch Dataset and DataLoader.
+
+.. admonition:: mirdata with torch.utils.data.Dataset example
+    :class: dropdown
+
+    .. code-block:: python
+
+        import torch
+        import numpy as np
+        import mirdata
+        from torch.utils.data import Dataset, DataLoader
+
+
+        class MIRDataset(Dataset):
+            def __init__(self, dataset_name: str):
+                # Initialize the loader, download if required, and validate
+
+                self.loader = mirdata.initialize(dataset_name)
+                self.loader.download()
+                self.loader.validate()
+                # Get the length of the longest tracks + annotations in the dataset
+                # Torch dataloader requires all tensors to have the same dims
+                # So we'll use this to pad items that are too short
+
+                self.longest_track = max(
+                    [len(self.loader.track(tid).audio_mono[0]) for tid in self.loader.track_ids]
+                )
+                self.longest_annotation = max(
+                    [len(self.loader.track(tid).melody.times) for tid in self.loader.track_ids]
+                )
+
+            @staticmethod
+            def pad(to_pad: np.ndarray, pad_size: int) -> np.ndarray:
+                """Right-pads a 1D array to `pad_size`"""
+                return np.pad(
+                    to_pad, (0, pad_size - len(to_pad)), mode="constant", constant_values=0.0
+                )
+
+            def __len__(self) -> int:
+                return len(self.loader.track_ids)
+
+            def __getitem__(self, item: int) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+                # Unpack the current track
+
+                track_id = self.loader.track_ids[item]
+                track = self.loader.track(track_id)
+                # Get the audio and annotations
+
+                audio_signal, sample_rate = track.audio_mono
+                times = track.melody.times
+                frequencies = track.melody.frequencies
+                # Right pad everything to satisfy torch's requirement for equal dims
+
+                audio_signal_padded = self.pad(audio_signal, self.longest_track)
+                times_padded = self.pad(times, self.longest_annotation)
+                frequencies_padded = self.pad(frequencies, self.longest_annotation)
+                return (
+                    audio_signal_padded.astype(np.float32),
+                    times_padded.astype(np.float32),
+                    frequencies_padded.astype(np.float32),
+                )
+
+
+        md = DataLoader(MIRDataset("orchset"), batch_size=2, shuffle=True, drop_last=False)
+        for audio, times, freqs in md:
+            pass  # train your model on this data
+
 
 Using mirdata with JAMS
 ^^^^^^^^^^^^^^^^^^^^^^^
