@@ -37,7 +37,6 @@ show_authors = False
 autodoc_mock_imports = [
     "librosa",
     "numpy",
-    "jams",
     "pretty_midi",
     "DALI",
     "music21",
@@ -62,6 +61,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx_togglebutton",
     "sphinx.ext.extlinks",
+    "sphinx_copybutton",
 ]
 
 # To shorten links of licenses and add to table
@@ -76,8 +76,7 @@ extlinks = {
 
 intersphinx_mapping = {
     "np": ("https://numpy.org/doc/stable/", None),
-    "jams": ("https://jams.readthedocs.io/en/stable/", None),
-    "mir_eval": ("https://craffel.github.io/mir_eval/", None),
+    "mir_eval": ("https://mir-eval.readthedocs.io/latest/", None),
     "pretty_midi": ("https://craffel.github.io/pretty-midi/", None),
 }
 

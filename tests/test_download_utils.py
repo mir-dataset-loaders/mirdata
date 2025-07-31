@@ -218,6 +218,28 @@ def test_download_index_cases(mocker, mock_path):
     )
     mocker.resetall()
 
+    mock_download_from_remote = mocker.patch.object(
+        download_utils, "download_from_remote"
+    )
+
+    index_remote = download_utils.RemoteFileMetadata(
+        filename="index.json", url="a", checksum="1234"
+    )
+    file_remote = download_utils.RemoteFileMetadata(
+        filename="remote.txt", url="b", checksum="5678"
+    )
+    index = core.Index("asdf.json")
+
+    # Test with remotes containing "index"
+    remotes = {"index": index_remote, "file": file_remote}
+    download_utils.downloader(
+        "a", index=index, remotes=remotes, partial_download=["file"]
+    )
+
+    # Verify that "index" is downloaded
+    mock_download_from_remote.assert_any_call(index_remote, "a", False, False)
+    mock_download_from_remote.assert_any_call(file_remote, "a", False, False)
+
 
 def _clean(fpath):
     if os.path.exists(fpath):
@@ -510,3 +532,63 @@ def test_extractall_cp437(mocker, mock_download_from_remote, mock_unzip):
         assert not os.path.exists(expected_file_location)
     shutil.rmtree(os.path.join("tests", "resources", "__MACOSX"))
     shutil.rmtree(os.path.join("tests", "resources", "utfissue"))
+
+
+def test_index_duplicate_prevention(mocker, mock_path):
+    """Test that index is not added twice when already in partial_download"""
+    mock_download = mocker.patch.object(download_utils, "download_from_remote")
+
+    index_remote = download_utils.RemoteFileMetadata("index.json", "url", "1234")
+    index = core.Index("test.json")
+
+    # Index already in partial_download - should not be duplicated
+    download_utils.downloader(
+        "save_dir",
+        index=index,
+        remotes={"index": index_remote},
+        partial_download=["index"],
+    )
+
+    # Should be called exactly once, not twice
+    mock_download.assert_called_once_with(index_remote, "save_dir", False, False)
+
+
+def test_zipped_index_detection_and_extraction(mocker, tmpdir):
+    """Test zipped index file detection and extraction"""
+    import zipfile
+
+    # Create a zip file with PK magic bytes
+    zip_path = tmpdir.join("index.zip")
+    with zipfile.ZipFile(str(zip_path), "w") as zf:
+        zf.writestr("test.json", '{"test": "data"}')
+
+    mocker.patch.object(
+        download_utils, "download_from_remote", return_value=str(zip_path)
+    )
+    mock_unzip = mocker.patch.object(download_utils, "unzip")
+
+    index_remote = download_utils.RemoteFileMetadata("test.json", "url", "1234")
+    index = core.Index("test.json")
+
+    download_utils.downloader(str(tmpdir), index=index, remotes={"index": index_remote})
+
+    # Verify zip detection and extraction
+    mock_unzip.assert_called_once_with(str(zip_path), cleanup=False)
+
+
+def test_zipped_index_exception_handling(mocker, tmpdir):
+    """Test exception handling when checking if index is zipped"""
+    problem_file = tmpdir.join("problem.json")
+    problem_file.write("content")
+
+    mocker.patch.object(
+        download_utils, "download_from_remote", return_value=str(problem_file)
+    )
+    # Mock open to raise exception (covers exception handling line)
+    mocker.patch("builtins.open", side_effect=IOError("Error"))
+
+    index_remote = download_utils.RemoteFileMetadata("test.json", "url", "1234")
+    index = core.Index("test.json")
+
+    # Should not raise exception, just log warning
+    download_utils.downloader(str(tmpdir), index=index, remotes={"index": index_remote})

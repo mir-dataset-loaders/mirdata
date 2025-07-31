@@ -62,7 +62,7 @@ from smart_open import open
 import librosa
 import numpy as np
 
-from mirdata import download_utils, jams_utils, core, annotations, io
+from mirdata import download_utils, core, annotations, io
 
 
 BIBTEX = """
@@ -268,16 +268,6 @@ class Track(core.Track):
 
         """
         return load_onsets(self.onsets_path)
-
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, "beats")],
-            note_data=[(self.midi, "midi")],
-            event_data=[(self.onsets, "onsets")],
-            metadata=dict(instrument=self.instrument, musician=self.musician),
-        )
 
 
 class MultiTrack(core.MultiTrack):
@@ -505,26 +495,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return int(self._multitrack_metadata["time_signature"])
-
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, "beats")],
-            tempo_data=[(self.tempo, "tempo")],
-            metadata=dict(
-                album=self.album,
-                bandleader=self.bandleader,
-                duration=self.duration,
-                jtd_300=self.jtd_300,
-                musicbrainz_id=self.musicbrainz_id,
-                name=self.name,
-                start=self.start,
-                stop=self.stop,
-                time_signature=self.time_signature,
-                year=self.year,
-            ),
-        )
 
     @property
     def track_audio_property(self):

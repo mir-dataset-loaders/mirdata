@@ -29,7 +29,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, jams_utils
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """
 @article{Plaja-Roglans-2023,
@@ -138,20 +138,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track"s data in jams format
-
-        Returns:
-            jams.JAMS: the track"s data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.pitch, "annotated pitch")],
-            event_data=[(self.activations, "vocal activations")],
-            metadata=self._track_metadata,
-        )
 
 
 @io.coerce_to_bytes_io

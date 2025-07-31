@@ -5,10 +5,14 @@ import re
 from typing import List, Optional, Tuple
 
 from deprecated.sphinx import deprecated
-from jams.schema import namespace
 import librosa
 import numpy as np
 import scipy
+
+# Regex pattern needed to validate chords and keys
+KEY_MODE_PATTERN = r"^N|([A-G][b#]?)(:(major|minor|ionian|dorian|phrygian|lydian|mixolydian|aeolian|locrian))?$"
+HARTE_CHORD_PATTERN = r"^((N)|(([A-G][b#]*)((:(maj|min|dim|aug|maj7|min7|7|dim7|hdim7|minmaj7|maj6|min6|9|maj9|min9|sus4)(\((\*?([b#]*([1-9]|1[0-3]?))(,\*?([b#]*([1-9]|1[0-3]?)))*)\))?)|(:\((\*?([b#]*([1-9]|1[0-3]?))(,\*?([b#]*([1-9]|1[0-3]?)))*)\)))?((/([b#]*([1-9]|1[0-3]?)))?)?))$"
+JAMS_CHORD_PATTERN = r"^((N|X)|(([A-G](b*|#*))((:(maj|min|dim|aug|1|5|sus2|sus4|maj6|min6|7|maj7|min7|dim7|hdim7|minmaj7|aug7|9|maj9|min9|11|maj11|min11|13|maj13|min13)(\((\*?((b*|#*)([1-9]|1[0-3]?))(,\*?((b*|#*)([1-9]|1[0-3]?)))*)\))?)|(:\((\*?((b*|#*)([1-9]|1[0-3]?))(,\*?((b*|#*)([1-9]|1[0-3]?)))*)\)))?((/((b*|#*)([1-9]|1[0-3]?)))?)?))$"
 
 #: Beat position units
 BEAT_POSITION_UNITS = {
@@ -1641,16 +1645,15 @@ def validate_chord_labels(chords, chord_unit):
 
     """
     validate_unit(chord_unit, CHORD_UNITS)
-
     if chord_unit in ["harte", "jams"]:
         if chord_unit == "harte":
-            pattern = namespace("chord_harte")["properties"]["value"]["pattern"]
+            pattern = HARTE_CHORD_PATTERN
         elif chord_unit == "jams":
-            pattern = namespace("chord")["properties"]["value"]["pattern"]
+            pattern = JAMS_CHORD_PATTERN
 
         matches = [re.match(pattern, c) for c in chords]
         if not all(matches):
-            non_matches = [c for (c, m) in zip(chords, matches) if not m]
+            non_matches = [c for c, m in zip(chords, matches) if not m]
             raise ValueError(
                 "chords {} don't conform to chord_unit {}".format(
                     non_matches, chord_unit
@@ -1670,12 +1673,11 @@ def validate_key_labels(keys, key_unit):
 
     """
     validate_unit(key_unit, KEY_UNITS)
-
     if key_unit == "key_mode":
-        pattern = namespace("key_mode")["properties"]["value"]["pattern"]
+        pattern = KEY_MODE_PATTERN
         matches = [re.match(pattern, c) for c in keys]
         if not all(matches):
-            non_matches = [k for (k, m) in zip(keys, matches) if not m]
+            non_matches = [k for k, m in zip(keys, matches) if not m]
             raise ValueError(
                 "keys {} don't conform to key_unit key-mode".format(non_matches)
             )

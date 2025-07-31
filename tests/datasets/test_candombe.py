@@ -41,30 +41,6 @@ def test_track():
     assert audio.shape == (12288,)
 
 
-def test_to_jams():
-    default_trackid = "csic.1995_ansina1_01"
-    data_home = "tests/resources/mir_datasets/candombe"
-    dataset = candombe.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-    beats = jam.search(namespace="beat")[0]["data"]
-
-    assert [beat.time for beat in beats] == [
-        0.548571428,
-        0.993877551,
-        1.461405895,
-        1.895328798,
-        2.332653061,
-        2.809024943,
-        3.253650793,
-        3.684126984,
-        4.115306122,
-        4.581587301,
-        5.019863945,
-        5.473469387,
-    ]
-
-
 def test_load_beats():
     # load a file which exists
     beats_path = (

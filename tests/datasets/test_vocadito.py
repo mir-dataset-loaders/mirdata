@@ -74,23 +74,6 @@ def test_track():
     assert audio.shape == (1464660,)
 
 
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/vocadito"
-    default_trackid = "1"
-    dataset = vocadito.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    f0s = jam.search(namespace="pitch_contour")[0]["data"][:2]
-    assert [f0.time for f0 in f0s] == [0.0, 0.005804988662131519]
-    assert [f0.duration for f0 in f0s] == [0.0, 0.0]
-    assert [f0.value for f0 in f0s] == [
-        {"frequency": 0.0, "index": 0, "voiced": False},
-        {"frequency": 0.0, "index": 0, "voiced": False},
-    ]
-    assert [f0.confidence for f0 in f0s] == [None, None]
-
-
 def test_load_f0():
     f0_path = "tests/resources/mir_datasets/vocadito/Annotations/F0/vocadito_1_f0.csv"
     f0_data = vocadito.load_f0(f0_path)

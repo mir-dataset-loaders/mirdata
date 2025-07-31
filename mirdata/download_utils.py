@@ -6,7 +6,7 @@ import logging
 import os
 import shutil
 import tarfile
-import urllib
+import urllib.request
 import zipfile
 import warnings
 
@@ -113,26 +113,28 @@ def downloader(
                     )
                 )
             objs_to_download = partial_download
+            if "index" in remotes.keys() and "index" not in objs_to_download:
+                objs_to_download.append("index")
         else:
             objs_to_download = list(remotes.keys())
 
         if "index" in objs_to_download and len(objs_to_download) > 1:
-            logging.info(
+            logging.warning(
                 "Downloading {}. Index is being stored in {}, and the rest of files in {}".format(
                     objs_to_download, index.indexes_dir, save_dir
                 )
             )
         elif "index" in objs_to_download and len(objs_to_download) == 1:
-            logging.info(
+            logging.warning(
                 "Downloading {}. Index is being stored in {}".format(
                     objs_to_download, index.indexes_dir
                 )
             )
         else:
-            logging.info("Downloading {} to {}".format(objs_to_download, save_dir))
+            logging.warning("Downloading {} to {}".format(objs_to_download, save_dir))
 
         for k in objs_to_download:
-            logging.info("[{}] downloading {}".format(k, remotes[k].filename))
+            logging.warning("[{}] downloading {}".format(k, remotes[k].filename))
             extension = os.path.splitext(remotes[k].filename)[-1]
             if ".zip" in extension:
                 download_zip_file(
@@ -151,9 +153,30 @@ def downloader(
                     allow_invalid_checksum,
                 )
             else:
-                download_from_remote(
+                download_path = download_from_remote(
                     remotes[k], save_dir, force_overwrite, allow_invalid_checksum
                 )
+
+                # Special handling for index files that might be zipped
+                # Check if this is an index file and if the downloaded file is actually a zip
+                if k == "index" and download_path and os.path.exists(download_path):
+                    try:
+                        # Check if the downloaded file is a zip file by reading the magic bytes
+                        with open(download_path, "rb") as f:
+                            magic_bytes = f.read(2)
+                            if magic_bytes == b"PK":  # ZIP file magic number
+                                logging.info(
+                                    "Index file {} appears to be a ZIP archive, extracting...".format(
+                                        remotes[k].filename
+                                    )
+                                )
+                                unzip(
+                                    download_path, cleanup=False
+                                )  # Always cleanup zip for index files
+                    except Exception as e:
+                        logging.warning(
+                            "Could not check if index file is zipped: {}".format(e)
+                        )
 
             if remotes[k].unpack_directories:
                 for src_dir in remotes[k].unpack_directories:
@@ -167,7 +190,7 @@ def downloader(
                     source_dir = os.path.join(destination_dir, src_dir)
 
                     if not os.path.exists(source_dir):
-                        logging.info(
+                        logging.warning(
                             "Data not downloaded, because it probably already exists on your computer. "
                             + "Run .validate() to check, or rerun with force_overwrite=True to delete any "
                             + "existing files and download from scratch"
@@ -177,7 +200,7 @@ def downloader(
                     move_directory_contents(source_dir, destination_dir)
 
     if info_message is not None:
-        logging.info(info_message.format(save_dir))
+        logging.warning(info_message.format(save_dir))
 
 
 class DownloadProgressBar(tqdm):
@@ -257,7 +280,7 @@ def download_from_remote(remote, save_dir, force_overwrite, allow_invalid_checks
                 logging.error(error_msg)
                 raise exc
     else:
-        logging.info(
+        logging.warning(
             "{} already exists and will not be downloaded. ".format(download_path)
             + "Rerun with force_overwrite=True to delete this file and force the download."
         )
@@ -409,7 +432,7 @@ def move_directory_contents(source_dir, target_dir):
     for fpath in directory_contents:
         target_path = os.path.join(target_dir, os.path.basename(fpath))
         if os.path.exists(target_path):
-            logging.info(
+            logging.warning(
                 "{} already exists. Run with force_overwrite=True to download from scratch".format(
                     target_path
                 )

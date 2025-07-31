@@ -75,29 +75,6 @@ def test_get_audio_voice():
         y, sr = track.get_audio_voice(5)
 
 
-def test_to_jams():
-    default_trackid = "beethoven-violin"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
-    dataset = phenicx_anechoic.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
-    jam = track.to_jams()
-
-    assert jam.validate()
-
-    notes = jam.annotations[0]["data"]
-    assert [note.time for note in notes] == [4.284082, 4.284082, 4.284082]
-    assert [note.duration for note in notes] == [
-        0.9872560000000004,
-        0.9872560000000004,
-        0.9872560000000004,
-    ]
-    assert [note.value for note in notes] == [
-        220.0,
-        329.6275569128699,
-        554.3652619537442,
-    ]
-
-
 def test_load_score():
     # load a file which exists
     score_path = (

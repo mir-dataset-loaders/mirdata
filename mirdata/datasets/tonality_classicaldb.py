@@ -41,7 +41,7 @@ from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
-from mirdata import core, download_utils, io, jams_utils
+from mirdata import core, download_utils, io
 
 
 BIBTEX = """@article{gomez2006tonal,
@@ -163,24 +163,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "title": self.title,
-                "key": self.key,
-                "spectrum": self.spectrum,
-                "hpcp": self.hpcp,
-                "musicbrainz_metatada": self.musicbrainz_metadata,
-            },
-        )
 
 
 @io.coerce_to_bytes_io

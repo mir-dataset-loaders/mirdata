@@ -47,39 +47,6 @@ def test_track():
     run_track_tests(track, expected_attributes, expected_property_types)
 
 
-def test_to_jam():
-    data_home = os.path.normpath("tests/resources/mir_datasets/cipi")
-    dataset = cipi.Dataset(data_home, version="test")
-    track = dataset.track("c-1")
-    jam = track.to_jams()
-    assert (
-        jam["file_metadata"]["title"] == "Piano Sonata f minor op. 2,1"
-    ), "title does not match expected"
-    assert (
-        jam["file_metadata"]["artist"] == "LUDWIG VAN BEETHOVEN"
-    ), "artist does not match expected"
-    assert (
-        jam["sandbox"]["composer"] == "LUDWIG VAN BEETHOVEN"
-    ), "composer does not match expected"
-    assert (
-        jam["sandbox"]["book"] == "Piano Sonatas, Volume I"
-    ), "book does not match expected"
-    assert (
-        jam["sandbox"]["URI"]
-        == "https://www.henle.de/en/detail/?Title=Piano+Sonatas%2C+Volume+I_32"
-    ), "book does not match expected"
-    assert (
-        jam["sandbox"]["difficulty_annotation"] == 6
-    ), "difficulty_annotation does not match expected"
-    assert jam["file_metadata"]["duration"] == 0, "duration does not match expected"
-    assert jam["sandbox"]["musicxml_paths"] == [
-        "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.musicxml",
-        "craig_files/beethoven-piano-sonatas-master/kern/sonata01-2.musicxml",
-        "craig_files/beethoven-piano-sonatas-master/kern/sonata01-3.musicxml",
-        "craig_files/beethoven-piano-sonatas-master/kern/sonata01-4.musicxml",
-    ], "musicxml_paths does not match expected"
-
-
 def test_load_score():
     path = os.path.normpath(
         "craig_files/beethoven-piano-sonatas-master/kern/sonata01-1.musicxml"
