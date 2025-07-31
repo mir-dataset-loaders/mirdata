@@ -25,7 +25,7 @@
      - - .. image:: https://img.shields.io/badge/license-custom-orange
             :target: https://zenodo.org/record/6868083
 
-   * - Ballroom 
+   * - Ballroom
      - - audio: ✅
        - annotations: ✅
      - - :ref:`beats`
@@ -174,7 +174,7 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
-   * - Cuidado 
+   * - Cuidado
      - - audio: ❌
        - annotations: ✅
      - - :ref:`beats`
@@ -219,7 +219,7 @@
      - 8970
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
-          
+
    * - Filosax
      - - audio: 🔑
        - annotations: 🔑
@@ -307,6 +307,16 @@
      - .. image:: https://img.shields.io/badge/License-MIT-blue.svg
           :target: https://lbesson.mit-license.org/
 
+   * - CompMusic IAMMS
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`section`
+       - :ref:`event`
+     - 32
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
    * - Ikala
      - - audio: ❌
        - annotations: ❌
@@ -315,7 +325,7 @@
      - 252
      - :ikala:`\ `
 
-   * - Hainsworth 
+   * - Hainsworth
      - - audio: ❌
        - annotations: ❌
      - - :ref:`beats`
@@ -447,7 +457,7 @@
        - :ref:`sections`
        - :ref:`key`
      - 51
-     - ❌          
+     - ❌
 
    * - RWC classical
      - - audio: ❌
@@ -510,7 +520,7 @@
      - 108
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
-          
+
    * - Saraga-Carnatic-Melody-Synth (SCMS)
      - - audio: ✅
        - annotations: ✅
@@ -520,7 +530,7 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
-   * - SIMAC 
+   * - SIMAC
      - - audio: ❌
        - annotations: ❌
      - - :ref:`beats`
@@ -563,8 +573,8 @@
        - :ref:`notes`
      - 72
      - :tonas:`\ `
-   
-   * - vocadito 
+
+   * - vocadito
      - - audio: ✅
        - annotations: ✅
      - - :ref:`f0`
