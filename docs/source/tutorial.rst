@@ -14,7 +14,7 @@ To install Mirdata:
 
     pip install mirdata
 
-We recommend to do this inside a conda or virtual environment for reproducibility.
+We recommend to do this inside a conda or virtual environment for reproducibility. 
 
 Command-Line Interface
 ----------------------
