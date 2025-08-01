@@ -73,6 +73,7 @@ LICENSE_INFO = (
     "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
 )
 
+
 class Track(core.Track):
     """
     Track class for IAM Melodic Similarity dataset.
@@ -161,16 +162,17 @@ def load_audio(audio_path):
         return None
     return librosa.load(audio_path, sr=44100, mono=False)
 
+
 @io.coerce_to_string_io
 def load_nyas(fhandle):
     """
-        Load a nyas annotation.
+    Load a nyas annotation.
 
-        Args:
-            fhandle (str): path to annotation file
+    Args:
+        fhandle (str): path to annotation file
 
-        Returns:
-            EventData: nyas annotation intervals
+    Returns:
+        EventData: nyas annotation intervals
     """
     intervals = []
     labels = []
@@ -178,22 +180,23 @@ def load_nyas(fhandle):
     for line in reader:
         start = float(line[0])
         end = float(line[1])
-        label = 'nyas'
+        label = "nyas"
         intervals.append([start, end])
         labels.append(label)
 
     return annotations.EventData(np.array(intervals), "s", labels, "open")
 
+
 @io.coerce_to_string_io
 def load_sections(fhandle):
     """
-        Load a sections annotation file.
+    Load a sections annotation file.
 
-        Args:
-            fhandle (str): path to annotation file
+    Args:
+        fhandle (str): path to annotation file
 
-        Returns:
-            SectionData: section annotations with intervals (melodic phrasee) and labels (phrase identifier)
+    Returns:
+        SectionData: section annotations with intervals (melodic phrasee) and labels (phrase identifier)
     """
     intervals = []
     labels = []
@@ -206,6 +209,7 @@ def load_sections(fhandle):
         labels.append(label)
 
     return annotations.SectionData(np.array(intervals), "s", labels, "open")
+
 
 @io.coerce_to_string_io
 def load_pitch(fhandle):
@@ -223,7 +227,7 @@ def load_pitch(fhandle):
     first_line = fhandle.readline()
     fhandle.seek(0)
 
-    delimiter = '\t' if '\t' in first_line else ' '
+    delimiter = "\t" if "\t" in first_line else " "
     reader = csv.reader(fhandle, delimiter=delimiter)
 
     for line in reader:
@@ -237,6 +241,7 @@ def load_pitch(fhandle):
     freqs = np.array(freqs)
     voicing = (freqs > 0).astype(float)
     return annotations.F0Data(times, "s", freqs, "hz", voicing, "binary")
+
 
 @io.coerce_to_string_io
 def load_tonic(fhandle):
@@ -253,6 +258,7 @@ def load_tonic(fhandle):
     tonic = float(next(reader)[0])
     return tonic
 
+
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
@@ -262,6 +268,7 @@ class Dataset(core.Dataset):
     sections, pitch, nyas, and tonic. It is designed to support research
     on melodic similarity with culturally relevant features.
     """
+
     def __init__(self, data_home=None, version="default"):
         super().__init__(
             data_home,
@@ -297,7 +304,6 @@ class Dataset(core.Dataset):
     )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
-
 
     @deprecated(
         reason="Use mirdata.datasets.compmusic_iamms.load_tonic", version="1.0.0"

@@ -52,7 +52,7 @@ def test_track():
             os.path.normpath("tests/resources/mir_datasets/compmusic_iamms/"),
             "Carnatic/ALB_Bhairavi1_70albmgpnganesan/",
             "ALB_Bhairavi1_70albmgpnganesan.tonicFine",
-        )
+        ),
     }
 
     expected_property_types = {
@@ -63,7 +63,7 @@ def test_track():
         "nyas": annotations.EventData,
         "tonic": float,
         "tonic_finetuned": float,
-        "audio": tuple
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -109,11 +109,25 @@ def test_load_pitch():
     # Check values
     assert np.array_equal(
         parsed_pitch.times,
-        np.array([0.000000000000000000e+00, 2.902494331065759697e-03, 5.804988662131519393e-03, 8.707482993197278656e-03]),
+        np.array(
+            [
+                0.000000000000000000e00,
+                2.902494331065759697e-03,
+                5.804988662131519393e-03,
+                8.707482993197278656e-03,
+            ]
+        ),
     )
     assert np.array_equal(
         parsed_pitch_finetuned.times,
-        np.array([0.000000000000000000e+00, 2.902494331065759697e-03, 5.804988662131519393e-03, 8.707482993197278656e-03]),
+        np.array(
+            [
+                0.000000000000000000e00,
+                2.902494331065759697e-03,
+                5.804988662131519393e-03,
+                8.707482993197278656e-03,
+            ]
+        ),
     )
     assert np.array_equal(
         parsed_pitch.frequencies,
@@ -137,9 +151,7 @@ def test_load_pitch():
             ]
         ),
     )
-    assert np.array_equal(
-        parsed_pitch.voicing, np.array([0.0, 1.0, 1.0, 1.0])
-    )
+    assert np.array_equal(parsed_pitch.voicing, np.array([0.0, 1.0, 1.0, 1.0]))
     assert np.array_equal(
         parsed_pitch_finetuned.voicing, np.array([0.0, 1.0, 1.0, 1.0])
     )
