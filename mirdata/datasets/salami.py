@@ -230,6 +230,7 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
+
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
     """Load a Salami audio file.
