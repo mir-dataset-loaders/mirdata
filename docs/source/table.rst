@@ -307,7 +307,7 @@
      - .. image:: https://img.shields.io/badge/License-MIT-blue.svg
           :target: https://lbesson.mit-license.org/
 
-   * - CompMusic IAMMS
+   * - (CompMusic) IAMMS
      - - audio: ✅
        - annotations: ✅
      - - :ref:`f0`

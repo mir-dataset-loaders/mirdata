@@ -20,6 +20,7 @@ CUSTOM_TEST_TRACKS = {
     "compmusic_carnatic_varnam": "dharini_abhogi",
     "compmusic_hindustani_rhythm": "20001",
     "compmusic_indian_tonic": "0a6ebaa4-87cc-452d-a7af-a2006e96f16a_0-180",
+    "compmusic_iamms": "0_ALB_Bhairavi1_70albmgpnganesan",
     "compmusic_jingju_acappella": "lseh-Tan_Yang_jia-Hong_yang_dong-qm",
     "compmusic_otmm_makam": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
     "compmusic_raga": "Aruna_Sairam.Valli_Kanavan",

@@ -118,7 +118,7 @@ compmusic_indian_tonic
 compmusic_iamms
 ^^^^^^^^^^^^^^^
 
-.. automodule:: mirdata.datasets.iamms
+.. automodule:: mirdata.datasets.compmusic_iamms
     :members:
     :inherited-members:
 
