@@ -3,8 +3,8 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    CompMusic Hindustani Rhythm Dataset is a rhythm annotated test corpus for automatic rhythm analysis tasks in Hindustani Music. 
-    The collection consists of audio excerpts from the CompMusic Hindustani research corpus, manually annotated time aligned markers 
+    CompMusic Hindustani Rhythm Dataset is a rhythm annotated test corpus for automatic rhythm analysis tasks in Hindustani Music.
+    The collection consists of audio excerpts from the CompMusic Hindustani research corpus, manually annotated time aligned markers
     indicating the progression through the taal cycle, and the associated taal related metadata. A brief description of the dataset
     is provided below.
 
@@ -19,9 +19,9 @@
     The pieces are stereo, 160 kbps, mp3 files sampled at 44.1 kHz. The audio is also available as wav files for experiments.
 
     **SAM, VIBHAAG AND THE MAATRAS:** The primary annotations are audio synchronized time-stamps indicating the different metrical positions in the taal cycle.
-    The sam and matras of the cycle are annotated. The annotations were created using Sonic Visualizer by tapping to music and manually correcting the taps. 
+    The sam and matras of the cycle are annotated. The annotations were created using Sonic Visualizer by tapping to music and manually correcting the taps.
     Each annotation has a time-stamp and an associated numeric label that indicates the position of the beat marker in the taala cycle. The annotations and the
-    associated metadata have been verified for correctness and completeness by a professional Hindustani musician and musicologist. The long thick lines show 
+    associated metadata have been verified for correctness and completeness by a professional Hindustani musician and musicologist. The long thick lines show
     vibhaag boundaries. The numerals indicate the matra number in cycle. In each case, the sam (the start of the cycle, analogous to the downbeat) are indicated
     using the numeral 1.
 
@@ -50,7 +50,7 @@ import logging
 import librosa
 import numpy as np
 
-from mirdata import annotations, core, io, jams_utils
+from mirdata import annotations, core, io
 from smart_open import open
 
 
@@ -229,35 +229,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            beat_data=[(self.beats, "beats")],
-            metadata={
-                "meter": self.meter,
-                "mbid": self.mbid,
-                "name": self.name,
-                "artist": self.artist,
-                "release": self.release,
-                "lead_instrument_code": self.lead_instrument_code,
-                "taala": self.taala,
-                "raaga": self.raaga,
-                "laya": self.laya,
-                "num_of_beats": self.num_of_beats,
-                "num_of_samas": self.num_of_samas,
-                "median_matra_period": self.median_matra_period,
-                "median_matras_per_min": self.median_matras_per_min,
-                "median_ISI": self.median_ISI,
-                "median_avarts_per_min": self.median_avarts_per_min,
-            },
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267

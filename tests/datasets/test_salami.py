@@ -45,6 +45,8 @@ def test_track():
     }
 
     expected_property_types = {
+        "sections_uppercase": annotations.MultiAnnotator,
+        "sections_lowercase": annotations.MultiAnnotator,
         "sections_annotator_1_uppercase": annotations.SectionData,
         "sections_annotator_1_lowercase": annotations.SectionData,
         "sections_annotator_2_uppercase": annotations.SectionData,
@@ -91,6 +93,12 @@ def test_track():
     }
 
     # test that cached properties don't fail and have the expected type
+    assert type(track.sections_uppercase) is annotations.MultiAnnotator
+    assert type(track.sections_lowercase) is annotations.MultiAnnotator
+    assert track.sections_uppercase.annotations[1] is None
+    assert track.sections_lowercase.annotations[1] is None
+
+    # test deprecated attributes for coverage
     assert type(track.sections_annotator_1_uppercase) is annotations.SectionData
     assert type(track.sections_annotator_1_lowercase) is annotations.SectionData
     assert track.sections_annotator_2_uppercase is None
@@ -114,70 +122,16 @@ def test_track():
     }
 
     # test that cached properties don't fail and have the expected type
+    assert track.sections_uppercase.annotators[0] is None
+    assert track.sections_lowercase.annotations[0] is None
+    assert type(track.sections_uppercase) is annotations.MultiAnnotator
+    assert type(track.sections_lowercase) is annotations.MultiAnnotator
+
+    # test deprecated attributes for coverage
     assert track.sections_annotator_1_uppercase is None
     assert track.sections_annotator_1_lowercase is None
     assert type(track.sections_annotator_2_uppercase) is annotations.SectionData
     assert type(track.sections_annotator_2_lowercase) is annotations.SectionData
-
-
-def test_to_jams():
-    data_home = "tests/resources/mir_datasets/salami"
-    dataset = salami.Dataset(data_home, version="test")
-    track = dataset.track("2")
-    jam = track.to_jams()
-
-    segments = jam.search(namespace="multi_segment")[0]["data"]
-    assert [segment.time for segment in segments] == [
-        0.0,
-        0.0,
-        0.464399092,
-        0.464399092,
-        5.191269841,
-        14.379863945,
-        254.821632653,
-        258.900453514,
-        263.205419501,
-        263.205419501,
-    ]
-    assert [segment.duration for segment in segments] == [
-        0.464399092,
-        0.464399092,
-        13.915464853,
-        4.726870749000001,
-        249.630362812,
-        248.82555555599998,
-        4.078820860999997,
-        4.304965987000003,
-        1.6797959180000248,
-        1.6797959180000248,
-    ]
-    assert [segment.value for segment in segments] == [
-        {"label": "Silence", "level": 0},
-        {"label": "Silence", "level": 1},
-        {"label": "A", "level": 0},
-        {"label": "b", "level": 1},
-        {"label": "b", "level": 1},
-        {"label": "B", "level": 0},
-        {"label": "ab", "level": 1},
-        {"label": "ab", "level": 1},
-        {"label": "Silence", "level": 0},
-        {"label": "Silence", "level": 1},
-    ]
-    assert [segment.confidence for segment in segments] == [
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-    ]
-
-    assert jam["file_metadata"]["title"] == "For_God_And_Country"
-    assert jam["file_metadata"]["artist"] == "The_Smashing_Pumpkins"
 
 
 def test_load_sections():
@@ -209,6 +163,15 @@ def test_load_sections():
     # load none
     section_data_none = salami.load_sections(None)
     assert section_data_none is None
+
+    # load an empty file
+    sections_path = (
+        "tests/resources/mir_datasets/salami/"
+        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase_empty.txt"
+    )
+
+    section_data = salami.load_sections(sections_path)
+    assert section_data is None
 
 
 def test_load_metadata():

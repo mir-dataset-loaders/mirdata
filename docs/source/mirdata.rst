@@ -288,6 +288,14 @@ irmas
    :inherited-members:
 
 
+jtd
+^^^
+
+.. automodule:: mirdata.datasets.jtd
+   :members:
+   :inherited-members:
+
+
 mtg_jamendo_autotagging_moodtheme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -499,12 +507,3 @@ mirdata.download_utils
 
 .. automodule:: mirdata.download_utils
    :members:
-
-
-mirdata.jams_utils
-^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.jams_utils
-   :members:
-
-

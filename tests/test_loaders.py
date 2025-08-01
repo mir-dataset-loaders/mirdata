@@ -4,7 +4,9 @@ import io
 import os
 import sys
 import pytest
-import requests
+import urllib.request
+import urllib.error
+
 
 import mirdata
 from mirdata import core
@@ -184,16 +186,15 @@ def test_download(mocker):
 
                 url = dataset.remotes[key].url
                 try:
-                    request = requests.head(url)
-                    assert request.ok, "Link {} for {} does not return OK".format(
-                        url, dataset_name
-                    )
-                except requests.exceptions.ConnectionError:
-                    assert False, "Link {} for {} is unreachable".format(
-                        url, dataset_name
-                    )
-                except:
-                    assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+                    req = urllib.request.Request(url, method="HEAD")
+                    with urllib.request.urlopen(req, timeout=10) as response:
+                        assert (
+                            response.status == 200
+                        ), f"Link {url} for {dataset_name} does not return OK"
+                except urllib.error.URLError:
+                    assert False, f"Link {url} for {dataset_name} is unreachable"
+                except Exception:
+                    assert False, f"{dataset_name}: {sys.exc_info()[0]}"
         else:
             try:
                 dataset.download()
@@ -288,10 +289,6 @@ def test_track():
             track_test, core.Track
         ), "{}.track must be an instance of type core.Track".format(dataset_name)
 
-        assert hasattr(
-            track_test, "to_jams"
-        ), "{}.track must have a to_jams method".format(dataset_name)
-
         # test calling all attributes, properties and cached properties
         track_data = get_attributes_and_properties(track_test)
 
@@ -303,16 +300,6 @@ def test_track():
 
         for cprop in track_data["cached_properties"]:
             ret = getattr(track_test, cprop)
-
-        # Validate JSON schema
-        try:
-            jam = track_test.to_jams()
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert jam.validate(), "Jams validation failed for {}.track({})".format(
-            dataset_name, trackid
-        )
 
         # will fail if something goes wrong with __repr__
         try:
@@ -382,6 +369,7 @@ EXCEPTIONS = {
             "structure_path": "a/fake/path",
         },
     },
+    "jtd": {"load_beats": {"col_idx": 0}},
 }
 SKIP = {
     "acousticbrainz_genre": [
@@ -469,20 +457,6 @@ def test_multitracks():
             mtrack_test, core.MultiTrack
         ), "{}.MultiTrack must be an instance of type core.MultiTrack".format(
             dataset_name
-        )
-
-        assert hasattr(
-            mtrack_test, "to_jams"
-        ), "{}.MultiTrack must have a to_jams method".format(dataset_name)
-
-        # Validate JSON schema
-        try:
-            jam = mtrack_test.to_jams()
-        except:
-            assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
-
-        assert jam.validate(), "Jams validation failed for {}.MultiTrack({})".format(
-            dataset_name, mtrack_id
         )
 
 

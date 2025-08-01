@@ -33,7 +33,7 @@ from deprecated.sphinx import deprecated
 import librosa
 from smart_open import open
 
-from mirdata import core, download_utils, jams_utils, io
+from mirdata import core, download_utils, io
 
 BIBTEX = """@phdthesis {3897,
     title = {Tonality Estimation in Electronic Dance Music: A Computational and Musically Informed Examination},
@@ -141,24 +141,6 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "artists": self.artists,
-                "genres": self.genres,
-                "tempo": self.tempo,
-                "title": self.title,
-                "key": self.key,
-            },
-        )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267

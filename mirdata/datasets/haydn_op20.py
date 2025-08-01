@@ -17,7 +17,7 @@ from typing import Optional, TextIO, List
 from deprecated.sphinx import deprecated
 import numpy as np
 
-from mirdata import core, io, jams_utils, download_utils
+from mirdata import core, io, download_utils
 
 try:
     import music21
@@ -127,27 +127,6 @@ class Track(core.Track):
             "midi_path is deprecated as of 0.3.4 and will be removed in a future version."
         )
         return convert_and_save_to_midi(self.humdrum_annotated_path)
-
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            metadata={
-                "duration": self.duration,
-                "title": self.title,
-                "key": self.keys,  # format is not the expected by keydata jams namespace
-                "chord": self.chords,  # format is not the expected by chorddata jams namespace
-                "keys_music21": self.keys_music21,
-                "chords_music21": self.chords_music21,
-                "roman_numerals": self.roman_numerals,
-                "midi_path": self.midi_path,
-                "humdrum_annotated_path": self.humdrum_annotated_path,
-            }
-        )
 
 
 def _split_score_annotations(fhandle: TextIO):

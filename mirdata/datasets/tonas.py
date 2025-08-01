@@ -52,7 +52,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, jams_utils, core, io
+from mirdata import annotations, core, io
 
 
 BIBTEX = """
@@ -188,20 +188,6 @@ class Track(core.Track):
     def notes(self) -> Optional[annotations.NoteData]:
         return load_notes(self.notes_path)
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            f0_data=[(self.f0, "pitch_contour")],
-            note_data=[(self.notes, "note_hz")],
-            metadata=self._track_metadata,
-        )
-
 
 def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     """Load a TONAS audio file.
@@ -217,12 +203,12 @@ def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
     return librosa.load(fhandle, sr=44100, mono=True)
 
 
-# no decorator because of https://github.com/mir-dataset-loaders/mirdata/issues/503
-def load_f0(fpath: str, corrected: bool) -> Optional[annotations.F0Data]:
+@io.coerce_to_string_io
+def load_f0(fpath: TextIO, corrected: bool) -> Optional[annotations.F0Data]:
     """Load TONAS f0 annotations
 
     Args:
-        fpath (str): path pointing to f0 annotation file
+        fpath (str or file-like): path pointing to f0 annotation file
         corrected (bool): if True, loads manually corrected frequency values
             otherwise, loads automatically extracted frequency values
 
@@ -234,13 +220,12 @@ def load_f0(fpath: str, corrected: bool) -> Optional[annotations.F0Data]:
     freqs = []
     freqs_corr = []
     energies = []
-    with open(fpath, "r") as fhandle:
-        reader = np.genfromtxt(fhandle)
-        for line in reader:
-            times.append(float(line[0]))
-            freqs.append(float(line[2]))
-            freqs_corr.append(float(line[3]))
-            energies.append(float(line[1]))
+    reader = np.genfromtxt(fpath)
+    for line in reader:
+        times.append(float(line[0]))
+        freqs.append(float(line[2]))
+        freqs_corr.append(float(line[3]))
+        energies.append(float(line[1]))
 
     freq_array = np.array(freqs_corr if corrected else freqs, dtype="float")
     energy_array = np.array(energies, dtype="float")

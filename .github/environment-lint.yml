@@ -17,6 +17,5 @@ dependencies:
   - types-decorator>=5.1.8.3
 
   - pip:
-    - jams>=0.3.4
     - types-Deprecated
     - types-PyYAML

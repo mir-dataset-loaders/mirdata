@@ -5,7 +5,7 @@
 
     The Filosax dataset was conceived, curated and compiled by Dave Foster (a PhD student on the AIM programme at QMUL) and his supervisor Simon Dixon (C4DM @ QMUL).
     The dataset is a collection of 48 multitrack jazz recordings, where each piece has 8 corresponding audio files:
-    
+
     1) The original Aebersold backing track (stereo)
     2) Bass_Drums, a mono file of a mix of bass and drums
     3) Piano_Drums, a mono file of a mix of piano and drums
@@ -14,22 +14,22 @@
     6) Participant 3 Sax, a mono file of solo saxophone
     7) Participant 4 Sax, a mono file of solo saxophone
     8) Participant 5 Sax, a mono file of solo saxophone
-    
+
     Each piece is ~6mins long, so each of the 8 stems contains ~5hours of audio
-    
+
     For each piece, there is a corresponding .jams file containing piece-level annotations:
-    
+
     1) Beat annotation for the start of each bar and any mid-bar chord change
     2) Chord annotation for each bar, and mid-bar chord change
     3) Section annotation for when the solo changes between the 3 categories:
         a) head (melody)
         b) written solo (interpretation of transcribed solo)
         c) improvised solo
-        
+
     For each Sax recording (5 per piece), there is a corresponding .json file containing note annotations (see Note object).
-    
+
     The Participant folders also contain MIDI files of the transcriptions (frame level and score level) as well as a PDF and MusicXML of the typeset solo.
-    
+
     The dataset comes in 2 flavours: full (all 48 tracks and 5 sax players) and lite (5 tracks and 2 sax players).
     Both flavours can be used with or without the backing tracks (which need to be purchased online).
     Hence, when opening the dataset, use one of 4 versions: 'full', 'full_sax', 'lite', 'lite_sax'.
@@ -39,14 +39,13 @@
 import csv
 import json
 import os
-import jams
 from typing import BinaryIO, Dict, Optional, TextIO, Tuple, List
 
 import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import download_utils, jams_utils, core, annotations, io
+from mirdata import download_utils, core, annotations, io
 
 BIBTEX = """
 @inproceedings{
@@ -336,9 +335,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        return jams_utils.jams_converter(audio_path=self.audio_path)
-
 
 class MultiTrack(core.MultiTrack):
     """Filosax multitrack class
@@ -385,9 +381,10 @@ class MultiTrack(core.MultiTrack):
         return "audio"
 
     @core.cached_property
-    def annotation(self) -> Optional[annotations.EventData]:
-        """output type: .jams file"""
-        return jams.load(self.annotation_path)
+    def annotation(self) -> Optional[dict]:
+        """output type: dictionary loaded from json file"""
+        with open(self.annotation_path, "r") as fhandle:
+            return json.load(fhandle)
 
     @property
     def name(self):
@@ -417,7 +414,11 @@ class MultiTrack(core.MultiTrack):
             * (SortedKeyList, Observation) - timestamp, duration (seconds), beat
 
         """
-        return self.annotation.search(namespace="beat")[0]["data"]
+        return [
+            x["data"]
+            for x in self.annotation["annotations"]
+            if x["namespace"] == "beat"
+        ][0]
 
     @property
     def chords(self):
@@ -427,17 +428,26 @@ class MultiTrack(core.MultiTrack):
             * (SortedKeyList, Observation) - timestamp, duration (seconds), chord symbol
 
         """
-        return self.annotation.search(namespace="chord")[0]["data"]
+        return [
+            x["data"]
+            for x in self.annotation["annotations"]
+            if x["namespace"] == "chord"
+        ][0]
 
     @property
     def segments(self):
-        """The times of segment changes (values are 'head', 'written solo', 'improvised solo')
+        """
+        The times of segment changes (values are 'head', 'written solo', 'improvised solo')
 
         Returns:
             * (SortedKeyList, Observation) - timestamp, duration (seconds), beat
 
         """
-        return self.annotation.search(namespace="segment_open")[0]["data"]
+        return [
+            x["data"]
+            for x in self.annotation["annotations"]
+            if x["namespace"] == "segment_open"
+        ][0]
 
     @property
     def bass_drums(self):
@@ -468,10 +478,6 @@ class MultiTrack(core.MultiTrack):
 
         """
         return [self.tracks["%s_sax_%d" % (self.mtrack_id, n)] for n in [1, 2, 3, 4, 5]]
-
-    def to_jams(self):
-        """Jams: the track's data in jams format"""
-        return self.annotation
 
 
 @io.coerce_to_bytes_io

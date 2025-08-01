@@ -19,7 +19,7 @@ import gzip
 import logging
 import os
 import pickle
-from typing import BinaryIO, Optional, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -27,7 +27,7 @@ import numpy as np
 from smart_open import open
 
 from mirdata import download_utils
-from mirdata import jams_utils
+
 from mirdata import core
 from mirdata import annotations
 from mirdata import io
@@ -215,24 +215,6 @@ class Track(core.Track):
         """
         return load_audio(self.audio_path)
 
-    def to_jams(self):
-        """Get the track's data in jams format
-
-        Returns:
-            jams.JAMS: the track's data in jams format
-
-        """
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            lyrics_data=[
-                (self.words, "word-aligned lyrics"),
-                (self.lines, "line-aligned lyrics"),
-                (self.paragraphs, "paragraph-aligned lyrics"),
-            ],
-            note_data=[(self.notes, "annotated vocal notes")],
-            metadata=self._track_metadata,
-        )
-
 
 @io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
@@ -249,23 +231,23 @@ def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
     return librosa.load(fhandle, sr=None, mono=True)
 
 
-def load_annotations_granularity(annotations_path, granularity):
+@io.coerce_to_string_io
+def load_annotations_granularity(annotations_path: TextIO, granularity: str):
     """Load annotations at the specified level of granularity
 
     Args:
-        annotations_path (str): path to a DALI annotation file
+        annotations_path (str or file-like): path to a DALI annotation file
         granularity (str): one of 'notes', 'words', 'lines', 'paragraphs'
 
     Returns:
         NoteData for granularity='notes' or LyricData otherwise
 
     """
-    try:
-        with gzip.open(annotations_path, "rb") as f:
-            output = pickle.load(f)
-    except Exception as e:
-        with gzip.open(annotations_path, "r") as f:
-            output = pickle.load(f)
+    # We no longer need the try/except block here
+    # If the file does not exist, we'll get an error in the decorator instead
+    with gzip.open(annotations_path.name, "rb") as f:
+        output = pickle.load(f)
+
     text = []
     notes = []
     begs = []
@@ -276,12 +258,11 @@ def load_annotations_granularity(annotations_path, granularity):
         ends.append(round(annot["time"][1], 3))
         text.append(annot["text"])
     if granularity == "notes":
-        annotation = annotations.NoteData(
+        return annotations.NoteData(
             np.array([begs, ends]).T, "s", np.array(notes), "hz"
         )
     else:
-        annotation = annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
-    return annotation
+        return annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
 
 
 def load_annotations_class(annotations_path):

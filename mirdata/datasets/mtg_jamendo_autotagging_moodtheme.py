@@ -43,7 +43,7 @@ from typing import Optional, Tuple, BinaryIO
 from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
-from mirdata import download_utils, jams_utils, core
+from mirdata import download_utils, core
 from smart_open import open
 
 BIBTEX = """@conference {bogdanov2019mtg,
@@ -140,21 +140,17 @@ class Track(core.Track):
         return float(self._track_metadata.get("DURATION"))
 
     @core.cached_property
-    def tags(self) -> str:
-        return self._track_metadata.get("TAGS")
-
-    def to_jams(self):
-        # Initialize top-level JAMS container
-        return jams_utils.jams_converter(
-            audio_path=self.audio_path,
-            metadata={
-                "track_id": self.track_id,
-                "artist_id": self.artist_id,
-                "album_id": self.album_id,
-                "duration": self.duration,
-                "tags": self.tags,
-            },
-        )
+    def tags(self) -> list:
+        """
+        Returns a list of all tags for this track
+        """
+        tag_values = self._track_metadata.get("TAGS", [])
+        tags = []
+        for value in tag_values:
+            if value and isinstance(value, str) and "---" in value:
+                _, tag = value.split("---", 1)
+                tags.append(tag.strip())
+        return tags
 
 
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
@@ -198,11 +194,25 @@ class Dataset(core.Dataset):
 
         try:
             with open(meta_path, "r") as fhandle:
-                reader = csv.DictReader(fhandle, delimiter="\t")
-                meta = {
-                    row["TRACK_ID"]: {k: row[k] for k in row if k != "TRACK_ID"}
-                    for row in reader
-                }
+                reader = csv.reader(fhandle, delimiter="\t")
+                next(reader)
+                # The first columns are: TRACK_ID, ARTIST_ID, ALBUM_ID, PATH, DURATION
+                # All remaining columns are tags (variable number)
+                meta = {}
+                for row in reader:
+                    track_id = row[0]
+                    artist_id = row[1]
+                    album_id = row[2]
+                    path = row[3]
+                    duration = row[4]
+                    tags = row[5:]
+                    meta[track_id] = {
+                        "ARTIST_ID": artist_id,
+                        "ALBUM_ID": album_id,
+                        "PATH": path,
+                        "DURATION": duration,
+                        "TAGS": [t for t in tags if t],
+                    }
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 

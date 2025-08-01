@@ -1,15 +1,18 @@
-"""mirdata annotation data types
-"""
+"""mirdata annotation data types"""
 
 import logging
 import re
 from typing import List, Optional, Tuple
 
 from deprecated.sphinx import deprecated
-from jams.schema import namespace
 import librosa
 import numpy as np
 import scipy
+
+# Regex pattern needed to validate chords and keys
+KEY_MODE_PATTERN = r"^N|([A-G][b#]?)(:(major|minor|ionian|dorian|phrygian|lydian|mixolydian|aeolian|locrian))?$"
+HARTE_CHORD_PATTERN = r"^((N)|(([A-G][b#]*)((:(maj|min|dim|aug|maj7|min7|7|dim7|hdim7|minmaj7|maj6|min6|9|maj9|min9|sus4)(\((\*?([b#]*([1-9]|1[0-3]?))(,\*?([b#]*([1-9]|1[0-3]?)))*)\))?)|(:\((\*?([b#]*([1-9]|1[0-3]?))(,\*?([b#]*([1-9]|1[0-3]?)))*)\)))?((/([b#]*([1-9]|1[0-3]?)))?)?))$"
+JAMS_CHORD_PATTERN = r"^((N|X)|(([A-G](b*|#*))((:(maj|min|dim|aug|1|5|sus2|sus4|maj6|min6|7|maj7|min7|dim7|hdim7|minmaj7|aug7|9|maj9|min9|11|maj11|min11|13|maj13|min13)(\((\*?((b*|#*)([1-9]|1[0-3]?))(,\*?((b*|#*)([1-9]|1[0-3]?)))*)\))?)|(:\((\*?((b*|#*)([1-9]|1[0-3]?))(,\*?((b*|#*)([1-9]|1[0-3]?)))*)\)))?((/((b*|#*)([1-9]|1[0-3]?)))?)?))$"
 
 #: Beat position units
 BEAT_POSITION_UNITS = {
@@ -75,6 +78,26 @@ class Annotation(object):
         attributes = [v for v in dir(self) if not v.startswith("_")]
         repr_str = f"{self.__class__.__name__}({', '.join(attributes)})"
         return repr_str
+
+
+class MultiAnnotator(object):
+    """Multiple annotator class.
+    This class should be used for datasets with multiple annotators (e.g. multiple annotators per track).
+
+    Attributes:
+        annotators (list): list with annotator ids
+        annotations (list): list of annotations (e.g. [beat_data1, beat_data2] each with
+                             type BeatData or  [chord_data1, chord_data2] each with type chord data
+
+    """
+
+    def __init__(self, annotators, annotations, dtype) -> None:
+        validate_array_like(annotators, list, str, none_allowed=True)
+        validate_array_like(annotations, list, dtype, none_allowed=True)
+        validate_lengths_equal([annotators, annotations])
+
+        self.annotators = annotators
+        self.annotations = annotations
 
 
 class BeatData(Annotation):
@@ -1379,7 +1402,9 @@ def closest_index(input_array, target_array):
     return indexes
 
 
-def validate_array_like(array_like, expected_type, expected_dtype, none_allowed=False):
+def validate_array_like(
+    array_like, expected_type, expected_dtype, check_child=False, none_allowed=False
+):
     """Validate that array-like object is well formed
 
     If array_like is None, validation passes automatically.
@@ -1388,11 +1413,12 @@ def validate_array_like(array_like, expected_type, expected_dtype, none_allowed=
         array_like (array-like): object to validate
         expected_type (type): expected type, either list or np.ndarray
         expected_dtype (type): expected dtype
+        check_child (bool): if True, checks if all elements of array are children of expected_dtype
         none_allowed (bool): if True, allows array to be None
 
     Raises:
         TypeError: if type/dtype does not match expected_type/expected_dtype
-        ValueError: if array
+        ValueError: if array is empty but it shouldn't be
 
     """
     if array_like is None:
@@ -1412,7 +1438,9 @@ def validate_array_like(array_like, expected_type, expected_dtype, none_allowed=
         )
 
     if expected_type == list and not all(
-        isinstance(n, expected_dtype) for n in array_like
+        isinstance(n, expected_dtype)
+        for n in array_like
+        if not ((n is None) and none_allowed)
     ):
         raise TypeError(f"List elements should all have type {expected_dtype}")
 
@@ -1642,16 +1670,15 @@ def validate_chord_labels(chords, chord_unit):
 
     """
     validate_unit(chord_unit, CHORD_UNITS)
-
     if chord_unit in ["harte", "jams"]:
         if chord_unit == "harte":
-            pattern = namespace("chord_harte")["properties"]["value"]["pattern"]
+            pattern = HARTE_CHORD_PATTERN
         elif chord_unit == "jams":
-            pattern = namespace("chord")["properties"]["value"]["pattern"]
+            pattern = JAMS_CHORD_PATTERN
 
         matches = [re.match(pattern, c) for c in chords]
         if not all(matches):
-            non_matches = [c for (c, m) in zip(chords, matches) if not m]
+            non_matches = [c for c, m in zip(chords, matches) if not m]
             raise ValueError(
                 "chords {} don't conform to chord_unit {}".format(
                     non_matches, chord_unit
@@ -1671,12 +1698,11 @@ def validate_key_labels(keys, key_unit):
 
     """
     validate_unit(key_unit, KEY_UNITS)
-
     if key_unit == "key_mode":
-        pattern = namespace("key_mode")["properties"]["value"]["pattern"]
+        pattern = KEY_MODE_PATTERN
         matches = [re.match(pattern, c) for c in keys]
         if not all(matches):
-            non_matches = [k for (k, m) in zip(keys, matches) if not m]
+            non_matches = [k for k, m in zip(keys, matches) if not m]
             raise ValueError(
                 "keys {} don't conform to key_unit key-mode".format(non_matches)
             )
