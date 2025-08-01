@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """Version info"""
 
-short_version = "0.3"
-version = "0.3.10a"
+short_version = "1.0"
+version = "1.0.0rc1"
+
