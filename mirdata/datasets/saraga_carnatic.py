@@ -270,9 +270,6 @@ def load_pitch(fhandle):
         times.append(float(line[0]))
         freqs.append(float(line[1]))
 
-    if not times:
-        return None
-
     times = np.array(times)
     freqs = np.array(freqs)
     voicing = (freqs > 0).astype(float)
