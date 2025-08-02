@@ -4,7 +4,9 @@ import io
 import os
 import sys
 import pytest
-import requests
+import urllib.request
+import urllib.error
+
 
 import mirdata
 from mirdata import core
@@ -185,16 +187,15 @@ def test_download(mocker):
 
                 url = dataset.remotes[key].url
                 try:
-                    request = requests.head(url)
-                    assert request.ok, "Link {} for {} does not return OK".format(
-                        url, dataset_name
-                    )
-                except requests.exceptions.ConnectionError:
-                    assert False, "Link {} for {} is unreachable".format(
-                        url, dataset_name
-                    )
-                except:
-                    assert False, "{}: {}".format(dataset_name, sys.exc_info()[0])
+                    req = urllib.request.Request(url, method="HEAD")
+                    with urllib.request.urlopen(req, timeout=10) as response:
+                        assert (
+                            response.status == 200
+                        ), f"Link {url} for {dataset_name} does not return OK"
+                except urllib.error.URLError:
+                    assert False, f"Link {url} for {dataset_name} is unreachable"
+                except Exception:
+                    assert False, f"{dataset_name}: {sys.exc_info()[0]}"
         else:
             try:
                 dataset.download()
