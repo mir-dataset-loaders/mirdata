@@ -475,33 +475,3 @@ Next is a simple example of a class that can be used to create a torch Dataset a
         md = DataLoader(MIRDataset("orchset"), batch_size=2, shuffle=True, drop_last=False)
         for audio, times, freqs in md:
             pass  # train your model on this data
-
-
-Using mirdata with JAMS
-^^^^^^^^^^^^^^^^^^^^^^^
-
-This section demonstrates how to use JAMS to load track's data.
-
-Ensure you have JAMS installed by running:
-
-    .. code-block:: bash
-
-        pip install jams
-
-For more information, visit the `JAMS documentation <https://jams.readthedocs.io/en/stable/index.html>`_.
-
-.. admonition:: jams_utils
-    :class: dropdown
-
-    The following code contains *jams_converter*, an utility function necessary to convert a track's data into JAMS format.
-
-    .. literalinclude:: tutorial_examples/jams_utils.py
-        :language: python
-
-
-.. admonition:: Using JAMS to Read Annotations
-
-    The following example shows how to convert a track's data into JAMS format by using the utility function above.
-
-    .. literalinclude:: tutorial_examples/to_jams.py
-        :language: python
