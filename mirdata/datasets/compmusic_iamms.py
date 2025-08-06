@@ -32,7 +32,6 @@
 import csv
 import json
 
-from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
 
@@ -40,7 +39,7 @@ from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """
 @inproceedings{gulati2015improving,
-  author    = {Sankalp Gulati and Joan Serr{\`a} and Xavier Serra},
+  author    = {Sankalp Gulati and Joan Serr{\\`a} and Xavier Serra},
   title     = {Improving melodic similarity in Indian art music using culture-specific melodic characteristics},
   booktitle = {Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR)},
   pages     = {680--686},
@@ -278,32 +277,17 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    @deprecated(
-        reason="Use mirdata.datasets.compmusic_iamms.load_audio", version="1.0.0"
-    )
     def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.compmusic_iamms.load_sections", version="1.0.0"
-    )
     def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.compmusic_iamms.load_nyas", version="1.0.0"
-    )
     def load_nyas(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.compmusic_iamms.load_pitch", version="1.0.0"
-    )
     def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
-    @deprecated(
-        reason="Use mirdata.datasets.compmusic_iamms.load_tonic", version="1.0.0"
-    )
     def load_tonic(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
