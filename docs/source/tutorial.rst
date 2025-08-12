@@ -96,7 +96,6 @@ downloaded, by passing to the ``download()`` function the list of keys in ``REMO
 list is passed to the ``download()`` function through the ``partial_download`` variable.
 
 .. admonition:: Example REMOTES
-    :class: dropdown
 
     .. code-block:: python
 
@@ -152,7 +151,6 @@ Accessing annotations
 We can choose a random track from a dataset with the ``choice_track()`` method.
 
 .. admonition:: Loading annotations
-    :class: dropdown
 
     .. code-block:: python
 
@@ -216,7 +214,6 @@ when initializing a dataset. For example:
 .. _smart_open: https://pypi.org/project/smart-open/
 
 .. admonition:: Accessing annotations remotely
-    :class: dropdown
 
     .. code-block:: python
 
@@ -238,7 +235,7 @@ when initializing a dataset. For example:
     filesystem.
 
 .. admonition:: mp3 data
-    :class: dropdown, warning
+    :class: warning
 
     For a variety of reasons, mirdata doesn't support remote reading of mp3 files, so some datasets with
     mp3 audio may have tracks unavailable attributes.
@@ -286,7 +283,6 @@ If we wanted to use ``orchset`` to evaluate the performance of a melody extracti
 metadata, we could do the following:
 
 .. admonition:: mirdata usage example
-    :class: dropdown
 
     .. code-block:: python
 
@@ -330,7 +326,6 @@ metadata, we could do the following:
 This is the result of the example above.
 
 .. admonition:: Example result
-    :class: dropdown
 
     .. code-block:: python
 
@@ -369,7 +364,6 @@ Using mirdata with tensorflow
 The following is a simple example of a generator that can be used to create a tensorflow Dataset.
 
 .. admonition:: mirdata with tf.data.Dataset example
-    :class: dropdown
 
     .. code-block:: python
 
@@ -412,7 +406,6 @@ Using mirdata with pytorch
 Next is a simple example of a class that can be used to create a torch Dataset and DataLoader.
 
 .. admonition:: mirdata with torch.utils.data.Dataset example
-    :class: dropdown
 
     .. code-block:: python
 
