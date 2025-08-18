@@ -10,8 +10,8 @@
 Supported Datasets and Annotations
 ##################################
 
-⭐ Dataset Quick Reference ⭐
-=============================
+Dataset Quick Reference 
+=======================
 
 This table is provided as a guide for users to select appropriate datasets. The
 list of annotations omits some metadata for brevity, and we document the dataset's

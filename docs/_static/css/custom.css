@@ -15,3 +15,7 @@ span.caption-text {
 div.wy-menu .caption-text {
     color: #a054d8;
 }
+
+div.wy-nav-content {
+    max-width: 100%;
+}
