@@ -63,7 +63,6 @@ Please see :ref:`contributing` for guidelines.
    source/overview
    source/quick_reference
    source/contributing
-   source/tutorial_edit
    source/tutorial
 
 .. toctree::
