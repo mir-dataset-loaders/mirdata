@@ -20,20 +20,29 @@ Installing mirdata for development purposes
 
 To install Mirdata for development purposes:
 
-    - First, fork the Mirdata repository on GitHub and clone your fork locally.
+1. First, fork the Mirdata repository on GitHub and clone your fork locally.
+2. Then, after opening source data library you have to install all the dependencies:
 
-    - Then, after opening source data library you have to install all the dependencies:
+.. code-block:: bash
+    
+    # Install Core dependencies
+    pip install .
 
-      - Install Core dependencies with ``pip install .``
-      - Install Testing dependencies with ``pip install ."[tests]"``
-      - Install Docs dependencies with ``pip install ."[docs]"``
-      - Install dataset-specific dependencies with ``pip install ."[dataset]"`` where ``dataset`` can be ``dali | haydn_op20 | cipi ...``
+    #Install Testing dependencies
+    pip install."[tests]"
 
+    #Install Docs dependencies
+    pip install."[docs]"
 
-We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions
-and install all Mirdata requirements. You will want to install the latest supported Python versions (see README.md).
-Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the necessary pytest
-plugins to automatically test your code successfully (e.g. `pytest-cov`). Finally, run:
+    #Install dataset-specific dependencies
+    pip install."[dataset]"  # where dataset can be dali | haydn_op20 | cipi ...
+
+.. note:: We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions 
+    and install all Mirdata requirements. You will want to install the latest supported Python versions (see README.md).
+    Once ``pyenv`` and the Python versions are configured, install ``pytest``. Make sure you installed all the necessary pytest 
+    plugins to automatically test your code successfully (e.g. `pytest-cov`). 
+    
+
 
 Before running the tests, make sure to have formatted ``mirdata/`` and ``tests/`` with ``black``.
 
@@ -101,20 +110,23 @@ Users can adapt this function to create an index for their dataset by adding the
 
 .. _index example:
 
-Here there is an example of an index to use as guideline:
 
 .. admonition:: Example Make Index Script
-    :class: dropdown
+    
+    .. toggle::
 
-    .. literalinclude:: contributing_examples/make_example_index.py
-        :language: python
+        .. literalinclude:: contributing_examples/make_example_index.py
+            :language: python
 
-More examples of scripts used to create dataset indexes can be found in the `scripts <https://github.com/mir-dataset-loaders/mirdata/tree/master/scripts>`_ folder.
+    More examples of scripts used to create dataset indexes can be found in the `scripts <https://github.com/mir-dataset-loaders/mirdata/tree/master/scripts>`_ folder.
 
-.. note::
+.. admonition:: Note
+    :class: warning
+
     Users should be able to create the dataset indexes without the need for additional dependencies that are not included in Mirdata by default. Should you need an additional dependency for a specific reason, please open an issue to discuss with the Mirdata maintainers the need for it.
 
-tracks
+
+Tracks
 ^^^^^^
 
 Most MIR datasets are organized as a collection of tracks and annotations. In such case, the index should make use of the ``tracks``
@@ -122,151 +134,155 @@ top-level key. A dictionary should be stored under the ``tracks`` top-level key 
 The values are a dictionary of files associated with a track id, along with their checksums. These files can be for instance audio files
 or annotations related to the track id. File paths are relative to the top level directory of a dataset.
 
+
 .. admonition:: Index Examples - Tracks
-    :class: dropdown
 
-    If the version `1.0` of a given dataset has the structure:
+    .. toggle::
 
-    .. code-block:: javascript
+        If the version ``1.0`` of a given dataset has the structure:
 
-        > Example_Dataset/
-            > audio/
-                track1.wav
-                track2.wav
-                track3.wav
-            > annotations/
-                track1.csv
-                Track2.csv
-                track3.csv
-            > metadata/
-                metadata_file.csv
+            .. code-block:: javascript
 
-    The top level directory is ``Example_Dataset`` and the relative path for ``track1.wav``
-    would be ``audio/track1.wav``. Any unavailable fields are indicated with `null`. A possible index file for this example would be:
+                > Example_Dataset/
+                    > audio/
+                        track1.wav
+                        track2.wav
+                        track3.wav
+                    > annotations/
+                        track1.csv
+                        Track2.csv
+                        track3.csv
+                    > metadata/
+                        metadata_file.csv
 
-    .. code-block:: javascript
+        The top level directory is ``Example_Dataset`` and the relative path for ``track1.wav``
+        would be ``audio/track1.wav``. Any unavailable fields are indicated with `null`. A possible index file for this example would be:
+
+        
+
+        .. code-block:: javascript
 
 
-        {   "version": "1.0",
-            "tracks":
-                "track1": {
-                    "audio": [
-                        "audio/track1.wav",  // the relative path for track1's audio file
-                        "912ec803b2ce49e4a541068d495ab570"  // track1.wav's md5 checksum
-                    ],
-                    "annotation": [
-                        "annotations/track1.csv",  // the relative path for track1's annotation
-                        "2cf33591c3b28b382668952e236cccd5"  // track1.csv's md5 checksum
+            {   "version": "1.0",
+                "tracks":
+                    "track1": {
+                        "audio": [
+                            "audio/track1.wav",  // the relative path for track1's audio file
+                            "912ec803b2ce49e4a541068d495ab570"  // track1.wav's md5 checksum
+                        ],
+                        "annotation": [
+                            "annotations/track1.csv",  // the relative path for track1's annotation
+                            "2cf33591c3b28b382668952e236cccd5"  // track1.csv's md5 checksum
+                        ]
+                    },
+                    "track2": {
+                        "audio": [
+                            "audio/track2.wav",
+                            "65d671ec9787b32cfb7e33188be32ff7"
+                        ],
+                        "annotation": [
+                            "annotations/Track2.csv",
+                            "e1964798cfe86e914af895f8d0291812"
+                        ]
+                    },
+                    "track3": {
+                        "audio": [
+                            "audio/track3.wav",
+                            "60edeb51dc4041c47c031c4bfb456b76"
+                        ],
+                        "annotation": [
+                            "annotations/track3.csv",
+                            "06cb006cc7b61de6be6361ff904654b3"
+                        ]
+                    },
+                }
+            "metadata": {
+                    "metadata_file": [
+                        "metadata/metadata_file.csv",
+                        "7a41b280c7b74e2ddac5184708f9525b"
                     ]
-                },
-                "track2": {
-                    "audio": [
-                        "audio/track2.wav",
-                        "65d671ec9787b32cfb7e33188be32ff7"
-                    ],
-                    "annotation": [
-                        "annotations/Track2.csv",
-                        "e1964798cfe86e914af895f8d0291812"
-                    ]
-                },
-                "track3": {
-                    "audio": [
-                        "audio/track3.wav",
-                        "60edeb51dc4041c47c031c4bfb456b76"
-                    ],
-                    "annotation": [
-                        "annotations/track3.csv",
-                        "06cb006cc7b61de6be6361ff904654b3"
-                    ]
-                },
             }
-        "metadata": {
-                "metadata_file": [
-                    "metadata/metadata_file.csv",
-                    "7a41b280c7b74e2ddac5184708f9525b"
-                ]
-        }
-        }
+            }
 
 
-    .. note::
-        In this example there is a (purposeful) mismatch between the name of the audio file ``track2.wav`` and its corresponding annotation file, ``Track2.csv``, compared with the other pairs. This mismatch should be included in the index. This type of slight difference in filenames happens often in publicly available datasets, making pairing audio and annotation files more difficult. We use a fixed, version-controlled index to account for this kind of mismatch, rather than relying on string parsing on load.
+        .. note::
+            In this example there is a (purposeful) mismatch between the name of the audio file ``track2.wav`` and its corresponding annotation file, ``Track2.csv``, compared with the other pairs. This mismatch should be included in the index. This type of slight difference in filenames happens often in publicly available datasets, making pairing audio and annotation files more difficult. We use a fixed, version-controlled index to account for this kind of mismatch, rather than relying on string parsing on load.
 
 
-multitracks
+Multitracks
 ^^^^^^^^^^^
 
 .. admonition:: Index Examples - Multitracks
-    :class: dropdown
 
-    If the version `1.0` of a given multitrack dataset has the structure:
+    .. toggle::
 
-    .. code-block:: javascript
+        If the version ``1.0`` of a given multitrack dataset has the structure:
 
-        > Example_Dataset/
-            > audio/
-                multitrack1-voice1.wav
-                multitrack1-voice2.wav
-                multitrack1-accompaniment.wav
-                multitrack1-mix.wav
-                multitrack2-voice1.wav
-                multitrack2-voice2.wav
-                multitrack2-accompaniment.wav
-                multitrack2-mix.wav
-            > annotations/
-                multitrack1-voice-f0.csv
-                multitrack2-voice-f0.csv
-                multitrack1-f0.csv
-                multitrack2-f0.csv
-            > metadata/
-                metadata_file.csv
+        
 
-    The top level directory is ``Example_Dataset`` and the relative path for ``multitrack1-voice1``
-    would be ``audio/multitrack1-voice1.wav``. Any unavailable fields are indicated with `null`. A possible index file for this example would be:
+        .. code-block:: javascript
 
-    .. code-block:: javascript
+            > Example_Dataset/
+                > audio/
+                    multitrack1-voice1.wav
+                    multitrack1-voice2.wav
+                    multitrack1-accompaniment.wav
+                    multitrack1-mix.wav
+                    multitrack2-voice1.wav
+                    multitrack2-voice2.wav
+                    multitrack2-accompaniment.wav
+                    multitrack2-mix.wav
+                > annotations/
+                    multitrack1-voice-f0.csv
+                    multitrack2-voice-f0.csv
+                    multitrack1-f0.csv
+                    multitrack2-f0.csv
+                > metadata/
+                    metadata_file.csv
 
-        {
-            "version": 1,
-            "tracks": {
-                "multitrack1-voice": {
-                    "audio_voice1": ('audio/multitrack1-voice1.wav', checksum),
-                    "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),
-                    "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum)
+
+        The top level directory is ``Example_Dataset`` and the relative path for ``multitrack1-voice1``
+        would be ``audio/multitrack1-voice1.wav``. Any unavailable fields are indicated with `null`. A possible index file for this example would be:
+
+        
+            
+        .. code-block:: javascript
+
+            {
+                "version": 1,
+                "tracks": {
+                    "multitrack1-voice": {
+                        "audio_voice1": ('audio/multitrack1-voice1.wav', checksum),
+                        "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),
+                        "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum)
+                    }
+                    "multitrack1-accompaniment": {
+                        "audio_accompaniment": ('audio/multitrack1-accompaniment.wav', checksum)
+                    }
+                    "multitrack2-voice" : {...}
+                    ...
+                },
+                "multitracks": {
+                    "multitrack1": {
+                        "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],
+                        "audio": ('audio/multitrack1-mix.wav', checksum)
+                        "f0": ('annotations/multitrack1-f0.csv', checksum)
+                    }
+                    "multitrack2": ...
+                },
+                "metadata": {
+                    "metadata_file": [
+                        "metadata/metadata_file.csv",
+                        "7a41b280c7b74e2ddac5184708f9525b"
+                        ]
                 }
-                "multitrack1-accompaniment": {
-                    "audio_accompaniment": ('audio/multitrack1-accompaniment.wav', checksum)
-                }
-                "multitrack2-voice" : {...}
-                ...
-            },
-            "multitracks": {
-                "multitrack1": {
-                    "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],
-                    "audio": ('audio/multitrack1-mix.wav', checksum)
-                    "f0": ('annotations/multitrack1-f0.csv', checksum)
-                }
-                "multitrack2": ...
-            },
-            "metadata": {
-                "metadata_file": [
-                    "metadata/metadata_file.csv",
-                    "7a41b280c7b74e2ddac5184708f9525b"
-                    ]
             }
-        }
 
-    Note that in this examples we group ``audio_voice1`` and ``audio_voice2`` in a single Track because the annotation ``voice-f0`` annotation corresponds to their mixture. In contrast, the annotation ``voice-f0`` is extracted from the multitrack mix and it is stored in the ``multitracks`` group. The multitrack ``multitrack1`` has an additional track ``multitrack1-mix.wav`` which may be the master track, the final mix, the recording of ``multitrack1`` with another microphone.
-
-
-records
-^^^^^^^
-
-.. admonition:: Index Examples - Records
-    :class: dropdown, warning
-
-    Coming soon
-
+        .. note:: In this examples, we group ``audio_voice1`` and ``audio_voice2`` in a single Track because the annotation 
+            ``voice-f0`` annotation corresponds to their mixture. In contrast, the annotation ``voice-f0`` is extracted from 
+            the multitrack mix and it is stored in the ``multitracks`` group. The multitrack ``multitrack1`` has an 
+            additional track ``multitrack1-mix.wav`` which may be the master track, the final mix, 
+            the recording of ``multitrack1`` with another microphone.
 
 
 .. _create_module:
@@ -277,15 +293,20 @@ records
 Once the index is created you can create the loader. For that, we suggest you use the following template and adjust it for your dataset.
 To quickstart a new module:
 
-1. Copy the example below and save it to ``mirdata/datasets/<your_dataset_name>.py``
-2. Find & Replace ``Example`` with the <your_dataset_name>.
-3. Remove any lines beginning with `# --` which are there as guidelines.
+    1. Copy the example below and save it to ``mirdata/datasets/<your_dataset_name>.py``
+    2. Find & Replace ``Example`` with the <your_dataset_name>.
+    3. Remove any lines beginning with `# --` which are there as guidelines.
 
 .. admonition:: Example Module
-    :class: dropdown
 
-    .. literalinclude:: contributing_examples/example.py
-        :language: python
+    .. toggle::
+
+        Copy and save it to ``mirdata/datasets/<your_dataset_name>.py``.
+
+        .. literalinclude:: contributing_examples/example.py
+            :language: python
+            :linenos:
+            
 
 You may find these examples useful as references:
 
@@ -303,52 +324,61 @@ You may find these examples useful as references:
 
 For many more examples, see the `datasets folder <https://github.com/mir-dataset-loaders/mirdata/tree/master/mirdata/datasets>`_.
 
-
 Declare constant variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-Please, include the variables ``BIBTEX``, ``INDEXES``, ``REMOTES``, and ``LICENSE_INFO`` at the beginning of your module.
-While ``BIBTEX`` (including the bibtex-formatted citation of the dataset), ``INDEXES`` (indexes urls, checksums and versions),
-and ``LICENSE_INFO`` (including the license that protects the dataset in the dataloader) are mandatory, ``REMOTES`` is only defined if the dataset is openly downloadable.
 
-``INDEXES``
-    As seen in the example, we have two ways to define an index:
-    providing a URL to download the index file, or by providing the filename of the index file, assuming it is available locally (like sample indexes).
+.. admonition:: Declare constant variables
+    :class: important
 
-    * The full indexes for each version of the dataset should be retrieved from our Zenodo community. See more details `here <upload_index_>`_.
-    * The sample indexes should be locally stored in the ``tests/indexes/`` folder, and directly accessed through filename. See more details `here <add_tests_>`_.
+    Please, include the variables ``BIBTEX``, ``INDEXES``, ``REMOTES``, and ``LICENSE_INFO`` at the beginning of your module.
+    While ``BIBTEX`` (including the bibtex-formatted citation of the dataset), ``INDEXES`` (indexes urls, checksums and versions),
+    and ``LICENSE_INFO`` (including the license that protects the dataset in the dataloader) are mandatory, ``REMOTES`` is only defined if the dataset is openly downloadable.
 
-    **Important:** We do recommend to set the highest version of the dataset as the default version in the ``INDEXES`` variable.
-    However, if there is a reason for having a different version as the default, please do so.
+INDEXES
+~~~~~~~
+As seen in the example, we have two ways to define an index:
+providing a URL to download the index file, or by providing the filename of the index file, assuming it is available locally (like sample indexes).
 
-    When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and ``checksum`` to the ``Index`` class:
+* The full indexes for each version of the dataset should be retrieved from our Zenodo community. See more details `here <upload_index_>`_.
+* The sample indexes should be locally stored in the ``tests/indexes/`` folder, and directly accessed through filename. See more details `here <add_tests_>`_.
 
-    .. code-block:: python
+.. note:: We do recommend to set the highest version of the dataset as the default version in the ``INDEXES`` variable.
+        However, if there is a reason for having a different version as the default, please do so.
+    
 
-        "1.0": core.Index(
-            filename="example_index_1.0.json",  # the name of the index file
-            url=<url>,  # the download link
-            checksum=<checksum>,  # the md5 checksum
-        )
+When defining a remote index in ``INDEXES``, simply also pass the arguments ``url`` and ``checksum`` to the ``Index`` class:
 
-    Remote indexes get downloaded along with the data when calling ``.download()``, and are stored in ``<data_home>/mirdata/datasets/indexes``.
+.. code-block:: python
+
+    "1.0": core.Index(
+        filename="example_index_1.0.json",  # the name of the index file
+        url=<url>,  # the download link
+        checksum=<checksum>,  # the md5 checksum
+    )
+
+Remote indexes get downloaded along with the data when calling ``.download()``, and are stored in ``<data_home>/mirdata/datasets/indexes``.
+
+
+REMOTES
+~~~~~~~
 
 ``REMOTES``
-    Should be a list of ``RemoteFileMetadata`` objects, which are used to download the dataset files. See an example below:
+Should be a list of ``RemoteFileMetadata`` objects, which are used to download the dataset files. See an example below:
 
-    .. code-block:: python
+.. code-block:: python
 
-        REMOTES = {
-            "annotations": download_utils.RemoteFileMetadata(
-                filename="The Beatles Annotations.tar.gz",
-                url="http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz",
-                checksum="62425c552d37c6bb655a78e4603828cc",
-                destination_dir="annotations",
-            ),
-        }
+    REMOTES = {
+        "annotations": download_utils.RemoteFileMetadata(
+            filename="The Beatles Annotations.tar.gz",
+            url="http://isophonics.net/files/annotations/The%20Beatles%20Annotations.tar.gz",
+            checksum="62425c552d37c6bb655a78e4603828cc",
+            destination_dir="annotations",
+        ),
+    }
 
-    Add more ``RemoteFileMetadata`` objects to the ``REMOTES`` dictionary if the dataset is split into multiple files.
-    Please use ``download_utils.RemoteFileMetadata`` to parse the dataset from an online repository, which takes cares of the download process and the checksum validation, and addresses corner carses.
-    Please do NOT use specific functions like ``download_zip_file`` or ``download_and_extract`` individually in your loader.
+Add more ``RemoteFileMetadata`` objects to the ``REMOTES`` dictionary if the dataset is split into multiple files.
+Please use ``download_utils.RemoteFileMetadata`` to parse the dataset from an online repository, which takes cares of the download process and the checksum validation, and addresses corner carses.
+Please do NOT use specific functions like ``download_zip_file`` or ``download_and_extract`` individually in your loader.
 
 .. note::
     Direct url for download and checksum can be found in the Zenodo entries of the dataset and index. Bear in mind that the url and checksum for the index will be available once a maintainer of the Audio Data Loaders Zenodo community has accepted the index upload.
@@ -366,7 +396,7 @@ Make sure to include, in the docstring of the dataloader, information about the 
 * The authors of the dataset, the organization in which it was created, and the year of creation (even if you have included the ``BIBTEX`` variable already).
 * Please reference also any relevant link or website that users can check for more information.
 
-.. note::  
+.. important::  
 
     In addition to the module docstring, you should write docstrings for every new class and function you write. See :ref:`the documentation tutorial <documentation_tutorial>` for practical information on best documentation practices.
     This docstring is important for users to understand the dataset and its purpose.
@@ -411,10 +441,11 @@ To finish your contribution, include tests that check the integrity of your load
 .. _test_file:
 
 .. admonition:: Example Test File
-    :class: dropdown
 
-    .. literalinclude:: contributing_examples/test_example.py
-        :language: python
+    .. toggle::
+
+        .. literalinclude:: contributing_examples/test_example.py
+            :language: python
 
 
 Running your tests locally
@@ -473,10 +504,10 @@ This will skip the downloading step. Note that this is just for convenience duri
 Reducing the testing space usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We are trying to keep the test resources folder size as small as possible, because it can get really heavy as new loaders are added. We
-kindly ask the contributors to **reduce the size of the testing data** if possible (e.g. trimming the audio tracks, keeping just two rows for
-csv files).
-
+.. important:: 
+    We are trying to keep the test resources folder size as small as possible, because it can get really heavy as new loaders are added. We
+    kindly ask the contributors to **reduce the size of the testing data** if possible (e.g. trimming the audio tracks, keeping just two rows for
+    csv files).
 
 4. Update Mirdata documentation
 -------------------------------
@@ -524,16 +555,16 @@ From a contributor point of view, you may create the index, store it locally, an
 All JSON files in ``mirdata/indexes/`` are included in the .gitignore file, 
 therefore there is no need to remove it when pushing to the remote branch during development, since it will be ignored by git.
 
-**Important!** When creating the PR, please `submit your index to our Zenodo community <https://zenodo.org/communities/audio-data-loaders/>`_:
+.. important:: When creating the PR, please `submit your index to our Zenodo community <https://zenodo.org/communities/audio-data-loaders/>`_:
 
-* First, click on ``New upload``. 
-* Add your index in the ``Upload files`` section.
-* Let Zenodo create a DOI for your index, so click *No*.
-* Resource type is *Other*.
-* Title should be *mirdata-<dataset-id>_index_<version>*, e.g. mirdata-beatles_index_1.2.
-* Add yourself as the Creator of this entry.
-* The license of the index should be the `same as Mirdata <https://github.com/mir-dataset-loaders/mirdata/blob/master/LICENSE>`_.
-* Visibility should be set as *Public*.
+    * First, click on ``New upload``. 
+    * Add your index in the ``Upload files`` section.
+    * Let Zenodo create a DOI for your index, so click *No*.
+    * Resource type is *Other*.
+    * Title should be *mirdata-<dataset-id>_index_<version>*, e.g. mirdata-beatles_index_1.2.
+    * Add yourself as the Creator of this entry.
+    * The license of the index should be the `same as Mirdata <https://github.com/mir-dataset-loaders/mirdata/blob/master/LICENSE>`_.
+    * Visibility should be set as *Public*.
 
 .. note::
     *<dataset-id>* is the identifier we use to initialize the dataset using ``mirdata.initialize()``. It's also the filename of your dataset module.
@@ -543,13 +574,14 @@ therefore there is no need to remove it when pushing to the remote branch during
 
 6. Create a Pull Request
 ------------------------
+.. admonition:: Create a Pull Request
+    :class: important
 
-Please, create a Pull Request with all your development. When starting your PR please use the `new_loader.md template <https://github.com/mir-dataset-loaders/mirdata/blob/master/.github/PULL_REQUEST_TEMPLATE/new_loader.md>`_,
-it will simplify the reviewing process and also help you make a complete PR. You can do that by adding
-``&template=new_loader.md`` at the end of the url when you are creating the PR :
-
-``...mir-dataset-loaders/mirdata/compare?expand=1`` will become
-``...mir-dataset-loaders/mirdata/compare?expand=1&template=new_loader.md``.
+    Please, create a Pull Request with all your development. When starting your PR please use the `new_loader.md template <https://github.com/mir-dataset-loaders/mirdata/blob/master/.github/PULL_REQUEST_TEMPLATE/new_loader.md>`_,
+    it will simplify the reviewing process and also help you make a complete PR. You can do that by adding
+    ``&template=new_loader.md`` at the end of the url when you are creating the PR :
+    ``...mir-dataset-loaders/mirdata/compare?expand=1`` will become
+    ``...mir-dataset-loaders/mirdata/compare?expand=1&template=new_loader.md``.
 
 .. _update_docs:
 
