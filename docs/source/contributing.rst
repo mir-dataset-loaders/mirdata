@@ -82,13 +82,14 @@ The steps to add a new dataset loader to Mirdata are:
 5. `Upload index to Zenodo <upload_index_>`_
 6. `Create a Pull Request on GitHub <create_pr_>`_
 
+.. admonition:: Before starting
+    :class: warning
 
-Before starting, check if your dataset falls into one of these non-standard cases:
+    Before starting, check if your dataset falls into one of these non-standard cases:
 
-    * Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
-    * Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
-    * Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
-
+        * Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
+        * Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
+        * Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
 
 .. _create_index:
 

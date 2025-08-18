@@ -14,6 +14,7 @@ In this tutorial, we will cover:
 * Validating a dataset
 * Loading tracks
 * Accessing annotations and metadata
+* Advanced options for download and tracks
 * Usage examples of Mirdata in your pipeline, with TensorFlow, and with PyTorch, and in Google Colab.
 
 ----------
@@ -334,74 +335,73 @@ Advanced track options
 
 This section covers advanced options for working with tracks in datasets. These methods provide flexible ways to access and manipulate track data based on your specific research needs:
 
-* Loading all tracks
-* Loading a single track
-* Loading a track by ID
+* Loading all tracks and example
+* Loading tracks with track ID
 
 Loading tracks
 --------------
 
-To load tracks from a dataset, you can use the ``load_tracks()`` method. This method returns a dictionary where the keys are track IDs and the values are track objects.
+.. code-block:: python
+    :linenos:
+
+    # Initialize the dataset
+    dataset = mirdata.initialize("orchset")
+
+    # Load all tracks in the dataset as a dictionary with the track_ids as keys and track objects as values.
+    tracks = dataset.load_tracks()
+
+    # Iterating over datasets
+    for key, track in tracks.items():
+        print(key, track.audio_path)
+
+To load tracks from a dataset, you can use the load_tracks() method. This method returns a dictionary where the keys are track IDs and the values are track objects.
 
 .. code-block:: python
 
     tracks = dataset.load_tracks()
 
-This will load all tracks in the dataset, and you can access each track by its ID.
+This will load all tracks in the dataset, allowing you to access their audio and annotations.
 
-Load a single track
--------------------
+Next, you can iterate over the tracks dictionary to access each track's audio path and other attributes:
 
-To load a single track from the dataset, you can use the ``track_ids`` attribute to get a list of all track IDs, and then access a track.
+.. code-block:: python  
+
+    for key, track in tracks.items():
+        print(key, track.audio_path)
+
+
+
+Loading tracks with track ID
+--------------------------
 
 .. code-block:: python
+    :linenos:
+
+    # Initialize the dataset
+    dataset = mirdata.initialize("orchset")
 
     # Get the list of track IDs
     track_ids = dataset.track_ids
 
-    # Load the first track in the dataset
-    first_track = dataset.track(track_ids[0])
+    # Loop over the track_ids list to directly access each track in the dataset
+    for track_id in dataset.track_ids:
 
-This will return the track object for the first track in the dataset.
+        print(track_id, dataset.track(track_id).audio_path)
 
-Load a track with track ID
---------------------------
-
-To access a specific track, you can use the ``track()`` method with the track ID. For example:
+To load tracks with track ids, first:
 
 .. code-block:: python
 
-    track_id = 'Beethoven-S3-I-ex1'  # Example track ID
-    track = dataset.track(track_id)
+    track_ids = dataset.track_ids
 
-This will return a track object for the specified track ID, which contains the audio and annotations for that track.
+Get the list of the track_ids.
 
--------------
-Usage example
--------------
-
-Iterating over datasets and annotations
----------------------------------------
-In general, most datasets are a collection of tracks, and in most cases each track has an audio file along with annotations.
-
-With the ``load_tracks()`` method, all tracks are loaded as a dictionary with the ids as keys and
-track objects (which include their respective audio and annotations, which are lazy-loaded on access) as values.
+Next, loop over the ``track_ids`` list to directly access each track in the dataset:
 
 .. code-block:: python
-
-    orchset = mirdata.initialize('orchset')
-    for key, track in orchset.load_tracks().items():
-        print(key, track.audio_path)
-
-
-Alternatively, we can loop over the ``track_ids`` list to directly access each track in the dataset.
-
-.. code-block:: python
-
-    orchset = mirdata.initialize('orchset')
-    for track_id in orchset.track_ids:
-
-        print(track_id, orchset.track(track_id).audio_path)
+    
+    for track_id in dataset.track_ids:
+        print(track_id, dataset.track(track_id).audio_path)
 
 
 --------------
