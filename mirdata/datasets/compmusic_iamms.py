@@ -1,4 +1,4 @@
-"""Saraga Dataset Loader
+"""Compmuic IAMMS Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
