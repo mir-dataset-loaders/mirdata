@@ -579,7 +579,7 @@ Using mirdata in Google Colab
 -----------------------------
 
 `Google Colab` provides a browser-based Python environment with free GPU support, which is useful for exploring datasets quickly.
-You will have two options that you can use the dataset from ``soundata`` in Colab - ``Download Dataset directly in Google Colab``, or ``Access the Dataset Downloaded out of Google Colab``
+You will have two options that you can use the dataset from ``mirdata`` in Colab - ``Download Dataset directly in Google Colab``, or ``Access the Dataset Downloaded out of Google Colab``
 
 .. admonition:: Colab Example Notebook
 
