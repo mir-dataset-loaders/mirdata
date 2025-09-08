@@ -1,8 +1,8 @@
 .. _contributing:
 
-############
-Contributing
-############
+#######################
+Contributing to Mirdata
+########################
 
 We encourage contributions to mirdata, especially new dataset loaders. To contribute a new loader, follow the
 steps indicated below and create a Pull Request (PR) to the github repository. For any doubt or comment about
@@ -14,9 +14,21 @@ your contribution, you can always submit an issue or open a discussion in the re
 To reduce friction, we may make commits on top of contributor's PRs. If you do not want us
 to, please tag your PR with ``please-do-not-edit``.
 
+---------
+
+
+Before you start
+################
+
+Quick link to contributing templates
+------------------------------------
+
+If you're familiar with Mirdata's API already, you can find the template files for contributing `here <https://github.com/mir-dataset-loaders/mirdata/tree/master/docs/source/contributing_examples>`__,
+and the loader checklist for submitting your PR `here <https://github.com/mir-dataset-loaders/mirdata/tree/master/.github/PULL_REQUEST_TEMPLATE>`__.
+
 
 Installing mirdata for development purposes
-###########################################
+-------------------------------------------
 
 To install Mirdata for development purposes:
 

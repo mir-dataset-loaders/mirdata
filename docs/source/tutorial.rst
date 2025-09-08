@@ -17,6 +17,8 @@ In this tutorial, we will cover:
 * Advanced options for download and tracks
 * Usage examples of Mirdata in your pipeline, with TensorFlow, and with PyTorch, and in Google Colab.
 
+------
+
 ----------
 Quickstart
 ----------
@@ -188,6 +190,7 @@ This will print the metadata and annotations associated with the track, such as 
 
     **Note: These classes may be extended in the case that a loader requires it.**
 
+-----
 
 -------------------------
 Advanced download options
@@ -329,6 +332,8 @@ filesystem.
     mp3 audio may have tracks with unavailable attributes.
 
 
+-----
+
 ---------------------
 Advanced track options
 ---------------------
@@ -403,6 +408,7 @@ Next, loop over the ``track_ids`` list to directly access each track in the data
     for track_id in dataset.track_ids:
         print(track_id, dataset.track(track_id).audio_path)
 
+---------
 
 --------------
 Advanced Usage
