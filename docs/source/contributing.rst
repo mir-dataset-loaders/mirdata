@@ -41,13 +41,13 @@ To install Mirdata for development purposes:
     pip install .
 
     #Install Testing dependencies
-    pip install."[tests]"
+    pip install ."[tests]"
 
     #Install Docs dependencies
-    pip install."[docs]"
+    pip install ."[docs]"
 
     #Install dataset-specific dependencies
-    pip install."[dataset]"  # where dataset can be dali | haydn_op20 | cipi ...
+    pip install ."[dataset]"  # where dataset can be dali | haydn_op20 | cipi ...
 
 .. note:: We recommend to install `pyenv <https://github.com/pyenv/pyenv#installation>`_ to manage your Python versions 
     and install all Mirdata requirements. You will want to install the latest supported Python versions (see README.md).
