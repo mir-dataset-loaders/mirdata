@@ -2,7 +2,7 @@
 
 #######################
 Contributing to Mirdata
-########################
+#######################
 
 We encourage contributions to mirdata, especially new dataset loaders. To contribute a new loader, follow the
 steps indicated below and create a Pull Request (PR) to the github repository. For any doubt or comment about
