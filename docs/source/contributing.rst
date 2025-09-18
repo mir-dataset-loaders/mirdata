@@ -99,7 +99,7 @@ The steps to add a new dataset loader to Mirdata are:
 
     Before starting, check if your dataset falls into one of these non-standard cases:
 
-        * Is the dataset not freely downloadable? If so, see `this section <not_open_>`_
+        * Is the dataset download restricted or not fully-downloadable? If so, see `this section <not_open_>`_
         * Does the dataset require dependencies not currently in mirdata? If so, see `this section <extra_dependencies_>`_
         * Does the dataset have multiple versions? If so, see `this section <multiple_versions_>`_
 
@@ -110,7 +110,7 @@ The steps to add a new dataset loader to Mirdata are:
 
 Mirdata's structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
 dataset which is necessary for the loading and validating functionalities of Mirdata. In particular, indexes contain
-information about the files included in the dataset, their location and checksums. The necessary steps are:
+information about the files included in the dataset, their location and checksums. Indexes do not contain tags, annotations, or descriptors. The necessary steps are:
 
 1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
 2. Then run the script on the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index_<version>.json``.
@@ -651,7 +651,7 @@ Common non-standard cases
 Not fully-downloadable datasets
 -------------------------------
 
-Sometimes, parts of music datasets are not freely available due to e.g. copyright restrictions. In these
+Sometimes, parts of music datasets are not publicly available due to e.g. copyright restrictions. In these
 cases, we aim to make sure that the version used in mirdata is the original one, and not a variant.
 
 **Before starting** a PR, if a dataset **is not fully downloadable**:

@@ -185,7 +185,7 @@ This will print the metadata and annotations associated with the track, such as 
     :class: attention
 
     Mirdata defines annotation-specific data classes. These data classes are meant to standardize the format for
-    all loaders, and are compatibly with `mir_eval <https://craffel.github.io/mir_eval/>`_.
+    all loaders, and are compatible with `mir_eval <https://craffel.github.io/mir_eval/>`_.
     The list and descriptions of available annotation classes can be found in :ref:`annotations`.
 
     **Note: These classes may be extended in the case that a loader requires it.**
@@ -229,8 +229,6 @@ the available elements are listed.
 
 
 .. admonition:: Partial downloads example
-
-    For the example of using partial downloads,
 
     .. toggle::
     
