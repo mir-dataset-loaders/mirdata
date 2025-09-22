@@ -232,6 +232,19 @@
      - 48
      - ❌
 
+
+   * - FMA Keys
+     - - audio: ✅
+       - annotations: ✅
+     - - :ref:`spotify_uri`
+       - :ref:`key`
+       - :ref:`mode`
+       - :ref:`key_number`
+       - :ref:`mode_number`
+     - 5489
+     - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-sa/4.0
+
    * - Four-Way Tabla Stroke
      - - audio: ✅
        - annotations: ✅
@@ -240,7 +253,11 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
-   * - Freesound One-Shot Percussive Sounds
+   * - .. line-block::
+
+       Freesound One-Shot 
+       Percussive Sounds
+
      - - audio: ✅
        - annotations: ✅
      - - :ref:`tags`
@@ -365,7 +382,11 @@
      - .. image:: https://img.shields.io/badge/License-MIT-blue.svg
           :target: https://lbesson.mit-license.org/
 
-   * - MTG_jamendo_autotagging_moodtheme
+   * - .. line-block::
+
+        MTG Jamendo 
+       Autotagging Moodtheme
+
      - - audio: ✅
        - annotations: ✅
      - - moodtheme annotations
@@ -511,7 +532,8 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
           
-   * - Saraga-Carnatic-Melody-Synth (SCMS)
+   * - Saraga Carnatic
+       Melody Synth (SCMS)
      - - audio: ✅
        - annotations: ✅
      - - :ref:`f0`

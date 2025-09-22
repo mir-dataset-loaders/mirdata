@@ -34,7 +34,7 @@ def log_message(message, verbose=True):
 
     """
     if verbose:
-        logging.info(message)
+        logging.warning(message)
 
 
 def validate(local_path, checksum):
