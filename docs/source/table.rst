@@ -1,12 +1,11 @@
 .. list-table::
-   :widths: auto
+   :widths: 5 5 5 5 5
    :header-rows: 1
 
    * - Dataset
      - Downloadable?
      - Annotation Types
      - Tracks
-     - Size
      - License
 
    * - AcousticBrainz Genre
@@ -14,7 +13,6 @@
        - annotations: ✅
      - - :ref:`genre`
      - >4M
-     - 36.69 GB 
      - - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
             :target: https://creativecommons.org/licenses/by-sa/4.0
        - :acousticbrainz:`\ `
@@ -24,7 +22,6 @@
        - annotations: 🔑
      - - :ref:`matches`
      - 3425
-     - Unknown
      - - .. image:: https://img.shields.io/badge/license-custom-orange
             :target: https://zenodo.org/record/6868083
 
@@ -35,7 +32,6 @@
        - :ref:`tempo`
        - :ref:`genre`
      - 698
-     - 1.45 GB
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
@@ -48,7 +44,6 @@
        - :ref:`key`
        - :ref:`vocal-activity`
      - 180
-     - 2.65 MB
      - ❌
 
    * - Beatport EDM key
@@ -56,7 +51,6 @@
        - annotations: ✅
      - - global :ref:`key`
      - 1486
-     - 2.1 GB
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -66,7 +60,6 @@
      - - :ref:`chords`
        - :ref:`sections`
      - 890
-     - 253 MB
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
@@ -76,7 +69,6 @@
      - - :ref:`beats`
        - :ref:`tempo`
      - 367
-     - 944.49 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -85,7 +77,6 @@
        - annotations: ✅
      - - :ref:`beats`
      - 35
-     - 658.8 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -95,7 +86,6 @@
      - - :ref:`f0`
        - Vocal :ref:`notes`
      - 100
-     - 3.88 GB
      - :cante:`\ `
 
    * - CIPI
@@ -104,7 +94,6 @@
        - annotations: 🔑
      - - difficulty levels
      - 652
-     - Unknown
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -118,7 +107,6 @@
      - - :ref:`beats`
        - :ref:`meter`
      - 176
-     - Unknown
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -132,7 +120,6 @@
      - - :ref:`beats`
        - :ref:`meter`
      - 151
-     - Unknown
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -144,7 +131,6 @@
        - annotations: ✅
      - - :ref:`tonic`
      - 2150
-     - 462.53 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -159,7 +145,6 @@
        - :ref:`phonemes`
        - :ref:`syllables`
      - 82
-     - 869.24 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -173,7 +158,6 @@
      - - :ref:`f0`
        - :ref:`tonic`
      - 1000
-     - 101.04 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -187,7 +171,6 @@
        - :ref:`segments`
        - :ref:`tonic`
      - 780
-     - 3.61 GB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -197,7 +180,6 @@
      - - :ref:`beats`
        - :ref:`tempo`
      - 698
-     - Unknown
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
@@ -208,7 +190,6 @@
        - :ref:`beats`
        - :ref:`notes`
      - 108
-     - 5.11 GB
      - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by/4.0/
 
@@ -218,7 +199,6 @@
      - - :ref:`lyrics`
        - Vocal :ref:`notes`
      - 5358
-     - 605.62 KB
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -227,9 +207,8 @@
        - annotations: ✅
      - - :ref:`lyrics`
        - Vocal :ref:`notes`
-     - - benchmark 15000 
-       - coveranalysis 10000
-     - 61.23 GB
+     - - benchmark 15000 tracks
+       - coveranalysis 10000 tracks
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -238,7 +217,6 @@
        - annotations: ✅
      - - :ref:`notes`
      - 8970
-     - 5.81 GB
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
           
@@ -252,7 +230,6 @@
        - :ref:`tempo`
        - :ref:`notes`
      - 48
-     - 14.5 GB
      - ❌
 
    * - Four-Way Tabla Stroke
@@ -260,16 +237,15 @@
        - annotations: ✅
      - - :ref:`tags`
      - 236
-     - 170.11 MB 
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
-   * - Freesound One-Shot Percussive Sounds
+   * - Freesound One-Shot 
+       Percussive Sounds
      - - audio: ✅
        - annotations: ✅
      - - :ref:`tags`
      - 10254
-     - 178.33 MB
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -278,7 +254,6 @@
        - annotations: ✅
      - global :ref:`key`
      - 500
-     - 856.58 MB
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -288,7 +263,6 @@
      - - global :ref:`genre`
        - global :ref:`tempo`
      - 664
-     - 1 GB
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -299,7 +273,6 @@
        - sound quality metadata
        - instrument metadata
      - 16308
-     - 13.9 GB
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -310,7 +283,6 @@
        - :ref:`tempo`
        - :ref:`drums`
      - 1150
-     - 5.11 GB
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -321,7 +293,6 @@
        - :ref:`beats`
        - :ref:`tempo`
      - 1000
-     -  Unknown
      - ❌
 
    * - Guitarset
@@ -334,7 +305,6 @@
        - :ref:`notes`
        - :ref:`f0`
      - 360
-     - 8.2 GB
      - .. image:: https://img.shields.io/badge/License-MIT-blue.svg
           :target: https://lbesson.mit-license.org/
 
@@ -344,7 +314,6 @@
      - - Vocal :ref:`f0`
        - :ref:`lyrics`
      - 252
-     - 257.6 KB
      - :ikala:`\ `
 
    * - Hainsworth 
@@ -353,7 +322,6 @@
      - - :ref:`beats`
        - :ref:`tempo`
      - 222
-     - Unknown
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
@@ -365,7 +333,6 @@
      - - symbolic :ref:`chords`
        - symbolic :ref:`key`
      - 24
-     - 128 KB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -376,7 +343,6 @@
        - midi nr :ref:`notes`
        - metadata :ref:`fx`
      - 55044
-     - 6.5 GB
      - .. image:: https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-nd/4.0/
 
@@ -386,7 +352,6 @@
      - - :ref:`instruments`
        - :ref:`genre`
      - 9579
-     - 11.0 GB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/3.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/3.0
 
@@ -398,16 +363,15 @@
        - Global :ref:`tempo`
        - Piano :ref:`notes`
      - 1294
-     - 24.05 MB
      - .. image:: https://img.shields.io/badge/License-MIT-blue.svg
           :target: https://lbesson.mit-license.org/
 
-   * - MTG_jamendo_autotagging_moodtheme
+   * - MTG Jamendo 
+       Autotagging Moodtheme
      - - audio: ✅
        - annotations: ✅
      - - moodtheme annotations
      - 18448
-     - 34.92 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -416,7 +380,6 @@
        - annotations: ✅
      - Piano :ref:`notes`
      - 1282
-     - 110 GB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -425,7 +388,6 @@
        - annotations: ✅
      - - :ref:`f0`
      - 230
-     - 1.8 GB
      - .. image:: https://licensebuttons.net/l/by-nc/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc/4.0
 
@@ -434,7 +396,6 @@
        - annotations: ✅
      - :ref:`instruments`
      - 21571
-     - 7.9 GB
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
@@ -443,7 +404,6 @@
        - annotations: ✅
      - Melody :ref:`f0`
      - 108
-     - Unknown
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -453,7 +413,6 @@
      - - :ref:`f0`
        - :ref:`instruments`
      - 103
-     - Unknown
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -463,7 +422,6 @@
      - - :ref:`stroke-name`
        - :ref:`tonic`
      - 6977
-     - 130.3 MB
      - .. image:: https://licensebuttons.net/l/by/3.0/80x15.png
           :target: https://creativecommons.org/licenses/by/3.0/
 
@@ -472,7 +430,6 @@
        - annotations: ✅
      - Melody :ref:`f0`
      - 64
-     - 326.41 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -482,7 +439,6 @@
      - - Aligned score :ref:`notes`
        - Original score :ref:`notes`
      - 4
-     - 763.72 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -493,7 +449,6 @@
        - :ref:`sections`
        - :ref:`key`
      - 51
-     - 227.24 KB
      - ❌          
 
    * - RWC classical
@@ -502,7 +457,6 @@
      - - :ref:`beats`
        - :ref:`sections`
      - 61
-     - 187.84 KB
      - :rwc:`\ `
 
    * - RWC jazz
@@ -511,7 +465,6 @@
      - - :ref:`beats`
        - :ref:`sections`
      - 50
-     - 117.95 KB
      - :rwc:`\ `
 
    * - RWC popular
@@ -523,7 +476,6 @@
        - :ref:`chords`
        - :ref:`tempo`
      - 100
-     - 607.26 KB
      - :rwc:`\ `
 
    * - Salami
@@ -531,7 +483,6 @@
        - annotations: ✅
      - :ref:`sections`
      - 1359
-     - 5.6 MB
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
@@ -546,7 +497,6 @@
        - :ref:`sections`
        - :ref:`tonic`
      - 249
-     - 14.38 GB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -560,17 +510,16 @@
        - :ref:`sections`
        - :ref:`tonic`
      - 108
-     - 4.11 GB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
           
-   * - Saraga-Carnatic-Melody-Synth (SCMS)
+   * - Saraga Carnatic
+       Melody Synth (SCMS)
      - - audio: ✅
        - annotations: ✅
      - - :ref:`f0`
        - :ref:`events`
      - 2460
-     - 24.03 GB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -580,7 +529,6 @@
      - - :ref:`beats`
        - :ref:`tempo`
      - 595
-     - Unknown
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
@@ -590,7 +538,6 @@
      - - Notes :ref:`notes`
        - Instruments :ref:`instruments`
      - 1710
-     - 105.21 GB
      - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by/4.0/
 
@@ -601,7 +548,6 @@
        - :ref:`technique`
        - :ref:`notes`
      - 2913
-     - 1.03 GB
      - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by/4.0/
 
@@ -610,7 +556,6 @@
        - annotations: ✅
      - Global :ref:`key`
      - 881
-     - 6.84 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
@@ -620,7 +565,6 @@
      - - :ref:`f0`
        - :ref:`notes`
      - 72
-     - Unknown
      - :tonas:`\ `
    
    * - vocadito 
@@ -630,6 +574,5 @@
        - :ref:`notes`
        - :ref:`lyrics`
      - 40
-     - 58.5 MB
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
