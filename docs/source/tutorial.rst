@@ -23,6 +23,14 @@ In this tutorial, we will cover:
 Quickstart
 ----------
 
+First, install mirdata. We recommend to do this inside a conda or virtual environment for reproducibility.
+
+.. code-block:: bash
+
+    pip install mirdata
+
+Then, get yor data by simply doing:
+
 .. code-block:: python
     :linenos:
 
@@ -47,25 +55,7 @@ Quickstart
     # 6. Access metadata and annotations
     print(random_track)
 
-First, install mirdata:
-
-.. code-block:: bash
-
-    pip install mirdata
-
-We recommend to do this inside a conda or virtual environment for reproducibility. 
-
-Next, import it in your code:
-
-.. code-block:: python
-    
-    import mirdata
-
-You can list all available datasets by running:
-
-.. code-block:: python
-
-    print(mirdata.list_datasets())
+Below, we elaborate on each step a bit more: 
 
 
 Initializing a dataset
