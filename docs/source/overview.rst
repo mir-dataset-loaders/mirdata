@@ -1,15 +1,10 @@
 .. _overview:
 
-########
+********
 Overview
-########
+********
 
-.. code-block::
-
-    pip install mirdata
-
-
-Mirdata is a library which aims to standardize how audio datasets are accessed in Python,
+**Mirdata** is a library which aims to standardize how audio datasets are accessed in Python,
 removing the need for writing custom loaders in every project, and improving reproducibility.
 Working with datasets usually requires an often cumbersome step of downloading data and writing
 load functions that load related files (for example, audio and annotations)
@@ -96,37 +91,37 @@ top-level keys ``metadata``, ``tracks``, ``multitracks`` or ``records``. An inde
 .. admonition:: Example Index
     :class: dropdown
 
-    .. code-block:: javascript
+        .. code-block:: javascript
 
-        {   "version": "1.0.0",
-            "metadata": {
-                "metadata_file_1": [
-                        // the relative path for metadata_file_1
-                        "path_to_metadata/metadata_file_1.csv",
-                        // metadata_file_1 md5 checksum
-                        "bb8b0ca866fc2423edde01325d6e34f7"
-                    ],
-                "metadata_file_2": [
-                        // the relative path for metadata_file_2
-                        "path_to_metadata/metadata_file_2.csv",
-                        // metadata_file_2 md5 checksum
-                        "6cce186ce77a06541cdb9f0a671afb46"
-                    ]
-                }
-            "tracks": {
-                "track1": {
-                    'audio': ["audio_files/track1.wav", "6c77777ce77a06541cdb9f0a671afb46"],
-                    'beats': ["annotations/track1.beats.csv", "ab8b0ca866fc2423edde01325d6e34f7"],
-                    'sections': ["annotations/track1.sections.txt", "05abeca866fc2423edde01325d6e34f7"],
-                }
-                "track2": {
-                    'audio': ["audio_files/track2.wav", "6c77777ce77a06542cdb9f0a672afb46"],
-                    'beats': ["annotations/track2.beats.csv", "ab8b0ca866fc2423edde02325d6e34f7"],
-                    'sections': ["annotations/track2.sections.txt", "05abeca866fc2423edde02325d6e34f7"],
-                }
-                ...
-                }
-        }
+            {   "version": "1.0.0",
+                "metadata": {
+                    "metadata_file_1": [
+                            // the relative path for metadata_file_1
+                            "path_to_metadata/metadata_file_1.csv",
+                            // metadata_file_1 md5 checksum
+                            "bb8b0ca866fc2423edde01325d6e34f7"
+                        ],
+                    "metadata_file_2": [
+                            // the relative path for metadata_file_2
+                            "path_to_metadata/metadata_file_2.csv",
+                            // metadata_file_2 md5 checksum
+                            "6cce186ce77a06541cdb9f0a671afb46"
+                        ]
+                    }
+                "tracks": {
+                    "track1": {
+                        'audio': ["audio_files/track1.wav", "6c77777ce77a06541cdb9f0a671afb46"],
+                        'beats': ["annotations/track1.beats.csv", "ab8b0ca866fc2423edde01325d6e34f7"],
+                        'sections': ["annotations/track1.sections.txt", "05abeca866fc2423edde01325d6e34f7"],
+                    }
+                    "track2": {
+                        'audio': ["audio_files/track2.wav", "6c77777ce77a06542cdb9f0a672afb46"],
+                        'beats': ["annotations/track2.beats.csv", "ab8b0ca866fc2423edde02325d6e34f7"],
+                        'sections': ["annotations/track2.sections.txt", "05abeca866fc2423edde02325d6e34f7"],
+                    }
+                    ...
+                    }
+            }
 
 
 The optional top-level keys (`tracks`, `multitracks` and `records`) relate to different organizations of music datasets.
