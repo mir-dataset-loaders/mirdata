@@ -452,6 +452,66 @@ This section shows how to use Mirdata in your machine learning pipeline.
         composer_scores[track_data.composer][track_id] = orchset_scores[track_id]
         strings_no_strings_scores[track_data.contains_strings][track_id] = \
             orchset_scores[track_id]
+            
+            
+Command-Line Interface
+----------------------
+
+To get started with mirdata, execute the following in your console:
+
+.. code-block:: console
+
+    python -m mirdata --help
+
+Print a list of all available dataset loaders by calling:
+
+.. code-block:: console
+
+    python -m mirdata --list
+    python -m mirdata -l
+    python -m mirdate  # If you don't specify a dataset, it defaults to listing datasets
+
+Download one or more datasets by specifying their name as arguments
+
+.. code-block:: console
+
+    python -m mirdata orchset maestro
+
+You can specify which version of a dataset you'd like to download with `--version`
+
+.. code-block:: console
+
+    python -m mirdata maestro --version=2.0.0
+    python -m mirdata maestro -v 2.0.0
+
+mirdata will choose a default location for all MIR datasets. If you'd like to redirect the download destination, you
+can do the following
+
+.. code-block:: console
+
+    python -m mirdata maestro --output /opt/data/mir/maestro
+
+By default mirdata will validate any downloaded dataset(s). If you want to skip validation you can use `--no-validate`
+
+.. code-block:: console
+
+    python -m mirdata maestro --no-validate
+
+Or you can print just citations or licenses with `--citation` and `--license`.
+
+.. code-block:: console
+
+    python -m mirdata maestro --citation --license
+    python -m mirdata maestro -c -L  #equivalent to above
+
+When you ask for either a license or a citation, mirdata will not download/validate the dataset. If you want to
+download _and_ print a license or citation, you can add the --download flag
+
+.. code-block:: console
+
+    python -m mirdata maestro --citation --download
+    python -m mirdata maestro -cd
+            
 
 
 
