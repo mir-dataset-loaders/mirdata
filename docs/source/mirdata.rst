@@ -28,6 +28,7 @@ baf
    :members:
    :inherited-members:
 
+
 ballroom
 ^^^^^^^^
 
@@ -50,6 +51,7 @@ beatport_key
 .. automodule:: mirdata.datasets.beatport_key
    :members:
    :inherited-members:
+
 
 billboard
 ^^^^^^^^^
@@ -496,8 +498,67 @@ Core
 Annotations
 -----------
 
-.. automodule:: mirdata.annotations
+
+Units
+^^^^^
+.. autodata:: mirdata.annotations.BEAT_POSITION_UNITS
+.. autodata:: mirdata.annotations.CHORD_UNITS
+.. autodata:: mirdata.annotations.AMPLITUDE_UNITS
+.. autodata:: mirdata.annotations.EVENT_UNITS
+.. autodata:: mirdata.annotations.KEY_UNITS
+.. autodata:: mirdata.annotations.LYRIC_UNITS
+.. autodata:: mirdata.annotations.PITCH_UNITS
+.. autodata:: mirdata.annotations.SECTION_UNITS
+.. autodata:: mirdata.annotations.TEMPO_UNITS
+.. autodata:: mirdata.annotations.TIME_UNITS
+.. autodata:: mirdata.annotations.VOICING_UNITS
+
+Annotation Types
+^^^^^^^^^^^^^^^^
+.. autoclass:: mirdata.annotations.Annotation
    :members:
+.. autoclass:: mirdata.annotations.MultiAnnotator
+   :members:
+.. autoclass:: mirdata.annotations.BeatData
+   :members:
+.. autoclass:: mirdata.annotations.SectionData
+   :members:
+.. autoclass:: mirdata.annotations.ChordData
+   :members:
+.. autoclass:: mirdata.annotations.F0Data
+   :members:
+.. autoclass:: mirdata.annotations.MultiF0Data
+   :members:
+.. autoclass:: mirdata.annotations.NoteData
+   :members:
+.. autoclass:: mirdata.annotations.KeyData
+   :members:
+.. autoclass:: mirdata.annotations.LyricData
+   :members:
+.. autoclass:: mirdata.annotations.TempoData
+   :members:
+.. autoclass:: mirdata.annotations.EventData
+   :members:
+
+Functions
+^^^^^^^^^
+.. autofunction:: mirdata.annotations
+.. autofunction:: mirdata.annotations.convert_pitch_units
+.. autofunction:: mirdata.annotations.convert_amplitude_units
+.. autofunction:: mirdata.annotations.closest_index
+.. autofunction:: mirdata.annotations.validate_array_like
+.. autofunction:: mirdata.annotations.validate_lengths_equal
+.. autofunction:: mirdata.annotations.validate_tempos
+.. autofunction:: mirdata.annotations.validate_beat_positions
+.. autofunction:: mirdata.annotations.validate_confidence
+.. autofunction:: mirdata.annotations.validate_voicing
+.. autofunction:: mirdata.annotations.validate_pitches
+.. autofunction:: mirdata.annotations.validate_chord_labels
+.. autofunction:: mirdata.annotations.validate_key_labels
+.. autofunction:: mirdata.annotations.validate_times
+.. autofunction:: mirdata.annotations.validate_intervals
+.. autofunction:: mirdata.annotations.validate_unit
+.. autofunction:: mirdata.annotations.validate_uniform_times
 
 
 Advanced
