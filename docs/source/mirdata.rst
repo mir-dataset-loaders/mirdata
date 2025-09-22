@@ -35,7 +35,7 @@ ballroom
 .. automodule:: mirdata.datasets.ballroom
    :members:
    :inherited-members:
-   
+
 
 beatles
 ^^^^^^^
@@ -75,7 +75,7 @@ candombe
 .. automodule:: mirdata.datasets.candombe
    :members:
    :inherited-members:
-   
+
 
 cante100
 ^^^^^^^^
@@ -115,6 +115,14 @@ compmusic_indian_tonic
 .. automodule:: mirdata.datasets.compmusic_indian_tonic
    :members:
    :inherited-members:
+
+
+compmusic_iamms
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_iamms
+    :members:
+    :inherited-members:
 
 
 compmusic_jingju_acappella
@@ -176,7 +184,7 @@ egfxset
 .. automodule:: mirdata.datasets.egfxset
    :members:
    :inherited-members:
-   
+
 
 filosax
 ^^^^^^^
@@ -281,7 +289,7 @@ idmt_smt_audio_effects
    :members:
    :inherited-members:
 
-   
+
 ikala
 ^^^^^
 
@@ -383,7 +391,7 @@ queen
 
 .. automodule:: mirdata.datasets.queen
    :members:
-   
+
 
 rwc_classical
 ^^^^^^^^^^^^^
@@ -431,8 +439,8 @@ saraga_hindustani
 .. automodule:: mirdata.datasets.saraga_hindustani
    :members:
    :inherited-members:
-   
-   
+
+
 scms
 ^^^^
 

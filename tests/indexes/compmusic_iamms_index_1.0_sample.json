@@ -1,0 +1,39 @@
+{
+  "version": 1.0,
+  "tracks": {
+    "0_ALB_Bhairavi1_70albmgpnganesan": {
+      "audio": [
+        "Carnatic/ALB_Bhairavi1_70albmgpnganesan/ALB_Bhairavi1_70albmgpnganesan.mp3",
+        "097408dd6dc648c851f95911701dda86"
+      ],
+      "sections": [
+        "Carnatic/ALB_Bhairavi1_70albmgpnganesan/ALB_Bhairavi1_70albmgpnganesan.anot",
+        "1c59d9fc906538a791b1b98729289a0a"
+      ],
+      "sections-finetuned": [
+        "Carnatic/ALB_Bhairavi1_70albmgpnganesan/ALB_Bhairavi1_70albmgpnganesan.anotEdit1",
+        "1c59d9fc906538a791b1b98729289a0a"
+      ],
+      "nyas": [
+        "Carnatic/ALB_Bhairavi1_70albmgpnganesan/ALB_Bhairavi1_70albmgpnganesan.flatSegNyas",
+        "db9d237daba65cfe10cb02d092dac5d3"
+      ],
+      "pitch": [
+        "Carnatic/ALB_Bhairavi1_70albmgpnganesan/ALB_Bhairavi1_70albmgpnganesan.pitch",
+        "1640fe125bf9b03532478b5a9fa8178d"
+      ],
+      "pitch-finetuned": [
+        "Carnatic/ALB_Bhairavi1_70albmgpnganesan/ALB_Bhairavi1_70albmgpnganesan.pitchSilIntrpPP",
+        "1d11b2b7a4aee36285cf9774941179a7"
+      ],
+      "tonic": [
+        "Carnatic/ALB_Bhairavi1_70albmgpnganesan/ALB_Bhairavi1_70albmgpnganesan.tonic",
+        "71a7ae2ebedaa9f7cd32b98ef808d86f"
+      ],
+      "tonic-finetuned": [
+        "Carnatic/ALB_Bhairavi1_70albmgpnganesan/ALB_Bhairavi1_70albmgpnganesan.tonicFine",
+        "593ae8491016efd0499f4539658cf2be"
+      ]
+    }
+  }
+}
