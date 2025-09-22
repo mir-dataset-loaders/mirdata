@@ -54,7 +54,7 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="compmusic_iamms_index_1.0.json",
-        url="https://zenodo.org/records/16631606/files/iam_melodic_similarity_index.json?download=1",
+        url="https://zenodo.org/records/17175092/files/compmusic_iamms_index_1.0.json?download=1",
         checksum="3c8843f87b0fea83715058c5d8a84c22",
     ),
     "sample": core.Index(filename="compmusic_iamms_index_1.0_sample.json"),
