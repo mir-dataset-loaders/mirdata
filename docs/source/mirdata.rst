@@ -186,6 +186,14 @@ filosax
    :inherited-members:
 
 
+fma_keys
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.fma_keys
+   :members:
+   :inherited-members:
+
+
 four_way_tabla
 ^^^^^^^^^^^^^^
 
