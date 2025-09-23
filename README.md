@@ -59,7 +59,7 @@ There are two ways of citing mirdata:
 
 If you are using the library for your work, please cite the version you used as indexed at Zenodo:
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10070589.svg)](https://doi.org/10.5281/zenodo.10070589)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17181782.svg)](https://doi.org/10.5281/zenodo.17181782)
 
 If you refer to mirdata's design principles, motivation etc., please cite the following [paper](https://zenodo.org/record/3527750#.X-Inp5NKhUI):
 
