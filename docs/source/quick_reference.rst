@@ -10,7 +10,7 @@
 Supported Datasets and Annotations
 ##################################
 
-Dataset Quick Reference 
+Dataset Quick Reference
 =======================
 
 This table is provided as a guide for users to select appropriate datasets. The
@@ -51,8 +51,8 @@ types are implemented in Mirdata see :ref:`annotations`.
 
 Events
 ^^^^^^
-A generic annotation to indicate whether a particular event is happening at a given time. 
-It can be used, for instance, to indicate whether a particular instrument is playing at a 
+A generic annotation to indicate whether a particular event is happening at a given time.
+It can be used, for instance, to indicate whether a particular instrument is playing at a
 given time-step or whether a particular note is being played at a given time-step. In fact,
 it is implicit in annotations such as F0_ or Vocal Notes_ (instrument is activated when the
 melody is non-0). However, some datasets provide it as a standalone event annotation.
@@ -92,7 +92,7 @@ which may be encoded in a number of formats/granularities, including midi note n
 
 Effect
 ^^^^^^
-Effect applied to a track. It may refer to the effect applied to a single stroke or an entire track. 
+Effect applied to a track. It may refer to the effect applied to a single stroke or an entire track.
 It can include the effect name, the effect type, the effect parameters, and the effect settings.
 
 .. _genre:
@@ -101,6 +101,12 @@ Genre
 ^^^^^
 A typically global "tag", indicating the genre of a recording. Note that the concept of genre is highly
 subjective and we refer those new to this task to this `article`_.
+
+.. _gesture:
+
+Gesture
+^^^^^
+Keypoints and confindence scores of the pose estimation of a musician while playing an instrument.
 
 .. _instruments:
 

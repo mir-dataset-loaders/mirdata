@@ -255,7 +255,7 @@
 
    * - .. line-block::
 
-       Freesound One-Shot 
+       Freesound One-Shot
        Percussive Sounds
 
      - - audio: ✅
@@ -394,7 +394,7 @@
 
    * - .. line-block::
 
-       MTG Jamendo 
+       MTG Jamendo
        Autotagging Moodtheme
 
      - - audio: ✅
@@ -515,6 +515,15 @@
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
+   * - Saraga Audiovisual
+     - - audio: ✅
+         - annotations: ✅
+     - - :ref:`f0`
+       - :ref:`gesture`
+     - 233
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
    * - Saraga Carnatic
      - - audio: ✅
        - annotations: ✅
@@ -541,9 +550,9 @@
      - 108
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
-          
+
    * - .. line-block::
-   
+
        Saraga Carnatic
        Melody Synth (SCMS)
 

@@ -3,40 +3,27 @@
 .. admonition:: Dataset Info
     :class: dropdown
 
-    This dataset comprises audio excerpts and manually done annotations of the melodic phrases in Carnatic and Hindustani music.
-    This dataset can be used to develop and evaluate approaches for computing melodic similarity between short-time melodic patterns in Indian art music.
+    Saraga Audiovisual includes diverse renditions of Carnatic vocal performances, totalling 42 concerts and more than 60 hours of music. It includes video recordings for all concerts, allowing for a wide range of multimodal analyses.
+    It also contains high-quality human pose estimation data of the musicians extracted from the video footage, and perform benchmarking experiments for the different modalities to validate the utility of the novel collection.
 
-    The dataset contains the following manual annotations referring to audio files:
-
-    - Section annotations, both original and finetuned, stored as start and end timestamps together with the phrase ID of the section (similar melodic phrases have the same ID).
-    - Nyas event annotations stored as start and end timestamps.
-    - Audio features automatically extracted and stored: pitch and tonic.
-    - The annotations are stored in files with song identifier as the filename and file extension:
-        - Section annotations: `.anot` and `.anotEdit`
-        - Nyas annotations: `.flatSegNyas`
-        - Pitch annotations: `.pitch`, `.pitchSilIntrpPP`, `tpe` and `tpe5msSilIntrpPP`
-        - Tonic: `.tonic` and `.tonic`
-
-    The dataset contains a total of 32 tracks.
+    The dataset contains a total of 233 tracks.
 
     The files of this dataset are shared with the following license:
     Creative Commons Attribution Non Commercial Share Alike 4.0 International
 
-    Dataset compiled by: Gulati, S., Serrà, J., and Serra, X.
+    Dataset compiled by: Sivasankar, A.
 
-    For more information about the dataset as well as IAM and annotations, please refer to:
-    https://zenodo.org/records/16631794, where a really detailed explanation of the data and annotations is published.
+    For more information about the dataset as well as Compmusic and annotations, please refer to:
+    https://zenodo.org/records/17405610, where a really detailed explanation of the data and annotations is published.
 
 """
 
-import csv
 import json
 import os
 
 import cv2
 import librosa
 import numpy as np
-from deprecated.sphinx import deprecated
 
 from mirdata import annotations, core, download_utils, io
 

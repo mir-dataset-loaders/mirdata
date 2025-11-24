@@ -425,6 +425,14 @@ salami
    :inherited-members:
 
 
+saraga_audiovisual
+^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.saraga_audiovisual
+    :members:
+    :inherited-members:
+
+
 saraga_carnatic
 ^^^^^^^^^^^^^^^
 
