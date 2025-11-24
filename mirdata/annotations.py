@@ -257,6 +257,22 @@ class F0Data(Annotation):
         self._confidence = confidence
         self.confidence_unit = confidence_unit
 
+
+class GestureData(Annotation):
+    """ GestureData Class
+
+    Attributes:
+        keypoints (np.ndarray):
+        scores (np.ndarray):
+    """
+
+    def __init__(self, keypoints, scores):
+        validate_array_like(keypoints, np.ndarray, np.float32)
+        validate_array_like(scores, np.ndarray, np.float32)
+
+        self.keypoints = keypoints
+        self.scores = scores
+
     @property
     def confidence(self):
         logging.warning(
