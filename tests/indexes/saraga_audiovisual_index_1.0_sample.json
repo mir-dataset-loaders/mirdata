@@ -1,0 +1,59 @@
+{
+  "version": 1.0,
+  "tracks": {
+    "0_Devi_Pavane": {
+      "audio-mix": [
+        "saraga audio/Abhiram Bode/Devi Pavane/Devi Pavane.wav",
+        "d13746d6e1464d493433fb432b1e1eb5"
+      ],
+      "video": [
+        "saraga visual/Abhiram Bode/Devi Pavane/Devi Pavane.mov",
+        "56eee755ef7a41427ae14ca453887726"
+      ],
+      "audio-mridangam-left": [
+        "saraga audio/Abhiram Bode/Devi Pavane/Devi Pavane.multitrack-mridangam-left.wav",
+        "3ea6ef6fdcfb2bc5a63ac8aee5353299"
+      ],
+      "audio-mridangam-right": [
+        "saraga audio/Abhiram Bode/Devi Pavane/Devi Pavane.multitrack-mridangam-right.wav",
+        "f561e1b0673644e4637b6f4a6c0617e4"
+      ],
+      "audio-violin": [
+        "saraga audio/Abhiram Bode/Devi Pavane/Devi Pavane.multitrack-violin.wav",
+        "951b577ee3d242b2bbdea8938553736a"
+      ],
+      "audio-vocal": [
+        "saraga audio/Abhiram Bode/Devi Pavane/Devi Pavane.multitrack-vocal.wav",
+        "061b0b1df0074139bab3aa8a11a4105e"
+      ],
+      "keypoints-mridangam": [
+        "saraga gesture/Abhiram Bode/Devi Pavane/mridangam/mridangam_0_2599_kpts.npy",
+        "f2d3d561edc855ffd3e60b7cf1ca810f"
+      ],
+      "keypoints-singer": [
+        "saraga gesture/Abhiram Bode/Devi Pavane/singer/singer_0_2599_kpts.npy",
+        "971ffc18879f70aa45c8729b2b59b787"
+      ],
+      "keypoints-violin": [
+        "saraga gesture/Abhiram Bode/Devi Pavane/violin/violin_0_2599_kpts.npy",
+        "b337174c170e9c96239cfb817c4d95e7"
+      ],
+      "scores-mridangam": [
+        "saraga gesture/Abhiram Bode/Devi Pavane/mridangam/mridangam_0_2599_scores.npy",
+        "d3c851abadd5694194a4352661775d9b"
+      ],
+      "scores-singer": [
+        "saraga gesture/Abhiram Bode/Devi Pavane/singer/singer_0_2599_scores.npy",
+        "5ce44c6fb9392977be8e9e2bef2e138e"
+      ],
+      "scores-violin": [
+        "saraga gesture/Abhiram Bode/Devi Pavane/violin/violin_0_2599_scores.npy",
+        "7223d64fdf497dadd9b11fb245b6fad1"
+      ],
+      "metadata": [
+        "saraga metadata/Abhiram Bode/Devi Pavane/Devi_Pavane.json",
+        "f3f3f0242bf5cc6e85fd5f3adcd1c564"
+      ]
+    },
+  }
+}
