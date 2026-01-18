@@ -178,10 +178,18 @@ da_tacos
    :members:
    :inherited-members:
 
+
 egfxset
 ^^^^^^^^
 
 .. automodule:: mirdata.datasets.egfxset
+   :members:
+   :inherited-members:
+
+egset12
+^^^^^^^
+
+.. automodule:: mirdata.datasets.egset12
    :members:
    :inherited-members:
 
