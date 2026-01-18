@@ -110,9 +110,6 @@ def test_section_data():
     with pytest.raises(ValueError):
         annotations.SectionData(np.array([[1.0, 2.0], [2.0, 1.0]]), "s")
 
-def test_gesture_data():
-
-
 
 def test_note_data():
     intervals = np.array([[1.0, 2.0], [1.5, 3.0], [2.0, 3.0]])

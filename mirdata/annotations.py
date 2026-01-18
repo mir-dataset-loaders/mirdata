@@ -259,7 +259,7 @@ class F0Data(Annotation):
 
 
 class GestureData(Annotation):
-    """ GestureData Class
+    """GestureData Class
 
     Attributes:
         keypoints (np.ndarray):

@@ -14,7 +14,7 @@
     Dataset compiled by: Sivasankar, A.
 
     For more information about the dataset as well as Compmusic and annotations, please refer to:
-    https://zenodo.org/records/17405610, where a really detailed explanation of the data and annotations is published.
+    https://zenodo.org/records/17405610, where a really detailed explanation of the dataset is published.
 
 """
 
@@ -35,8 +35,8 @@ BIBTEX = """
   month        = {November},
   day          = {10},
   publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.15102483},
-  url          = {https://doi.org/10.5281/zenodo.15102483}
+  doi          = {10.5281/zenodo.17405610},
+  url          = {https://doi.org/10.5281/zenodo.17405610}
 }
 """
 
@@ -48,7 +48,7 @@ INDEXES = {
         url="https://drive.google.com/uc?export=download&id=1QYifrzCzPSJTh813HJaTph4eLx8TzBQY",  # TODO
         checksum="4f3a8e919593aa2b71f7a0b81cc8cc00",  # TODO
     ),
-    "sample": core.Index(filename="saraga_audiovisual_index_sample.json"),
+    "sample": core.Index(filename="saraga_audiovisual_index_1.0_sample.json"),
 }
 
 REMOTES = {
