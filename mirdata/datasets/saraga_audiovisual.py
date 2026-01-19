@@ -45,8 +45,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="saraga_audiovisual_index.json",
-        url="https://drive.google.com/uc?export=download&id=1QYifrzCzPSJTh813HJaTph4eLx8TzBQY",  # TODO
-        checksum="4f3a8e919593aa2b71f7a0b81cc8cc00",  # TODO
+        url="https://zenodo.org/records/18291024/files/saraga_audiovisual_index.json?download=1",  # TODO
+        checksum="b847ca946f2a88956569c897b186a148 ",  # TODO
     ),
     "sample": core.Index(filename="saraga_audiovisual_index_1.0_sample.json"),
 }
@@ -64,7 +64,7 @@ REMOTES = {
     ),
     "visual": download_utils.RemoteFileMetadata(
         filename="saraga visual.zip",
-        url="https://zenodo.org/records/15102483/files/saraga%20visual.zip?download=1",
+        url="https://zenodo.org/records/17405610/files/saraga%20visual.zip?download=1",
         checksum="067b635d1fedb82e8261dcc1237a469f",
     ),
     "gesture": download_utils.RemoteFileMetadata(
