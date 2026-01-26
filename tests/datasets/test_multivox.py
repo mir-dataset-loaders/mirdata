@@ -721,3 +721,89 @@ def test_load_video_fps_fallback():
 
             # Should use fallback fps of 30.0
             assert result.shape[0] == 5
+
+def test_load_video_invalid_target_fps_zero():
+    """Test that load_video returns original video when target_fps is 0."""
+    mock_frames = [
+        np.random.randint(0, 255, (100, 100, 3), dtype=np.uint8) for _ in range(10)
+    ]
+
+    mock_cap = Mock()
+    mock_cap.isOpened.return_value = True
+    mock_cap.read.side_effect = [(True, f.copy()) for f in mock_frames] + [
+        (False, None)
+    ]
+    mock_cap.get.return_value = 30.0
+
+    with patch("cv2.VideoCapture", return_value=mock_cap):
+        with patch("cv2.cvtColor", side_effect=lambda f, c: f):
+            result = multivox.load_video("fake.mp4", target_fps=0)
+
+            # Should return original frames without resampling
+            assert result.shape[0] == 10
+            assert result.shape[1:] == (100, 100, 3)
+
+
+def test_load_video_invalid_target_fps_negative():
+    """Test that load_video returns original video when target_fps is negative."""
+    mock_frames = [
+        np.random.randint(0, 255, (100, 100, 3), dtype=np.uint8) for _ in range(10)
+    ]
+
+    mock_cap = Mock()
+    mock_cap.isOpened.return_value = True
+    mock_cap.read.side_effect = [(True, f.copy()) for f in mock_frames] + [
+        (False, None)
+    ]
+    mock_cap.get.return_value = 30.0
+
+    with patch("cv2.VideoCapture", return_value=mock_cap):
+        with patch("cv2.cvtColor", side_effect=lambda f, c: f):
+            result = multivox.load_video("fake.mp4", target_fps=-15)
+
+            # Should return original frames without resampling
+            assert result.shape[0] == 10
+            assert result.shape[1:] == (100, 100, 3)
+
+
+def test_load_video_invalid_target_fps_nan():
+    """Test that load_video returns original video when target_fps is NaN."""
+    mock_frames = [
+        np.random.randint(0, 255, (100, 100, 3), dtype=np.uint8) for _ in range(10)
+    ]
+
+    mock_cap = Mock()
+    mock_cap.isOpened.return_value = True
+    mock_cap.read.side_effect = [(True, f.copy()) for f in mock_frames] + [
+        (False, None)
+    ]
+    mock_cap.get.return_value = 30.0
+
+    with patch("cv2.VideoCapture", return_value=mock_cap):
+        with patch("cv2.cvtColor", side_effect=lambda f, c: f):
+            result = multivox.load_video("fake.mp4", target_fps=np.nan)
+
+            # Should return original frames without resampling
+            assert result.shape[0] == 10
+            assert result.shape[1:] == (100, 100, 3)
+
+
+def test_load_video_orig_fps_nan():
+    """Test that load_video handles NaN original FPS with fallback."""
+    mock_frames = [
+        np.random.randint(0, 255, (100, 100, 3), dtype=np.uint8) for _ in range(10)
+    ]
+
+    mock_cap = Mock()
+    mock_cap.isOpened.return_value = True
+    mock_cap.read.side_effect = [(True, f.copy()) for f in mock_frames] + [
+        (False, None)
+    ]
+    mock_cap.get.return_value = np.nan  # NaN FPS
+
+    with patch("cv2.VideoCapture", return_value=mock_cap):
+        with patch("cv2.cvtColor", side_effect=lambda f, c: f):
+            result = multivox.load_video("fake.mp4", target_fps=15)
+
+            # Should use fallback fps of 30.0
+            assert result.shape[0] == 5

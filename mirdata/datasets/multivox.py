@@ -79,7 +79,6 @@ from smart_open import open
 
 from mirdata import core, download_utils, io
 
-
 BIBTEX = """
 @inproceedings{meza2025multivox,
  author = {Meza, G. and Sepúlveda, M. and Roman, A. S. and Sigal Sefchovich, J. R. and Roman, I. R.},
@@ -399,7 +398,11 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     return librosa.load(fhandle, sr=None, mono=False)
 
 
-def load_video(video_path, target_fps=None, frame_size=None):
+def load_video(
+    video_path: str,
+    target_fps: Optional[float] = None,
+    frame_size: Optional[Tuple[int, int]] = None,
+) -> np.ndarray:
     """Load a MULTIVOX video file.
 
     Args:
@@ -414,40 +417,42 @@ def load_video(video_path, target_fps=None, frame_size=None):
 
     """
     cap = cv2.VideoCapture(video_path)
-    if not cap.isOpened():
-        raise FileNotFoundError(f"Cannot open video: {video_path}")
-    frames = []
-    while True:
-        ret, frame_bgr = cap.read()
-        if not ret:
-            break
-        # If frame_size is given, resize the frame
-        if frame_size is not None:
-            target_h, target_w = frame_size  # (H, W)
-            frame_bgr = cv2.resize(
-                frame_bgr, (target_w, target_h), interpolation=cv2.INTER_AREA
-            )
-        # Convert BGR -> RGB
-        frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
-        frames.append(frame_rgb)
-    data = np.array(frames)
+    try:
+        if not cap.isOpened():
+            raise FileNotFoundError(f"Cannot open video: {video_path}")
+        frames = []
+        while True:
+            ret, frame_bgr = cap.read()
+            if not ret:
+                break
+            # If frame_size is given, resize the frame
+            if frame_size is not None:
+                target_h, target_w = frame_size  # (H, W)
+                frame_bgr = cv2.resize(
+                    frame_bgr, (target_w, target_h), interpolation=cv2.INTER_AREA
+                )
+            # Convert BGR -> RGB
+            frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
+            frames.append(frame_rgb)
+        data = np.array(frames)
 
-    if target_fps is not None:
-        # Get original fps
-        orig_fps = cap.get(cv2.CAP_PROP_FPS)
-        if orig_fps is None or orig_fps <= 0:
-            orig_fps = 30.0  # fallback
-        T = data.shape[0]
-        duration = T / orig_fps
-        T_new = int(np.floor(duration * target_fps))
-        idx = np.round((np.arange(T_new) / target_fps) * orig_fps).astype(int)
-        idx = np.clip(idx, 0, T - 1)
-        video_array = data[idx]
-    else:
-        video_array = data
+        if target_fps is not None and target_fps > 0 and not np.isnan(target_fps):
+            # Get original fps
+            orig_fps = cap.get(cv2.CAP_PROP_FPS)
+            if orig_fps is None or np.isnan(orig_fps) or orig_fps <= 0:
+                orig_fps = 30.0  # fallback
+            T = data.shape[0]
+            duration = T / orig_fps
+            T_new = int(np.floor(duration * target_fps))
+            idx = np.round((np.arange(T_new) / target_fps) * orig_fps).astype(int)
+            idx = np.clip(idx, 0, T - 1)
+            video_array = data[idx]
+        else:
+            video_array = data
 
-    cap.release()
-    return video_array  # shape: (T, H, W, 3)
+        return video_array  # shape: (T, H, W, 3)
+    finally:
+        cap.release()
 
 
 class Track(core.Track):
