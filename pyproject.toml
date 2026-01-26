@@ -34,6 +34,7 @@ dependencies = [
     "scipy>=1.7.3",
     "tqdm>=4.66.1",
     "smart_open[all]>=5.0.0",
+    "opencv-python>=4.13.0.90",
 ]
 
 [tool.setuptools.package-data]

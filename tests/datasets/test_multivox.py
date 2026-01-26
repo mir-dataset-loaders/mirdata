@@ -4,6 +4,7 @@ import os
 import wave
 from unittest.mock import patch
 
+import numpy as np
 import pytest
 
 from mirdata.datasets import multivox
@@ -592,3 +593,41 @@ def test_metadata_valueerror_locations_at_circle(tmp_path):
         metadata = ds._metadata
         entry = metadata["TID"]
         assert entry["locations_at_circle"] is None
+
+
+def test_video_none_path(tmp_path):
+    meta = {"singer_ids": [], "locations_at_circle": 0}
+    track = _make_track(tmp_path, meta, {})
+    with pytest.raises(FileNotFoundError):
+        _ = track.video()
+
+
+def test_video_calls_load_video(tmp_path):
+    video_path = tmp_path / "video.mp4"
+    video_path.touch()
+
+    paths = {"video_360": (str(video_path), "checksum")}
+    meta = {"singer_ids": [], "locations_at_circle": 0}
+    track = _make_track(tmp_path, meta, paths)
+
+    dummy_video = np.random.randint(0, 255, (5, 240, 320, 3), dtype=np.uint8)
+
+    with patch(
+        "mirdata.datasets.multivox.load_video", return_value=dummy_video
+    ) as mock_load:
+        result = track.video(target_fps=30, frame_size=(240, 320))
+
+        assert result.shape == (5, 240, 320, 3)
+        mock_load.assert_called_once_with(
+            str(video_path), target_fps=30, frame_size=(240, 320)
+        )
+
+
+def test_load_video_file_not_found():
+    mock_cap = type(
+        "MockCap", (), {"isOpened": lambda self: False, "release": lambda self: None}
+    )()
+
+    with patch("cv2.VideoCapture", return_value=mock_cap):
+        with pytest.raises(FileNotFoundError):
+            multivox.load_video("fake_path.mp4")

@@ -73,6 +73,7 @@ from collections import Counter
 from typing import BinaryIO, Dict, List, Optional, Tuple
 
 import librosa
+import cv2
 import numpy as np
 from smart_open import open
 
@@ -396,6 +397,57 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         * float - sample rate
     """
     return librosa.load(fhandle, sr=None, mono=False)
+
+
+def load_video(video_path, target_fps=None, frame_size=None):
+    """Load a MULTIVOX video file.
+
+    Args:
+        video_path (str): Path to video file
+        target_fps (float, optional): Target frames per second for resampling.
+            If None, uses original fps.
+        frame_size (tuple, optional): Target frame size as (height, width).
+            If None, uses original frame size.
+
+    Returns:
+        * np.ndarray - video array with shape (T, H, W, 3) where T is number of frames
+
+    """
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        raise FileNotFoundError(f"Cannot open video: {video_path}")
+    frames = []
+    while True:
+        ret, frame_bgr = cap.read()
+        if not ret:
+            break
+        # If frame_size is given, resize the frame
+        if frame_size is not None:
+            target_h, target_w = frame_size  # (H, W)
+            frame_bgr = cv2.resize(
+                frame_bgr, (target_w, target_h), interpolation=cv2.INTER_AREA
+            )
+        # Convert BGR -> RGB
+        frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
+        frames.append(frame_rgb)
+    data = np.array(frames)
+
+    if target_fps is not None:
+        # Get original fps
+        orig_fps = cap.get(cv2.CAP_PROP_FPS)
+        if orig_fps is None or orig_fps <= 0:
+            orig_fps = 30.0  # fallback
+        T = data.shape[0]
+        duration = T / orig_fps
+        T_new = int(np.floor(duration * target_fps))
+        idx = np.round((np.arange(T_new) / target_fps) * orig_fps).astype(int)
+        idx = np.clip(idx, 0, T - 1)
+        video_array = data[idx]
+    else:
+        video_array = data
+
+    cap.release()
+    return video_array  # shape: (T, H, W, 3)
 
 
 class Track(core.Track):
@@ -981,6 +1033,36 @@ class Track(core.Track):
     ) -> Optional[Tuple[np.ndarray, float]]:
         """Get near-field audio for a single ID from the cached dict."""
         return self.near_field_audio.get(singer_id)
+
+    def video(self, target_fps=None, frame_size=None):
+        """Load 360° video data.
+
+        Args:
+            target_fps (float, optional): Target frames per second for resampling.
+                If None, returns video at original fps.
+            frame_size (tuple, optional): Target frame size as (height, width).
+                If None, returns frames at original resolution.
+
+        Returns:
+            * np.ndarray - video array with shape (T, H, W, 3) in RGB format,
+              where T is number of frames, H is height, W is width
+
+        Raises:
+            FileNotFoundError: If video_360_path is None or file cannot be opened
+
+        Example:
+            >>> track = dataset.track('C1_07052025_S1_MAMAINES_P6_S6')
+            >>> # Load video at original resolution and fps
+            >>> video_data = track.video()
+            >>> # Load video with specific fps and frame size
+            >>> video_data = track.video(target_fps=30, frame_size=(480, 640))
+            >>> print(video_data.shape)  # (T, 480, 640, 3)
+        """
+        if self.video_360_path is None:
+            raise FileNotFoundError("video_360_path is None. Did you run .download()?")
+        return load_video(
+            self.video_360_path, target_fps=target_fps, frame_size=frame_size
+        )
 
 
 @core.docstring_inherit(core.Dataset)
