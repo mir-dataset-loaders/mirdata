@@ -2,7 +2,7 @@
 
 import os
 import wave
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import numpy as np
 import pytest
@@ -631,3 +631,93 @@ def test_load_video_file_not_found():
     with patch("cv2.VideoCapture", return_value=mock_cap):
         with pytest.raises(FileNotFoundError):
             multivox.load_video("fake_path.mp4")
+
+
+def test_load_video_basic():
+    """Test basic video loading without resizing or fps changes."""
+    # Create mock frames (5 frames, 480x640 BGR)
+    mock_frames = [
+        np.random.randint(0, 255, (480, 640, 3), dtype=np.uint8) for _ in range(5)
+    ]
+
+    mock_cap = Mock()
+    mock_cap.isOpened.return_value = True
+    mock_cap.read.side_effect = [(True, f.copy()) for f in mock_frames] + [
+        (False, None)
+    ]
+    mock_cap.get.return_value = 30.0
+
+    with patch("cv2.VideoCapture", return_value=mock_cap):
+        with patch("cv2.cvtColor", side_effect=lambda f, c: f):
+            result = multivox.load_video("fake_path.mp4")
+
+            assert result.shape == (5, 480, 640, 3)
+            mock_cap.release.assert_called_once()
+
+
+def test_load_video_with_frame_resize():
+    """Test video loading with frame resizing."""
+    mock_frames = [
+        np.random.randint(0, 255, (480, 640, 3), dtype=np.uint8) for _ in range(3)
+    ]
+    resized_frame = np.random.randint(0, 255, (240, 320, 3), dtype=np.uint8)
+
+    mock_cap = Mock()
+    mock_cap.isOpened.return_value = True
+    mock_cap.read.side_effect = [(True, f.copy()) for f in mock_frames] + [
+        (False, None)
+    ]
+    mock_cap.get.return_value = 30.0
+
+    with patch("cv2.VideoCapture", return_value=mock_cap):
+        with patch("cv2.resize", return_value=resized_frame) as mock_resize:
+            with patch("cv2.cvtColor", side_effect=lambda f, c: f):
+                result = multivox.load_video("fake.mp4", frame_size=(240, 320))
+
+                assert result.shape == (3, 240, 320, 3)
+                assert mock_resize.call_count == 3
+                # Check resize called with (width, height) format
+                assert mock_resize.call_args_list[0][0][1] == (320, 240)
+
+
+def test_load_video_with_fps_resample():
+    """Test video loading with FPS resampling."""
+    # 10 frames at 30 fps, resample to 15 fps should give ~5 frames
+    mock_frames = [
+        np.random.randint(0, 255, (100, 100, 3), dtype=np.uint8) for _ in range(10)
+    ]
+
+    mock_cap = Mock()
+    mock_cap.isOpened.return_value = True
+    mock_cap.read.side_effect = [(True, f.copy()) for f in mock_frames] + [
+        (False, None)
+    ]
+    mock_cap.get.return_value = 30.0
+
+    with patch("cv2.VideoCapture", return_value=mock_cap):
+        with patch("cv2.cvtColor", side_effect=lambda f, c: f):
+            result = multivox.load_video("fake.mp4", target_fps=15)
+
+            assert result.shape[0] == 5
+            assert result.shape[1:] == (100, 100, 3)
+
+
+def test_load_video_fps_fallback():
+    """Test that load_video handles invalid FPS with fallback."""
+    mock_frames = [
+        np.random.randint(0, 255, (100, 100, 3), dtype=np.uint8) for _ in range(10)
+    ]
+
+    mock_cap = Mock()
+    mock_cap.isOpened.return_value = True
+    mock_cap.read.side_effect = [(True, f.copy()) for f in mock_frames] + [
+        (False, None)
+    ]
+    mock_cap.get.return_value = 0.0  # Invalid FPS
+
+    with patch("cv2.VideoCapture", return_value=mock_cap):
+        with patch("cv2.cvtColor", side_effect=lambda f, c: f):
+            result = multivox.load_video("fake.mp4", target_fps=15)
+
+            # Should use fallback fps of 30.0
+            assert result.shape[0] == 5
