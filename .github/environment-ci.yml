@@ -39,3 +39,4 @@ dependencies:
     - smart_open[all]>=6.4.0
     - testcontainers>=3.7.1
     - mir_eval>=0.7
+    - opencv-python>=4.13.0.90
