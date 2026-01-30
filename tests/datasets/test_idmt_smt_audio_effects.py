@@ -7,7 +7,6 @@ from mirdata.datasets import idmt_smt_audio_effects
 from mirdata import download_utils
 from tests.test_utils import run_track_tests
 
-
 TEST_DATA_HOME = os.path.normpath("tests/resources/mir_datasets/idmt_smt_audio_effects")
 
 
