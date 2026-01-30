@@ -53,7 +53,6 @@ import numpy as np
 from mirdata import annotations, core, io
 from smart_open import open
 
-
 try:
     from openpyxl import load_workbook as get_xlxs
 except ImportError:

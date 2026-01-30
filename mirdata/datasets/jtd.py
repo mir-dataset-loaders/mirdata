@@ -64,7 +64,6 @@ import numpy as np
 
 from mirdata import download_utils, core, annotations, io
 
-
 BIBTEX = """
 @article{jazz-trio-database
     title = {Jazz Trio Database: Automated Annotation of Jazz Piano Trio Recordings Processed Using Audio Source Separation},
