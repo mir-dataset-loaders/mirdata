@@ -26,7 +26,7 @@ dependencies = [
     "Deprecated>=1.2.14",
     "h5py>=3.7.0",
     "librosa>=0.10.1",
-    "numpy>=1.21.6,<=2.3",
+    "numpy>=1.21.6",
     "pandas>=1.3.5",
     "pretty_midi>=0.2.10",
     "pyyaml>=6.0",
@@ -34,7 +34,6 @@ dependencies = [
     "scipy>=1.7.3",
     "tqdm>=4.66.1",
     "smart_open[all]>=5.0.0",
-    "opencv-python>=4.13.0.90",
 ]
 
 [tool.setuptools.package-data]
@@ -77,6 +76,7 @@ cipi = ["music21==6.7.1"]
 gcs = ["smart_open[gcs]"]
 s3 = ["smart_open[s3]"]
 http = ["smart_open[http]"]
+multivox = ["moviepy>=2.2.1"]
 
 [project.urls]
 Homepage = "https://github.com/mir-dataset-loaders/mirdata"
