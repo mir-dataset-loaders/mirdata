@@ -69,6 +69,7 @@
 
 import csv
 import os
+import logging
 from collections import Counter
 from typing import BinaryIO, Dict, List, Optional, Tuple
 
@@ -78,6 +79,15 @@ from smart_open import open
 from moviepy import VideoFileClip
 
 from mirdata import core, download_utils, io
+
+try:
+    from moviepy import VideoFileClip
+except ImportError as E:
+    logging.error(
+        "In order to use Multivox, you must have MoviePy installed. "
+        "Please reinstall mirdata using `pip install 'mirdata[multivox]'"
+    )
+    raise
 
 BIBTEX = """
 @inproceedings{meza2025multivox,
