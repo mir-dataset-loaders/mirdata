@@ -412,7 +412,6 @@ def load_video(video_path: str) -> np.ndarray:
     return frames
 
 
-
 class Track(core.Track):
     """MULTIVOX Track class - represents a single vocal performance recording.
 
@@ -997,11 +996,11 @@ class Track(core.Track):
     ) -> Optional[Tuple[np.ndarray, float]]:
         """Get near-field audio for a single ID from the cached dict."""
         return self.near_field_audio.get(singer_id)
-    
+
     @core.cached_property
     def video(self) -> np.ndarray:
         """Load 360° video frames.
-    
+
         Returns:
             np.ndarray - array of video frames with shape (n_frames, height, width, channels)
         """
