@@ -1,0 +1,10 @@
+{
+  "version": "sample",
+  "metadata": {},
+  "tracks": {
+    "01": {
+      "audio": ["01.wav", "addabec8d000192a4e18d67f76bc54e3"],
+      "jams": ["01.jams", "fbb5cc3cf1d97c2c64b1f6937b622c78"]
+    }
+  }
+}

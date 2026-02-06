@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "metadata": {},
+  "tracks": {
+    "01": {
+      "audio": [
+        "01.wav",
+        "2eb739c5fb73e6327bb47267afe3eddf"
+      ],
+      "annotation": [
+        "01.jams",
+        "083c7dae8e6556c20b9a2d762e2c977f"
+      ]
+    },
+    "02": {
+      "audio": [
+        "02.wav",
+        "69b8701ea9a81428a6346e0d3d4b9b85"
+      ],
+      "annotation": [
+        "02.jams",
+        "848f984b17b261a65585e25fba977a33"
+      ]
+    },
+    "03": {
+      "audio": [
+        "03.wav",
+        "28141f17e46399553c52f5ed27bc10e2"
+      ],
+      "annotation": [
+        "03.jams",
+        "721ec50f570892f9cfa88fb1e22a6113"
+      ]
+    },
+    "04": {
+      "audio": [
+        "04.wav",
+        "6fe2f6f915953e8ae28b8a84a7677d0f"
+      ],
+      "annotation": [
+        "04.jams",
+        "87426719ac4353d73e1af09970c31eb1"
+      ]
+    },
+    "05": {
+      "audio": [
+        "05.wav",
+        "3435348c2b6702524dade471be70e4eb"
+      ],
+      "annotation": [
+        "05.jams",
+        "c5c2fd376031177e87a3eb4ad12d220c"
+      ]
+    },
+    "06": {
+      "audio": [
+        "06.wav",
+        "9f7ead382f373259b466ccd1884ed173"
+      ],
+      "annotation": [
+        "06.jams",
+        "5ababdcf7741400dc93768334f6c899d"
+      ]
+    },
+    "07": {
+      "audio": [
+        "07.wav",
+        "77f752ab3e7a5c606a21ac7b0df4fa1c"
+      ],
+      "annotation": [
+        "07.jams",
+        "e693844f4b46fd3831c7c4ee0a2c3aa8"
+      ]
+    },
+    "08": {
+      "audio": [
+        "08.wav",
+        "a59f373c00b8a327b37ce28f6601404c"
+      ],
+      "annotation": [
+        "08.jams",
+        "513e00c522d53adac0ed9966a5b4c8cd"
+      ]
+    },
+    "09": {
+      "audio": [
+        "09.wav",
+        "593aec1394a905a0c8b255a847f54139"
+      ],
+      "annotation": [
+        "09.jams",
+        "9f08cae003c6c3d9dc745c2e319496d4"
+      ]
+    },
+    "10": {
+      "audio": [
+        "10.wav",
+        "123818ef1020102252192d9e7a231e07"
+      ],
+      "annotation": [
+        "10.jams",
+        "8cbf70e1b086f4a8fe5cac79572635ae"
+      ]
+    },
+    "11": {
+      "audio": [
+        "11.wav",
+        "4bbaecaaa3e58bef6bb15a6cd0979fe2"
+      ],
+      "annotation": [
+        "11.jams",
+        "f392b5bba5f3b99866bba91cb4d35a9a"
+      ]
+    },
+    "12": {
+      "audio": [
+        "12.wav",
+        "e1ee73508f37d5c28c69877a588665d2"
+      ],
+      "annotation": [
+        "12.jams",
+        "21217bda094eb8f29edfd1ed2f23ba45"
+      ]
+    }
+  }
+}
