@@ -122,7 +122,6 @@ import pandas as pd
 from mirdata import annotations
 from mirdata import core
 
-
 BIBTEX = """@inproceedings{cortes2022BAF,
   author       = {Guillem Cortès and
                   Alex Ciurana and

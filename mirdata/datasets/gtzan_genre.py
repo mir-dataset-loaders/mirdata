@@ -24,7 +24,6 @@ import numpy as np
 
 from mirdata import download_utils, core, io, annotations
 
-
 BIBTEX = """@article{tzanetakis2002gtzan,
   title={GTZAN genre collection},
   author={Tzanetakis, George and Cook, P},

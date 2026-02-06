@@ -39,7 +39,6 @@ from typing import Optional, TextIO, Tuple, List
 
 from mirdata import annotations, core, io
 
-
 BIBTEX = """
 @article{1678001,
     author={Gouyon, F. and Klapuri, A. and Dixon, S. and Alonso, M. and Tzanetakis, G. and Uhle, C. and Cano, P.},
