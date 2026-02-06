@@ -274,9 +274,7 @@ def download_from_remote(remote, save_dir, force_overwrite, allow_invalid_checks
                             If this error persists, please raise an issue at
                             https://github.com/mir-dataset-loaders/mirdata,
                             and tag it with 'broken-link'.
-                            """.format(
-                    remote.url
-                )
+                            """.format(remote.url)
                 logging.error(error_msg)
                 raise exc
     else:

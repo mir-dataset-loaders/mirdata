@@ -26,7 +26,6 @@ from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """
 @techreport{bittner2021vocadito,
       title={vocadito: A dataset of solo vocals with $f_0$, note, and lyric annotations}, 

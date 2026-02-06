@@ -76,6 +76,7 @@ cipi = ["music21==6.7.1"]
 gcs = ["smart_open[gcs]"]
 s3 = ["smart_open[s3]"]
 http = ["smart_open[http]"]
+multivox = ["moviepy>=2.2.1"]
 
 [project.urls]
 Homepage = "https://github.com/mir-dataset-loaders/mirdata"

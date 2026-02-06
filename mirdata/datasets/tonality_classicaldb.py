@@ -43,7 +43,6 @@ import numpy as np
 
 from mirdata import core, download_utils, io
 
-
 BIBTEX = """@article{gomez2006tonal,
   title={Tonal description of music audio signals},
   author={G{\'o}mez, Emilia},

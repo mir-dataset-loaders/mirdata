@@ -51,7 +51,6 @@ import numpy as np
 from mirdata import annotations, core, download_utils, io
 from smart_open import open
 
-
 BIBTEX = """
 @article{gulati_2016,
   author       = {Gulati, Sankalp and Serrà, Joan and Kaustuv Kani, Ganguli 
