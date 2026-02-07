@@ -111,6 +111,25 @@ def test_section_data():
         annotations.SectionData(np.array([[1.0, 2.0], [2.0, 1.0]]), "s")
 
 
+def test_gesture_data():
+    keypoints = np.array([[1.0, 2.0], [1.5, 3.0], [2.0, 3.0]], dtype=np.float32)
+    scores = np.array([0.1, 0.4, 0.2], dtype=np.float32)
+    gesture_data = annotations.GestureData(keypoints, scores)
+    assert np.allclose(gesture_data.keypoints, keypoints)
+    assert np.allclose(gesture_data.scores, scores)
+    with pytest.raises(ValueError):
+        annotations.GestureData(None, None)
+
+    with pytest.raises(TypeError):
+        annotations.GestureData([1.0, 2.0], [1.0, 2.0])
+
+    with pytest.raises(TypeError):
+        annotations.GestureData("s", "s")
+
+    with pytest.raises(ValueError):
+        annotations.GestureData(keypoints, np.array([0.1, 0.4], dtype=np.float32))
+
+
 def test_note_data():
     intervals = np.array([[1.0, 2.0], [1.5, 3.0], [2.0, 3.0]])
     notes = np.array([100.0, 150.0, 120.0])

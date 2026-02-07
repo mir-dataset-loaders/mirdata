@@ -25,7 +25,6 @@ from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import annotations, core, io
 
-
 BIBTEX = """
 @INPROCEEDINGS{1576040,
   author={Herrera, P. and Bello, J. and Widmer, G. and Sandler, M. and Celma, O. and Vignoli, F. and Pampalk, E. and Cano, P. and Pauws, S. and Serra, X.},

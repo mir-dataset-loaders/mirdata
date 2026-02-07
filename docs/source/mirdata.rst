@@ -426,7 +426,7 @@ salami
 
 
 saraga_audiovisual
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.saraga_audiovisual
     :members:
@@ -543,6 +543,8 @@ Annotation Types
    :members:
 .. autoclass:: mirdata.annotations.F0Data
    :members:
+.. autoclass:: mirdata.annotations.GestureData
+    :members:
 .. autoclass:: mirdata.annotations.MultiF0Data
    :members:
 .. autoclass:: mirdata.annotations.NoteData

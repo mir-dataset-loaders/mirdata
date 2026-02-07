@@ -8,6 +8,11 @@
 
     The dataset contains a total of 233 tracks.
 
+    - Audio recordings (multitrack and mix): Vocal, violin, mridangam (left and right), and mix.
+    - Video recordings of the performances.
+    - Human pose estimation data for the musicians, including keypoints and confidence scores.
+    - Metadata for each track, including information about the artist, composition, and performance context.
+
     The files of this dataset are shared with the following license:
     Creative Commons Attribution Non Commercial Share Alike 4.0 International
 
@@ -204,8 +209,8 @@ def load_audio(audio_path):
         audio_path (str): path to audio file
 
     Returns:
-        * np.ndarray - the mono audio signal
-        * float - The sample rate of the audio file
+        np.ndarray: the mono audio signal
+        float: The sample rate of the audio file
 
     """
     if audio_path is None:
@@ -224,8 +229,8 @@ def load_video(video_path):
         video_path (str): path to video file
 
     Returns:
-        * np.ndarray - the video signal (frames, height, width, channels)
-        * float - The frame rate of the video file
+        * np.ndarray: the video signal (frames, height, width, channels)
+        * float: The frame rate of the video file
 
     """
     if video_path is None:
@@ -260,7 +265,7 @@ def load_gesture(keypoints_path, scores_path):
         scores_path (str): path to scores file
 
     Returns:
-        GestureData - gesture data
+        GestureData: gesture data
 
     """
     if keypoints_path is None or scores_path is None:

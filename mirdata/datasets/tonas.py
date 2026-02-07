@@ -54,7 +54,6 @@ from smart_open import open
 
 from mirdata import annotations, core, io
 
-
 BIBTEX = """
 Music material:
 @inproceedings{tonas_music,

@@ -172,7 +172,7 @@ def test_load_metadtata():
             },
             "lead": False,
             "attributes": "",
-        }
+        },
     ]
     assert parsed_metadata["raaga"] == [{"uuid": "", "name": "Saveri"}]
     assert parsed_metadata["taala"] == [{"uuid": "", "name": "Adi"}]
@@ -192,10 +192,6 @@ def test_load_gesture():
     gesture = saraga_audiovisual.load_gesture(keypoint_path, score_path)
 
     assert np.array_equal(
-        gesture.keypoints,
-        np.array([[100, 200], [200, 400]], dtype=np.float32)
+        gesture.keypoints, np.array([[100, 200], [200, 400]], dtype=np.float32)
     )
-    assert np.array_equal(
-        gesture.scores,
-        np.array([[1, 0.5]], dtype=np.float32)
-    )
+    assert np.array_equal(gesture.scores, np.array([[1, 0.5]], dtype=np.float32))

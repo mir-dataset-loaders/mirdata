@@ -46,7 +46,6 @@ from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """
 @software{sertan_senturk_2016_58413,
   author       = {Sertan Şentürk and
