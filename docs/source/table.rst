@@ -454,6 +454,33 @@
      - .. image:: https://licensebuttons.net/l/by/3.0/80x15.png
           :target: https://creativecommons.org/licenses/by/3.0/
 
+   * - .. line-block::
+
+       MTG Jamendo 
+       Autotagging Moodtheme
+
+     - - audio: ✅
+       - annotations: ✅
+     - - moodtheme annotations
+     - 18448
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
+   * - MULTIVOX
+     - - audio: ✅
+       - video: ✅
+       - metadata: ✅
+     - - spatial metadata (angular positions)
+       - ORTF stereo far-field audio
+       - 360° camera audio
+       - per-singer near-field recordings
+       - 360° video
+       - singer demographics (gender, height)
+       - facing directions
+     - 154
+     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by/4.0
+
    * - Orchset
      - - audio: ✅
        - annotations: ✅
