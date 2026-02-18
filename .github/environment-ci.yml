@@ -40,3 +40,4 @@ dependencies:
     - testcontainers>=3.7.1
     - mir_eval>=0.7
     - moviepy>=2.2.1
+    - opencv-python
