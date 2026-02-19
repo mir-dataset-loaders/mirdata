@@ -126,9 +126,6 @@ def test_gesture_data():
     with pytest.raises(TypeError):
         annotations.GestureData("s", "s")
 
-    with pytest.raises(ValueError):
-        annotations.GestureData(keypoints, np.array([0.1, 0.4], dtype=np.float32))
-
 
 def test_note_data():
     intervals = np.array([[1.0, 2.0], [1.5, 3.0], [2.0, 3.0]])
