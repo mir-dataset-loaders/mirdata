@@ -105,7 +105,7 @@ subjective and we refer those new to this task to this `article`_.
 .. _gesture:
 
 Gesture
-^^^^^
+^^^^^^^
 Keypoints and confindence scores of the pose estimation of a musician while playing an instrument.
 
 .. _instruments:

@@ -124,6 +124,7 @@
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - .. line-block::
+
         (CompMusic)
         Indian Tonic
 
@@ -253,7 +254,7 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
-   * - .. line-block::
+   * - .. ::
 
        Freesound One-Shot
        Percussive Sounds
@@ -392,7 +393,7 @@
      - .. image:: https://img.shields.io/badge/License-MIT-blue.svg
           :target: https://lbesson.mit-license.org/
 
-   * - .. line-block::
+   * - .. ::
 
        MTG Jamendo
        Autotagging Moodtheme
@@ -454,9 +455,9 @@
      - .. image:: https://licensebuttons.net/l/by/3.0/80x15.png
           :target: https://creativecommons.org/licenses/by/3.0/
 
-   * - .. line-block::
+   * - .. ::
 
-       MTG Jamendo 
+       MTG Jamendo
        Autotagging Moodtheme
 
      - - audio: ✅
@@ -578,7 +579,7 @@
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
-   * - .. line-block::
+   * - .. ::
 
        Saraga Carnatic
        Melody Synth (SCMS)
