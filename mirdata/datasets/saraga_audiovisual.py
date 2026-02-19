@@ -1,4 +1,5 @@
-"""Saraga Audiovisual Dataset Loader
+"""
+Saraga Audiovisual Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
@@ -20,8 +21,8 @@
 
     For more information about the dataset as well as Compmusic and annotations, please refer to:
     https://zenodo.org/records/17405610, where a really detailed explanation of the dataset is published.
-
 """
+
 from smart_open import open
 import json
 import os
