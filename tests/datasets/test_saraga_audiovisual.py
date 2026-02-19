@@ -116,8 +116,6 @@ def test_load_audio():
     assert type(audio) == np.ndarray
     assert audio.shape[0] == 2
 
-    assert saraga_audiovisual.load_audio(None) is None
-
 
 def test_load_video():
     data_home = "tests/resources/mir_datasets/saraga_audiovisual"
@@ -128,8 +126,6 @@ def test_load_video():
 
     assert type(video) == np.ndarray
     assert type(fps) == int
-
-    assert saraga_audiovisual.load_video(None) is None
 
 
 def test_load_metadtata():

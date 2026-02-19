@@ -22,7 +22,7 @@
     https://zenodo.org/records/17405610, where a really detailed explanation of the dataset is published.
 
 """
-
+from smart_open import open
 import json
 import os
 
@@ -197,9 +197,12 @@ def load_metadata(fhandle):
         dict: metadata with the following fields
     """
     if not fhandle:
-        return None
+        raise IOError("Metadata path is None or invalid")
 
-    return json.load(fhandle)
+    try:
+        return json.load(fhandle)
+    except Exception as e:
+        raise IOError(f"Error loading metadata: {e}")
 
 
 def load_audio(audio_path):
@@ -214,12 +217,20 @@ def load_audio(audio_path):
 
     """
     if audio_path is None:
-        return None
+        raise IOError("File path is None")
 
-    if not os.path.exists(audio_path):
-        return None
+    try:
+        with open(audio_path, "rb") as f:
+            pass
+    except Exception:
+        raise IOError(f"File not found: {audio_path}")
 
-    return librosa.load(audio_path, sr=44100, mono=False)
+    try:
+        audio, sr = librosa.load(audio_path, sr=44100, mono=False)
+    except Exception:
+        raise IOError(f"Error loading file: {audio_path}")
+
+    return audio, sr
 
 
 def load_video(video_path):
@@ -234,12 +245,12 @@ def load_video(video_path):
 
     """
     if video_path is None:
-        return None
-
-    if not os.path.exists(video_path):
-        return None
+        raise IOError("Video path is None")
 
     cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        raise IOError(f"Video file cannot be opened: {video_path}")
+
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     frames = []
 
@@ -251,10 +262,10 @@ def load_video(video_path):
         frames.append(frame)
 
     cap.release()
+    if not frames:
+        raise IOError(f"No frames read from video file: {video_path}")
 
-    video = np.array(frames)
-
-    return video, fps
+    return np.array(frames), fps
 
 
 def load_gesture(keypoints_path, scores_path):
@@ -269,15 +280,14 @@ def load_gesture(keypoints_path, scores_path):
 
     """
     if keypoints_path is None or scores_path is None:
-        return None
+        raise IOError("Gesture paths cannot be None")
 
-    if not os.path.exists(keypoints_path) or not os.path.exists(scores_path):
-        return None
-
-    keypoints = np.load(keypoints_path)
-    scores = np.load(scores_path)
-
-    gesture = annotations.GestureData(keypoints, scores)
+    try:
+        keypoints = np.load(keypoints_path)
+        scores = np.load(scores_path)
+        gesture = annotations.GestureData(keypoints, scores)
+    except Exception as e:
+        raise IOError(f"Error loading gesture data: {e}")
 
     return gesture
 
