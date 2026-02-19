@@ -197,9 +197,6 @@ def load_metadata(fhandle):
     Returns:
         dict: metadata with the following fields
     """
-    if not fhandle:
-        raise IOError("Metadata path is None or invalid")
-
     try:
         return json.load(fhandle)
     except Exception as e:

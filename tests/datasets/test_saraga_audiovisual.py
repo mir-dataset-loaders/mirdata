@@ -3,6 +3,7 @@ import numpy as np
 from mirdata import annotations
 from mirdata.datasets import saraga_audiovisual
 from tests.test_utils import run_track_tests
+import pytest
 
 
 def test_track():
@@ -116,6 +117,11 @@ def test_load_audio():
     assert type(audio) == np.ndarray
     assert audio.shape[0] == 2
 
+    with pytest.raises(IOError):
+        saraga_audiovisual.load_audio(None)
+    with pytest.raises(IOError):
+        saraga_audiovisual.load_audio("a/fake/path")
+
 
 def test_load_video():
     data_home = "tests/resources/mir_datasets/saraga_audiovisual"
@@ -126,6 +132,11 @@ def test_load_video():
 
     assert type(video) == np.ndarray
     assert type(fps) == int
+
+    with pytest.raises(IOError):
+        saraga_audiovisual.load_video(None)
+    with pytest.raises(IOError):
+        saraga_audiovisual.load_video("a/fake/path")
 
 
 def test_load_metadtata():
@@ -177,6 +188,9 @@ def test_load_metadtata():
     assert parsed_metadata["concert"] == []
     assert parsed_metadata["album_artists"] == []
 
+    with pytest.raises(IOError):
+        saraga_audiovisual.load_metadata("a/fake/path")
+
 
 def test_load_gesture():
     data_home = "tests/resources/mir_datasets/saraga_audiovisual"
@@ -191,3 +205,8 @@ def test_load_gesture():
         gesture.keypoints, np.array([[100, 200], [200, 400]], dtype=np.float32)
     )
     assert np.array_equal(gesture.scores, np.array([[1, 0.5]], dtype=np.float32))
+
+    with pytest.raises(IOError):
+        saraga_audiovisual.load_gesture(None, None)
+    with pytest.raises(IOError):
+        saraga_audiovisual.load_gesture("a/fake/path", "a/fake/path")
