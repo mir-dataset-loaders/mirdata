@@ -215,7 +215,6 @@ class GestureData(Annotation):
     def __init__(self, keypoints, scores):
         validate_array_like(keypoints, np.ndarray, np.float32)
         validate_array_like(scores, np.ndarray, np.float32)
-        validate_lengths_equal([keypoints[-1], scores])
 
         self.keypoints = keypoints
         self.scores = scores
