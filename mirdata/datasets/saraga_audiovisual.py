@@ -223,10 +223,7 @@ def load_audio(audio_path):
     except Exception:
         raise IOError(f"File not found: {audio_path}")
 
-    try:
-        audio, sr = librosa.load(audio_path, sr=44100, mono=False)
-    except Exception:
-        raise IOError(f"Error loading file: {audio_path}")
+    audio, sr = librosa.load(audio_path, sr=44100, mono=False)
 
     return audio, sr
 
@@ -260,8 +257,6 @@ def load_video(video_path):
         frames.append(frame)
 
     cap.release()
-    if not frames:
-        raise IOError(f"No frames read from video file: {video_path}")
 
     return np.array(frames), fps
 
