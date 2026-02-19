@@ -546,8 +546,7 @@
    * - Saraga Audiovisual
      - - audio: ✅
          - annotations: ✅
-     - - :ref:`f0`
-       - :ref:`gesture`
+     - - :ref:`gesture`
      - 233
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
