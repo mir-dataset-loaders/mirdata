@@ -1,0 +1,15 @@
+{
+  "version": "sample",
+  "tracks": {
+    "07.wav": {
+      "audio": [
+        "07.wav",
+        "f69b45a070da943ccc2ea90d2268d073"
+      ],
+      "jams": [
+        "07.jams",
+        "1c044bddfe3e4eb0afd0022a32ae9390"
+      ]
+    }
+  }
+}

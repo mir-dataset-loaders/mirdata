@@ -7,7 +7,8 @@ EGSet12 (Electric Guitar dataset of 12) is a dataset of twelve original recordin
 
 The recordings include 12 original professional compositions.
 
-The styles included are pop, funk, jazz and twelve-tone. They showcase the full tonal range of the electric guitar across diverse melodies and chord complexities.
+The styles included are pop, funk, jazz and atonal. They showcase the full tonal range of the electric guitar across diverse melodies and chord complexities.
+To avoid mislabeling (due to their compositional similarities), pop and rock have been labeled together as "pop/rock".
 
 The performances employ a wide range of techniques such as alternate picking, hybrid picking, and palm mute.
 
@@ -23,10 +24,10 @@ Annotations are labeled by a professional guitarist. For each recording, the EGS
             -Note durations
 
 Style distribution:
-            -Jazz: tracks 1, 8, 12
-            -Pop/Rock: tracks 2, 6, 7, 10
-            -Funk:track 4
-            -12 Tone/atonal: 5, 9, 11
+            -Jazz: tracks 01, 03, 12
+            -Pop/Rock: tracks 02, 06, 07, 10
+            -Funk:track 04
+            -Atonal: 05, 08, 09, 11
 
 
 
@@ -42,13 +43,11 @@ Leveraging real electric guitar tones and effects to improve robustness in guita
 
 """
 
-import json
-import os
-from typing import BinaryIO, TextIO, Optional, Tuple
+import jams
+from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
-from smart_open import open
 
 from mirdata import download_utils, core, annotations, io
 
@@ -68,11 +67,11 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="egset12_index_1.0.json",
-        url=None,  # Not yet on Zenodo
-        checksum=None,  # temporarily
+        url="https://zenodo.org/records/18988581",
+        checksum="2ee702160c451df3432cbae1da515798",
     ),
     "sample": core.Index(
-        filename="egset12_index_sample.json",
+        filename="egset12_index_1.0_sample.json",
     ),
 }
 
@@ -84,7 +83,23 @@ REMOTES = {
     ),
 }
 
+_GUITAR_STRINGS = ["E", "A", "D", "G", "B", "e"]
+_STYLE_DICT = {
+    "01.wav": "jazz",
+    "02.wav": "pop/rock",
+    "03.wav": "jazz",
+    "04.wav": "funk",
+    "05.wav": "atonal",
+    "06.wav": "pop/rock",
+    "07.wav": "pop/rock",
+    "08.wav": "atonal",
+    "09.wav": "atonal",
+    "10.wav": "pop/rock",
+    "11.wav": "atonal",
+    "12.wav": "jazz",
+}
 LICENSE_INFO = "Creative Commons Attribution 4.0 International"
+TIME_UNIT = "s"
 
 
 class Track(core.Track):
@@ -94,14 +109,16 @@ class Track(core.Track):
         track_id(str):track id of the track
 
     Attributes:
-        audio_path(str): path to audio file
+        audio_path(str):path to audio file
         jams_path(str):path to annotation file
+        style(str):the musical style of the track (.wav file)
 
     Cached Properties:
-        notes(dict): MIDI note numbers for each guitar string.Keys are string numbers
-        pitch_contours(dict): dictionary of pitch contour data in Hz for each guitar string. Keys are guitar string numbers(0-5), values are pitch contour data with frequencies
-        tempo(float): tempo of the performance in BPM
-        jams(JAMSObject): the complete JAMS annotation object
+        notes(dict): MIDI note data per guitar string. Keys are guitar string names i.e., ('E', 'A','D','G','B','e'), values are annotations.NoteData objects.
+        notes_all(annotations.NoteData): Contains all the notes in the track across all guitar strings merged into a single NoteData object.
+        pitch_contours(dict): pitch contour data per each guitar string. Keys are guitar string names, values are annotations.F0Data objects with onset times, frequencies and voicing.
+        tempo(annotations.TempoData): tempo annotation with tempo intervals (measured in seconds), BPM values and confidence.
+        jams(jams.JAMS): the complete JAMS annotation object
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
@@ -115,28 +132,45 @@ class Track(core.Track):
 
         self.audio_path = self.get_path("audio")
         self.jams_path = self.get_path("jams")
+        self.style = _STYLE_DICT[track_id]
+
+    @core.cached_property
+    def jams(self):
+        if self.jams_path is None:
+            return None
+        return jams.load(self.jams_path)
 
     @core.cached_property
     def notes(self) -> Optional[dict]:
-        return load_notes(self.jams_path)
+        return load_notes(self.jams)
+
+    @core.cached_property
+    def notes_all(self) -> Optional[annotations.NoteData]:
+        if self.notes is None:
+            return None
+        all_note_data = None
+        for note_data in self.notes.values():
+            if all_note_data is None:
+                all_note_data = note_data
+            else:
+                all_note_data += note_data
+        return all_note_data
 
     @core.cached_property
     def pitch_contours(self) -> Optional[dict]:
-        return load_pitch_contours(self.jams_path)
+        return load_pitch_contours(self.jams)
 
     @core.cached_property
-    def tempo(self) -> Optional[float]:
-        return load_tempo(self.jams_path)
-
-    @core.cached_property
-    def jams(self) -> Optional[dict]:
-        return load_jams(self.jams_path)
+    def tempo(self) -> Optional[annotations.TempoData]:
+        return load_tempo(self.jams)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
-        """Solo guitar audio (mono) audio signal
-        float - sample rate
+        """The track's audio
 
+        Returns:
+            np.ndarray - audio signal (mono)
+            float - sample rate
         """
         return load_audio(self.audio_path)
 
@@ -149,112 +183,135 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
         fhandle (str or file-like): File-like object or path to audio file
 
     Returns:
-        *np.ndarray - audio signal
-        *float - sample rate
+        np.ndarray - audio signal
+        float - sample rate
     """
     return librosa.load(fhandle, sr=None, mono=True)
 
 
-@io.coerce_to_string_io
-def load_jams(fhandle: TextIO):
+def load_jams(jams_path):
     """Load EGSet12 JAMS file
 
     Args:
-        fhandle (str or file-like):Path to JAMS file
+        jams_path(str): Path to jamsfile
 
     Returns:
-        JAMS object with annotations
+        jams.JAMS:JAMS object with annotations or None if path is None
     """
-    return json.load(fhandle)
+    if jams_path is None:
+        return None
+    return jams.load(jams_path)
 
 
-@io.coerce_to_string_io
-def load_notes(fhandle: TextIO) -> Optional[dict]:
-    """Load MIDI note annotations from JAMS file
+def load_notes(jams_data) -> Optional[dict]:
+    """Load MIDI note annotations from JAMS object
 
     Args:
-        fhandle(str or file-like): Path to JAMS file
+        jams_data(jams.JAMS):JAMS object
 
     Returns:
-        dict:Keys are string numbers (0-5), values are NoteData objects or None if file doesn't exist
+        dict:Keys are guitar string names ('E', 'A','D','G','B','e'), values are NoteData objects or None if no annotations are found.
     """
 
-    jams_data = json.load(fhandle)
-    notes_dict = {}
-    if "annotations" not in jams_data:
+    if jams_data is None:
         return None
+    note_midi = jams_data.search(namespace="note_midi")
 
-    for annotation in jams_data["annotations"]:
-        if annotation["namespace"] != "note_midi":
-            continue
+    if not note_midi:
+        return None
+    notes_dict = {}
+    for annotation in note_midi:
+        guitar_string = _GUITAR_STRINGS[int(annotation.annotation_metadata.data_source)]
 
-        string_num = int(annotation["annotation_metadata"]["data_source"])
         intervals = []
         pitches = []
-        for note in annotation["data"]:
-            intervals.append([note["time"], note["time"] + note["duration"]])
-            pitches.append(note["value"])
+
+        for item in annotation.data:
+            intervals.append([item.time, item.time + item.duration])
+            pitches.append(item.value)
 
         if not intervals:
             continue
-
-        notes_dict[string_num] = annotations.NoteData(
-            np.array(intervals),
-            "s",  # s for seconds
-            np.array(pitches, dtype=float),
-            "midi",  # MIDI note numbers
+        notes_dict[guitar_string] = annotations.NoteData(
+            np.array(intervals), TIME_UNIT, np.array(pitches, dtype=float), "midi"
         )
-
     return notes_dict if notes_dict else None
 
 
-@io.coerce_to_string_io
-def load_pitch_contours(fhandle: TextIO) -> Optional[dict]:
-    """Load pitch contour annotations from JAMS file
+def load_pitch_contours(jams_data) -> Optional[dict]:
+    """Load pitch contour annotations from JAMS object
 
     Args:
-        fhandle(str or file-like):Path to JAMS file
+        jams_data(jams.JAMS):JAMS object
 
     Returns:
-        dict:Keys are string numbers(0-5), values are pitch contour data
+        dict:Keys are guitar string names ('E', 'A','D','G','B','e'), values are F0Data or None if no annotations are found.
     """
-    jams_data = json.load(fhandle)
+    if jams_data is None:
+        return None
+
+    pitch_annotations = jams_data.search(namespace="pitch_contour")
+
+    if not pitch_annotations:
+        return None
 
     pitch_contours_dict = {}
-    if "annotations" not in jams_data:
-        return None
-    for annotation in jams_data["annotations"]:
-        if annotation["namespace"] != "pitch_contour":
+
+    for annotation in pitch_annotations:
+        guitar_string = _GUITAR_STRINGS[int(annotation.annotation_metadata.data_source)]
+        time_onset = np.array([obs.time for obs in annotation.data])
+        if len(time_onset) == 0:
             continue
+        frequencies = np.array([obs.value["frequency"] for obs in annotation.data])
+        voicing = np.array(
+            [1 if obs.value["voiced"] else 0 for obs in annotation.data], dtype=float
+        )
+        hop = np.median(np.diff(time_onset))
+        uniform_times = np.arange(time_onset[0], time_onset[-1], hop)
+        frequencies = np.interp(uniform_times, time_onset, frequencies)
+        voicing = np.interp(uniform_times, time_onset, voicing)
+        voicing = (voicing > 0.5).astype(float)
+        time_onset = uniform_times
+        pitch_contours_dict[guitar_string] = annotations.F0Data(
+            times=time_onset,
+            time_unit=TIME_UNIT,
+            frequencies=frequencies,
+            frequency_unit="hz",
+            voicing=voicing,
+            voicing_unit="binary",
+        )
+    return pitch_contours_dict if pitch_contours_dict else None
 
-        string_num = int(annotation["annotation_metadata"]["data_source"])
 
-        pitch_contours_dict[string_num] = annotation["data"]
-
-    return pitch_contours_dict
-
-
-@io.coerce_to_string_io
-def load_tempo(fhandle: TextIO) -> Optional[float]:
-    """Load tempo annotations from JAMS file
+def load_tempo(jams_data) -> Optional[annotations.TempoData]:
+    """Load tempo annotations from JAMS object with TempoData
 
     Args:
-        fhandle(str or file-like): Path to JAMS file
+        jams_data(jams.JAMS):JAMS object
 
     Returns:
-        Tempo in BPM
+        TempoData: Tempo annotation or None if no annotations are found.
     """
-
-    jams_data = json.load(fhandle)
-    if "annotations" not in jams_data:
+    if jams_data is None:
+        return None
+    tempo_annots = jams_data.search(namespace="tempo")
+    if not tempo_annots:
         return None
 
-    for annotation in jams_data["annotations"]:
-        if annotation["namespace"] != "tempo":
-            continue
-        return float(annotation["data"][0]["value"])
+    tempo_obs = tempo_annots[0].data[0]
 
-    return None
+    return annotations.TempoData(
+        intervals=np.array(
+            [[tempo_obs.time, tempo_obs.time + tempo_obs.duration]], dtype=float
+        ),
+        interval_unit=TIME_UNIT,  # seconds
+        tempos=np.array([tempo_obs.value], dtype=float),
+        tempo_unit="bpm",
+        confidence=np.array(
+            [tempo_obs.confidence if tempo_obs.confidence else 1.0], dtype=float
+        ),
+        confidence_unit="binary",
+    )
 
 
 @core.docstring_inherit(core.Dataset)
