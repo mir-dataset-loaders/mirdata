@@ -50,9 +50,13 @@ def test_track():
 
 
 def test_load_notes():
-    jams_path = os.path.normpath("tests/resources/mir_datasets/egset12/07.jams")
-    jams_data = jams.load(jams_path)
-    notes = egset12.load_notes(jams_data)
+
+    default_trackid = "07.wav"
+    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
+    dataset = egset12.Dataset(data_home, version="test")
+    track = dataset.track(default_trackid)
+    notes = track.notes
+
     assert isinstance(notes, dict)
     assert "D" in notes
     assert isinstance(notes["D"], annotations.NoteData)
@@ -61,9 +65,12 @@ def test_load_notes():
 
 
 def test_load_pitch_contours():
-    jams_path = os.path.normpath("tests/resources/mir_datasets/egset12/07.jams")
-    jams_data = jams.load(jams_path)
-    pitch_contours = egset12.load_pitch_contours(jams_data)
+
+    default_trackid = "07.wav"
+    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
+    dataset = egset12.Dataset(data_home, version="test")
+    track = dataset.track(default_trackid)
+    pitch_contours = track.pitch_contours
     assert isinstance(pitch_contours, dict)
     assert "D" in pitch_contours
     assert isinstance(pitch_contours["D"], annotations.F0Data)
@@ -76,9 +83,11 @@ def test_load_pitch_contours():
 
 
 def test_load_tempo():
-    jams_path = os.path.normpath("tests/resources/mir_datasets/egset12/07.jams")
-    jams_data = jams.load(jams_path)
-    tempo = egset12.load_tempo(jams_data)
+    default_trackid = "07.wav"
+    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
+    dataset = egset12.Dataset(data_home, version="test")
+    track = dataset.track(default_trackid)
+    tempo = track.tempo
     assert isinstance(tempo, annotations.TempoData)
     assert type(tempo.intervals) is np.ndarray
     assert tempo.interval_unit == "s"

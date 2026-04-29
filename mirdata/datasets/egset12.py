@@ -203,22 +203,20 @@ def load_jams(jams_path):
     return jams.load(jams_path)
 
 
-def load_notes(jams_data) -> Optional[dict]:
+def load_notes(jams_data) -> dict:
     """Load MIDI note annotations from JAMS object
 
     Args:
         jams_data(jams.JAMS):JAMS object
 
     Returns:
-        dict:Keys are guitar string names ('E', 'A','D','G','B','e'), values are NoteData objects or None if no annotations are found.
+        dict:Keys are guitar string names ('E', 'A','D','G','B','e'), values are NoteData objects.
     """
 
-    if jams_data is None:
-        return None
     note_midi = jams_data.search(namespace="note_midi")
 
     if not note_midi:
-        return None
+        return {}
     notes_dict = {}
     for annotation in note_midi:
         guitar_string = _GUITAR_STRINGS[int(annotation.annotation_metadata.data_source)]
@@ -235,25 +233,19 @@ def load_notes(jams_data) -> Optional[dict]:
         notes_dict[guitar_string] = annotations.NoteData(
             np.array(intervals), TIME_UNIT, np.array(pitches, dtype=float), "midi"
         )
-    return notes_dict if notes_dict else None
+    return notes_dict
 
 
-def load_pitch_contours(jams_data) -> Optional[dict]:
+def load_pitch_contours(jams_data) -> dict:
     """Load pitch contour annotations from JAMS object
 
     Args:
         jams_data(jams.JAMS):JAMS object
 
     Returns:
-        dict:Keys are guitar string names ('E', 'A','D','G','B','e'), values are F0Data or None if no annotations are found.
+        dict:Keys are guitar string names ('E', 'A','D','G','B','e'), values are F0Data.
     """
-    if jams_data is None:
-        return None
-
     pitch_annotations = jams_data.search(namespace="pitch_contour")
-
-    if not pitch_annotations:
-        return None
 
     pitch_contours_dict = {}
 
@@ -280,7 +272,7 @@ def load_pitch_contours(jams_data) -> Optional[dict]:
             voicing=voicing,
             voicing_unit="binary",
         )
-    return pitch_contours_dict if pitch_contours_dict else None
+    return pitch_contours_dict
 
 
 def load_tempo(jams_data) -> Optional[annotations.TempoData]:
@@ -292,8 +284,6 @@ def load_tempo(jams_data) -> Optional[annotations.TempoData]:
     Returns:
         TempoData: Tempo annotation or None if no annotations are found.
     """
-    if jams_data is None:
-        return None
     tempo_annots = jams_data.search(namespace="tempo")
     if not tempo_annots:
         return None
