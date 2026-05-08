@@ -44,7 +44,7 @@ Leveraging real electric guitar tones and effects to improve robustness in guita
 """
 
 import jams
-from typing import BinaryIO, Optional, Tuple
+from typing import BinaryIO, Optional, Tuple, Dict
 
 import librosa
 import numpy as np
@@ -141,12 +141,14 @@ class Track(core.Track):
         return jams.load(self.jams_path)
 
     @core.cached_property
-    def notes(self) -> Optional[dict]:
+    def notes(self) -> dict:
+        if self.jams is None:
+            return {}
         return load_notes(self.jams)
 
     @core.cached_property
     def notes_all(self) -> Optional[annotations.NoteData]:
-        if self.notes is None:
+        if not self.notes:
             return None
         all_note_data = None
         for note_data in self.notes.values():
@@ -157,11 +159,15 @@ class Track(core.Track):
         return all_note_data
 
     @core.cached_property
-    def pitch_contours(self) -> Optional[dict]:
+    def pitch_contours(self) -> dict:
+        if self.jams is None:
+            return {}
         return load_pitch_contours(self.jams)
 
     @core.cached_property
     def tempo(self) -> Optional[annotations.TempoData]:
+        if self.jams is None:
+            return None
         return load_tempo(self.jams)
 
     @property
@@ -203,7 +209,7 @@ def load_jams(jams_path):
     return jams.load(jams_path)
 
 
-def load_notes(jams_data) -> dict:
+def load_notes(jams_data: jams.JAMS) -> Dict[str, annotations.NoteData]:
     """Load MIDI note annotations from JAMS object
 
     Args:
@@ -215,8 +221,6 @@ def load_notes(jams_data) -> dict:
 
     note_midi = jams_data.search(namespace="note_midi")
 
-    if not note_midi:
-        return {}
     notes_dict = {}
     for annotation in note_midi:
         guitar_string = _GUITAR_STRINGS[int(annotation.annotation_metadata.data_source)]
@@ -236,7 +240,7 @@ def load_notes(jams_data) -> dict:
     return notes_dict
 
 
-def load_pitch_contours(jams_data) -> dict:
+def load_pitch_contours(jams_data: jams.JAMS) -> Dict[str, annotations.F0Data]:
     """Load pitch contour annotations from JAMS object
 
     Args:

@@ -56,6 +56,9 @@ def test_load_notes():
     dataset = egset12.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     notes = track.notes
+    INPUT = jams.JAMS()
+    result = egset12.load_notes(INPUT)
+    assert result == {}
 
     assert isinstance(notes, dict)
     assert "D" in notes
@@ -71,6 +74,18 @@ def test_load_pitch_contours():
     dataset = egset12.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     pitch_contours = track.pitch_contours
+ 
+    assert set(pitch_contours.keys()) == {"A", "D", "G", "B"}
+    d = pitch_contours["D"]
+    assert d.time_unit == "s"
+    assert d.frequency_unit == "hz"
+    assert d.voicing_unit == "binary"
+    assert len(d.times) == len(d.frequencies)
+    np.testing.assert_allclose(d.times[0], 0.356)
+    np.testing.assert_allclose(d.frequencies[0], 195.998, atol=0.01)
+    assert d.voicing[0] == 1
+
+
     assert isinstance(pitch_contours, dict)
     assert "D" in pitch_contours
     assert isinstance(pitch_contours["D"], annotations.F0Data)
@@ -80,6 +95,9 @@ def test_load_pitch_contours():
     assert pitch_contours["D"].frequency_unit == "hz"
     assert type(pitch_contours["D"].voicing) is np.ndarray
     assert pitch_contours["D"].voicing_unit == "binary"
+    INPUT = jams.JAMS()
+    result = egset12.load_pitch_contours(INPUT)
+    assert result == {}
 
 
 def test_load_tempo():
@@ -88,9 +106,57 @@ def test_load_tempo():
     dataset = egset12.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     tempo = track.tempo
+    assert tempo.interval_unit == "s"
+    assert tempo.tempo_unit == "bpm"
+    np.testing.assert_allclose(tempo.intervals[0], [0.0, 30.4])
+    assert tempo.tempos[0] == 150
+    assert tempo.confidence[0] == 1.0
+
     assert isinstance(tempo, annotations.TempoData)
     assert type(tempo.intervals) is np.ndarray
     assert tempo.interval_unit == "s"
     assert tempo.tempo_unit == "bpm"
     assert type(tempo.tempos) is np.ndarray
     assert type(tempo.confidence) is np.ndarray
+    INPUT = jams.JAMS()
+    result = egset12.load_tempo(INPUT)
+    assert result is None
+
+
+def test_load_jams():
+    INPUT = None
+    result = egset12.load_jams(INPUT)
+    assert result is None
+
+    jams_path = os.path.normpath("tests/resources/mir_datasets/egset12/07.jams")
+    result = egset12.load_jams(jams_path)
+    assert isinstance(result, jams.JAMS)
+def test_track_no_jams():
+    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
+    dataset = egset12.Dataset(data_home, version="test")
+    track = dataset.track("07.wav") 
+    track.jams_path = None
+    assert track.jams is None
+    assert track.notes == {}
+    assert track.jams is None
+    assert track.notes_all is None
+    assert track.pitch_contours == {}
+    assert track.tempo is None
+
+def test_jams_empty():
+    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
+    dataset = egset12.Dataset(data_home, version="test")
+    track = dataset.track("07.wav") 
+    track.jams_path = None
+    assert track.jams is None
+
+def test_load_notes_all_empty():
+    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
+    dataset = egset12.Dataset(data_home, version="test")
+    track = dataset.track("07.wav")
+    track.jams_path = None
+    assert track.notes_all is None
+
+
+
+
