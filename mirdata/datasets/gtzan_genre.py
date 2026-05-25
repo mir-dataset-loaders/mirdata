@@ -157,7 +157,7 @@ def load_tempo(fhandle: TextIO) -> float:
 
     tempo = np.loadtxt(fhandle, ndmin=2)
 
-    return float(tempo)
+    return float(tempo.flat[0])
 
 
 @io.coerce_to_bytes_io
