@@ -9,21 +9,22 @@ from mirdata import annotations
 from mirdata.datasets import egset12
 from tests.test_utils import run_track_tests
 
+TRACK_ID = "07.wav"
+DATA_HOME = os.path.normpath("tests/resources/mir_datasets/egset12")
+
 
 def test_track():
-    default_trackid = "07.wav"
-    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
-    dataset = egset12.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
+    dataset = egset12.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
 
     expected_attributes = {
-        "track_id": "07.wav",
+        "track_id": TRACK_ID,
         "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/egset12"),
-            "07.wav",
+            DATA_HOME,
+            TRACK_ID,
         ),
         "jams_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/egset12/"),
+            DATA_HOME,
             "07.jams",
         ),
         "style": "pop/rock",
@@ -38,7 +39,7 @@ def test_track():
     }
 
     assert track._track_paths == {
-        "audio": ["07.wav", "f69b45a070da943ccc2ea90d2268d073"],
+        "audio": [TRACK_ID, "f69b45a070da943ccc2ea90d2268d073"],
         "jams": ["07.jams", "1c044bddfe3e4eb0afd0022a32ae9390"],
     }
 
@@ -50,10 +51,8 @@ def test_track():
 
 def test_load_notes():
     # arrange
-    default_trackid = "07.wav"
-    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
-    dataset = egset12.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
+    dataset = egset12.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
 
     # act
     notes = track.notes
@@ -69,10 +68,10 @@ def test_load_notes():
 def test_load_notes_empty():
 
     # arrange
-    INPUT = jams.JAMS()
+    empty_jams = jams.JAMS()
 
     # act
-    result = egset12.load_notes(INPUT)
+    result = egset12.load_notes(empty_jams)
 
     # assert
     assert result == {}
@@ -80,10 +79,8 @@ def test_load_notes_empty():
 
 def test_load_pitch_contours():
     # arrange
-    default_trackid = "07.wav"
-    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
-    dataset = egset12.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
+    dataset = egset12.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
 
     # act
     pitch_contours = track.pitch_contours
@@ -102,10 +99,10 @@ def test_load_pitch_contours():
 
 def test_load_pitch_contours_empty():
     # arrange
-    INPUT = jams.JAMS()
+    empty_jams = jams.JAMS()
 
     # act
-    result = egset12.load_pitch_contours(INPUT)
+    result = egset12.load_pitch_contours(empty_jams)
 
     # assert
     assert result == {}
@@ -113,10 +110,8 @@ def test_load_pitch_contours_empty():
 
 def test_load_tempo():
     # arrange
-    default_trackid = "07.wav"
-    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
-    dataset = egset12.Dataset(data_home, version="test")
-    track = dataset.track(default_trackid)
+    dataset = egset12.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
 
     # act
     tempo = track.tempo
@@ -132,10 +127,10 @@ def test_load_tempo():
 
 def test_load_tempo_empty():
     # arrange
-    INPUT = jams.JAMS()
+    empty_jams = jams.JAMS()
 
     # act
-    result = egset12.load_tempo(INPUT)
+    result = egset12.load_tempo(empty_jams)
 
     # assert
     assert result is None
@@ -143,7 +138,7 @@ def test_load_tempo_empty():
 
 def test_load_jams():
     # arrange
-    jams_path = os.path.normpath("tests/resources/mir_datasets/egset12/07.jams")
+    jams_path = os.path.join(DATA_HOME, "07.jams")
 
     # act
     result = egset12.load_jams(jams_path)
@@ -154,10 +149,10 @@ def test_load_jams():
 
 def test_jams_empty():
     # arrange
-    INPUT = None
+    empty_jams = None
 
     # act
-    result = egset12.load_jams(INPUT)
+    result = egset12.load_jams(empty_jams)
 
     # assert
     assert result is None
@@ -165,9 +160,8 @@ def test_jams_empty():
 
 def test_track_no_jams():
     # arrange
-    data_home = os.path.normpath("tests/resources/mir_datasets/egset12")
-    dataset = egset12.Dataset(data_home, version="test")
-    track = dataset.track("07.wav")
+    dataset = egset12.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
 
     # act
     track.jams_path = None

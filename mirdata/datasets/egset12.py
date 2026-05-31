@@ -67,7 +67,7 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="egset12_index_1.0.json",
-        url="https://zenodo.org/records/18988581",
+        url="https://zenodo.org/records/18988581/files/egset12_index_1.0.json?download=1",
         checksum="2ee702160c451df3432cbae1da515798",
     ),
     "sample": core.Index(
@@ -302,7 +302,8 @@ def load_tempo(jams_data) -> Optional[annotations.TempoData]:
         tempos=np.array([tempo_obs.value], dtype=float),
         tempo_unit="bpm",
         confidence=np.array(
-            [tempo_obs.confidence if tempo_obs.confidence else 1.0], dtype=float
+            [tempo_obs.confidence if tempo_obs.confidence is not None else 1.0],
+            dtype=float,
         ),
         confidence_unit="binary",
     )
