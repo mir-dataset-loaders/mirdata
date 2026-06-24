@@ -1,0 +1,322 @@
+"""
+Saraga Audiovisual Dataset Loader
+
+.. admonition:: Dataset Info
+    :class: dropdown
+
+    Saraga Audiovisual includes diverse renditions of Carnatic vocal performances, totalling 42 concerts and more than 60 hours of music. It includes video recordings for all concerts, allowing for a wide range of multimodal analyses.
+    It also contains high-quality human pose estimation data of the musicians extracted from the video footage, and perform benchmarking experiments for the different modalities to validate the utility of the novel collection.
+
+    The dataset contains a total of 233 tracks.
+
+    - Audio recordings (multitrack and mix): Vocal, violin, mridangam (left and right), and mix.
+    - Video recordings of the performances.
+    - Human pose estimation data for the musicians, including keypoints and confidence scores.
+    - Metadata for each track, including information about the artist, composition, and performance context.
+
+    The files of this dataset are shared with the following license:
+    Creative Commons Attribution Non Commercial Share Alike 4.0 International
+
+    Dataset compiled by: Sivasankar, A.
+
+    For more information about the dataset as well as Compmusic and annotations, please refer to:
+    https://zenodo.org/records/17405610, where a really detailed explanation of the dataset is published.
+"""
+
+from smart_open import open
+import json
+import os
+
+import cv2
+import librosa
+import numpy as np
+
+from mirdata import annotations, core, download_utils, io
+
+BIBTEX = """
+@dataset{sivasankar2024saraga,
+  author       = {A. S. Sivasankar},
+  title        = {Saraga Audiovisual: a large multimodal open data collection for the analysis of Carnatic music},
+  year         = {2024},
+  month        = {November},
+  day          = {10},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.17405610},
+  url          = {https://doi.org/10.5281/zenodo.17405610}
+}
+"""
+
+INDEXES = {
+    "default": "1.0",
+    "test": "sample",
+    "1.0": core.Index(
+        filename="saraga_audiovisual_index.json",
+        url="https://zenodo.org/records/18291024/files/saraga_audiovisual_index.json?download=1",  # TODO
+        checksum="b847ca946f2a88956569c897b186a148 ",  # TODO
+    ),
+    "sample": core.Index(filename="saraga_audiovisual_index_1.0_sample.json"),
+}
+
+REMOTES = {
+    "metadata": download_utils.RemoteFileMetadata(
+        filename="saraga metadata.zip",
+        url="https://zenodo.org/records/17405610/files/saraga%20metadata.zip?download=1",
+        checksum="1f5cd4b1287d07a87e8dd51a178dd0a1",
+    ),
+    "audio": download_utils.RemoteFileMetadata(
+        filename="saraga audio.zip",
+        url="https://zenodo.org/records/17405610/files/saraga%20audio.zip?download=1",
+        checksum="ba93a85d9dc6e844177ea4a6c830eeeb",
+    ),
+    "visual": download_utils.RemoteFileMetadata(
+        filename="saraga visual.zip",
+        url="https://zenodo.org/records/17405610/files/saraga%20visual.zip?download=1",
+        checksum="067b635d1fedb82e8261dcc1237a469f",
+    ),
+    "gesture": download_utils.RemoteFileMetadata(
+        filename="saraga gesture.zip",
+        url="https://zenodo.org/records/17405610/files/saraga%20gesture.zip?download=1",
+        checksum="6f2700caf088293ea50ba455b3407f10",
+    ),
+}
+
+LICENSE_INFO = (
+    "Creative Commons Attribution Non Commercial Share Alike 4.0 International."
+)
+
+
+class Track(core.Track):
+    """
+    Args:
+        track_id (str): track id of the track
+        data_home (str): Local path where the dataset is stored. default=None
+            If `None`, looks for the data in the default directory, `~/mir_datasets`
+
+    Attributes:
+        audio_path (str): path to audio file
+        audio_mridangam_left_path (str): path to mridangam left audio file
+        audio_mridangam_right_path (str): path to mridangam right audio file
+        audio_violin_path (str): path to violin audio file
+        audio_vocal_path (str): path to vocal audio file
+        video_path (srt): path to video file
+        keypoints_path (dict): paths to keypoint annotation files
+        scores_path (dict): paths to scores annotation files
+        metadata_path (srt): path to metadata file
+
+    Cached Properties:
+        audio (numpy.ndarray, float): audio, samplerate
+        audio_mridangam_left (numpy.ndarray, float): mridangam left audio, samplerate
+        audio_mridangam_right (numpy.ndarray, float): mridangam right audio, samplerate
+        audio_violin (numpy.ndarray, float): violin audio, samplerate
+        audio_vocal (numpy.ndarray, float): vocal audio, samplerate
+        pitch (numpy.ndarray, float): video, framerate
+        mridangam_gesture (GesturData): gesture annotation for mridangam
+        singer_gesture (GesturData): gesture annotation for singer
+        violin_gesture (GesturData): gesture annotation for violin
+        metadata (dict): track metadata
+    """
+
+    def __init__(self, track_id, data_home, dataset_name, index, metadata):
+        super().__init__(track_id, data_home, dataset_name, index, metadata)
+
+        # Audio path
+        self.audio_path = self.get_path("audio-mix")
+        self.video_path = self.get_path("video")
+
+        # Multitrack audio paths
+        self.audio_mridangam_left_path = self.get_path("audio-mridangam-left")
+        self.audio_mridangam_right_path = self.get_path("audio-mridangam-right")
+        self.audio_violin_path = self.get_path("audio-violin")
+        self.audio_vocal_path = self.get_path("audio-vocal")
+
+        # Gesture paths
+        self.keypoint_paths = {
+            "mridangam": self.get_path("keypoints-mridangam"),
+            "singer": self.get_path("keypoints-singer"),
+            "violin": self.get_path("keypoints-violin"),
+        }
+        self.score_paths = {
+            "mridangam": self.get_path("scores-mridangam"),
+            "singer": self.get_path("scores-singer"),
+            "violin": self.get_path("scores-violin"),
+        }
+
+        # Metadata path
+        self.metadata_path = self.get_path("metadata")
+
+    @core.cached_property
+    def metadata(self):
+        return load_metadata(self.metadata_path)
+
+    @core.cached_property
+    def audio(self):
+        return load_audio(self.audio_path)
+
+    @core.cached_property
+    def audio_mridangam_left(self):
+        return load_audio(self.audio_mridangam_left_path)
+
+    @core.cached_property
+    def audio_mridangam_right(self):
+        return load_audio(self.audio_mridangam_right_path)
+
+    @core.cached_property
+    def audio_vocal(self):
+        return load_audio(self.audio_vocal_path)
+
+    @core.cached_property
+    def audio_violin(self):
+        return load_audio(self.audio_violin_path)
+
+    @core.cached_property
+    def video(self):
+        return load_video(self.video_path)
+
+    @core.cached_property
+    def mridangam_gesture(self):
+        return load_gesture(
+            self.keypoint_paths["mridangam"], self.score_paths["mridangam"]
+        )
+
+    @core.cached_property
+    def singer_gesture(self):
+        return load_gesture(self.keypoint_paths["singer"], self.score_paths["singer"])
+
+    @core.cached_property
+    def violin_gesture(self):
+        return load_gesture(self.keypoint_paths["violin"], self.score_paths["violin"])
+
+
+@io.coerce_to_string_io
+def load_metadata(fhandle):
+    """Load a Saraga Audiovisual metadata file
+
+    Args:
+        fhandle (str or file-like): File-like object or path to metadata json
+
+    Returns:
+        dict: metadata with the following fields
+    """
+    try:
+        return json.load(fhandle)
+    except Exception as e:
+        raise IOError(f"Error loading metadata: {e}")
+
+
+def load_audio(audio_path):
+    """Load a Saraga Audiovisual audio file.
+
+    Args:
+        audio_path (str): path to audio file
+
+    Returns:
+        np.ndarray: the mono audio signal
+        float: The sample rate of the audio file
+
+    """
+    if audio_path is None:
+        raise IOError("File path is None")
+
+    try:
+        with open(audio_path, "rb") as f:
+            pass
+    except Exception:
+        raise IOError(f"File not found: {audio_path}")
+
+    audio, sr = librosa.load(audio_path, sr=44100, mono=False)
+
+    return audio, sr
+
+
+def load_video(video_path):
+    """Load a Saraga Audiovisual video file.
+
+    Args:
+        video_path (str): path to video file
+
+    Returns:
+        * np.ndarray: the video signal (frames, height, width, channels)
+        * float: The frame rate of the video file
+
+    """
+    if video_path is None:
+        raise IOError("Video path is None")
+
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        raise IOError(f"Video file cannot be opened: {video_path}")
+
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    frames = []
+
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret:
+            break
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frames.append(frame)
+
+    cap.release()
+
+    return np.array(frames), fps
+
+
+def load_gesture(keypoints_path, scores_path):
+    """Load a Saraga Audiovisual gesture file.
+
+    Args:
+        keypoints_path (str): path to keypoints file
+        scores_path (str): path to scores file
+
+    Returns:
+        GestureData: gesture data
+
+    """
+    if keypoints_path is None or scores_path is None:
+        raise IOError("Gesture paths cannot be None")
+
+    try:
+        keypoints = np.load(keypoints_path)
+        scores = np.load(scores_path)
+        gesture = annotations.GestureData(keypoints, scores)
+    except Exception as e:
+        raise IOError(f"Error loading gesture data: {e}")
+
+    return gesture
+
+
+@core.docstring_inherit(core.Dataset)
+class Dataset(core.Dataset):
+    """
+    The saraga_audiovisual dataset
+    """
+
+    def __init__(self, data_home=None, version="default"):
+        super().__init__(
+            data_home,
+            version,
+            name="saraga_audiovisual",
+            track_class=Track,
+            bibtex=BIBTEX,
+            indexes=INDEXES,
+            remotes=REMOTES,
+            license_info=LICENSE_INFO,
+        )
+
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    def load_video(self, *args, **kwargs):
+        return load_video(*args, **kwargs)
+
+    def load_mridangam_gesture(self, *args, **kwargs):
+        return load_gesture(*args, **kwargs)
+
+    def load_singer_gesture(self, *args, **kwargs):
+        return load_gesture(*args, **kwargs)
+
+    def load_violin_gesture(self, *args, **kwargs):
+        return load_gesture(*args, **kwargs)
+
+    def load_metadata(self, *args, **kwargs):
+        return load_metadata(*args, **kwargs)

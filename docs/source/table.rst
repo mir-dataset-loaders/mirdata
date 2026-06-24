@@ -124,6 +124,7 @@
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
 
    * - .. line-block::
+
         (CompMusic)
         Indian Tonic
 
@@ -253,9 +254,9 @@
      - .. image:: https://licensebuttons.net/l/by-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
-   * - .. line-block::
+   * - .. ::
 
-       Freesound One-Shot 
+       Freesound One-Shot
        Percussive Sounds
 
      - - audio: ✅
@@ -392,6 +393,18 @@
      - .. image:: https://img.shields.io/badge/License-MIT-blue.svg
           :target: https://lbesson.mit-license.org/
 
+   * - .. ::
+
+       MTG Jamendo
+       Autotagging Moodtheme
+
+     - - audio: ✅
+       - annotations: ✅
+     - - moodtheme annotations
+     - 18448
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
    * - MAESTRO
      - - audio: ✅
        - annotations: ✅
@@ -442,9 +455,9 @@
      - .. image:: https://licensebuttons.net/l/by/3.0/80x15.png
           :target: https://creativecommons.org/licenses/by/3.0/
 
-   * - .. line-block::
+   * - .. ::
 
-       MTG Jamendo 
+       MTG Jamendo
        Autotagging Moodtheme
 
      - - audio: ✅
@@ -530,6 +543,14 @@
      - .. image:: https://licensebuttons.net/l/zero/1.0/80x15.png
           :target: http://creativecommons.org/publicdomain/zero/1.0/
 
+   * - Saraga Audiovisual
+     - - audio: ✅
+         - annotations: ✅
+     - - :ref:`gesture`
+     - 233
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0
+
    * - Saraga Carnatic
      - - audio: ✅
        - annotations: ✅
@@ -556,9 +577,9 @@
      - 108
      - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
           :target: https://creativecommons.org/licenses/by-nc-sa/4.0
-          
-   * - .. line-block::
-   
+
+   * - .. ::
+
        Saraga Carnatic
        Melody Synth (SCMS)
 

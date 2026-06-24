@@ -433,6 +433,14 @@ salami
    :inherited-members:
 
 
+saraga_audiovisual
+^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.saraga_audiovisual
+    :members:
+    :inherited-members:
+
+
 saraga_carnatic
 ^^^^^^^^^^^^^^^
 
@@ -543,6 +551,8 @@ Annotation Types
    :members:
 .. autoclass:: mirdata.annotations.F0Data
    :members:
+.. autoclass:: mirdata.annotations.GestureData
+    :members:
 .. autoclass:: mirdata.annotations.MultiF0Data
    :members:
 .. autoclass:: mirdata.annotations.NoteData

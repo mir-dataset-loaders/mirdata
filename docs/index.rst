@@ -76,6 +76,3 @@ Please see :ref:`contributing` for guidelines.
    :maxdepth: 1
 
    source/faq
-
-
- 
