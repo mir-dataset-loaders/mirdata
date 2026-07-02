@@ -303,7 +303,7 @@
           :target: https://creativecommons.org/licenses/by-sa/4.0
 
    * - Gtzan-Genre
-     - - audio: ✅
+     - - audio: ❌
        - annotations: ✅
      - - global :ref:`genre`
        - :ref:`beats`
