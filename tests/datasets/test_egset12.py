@@ -40,7 +40,7 @@ def test_track():
 
     assert track._track_paths == {
         "audio": [TRACK_ID, "f69b45a070da943ccc2ea90d2268d073"],
-        "jams": ["07.jams", "1c044bddfe3e4eb0afd0022a32ae9390"],
+        "jams": ["07.jams", "9b4137f1b1b01785f2181e850055b7a5"],
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
