@@ -76,10 +76,125 @@ INDEXES = {
 }
 
 REMOTES = {
-    "all": download_utils.RemoteFileMetadata(
-        filename="egset12.zip",
-        url="https://zenodo.org/api/records/11406378/files-archive",
-        checksum="fb5d9e544d28bead107e55659b6ff450",
+    "01.wav": download_utils.RemoteFileMetadata(
+        filename="01.wav",
+        url="https://zenodo.org/records/11406378/files/01.wav?download=1",
+        checksum="2eb739c5fb73e6327bb47267afe3eddf",
+    ),
+    "01.jams": download_utils.RemoteFileMetadata(
+        filename="01.jams",
+        url="https://zenodo.org/records/11406378/files/01.jams?download=1",
+        checksum="083c7dae8e6556c20b9a2d762e2c977f",
+    ),
+    "02.wav": download_utils.RemoteFileMetadata(
+        filename="02.wav",
+        url="https://zenodo.org/records/11406378/files/02.wav?download=1",
+        checksum="69b8701ea9a81428a6346e0d3d4b9b85",
+    ),
+    "02.jams": download_utils.RemoteFileMetadata(
+        filename="02.jams",
+        url="https://zenodo.org/records/11406378/files/02.jams?download=1",
+        checksum="848f984b17b261a65585e25fba977a33",
+    ),
+    "03.wav": download_utils.RemoteFileMetadata(
+        filename="03.wav",
+        url="https://zenodo.org/records/11406378/files/03.wav?download=1",
+        checksum="28141f17e46399553c52f5ed27bc10e2",
+    ),
+    "03.jams": download_utils.RemoteFileMetadata(
+        filename="03.jams",
+        url="https://zenodo.org/records/11406378/files/03.jams?download=1",
+        checksum="721ec50f570892f9cfa88fb1e22a6113",
+    ),
+    "04.wav": download_utils.RemoteFileMetadata(
+        filename="04.wav",
+        url="https://zenodo.org/records/11406378/files/04.wav?download=1",
+        checksum="6fe2f6f915953e8ae28b8a84a7677d0f",
+    ),
+    "04.jams": download_utils.RemoteFileMetadata(
+        filename="04.jams",
+        url="https://zenodo.org/records/11406378/files/04.jams?download=1",
+        checksum="87426719ac4353d73e1af09970c31eb1",
+    ),
+    "05.wav": download_utils.RemoteFileMetadata(
+        filename="05.wav",
+        url="https://zenodo.org/records/11406378/files/05.wav?download=1",
+        checksum="3435348c2b6702524dade471be70e4eb",
+    ),
+    "05.jams": download_utils.RemoteFileMetadata(
+        filename="05.jams",
+        url="https://zenodo.org/records/11406378/files/05.jams?download=1",
+        checksum="c5c2fd376031177e87a3eb4ad12d220c",
+    ),
+    "06.wav": download_utils.RemoteFileMetadata(
+        filename="06.wav",
+        url="https://zenodo.org/records/11406378/files/06.wav?download=1",
+        checksum="9f7ead382f373259b466ccd1884ed173",
+    ),
+    "06.jams": download_utils.RemoteFileMetadata(
+        filename="06.jams",
+        url="https://zenodo.org/records/11406378/files/06.jams?download=1",
+        checksum="5ababdcf7741400dc93768334f6c899d",
+    ),
+    "07.wav": download_utils.RemoteFileMetadata(
+        filename="07.wav",
+        url="https://zenodo.org/records/11406378/files/07.wav?download=1",
+        checksum="77f752ab3e7a5c606a21ac7b0df4fa1c",
+    ),
+    "07.jams": download_utils.RemoteFileMetadata(
+        filename="07.jams",
+        url="https://zenodo.org/records/11406378/files/07.jams?download=1",
+        checksum="e693844f4b46fd3831c7c4ee0a2c3aa8",
+    ),
+    "08.wav": download_utils.RemoteFileMetadata(
+        filename="08.wav",
+        url="https://zenodo.org/records/11406378/files/08.wav?download=1",
+        checksum="a59f373c00b8a327b37ce28f6601404c",
+    ),
+    "08.jams": download_utils.RemoteFileMetadata(
+        filename="08.jams",
+        url="https://zenodo.org/records/11406378/files/08.jams?download=1",
+        checksum="513e00c522d53adac0ed9966a5b4c8cd",
+    ),
+    "09.wav": download_utils.RemoteFileMetadata(
+        filename="09.wav",
+        url="https://zenodo.org/records/11406378/files/09.wav?download=1",
+        checksum="593aec1394a905a0c8b255a847f54139",
+    ),
+    "09.jams": download_utils.RemoteFileMetadata(
+        filename="09.jams",
+        url="https://zenodo.org/records/11406378/files/09.jams?download=1",
+        checksum="9f08cae003c6c3d9dc745c2e319496d4",
+    ),
+    "10.wav": download_utils.RemoteFileMetadata(
+        filename="10.wav",
+        url="https://zenodo.org/records/11406378/files/10.wav?download=1",
+        checksum="123818ef1020102252192d9e7a231e07",
+    ),
+    "10.jams": download_utils.RemoteFileMetadata(
+        filename="10.jams",
+        url="https://zenodo.org/records/11406378/files/10.jams?download=1",
+        checksum="8cbf70e1b086f4a8fe5cac79572635ae",
+    ),
+    "11.wav": download_utils.RemoteFileMetadata(
+        filename="11.wav",
+        url="https://zenodo.org/records/11406378/files/11.wav?download=1",
+        checksum="4bbaecaaa3e58bef6bb15a6cd0979fe2",
+    ),
+    "11.jams": download_utils.RemoteFileMetadata(
+        filename="11.jams",
+        url="https://zenodo.org/records/11406378/files/11.jams?download=1",
+        checksum="f392b5bba5f3b99866bba91cb4d35a9a",
+    ),
+    "12.wav": download_utils.RemoteFileMetadata(
+        filename="12.wav",
+        url="https://zenodo.org/records/11406378/files/12.wav?download=1",
+        checksum="e1ee73508f37d5c28c69877a588665d2",
+    ),
+    "12.jams": download_utils.RemoteFileMetadata(
+        filename="12.jams",
+        url="https://zenodo.org/records/11406378/files/12.jams?download=1",
+        checksum="21217bda094eb8f29edfd1ed2f23ba45",
     ),
 }
 
@@ -256,7 +371,7 @@ def load_pitch_contours(jams_data: jams.JAMS) -> Dict[str, annotations.F0Data]:
     for annotation in pitch_annotations:
         guitar_string = _GUITAR_STRINGS[int(annotation.annotation_metadata.data_source)]
         time_onset = np.array([obs.time for obs in annotation.data])
-        if len(time_onset) == 0:
+        if len(time_onset) < 2:
             continue
         frequencies = np.array([obs.value["frequency"] for obs in annotation.data])
         voicing = np.array(
