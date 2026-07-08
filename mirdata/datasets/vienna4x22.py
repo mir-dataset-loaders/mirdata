@@ -114,17 +114,28 @@ class Track(core.Track):
         track_id (str): track id.
         piece (str): piece identifier, one of :data:`PIECES`.
         pianist_id (str): two-digit pianist id (``"01"`` .. ``"22"``).
+        alignment_quality (str): ``"manual"`` — all Vienna 4x22 alignments were
+            hand-corrected. Datasets with automatic alignment (e.g. parangonar)
+            will use ``"automatic"``.
         score_path (str): path to the piece's MusicXML score.
         performance_path (str): path to the performance MIDI file.
         match_path (str): path to the score/performance ``.match`` alignment file.
 
     Cached Properties:
-        score (partitura.score.Score): score parsed with partitura.
+        score (partitura.score.Score): score parsed with partitura. Access the full
+            partitura API for part structure, key/time signatures, tempo markings,
+            etc. (e.g. ``track.score[0].key_sigs``).
         performance (partitura.performance.Performance): performance parsed with partitura.
         match (tuple): ``(performance, alignment, score)`` as returned by
-            :func:`partitura.load_match` with ``create_score=True``.
-        note_array (numpy.ndarray): score note array.
-        performance_note_array (numpy.ndarray): performance note array.
+            :func:`partitura.load_match` with ``create_score=True``. Each entry in
+            the alignment list carries a ``"label"`` key: ``"match"``, ``"deletion"``
+            (score note not played), ``"insertion"`` (extra performance note), or
+            ``"ornament"``.
+        note_array (numpy.ndarray): score note array with default fields. For custom
+            fields (pitch spelling, metrical position, grace notes, etc.) call
+            ``track.score.note_array(**kwargs)`` directly.
+        performance_note_array (numpy.ndarray): performance note array with default
+            fields. For custom fields call ``track.performance.note_array(**kwargs)``.
 
     """
 
@@ -136,6 +147,7 @@ class Track(core.Track):
         piece, pianist_id = track_id.rsplit("_p", 1)
         self.piece = piece
         self.pianist_id = pianist_id
+        self.alignment_quality = "manual"
 
     @core.cached_property
     def score(self):

@@ -30,6 +30,7 @@ def test_track():
         "track_id": TRACK_ID,
         "piece": "Chopin_op10_no3",
         "pianist_id": "01",
+        "alignment_quality": "manual",
         "score_path": os.path.join(DATA_HOME, "musicxml/Chopin_op10_no3.musicxml"),
         "performance_path": os.path.join(DATA_HOME, "midi/Chopin_op10_no3_p01.mid"),
         "match_path": os.path.join(DATA_HOME, "match/Chopin_op10_no3_p01.match"),
