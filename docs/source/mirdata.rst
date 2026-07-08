@@ -495,6 +495,14 @@ tonas
    :inherited-members:
 
 
+vienna4x22
+^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.vienna4x22
+   :members:
+   :inherited-members:
+
+
 vocadito
 ^^^^^^^^
 

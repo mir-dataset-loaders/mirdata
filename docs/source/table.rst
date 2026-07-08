@@ -614,6 +614,16 @@
      - 72
      - :tonas:`\ `
 
+   * - Vienna 4x22
+     - - audio: ❌
+       - annotations: ✅
+     - - MusicXML score
+       - performance MIDI
+       - score/performance alignment (``.match``)
+     - 88
+     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by/4.0
+
    * - vocadito
      - - audio: ✅
        - annotations: ✅
