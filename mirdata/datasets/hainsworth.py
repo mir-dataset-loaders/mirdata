@@ -36,7 +36,6 @@ from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """
 @article{article,
 author = {Macleod, Malcolm and Hainsworth, Stephen},

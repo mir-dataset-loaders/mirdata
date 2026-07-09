@@ -53,7 +53,6 @@ import numpy as np
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """
 @article{miron2016score,
   title={Score-informed source separation for multichannel orchestral recordings},

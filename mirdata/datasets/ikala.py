@@ -25,7 +25,6 @@ from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """@inproceedings{chan2015vocal,
     title={Vocal activity informed singing voice separation with the iKala dataset},
     author={Chan, Tak-Shing and Yeh, Tzu-Chun and Fan, Zhe-Cheng and Chen, Hung-Wei and Su, Li and Yang, Yi-Hsuan and

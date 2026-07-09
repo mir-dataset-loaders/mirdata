@@ -4,7 +4,6 @@ import pkgutil
 
 from .version import version as __version__
 
-
 DATASETS = [
     d.name
     for d in pkgutil.iter_modules(

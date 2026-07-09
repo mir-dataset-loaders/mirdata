@@ -50,7 +50,6 @@ from smart_open import open
 
 from mirdata import download_utils, core, io
 
-
 BIBTEX = """
 @inproceedings{ramires2020, 
     author = "Antonio Ramires and Pritish Chandna and Xavier Favory and Emilia Gómez and Xavier Serra",

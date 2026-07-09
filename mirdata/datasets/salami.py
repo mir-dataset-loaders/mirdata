@@ -27,7 +27,6 @@ from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """@inproceedings{smith2011salami,
     title={Design and creation of a large-scale database of structural annotations.},
     author={Smith, Jordan Bennett Louis and Burgoyne, John Ashley and

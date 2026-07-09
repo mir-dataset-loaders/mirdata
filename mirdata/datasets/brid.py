@@ -43,7 +43,6 @@ from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """
 @inproceedings{Maia2018AND,
   title={A Novel Dataset of Brazilian Rhythmic Instruments and Some Experiments in Computational Rhythm Analysis},

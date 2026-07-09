@@ -43,7 +43,6 @@ from smart_open import open
 
 from mirdata import core, download_utils, io
 
-
 BIBTEX = """@inproceedings{
   hawthorne2018enabling,
   title={Enabling Factorized Piano Music Modeling and Generation with the {MAESTRO} Dataset},

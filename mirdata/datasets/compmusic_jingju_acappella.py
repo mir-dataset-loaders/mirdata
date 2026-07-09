@@ -58,7 +58,6 @@ from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """
 @dataset{rong_gong_2018_1323561,
   author       = {Rong Gong and

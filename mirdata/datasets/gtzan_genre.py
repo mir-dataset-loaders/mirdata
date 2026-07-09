@@ -24,7 +24,6 @@ import numpy as np
 
 from mirdata import download_utils, core, io, annotations
 
-
 BIBTEX = """@article{tzanetakis2002gtzan,
   title={GTZAN genre collection},
   author={Tzanetakis, George and Cook, P},
@@ -39,7 +38,7 @@ INDEXES = {
         filename="gtzan_genre_index_1.0.json",
         url="https://zenodo.org/records/13993311/files/gtzan_genre_index_1.0.json?download=1",
         checksum="533ca050855f22acf2feb283d9957fe3",
-        partial_download=["all", "tempo_beat_annotations"],
+        partial_download=["tempo_beat_annotations"],
     ),
     "mini": core.Index(
         filename="gtzan_genre_1.0_mini_index.json",
@@ -51,12 +50,6 @@ INDEXES = {
 }
 
 REMOTES = {
-    "all": download_utils.RemoteFileMetadata(
-        filename="genres.tar.gz",
-        url="http://opihi.cs.uvic.ca/sound/genres.tar.gz",
-        checksum="5b3d6dddb579ab49814ab86dba69e7c7",
-        destination_dir="gtzan_genre",
-    ),
     "mini": download_utils.RemoteFileMetadata(
         filename="main.zip",
         url="https://github.com/TempoBeatDownbeat/gtzan_mini/archive/refs/heads/main.zip",
@@ -70,6 +63,22 @@ REMOTES = {
 }
 
 LICENSE_INFO = "Unfortunately we couldn't find the license information for the GTZAN_genre dataset."
+
+DOWNLOAD_INFO = """
+    Unfortunately the audio files of the GTZAN dataset are no longer available
+    for download. Therefore, only the mini version supports the audio. 
+    If you have the GTZAN dataset, place the contents into a
+    folder called gtzan_genre with the following structure:
+        > gtzan_genre/
+            > gtzan_genre/
+                > genres/
+                    >blues/
+                    >classical/
+                    ...
+            > gtzan_tempo_beat-main/
+                
+    and copy the gtzan_genre folder to {}
+"""
 
 
 class Track(core.Track):
@@ -156,9 +165,9 @@ def load_tempo(fhandle: TextIO) -> float:
 
     """
 
-    tempo = np.loadtxt(fhandle, ndmin=2)
+    tempo = np.loadtxt(fhandle)
 
-    return float(tempo)
+    return float(np.asarray(tempo).item())
 
 
 @io.coerce_to_bytes_io
@@ -192,6 +201,7 @@ class Dataset(core.Dataset):
             bibtex=BIBTEX,
             indexes=INDEXES,
             remotes=REMOTES,
+            download_info=DOWNLOAD_INFO,
             license_info=LICENSE_INFO,
         )
 

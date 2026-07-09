@@ -61,7 +61,6 @@ from mirdata import core
 from mirdata import annotations
 from mirdata import io
 
-
 BIBTEX = """@dataset{nadine_kroher_2018_1322542,
   author       = {Nadine Kroher and
                   José Miguel Díaz-Báñez and

@@ -23,7 +23,6 @@ from mirdata import core
 from mirdata import annotations
 from mirdata import io
 
-
 BIBTEX = """@inproceedings{mauch2009beatles,
     title={OMRAS2 metadata project 2009},
     author={Mauch, Matthias and Cannam, Chris and Davies, Matthew and Dixon, Simon and Harte,

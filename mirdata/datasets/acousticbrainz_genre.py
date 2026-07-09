@@ -46,7 +46,6 @@ from deprecated.sphinx import deprecated
 
 from mirdata import download_utils, core, io
 
-
 NAME = "acousticbrainz_genre"
 
 BIBTEX = """

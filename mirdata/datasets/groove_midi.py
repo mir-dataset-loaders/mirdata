@@ -61,7 +61,6 @@ from mirdata import core
 from mirdata import download_utils
 from mirdata import io
 
-
 BIBTEX = """@inproceedings{groove2019,
     Author = {Jon Gillick and Adam Roberts and Jesse Engel and Douglas Eck
               and David Bamman},

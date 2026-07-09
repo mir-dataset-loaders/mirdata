@@ -41,7 +41,6 @@ from typing import BinaryIO, Optional, TextIO, Tuple
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """
 @ARTICLE{1678001,
     author={Gouyon, F. and Klapuri, A. and Dixon, S. and Alonso, M. and Tzanetakis, G. and Uhle, C. and Cano, P.},

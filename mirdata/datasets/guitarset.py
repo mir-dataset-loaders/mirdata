@@ -63,7 +63,6 @@ from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """@inproceedings{xi2018guitarset,
 title={GuitarSet: A Dataset for Guitar Transcription},
 author={Xi, Qingyang and Bittner, Rachel M and Ye, Xuzhou and Pauwels, Johan and Bello, Juan P},

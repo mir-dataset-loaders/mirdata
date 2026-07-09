@@ -323,14 +323,6 @@ jtd
    :inherited-members:
 
 
-mtg_jamendo_autotagging_moodtheme
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. automodule:: mirdata.datasets.mtg_jamendo_autotagging_moodtheme
-   :members:
-   :inherited-members:
-
-
 maestro
 ^^^^^^^
 
@@ -375,6 +367,22 @@ mridangam_stroke
 ^^^^^^^^^^^^^^^^
 
 .. automodule:: mirdata.datasets.mridangam_stroke
+   :members:
+   :inherited-members:
+
+
+mtg_jamendo_autotagging_moodtheme
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.mtg_jamendo_autotagging_moodtheme
+   :members:
+   :inherited-members:
+
+
+multivox
+^^^^^^^^
+
+.. automodule:: mirdata.datasets.multivox
    :members:
    :inherited-members:
 

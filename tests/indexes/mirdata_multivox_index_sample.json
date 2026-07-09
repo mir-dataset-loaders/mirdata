@@ -1,0 +1,124 @@
+{
+  "version": "sample",
+  "tracks": {
+    "C1_07052025_S1_MAMAINES_P6_S6": {
+      "audio_ortf_l": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/audio_ORTF_L_Song1_MAMAINES.wav",
+        "231c6a4fdae677cb8bf593c502365c55"
+      ],
+      "audio_ortf_r": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/audio_ORTF_R_Song1_MAMAINES.wav",
+        "70fe093446f684ecb74cf073084ece63"
+      ],
+      "video_360": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/video360_MAMAINES.mp4",
+        "3c98aa7b983acabcbcaa2e3a9d5babca"
+      ],
+      "audio_360": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/audio360_Song1_MAMAINES.wav",
+        "231c6a4fdae677cb8bf593c502365c55"
+      ],
+      "near_field_S1": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/S1_Song1_MAMAINES.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ],
+      "near_field_S2": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/S2_Song1_MAMAINES.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ],
+      "near_field_S3": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/S3_Song1_MAMAINES.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ],
+      "near_field_S4": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/S4_Song1_MAMAINES.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ],
+      "near_field_S5": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/S5_Song1_MAMAINES.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ],
+      "near_field_S6": [
+        "C1/C1_07052025_S1_MAMAINES_P6_S6/S6_Song1_MAMAINES.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ]
+    },
+    "C3_14052025_S1_AGUACERO_FRAGMENT_P6_S5": {
+      "audio_ortf_l": [
+        "C3/C3_14052025_S1_AGUACERO_FRAGMENT_P6_S5/audio_ORTF_L_Song1_AGUACERO_FRAGMENT.wav",
+        "231c6a4fdae677cb8bf593c502365c55"
+      ],
+      "audio_ortf_r": [
+        "C3/C3_14052025_S1_AGUACERO_FRAGMENT_P6_S5/audio_ORTF_R_Song1_AGUACERO_FRAGMENT.wav",
+        "70fe093446f684ecb74cf073084ece63"
+      ],
+      "video_360": [
+        "C3/C3_14052025_S1_AGUACERO_FRAGMENT_P6_S5/video360_AGUACERO_FRAGMENT.mp4",
+        "3c98aa7b983acabcbcaa2e3a9d5babca"
+      ],
+      "near_field_S1": [
+        "C3/C3_14052025_S1_AGUACERO_FRAGMENT_P6_S5/S1_Song1_AGUACERO_FRAGMENT.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ],
+      "near_field_S2": [
+        "C3/C3_14052025_S1_AGUACERO_FRAGMENT_P6_S5/S2_Song1_AGUACERO_FRAGMENT.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ],
+      "near_field_S3": [
+        "C3/C3_14052025_S1_AGUACERO_FRAGMENT_P6_S5/S3_Song1_AGUACERO_FRAGMENT.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ],
+      "near_field_S4": [
+        "C3/C3_14052025_S1_AGUACERO_FRAGMENT_P6_S5/S4_Song1_AGUACERO_FRAGMENT.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ],
+      "near_field_S6": [
+        "C3/C3_14052025_S1_AGUACERO_FRAGMENT_P6_S5/S6_Song1_AGUACERO_FRAGMENT.wav",
+        "c21f7db37eba23e62e15b82e480e0a5a"
+      ]
+    },
+    "C1_01042025_S1_VAMOSAREMAR_P17_S16": {
+      "audio_ortf_l": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/audio_ORTF_L_Song1_VAMOSAREMAR.wav", "d7cebd74348c98c009932da91d4f4494"],
+      "audio_ortf_r": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/audio_ORTF_R_Song1_VAMOSAREMAR.wav", "7a8ac9e1b7b88332fc2f997e1923216f"],
+      "video_360": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/video360_VAMOSAREMAR.mp4", "cc9e9c0464358d9ffeb0fb2f8fe1b5fe"],
+      "near_field_S1": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S1_Song1_VAMOSAREMAR.wav", "f1d31c27d37879442bd57966decc223f"],
+      "near_field_S2": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S2_Song1_VAMOSAREMAR.wav", "c0a81a8da7017a7adb1fda14b9937911"],
+      "near_field_S3": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S3_Song1_VAMOSAREMAR.wav", "75aa844484e2bee5af9a2a683e5cb500"],
+      "near_field_S4": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S4_Song1_VAMOSAREMAR.wav", "a1d98687f436612d4920e68900d1a80e"],
+      "near_field_S5": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S5_Song1_VAMOSAREMAR.wav", "694f875f5513e6f1d7733e3a56d5b202"],
+      "near_field_S6": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S6_Song1_VAMOSAREMAR.wav", "73a363545ae296b6111890ebe64c6f96"],
+      "near_field_S7": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S7_Song1_VAMOSAREMAR.wav", "280d07977210f0a2cba458b659e63f35"],
+      "near_field_S8": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S8_Song1_VAMOSAREMAR.wav", "721bde38a7db97a4ad20f17b9ea39470"],
+      "near_field_S9": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S9_Song1_VAMOSAREMAR.wav", "71e1c347b71161b154ac6d81ae86d3c6"],
+      "near_field_S10": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S10_Song1_VAMOSAREMAR.wav", "c365bf9493a9906968b0de396b33edfe"],
+      "near_field_S11": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S11_Song1_VAMOSAREMAR.wav", "84b2bfd44b37685ad87ab8daa8672fa6"],
+      "near_field_S12": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S12_Song1_VAMOSAREMAR.wav", "d5894e075ad439e49268508bd8aaf249"],
+      "near_field_S13": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S13_Song1_VAMOSAREMAR.wav", "e98fa157517a57e56fee98564cacd828"],
+      "near_field_S14": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S14_Song1_VAMOSAREMAR.wav", "3bcb3c35418f498f6d012c56496002a6"],
+      "near_field_S15": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S15_Song1_VAMOSAREMAR.wav", "71361dc36b75a080aa1033998ef39eae"],
+      "near_field_S16": ["C1/C1_01042025_S1_VAMOSAREMAR_P17_S16/S16_Song1_VAMOSAREMAR.wav", "295a09cb7d442381f6330b83172b386d"]
+    },
+    "C1_09042025_S1_VAMOSAREMAR_P6_S6": {
+      "near_field_S1": ["C1/C1_09042025_S1_VAMOSAREMAR_P6_S6/S1.wav", "hash"],
+      "near_field_S2": ["C1/C1_09042025_S1_VAMOSAREMAR_P6_S6/S2.wav", "hash"],
+      "near_field_S4": ["C1/C1_09042025_S1_VAMOSAREMAR_P6_S6/S4.wav", "hash"],
+      "near_field_S5": ["C1/C1_09042025_S1_VAMOSAREMAR_P6_S6/S5.wav", "hash"],
+      "near_field_S6": ["C1/C1_09042025_S1_VAMOSAREMAR_P6_S6/S6.wav", "hash"]
+    },
+    "C1_11042025_S1_PEPECHIQUITO_P7_S6": {
+      "near_field_S1": ["C1/C1_11042025_S1_PEPECHIQUITO_P7_S6/S1.wav", "hash"],
+      "near_field_S2": ["C1/C1_11042025_S1_PEPECHIQUITO_P7_S6/S2.wav", "hash"],
+      "near_field_S3": ["C1/C1_11042025_S1_PEPECHIQUITO_P7_S6/S3.wav", "hash"],
+      "near_field_S4": ["C1/C1_11042025_S1_PEPECHIQUITO_P7_S6/S4.wav", "hash"],
+      "near_field_S5": ["C1/C1_11042025_S1_PEPECHIQUITO_P7_S6/S5.wav", "hash"],
+      "near_field_S6": ["C1/C1_11042025_S1_PEPECHIQUITO_P7_S6/S6.wav", "hash"],
+      "near_field_Sinstructor": ["C1/C1_11042025_S1_PEPECHIQUITO_P7_S6/Sinstructor.wav", "hash"]
+    }
+  },
+  "metadata": {
+    "metadata_file": [
+      "metadata.csv",
+      "9d3533c17d2bc5c03c1c026b68ff99a8"
+    ]
+  }
+}

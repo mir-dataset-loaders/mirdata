@@ -75,7 +75,6 @@ import numpy as np
 
 from mirdata import annotations, core, download_utils, io
 
-
 BIBTEX = """@inproceedings{knees2015two,
   title={Two data sets for tempo estimation and key detection in electronic dance music annotated from user corrections},
   author={Knees, Peter and Faraldo P{\'e}rez, {\'A}ngel and Boyer, Herrera and Vogl, Richard and B{\"o}ck, Sebastian and H{\"o}rschl{\"a}ger, Florian and Le Goff, Mickael and others},
