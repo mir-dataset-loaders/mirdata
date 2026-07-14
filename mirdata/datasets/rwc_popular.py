@@ -9,28 +9,20 @@
     modern Japanese popular music typical of songs on the Japanese hit charts in
     the 1990s.
 
-    For more details, please visit: https://staff.aist.go.jp/m.goto/RWC-MDB/rwc-mdb-p.html
+    For more details, please visit: https://zenodo.org/records/18656623
 
 """
 
 import csv
 import os
-from typing import Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
-from deprecated.sphinx import deprecated
+import librosa
 import numpy as np
+import pretty_midi
 from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
-
-# these functions are identical for all rwc datasets
-from mirdata.datasets.rwc_classical import (
-    load_beats,
-    load_sections,
-    load_audio,
-    _duration_to_sec,
-    LICENSE_INFO,
-)
 
 BIBTEX = """@inproceedings{goto2002rwc,
   title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
@@ -38,15 +30,21 @@ BIBTEX = """@inproceedings{goto2002rwc,
   booktitle={3rd International Society for Music Information Retrieval Conference},
   year={2002},
   series={ISMIR},
-  note={Cite this if using audio, beat or section annotations},
 }
-@inproceedings{cho2011feature,
-  title={A feature smoothing method for chord recognition using recurrence plots},
-  author={Cho, Taemin and Bello, Juan P},
-  booktitle={12th International Society for Music Information Retrieval Conference},
-  year={2011},
-  series={ISMIR},
-  note={Cite this if using chord annotations},
+@inproceedings{GotoHNO03_RWCGenre_ISMIR,
+  author    = {Masataka Goto and Hiroki Hashiguchi and Takuichi Nishimura and Ryuichi Oka},
+  title     = {{RWC} Music Database: Music genre database and musical instrument sound database},
+  booktitle = {Proceedings of the International Society for Music Information Retrieval Conference ({ISMIR})},
+  address   = {Baltimore, Maryland, USA},
+  year      = {2003},
+  pages     = {229--230},
+}
+@inproceedings{Goto06_AnnotationsAIST_ISMIR,
+  author    = {Masataka Goto},
+  title     = {{AIST} Annotation for the {RWC} Music Database},
+  booktitle = {Proceedings of the International Society for Music Information Retrieval Conference ({ISMIR})},
+  year      = {2006},
+  pages     = {359--360},
 }
 @inproceedings{mauch2011timbre,
   title={Timbre and Melody Features for the Recognition of Vocal Activity and Instrumental Solos in Polyphonic Music.},
@@ -55,61 +53,53 @@ BIBTEX = """@inproceedings{goto2002rwc,
   year={2011},
   series={ISMIR},
   note={Cite this if using vocal-instrumental activity annotations},
-}"""
+}
+@Article{BalkeZAMTGM26_RWCRevisited_TISMIR,
+author = {Stefan Balke and Johannes Zeitler and Vlora Arifi-Müller and Brian McFee and Tomoyasu Nakano and Masataka Goto and Meinard M{"u}ller},
+title = {{RWC} Revisited: {T}owards a Community-Driven {MIR} Corpus},
+journal = {Transactions of the International Society for Music Information Retrieval},
+volume = {9},
+issue = {1},
+pages = {21--35},
+year = {2026},
+doi = {10.5334/tismir.326}
+}
+
+"""
 
 INDEXES = {
-    "default": "1.0",
+    "default": "2.0",
     "test": "sample",
-    "1.0": core.Index(
-        filename="rwc_popular_index_1.0.json",
-        url="https://zenodo.org/records/14007877/files/rwc_popular_index_1.0.json?download=1",
-        checksum="774540b4b2190214529fbdf8b1335c2a",
+    "2.0": core.Index(
+        filename="rwc_popular_index_2.0.json",
+        url="https://zenodo.org/records/20369966/files/rwc_popular_index_2.0.json?download=1",
+        checksum="c7f5f853768815885cea70d6c246895d",
     ),
-    "sample": core.Index(filename="rwc_popular_index_1.0_sample.json"),
+    "sample": core.Index(filename="rwc_popular_index_2.0_sample.json"),
 }
 
 REMOTES = {
-    "metadata": download_utils.RemoteFileMetadata(
-        filename="master.zip",
-        url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
-        checksum="7dbe87fedbaaa1f348625a2af1d78030",
+    "audio": download_utils.RemoteFileMetadata(
+        filename="RWC-P.zip",
+        url="https://zenodo.org/records/18656623/files/RWC-P.zip?download=1",
+        checksum="960a11a2d7fb603ad0dae8428f53d4f0",
     ),
-    "annotations_beat": download_utils.RemoteFileMetadata(
-        filename="AIST.RWC-MDB-P-2001.BEAT.zip",
-        url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.BEAT.zip",
-        checksum="3858aa989535bd7196b3cd07b512b5b6",
-        destination_dir="annotations",
-    ),
-    "annotations_sections": download_utils.RemoteFileMetadata(
-        filename="AIST.RWC-MDB-P-2001.CHORUS.zip",
-        url=(
-            "https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORUS.zip"
-        ),
-        checksum="f76b3a32701fbd9bf78baa608f692a77",
-        destination_dir="annotations",
-    ),
-    "annotations_chords": download_utils.RemoteFileMetadata(
-        filename="AIST.RWC-MDB-P-2001.CHORD.zip",
-        url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.CHORD.zip",
-        checksum="68379c88bc8ec3f1907b32a3579197c5",
-        destination_dir="annotations",
-    ),
-    "annotations_vocal_act": download_utils.RemoteFileMetadata(
-        filename="AIST.RWC-MDB-P-2001.VOCA_INST.zip",
-        url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-P-2001.VOCA_INST.zip",
-        checksum="47ded648a496407ef49dba9c8bf80e87",
-        destination_dir="annotations",
+    "annotation": download_utils.RemoteFileMetadata(
+        filename="rwc-annotations-main.zip",
+        url="https://github.com/rwc-music/rwc-annotations/archive/2b84581b0c4c80514aadf7e9025a309c91e02cc2.zip",
+        checksum="40f17835554467f66de60602f72f5686",
     ),
 }
+
 DOWNLOAD_INFO = """
-    Unfortunately the audio files of the RWC-Popular dataset are not available
-    for download. If you have the RWC-Popular dataset, place the contents into a
-    folder called RWC-Popular with the following structure:
-        > RWC-Popular/
-            > annotations/
-            > audio/rwc-p-m0i with i in [1 .. 7]
-            > metadata-master/
-    and copy the RWC-Popular folder to {}
+This dataset is RWC Music Database version 2.0 (released 2026).
+
+If you need the previous version 1.0 with its loader and annotations, install an older mirdata version:
+  pip install "mirdata<=1.0.0"
+"""
+
+LICENSE_INFO = """
+Creative Commons Attribution Non Commercial 4.0 International
 """
 
 
@@ -120,49 +110,54 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
-        artist (str): artist
         audio_path (str): path of the audio file
         beats_path (str): path of the beat annotation file
         chords_path (str): path of the chord annotation file
-        drum_information (str): If the drum is 'Drum sequences', 'Live drums',
-            or 'Drum loops'
-        duration (float): Duration of the track in seconds
-        instruments (str): List of used instruments
-        piece_number (str): Piece number, [1-50]
-        sections_path (str): path of the section annotation file
-        singer_information (str): could be male, female or vocal group
-        suffix (str): M01-M04
-        tempo (str): Tempo of the track in BPM
-        title (str): title
-        track_id (str): track id
-        track_number (str): CD track number
-        voca_inst_path (str): path of the vocal/instrumental annotation file
+        f0_path (str): path of the melody (F0) annotation file
+        midi_path (str): path of the aligned MIDI file
+        piece_number (str): Piece number
+        cd_number (str): CD number
+        track_number (str): track number on the CD
+        title (str): title of the track
+        artist (str): artist name
+        singer_information (str): singer information (male, female, or vocal group)
+        singing_language (str): singing language
+        tempo (str): tempo of the track in BPM
+        variation (str): variation information
+        live_instrument (str): live instrument information
+        drum_information (str): drum information (e.g., 'Drum sequences', 'Live drums', 'Drum loops')
+        composer (str): composer name
+        composition_type (str): type of composition
+        main_genre (str): main genre of the track
+        sub_genre (str): sub genre of the track
+        audio_start (str): audio start time
+        audio_end (str): audio end time
+        duration (str): duration of the track in seconds
 
     Cached Properties:
-        sections (SectionData): human-labeled section annotation
         beats (BeatData): human-labeled beat annotation
         chords (ChordData): human-labeled chord annotation
-        vocal_instrument_activity (EventData): human-labeled vocal/instrument activity
+        melody (F0Data): human-labeled melody (F0) annotation
+        midi (pretty_midi.PrettyMIDI): aligned MIDI annotations
 
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
 
-        self.sections_path = self.get_path("sections")
+        self.audio_path = self.get_path("audio")
         self.beats_path = self.get_path("beats")
         self.chords_path = self.get_path("chords")
-        self.voca_inst_path = self.get_path("voca_inst")
-
-        self.audio_path = self.get_path("audio")
+        self.f0_path = self.get_path("melody")
+        self.midi_path = self.get_path("midi")
 
     @property
     def piece_number(self):
         return self._track_metadata.get("piece_number")
 
     @property
-    def suffix(self):
-        return self._track_metadata.get("suffix")
+    def cd_number(self):
+        return self._track_metadata.get("cd_number")
 
     @property
     def track_number(self):
@@ -181,24 +176,52 @@ class Track(core.Track):
         return self._track_metadata.get("singer_information")
 
     @property
-    def duration(self):
-        return self._track_metadata.get("duration")
+    def singing_language(self):
+        return self._track_metadata.get("singing_language")
 
     @property
     def tempo(self):
         return self._track_metadata.get("tempo")
 
     @property
-    def instruments(self):
-        return self._track_metadata.get("instruments")
+    def variation(self):
+        return self._track_metadata.get("variation")
+
+    @property
+    def live_instrument(self):
+        return self._track_metadata.get("live_instrument")
 
     @property
     def drum_information(self):
         return self._track_metadata.get("drum_information")
 
-    @core.cached_property
-    def sections(self) -> Optional[annotations.SectionData]:
-        return load_sections(self.sections_path)
+    @property
+    def composer(self):
+        return self._track_metadata.get("composer")
+
+    @property
+    def composition_type(self):
+        return self._track_metadata.get("composition_type")
+
+    @property
+    def main_genre(self):
+        return self._track_metadata.get("main_genre")
+
+    @property
+    def sub_genre(self):
+        return self._track_metadata.get("sub_genre")
+
+    @property
+    def audio_start(self):
+        return self._track_metadata.get("audio_start")
+
+    @property
+    def audio_end(self):
+        return self._track_metadata.get("audio_end")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
 
     @core.cached_property
     def beats(self) -> Optional[annotations.BeatData]:
@@ -209,8 +232,12 @@ class Track(core.Track):
         return load_chords(self.chords_path)
 
     @core.cached_property
-    def vocal_instrument_activity(self) -> Optional[annotations.EventData]:
-        return load_vocal_activity(self.voca_inst_path)
+    def melody(self) -> Optional[annotations.F0Data]:
+        return load_melody(self.f0_path)
+
+    @core.cached_property
+    def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
+        return io.load_midi(self.midi_path)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -222,6 +249,21 @@ class Track(core.Track):
 
         """
         return load_audio(self.audio_path)
+
+
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load a RWC audio file.
+
+    Args:
+        fhandle (str or file-like): File-like object or path to audio file
+
+    Returns:
+        * np.ndarray - the mono audio signal
+        * float - The sample rate of the audio file
+
+    """
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
@@ -239,44 +281,69 @@ def load_chords(fhandle: TextIO) -> annotations.ChordData:
     ends = []  # timestamps of chord endings
     chords = []  # chord labels
 
-    reader = csv.reader(fhandle, delimiter="\t")
-    for line in reader:
-        begs.append(float(line[0]))
-        ends.append(float(line[1]))
-        chords.append(line[2])
+    reader = csv.reader(fhandle, delimiter=";")
+    next(reader, None)  # skip header
+    for row in reader:
+        begs.append(float(row[0]))
+        ends.append(float(row[1]))
+        chords.append(row[2])
 
-    return annotations.ChordData(np.array([begs, ends]).T, "s", chords, "harte")
+    return annotations.ChordData(np.array([begs, ends]).T, "s", chords, "open")
 
 
 @io.coerce_to_string_io
-def load_vocal_activity(fhandle: TextIO) -> annotations.EventData:
-    """Load rwc vocal activity data from a file
+def load_beats(fhandle: TextIO) -> annotations.BeatData:
+    """Load rwc beat data from a file
 
     Args:
-        fhandle (str or file-like): File-like object or path to vocal activity annotation file
+        fhandle (str or file-like): File-like object or path to beats annotation file
 
     Returns:
-        EventData: vocal activity data
+        BeatData: beat data
 
     """
-    begs = []  # timestamps of vocal-instrument activity beginnings
-    ends = []  # timestamps of vocal-instrument activity endings
-    events = []  # vocal-instrument activity labels
 
-    reader = csv.reader(fhandle, delimiter="\t")
-    raw_data = []
-    for line in reader:
-        if line[0] != "Piece No.":
-            raw_data.append(line)
+    beat_times = []  # timestamps of beat interval beginnings
+    beat_positions = []  # beat position inside the bar
 
-    for i in range(len(raw_data)):
-        # Parsing vocal-instrument activity as intervals (beg, end, event)
-        if raw_data[i] != raw_data[-1]:
-            begs.append(float(raw_data[i][0]))
-            ends.append(float(raw_data[i + 1][0]))
-            events.append(raw_data[i][1])
+    reader = csv.reader(fhandle, delimiter=";")
+    next(reader, None)
+    for row in reader:
+        beat_times.append(float(row[0]))
+        beat_positions.append(int(row[1]))
 
-    return annotations.EventData(np.array([begs, ends]).T, "s", events, "open")
+    return annotations.BeatData(
+        np.array(beat_times), "s", np.array(beat_positions).astype(int), "bar_index"
+    )
+
+
+@io.coerce_to_string_io
+def load_melody(fhandle: TextIO) -> Optional[annotations.F0Data]:
+    """Load rwc_popular f0 annotations
+
+    Args:
+        fhandle (str or file-like): path or file-like object pointing
+            to melody annotation file
+
+    Returns:
+        F0Data: predominant melody
+
+    """
+    times = []
+    freqs = []
+    voicing = []
+
+    reader = csv.reader(fhandle, delimiter=";")
+    next(reader, None)  # skip header
+    for row in reader:
+        times.append(float(row[0]))
+        freq = float(row[1])
+        freqs.append(freq)
+        voicing.append(float(freq > 0))
+
+    return annotations.F0Data(
+        np.array(times), "s", np.array(freqs), "hz", np.array(voicing), "binary"
+    )
 
 
 @core.docstring_inherit(core.Dataset)
@@ -300,62 +367,45 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-p.csv")
-
+        metadata_path = os.path.join(
+            self.data_home,
+            "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2",
+            "metadata.csv",
+        )
         try:
-            with open(metadata_path, "r") as fhandle:
-                dialect = csv.Sniffer().sniff(fhandle.read(1024))
-                fhandle.seek(0)
-                reader = csv.reader(fhandle, dialect)
+            with open(metadata_path, "r", encoding="utf-8") as fhandle:
+                reader = csv.DictReader(fhandle, delimiter=";")
                 raw_data = []
-                for line in reader:
-                    if line[0] != "Piece No.":
-                        raw_data.append(line)
+                for row in reader:
+                    raw_data.append(row)
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata_index = {}
         for line in raw_data:
-            if line[0] == "Piece No.":
-                continue
-            p = "00" + line[0].split(".")[1][1:]
-            track_id = "RM-P{}".format(p[len(p) - 3 :])
-
-            metadata_index[track_id] = {
-                "piece_number": line[0],
-                "suffix": line[1],
-                "track_number": line[2],
-                "title": line[3],
-                "artist": line[4],
-                "singer_information": line[5],
-                "duration": _duration_to_sec(line[6]),
-                "tempo": line[7],
-                "instruments": line[8],
-                "drum_information": line[9],
-            }
+            if line["CollID"] == "P":
+                track_id = line["RWCID"]
+                metadata_index[track_id] = {
+                    "piece_number": line["PieceNo"],
+                    "cd_number": line["CDNo"],
+                    "track_number": line["TrackNo"],
+                    "title": line["Title"],
+                    "artist": line["Artist"],
+                    "singer_information": line["SingerInformation"],
+                    "singing_language": line["SingingLanguage"],
+                    "tempo": line["Tempo"],
+                    "variation": line["Variation"],
+                    "live_instrument": line["LiveInstruments"],
+                    "drum_information": line["DrumInformation"],
+                    "composer": line["Composer"],
+                    "composition_type": line["CompositionType"],
+                    "main_genre": line["GenreMain"],
+                    "sub_genre": line["GenreSub"],
+                    "audio_start": line["audio_start"],
+                    "audio_end": line["audio_end"],
+                    "duration": line["duration"],
+                }
+            else:
+                pass
 
         return metadata_index
-
-    @deprecated(reason="Use mirdata.datasets.rwc_popular.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
-
-    @deprecated(
-        reason="Use mirdata.datasets.rwc_popular.load_sections", version="0.3.4"
-    )
-    def load_sections(self, *args, **kwargs):
-        return load_sections(*args, **kwargs)
-
-    @deprecated(reason="Use mirdata.datasets.rwc_popular.load_beats", version="0.3.4")
-    def load_beats(self, *args, **kwargs):
-        return load_beats(*args, **kwargs)
-
-    @deprecated(reason="Use mirdata.datasets.rwc_popular.load_chords", version="0.3.4")
-    def load_chords(self, *args, **kwargs):
-        return load_chords(*args, **kwargs)
-
-    @deprecated(
-        reason="Use mirdata.datasets.rwc_popular.load_vocal_activity", version="0.3.4"
-    )
-    def load_vocal_activity(self, *args, **kwargs):
-        return load_vocal_activity(*args, **kwargs)

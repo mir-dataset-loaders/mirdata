@@ -1,0 +1,33 @@
+{
+  "version": "sample",
+  "tracks": {
+    "RWC_P001": {
+      "audio": [
+        "RWC-P/1.wav",
+        "f5d0f52073d8d0cc56ff34d597094b19"
+      ],
+      "beats": [
+        "rwc-annotations-main/01_annotations_preprocessed/beats/RWC-P/RWC_P001.csv",
+        "0b73083824e2d4a0168934f403e8a327"
+      ],
+      "chords": [
+        "rwc-annotations-main/01_annotations_preprocessed/chords/RWC-P/RWC_P001.csv",
+        "5fba21c659078dd43ae75a0e31f4d6fb"
+      ],
+      "melody": [
+        "rwc-annotations-main/01_annotations_preprocessed/melody/RWC-P/RWC_P001.csv",
+        "e1c32ce735d14d0914b3390bf6bd4073"
+      ],
+      "midi": [
+        "rwc-annotations-main/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P001.mid",
+        "6633680bffbfbf9c0be4eb677d130804"
+      ]
+    }
+  },
+  "metadata": {
+    "rwc-popular-metadata": [
+      "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/metadata.csv",
+      "796e8df9ec6a2db7805e256c41da2806"
+    ]
+  }
+}

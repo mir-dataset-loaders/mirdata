@@ -21,7 +21,6 @@ dependencies:
 
   # optional, but required for testing
   - pytest>=7.4.3
-  - pytest-pep8>=1.0.6
   - pytest-cov>=4.1.0
   - pytest-mock>=3.11.1
   - pytest-localserver>=0.8.1

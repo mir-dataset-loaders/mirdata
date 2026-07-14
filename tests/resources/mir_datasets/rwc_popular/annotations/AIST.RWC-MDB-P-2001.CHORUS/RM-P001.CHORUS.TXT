@@ -1,4 +1,0 @@
-4	1026	"intro"
-1026	2315	"chorus A"
-18848	20271	"bridge A"
-20271	20716	"ending"

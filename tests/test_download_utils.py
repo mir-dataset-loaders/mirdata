@@ -3,7 +3,6 @@ import os
 from pathlib import Path
 import shutil
 import zipfile
-import re
 
 from mirdata import download_utils, core
 
@@ -504,34 +503,47 @@ def test_download_tar_file_ignorechecksum(
     _clean("a")
 
 
-def test_extractall_unicode(mocker, mock_download_from_remote, mock_unzip):
+def test_extractall_unicode(tmp_path, mocker, mock_download_from_remote, mock_unzip):
     zip_files = ("tests/resources/utfissue.zip", "tests/resources/utfissuewin.zip")
     expected_files_all = (
         ["pic👨‍👩‍👧‍👦🎂.jpg", "Benoît.txt", "Icon"],
-        ["pic👨‍👩‍👧‍👦🎂.jpg", "BenoŒt.txt", "Icon"],
+        ["pic👨‍👩‍👧‍👦🎂.jpg", "Benoît.txt", "Icon"],
     )
     for zipf, expected_files in zip(zip_files, expected_files_all):
         zfile = zipfile.ZipFile(zipf, "r")
-        download_utils.extractall_unicode(zfile, os.path.dirname("tests/resources/"))
+        download_utils.extractall_unicode(zfile, str(tmp_path))
         zfile.close()
         for expected_file in expected_files:
             expected_file_location = os.path.join(
-                "tests", "resources", "utfissue", expected_file
+                str(tmp_path), "utfissue", expected_file
             )
             assert os.path.exists(expected_file_location)
-            os.remove(expected_file_location)
 
 
-def test_extractall_cp437(mocker, mock_download_from_remote, mock_unzip):
+def test_extractall_unicode_keeps_uncodable_filename(tmp_path, mocker):
+    member = mocker.Mock()
+    member.filename = "plainĀ.txt"
+    member.flag_bits = 0
+
+    zfile = mocker.Mock()
+    zfile.infolist.return_value = [member]
+    zfile.read.return_value = b"content"
+
+    download_utils.extractall_unicode(zfile, str(tmp_path))
+
+    expected_file_location = os.path.join(str(tmp_path), "plainĀ.txt")
+    assert os.path.exists(expected_file_location)
+    assert Path(expected_file_location).read_bytes() == b"content"
+
+
+def test_extractall_cp437(tmp_path, mocker, mock_download_from_remote, mock_unzip):
     zfile = zipfile.ZipFile("tests/resources/utfissue.zip", "r")
-    zfile.extractall(os.path.dirname("tests/resources/"))
+    zfile.extractall(str(tmp_path))
     zfile.close()
     expected_files = ["pic👨‍👩‍👧‍👦🎂.jpg", "Benoît.txt", "Icon"]
     for expected_file in expected_files:
-        expected_file_location = os.path.join("tests", "resources", expected_file)
+        expected_file_location = os.path.join(str(tmp_path), expected_file)
         assert not os.path.exists(expected_file_location)
-    shutil.rmtree(os.path.join("tests", "resources", "__MACOSX"))
-    shutil.rmtree(os.path.join("tests", "resources", "utfissue"))
 
 
 def test_index_duplicate_prevention(mocker, mock_path):

@@ -44,7 +44,7 @@ CUSTOM_TEST_TRACKS = {
     "mridangam_stroke": "224030",
     "rwc_classical": "RM-C003",
     "rwc_jazz": "RM-J004",
-    "rwc_popular": "RM-P001",
+    "rwc_popular": "RWC_P001",
     "openmic2018": "000046_3840",
     "salami": "2",
     "saraga_carnatic": "116_Bhuvini_Dasudane",
