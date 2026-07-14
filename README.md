@@ -11,7 +11,7 @@ Common loaders for Music Information Retrieval (MIR) datasets. Find the API docu
 [![PyPI version](https://badge.fury.io/py/mirdata.svg)](https://badge.fury.io/py/mirdata)
 [![codecov](https://codecov.io/gh/mir-dataset-loaders/mirdata/branch/master/graph/badge.svg)](https://codecov.io/gh/mir-dataset-loaders/mirdata)
 [![Downloads](https://static.pepy.tech/badge/mirdata)](https://pepy.tech/project/mirdata)
-[![DOI](https://zenodo.org/badge/DOI/zenodo.10070589.svg)](https://doi.org/10.5281/zenodo.10070589)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17181782.svg)](https://doi.org/10.5281/zenodo.17181782)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 
@@ -59,7 +59,7 @@ There are two ways of citing mirdata:
 
 If you are using the library for your work, please cite the version you used as indexed at Zenodo:
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10070589.svg)](https://doi.org/10.5281/zenodo.10070589)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17181782.svg)](https://doi.org/10.5281/zenodo.17181782)
 
 If you refer to mirdata's design principles, motivation etc., please cite the following [paper](https://zenodo.org/record/3527750#.X-Inp5NKhUI):
 
