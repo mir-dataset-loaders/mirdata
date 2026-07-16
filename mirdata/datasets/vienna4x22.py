@@ -70,7 +70,7 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="vienna4x22_index_1.0.json",
-        url="https://zenodo.org/records/21160492/files/vienna4x22_index_1.0.json?download=1",
+        url="https://zenodo.org/records/21399563/files/vienna4x22_index_1.0.json?download=1",
         checksum="989a919bc6102020bbf2dca44bea3d23",
     ),
     "sample": core.Index(filename="vienna4x22_index_1.0_sample.json"),
@@ -115,8 +115,7 @@ class Track(core.Track):
         piece (str): piece identifier, one of :data:`PIECES`.
         pianist_id (str): two-digit pianist id (``"01"`` .. ``"22"``).
         alignment_quality (str): ``"manual"`` — all Vienna 4x22 alignments were
-            hand-corrected. Datasets with automatic alignment (e.g. parangonar)
-            will use ``"automatic"``.
+            hand-corrected.
         score_path (str): path to the piece's MusicXML score.
         performance_path (str): path to the performance MIDI file.
         match_path (str): path to the score/performance ``.match`` alignment file.
