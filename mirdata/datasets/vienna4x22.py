@@ -76,8 +76,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="vienna4x22_index_1.0.json",
-        url="https://zenodo.org/records/21399563/files/vienna4x22_index_1.0.json?download=1",
-        checksum="989a919bc6102020bbf2dca44bea3d23",
+        url="https://zenodo.org/records/21443270/files/vienna4x22_index_1.0.json?download=1",
+        checksum="5e127f886fc5b83d7c83623152dcc160",
     ),
     "sample": core.Index(filename="vienna4x22_index_1.0_sample.json"),
 }
