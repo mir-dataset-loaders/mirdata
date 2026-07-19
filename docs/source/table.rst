@@ -615,7 +615,7 @@
      - :tonas:`\ `
 
    * - Vienna 4x22
-     - - audio: ❌
+     - - audio: 🔑
        - midi: ✅
        - annotations: ✅
      - - score notes

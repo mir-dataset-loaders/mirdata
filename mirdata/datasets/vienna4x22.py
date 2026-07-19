@@ -15,15 +15,18 @@
     * ``Mozart_K331_1st-mov`` — 36 bars (exposition) of Mozart K. 331, 1st mov.
     * ``Schubert_D783_no15``  — full 32 bars of Schubert D. 783 No. 15
 
-    Every performance is provided as (a) a MIDI file captured by the Bösendorfer
-    reproducing piano and (b) a note-wise score-to-performance alignment in
-    ``.match`` format (v1.0.0). MusicXML symbolic scores of the four excerpts are
-    also provided, one per piece.
+    Every performance is provided as (a) a stereo WAV audio recording, (b) a MIDI file
+    captured by the Bösendorfer reproducing piano, and (c) a note-wise score-to-performance
+    alignment in ``.match`` format (v1.0.0). MusicXML symbolic scores of the four excerpts
+    are also provided, one per piece.
 
-    This loader wraps the version curated by the Institute of Computational Perception
-    (CPJKU, JKU Linz) at https://github.com/CPJKU/vienna4x22. The data is released under
-    the Creative Commons Attribution 4.0 International License (CC BY 4.0). Score, MIDI
-    performance, and match files are parsed with `partitura <https://github.com/CPJKU/partitura>`_.
+    Symbolic data (MIDI, MusicXML, match files) are curated by the Institute of
+    Computational Perception (CPJKU, JKU Linz) at https://github.com/CPJKU/vienna4x22.
+    Audio recordings are hosted separately by the University of Music and Performing Arts
+    Vienna (mdw) at https://datasets.mdw.ac.at (DOI: 10.21939/4X22).
+    All data is released under the Creative Commons Attribution 4.0 International License
+    (CC BY 4.0). Score, MIDI performance, and match files are parsed with
+    `partitura <https://github.com/CPJKU/partitura>`_.
 
     References:
 
@@ -35,7 +38,10 @@
 """
 
 import logging
-from typing import BinaryIO, TextIO
+from typing import BinaryIO, Optional, TextIO, Tuple
+
+import librosa
+import numpy as np
 
 from mirdata import core, download_utils, io
 
@@ -89,6 +95,14 @@ REMOTES = {
         checksum="a441555d302d57b1ab0922b342769184",
         unpack_directories=["vienna4x22-1033ade0899bfd03a89f370c9ad5d8443ddccd3e"],
     ),
+    "audio": download_utils.RemoteFileMetadata(
+        filename="vienna4x22-audio.zip",
+        url=(
+            "https://repo.mdw.ac.at/projects/IWK/"
+            "the_vienna_4x22_piano_corpus/data/audio.zip"
+        ),
+        checksum=None,
+    ),
 }
 
 LICENSE_INFO = "Creative Commons Attribution 4.0 International (CC BY 4.0)."
@@ -116,11 +130,14 @@ class Track(core.Track):
         pianist_id (str): two-digit pianist id (``"01"`` .. ``"22"``).
         alignment_quality (str): ``"manual"`` — all Vienna 4x22 alignments were
             hand-corrected.
+        audio_path (str or None): path to the stereo WAV recording (``None`` if
+            the audio remote has not been downloaded).
         score_path (str): path to the piece's MusicXML score.
         performance_path (str): path to the performance MIDI file.
         match_path (str): path to the score/performance ``.match`` alignment file.
 
     Cached Properties:
+        audio (tuple): ``(np.ndarray, float)`` stereo audio signal and sample rate.
         score (partitura.score.Score): score parsed with partitura. Access the full
             partitura API for part structure, key/time signatures, tempo markings,
             etc. (e.g. ``track.score[0].key_sigs``).
@@ -140,6 +157,7 @@ class Track(core.Track):
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
+        self.audio_path = self.get_path("audio")
         self.score_path = self.get_path("score")
         self.performance_path = self.get_path("performance")
         self.match_path = self.get_path("match")
@@ -147,6 +165,10 @@ class Track(core.Track):
         self.piece = piece
         self.pianist_id = pianist_id
         self.alignment_quality = "manual"
+
+    @core.cached_property
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
+        return load_audio(self.audio_path)
 
     @core.cached_property
     def score(self):
@@ -167,6 +189,21 @@ class Track(core.Track):
     @core.cached_property
     def performance_note_array(self):
         return self.performance.note_array()
+
+
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    """Load a Vienna 4x22 WAV recording.
+
+    Args:
+        fhandle (str or file-like): path to a ``.wav`` file.
+
+    Returns:
+        * np.ndarray - stereo audio signal
+        * float - sample rate
+
+    """
+    return librosa.load(fhandle, sr=None, mono=False)
 
 
 @io.coerce_to_string_io
