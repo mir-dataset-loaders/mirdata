@@ -86,7 +86,7 @@ INDEXES = {
 # commit tarball so the checksum is stable.
 # ponytail: pinned to master @ 1033ade; bump when upstream cuts a release.
 REMOTES = {
-    "all": download_utils.RemoteFileMetadata(
+    "annotations": download_utils.RemoteFileMetadata(
         filename="vienna4x22-1033ade.tar.gz",
         url=(
             "https://codeload.github.com/CPJKU/vienna4x22/tar.gz/"
@@ -101,7 +101,7 @@ REMOTES = {
             "https://repo.mdw.ac.at/projects/IWK/"
             "the_vienna_4x22_piano_corpus/data/audio.zip"
         ),
-        checksum=None,
+        checksum="4fa07a425cd65e1f752ebc288767fff9",
     ),
 }
 
