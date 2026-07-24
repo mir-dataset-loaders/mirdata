@@ -1,0 +1,23 @@
+{
+  "version": "sample",
+  "tracks": {
+    "Chopin_op10_no3_p01": {
+      "score": [
+        "musicxml/Chopin_op10_no3.musicxml",
+        "d9d2e4cef5dee5a4f87d7d179516e7cf"
+      ],
+      "performance": [
+        "midi/Chopin_op10_no3_p01.mid",
+        "1c6c22754ccb4edf31966261c4195a49"
+      ],
+      "match": [
+        "match/Chopin_op10_no3_p01.match",
+        "cf3b932c195cd8b1778c864cab729b58"
+      ],
+      "audio": [
+        "audio/Chopin_Etude/Chopin_op10_no3_p01.wav",
+        "2f5f6bb3fd5e77dbd8277cd72f73fc82"
+      ]
+    }
+  }
+}
