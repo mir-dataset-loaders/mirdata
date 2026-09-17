@@ -1,62 +1,80 @@
 """
-FMA Keys Dataset Loader
+FMAK / FMAKv2 Dataset Loader
 
 .. admonition:: Dataset Info
     :class: dropdown
 
-    FMA Keys is an expert-labeled dataset for the evaluation of key detection containing
+    **FMAK**
+
+    FMAK is an expert-labeled dataset for the evaluation of key detection containing
     340 hours (5489 songs) of song-level key and mode annotations, spread across 17 genres.
 
-    This dataset has been annotated by one annotator with perfect pitch and twenty years of
-    music experience as a concert pianist. A sample of this dataset was cross-annotated
-    by two annotators with high inter-annotator agreement.
+    The curation and annotations of FMAK were created by Stella Wong (co-author of STONE)
+    and Gandalf Hernandez. The dataset was first presented as an ISMIR Late-Breaking/Demo
+    in 2023, and later released and used in the paper
+    *STONE: Self-supervised Tonality Estimator* (ISMIR 2024).
 
-    Dataset use
+    DOI: https://doi.org/10.5281/zenodo.10719860
 
-    The annotations are available for conducting non-commercial research
-    related to audio analysis.
-
-    About the dataset
-
-    For each song, we provide annotations for:
-    - FMA track id
+    For each song, FMAK provides:
+    - FMA track id (6 digits)
     - Spotify URI (when available)
     - Key and mode
 
     The modes are provided both as strings and numbers:
-     "Major" <-> 1, "minor" <-> 0
+        "Major" <-> 1, "minor" <-> 0
 
     Similarly, for the keys:
-    "C" <-> 0, "C#" <-> 1, etc.
+        "C" <-> 0, "C#" <-> 1, etc.
 
-    We also provide easy access to the underlying audio data
-    from the FMA dataset.
+    All audio is collected in and distributed by the FMA dataset
+    (Michael Defferrard, Kirell Benzi, Pierre Vandergheynst, and Xavier Bresson).
+    The FMA metadata is freely available under a Creative Commons license.
+    We do not hold copyright on the audio; it is distributed under the license
+    chosen by the artist.
 
-    We filtered the FMA dataset to a subset that exists in the Spotify API
-    through fuzzy matching the artists, titles.
-    Next, we compared song duration and discard results that are egregiously different.
+    **FMAKv2**
 
-    About the audio
+    FMAKv2 is a derivative work of FMAK, released and used in the ISMIR 2024 paper
+    *STONE: Self-supervised Tonality Estimator*. The difference between FMAK and FMAKv2
+    is a modification of around 200 annotations. All other annotations remain unchanged
+    from FMAK. FMA track id and Spotify URI remain identical.
 
-    All the audio is collected in and distributed by the FMA dataset by Michael Defferrard,
-    Kirell Benzi, Pierre Vandergheynst, and Xavier Bresson.
+    Authors of FMAK did not verify the modifications of FMAKv2 and should not be held
+    liable for potential mislabelings.
 
-    The FMA metadata is made freely available for public use under a Creative Commons license.
-    We do not hold the copyright on the audio and distribute it under the license chosen by the artist.
-    The dataset is meant for research purposes.
+    The audio is identical to FMAK and can be obtained from the FMA dataset.
+
+    **Citations**
+
+    If you use FMAK or FMAKv2, please cite:
+
+    .. code-block:: bibtex
+
+        @article{kong2024stone,
+          title={STONE: Self-supervised Tonality Estimator},
+          author={Kong, Yuexuan and Lostanlen, Vincent and Meseguer-Brocal, Gabriel and Wong, Stella and Lagrange, Mathieu and Hennequin, Romain},
+          journal={Proceedings of International Society for Music Information Retrieval Conference (ISMIR 2024)},
+          year={2024}
+        }
+
+        @inproceedings{wong2023fmak,
+          title={FMAK: A DATASET OF KEY AND MODE ANNOTATIONS FOR THE FREE MUSIC ARCHIVE--EXTENDED ABSTRACT},
+          author={Wong, Stella and Hernandez, Gandalf},
+          booktitle={International Society for Music Information Retrieval Late-Breaking/Demo Session (ISMIR-LBD)},
+          year={2023}
+        }
 """
 
 import csv
 import os
+import re
+from typing import Optional, Tuple, Dict
 import numpy as np
-from math import floor
+import librosa
 from smart_open import open
 
-import librosa
-
 from mirdata import download_utils, core, io
-
-from typing import Optional, Tuple
 
 BIBTEX = """
     @inproceedings{
@@ -72,21 +90,22 @@ BIBTEX = """
 LICENSE_INFO = "Creative Commons Attribution 4.0 International"
 
 INDEXES = {
-    "default": "1.0",
+    "default": "2.0",
     "test": "sample",
     "1.0": core.Index(
         filename="fma_keys_index_1.0.json",
         url="https://zenodo.org/records/16757314/files/fma_keys_index_1.0.json?download=1",
         checksum="6c905f1c0d1caef11643b67cfe80ddf4",
     ),
+    "2.0": core.Index(
+        filename="fmakv2_index_1.0.json",
+        url="https://zenodo.org/records/17182864/files/fmakv2_index_1.0.json?download=1",
+        checksum="abebede26962c58fd8b78f4b6873d192",
+    ),
     "sample": core.Index(filename="fma_keys_index_1.0_sample.json"),
 }
-REMOTES = {
-    "metadata": download_utils.RemoteFileMetadata(
-        filename="fma_keys_metadata.csv",
-        url="https://zenodo.org/records/10719860/files/fma_keys_metadata.csv?download=1",
-        checksum="d80a03bc8659edc60e335bd7f6bdf12a",
-    ),
+
+REMOTES_BASE = {
     "tracks-000-019": download_utils.RemoteFileMetadata(
         filename="000-019.zip",
         url="https://zenodo.org/records/10719860/files/000-019.zip?download=1",
@@ -139,22 +158,62 @@ REMOTES = {
     ),
 }
 
-KEY_MAP = {
+METADATA_V1 = {
+    "metadata_v1": download_utils.RemoteFileMetadata(
+        filename="fma_keys_metadata.csv",
+        url="https://zenodo.org/records/10719860/files/fma_keys_metadata.csv?download=1",
+        checksum="d80a03bc8659edc60e335bd7f6bdf12a",
+    ),
+}
+METADATA_V2 = {
+    "metadata_v2": download_utils.RemoteFileMetadata(
+        filename="metadata_fmakv2.csv",
+        url="https://zenodo.org/records/12759100/files/fmakv2.csv?download=1",
+        checksum="d80a03bc8659edc60e335bd7f6bdf12a",
+        destination_dir="metadata",
+    ),
+}
+
+
+def _is_v2(version: str) -> bool:
+    v = str(version)
+    return v == "default" or v.startswith("2.")
+
+
+def _remotes_for(version: str):
+    if _is_v2(version):
+        return {**REMOTES_BASE, **METADATA_V2}
+    return {**REMOTES_BASE, **METADATA_V1}
+
+
+KEY_MAP: Dict[str, int] = {
     "C": 0,
     "C#": 1,
+    "Db": 1,
     "D": 2,
     "D#": 3,
+    "Eb": 3,
     "E": 4,
     "F": 5,
     "F#": 6,
+    "Gb": 6,
     "G": 7,
     "G#": 8,
+    "Ab": 8,
     "A": 9,
+    "A#": 10,
     "Bb": 10,
     "B": 11,
 }
-
 MODE_MAP = {"minor": 0, "Major": 1}
+
+
+def _clean_key(k: str) -> str:
+    return k.strip().replace("♭", "b").replace("♯", "#")
+
+
+def _clean_mode(m: str) -> str:
+    return m.strip().lower()  # "Major"/"major" -> "major"
 
 
 class Track(core.Track):
@@ -170,12 +229,10 @@ class Track(core.Track):
         key_number (int): numeric key of the track (0-11)
         mode_number (int): numeric mode of the track (0 for minor, 1 for Major)
         audio_path (str): path to the track's audio file
-        audio (ndarray): audio data
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
-
         self.audio_path = self.get_path("audio")
 
     @property
@@ -205,7 +262,6 @@ class Track(core.Track):
         Returns:
             * np.ndarray - audio signal
             * float - sample rate
-
         """
         return load_audio(self.audio_path)
 
@@ -224,7 +280,7 @@ class Dataset(core.Dataset):
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,
-            remotes=REMOTES,
+            remotes=_remotes_for(version),
             license_info=LICENSE_INFO,
         )
 
@@ -241,22 +297,25 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "fma_keys_metadata.csv")
+        if _is_v2(self.version):
+            candidates = [
+                os.path.join(self.data_home, "metadata", "metadata_fmakv2.csv"),
+                os.path.join(self.data_home, "metadata_fmakv2.csv"),
+            ]
+        else:
+            candidates = [os.path.join(self.data_home, "fma_keys_metadata.csv")]
 
-        metadata_index = {}
-        try:
-            with open(metadata_path) as f:
-                metadata_index = {
-                    t["track_id"]: self._track_to_dict(t) for t in csv.DictReader(f)
-                }
-
-        except FileNotFoundError:
-            raise FileNotFoundError("Metadata not found. Did you run .download()?")
-
-        return metadata_index
+        for path in candidates:
+            if os.path.exists(path):
+                with open(path) as f:
+                    return {
+                        t["track_id"]: self._track_to_dict(t) for t in csv.DictReader(f)
+                    }
+        raise FileNotFoundError(
+            "Metadata not found. Did you run .download() for this version?"
+        )
 
 
-# no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(path: str) -> Tuple[np.ndarray, float]:
     """Load fma keys audio
 
@@ -266,6 +325,5 @@ def load_audio(path: str) -> Tuple[np.ndarray, float]:
     Returns:
         * np.ndarray - audio signal
         * float - sample rate
-
     """
     return librosa.load(path, sr=None, mono=True)
