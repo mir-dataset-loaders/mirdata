@@ -25,7 +25,7 @@
 import json
 import logging
 import os
-from typing import Optional, List
+from typing import List, Optional, cast
 
 from smart_open import open
 
@@ -179,7 +179,10 @@ def load_score(
         music21.stream.Score: score in music21 format
     """
     try:
-        score = music21.converter.parse(os.path.join(data_home, fhandle))
+        score = cast(
+            music21.stream.Score,
+            music21.converter.parse(os.path.join(data_home, fhandle)),
+        )
     except:
         raise FileNotFoundError("File {} not found.".format(fhandle))
     return score
