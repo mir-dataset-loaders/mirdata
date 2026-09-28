@@ -208,14 +208,6 @@ KEY_MAP: Dict[str, int] = {
 MODE_MAP = {"minor": 0, "Major": 1}
 
 
-def _clean_key(k: str) -> str:
-    return k.strip().replace("♭", "b").replace("♯", "#")
-
-
-def _clean_mode(m: str) -> str:
-    return m.strip().lower()  # "Major"/"major" -> "major"
-
-
 class Track(core.Track):
     """FMA Keys Track class
 
