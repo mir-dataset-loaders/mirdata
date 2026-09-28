@@ -310,6 +310,7 @@ class Dataset(core.Dataset):
         )
 
 
+# no decorator here because of https://github.com/librosa/librosa/issues/1267
 def load_audio(path: str) -> Tuple[np.ndarray, float]:
     """Load fma keys audio
 
