@@ -17,6 +17,7 @@ FMAK / FMAKv2 Dataset Loader
     DOI: https://doi.org/10.5281/zenodo.10719860
 
     For each song, FMAK provides:
+
     - FMA track id (6 digits)
     - Spotify URI (when available)
     - Key and mode
@@ -27,11 +28,8 @@ FMAK / FMAKv2 Dataset Loader
     Similarly, for the keys:
         "C" <-> 0, "C#" <-> 1, etc.
 
-    All audio is collected in and distributed by the FMA dataset
+    All audio comes from the FMA dataset
     (Michael Defferrard, Kirell Benzi, Pierre Vandergheynst, and Xavier Bresson).
-    The FMA metadata is freely available under a Creative Commons license.
-    We do not hold copyright on the audio; it is distributed under the license
-    chosen by the artist.
 
     **FMAKv2**
 
@@ -45,9 +43,38 @@ FMAK / FMAKv2 Dataset Loader
 
     The audio is identical to FMAK and can be obtained from the FMA dataset.
 
+    DOI: https://doi.org/10.5281/zenodo.12759100
+
+    **Versions in mirdata**
+
+    - ``"1.0"``: FMAK annotations (``fma_keys_metadata.csv``)
+    - ``"2.0"`` (default): FMAKv2 annotations (``fmakv2_metadata.csv``)
+
+    Both versions share the same audio files and track ids. To download only the
+    annotations, use ``partial_download=["metadata"]`` for ``"1.0"`` and
+    ``partial_download=["metadata_v2"]`` for ``"2.0"``.
+
+    **License**
+
+    The FMAK and FMAKv2 annotations are released under the Creative Commons
+    Attribution 4.0 International license (CC BY 4.0). The dataset is intended
+    for research purposes.
+
+    The dataset authors do not hold the copyright on the audio. It is distributed
+    by the FMA dataset under the license chosen by each artist, which varies
+    per track.
+
+    **Links**
+
+    - FMAK: https://zenodo.org/records/10719860
+    - FMAKv2: https://zenodo.org/records/12759100
+    - FMAK code and annotations: https://github.com/stellaywong/fma_keys
+    - FMA dataset: https://github.com/mdeff/fma
+
     **Citations**
 
-    If you use FMAK or FMAKv2, please cite:
+    If you use FMAKv2, please cite both papers below, as requested by its authors.
+    If you use FMAK (version ``"1.0"``), please cite the FMAK paper:
 
     .. code-block:: bibtex
 
@@ -76,18 +103,38 @@ from smart_open import open
 
 from mirdata import core, download_utils
 
+
 BIBTEX = """
-    @inproceedings{
-        wong_fma_keys,
-        title = {FMAK: A Dataset of Key and Mode Annotations for the Free Music Archive},
-        author = {Wong, Stella and Hernandez, Gandalf},
-        booktitle = {24th International Society for Music Information Retrieval Conference (ISMIR)},
-        year = {2023}
-    }
+@inproceedings{
+  wong_fma_keys,
+  title = {FMAK: A Dataset of Key and Mode Annotations for the Free Music Archive -- Extended Abstract},
+  author = {Wong, Stella and Hernandez, Gandalf},
+  booktitle = {International Society for Music Information Retrieval Late-Breaking/Demo Session (ISMIR-LBD)},
+  year = {2023}
+}
+@article{kong2024stone,
+  title={STONE: Self-supervised Tonality Estimator},
+  author={Kong, Yuexuan and Lostanlen, Vincent and Meseguer-Brocal, Gabriel and Wong, Stella and Lagrange, Mathieu and Hennequin, Romain},
+  journal={Proceedings of International Society for Music Information Retrieval Conference (ISMIR 2024)},
+  year={2024}
 }
 """
 
 LICENSE_INFO = "Creative Commons Attribution 4.0 International"
+
+# Both versions share the audio; each index only downloads its own metadata file.
+AUDIO_REMOTES = [
+    "tracks-000-019",
+    "tracks-020-039",
+    "tracks-040-049",
+    "tracks-050-059",
+    "tracks-060-069",
+    "tracks-070-079",
+    "tracks-080-089",
+    "tracks-090-099",
+    "tracks-100-109",
+    "tracks-110-124",
+]
 
 INDEXES = {
     "default": "2.0",
@@ -96,16 +143,30 @@ INDEXES = {
         filename="fma_keys_index_1.0.json",
         url="https://zenodo.org/records/16757314/files/fma_keys_index_1.0.json?download=1",
         checksum="6c905f1c0d1caef11643b67cfe80ddf4",
+        partial_download=AUDIO_REMOTES + ["metadata"],
     ),
     "2.0": core.Index(
         filename="fmakv2_index_1.0.json",
         url="https://zenodo.org/records/17182864/files/fmakv2_index_1.0.json?download=1",
         checksum="abebede26962c58fd8b78f4b6873d192",
+        partial_download=AUDIO_REMOTES + ["metadata_v2"],
     ),
     "sample": core.Index(filename="fma_keys_index_1.0_sample.json"),
 }
 
-REMOTES_BASE = {
+REMOTES = {
+    "metadata": download_utils.RemoteFileMetadata(
+        filename="fma_keys_metadata.csv",
+        url="https://zenodo.org/records/10719860/files/fma_keys_metadata.csv?download=1",
+        checksum="d80a03bc8659edc60e335bd7f6bdf12a",
+    ),
+    # Saved as fmakv2_metadata.csv (not the Zenodo name fmakv2.csv) because that is
+    # the path the published v2 index expects; changing it breaks validate().
+    "metadata_v2": download_utils.RemoteFileMetadata(
+        filename="fmakv2_metadata.csv",
+        url="https://zenodo.org/records/12759100/files/fmakv2.csv?download=1",
+        checksum="3b2d16784ffbda850c8ddf0519478bfd",
+    ),
     "tracks-000-019": download_utils.RemoteFileMetadata(
         filename="000-019.zip",
         url="https://zenodo.org/records/10719860/files/000-019.zip?download=1",
@@ -158,32 +219,11 @@ REMOTES_BASE = {
     ),
 }
 
-METADATA_V1 = {
-    "metadata_v1": download_utils.RemoteFileMetadata(
-        filename="fma_keys_metadata.csv",
-        url="https://zenodo.org/records/10719860/files/fma_keys_metadata.csv?download=1",
-        checksum="d80a03bc8659edc60e335bd7f6bdf12a",
-    ),
+METADATA_FILENAMES = {
+    "1.0": "fma_keys_metadata.csv",
+    "2.0": "fmakv2_metadata.csv",
+    "sample": "fma_keys_metadata.csv",
 }
-METADATA_V2 = {
-    "metadata_v2": download_utils.RemoteFileMetadata(
-        filename="metadata_fmakv2.csv",
-        url="https://zenodo.org/records/12759100/files/fmakv2.csv?download=1",
-        checksum="3b2d16784ffbda850c8ddf0519478bfd",
-        destination_dir="metadata",
-    ),
-}
-
-
-def _is_v2(version: str) -> bool:
-    v = str(version)
-    return v == "default" or v.startswith("2.")
-
-
-def _remotes_for(version: str):
-    if _is_v2(version):
-        return {**REMOTES_BASE, **METADATA_V2}
-    return {**REMOTES_BASE, **METADATA_V1}
 
 
 KEY_MAP: Dict[str, int] = {
@@ -272,7 +312,7 @@ class Dataset(core.Dataset):
             track_class=Track,
             bibtex=BIBTEX,
             indexes=INDEXES,
-            remotes=_remotes_for(version),
+            remotes=REMOTES,
             license_info=LICENSE_INFO,
         )
 
@@ -289,25 +329,17 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        if _is_v2(self.version):
-            candidates = [
-                os.path.join(self.data_home, "metadata", "metadata_fmakv2.csv"),
-                os.path.join(self.data_home, "metadata_fmakv2.csv"),
-            ]
-        else:
-            candidates = [os.path.join(self.data_home, "fma_keys_metadata.csv")]
+        metadata_path = os.path.join(self.data_home, METADATA_FILENAMES[self.version])
 
-        for path in candidates:
-            try:
-                with open(path) as f:
-                    return {
-                        t["track_id"]: self._track_to_dict(t) for t in csv.DictReader(f)
-                    }
-            except FileNotFoundError:
-                continue
-        raise FileNotFoundError(
-            "Metadata not found. Did you run .download() for this version?"
-        )
+        try:
+            with open(metadata_path) as f:
+                return {
+                    t["track_id"]: self._track_to_dict(t) for t in csv.DictReader(f)
+                }
+        except FileNotFoundError:
+            raise FileNotFoundError(
+                f"Metadata not found at {metadata_path}. Did you run .download()?"
+            )
 
 
 # no decorator here because of https://github.com/librosa/librosa/issues/1267
