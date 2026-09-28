@@ -1,5 +1,7 @@
 import os
 
+import pytest
+
 from mirdata.datasets import fma_keys
 from tests.test_utils import run_track_tests
 
@@ -64,3 +66,9 @@ def test_load_metadata():
         "key_number": 5,
         "mode_number": 1,
     }
+
+
+def test_metadata_not_found(tmp_path):
+    dataset = fma_keys.Dataset(str(tmp_path), version="2.0")
+    with pytest.raises(FileNotFoundError):
+        dataset._metadata
