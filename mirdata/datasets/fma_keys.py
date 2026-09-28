@@ -68,13 +68,13 @@ FMAK / FMAKv2 Dataset Loader
 
 import csv
 import os
-import re
-from typing import Optional, Tuple, Dict
-import numpy as np
+from typing import Dict, Optional, Tuple
+
 import librosa
+import numpy as np
 from smart_open import open
 
-from mirdata import download_utils, core, io
+from mirdata import core, download_utils
 
 BIBTEX = """
     @inproceedings{
