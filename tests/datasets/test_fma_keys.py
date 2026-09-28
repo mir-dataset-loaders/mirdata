@@ -51,7 +51,7 @@ def test_track():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/fma_keys"
-    dataset = fma_keys.Dataset(data_home)
+    dataset = fma_keys.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["10"] == {
         "spotify_uri": "spotify:track:66381EvBZ6e3RXzYATpGmN",
