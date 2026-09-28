@@ -169,7 +169,7 @@ METADATA_V2 = {
     "metadata_v2": download_utils.RemoteFileMetadata(
         filename="metadata_fmakv2.csv",
         url="https://zenodo.org/records/12759100/files/fmakv2.csv?download=1",
-        checksum="d80a03bc8659edc60e335bd7f6bdf12a",
+        checksum="3b2d16784ffbda850c8ddf0519478bfd",
         destination_dir="metadata",
     ),
 }
