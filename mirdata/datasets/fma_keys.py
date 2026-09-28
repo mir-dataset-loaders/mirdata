@@ -306,11 +306,13 @@ class Dataset(core.Dataset):
             candidates = [os.path.join(self.data_home, "fma_keys_metadata.csv")]
 
         for path in candidates:
-            if os.path.exists(path):
+            try:
                 with open(path) as f:
                     return {
                         t["track_id"]: self._track_to_dict(t) for t in csv.DictReader(f)
                     }
+            except FileNotFoundError:
+                continue
         raise FileNotFoundError(
             "Metadata not found. Did you run .download() for this version?"
         )
