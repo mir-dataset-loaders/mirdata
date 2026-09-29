@@ -103,7 +103,6 @@ from smart_open import open
 
 from mirdata import core, download_utils
 
-
 BIBTEX = """
 @inproceedings{
   wong_fma_keys,
