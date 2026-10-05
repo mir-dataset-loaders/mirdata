@@ -44,6 +44,7 @@
 import os
 import csv
 import json
+from typing import BinaryIO, Tuple
 
 import librosa
 import numpy as np
@@ -218,7 +219,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_audio(fhandle):
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load an audio file.
 
     Args:

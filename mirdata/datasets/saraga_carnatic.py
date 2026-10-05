@@ -32,6 +32,7 @@
 
 import csv
 import json
+from typing import BinaryIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -219,7 +220,7 @@ def load_metadata(fhandle):
 
 
 @io.coerce_to_bytes_io
-def load_audio(fhandle):
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Saraga Carnatic audio file.
 
     Args:

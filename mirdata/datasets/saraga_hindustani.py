@@ -33,6 +33,7 @@
 import os
 import csv
 import json
+from typing import BinaryIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -177,7 +178,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_audio(fhandle):
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Saraga Hindustani audio file.
 
     Args:

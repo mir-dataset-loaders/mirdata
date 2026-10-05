@@ -28,9 +28,11 @@ import csv
 import os
 import fnmatch
 import json
+from typing import BinaryIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
+import numpy as np
 from smart_open import open
 
 from mirdata import core, download_utils, io
@@ -144,7 +146,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_audio(fhandle):
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a beatport_key audio file.
 
     Args:

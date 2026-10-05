@@ -144,7 +144,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_audio(fhandle: BinaryIO):
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load an audio file.
 
     Args:

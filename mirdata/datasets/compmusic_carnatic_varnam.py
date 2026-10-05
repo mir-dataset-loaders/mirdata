@@ -41,7 +41,7 @@ import os
 import csv
 import glob
 import librosa
-from typing import BinaryIO, TextIO
+from typing import BinaryIO, TextIO, Tuple
 
 import numpy as np
 from xml.dom import minidom
@@ -170,7 +170,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_audio(fhandle: BinaryIO):
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Carnatic Varnam audio file.
 
     Args:
