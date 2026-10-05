@@ -85,3 +85,25 @@ def test_load_match():
     assert isinstance(alignment, list) and len(alignment) > 0
     assert isinstance(score, partitura.score.Score)
     assert vienna4x22.load_match(None) is None
+
+
+def test_score_performance_alignment():
+    dataset = vienna4x22.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
+    _, alignment, _ = track.match
+
+    score_notes = {note["id"]: note for note in track.score_note_array}
+    performance_notes = {note["id"]: note for note in track.performance_note_array}
+
+    matches = [a for a in alignment if a["label"] == "match"]
+    assert len(matches) == 451
+
+    for a in matches:
+        # every id in the alignment exists in the note arrays
+        assert a["score_id"] in score_notes
+        assert a["performance_id"] in performance_notes
+        # a matched score note and performance note are the same key
+        assert (
+            score_notes[a["score_id"]]["pitch"]
+            == performance_notes[a["performance_id"]]["pitch"]
+        )
