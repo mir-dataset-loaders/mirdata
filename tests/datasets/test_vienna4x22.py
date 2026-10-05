@@ -54,7 +54,8 @@ def test_track():
 def test_load_audio():
     path = os.path.join(DATA_HOME, "audio/Chopin_Etude/Chopin_op10_no3_p01.wav")
     audio, sr = vienna4x22.load_audio(path)
-    assert audio.shape[0] == 2  # stereo
+    assert audio.shape == (2, 88200)  # stereo, 2 sec
+    assert audio.dtype == np.float32
     assert sr == 44100
     assert vienna4x22.load_audio(None) is None
 
@@ -63,6 +64,28 @@ def test_load_score():
     path = os.path.join(DATA_HOME, "musicxml/Chopin_op10_no3.musicxml")
     score = vienna4x22.load_score(path)
     assert isinstance(score, partitura.score.Score)
+    assert len(score.parts) == 1
+
+    part = score[0]
+    assert [(ks.fifths, ks.mode) for ks in part.key_sigs] == [(4, "major")]
+    assert [(ts.beats, ts.beat_type) for ts in part.time_sigs] == [(2, 4)]
+
+    na = score.note_array()
+    assert len(na) == 486
+    for field in ["onset_beat", "duration_beat", "pitch", "voice", "id"]:
+        assert field in na.dtype.names
+
+    # pickup note
+    assert na[0]["id"] == "n1"
+    assert na[0]["pitch"] == 59
+    assert na[0]["onset_beat"] == -0.5
+    assert na[0]["duration_beat"] == 0.5
+
+    # grace note at the end
+    assert na[-1]["id"] == "n450"
+    assert na[-1]["onset_beat"] == 40.0
+    assert na[-1]["duration_beat"] == 0.0
+
     assert vienna4x22.load_score(None) is None
 
 
@@ -70,8 +93,28 @@ def test_load_performance():
     path = os.path.join(DATA_HOME, "midi/Chopin_op10_no3_p01.mid")
     perf = vienna4x22.load_performance(path)
     assert isinstance(perf, partitura.performance.Performance)
+
     na = perf.note_array()
-    assert na.shape[0] > 0
+    assert len(na) == 451
+
+    assert na[0]["onset_sec"] == 0.0
+    assert na[0]["onset_tick"] == 0
+    assert na[0]["duration_tick"] == 261
+    assert na[0]["pitch"] == 59
+    assert na[0]["velocity"] == 44
+
+    assert na[1]["onset_tick"] == 678
+    assert na[1]["pitch"] == 40
+    assert na[1]["velocity"] == 22
+
+    assert na[-1]["onset_tick"] == 78610
+    assert na[-1]["pitch"] == 64
+
+    # pedal events: 64 = sustain, 67 = soft
+    controls = perf.performedparts[0].controls
+    assert len([c for c in controls if c["number"] == 64]) == 3385
+    assert len([c for c in controls if c["number"] == 67]) == 37
+
     assert vienna4x22.load_performance(None) is None
 
 
@@ -82,8 +125,20 @@ def test_load_match():
     assert len(result) == 3
     performance, alignment, score = result
     assert isinstance(performance, partitura.performance.Performance)
-    assert isinstance(alignment, list) and len(alignment) > 0
+    assert isinstance(alignment, list)
     assert isinstance(score, partitura.score.Score)
+
+    labels = [a["label"] for a in alignment]
+    assert labels.count("match") == 451
+    assert labels.count("deletion") == 3
+    assert labels.count("insertion") == 0
+
+    deleted = [a["score_id"] for a in alignment if a["label"] == "deletion"]
+    assert deleted == ["n356", "n359", "n454"]
+
+    assert alignment[0] == {"label": "match", "score_id": "n1", "performance_id": "n0"}
+    assert alignment[1] == {"label": "match", "score_id": "n2", "performance_id": "n2"}
+
     assert vienna4x22.load_match(None) is None
 
 
