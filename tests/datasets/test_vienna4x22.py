@@ -44,7 +44,7 @@ def test_track():
         "score": partitura.score.Score,
         "performance": partitura.performance.Performance,
         "match": tuple,
-        "note_array": np.ndarray,
+        "score_note_array": np.ndarray,
         "performance_note_array": np.ndarray,
     }
 
