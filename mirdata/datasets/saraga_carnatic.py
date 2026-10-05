@@ -32,6 +32,7 @@
 
 import csv
 import json
+from typing import BinaryIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -218,21 +219,19 @@ def load_metadata(fhandle):
     return json.load(fhandle)
 
 
-# no decorator here because of https://github.com/librosa/librosa/issues/1267
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Saraga Carnatic audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if audio_path is None:
-        return None
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=44100, mono=False)
 
 
 @io.coerce_to_string_io

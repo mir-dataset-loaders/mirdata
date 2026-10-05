@@ -113,13 +113,13 @@ BAF Loader
 
 import os
 from string import Template
-from typing import Tuple, Optional
+from typing import BinaryIO, Tuple, Optional
 
 import librosa
 import numpy as np
 import pandas as pd
 
-from mirdata import annotations
+from mirdata import annotations, io
 from mirdata import core
 
 BIBTEX = """@inproceedings{cortes2022BAF,
@@ -301,19 +301,19 @@ class Track(core.Track):
         return load_matches(self._track_metadata)
 
 
-# no decorator here because of https://github.com/librosa/librosa/issues/1267
-def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a baf audio file.
 
     Args:
-        fpath (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fpath, sr=8000, mono=True)
+    return librosa.load(fhandle, sr=8000, mono=True)
 
 
 def load_matches(track_metadata: dict) -> Optional[EventDataExtended]:

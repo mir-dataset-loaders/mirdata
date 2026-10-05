@@ -52,12 +52,14 @@
 import os
 import glob
 import json
+from typing import BinaryIO, Tuple
 
 import librosa
+import numpy as np
 
 from smart_open import open
 
-from mirdata import core, download_utils
+from mirdata import core, download_utils, io
 
 BIBTEX = """@article{Gulati2014,
     author = {Gulati, S. and Bellur, A. and Salamon, J. and Ranjani, H. G. and Ishwar, V. and Murthy, H. A. and Serra, X.},
@@ -176,18 +178,18 @@ class Track(core.Track):
         return self._track_metadata.get("tradition")
 
 
-# no decorator here because of https://github.com/librosa/librosa/issues/1267
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a Indian Art Music Tonic audio file.
 
     Args:
-        fhandle (str or file-like): File-like object or path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
     """
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=44100, mono=False)
 
 
 @core.docstring_inherit(core.Dataset)

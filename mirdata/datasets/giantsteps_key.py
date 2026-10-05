@@ -33,7 +33,7 @@
 """
 
 import json
-from typing import Dict, List, Optional, TextIO, Tuple
+from typing import BinaryIO, Dict, List, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -143,19 +143,19 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
 
-# no decorator here because of https://github.com/librosa/librosa/issues/1267
-def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_key audio file.
 
     Args:
-        fpath (str): str pointing to an audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fpath, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
