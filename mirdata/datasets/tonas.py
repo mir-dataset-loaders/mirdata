@@ -45,7 +45,7 @@ TONAS Loader
 import csv
 import logging
 import os
-from typing import TextIO, Tuple, Optional
+from typing import BinaryIO, TextIO, Tuple, Optional
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -188,11 +188,12 @@ class Track(core.Track):
         return load_notes(self.notes_path)
 
 
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a TONAS audio file.
 
     Args:
-        fhandle (str): path to an audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal

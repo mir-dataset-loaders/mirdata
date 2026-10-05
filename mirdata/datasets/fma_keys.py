@@ -56,7 +56,7 @@ import librosa
 
 from mirdata import download_utils, core, io
 
-from typing import Optional, Tuple
+from typing import BinaryIO, Optional, Tuple
 
 BIBTEX = """
     @inproceedings{
@@ -256,16 +256,16 @@ class Dataset(core.Dataset):
         return metadata_index
 
 
-# no decorator here because of https://github.com/librosa/librosa/issues/1267
-def load_audio(path: str) -> Tuple[np.ndarray, float]:
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load fma keys audio
 
     Args:
-        path(str): Path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - audio signal
         * float - sample rate
 
     """
-    return librosa.load(path, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)

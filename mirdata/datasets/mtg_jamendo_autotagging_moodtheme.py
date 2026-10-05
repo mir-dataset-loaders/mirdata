@@ -44,7 +44,7 @@ from typing import Optional, Tuple, BinaryIO
 from deprecated.sphinx import deprecated
 import librosa
 import numpy as np
-from mirdata import download_utils, core
+from mirdata import download_utils, core, io
 from smart_open import open
 
 BIBTEX = """@conference {bogdanov2019mtg,
@@ -154,6 +154,7 @@ class Track(core.Track):
         return tags
 
 
+@io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a MTG jamendo autotagging moodtheme audio file.
 

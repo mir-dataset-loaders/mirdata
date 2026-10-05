@@ -35,7 +35,7 @@
 import csv
 import librosa
 import numpy as np
-from typing import Optional, TextIO, Tuple, List
+from typing import BinaryIO, Optional, TextIO, Tuple, List
 
 from mirdata import annotations, core, io
 
@@ -138,20 +138,19 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO):
     """Load an audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if audio_path is None:
-        return None
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=44100, mono=False)
 
 
 @io.coerce_to_string_io

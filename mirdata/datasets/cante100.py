@@ -48,7 +48,7 @@ cante100 Loader
 import csv
 import os
 import xml.etree.ElementTree as ET
-from typing import Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -253,19 +253,19 @@ def load_spectrogram(fhandle: TextIO) -> np.ndarray:
     return spectrogram
 
 
-# no decorator here because of https://github.com/librosa/librosa/issues/1267
-def load_audio(fpath: str) -> Tuple[np.ndarray, float]:
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a cante100 audio file.
 
     Args:
-        fpath (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fpath, sr=22050, mono=False)
+    return librosa.load(fhandle, sr=22050, mono=False)
 
 
 @io.coerce_to_string_io
