@@ -166,7 +166,7 @@ class Track(core.Track):
         self.pianist_id = pianist_id
         self.alignment_quality = "manual"
 
-    @core.cached_property
+    @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(self.audio_path)
 
@@ -183,7 +183,7 @@ class Track(core.Track):
         return load_match(self.match_path)
 
     @core.cached_property
-    def note_array(self):
+    def score_note_array(self):
         return self.score.note_array()
 
     @core.cached_property
