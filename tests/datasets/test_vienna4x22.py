@@ -14,7 +14,9 @@ except ImportError:
     raise ImportError
 
 import numpy as np
+import pytest
 
+from mirdata import annotations
 from mirdata.datasets import vienna4x22
 from tests.test_utils import run_track_tests
 
@@ -46,6 +48,8 @@ def test_track():
         "match": tuple,
         "score_note_array": np.ndarray,
         "performance_note_array": np.ndarray,
+        "matched_note_array": np.ndarray,
+        "performance_notes": annotations.NoteData,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -162,3 +166,125 @@ def test_score_performance_alignment():
             score_notes[a["score_id"]]["pitch"]
             == performance_notes[a["performance_id"]]["pitch"]
         )
+
+
+def test_performance_ids_follow_match():
+    dataset = vienna4x22.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
+    match_performance, _, _ = track.match
+
+    def ids_by_key(performance):
+        return {
+            (note["note_on_tick"], note["midi_pitch"]): note["id"]
+            for note in performance.performedparts[0].notes
+        }
+
+    # partitura numbers MIDI notes n0..n450, the .match file skips n448
+    assert ids_by_key(track.performance) == ids_by_key(match_performance)
+    assert "n448" not in track.performance_note_array["id"]
+    assert "n451" in track.performance_note_array["id"]
+
+    # pedal events still come from the MIDI file
+    controls = track.performance.performedparts[0].controls
+    assert len([c for c in controls if c["number"] == 64]) == 3385
+
+
+def test_align_performance_ids():
+    path = os.path.join(DATA_HOME, "midi/Chopin_op10_no3_p01.mid")
+    match_path = os.path.join(DATA_HOME, "match/Chopin_op10_no3_p01.match")
+    match_performance, _, _ = vienna4x22.load_match(match_path)
+
+    assert vienna4x22.align_performance_ids(None, match_performance) is None
+
+    performance = vienna4x22.load_performance(path)
+    performance.performedparts[0].notes.pop()
+    with pytest.raises(ValueError):
+        vienna4x22.align_performance_ids(performance, match_performance)
+
+
+def test_matched_note_array():
+    dataset = vienna4x22.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
+    matched = track.matched_note_array
+
+    assert matched.dtype.names == (
+        "score_id",
+        "performance_id",
+        "score_pitch",
+        "performance_pitch",
+        "onset_beat",
+        "duration_beat",
+        "onset_sec",
+        "duration_sec",
+        "velocity",
+    )
+    # 451 matches; the 3 deleted score notes are left out
+    assert len(matched) == 451
+    assert not {"n356", "n359", "n454"} & set(matched["score_id"])
+    assert np.all(np.diff(matched["onset_sec"]) >= 0)
+
+    first = matched[0]
+    assert (first["score_id"], first["performance_id"]) == ("n1", "n0")
+    assert first["score_pitch"] == first["performance_pitch"] == 59
+    assert first["onset_beat"] == -0.5
+    assert first["onset_sec"] == 0.0
+    assert first["velocity"] == 44
+
+    score_pitch = {n["id"]: n["pitch"] for n in track.score_note_array}
+    assert all(score_pitch[m["score_id"]] == m["score_pitch"] for m in matched)
+    assert np.array_equal(matched["score_pitch"], matched["performance_pitch"])
+
+
+def test_performance_notes():
+    dataset = vienna4x22.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
+    notes = track.performance_notes
+
+    assert notes.intervals.shape == (451, 2)
+    assert notes.pitch_unit == "midi"
+    assert notes.confidence_unit == "velocity"
+    assert notes.pitches[0] == 59
+    assert notes.confidence[0] == 44
+    # offsets include the sustain pedal (partitura sound_off), key release is 0.27 s
+    assert np.isclose(notes.intervals[0, 1], 0.873958)
+
+    # row i of performance_notes is row i of performance_note_array, so the
+    # note IDs can be recovered by position
+    na = track.performance_note_array
+    assert np.array_equal(notes.pitches, na["pitch"])
+    assert np.array_equal(notes.confidence, na["velocity"])
+    assert np.allclose(notes.intervals[:, 0], na["onset_sec"])
+
+
+def test_performance_notes_recover_ids():
+    dataset = vienna4x22.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
+    notes = track.performance_notes
+    ids = track.performance_note_array["id"]
+    matched = {m["performance_id"]: m for m in track.matched_note_array}
+
+    # every NoteData row recovers an ID that resolves to the same note in the
+    # alignment
+    for i in range(len(notes.pitches)):
+        m = matched[ids[i]]
+        assert notes.pitches[i] == m["performance_pitch"]
+        assert notes.confidence[i] == m["velocity"]
+        assert np.isclose(notes.intervals[i, 0], m["onset_sec"])
+
+    # the note partitura numbers n448 from the MIDI file is n449 in the .match
+    # file, aligned to score note n453 (G#3)
+    i = int(np.flatnonzero(ids == "n449")[0])
+    assert notes.pitches[i] == 56
+    assert matched["n449"]["score_id"] == "n453"
+    assert matched["n449"]["score_pitch"] == 56
+
+
+def test_performance_notes_rows_must_line_up():
+    dataset = vienna4x22.Dataset(DATA_HOME, version="test")
+    track = dataset.track(TRACK_ID)
+
+    # NoteData drops duplicate notes, which would shift every later row
+    na = track.performance_note_array
+    track.__dict__["performance_note_array"] = np.insert(na, 1, na[0])
+    with pytest.raises(ValueError):
+        track.performance_notes
