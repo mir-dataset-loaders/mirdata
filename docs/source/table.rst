@@ -614,6 +614,17 @@
      - 72
      - :tonas:`\ `
 
+   * - Vienna 4x22
+     - - audio: 🔑
+       - midi: ✅
+       - annotations: ✅
+     - - score notes
+       - performance notes
+       - aligned notes (``.match``)
+     - 88
+     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by/4.0
+
    * - vocadito
      - - audio: ✅
        - annotations: ✅

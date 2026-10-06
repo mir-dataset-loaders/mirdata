@@ -41,6 +41,7 @@ autodoc_mock_imports = [
     "pretty_midi",
     "DALI",
     "music21",
+    "partitura",
     "h5py",
     "yaml",
     "scipy",
