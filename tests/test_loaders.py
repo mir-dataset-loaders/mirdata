@@ -10,6 +10,7 @@ import urllib.error
 # Add this at the top of the file to handle soundfile conditionally
 try:
     import soundfile
+
     SOUNDFILE_ERROR = soundfile.LibsndfileError
 except ImportError:
     SOUNDFILE_ERROR = None
