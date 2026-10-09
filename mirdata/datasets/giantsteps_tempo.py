@@ -110,8 +110,12 @@ REMOTES = {
     )
 }
 DOWNLOAD_INFO = """
-    Unfortunately the audio files of the Giant Steps Tempo dataset are not available
-    for download. If you have the Giant Steps audio dataset, place the contents into
+    To download the audio files of the Giant Steps Tempo dataset, visit https://github.com/GiantSteps/giantsteps-tempo-dataset and follow instructions.
+    The audio files (664 files, size ~1gb) can be downloaded using the bash script:
+    ```
+    ./audio_dl.sh
+    ```
+    After you have the audio files, place the contents into
     a folder called GiantSteps_tempo with the following structure:
         > GiantSteps_tempo/
             > giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/
