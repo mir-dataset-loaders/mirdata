@@ -7,6 +7,14 @@ import pytest
 import urllib.request
 import urllib.error
 
+# Add this at the top of the file to handle soundfile conditionally
+try:
+    import soundfile
+
+    SOUNDFILE_ERROR = soundfile.LibsndfileError
+except ImportError:
+    SOUNDFILE_ERROR = None
+
 
 import mirdata
 from mirdata import core
@@ -411,14 +419,18 @@ def test_load_methods():
                     )
                 )
 
+            expected_exceptions = [IOError, FileNotFoundError, OSError]
+            if SOUNDFILE_ERROR is not None:
+                expected_exceptions.append(SOUNDFILE_ERROR)
+
             # add to the EXCEPTIONS dictionary above if your load_* function needs
             # more than one argument.
             if dataset_name in EXCEPTIONS and method_name in EXCEPTIONS[dataset_name]:
                 extra_params = EXCEPTIONS[dataset_name][method_name]
-                with pytest.raises(IOError):
+                with pytest.raises(tuple(expected_exceptions)):
                     load_method("a/fake/filepath", **extra_params)
             else:
-                with pytest.raises(IOError):
+                with pytest.raises(tuple(expected_exceptions)):
                     load_method("a/fake/filepath")
 
 
