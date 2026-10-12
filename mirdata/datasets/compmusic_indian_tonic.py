@@ -219,7 +219,7 @@ class Dataset(core.Dataset):
                     self.data_home,
                     "indian_art_music_tonic_1.0",
                     center,
-                    "annotations",
+                    "Annotations",
                     "*.json",
                 )
             )
