@@ -73,8 +73,8 @@ INDEXES = {
 REMOTES = {
     "metadata": download_utils.RemoteFileMetadata(
         filename="dali_metadata.json",
-        url="https://raw.githubusercontent.com/gabolsgabs/DALI/master/code/DALI/files/dali_v1_metadata.json",
-        checksum="40af5059e7aa97f81b2654758094d24b",
+        url="https://raw.githubusercontent.com/gabolsgabs/DALI/df3cc992df56f36806db1c6cd577b96ebf0ede37/code/DALI/files/dali_v1_metadata.json",
+        checksum="5616c60ce2541e825a1929acb3affd48",
         destination_dir=".",
     )
 }
