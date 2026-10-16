@@ -1,5 +1,5 @@
 import functools
-import io
+import os
 from typing import Any, BinaryIO, Callable, List, Optional, TextIO, Union
 
 import numpy as np
@@ -12,22 +12,21 @@ from mirdata import annotations
 def coerce_to_string_io(func: Callable[..., Any]) -> Callable[..., Any]:
     @functools.wraps(func)
     def wrapper(
-        file_path_or_obj: Optional[Union[str, TextIO]],
+        file_path_or_obj: Optional[Union[str, os.PathLike, TextIO]],
         *args: Optional[Any],
         **kwargs: Optional[Any],
     ) -> Optional[Any]:
         if not file_path_or_obj:
             return None
-        if isinstance(file_path_or_obj, str):
-            with open(file_path_or_obj, encoding="utf-8") as f:
+        if isinstance(file_path_or_obj, (str, os.PathLike)):
+            with open(os.fspath(file_path_or_obj), encoding="utf-8") as f:
                 return func(f, *args, **kwargs)
-        elif isinstance(file_path_or_obj, io.StringIO):
+        elif hasattr(file_path_or_obj, "read"):
             return func(file_path_or_obj, *args, **kwargs)
         else:
             raise ValueError(
-                "Invalid argument passed to {}, argument has the type {}",
-                func.__name__,
-                type(file_path_or_obj),
+                f"Invalid argument passed to {func.__name__}, "
+                f"argument has the type {type(file_path_or_obj)}"
             )
 
     return wrapper
@@ -36,22 +35,21 @@ def coerce_to_string_io(func: Callable[..., Any]) -> Callable[..., Any]:
 def coerce_to_bytes_io(func: Callable[..., Any]) -> Callable[..., Any]:
     @functools.wraps(func)
     def wrapper(
-        file_path_or_obj: Optional[Union[str, BinaryIO]],
+        file_path_or_obj: Optional[Union[str, os.PathLike, BinaryIO]],
         *args: Optional[Any],
         **kwargs: Optional[Any],
     ) -> Optional[Any]:
         if not file_path_or_obj:
             return None
-        if isinstance(file_path_or_obj, str):
-            with open(file_path_or_obj, "rb") as f:
+        if isinstance(file_path_or_obj, (str, os.PathLike)):
+            with open(os.fspath(file_path_or_obj), "rb") as f:
                 return func(f, *args, **kwargs)
-        elif isinstance(file_path_or_obj, io.BytesIO):
+        elif hasattr(file_path_or_obj, "read"):
             return func(file_path_or_obj, *args, **kwargs)
         else:
             raise ValueError(
-                "Invalid argument passed to {}, argument has the type {}",
-                func.__name__,
-                type(file_path_or_obj),
+                f"Invalid argument passed to {func.__name__}, "
+                f"argument has the type {type(file_path_or_obj)}"
             )
 
     return wrapper

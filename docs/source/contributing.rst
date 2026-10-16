@@ -978,8 +978,8 @@ case the data is in a remote location e.g. GCS. The decorators modify the functi
 to:
 
 - Return ``None`` if ``None`` if passed in.
-- Open a file if a string path is passed in either ``'w'`` mode for ``string_io`` or ``wb`` for ``bytes_io`` and
-  pass the file handle to the decorated function.
+- Open a file if a string path or ``os.PathLike`` (e.g. ``pathlib.Path``) is passed in, in ``'r'`` mode for
+  ``string_io`` or ``'rb'`` for ``bytes_io``, and pass the file handle to the decorated function.
 - Pass the file handle to the decorated function if a file-like object is passed.
 
 This cannot be used if the function to be decorated takes multiple arguments.

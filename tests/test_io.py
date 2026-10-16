@@ -1,3 +1,4 @@
+import pathlib
 import tempfile
 from io import BufferedReader, BytesIO, StringIO, TextIOWrapper
 
@@ -129,3 +130,51 @@ def test_invalid_coerce_to_bytes_io():
 
     with pytest.raises(ValueError):
         func(123)
+
+
+@pytest.mark.parametrize("wrap", [str, pathlib.Path])
+def test_coerce_to_bytes_io_with_str_and_pathlike(wrap):
+    with tempfile.NamedTemporaryFile(delete=False) as f:
+        f.write(b"abc")
+
+    @io.coerce_to_bytes_io
+    def func(fh):
+        return fh.read()
+
+    assert func(wrap(f.name)) == b"abc"
+
+
+def test_coerce_to_bytes_io_with_open_handle():
+    with tempfile.NamedTemporaryFile(delete=False) as f:
+        f.write(b"abc")
+
+    @io.coerce_to_bytes_io
+    def func(fh):
+        return fh.read()
+
+    with open(f.name, "rb") as fh:
+        assert func(fh) == b"abc"
+
+
+@pytest.mark.parametrize("wrap", [str, pathlib.Path])
+def test_coerce_to_string_io_with_str_and_pathlike(wrap):
+    with tempfile.NamedTemporaryFile(delete=False) as f:
+        f.write(b"abc")
+
+    @io.coerce_to_string_io
+    def func(fh):
+        return fh.read()
+
+    assert func(wrap(f.name)) == "abc"
+
+
+def test_coerce_to_string_io_with_open_handle():
+    with tempfile.NamedTemporaryFile(delete=False) as f:
+        f.write(b"abc")
+
+    @io.coerce_to_string_io
+    def func(fh):
+        return fh.read()
+
+    with open(f.name, "r") as fh:
+        assert func(fh) == "abc"
