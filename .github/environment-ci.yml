@@ -34,6 +34,7 @@ dependencies:
     - decorator>=5.1.1
     - future>=0.18.3
     - music21>=7.3.3
+    - partitura>=1.7.0
     - pretty_midi>=0.2.10
     - smart_open[all]>=6.4.0
     - testcontainers>=3.7.1
