@@ -299,20 +299,27 @@ class Track(core.Track):
         return load_midi(self.midi_path)
 
 
-def load_audio(path: str) -> Tuple[Optional[np.ndarray], Optional[float]]:
+def load_audio(
+    fhandle: Optional[BinaryIO],
+) -> Tuple[Optional[np.ndarray], Optional[float]]:
     """Load a Groove MIDI audio file.
 
     Args:
-        path: path to an audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    if not path:
+    if not fhandle:
         return None, None
-    return librosa.load(path, sr=22050, mono=True)
+    return _load_audio(fhandle)
+
+
+@io.coerce_to_bytes_io
+def _load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
+    return librosa.load(fhandle, sr=22050, mono=True)
 
 
 @io.coerce_to_bytes_io
