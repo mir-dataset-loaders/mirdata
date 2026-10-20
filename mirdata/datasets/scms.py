@@ -47,7 +47,6 @@ INDEXES = {
     "default": "1.0",
     "test": "sample",
     "1.0": core.Index(
-        # NEED TO UPDATE FOR FIX
         filename="scms_index_1.0.json",
         url="https://zenodo.org/records/23503388/files/scms_index_1.0.json?download=1",
         checksum="243616c33409428f4a7ac8c8fef89062",
