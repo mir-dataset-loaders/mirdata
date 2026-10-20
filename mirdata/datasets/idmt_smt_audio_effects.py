@@ -180,12 +180,12 @@ class Track(core.Track):
             )
 
 
-# no decorator here because of https://github.com/librosa/librosa/issues/1267
+@io.coerce_to_bytes_io
 def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a IDMT-SMT-Audio Effect track.
 
     Args:
-        fhandle (Union[str, BinaryIO]): Path to audio file or file-like object.
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal

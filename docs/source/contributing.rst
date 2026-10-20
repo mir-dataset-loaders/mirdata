@@ -983,5 +983,3 @@ to:
 - Pass the file handle to the decorated function if a file-like object is passed.
 
 This cannot be used if the function to be decorated takes multiple arguments.
-``coerce_to_bytes_io`` should not be used if trying to load an mp3 with librosa as libsndfile does not support
-``mp3`` yet and ``audioread`` expects a path.

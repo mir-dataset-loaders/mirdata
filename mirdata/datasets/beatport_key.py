@@ -28,9 +28,11 @@ import csv
 import os
 import fnmatch
 import json
+from typing import BinaryIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
+import numpy as np
 from smart_open import open
 
 from mirdata import core, download_utils, io
@@ -143,19 +145,19 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
 
-# no decorator here because of https://github.com/librosa/librosa/issues/1267
-def load_audio(fpath):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a beatport_key audio file.
 
     Args:
-        fpath (str): path to an audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
         * float - The sample rate of the audio file
 
     """
-    return librosa.load(fpath, sr=None, mono=True)
+    return librosa.load(fhandle, sr=None, mono=True)
 
 
 @io.coerce_to_string_io
