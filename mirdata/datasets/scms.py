@@ -50,7 +50,7 @@ INDEXES = {
         filename="scms_index_1.0.json",
         url="https://zenodo.org/records/23503388/files/scms_index_1.0.json?download=1",
         checksum="243616c33409428f4a7ac8c8fef89062",
-    ),# SHOULD UPDATE AS WELL
+    ),
     "sample": core.Index(filename="scms_index_1.0_sample.json"),
 }
 
