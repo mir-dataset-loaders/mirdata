@@ -47,10 +47,11 @@ INDEXES = {
     "default": "1.0",
     "test": "sample",
     "1.0": core.Index(
+        # NEED TO UPDATE FOR FIX
         filename="scms_index_1.0.json",
         url="https://zenodo.org/records/13930519/files/scms_index_1.0.json?download=1",
         checksum="f4f8b5594b917a1d5f76f98a2c2371f5",
-    ),
+    ),# SHOULD UPDATE AS WELL
     "sample": core.Index(filename="scms_index_1.0_sample.json"),
 }
 
@@ -67,10 +68,9 @@ DOWNLOAD_INFO = None
 LICENSE_INFO = (
     "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
 )
-
 DIRECTORY_ALIASES = {"SCMS": "Saraga-Carnatic-Melody-Synth"}
 
-
+# Folder naming compatability, chooses the one that exists in data_home
 def _aliased_relative_path(data_home, relative_path):
     for expected_root, alias_root in DIRECTORY_ALIASES.items():
         if (
@@ -83,7 +83,7 @@ def _aliased_relative_path(data_home, relative_path):
 
     return relative_path
 
-
+# a function that acts on every path join, to be compatible with either SCMS or long name.
 def _data_path(data_home, relative_path):
     return os.path.join(data_home, _aliased_relative_path(data_home, relative_path))
 
