@@ -31,6 +31,7 @@
 
 import csv
 import json
+from typing import BinaryIO, Tuple
 
 import librosa
 import numpy as np
@@ -147,19 +148,18 @@ class Track(core.Track):
         return load_tonic(self.tonic_finetuned_path)
 
 
-def load_audio(audio_path):
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """
     Load an audio file.
 
     Args:
-        audio_path (str): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         tuple: np.ndarray - the stereo audio signal, float - sample rate
     """
-    if audio_path is None:
-        return None
-    return librosa.load(audio_path, sr=44100, mono=False)
+    return librosa.load(fhandle, sr=44100, mono=False)
 
 
 @io.coerce_to_string_io
