@@ -117,7 +117,8 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
         self.pitch_path = self.get_path("pitch")
         self.activations_path = self.get_path("activations")
-
+    #override core.Track.get_path() for making the old index 
+    #work with the unzipped Saraga folder name
     def get_path(self, key):
         path = self._track_paths[key][0]
         if path is None:
