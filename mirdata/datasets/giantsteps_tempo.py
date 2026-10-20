@@ -66,7 +66,7 @@
 
 """
 
-from typing import Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import json
@@ -176,11 +176,12 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
 
-def load_audio(fhandle: str) -> Tuple[np.ndarray, float]:
+@io.coerce_to_bytes_io
+def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
     """Load a giantsteps_tempo audio file.
 
     Args:
-        fhandle (str or file-like): path to audio file
+        fhandle (str or file-like): path or file-like object pointing to an audio file
 
     Returns:
         * np.ndarray - the mono audio signal
