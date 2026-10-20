@@ -29,7 +29,7 @@ import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, io, validate
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """
 @article{Plaja-Roglans-2023,
