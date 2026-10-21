@@ -95,13 +95,13 @@ FMAK / FMAKv2 Dataset Loader
 
 import csv
 import os
-from typing import BinaryIO, Dict, Optional, Tuple
+from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
 from smart_open import open
 
-from mirdata import core, download_utils
+from mirdata import core, download_utils, io
 
 BIBTEX = """
 @inproceedings{
