@@ -1,10 +1,8 @@
 import os
-from typing import List
 
-import numpy as np
+import pytest
 
 from mirdata.datasets import fma_keys
-from mirdata import annotations
 from tests.test_utils import run_track_tests
 
 
@@ -51,7 +49,7 @@ def test_track():
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/fma_keys"
-    dataset = fma_keys.Dataset(data_home)
+    dataset = fma_keys.Dataset(data_home, version="test")
     metadata = dataset._metadata
     assert metadata["10"] == {
         "spotify_uri": "spotify:track:66381EvBZ6e3RXzYATpGmN",
@@ -68,3 +66,9 @@ def test_load_metadata():
         "key_number": 5,
         "mode_number": 1,
     }
+
+
+def test_metadata_not_found(tmp_path):
+    dataset = fma_keys.Dataset(str(tmp_path), version="2.0")
+    with pytest.raises(FileNotFoundError):
+        dataset._metadata
