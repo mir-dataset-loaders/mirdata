@@ -1,6 +1,6 @@
 import pathlib
 import tempfile
-from io import BufferedReader, BytesIO, StringIO, TextIOWrapper
+from io import BufferedReader, BytesIO, FileIO, StringIO, TextIOWrapper
 
 import numpy as np
 import pytest
@@ -60,6 +60,13 @@ def test_load_multif0_from_midi():
         io.load_notes_from_midi(None, None)
 
 
+@pytest.fixture
+def abc_file(tmp_path):
+    path = tmp_path / "abc.txt"
+    path.write_bytes(b"abc")
+    return path
+
+
 def test_coerce_to_string_with_none():
     @io.coerce_to_string_io
     def func(fh):
@@ -92,7 +99,7 @@ def test_invalid_coerce_to_string_io():
     def func(fh):
         raise RuntimeError("YOU SHOULDNT BE HERE")
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         func(123)
 
 
@@ -128,53 +135,83 @@ def test_invalid_coerce_to_bytes_io():
     def func(fh):
         raise RuntimeError("YOU SHOULDNT BE HERE")
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         func(123)
 
 
 @pytest.mark.parametrize("wrap", [str, pathlib.Path])
-def test_coerce_to_bytes_io_with_str_and_pathlike(wrap):
-    with tempfile.NamedTemporaryFile(delete=False) as f:
-        f.write(b"abc")
-
+def test_coerce_to_bytes_io_with_str_and_pathlike(abc_file, wrap):
     @io.coerce_to_bytes_io
     def func(fh):
         return fh.read()
 
-    assert func(wrap(f.name)) == b"abc"
+    assert func(wrap(abc_file)) == b"abc"
 
 
-def test_coerce_to_bytes_io_with_open_handle():
-    with tempfile.NamedTemporaryFile(delete=False) as f:
-        f.write(b"abc")
-
+def test_coerce_to_bytes_io_with_open_handle(abc_file):
     @io.coerce_to_bytes_io
     def func(fh):
         return fh.read()
 
-    with open(f.name, "rb") as fh:
+    with open(abc_file, "rb") as fh:
         assert func(fh) == b"abc"
 
 
+def test_coerce_to_bytes_io_with_unbuffered_handle(abc_file):
+    @io.coerce_to_bytes_io
+    def func(fh):
+        return fh.read()
+
+    with open(abc_file, "rb", buffering=0) as fh:
+        assert isinstance(fh, FileIO)
+        assert func(fh) == b"abc"
+
+
+def test_coerce_to_bytes_io_with_text_handle(abc_file):
+    @io.coerce_to_bytes_io
+    def func(fh):
+        raise RuntimeError("YOU SHOULDNT BE HERE")
+
+    with open(abc_file, "r") as fh:
+        with pytest.raises(TypeError, match="binary mode"):
+            func(fh)
+
+    with StringIO("abc") as fh:
+        with pytest.raises(TypeError, match="binary mode"):
+            func(fh)
+
+
 @pytest.mark.parametrize("wrap", [str, pathlib.Path])
-def test_coerce_to_string_io_with_str_and_pathlike(wrap):
-    with tempfile.NamedTemporaryFile(delete=False) as f:
-        f.write(b"abc")
-
+def test_coerce_to_string_io_with_str_and_pathlike(abc_file, wrap):
     @io.coerce_to_string_io
     def func(fh):
         return fh.read()
 
-    assert func(wrap(f.name)) == "abc"
+    assert func(wrap(abc_file)) == "abc"
 
 
-def test_coerce_to_string_io_with_open_handle():
-    with tempfile.NamedTemporaryFile(delete=False) as f:
-        f.write(b"abc")
-
+def test_coerce_to_string_io_with_open_handle(abc_file):
     @io.coerce_to_string_io
     def func(fh):
         return fh.read()
 
-    with open(f.name, "r") as fh:
+    with open(abc_file, "r") as fh:
         assert func(fh) == "abc"
+
+
+def test_coerce_to_string_io_with_binary_handle(abc_file):
+    @io.coerce_to_string_io
+    def func(fh):
+        raise RuntimeError("YOU SHOULDNT BE HERE")
+
+    with open(abc_file, "rb") as fh:
+        with pytest.raises(TypeError, match="text mode"):
+            func(fh)
+
+    with open(abc_file, "rb", buffering=0) as fh:
+        with pytest.raises(TypeError, match="text mode"):
+            func(fh)
+
+    with BytesIO(b"abc") as fh:
+        with pytest.raises(TypeError, match="text mode"):
+            func(fh)

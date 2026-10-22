@@ -1,4 +1,5 @@
 import functools
+import io
 import os
 from typing import Any, BinaryIO, Callable, List, Optional, TextIO, Union
 
@@ -21,10 +22,16 @@ def coerce_to_string_io(func: Callable[..., Any]) -> Callable[..., Any]:
         if isinstance(file_path_or_obj, (str, os.PathLike)):
             with open(os.fspath(file_path_or_obj), encoding="utf-8") as f:
                 return func(f, *args, **kwargs)
-        elif hasattr(file_path_or_obj, "read"):
+        elif isinstance(file_path_or_obj, io.TextIOBase):
             return func(file_path_or_obj, *args, **kwargs)
+        elif hasattr(file_path_or_obj, "read"):
+            raise TypeError(
+                f"Invalid argument passed to {func.__name__}, "
+                f"file-like object must be opened in text mode, "
+                f"got {type(file_path_or_obj)}"
+            )
         else:
-            raise ValueError(
+            raise TypeError(
                 f"Invalid argument passed to {func.__name__}, "
                 f"argument has the type {type(file_path_or_obj)}"
             )
@@ -44,10 +51,16 @@ def coerce_to_bytes_io(func: Callable[..., Any]) -> Callable[..., Any]:
         if isinstance(file_path_or_obj, (str, os.PathLike)):
             with open(os.fspath(file_path_or_obj), "rb") as f:
                 return func(f, *args, **kwargs)
+        elif isinstance(file_path_or_obj, io.TextIOBase):
+            raise TypeError(
+                f"Invalid argument passed to {func.__name__}, "
+                f"file-like object must be opened in binary mode, "
+                f"got {type(file_path_or_obj)}"
+            )
         elif hasattr(file_path_or_obj, "read"):
             return func(file_path_or_obj, *args, **kwargs)
         else:
-            raise ValueError(
+            raise TypeError(
                 f"Invalid argument passed to {func.__name__}, "
                 f"argument has the type {type(file_path_or_obj)}"
             )
