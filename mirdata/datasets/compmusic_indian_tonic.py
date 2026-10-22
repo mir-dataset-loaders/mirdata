@@ -76,8 +76,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="compmusic_indian_tonic_1.0.json",
-        url="https://zenodo.org/records/13993293/files/compmusic_indian_tonic_1.0.json?download=1",
-        checksum="67b1b25169bc7e5f7e2eb279197c08cc",
+        url="https://zenodo.org/records/23349971/files/compmusic_indian_tonic_1.0.json?download=1",
+        checksum="940ad367d2eab014df99a77034fc4298",
     ),
     "sample": core.Index(filename="compmusic_indian_tonic_1.0_sample.json"),
 }
@@ -221,7 +221,7 @@ class Dataset(core.Dataset):
                     self.data_home,
                     "indian_art_music_tonic_1.0",
                     center,
-                    "annotations",
+                    "Annotations",
                     "*.json",
                 )
             )

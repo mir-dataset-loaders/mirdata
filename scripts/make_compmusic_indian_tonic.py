@@ -15,7 +15,7 @@ def make_compmusic_indian_tonic(dataset_data_path):
 
     for center_fold in glob.glob(os.path.join(dataset_data_path, "*/")):
         center = center_fold.split("/")[-2]
-        for metafile in glob.glob(os.path.join(center_fold, "annotations", center + "*.json")):
+        for metafile in glob.glob(os.path.join(center_fold, "Annotations", center + "*.json")):
             if "IITM1" not in metafile:
                 with open(metafile) as fhandle:
                     meta = json.load(fhandle)
@@ -44,24 +44,24 @@ def make_compmusic_indian_tonic(dataset_data_path):
                             }
 
     tonic_index["metadata"]["CM1"] = [
-        os.path.join("indian_art_music_tonic_1.0", "CM", "annotations", "CM1.json"),
-        md5(os.path.join(dataset_data_path, "CM", "annotations", "CM1.json")),
+        os.path.join("indian_art_music_tonic_1.0", "CM", "Annotations", "CM1.json"),
+        md5(os.path.join(dataset_data_path, "CM", "Annotations", "CM1.json")),
     ]
     tonic_index["metadata"]["CM2"] = [
-        os.path.join("indian_art_music_tonic_1.0", "CM", "annotations", "CM2.json"),
-        md5(os.path.join(dataset_data_path, "CM", "annotations", "CM2.json")),
+        os.path.join("indian_art_music_tonic_1.0", "CM", "Annotations", "CM2.json"),
+        md5(os.path.join(dataset_data_path, "CM", "Annotations", "CM2.json")),
     ]
     tonic_index["metadata"]["CM3"] = [
-        os.path.join("indian_art_music_tonic_1.0", "CM", "annotations", "CM3.json"),
-        md5(os.path.join(dataset_data_path, "CM", "annotations", "CM3.json")),
+        os.path.join("indian_art_music_tonic_1.0", "CM", "Annotations", "CM3.json"),
+        md5(os.path.join(dataset_data_path, "CM", "Annotations", "CM3.json")),
     ]
     tonic_index["metadata"]["IISc"] = [
-        os.path.join("indian_art_music_tonic_1.0", "IISc", "annotations", "IISc.json"),
-        md5(os.path.join(dataset_data_path, "IISc", "annotations", "IISc.json")),
+        os.path.join("indian_art_music_tonic_1.0", "IISc", "Annotations", "IISc.json"),
+        md5(os.path.join(dataset_data_path, "IISc", "Annotations", "IISc.json")),
     ]
     tonic_index["metadata"]["IITM2"] = [
-        os.path.join("indian_art_music_tonic_1.0", "IITM", "annotations", "IITM2.json"),
-        md5(os.path.join(dataset_data_path, "IITM", "annotations", "IITM2.json")),
+        os.path.join("indian_art_music_tonic_1.0", "IITM", "Annotations", "IITM2.json"),
+        md5(os.path.join(dataset_data_path, "IITM", "Annotations", "IITM2.json")),
     ]
 
     with open(COMPMUSIC_TONIC_INDEX_PATH, "w") as fhandle:
