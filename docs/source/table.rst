@@ -190,8 +190,8 @@
        - :ref:`beats`
        - :ref:`notes`
      - 108
-     - .. image:: https://licensebuttons.net/l/by/4.0/80x15.png
-          :target: https://creativecommons.org/licenses/by/4.0/
+     - .. image:: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+          :target: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
    * - DALI
      - - audio: 📺
