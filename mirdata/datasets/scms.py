@@ -48,8 +48,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="scms_index_1.0.json",
-        url="https://zenodo.org/records/13930519/files/scms_index_1.0.json?download=1",
-        checksum="f4f8b5594b917a1d5f76f98a2c2371f5",
+        url="https://zenodo.org/records/23503388/files/scms_index_1.0.json?download=1",
+        checksum="243616c33409428f4a7ac8c8fef89062",
     ),
     "sample": core.Index(filename="scms_index_1.0_sample.json"),
 }
@@ -67,6 +67,26 @@ DOWNLOAD_INFO = None
 LICENSE_INFO = (
     "Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0)."
 )
+DIRECTORY_ALIASES = {"SCMS": "Saraga-Carnatic-Melody-Synth"}
+
+
+# Folder naming compatability, chooses the one that exists in data_home
+def _aliased_relative_path(data_home, relative_path):
+    for expected_root, alias_root in DIRECTORY_ALIASES.items():
+        if (
+            relative_path.startswith(expected_root + "/")
+            and not os.path.isdir(os.path.join(data_home, expected_root))
+            and os.path.isdir(os.path.join(data_home, alias_root))
+        ):
+            relative_path = alias_root + relative_path[len(expected_root) :]
+            break
+
+    return relative_path
+
+
+# a function that acts on every path join, to be compatible with either SCMS or long name.
+def _data_path(data_home, relative_path):
+    return os.path.join(data_home, _aliased_relative_path(data_home, relative_path))
 
 
 class Track(core.Track):
@@ -99,6 +119,14 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
         self.pitch_path = self.get_path("pitch")
         self.activations_path = self.get_path("activations")
+
+    # override core.Track.get_path() for making the old index
+    # work with the unzipped Saraga folder name
+    def get_path(self, key):
+        path = self._track_paths[key][0]
+        if path is None:
+            return None
+        return _data_path(self._data_home, path)
 
     @property
     def tonic(self):
@@ -232,9 +260,7 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _artists_to_track_mapping(self):
-        mapping_path = os.path.join(
-            self.data_home, "SCMS/artists_to_track_mapping.json"
-        )
+        mapping_path = _data_path(self.data_home, "SCMS/artists_to_track_mapping.json")
 
         try:
             with open(mapping_path, "r") as fhandle:
@@ -248,7 +274,7 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "SCMS/metadata.json")
+        metadata_path = _data_path(self.data_home, "SCMS/metadata.json")
         try:
             with open(metadata_path, "r") as fhandle:
                 artists_metadata = json.load(fhandle)
