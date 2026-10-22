@@ -69,6 +69,7 @@ LICENSE_INFO = (
 )
 DIRECTORY_ALIASES = {"SCMS": "Saraga-Carnatic-Melody-Synth"}
 
+
 # Folder naming compatability, chooses the one that exists in data_home
 def _aliased_relative_path(data_home, relative_path):
     for expected_root, alias_root in DIRECTORY_ALIASES.items():
@@ -81,6 +82,7 @@ def _aliased_relative_path(data_home, relative_path):
             break
 
     return relative_path
+
 
 # a function that acts on every path join, to be compatible with either SCMS or long name.
 def _data_path(data_home, relative_path):
@@ -117,8 +119,9 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
         self.pitch_path = self.get_path("pitch")
         self.activations_path = self.get_path("activations")
-    #override core.Track.get_path() for making the old index 
-    #work with the unzipped Saraga folder name
+
+    # override core.Track.get_path() for making the old index
+    # work with the unzipped Saraga folder name
     def get_path(self, key):
         path = self._track_paths[key][0]
         if path is None:
@@ -257,9 +260,7 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _artists_to_track_mapping(self):
-        mapping_path = _data_path(
-            self.data_home, "SCMS/artists_to_track_mapping.json"
-        )
+        mapping_path = _data_path(self.data_home, "SCMS/artists_to_track_mapping.json")
 
         try:
             with open(mapping_path, "r") as fhandle:
