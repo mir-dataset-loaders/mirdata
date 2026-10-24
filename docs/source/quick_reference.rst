@@ -102,6 +102,12 @@ Genre
 A typically global "tag", indicating the genre of a recording. Note that the concept of genre is highly
 subjective and we refer those new to this task to this `article`_.
 
+.. _gesture:
+
+Gesture
+^^^^^^^
+Keypoints and confidence scores of the pose estimation of a musician while playing an instrument.
+
 .. _instruments:
 
 Instruments

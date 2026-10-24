@@ -1,0 +1,53 @@
+{
+    "mbid": "bf197cad-30d5-478c-9eae-b0897eef7a4f",
+    "title": "Devi Pavane",
+    "length": 2599.0333333333333,
+    "artists": [
+        {
+            "mbid": "bf197cad-30d5-478c-9eae-b0897eef7a4f",
+            "name": "Abhiram Bode",
+            "instrument": {
+                "mbid": "d92884b7-ee0c-46d5-96f3-918196ba8c5b",
+                "name": "Voice"
+            },
+            "lead": true,
+            "attributes": "lead vocals"
+        },
+        {
+            "mbid": "9b8912a2-afa1-4a14-8c5f-5225421a2bb5",
+            "name": "Sivateja",
+            "instrument": {
+                "mbid": "089f123c-0f7d-4105-a64e-49de81ca8fa4",
+                "name": "Violin"
+            },
+            "lead": false,
+            "attributes": ""
+        },
+        {
+            "mbid": "b5b3f876-cd38-4d50-b1ad-ac9e18ad73d4",
+            "name": "Adudurai Guruprasad",
+            "instrument": {
+                "mbid": "f689271c-37bc-4c49-92a3-a14b15ee5d0e",
+                "name": "Mridangam"
+            },
+            "lead": false,
+            "attributes": ""
+        }
+    ],
+    "raaga": [
+        {
+            "uuid": "",
+            "name": "Saveri"
+        }
+    ],
+    "taala": [
+        {
+            "uuid": "",
+            "name": "Adi"
+        }
+    ],
+    "form": [],
+    "work": [],
+    "concert": [],
+    "album_artists": []
+}
