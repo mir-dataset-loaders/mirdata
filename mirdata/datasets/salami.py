@@ -56,12 +56,11 @@ REMOTES = {
 }
 DOWNLOAD_INFO = """
     Unfortunately the audio files of the Salami dataset are not available
-    for download. If you have the Salami dataset, place the contents into a
-    folder called Salami with the following structure:
-        > Salami/
+    for download. If you have the Salami dataset, place the contents into {}
+    with the following structure:
+        > salami/
             > salami-data-public-hierarchy-corrections/
             > audio/
-    and copy the Salami folder to {}
 """
 
 LICENSE_INFO = """
