@@ -59,10 +59,10 @@ def make_dataset_index(dataset_data_path):
 
 
 def audio_features(file_path):
-    try:
+    try: #faster way of reading the header of the file if exists instead of loading the whole file
         info = sf.info(file_path)
         return info.duration, info.samplerate, info.channels
-    except Exception:
+    except Exception: #in case the file is not supported by soundfile, use librosa
         y, sr = librosa.load(file_path, sr=None, mono=False)
         num_channels = 1 if y.ndim == 1 else y.shape[0]
         length = y.shape[-1] / sr
