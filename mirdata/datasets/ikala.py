@@ -379,33 +379,35 @@ class Dataset(core.Dataset):
         return singer_map
 
     @deprecated(reason="Use mirdata.datasets.ikala.load_vocal_audio", version="0.3.4")
-    def load_vocal_audio(self, *args, **kwargs):
+    def load_vocal_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_vocal_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.ikala.load_instrumental_audio", version="0.3.4"
     )
-    def load_instrumental_audio(self, *args, **kwargs):
+    def load_instrumental_audio(
+        self, *args, **kwargs
+    ) -> Optional[Tuple[np.ndarray, float]]:
         return load_instrumental_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.ikala.load_mix_audio", version="0.3.4")
-    def load_mix_audio(self, *args, **kwargs):
+    def load_mix_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_mix_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.ikala.load_f0", version="0.3.4")
-    def load_f0(self, *args, **kwargs):
+    def load_f0(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_f0(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.ikala.load_notes", version="0.3.4")
-    def load_notes(self, *args, **kwargs):
+    def load_notes(self, *args, **kwargs) -> Optional[annotations.NoteData]:
         return load_notes(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.ikala.load_lyrics", version="0.3.4")
-    def load_lyrics(self, *args, **kwargs):
+    def load_lyrics(self, *args, **kwargs) -> Optional[annotations.LyricData]:
         return load_lyrics(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.ikala.load_pronunciations", version="0.3.4"
     )
-    def load_pronunciations(self, *args, **kwargs):
+    def load_pronunciations(self, *args, **kwargs) -> Optional[annotations.LyricData]:
         return load_pronunciations(*args, **kwargs)

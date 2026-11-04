@@ -31,7 +31,7 @@
 
 import csv
 import json
-from typing import BinaryIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -163,7 +163,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_nyas(fhandle):
+def load_nyas(fhandle: TextIO) -> Optional[annotations.EventData]:
     """
     Load a nyas annotation.
 
@@ -187,7 +187,7 @@ def load_nyas(fhandle):
 
 
 @io.coerce_to_string_io
-def load_sections(fhandle):
+def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
     """
     Load a sections annotation file.
 
@@ -211,7 +211,7 @@ def load_sections(fhandle):
 
 
 @io.coerce_to_string_io
-def load_pitch(fhandle):
+def load_pitch(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """
     Load pitch annotations.
 
@@ -240,7 +240,7 @@ def load_pitch(fhandle):
 
 
 @io.coerce_to_string_io
-def load_tonic(fhandle):
+def load_tonic(fhandle: TextIO) -> Optional[float]:
     """
     Load track's tonic.
 
@@ -277,17 +277,17 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
-    def load_sections(self, *args, **kwargs):
+    def load_sections(self, *args, **kwargs) -> Optional[annotations.SectionData]:
         return load_sections(*args, **kwargs)
 
-    def load_nyas(self, *args, **kwargs):
+    def load_nyas(self, *args, **kwargs) -> Optional[annotations.SectionData]:
         return load_sections(*args, **kwargs)
 
-    def load_pitch(self, *args, **kwargs):
+    def load_pitch(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_pitch(*args, **kwargs)
 
-    def load_tonic(self, *args, **kwargs):
+    def load_tonic(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_pitch(*args, **kwargs)

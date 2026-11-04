@@ -41,7 +41,7 @@ import numpy as np
 import pretty_midi
 from smart_open import open
 
-from mirdata import core, download_utils, io
+from mirdata import annotations, core, download_utils, io
 
 BIBTEX = """@inproceedings{
   hawthorne2018enabling,
@@ -217,15 +217,15 @@ class Dataset(core.Dataset):
         return metadata
 
     @deprecated(reason="Use mirdata.datasets.maestro.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.io.load_midi", version="0.3.4")
-    def load_midi(self, *args, **kwargs):
+    def load_midi(self, *args, **kwargs) -> pretty_midi.PrettyMIDI:
         return io.load_midi(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.io.load_notes_from_midi", version="0.3.4")
-    def load_notes(self, *args, **kwargs):
+    def load_notes(self, *args, **kwargs) -> Optional[annotations.NoteData]:
         return io.load_notes_from_midi(*args, **kwargs)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=False):

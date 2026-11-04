@@ -402,19 +402,19 @@ class Dataset(core.Dataset):
         return metadata
 
     @deprecated(reason="Use mirdata.datasets.cante100.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.cante100.load_spectrogram", version="0.3.4"
     )
-    def load_spectrogram(self, *args, **kwargs):
+    def load_spectrogram(self, *args, **kwargs) -> Optional[np.ndarray]:
         return load_spectrogram(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.cante100.load_melody", version="0.3.4")
-    def load_melody(self, *args, **kwargs):
+    def load_melody(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_melody(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.cante100.load_notes", version="0.3.4")
-    def load_notes(self, *args, **kwargs):
+    def load_notes(self, *args, **kwargs) -> Optional[annotations.NoteData]:
         return load_notes(*args, **kwargs)

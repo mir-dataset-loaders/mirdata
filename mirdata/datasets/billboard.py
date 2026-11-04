@@ -245,7 +245,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_chords(fhandle: TextIO):
+def load_chords(fhandle: TextIO) -> Optional[annotations.ChordData]:
     """Load chords from a Salami LAB file.
 
     Args:
@@ -272,7 +272,7 @@ def load_chords(fhandle: TextIO):
     return chord_data
 
 
-def load_sections(fpath: str):
+def load_sections(fpath: str) -> annotations.SectionData:
     """Load letter-annotated sections from a Salami LAB file.
 
     Args:
@@ -285,7 +285,7 @@ def load_sections(fpath: str):
     return _load_sections(fpath, "letter")
 
 
-def load_named_sections(fpath: str):
+def load_named_sections(fpath: str) -> annotations.SectionData:
     """Load name-annotated sections from a Salami LAB file.
 
     Args:
@@ -486,19 +486,19 @@ class Dataset(core.Dataset):
         return metadata_index
 
     @deprecated(reason="Use mirdata.datasets.billboard.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.billboard.load_sections", version="0.3.4")
-    def load_sections(self, *args, **kwargs):
+    def load_sections(self, *args, **kwargs) -> annotations.SectionData:
         return load_sections(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.billboard.load_named_sections", version="0.3.4"
     )
-    def load_named_sections(self, *args, **kwargs):
+    def load_named_sections(self, *args, **kwargs) -> annotations.SectionData:
         return load_named_sections(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.billboard.load_chords", version="0.3.4")
-    def load_chords(self, *args, **kwargs):
+    def load_chords(self, *args, **kwargs) -> Optional[annotations.ChordData]:
         return load_chords(*args, **kwargs)

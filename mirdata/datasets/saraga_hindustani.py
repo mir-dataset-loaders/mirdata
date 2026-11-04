@@ -33,7 +33,7 @@
 import os
 import csv
 import json
-from typing import BinaryIO, Tuple
+from typing import Any, BinaryIO, Dict, Optional, TextIO, Tuple, Union
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -193,7 +193,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_tonic(fhandle):
+def load_tonic(fhandle: TextIO) -> Optional[float]:
     """Load track absolute tonic
 
     Args:
@@ -210,7 +210,7 @@ def load_tonic(fhandle):
 
 
 @io.coerce_to_string_io
-def load_pitch(fhandle):
+def load_pitch(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """Load automatic extracted pitch or melody
 
     Args:
@@ -239,7 +239,9 @@ def load_pitch(fhandle):
 
 
 @io.coerce_to_string_io
-def load_tempo(fhandle):
+def load_tempo(
+    fhandle: TextIO,
+) -> Optional[Dict[str, Dict[str, Union[int, float]]]]:
     """Load tempo from hindustani collection
 
     Args:
@@ -310,7 +312,7 @@ def load_tempo(fhandle):
 
 
 @io.coerce_to_string_io
-def load_sama(fhandle):
+def load_sama(fhandle: TextIO) -> Optional[annotations.BeatData]:
     """Load sama
 
     Args:
@@ -340,7 +342,7 @@ def load_sama(fhandle):
 
 
 @io.coerce_to_string_io
-def load_sections(fhandle):
+def load_sections(fhandle: TextIO) -> Optional[annotations.SectionData]:
     """Load tracks sections
 
     Args:
@@ -366,7 +368,7 @@ def load_sections(fhandle):
 
 
 @io.coerce_to_string_io
-def load_phrases(fhandle):
+def load_phrases(fhandle: TextIO) -> Optional[annotations.EventData]:
     """Load phrases
 
     Args:
@@ -399,7 +401,7 @@ def load_phrases(fhandle):
 
 
 @io.coerce_to_string_io
-def load_metadata(fhandle):
+def load_metadata(fhandle: TextIO) -> Optional[Dict[str, Any]]:
     """Load a Saraga Hindustani metadata file
 
     Args:
@@ -444,41 +446,43 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.saraga_hindustani.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.saraga_hindustani.load_tonic", version="0.3.4"
     )
-    def load_tonic(self, *args, **kwargs):
+    def load_tonic(self, *args, **kwargs) -> Optional[float]:
         return load_tonic(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.saraga_hindustani.load_pitch", version="0.3.4"
     )
-    def load_pitch(self, *args, **kwargs):
+    def load_pitch(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_pitch(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.saraga_hindustani.load_tempo", version="0.3.4"
     )
-    def load_tempo(self, *args, **kwargs):
+    def load_tempo(
+        self, *args, **kwargs
+    ) -> Optional[Dict[str, Dict[str, Union[int, float]]]]:
         return load_tempo(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.saraga_hindustani.load_sama", version="0.3.4"
     )
-    def load_sama(self, *args, **kwargs):
+    def load_sama(self, *args, **kwargs) -> Optional[annotations.BeatData]:
         return load_sama(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.saraga_hindustani.load_sections", version="0.3.4"
     )
-    def load_sections(self, *args, **kwargs):
+    def load_sections(self, *args, **kwargs) -> Optional[annotations.SectionData]:
         return load_sections(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.saraga_hindustani.load_phrases", version="0.3.4"
     )
-    def load_phrases(self, *args, **kwargs):
+    def load_phrases(self, *args, **kwargs) -> Optional[annotations.EventData]:
         return load_phrases(*args, **kwargs)

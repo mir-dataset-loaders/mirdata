@@ -296,9 +296,9 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(reason="Use mirdata.datasets.irmas.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.irmas.load_pred_inst", version="0.3.4")
-    def load_pred_inst(self, *args, **kwargs):
+    def load_pred_inst(self, *args, **kwargs) -> Optional[List[str]]:
         return load_pred_inst(*args, **kwargs)

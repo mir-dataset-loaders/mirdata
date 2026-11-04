@@ -28,7 +28,7 @@ import csv
 import os
 import fnmatch
 import json
-from typing import BinaryIO, Tuple
+from typing import BinaryIO, Dict, List, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -161,7 +161,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_key(fhandle):
+def load_key(fhandle: TextIO) -> Optional[List[str]]:
     """Load beatport_key format key data from a file
 
     Args:
@@ -181,7 +181,7 @@ def load_key(fhandle):
 
 
 @io.coerce_to_string_io
-def load_tempo(fhandle):
+def load_tempo(fhandle: TextIO) -> Optional[int]:
     """Load beatport_key tempo data from a file
 
     Args:
@@ -196,7 +196,7 @@ def load_tempo(fhandle):
 
 
 @io.coerce_to_string_io
-def load_genre(fhandle):
+def load_genre(fhandle: TextIO) -> Optional[Dict[str, List[str]]]:
     """Load beatport_key genre data from a file
 
     Args:
@@ -215,7 +215,7 @@ def load_genre(fhandle):
 
 
 @io.coerce_to_string_io
-def load_artist(fhandle):
+def load_artist(fhandle: TextIO) -> Optional[List[str]]:
     """Load beatport_key tempo data from a file
 
     Args:
@@ -249,23 +249,23 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_key", version="0.3.4")
-    def load_key(self, *args, **kwargs):
+    def load_key(self, *args, **kwargs) -> Optional[List[str]]:
         return load_key(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_tempo", version="0.3.4")
-    def load_tempo(self, *args, **kwargs):
+    def load_tempo(self, *args, **kwargs) -> Optional[int]:
         return load_tempo(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_genre", version="0.3.4")
-    def load_genre(self, *args, **kwargs):
+    def load_genre(self, *args, **kwargs) -> Optional[Dict[str, List[str]]]:
         return load_genre(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_artist", version="0.3.4")
-    def load_artist(self, *args, **kwargs):
+    def load_artist(self, *args, **kwargs) -> Optional[List[str]]:
         return load_artist(*args, **kwargs)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=False):

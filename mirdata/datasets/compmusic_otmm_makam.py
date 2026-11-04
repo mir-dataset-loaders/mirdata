@@ -38,7 +38,7 @@
 import csv
 import json
 import os
-from typing import TextIO
+from typing import TextIO, Optional
 
 from deprecated.sphinx import deprecated
 import numpy as np
@@ -224,11 +224,11 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.compmusic_otmm_makam.load_pitch", version="0.3.4"
     )
-    def load_pitch(self, *args, **kwargs):
+    def load_pitch(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_pitch(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.compmusic_otmm_makam.load_mb_tags", version="0.3.4"
     )
-    def load_mb_tags(self, *args, **kwargs):
+    def load_mb_tags(self, *args, **kwargs) -> Optional[dict]:
         return load_mb_tags(*args, **kwargs)

@@ -41,6 +41,7 @@
 
 import json
 import os
+from typing import Any, Dict, Optional, TextIO
 
 from deprecated.sphinx import deprecated
 
@@ -347,7 +348,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_string_io
-def load_extractor(fhandle):
+def load_extractor(fhandle: TextIO) -> Optional[Dict[str, Any]]:
     """Load a AcousticBrainz Dataset json file with all the features and metadata.
 
     Args:
@@ -383,7 +384,7 @@ class Dataset(core.Dataset):
         reason="Use mirdata.datasets.acousticbrainz_genre.load_extractor",
         version="0.3.4",
     )
-    def load_extractor(self, *args, **kwargs):
+    def load_extractor(self, *args, **kwargs) -> Optional[Dict[str, Any]]:
         return load_extractor(*args, **kwargs)
 
     def filter_index(self, search_key):
@@ -402,7 +403,7 @@ class Dataset(core.Dataset):
         }
         return acousticbrainz_genre_data
 
-    def load_all_train(self):
+    def load_all_train(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for training across the four different datasets.
 
         Returns:
@@ -411,7 +412,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("#train#")
 
-    def load_all_validation(self):
+    def load_all_validation(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for validating across the four different datasets.
 
         Returns:
@@ -420,7 +421,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("#validation#")
 
-    def load_tagtraum_validation(self):
+    def load_tagtraum_validation(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for validating in tagtraum dataset.
 
         Returns:
@@ -429,7 +430,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("tagtraum#validation#")
 
-    def load_tagtraum_train(self):
+    def load_tagtraum_train(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for training in tagtraum dataset.
 
         Returns:
@@ -438,7 +439,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("tagtraum#train#")
 
-    def load_allmusic_train(self):
+    def load_allmusic_train(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
         Returns:
@@ -447,7 +448,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("allmusic#train#")
 
-    def load_allmusic_validation(self):
+    def load_allmusic_validation(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
         Returns:
@@ -456,7 +457,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("allmusic#validation#")
 
-    def load_lastfm_train(self):
+    def load_lastfm_train(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for training in lastfm dataset.
 
         Returns:
@@ -465,7 +466,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("lastfm#train#")
 
-    def load_lastfm_validation(self):
+    def load_lastfm_validation(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in lastfm dataset.
 
         Returns:
@@ -474,7 +475,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("lastfm#validation#")
 
-    def load_discogs_train(self):
+    def load_discogs_train(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for training in discogs dataset.
 
         Returns:
@@ -483,7 +484,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("allmusic#train#")
 
-    def load_discogs_validation(self):
+    def load_discogs_validation(self) -> Dict[str, Any]:
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in tagtraum dataset.
 
         Returns:

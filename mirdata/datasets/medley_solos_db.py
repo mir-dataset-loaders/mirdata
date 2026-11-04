@@ -180,5 +180,5 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.medley_solos_db.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)

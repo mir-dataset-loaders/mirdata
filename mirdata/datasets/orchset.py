@@ -300,15 +300,15 @@ class Dataset(core.Dataset):
         return metadata_index
 
     @deprecated(reason="Use mirdata.datasets.orchset.load_audio_mono", version="0.3.4")
-    def load_audio_mono(self, *args, **kwargs):
+    def load_audio_mono(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio_mono(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.orchset.load_audio_stereo", version="0.3.4"
     )
-    def load_audio_stereo(self, *args, **kwargs):
+    def load_audio_stereo(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio_stereo(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.orchset.load_melody", version="0.3.4")
-    def load_melody(self, *args, **kwargs):
+    def load_melody(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_melody(*args, **kwargs)

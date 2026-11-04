@@ -361,7 +361,9 @@ def load_beats(fhandle: TextIO) -> annotations.BeatData:
 
 
 @io.coerce_to_string_io
-def load_chords(jams_fhandle: TextIO, leadsheet_version):
+def load_chords(
+    jams_fhandle: TextIO, leadsheet_version: bool
+) -> Optional[annotations.ChordData]:
     """Load a guitarset chord annotation.
 
     Args:
@@ -456,7 +458,9 @@ def _fill_pitch_contour(times, freqs, voicing, max_time, contour_hop, duration=N
 
 
 @io.coerce_to_string_io
-def load_pitch_contour(jams_fhandle: TextIO, string_num):
+def load_pitch_contour(
+    jams_fhandle: TextIO, string_num: int
+) -> Optional[annotations.F0Data]:
     """Load a guitarset pitch contour annotation for a given string
 
     Args:
@@ -510,7 +514,7 @@ def load_pitch_contour(jams_fhandle: TextIO, string_num):
 
 
 @io.coerce_to_string_io
-def load_notes(jams_fhandle: TextIO, string_num):
+def load_notes(jams_fhandle: TextIO, string_num: int) -> Optional[annotations.NoteData]:
     """Load a guitarset note annotation for a given string
 
     Args:
@@ -567,33 +571,35 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(reason="Use mirdata.datasets.guitarset.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.guitarset.load_multitrack_audio", version="0.3.4"
     )
-    def load_multitrack_audio(self, *args, **kwargs):
+    def load_multitrack_audio(
+        self, *args, **kwargs
+    ) -> Optional[Tuple[np.ndarray, float]]:
         return load_multitrack_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.guitarset.load_beats", version="0.3.4")
-    def load_beats(self, *args, **kwargs):
+    def load_beats(self, *args, **kwargs) -> Optional[annotations.BeatData]:
         return load_beats(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.guitarset.load_chords", version="0.3.4")
-    def load_chords(self, *args, **kwargs):
+    def load_chords(self, *args, **kwargs) -> Optional[annotations.ChordData]:
         return load_chords(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.guitarset.load_key_mode", version="0.3.4")
-    def load_key_mode(self, *args, **kwargs):
+    def load_key_mode(self, *args, **kwargs) -> Optional[annotations.KeyData]:
         return load_key_mode(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.guitarset.load_pitch_contour", version="0.3.4"
     )
-    def load_pitch_contour(self, *args, **kwargs):
+    def load_pitch_contour(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_pitch_contour(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.guitarset.load_notes", version="0.3.4")
-    def load_notes(self, *args, **kwargs):
+    def load_notes(self, *args, **kwargs) -> Optional[annotations.NoteData]:
         return load_notes(*args, **kwargs)

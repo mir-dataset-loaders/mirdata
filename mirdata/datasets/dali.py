@@ -19,7 +19,7 @@ import gzip
 import logging
 import os
 import pickle
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple, Union
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -232,7 +232,9 @@ def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
 
 
 @io.coerce_to_string_io
-def load_annotations_granularity(annotations_path: TextIO, granularity: str):
+def load_annotations_granularity(
+    annotations_path: TextIO, granularity: str
+) -> Optional[Union[annotations.NoteData, annotations.LyricData]]:
     """Load annotations at the specified level of granularity
 
     Args:
@@ -265,7 +267,7 @@ def load_annotations_granularity(annotations_path: TextIO, granularity: str):
         return annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
 
 
-def load_annotations_class(annotations_path):
+def load_annotations_class(annotations_path: str) -> DALI.Annotations:
     """Load full annotations into the DALI class object
 
     Args:
@@ -320,17 +322,19 @@ class Dataset(core.Dataset):
         return metadata_index
 
     @deprecated(reason="Use mirdata.datasets.dali.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.dali.load_annotations_granularity", version="0.3.4"
     )
-    def load_annotations_granularity(self, *args, **kwargs):
+    def load_annotations_granularity(
+        self, *args, **kwargs
+    ) -> Optional[Union[annotations.NoteData, annotations.LyricData]]:
         return load_annotations_granularity(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.dali.load_annotations_class", version="0.3.4"
     )
-    def load_annotations_class(self, *args, **kwargs):
+    def load_annotations_class(self, *args, **kwargs) -> DALI.Annotations:
         return load_annotations_class(*args, **kwargs)

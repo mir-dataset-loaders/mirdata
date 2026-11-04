@@ -339,17 +339,17 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.jingju_acapella.load_phonemes", version="0.3.4"
     )
-    def load_phonemes(self, *args, **kwargs):
+    def load_phonemes(self, *args, **kwargs) -> Optional[annotations.LyricData]:
         return load_phonemes(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.jingju_acapella.load_phrases", version="0.3.4"
     )
-    def load_phrases(self, *args, **kwargs):
+    def load_phrases(self, *args, **kwargs) -> Optional[annotations.LyricData]:
         return load_phrases(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.jingju_acapella.load_syllable", version="0.3.4"
     )
-    def load_syllable(self, *args, **kwargs):
+    def load_syllable(self, *args, **kwargs) -> Optional[annotations.LyricData]:
         return load_syllable(*args, **kwargs)

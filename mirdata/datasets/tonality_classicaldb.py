@@ -262,31 +262,31 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.tonality_classicaldb.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.tonality_classicaldb.load_key", version="0.3.4"
     )
-    def load_key(self, *args, **kwargs):
+    def load_key(self, *args, **kwargs) -> Optional[str]:
         return load_key(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.tonality_classicaldb.load_spectrum",
         version="0.3.4",
     )
-    def load_spectrum(self, *args, **kwargs):
+    def load_spectrum(self, *args, **kwargs) -> Optional[np.ndarray]:
         return load_spectrum(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.tonality_classicaldb.load_hpcp", version="0.3.4"
     )
-    def load_hpcp(self, *args, **kwargs):
+    def load_hpcp(self, *args, **kwargs) -> Optional[np.ndarray]:
         return load_hpcp(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.tonality_classicaldb.load_musicbrainz",
         version="0.3.4",
     )
-    def load_musicbrainz(self, *args, **kwargs):
+    def load_musicbrainz(self, *args, **kwargs) -> Optional[Dict[Any, Any]]:
         return load_musicbrainz(*args, **kwargs)

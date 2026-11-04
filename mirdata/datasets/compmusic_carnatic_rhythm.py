@@ -49,7 +49,7 @@
 import os
 import csv
 import logging
-from typing import BinaryIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 import librosa
 import numpy as np
 
@@ -234,7 +234,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_beats(fhandle):
+def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
     """Load beats
 
     Args:
@@ -261,7 +261,7 @@ def load_beats(fhandle):
 
 
 @io.coerce_to_string_io
-def load_meter(fhandle):
+def load_meter(fhandle: TextIO) -> Optional[str]:
     """Load meter
 
     Args:

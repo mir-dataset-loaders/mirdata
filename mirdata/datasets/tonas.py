@@ -359,13 +359,13 @@ class Dataset(core.Dataset):
         return metadata
 
     @deprecated(reason="Use mirdata.datasets.tonas.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.tonas.load_f0", version="0.3.4")
-    def load_f0(self, *args, **kwargs):
+    def load_f0(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_f0(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.tonas.load_notes", version="0.3.4")
-    def load_notes(self, *args, **kwargs):
+    def load_notes(self, *args, **kwargs) -> Optional[annotations.NoteData]:
         return load_notes(*args, **kwargs)

@@ -44,7 +44,7 @@
 import os
 import csv
 import json
-from typing import BinaryIO, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 import librosa
 import numpy as np
@@ -234,7 +234,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_tonic(fhandle):
+def load_tonic(fhandle: TextIO) -> Optional[float]:
     """Load track absolute tonic
 
     Args:
@@ -250,7 +250,7 @@ def load_tonic(fhandle):
 
 
 @io.coerce_to_string_io
-def load_pitch(fhandle):
+def load_pitch(fhandle: TextIO) -> Optional[annotations.F0Data]:
     """Load pitch
 
     Args:
@@ -278,7 +278,7 @@ def load_pitch(fhandle):
 
 
 @io.coerce_to_string_io
-def load_nyas_segments(fhandle):
+def load_nyas_segments(fhandle: TextIO) -> Optional[annotations.EventData]:
     """Load nyas segments
 
     Args:
@@ -307,7 +307,7 @@ def load_nyas_segments(fhandle):
 
 
 @io.coerce_to_string_io
-def load_tani_segments(fhandle):
+def load_tani_segments(fhandle: TextIO) -> Optional[annotations.EventData]:
     """Load tani segments
 
     Args:

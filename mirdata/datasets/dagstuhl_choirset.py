@@ -504,23 +504,23 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.dagstuhl_choirset.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.dagstuhl_choirset.load_f0", version="0.3.4"
     )
-    def load_f0(self, *args, **kwargs):
+    def load_f0(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_f0(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.dagstuhl_choirset.load_score", version="0.3.4"
     )
-    def load_score(self, *args, **kwargs):
+    def load_score(self, *args, **kwargs) -> Optional[annotations.NoteData]:
         return load_score(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.dagstuhl_choirset.load_beat", version="0.3.4"
     )
-    def load_beat(self, *args, **kwargs):
+    def load_beat(self, *args, **kwargs) -> Optional[annotations.BeatData]:
         return load_beat(*args, **kwargs)

@@ -319,5 +319,5 @@ class Dataset(core.Dataset):
         return {"packs": packs, "ratings": ratings, "sounds": sounds, "takes": takes}
 
     @deprecated(reason="Use mirdata.datasets.good_sounds.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)

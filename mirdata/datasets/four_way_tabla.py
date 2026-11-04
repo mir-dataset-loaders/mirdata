@@ -37,7 +37,7 @@ import csv
 
 import librosa
 import numpy as np
-from typing import BinaryIO, Optional, Tuple
+from typing import BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 
@@ -180,7 +180,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_onsets(fhandle):
+def load_onsets(fhandle: TextIO) -> Optional[annotations.BeatData]:
     """Load stroke onsets
 
     Args:

@@ -254,17 +254,17 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.medleydb_melody.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.medleydb_melody.load_melody", version="0.3.4"
     )
-    def load_melody(self, *args, **kwargs):
+    def load_melody(self, *args, **kwargs) -> Optional[annotations.F0Data]:
         return load_melody(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.medleydb_melody.load_melody3", version="0.3.4"
     )
-    def load_melody3(self, *args, **kwargs):
+    def load_melody3(self, *args, **kwargs) -> Optional[annotations.MultiF0Data]:
         return load_melody3(*args, **kwargs)

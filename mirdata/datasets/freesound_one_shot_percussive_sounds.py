@@ -281,12 +281,12 @@ class Dataset(core.Dataset):
         reason="Use mirdata.datasets.freesound_one_shot_percussive_sounds.load_audio",
         version="0.3.4",
     )
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.freesound_one_shot_percussive_sounds.load_file_metadata",
         version="0.3.4",
     )
-    def load_file_metadata(self, *args, **kwargs):
+    def load_file_metadata(self, *args, **kwargs) -> Optional[dict]:
         return load_file_metadata(*args, **kwargs)

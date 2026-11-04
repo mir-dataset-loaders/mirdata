@@ -263,7 +263,7 @@ class Dataset(core.Dataset):
         reason="Use mirdata.datasets.mtg_jamendo_autotagging_moodtheme.load_audio",
         version="0.3.4",
     )
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     def get_track_splits(self, split_number=0):

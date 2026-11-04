@@ -41,7 +41,7 @@ import os
 import csv
 import glob
 import librosa
-from typing import BinaryIO, TextIO, Tuple
+from typing import BinaryIO, List, Optional, TextIO, Tuple
 
 import numpy as np
 from xml.dom import minidom
@@ -185,7 +185,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_taala(fhandle):
+def load_taala(fhandle: TextIO) -> Optional[annotations.BeatData]:
     """Load taala annotation
 
     Args:
@@ -219,7 +219,9 @@ def load_taala(fhandle):
 
 
 @io.coerce_to_string_io
-def load_notation(note_path: TextIO, taala_path: str, structure_path: str):
+def load_notation(
+    note_path: TextIO, taala_path: str, structure_path: str
+) -> Optional[Tuple[annotations.EventData, annotations.SectionData]]:
     """Load notation and structure
 
     Args:
@@ -336,7 +338,7 @@ def load_notation(note_path: TextIO, taala_path: str, structure_path: str):
 
 
 @io.coerce_to_string_io
-def load_mbid(fhandle):
+def load_mbid(fhandle: TextIO):
     """Load musicbrainz id
 
     Args:
@@ -354,7 +356,7 @@ def load_mbid(fhandle):
 
 
 @io.coerce_to_string_io
-def load_moorchanas(fhandle):
+def load_moorchanas(fhandle: TextIO) -> Optional[List[List[str]]]:
     """Load arohanam and avarohanam annotations
 
     Args:

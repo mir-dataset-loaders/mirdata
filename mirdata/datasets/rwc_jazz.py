@@ -254,13 +254,13 @@ class Dataset(core.Dataset):
         return metadata_index
 
     @deprecated(reason="Use mirdata.datasets.rwc_jazz.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.rwc_jazz.load_sections", version="0.3.4")
-    def load_sections(self, *args, **kwargs):
+    def load_sections(self, *args, **kwargs) -> Optional[annotations.SectionData]:
         return load_sections(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.rwc_jazz.load_beats", version="0.3.4")
-    def load_beats(self, *args, **kwargs):
+    def load_beats(self, *args, **kwargs) -> Optional[annotations.BeatData]:
         return load_beats(*args, **kwargs)

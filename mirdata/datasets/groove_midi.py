@@ -336,7 +336,9 @@ def load_midi(fhandle: BinaryIO) -> Optional[pretty_midi.PrettyMIDI]:
     return pretty_midi.PrettyMIDI(fhandle)
 
 
-def load_beats(midi_path, midi=None):
+def load_beats(
+    midi_path: str, midi: Optional[pretty_midi.PrettyMIDI] = None
+) -> annotations.BeatData:
     """Load beat data from the midi file.
 
     Args:
@@ -357,7 +359,9 @@ def load_beats(midi_path, midi=None):
     return annotations.BeatData(beat_times, "s", beat_positions, "bar_index")
 
 
-def load_drum_events(midi_path, midi=None):
+def load_drum_events(
+    midi_path: str, midi: Optional[pretty_midi.PrettyMIDI] = None
+) -> annotations.EventData:
     """Load drum events from the midi file.
 
     Args:
@@ -404,21 +408,23 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(reason="Use mirdata.datasets.groove_midi.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
+    def load_audio(
+        self, *args, **kwargs
+    ) -> Tuple[Optional[np.ndarray], Optional[float]]:
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.groove_midi.load_midi", version="0.3.4")
-    def load_midi(self, *args, **kwargs):
+    def load_midi(self, *args, **kwargs) -> Optional[pretty_midi.PrettyMIDI]:
         return load_midi(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.groove_midi.load_beats", version="0.3.4")
-    def load_beats(self, *args, **kwargs):
+    def load_beats(self, *args, **kwargs) -> annotations.BeatData:
         return load_beats(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.groove_midi.load_drum_events", version="0.3.4"
     )
-    def load_drum_events(self, *args, **kwargs):
+    def load_drum_events(self, *args, **kwargs) -> annotations.EventData:
         return load_drum_events(*args, **kwargs)
 
     @core.cached_property
