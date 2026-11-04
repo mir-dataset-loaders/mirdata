@@ -48,8 +48,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="scms_index_1.0.json",
-        url="https://zenodo.org/records/13930519/files/scms_index_1.0.json?download=1",
-        checksum="f4f8b5594b917a1d5f76f98a2c2371f5",
+        url="https://zenodo.org/records/23503388/files/scms_index_1.0.json?download=1",
+        checksum="243616c33409428f4a7ac8c8fef89062",
     ),
     "sample": core.Index(filename="scms_index_1.0_sample.json"),
 }
@@ -233,7 +233,9 @@ class Dataset(core.Dataset):
     @core.cached_property
     def _artists_to_track_mapping(self):
         mapping_path = os.path.join(
-            self.data_home, "SCMS/artists_to_track_mapping.json"
+            self.data_home,
+            "Saraga-Carnatic-Melody-Synth",
+            "artists_to_track_mapping.json",
         )
 
         try:
@@ -248,7 +250,9 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "SCMS/metadata.json")
+        metadata_path = os.path.join(
+            self.data_home, "Saraga-Carnatic-Melody-Synth", "metadata.json"
+        )
         try:
             with open(metadata_path, "r") as fhandle:
                 artists_metadata = json.load(fhandle)
