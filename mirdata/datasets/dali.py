@@ -19,7 +19,7 @@ import gzip
 import logging
 import os
 import pickle
-from typing import BinaryIO, Optional, TextIO, Tuple, Union
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -137,51 +137,51 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def audio_url(self):
+    def audio_url(self) -> Optional[Any]:
         return self._track_metadata.get("audio", {}).get("url")
 
     @property
-    def url_working(self):
+    def url_working(self) -> Optional[Any]:
         return self._track_metadata.get("audio", {}).get("working")
 
     @property
-    def ground_truth(self):
+    def ground_truth(self) -> Optional[Any]:
         return self._track_metadata.get("ground-truth")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def dataset_version(self):
+    def dataset_version(self) -> Optional[Any]:
         return self._track_metadata.get("dataset_version")
 
     @property
-    def scores_ncc(self):
+    def scores_ncc(self) -> Optional[Any]:
         return self._track_metadata.get("scores", {}).get("NCC")
 
     @property
-    def scores_manual(self):
+    def scores_manual(self) -> Optional[Any]:
         return self._track_metadata.get("scores", {}).get("manual")
 
     @property
-    def album(self):
+    def album(self) -> Optional[Any]:
         return self._track_metadata.get("metadata", {}).get("album")
 
     @property
-    def release_date(self):
+    def release_date(self) -> Optional[Any]:
         return self._track_metadata.get("metadata", {}).get("release_date")
 
     @property
-    def genres(self):
+    def genres(self) -> Optional[Any]:
         return self._track_metadata.get("metadata", {}).get("genres")
 
     @property
-    def language(self):
+    def language(self) -> Optional[Any]:
         return self._track_metadata.get("metadata", {}).get("language")
 
     @core.cached_property
@@ -232,9 +232,7 @@ def load_audio(fhandle: BinaryIO) -> Optional[Tuple[np.ndarray, float]]:
 
 
 @io.coerce_to_string_io
-def load_annotations_granularity(
-    annotations_path: TextIO, granularity: str
-) -> Optional[Union[annotations.NoteData, annotations.LyricData]]:
+def load_annotations_granularity(annotations_path: TextIO, granularity: str):
     """Load annotations at the specified level of granularity
 
     Args:
@@ -267,7 +265,7 @@ def load_annotations_granularity(
         return annotations.LyricData(np.array([begs, ends]).T, "s", text, "words")
 
 
-def load_annotations_class(annotations_path: str) -> DALI.Annotations:
+def load_annotations_class(annotations_path):
     """Load full annotations into the DALI class object
 
     Args:
@@ -322,19 +320,17 @@ class Dataset(core.Dataset):
         return metadata_index
 
     @deprecated(reason="Use mirdata.datasets.dali.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.dali.load_annotations_granularity", version="0.3.4"
     )
-    def load_annotations_granularity(
-        self, *args, **kwargs
-    ) -> Optional[Union[annotations.NoteData, annotations.LyricData]]:
+    def load_annotations_granularity(self, *args, **kwargs):
         return load_annotations_granularity(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.dali.load_annotations_class", version="0.3.4"
     )
-    def load_annotations_class(self, *args, **kwargs) -> DALI.Annotations:
+    def load_annotations_class(self, *args, **kwargs):
         return load_annotations_class(*args, **kwargs)

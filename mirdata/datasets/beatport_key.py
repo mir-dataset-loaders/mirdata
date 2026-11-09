@@ -28,7 +28,7 @@ import csv
 import os
 import fnmatch
 import json
-from typing import BinaryIO, Dict, List, Optional, TextIO, Tuple
+from typing import BinaryIO, Dict, List, Optional, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -118,23 +118,23 @@ class Track(core.Track):
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
 
     @core.cached_property
-    def key(self):
+    def key(self) -> Optional[List[str]]:
         return load_key(self.keys_path)
 
     @core.cached_property
-    def artists(self):
+    def artists(self) -> Optional[List[str]]:
         return load_artist(self.metadata_path)
 
     @core.cached_property
-    def genres(self):
+    def genres(self) -> Optional[Dict[str, List[str]]]:
         return load_genre(self.metadata_path)
 
     @core.cached_property
-    def tempo(self):
+    def tempo(self) -> Optional[int]:
         return load_tempo(self.metadata_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:
@@ -161,7 +161,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_key(fhandle: TextIO) -> Optional[List[str]]:
+def load_key(fhandle):
     """Load beatport_key format key data from a file
 
     Args:
@@ -181,7 +181,7 @@ def load_key(fhandle: TextIO) -> Optional[List[str]]:
 
 
 @io.coerce_to_string_io
-def load_tempo(fhandle: TextIO) -> Optional[int]:
+def load_tempo(fhandle):
     """Load beatport_key tempo data from a file
 
     Args:
@@ -196,7 +196,7 @@ def load_tempo(fhandle: TextIO) -> Optional[int]:
 
 
 @io.coerce_to_string_io
-def load_genre(fhandle: TextIO) -> Optional[Dict[str, List[str]]]:
+def load_genre(fhandle):
     """Load beatport_key genre data from a file
 
     Args:
@@ -215,7 +215,7 @@ def load_genre(fhandle: TextIO) -> Optional[Dict[str, List[str]]]:
 
 
 @io.coerce_to_string_io
-def load_artist(fhandle: TextIO) -> Optional[List[str]]:
+def load_artist(fhandle):
     """Load beatport_key tempo data from a file
 
     Args:
@@ -249,23 +249,23 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_key", version="0.3.4")
-    def load_key(self, *args, **kwargs) -> Optional[List[str]]:
+    def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_tempo", version="0.3.4")
-    def load_tempo(self, *args, **kwargs) -> Optional[int]:
+    def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_genre", version="0.3.4")
-    def load_genre(self, *args, **kwargs) -> Optional[Dict[str, List[str]]]:
+    def load_genre(self, *args, **kwargs):
         return load_genre(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.beatport_key.load_artist", version="0.3.4")
-    def load_artist(self, *args, **kwargs) -> Optional[List[str]]:
+    def load_artist(self, *args, **kwargs):
         return load_artist(*args, **kwargs)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=False):

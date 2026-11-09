@@ -28,7 +28,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, Tuple
+from typing import Any, BinaryIO, Optional, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -95,19 +95,19 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def instrument(self):
+    def instrument(self) -> Optional[Any]:
         return self._track_metadata.get("instrument")
 
     @property
-    def instrument_id(self):
+    def instrument_id(self) -> Optional[Any]:
         return self._track_metadata.get("instrument_id")
 
     @property
-    def song_id(self):
+    def song_id(self) -> Optional[Any]:
         return self._track_metadata.get("song_id")
 
     @property
-    def subset(self):
+    def subset(self) -> Optional[Any]:
         return self._track_metadata.get("subset")
 
     @property
@@ -180,5 +180,5 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.medley_solos_db.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

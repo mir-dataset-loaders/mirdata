@@ -41,7 +41,7 @@
 
 import json
 import os
-from typing import Any, Dict, Optional, TextIO
+from typing import Any, Dict, List, Optional
 
 from deprecated.sphinx import deprecated
 
@@ -193,7 +193,7 @@ class Track(core.Track):
 
     # Metadata
     @property
-    def artist(self):
+    def artist(self) -> List[str]:
         """metadata artist annotation
 
         Returns:
@@ -203,7 +203,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["artist"]
 
     @property
-    def title(self):
+    def title(self) -> List[str]:
         """metadata title annotation
 
         Returns:
@@ -213,7 +213,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["title"]
 
     @property
-    def date(self):
+    def date(self) -> List[str]:
         """metadata date annotation
 
         Returns:
@@ -223,7 +223,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["date"]
 
     @property
-    def file_name(self):
+    def file_name(self) -> str:
         """metadata file_name annotation
 
         Returns:
@@ -232,7 +232,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["file_name"]
 
     @property
-    def album(self):
+    def album(self) -> List[str]:
         """metadata album annotation
 
         Returns:
@@ -241,7 +241,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["album"]
 
     @property
-    def tracknumber(self):
+    def tracknumber(self) -> List[str]:
         """metadata tracknumber annotation
 
         Returns:
@@ -250,7 +250,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["tracknumber"]
 
     @property
-    def tonal(self):
+    def tonal(self) -> Dict[str, Any]:
         """tonal features
 
         Returns:
@@ -273,7 +273,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["tonal"]
 
     @property
-    def low_level(self):
+    def low_level(self) -> Dict[str, Any]:
         """low_level track descriptors.
 
         Returns:
@@ -320,7 +320,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["lowlevel"]
 
     @property
-    def rhythm(self):
+    def rhythm(self) -> Dict[str, Any]:
         """rhythm essentia extractor descriptors
 
         Returns:
@@ -343,12 +343,12 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["rhythm"]
 
     @core.cached_property
-    def acousticbrainz_metadata(self):
+    def acousticbrainz_metadata(self) -> Optional[Dict[str, Any]]:
         return load_extractor(os.path.normpath(self.path))
 
 
 @io.coerce_to_string_io
-def load_extractor(fhandle: TextIO) -> Optional[Dict[str, Any]]:
+def load_extractor(fhandle):
     """Load a AcousticBrainz Dataset json file with all the features and metadata.
 
     Args:
@@ -384,7 +384,7 @@ class Dataset(core.Dataset):
         reason="Use mirdata.datasets.acousticbrainz_genre.load_extractor",
         version="0.3.4",
     )
-    def load_extractor(self, *args, **kwargs) -> Optional[Dict[str, Any]]:
+    def load_extractor(self, *args, **kwargs):
         return load_extractor(*args, **kwargs)
 
     def filter_index(self, search_key):
@@ -403,7 +403,7 @@ class Dataset(core.Dataset):
         }
         return acousticbrainz_genre_data
 
-    def load_all_train(self) -> Dict[str, Any]:
+    def load_all_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for training across the four different datasets.
 
         Returns:
@@ -412,7 +412,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("#train#")
 
-    def load_all_validation(self) -> Dict[str, Any]:
+    def load_all_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validating across the four different datasets.
 
         Returns:
@@ -421,7 +421,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("#validation#")
 
-    def load_tagtraum_validation(self) -> Dict[str, Any]:
+    def load_tagtraum_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validating in tagtraum dataset.
 
         Returns:
@@ -430,7 +430,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("tagtraum#validation#")
 
-    def load_tagtraum_train(self) -> Dict[str, Any]:
+    def load_tagtraum_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for training in tagtraum dataset.
 
         Returns:
@@ -439,7 +439,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("tagtraum#train#")
 
-    def load_allmusic_train(self) -> Dict[str, Any]:
+    def load_allmusic_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
         Returns:
@@ -448,7 +448,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("allmusic#train#")
 
-    def load_allmusic_validation(self) -> Dict[str, Any]:
+    def load_allmusic_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in allmusic dataset.
 
         Returns:
@@ -457,7 +457,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("allmusic#validation#")
 
-    def load_lastfm_train(self) -> Dict[str, Any]:
+    def load_lastfm_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for training in lastfm dataset.
 
         Returns:
@@ -466,7 +466,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("lastfm#train#")
 
-    def load_lastfm_validation(self) -> Dict[str, Any]:
+    def load_lastfm_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in lastfm dataset.
 
         Returns:
@@ -475,7 +475,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("lastfm#validation#")
 
-    def load_discogs_train(self) -> Dict[str, Any]:
+    def load_discogs_train(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for training in discogs dataset.
 
         Returns:
@@ -484,7 +484,7 @@ class Dataset(core.Dataset):
         """
         return self.filter_index("allmusic#train#")
 
-    def load_discogs_validation(self) -> Dict[str, Any]:
+    def load_discogs_validation(self):
         """Load from AcousticBrainz genre dataset the tracks that are used for validation in tagtraum dataset.
 
         Returns:

@@ -157,7 +157,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
+def load_beats(fhandle: TextIO):
     """Load beats
 
     Args:

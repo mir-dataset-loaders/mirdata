@@ -17,7 +17,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -115,43 +115,43 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def source(self):
+    def source(self) -> Optional[Any]:
         return self._track_metadata.get("source")
 
     @property
-    def annotator_1_id(self):
+    def annotator_1_id(self) -> Optional[Any]:
         return self._track_metadata.get("annotator_1_id")
 
     @property
-    def annotator_2_id(self):
+    def annotator_2_id(self) -> Optional[Any]:
         return self._track_metadata.get("annotator_2_id")
 
     @property
-    def duration(self):
+    def duration(self) -> Optional[Any]:
         return self._track_metadata.get("duration")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @property
-    def annotator_1_time(self):
+    def annotator_1_time(self) -> Optional[Any]:
         return self._track_metadata.get("annotator_1_time")
 
     @property
-    def annotator_2_time(self):
+    def annotator_2_time(self) -> Optional[Any]:
         return self._track_metadata.get("annotator_2_time")
 
     @property
-    def broad_genre(self):
+    def broad_genre(self) -> Optional[Any]:
         return self._track_metadata.get("class")
 
     @property
-    def genre(self):
+    def genre(self) -> Optional[Any]:
         return self._track_metadata.get("genre")
 
     @core.cached_property
@@ -340,9 +340,9 @@ class Dataset(core.Dataset):
         return metadata_index
 
     @deprecated(reason="Use mirdata.datasets.salami.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.salami.load_sections", version="0.3.4")
-    def load_sections(self, *args, **kwargs) -> Optional[annotations.SectionData]:
+    def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)

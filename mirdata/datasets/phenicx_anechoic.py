@@ -391,11 +391,11 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.phenicx_anechoic.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.phenicx_anechoic.load_score", version="0.3.4"
     )
-    def load_score(self, *args, **kwargs) -> Optional[annotations.NoteData]:
+    def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)

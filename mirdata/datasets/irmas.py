@@ -91,7 +91,7 @@ IRMAS Loader
 
 import csv
 import os
-from typing import BinaryIO, List, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, List, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -222,7 +222,7 @@ class Track(core.Track):
         self.train = True if self.split == "train" else False
 
     @core.cached_property
-    def instrument(self):
+    def instrument(self) -> Any:
         if self.predominant_instrument is not None:
             return [self.predominant_instrument]
 
@@ -296,9 +296,9 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(reason="Use mirdata.datasets.irmas.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.irmas.load_pred_inst", version="0.3.4")
-    def load_pred_inst(self, *args, **kwargs) -> Optional[List[str]]:
+    def load_pred_inst(self, *args, **kwargs):
         return load_pred_inst(*args, **kwargs)

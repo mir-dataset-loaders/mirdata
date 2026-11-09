@@ -45,7 +45,7 @@ TONAS Loader
 import csv
 import logging
 import os
-from typing import BinaryIO, TextIO, Tuple, Optional
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -141,19 +141,19 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def style(self):
+    def style(self) -> Optional[Any]:
         return self._track_metadata.get("style")
 
     @property
-    def singer(self):
+    def singer(self) -> Optional[Any]:
         return self._track_metadata.get("singer")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def tuning_frequency(self):
+    def tuning_frequency(self) -> float:
         return _load_tuning_frequency(self.notes_path)
 
     @property
@@ -176,7 +176,7 @@ class Track(core.Track):
         return load_f0(self.f0_path, True)
 
     @property
-    def f0(self):
+    def f0(self) -> Any:
         logging.warning(
             "Track.f0 is deprecated as of 0.3.4 and will be removed in a future version. Use"
             " Track.f0_automatic or Track.f0_corrected"
@@ -359,13 +359,13 @@ class Dataset(core.Dataset):
         return metadata
 
     @deprecated(reason="Use mirdata.datasets.tonas.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.tonas.load_f0", version="0.3.4")
-    def load_f0(self, *args, **kwargs) -> Optional[annotations.F0Data]:
+    def load_f0(self, *args, **kwargs):
         return load_f0(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.tonas.load_notes", version="0.3.4")
-    def load_notes(self, *args, **kwargs) -> Optional[annotations.NoteData]:
+    def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

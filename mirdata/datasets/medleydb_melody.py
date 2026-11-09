@@ -19,7 +19,7 @@
 import csv
 import json
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -99,27 +99,27 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def genre(self):
+    def genre(self) -> Optional[Any]:
         return self._track_metadata.get("genre")
 
     @property
-    def is_excerpt(self):
+    def is_excerpt(self) -> Optional[Any]:
         return self._track_metadata.get("is_excerpt")
 
     @property
-    def is_instrumental(self):
+    def is_instrumental(self) -> Optional[Any]:
         return self._track_metadata.get("is_instrumental")
 
     @property
-    def n_sources(self):
+    def n_sources(self) -> Optional[Any]:
         return self._track_metadata.get("n_sources")
 
     @core.cached_property
@@ -254,17 +254,17 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.medleydb_melody.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.medleydb_melody.load_melody", version="0.3.4"
     )
-    def load_melody(self, *args, **kwargs) -> Optional[annotations.F0Data]:
+    def load_melody(self, *args, **kwargs):
         return load_melody(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.medleydb_melody.load_melody3", version="0.3.4"
     )
-    def load_melody3(self, *args, **kwargs) -> Optional[annotations.MultiF0Data]:
+    def load_melody3(self, *args, **kwargs):
         return load_melody3(*args, **kwargs)

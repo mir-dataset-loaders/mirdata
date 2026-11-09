@@ -179,23 +179,23 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def spotify_uri(self):
+    def spotify_uri(self) -> Optional[str]:
         return self._track_metadata.get("spotify_uri")
 
     @property
-    def key(self):
+    def key(self) -> Optional[str]:
         return self._track_metadata.get("key")
 
     @property
-    def mode(self):
+    def mode(self) -> Optional[str]:
         return self._track_metadata.get("mode")
 
     @property
-    def key_number(self):
+    def key_number(self) -> Optional[int]:
         return self._track_metadata.get("key_number")
 
     @property
-    def mode_number(self):
+    def mode_number(self) -> Optional[int]:
         return self._track_metadata.get("mode_number")
 
     @property

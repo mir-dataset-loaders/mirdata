@@ -242,27 +242,27 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.giantsteps_key.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.giantsteps_key.load_key", version="0.3.4")
-    def load_key(self, *args, **kwargs) -> Optional[str]:
+    def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.giantsteps_key.load_tempo", version="0.3.4"
     )
-    def load_tempo(self, *args, **kwargs) -> Optional[str]:
+    def load_tempo(self, *args, **kwargs):
         return load_tempo(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.giantsteps_key.load_genre", version="0.3.4"
     )
-    def load_genre(self, *args, **kwargs) -> Optional[Dict[str, List[str]]]:
+    def load_genre(self, *args, **kwargs):
         return load_genre(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.giantsteps_key.load_artist", version="0.3.4"
     )
-    def load_artist(self, *args, **kwargs) -> Optional[List[str]]:
+    def load_artist(self, *args, **kwargs):
         return load_artist(*args, **kwargs)

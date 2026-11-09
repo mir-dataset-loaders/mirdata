@@ -413,19 +413,17 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(reason="Use mirdata.datasets.slakh.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.slakh.load_midi", version="0.3.4")
-    def load_midi(self, *args, **kwargs) -> pretty_midi.PrettyMIDI:
+    def load_midi(self, *args, **kwargs):
         return io.load_midi(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.io.load_notes_from_midi", version="0.3.4")
-    def load_notes_from_midi(self, *args, **kwargs) -> Optional[annotations.NoteData]:
+    def load_notes_from_midi(self, *args, **kwargs):
         return io.load_notes_from_midi(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.io.load_multif0_from_midi", version="0.3.4")
-    def load_multif0_from_midi(
-        self, *args, **kwargs
-    ) -> Optional[annotations.MultiF0Data]:
+    def load_multif0_from_midi(self, *args, **kwargs):
         return io.load_multif0_from_midi(*args, **kwargs)

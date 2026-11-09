@@ -49,7 +49,7 @@
 import os
 import csv
 import logging
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, Tuple
 import librosa
 import numpy as np
 
@@ -163,51 +163,51 @@ class Track(core.Track):
         self.meter_path = self.get_path("meter")
 
     @core.cached_property
-    def beats(self):
+    def beats(self) -> Optional[annotations.BeatData]:
         return load_beats(self.beats_path)
 
     @core.cached_property
-    def meter(self):
+    def meter(self) -> Optional[str]:
         return load_meter(self.meter_path)
 
     @core.cached_property
-    def mbid(self):
+    def mbid(self) -> Optional[Any]:
         return self._track_metadata.get("mbid")
 
     @core.cached_property
-    def name(self):
+    def name(self) -> Optional[Any]:
         return self._track_metadata.get("name")
 
     @core.cached_property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @core.cached_property
-    def release(self):
+    def release(self) -> Optional[Any]:
         return self._track_metadata.get("release")
 
     @core.cached_property
-    def lead_instrument_code(self):
+    def lead_instrument_code(self) -> Optional[Any]:
         return self._track_metadata.get("lead_instrument_code")
 
     @core.cached_property
-    def taala(self):
+    def taala(self) -> Optional[Any]:
         return self._track_metadata.get("taala")
 
     @core.cached_property
-    def raaga(self):
+    def raaga(self) -> Optional[Any]:
         return self._track_metadata.get("raaga")
 
     @core.cached_property
-    def num_of_beats(self):
+    def num_of_beats(self) -> Optional[Any]:
         return self._track_metadata.get("num_of_beats")
 
     @core.cached_property
-    def num_of_samas(self):
+    def num_of_samas(self) -> Optional[Any]:
         return self._track_metadata.get("num_of_samas")
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:
@@ -234,7 +234,7 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 
 
 @io.coerce_to_string_io
-def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
+def load_beats(fhandle):
     """Load beats
 
     Args:
@@ -261,7 +261,7 @@ def load_beats(fhandle: TextIO) -> Optional[annotations.BeatData]:
 
 
 @io.coerce_to_string_io
-def load_meter(fhandle: TextIO) -> Optional[str]:
+def load_meter(fhandle):
     """Load meter
 
     Args:

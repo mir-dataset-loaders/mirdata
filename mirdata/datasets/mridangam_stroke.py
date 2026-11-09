@@ -187,5 +187,5 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.mridangam_stroke.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)

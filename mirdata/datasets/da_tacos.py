@@ -98,7 +98,7 @@
 
 import json
 import os
-from typing import Any, Dict, List, Optional, BinaryIO, Tuple
+from typing import Optional, BinaryIO
 
 from deprecated.sphinx import deprecated
 import h5py
@@ -330,7 +330,7 @@ class Track(core.Track):
 
 
 @io.coerce_to_bytes_io
-def load_cens(fhandle: BinaryIO) -> Optional[np.ndarray]:
+def load_cens(fhandle: BinaryIO):
     """Load Da-TACOS cens features from a file
 
     Args:
@@ -345,7 +345,7 @@ def load_cens(fhandle: BinaryIO) -> Optional[np.ndarray]:
 
 
 @io.coerce_to_bytes_io
-def load_crema(fhandle: BinaryIO) -> Optional[np.ndarray]:
+def load_crema(fhandle: BinaryIO):
     """Load Da-TACOS crema features from a file
 
     Args:
@@ -360,7 +360,7 @@ def load_crema(fhandle: BinaryIO) -> Optional[np.ndarray]:
 
 
 @io.coerce_to_bytes_io
-def load_hpcp(fhandle: BinaryIO) -> Optional[np.ndarray]:
+def load_hpcp(fhandle: BinaryIO):
     """Load Da-TACOS hpcp features from a file
 
     Args:
@@ -393,7 +393,7 @@ def _dict_from_h5py(fhandle, record_key):
 
 
 @io.coerce_to_bytes_io
-def load_key(fhandle: BinaryIO) -> Optional[Dict[str, Any]]:
+def load_key(fhandle: BinaryIO):
     """Load Da-TACOS key features from a file.
 
     Args:
@@ -410,7 +410,7 @@ def load_key(fhandle: BinaryIO) -> Optional[Dict[str, Any]]:
 
 
 @io.coerce_to_bytes_io
-def load_madmom(fhandle: BinaryIO) -> Optional[Dict[str, Any]]:
+def load_madmom(fhandle: BinaryIO):
     """Load Da-TACOS madmom features from a file
 
     Args:
@@ -424,7 +424,7 @@ def load_madmom(fhandle: BinaryIO) -> Optional[Dict[str, Any]]:
 
 
 @io.coerce_to_bytes_io
-def load_mfcc(fhandle: BinaryIO) -> Optional[np.ndarray]:
+def load_mfcc(fhandle: BinaryIO):
     """Load Da-TACOS mfcc from a file
 
     Args:
@@ -439,7 +439,7 @@ def load_mfcc(fhandle: BinaryIO) -> Optional[np.ndarray]:
 
 
 @io.coerce_to_bytes_io
-def load_tags(fhandle: BinaryIO) -> Optional[List[Tuple[Any, Any]]]:
+def load_tags(fhandle: BinaryIO):
     """Load Da-TACOS tags from a file
 
     Args:
@@ -503,31 +503,31 @@ class Dataset(core.Dataset):
         return metadata_index
 
     @deprecated(reason="Use mirdata.datasets.da_tacos.load_cens", version="0.3.4")
-    def load_cens(self, *args, **kwargs) -> Optional[np.ndarray]:
+    def load_cens(self, *args, **kwargs):
         return load_cens(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.da_tacos.load_crema", version="0.3.4")
-    def load_crema(self, *args, **kwargs) -> Optional[np.ndarray]:
+    def load_crema(self, *args, **kwargs):
         return load_crema(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.da_tacos.load_hpcp", version="0.3.4")
-    def load_hpcp(self, *args, **kwargs) -> Optional[np.ndarray]:
+    def load_hpcp(self, *args, **kwargs):
         return load_hpcp(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.da_tacos.load_key", version="0.3.4")
-    def load_key(self, *args, **kwargs) -> Optional[Dict[str, Any]]:
+    def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.da_tacos.load_mfcc", version="0.3.4")
-    def load_mfcc(self, *args, **kwargs) -> Optional[np.ndarray]:
+    def load_mfcc(self, *args, **kwargs):
         return load_mfcc(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.da_tacos.load_madmom", version="0.3.4")
-    def load_madmom(self, *args, **kwargs) -> Optional[Dict[str, Any]]:
+    def load_madmom(self, *args, **kwargs):
         return load_madmom(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.da_tacos.load_tags", version="0.3.4")
-    def load_tags(self, *args, **kwargs) -> Optional[List[Tuple[Any, Any]]]:
+    def load_tags(self, *args, **kwargs):
         return load_tags(*args, **kwargs)
 
     def filter_index(self, search_key):

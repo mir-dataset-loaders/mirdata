@@ -49,7 +49,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -162,27 +162,27 @@ class Track(core.Track):
         self.syllable_path = self.get_path("syllable")
 
     @core.cached_property
-    def phoneme(self):
+    def phoneme(self) -> annotations.LyricData:
         return load_phonemes(self.phoneme_path)
 
     @core.cached_property
-    def phrase(self):
+    def phrase(self) -> annotations.LyricData:
         return load_phrases(self.phrase_path)
 
     @core.cached_property
-    def phrase_char(self):
+    def phrase_char(self) -> annotations.LyricData:
         return load_phrases(self.phrase_char_path)
 
     @core.cached_property
-    def syllable(self):
+    def syllable(self) -> annotations.LyricData:
         return load_syllable(self.syllable_path)
 
     @property
-    def work(self):
+    def work(self) -> Optional[Any]:
         return self._track_metadata.get("work")
 
     @property
-    def details(self):
+    def details(self) -> Optional[Any]:
         return self._track_metadata.get("details")
 
     @property
@@ -339,17 +339,17 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.jingju_acapella.load_phonemes", version="0.3.4"
     )
-    def load_phonemes(self, *args, **kwargs) -> Optional[annotations.LyricData]:
+    def load_phonemes(self, *args, **kwargs):
         return load_phonemes(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.jingju_acapella.load_phrases", version="0.3.4"
     )
-    def load_phrases(self, *args, **kwargs) -> Optional[annotations.LyricData]:
+    def load_phrases(self, *args, **kwargs):
         return load_phrases(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.jingju_acapella.load_syllable", version="0.3.4"
     )
-    def load_syllable(self, *args, **kwargs) -> Optional[annotations.LyricData]:
+    def load_syllable(self, *args, **kwargs):
         return load_syllable(*args, **kwargs)

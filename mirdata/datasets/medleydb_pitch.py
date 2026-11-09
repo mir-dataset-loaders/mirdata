@@ -19,7 +19,7 @@
 import csv
 import json
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -103,19 +103,19 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def instrument(self):
+    def instrument(self) -> Optional[Any]:
         return self._track_metadata.get("instrument")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def genre(self):
+    def genre(self) -> Optional[Any]:
         return self._track_metadata.get("genre")
 
     @core.cached_property
@@ -245,17 +245,17 @@ class Dataset(core.Dataset):
     @deprecated(
         reason="Use mirdata.datasets.medleydb_pitch.load_audio", version="0.3.4"
     )
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.medleydb_pitch.load_pitch", version="0.3.4"
     )
-    def load_pitch(self, *args, **kwargs) -> Optional[annotations.F0Data]:
+    def load_pitch(self, *args, **kwargs):
         return load_pitch(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.medleydb_pitch.load_notes", version="0.3.4"
     )
-    def load_notes(self, *args, **kwargs) -> Optional[annotations.NoteData]:
+    def load_notes(self, *args, **kwargs):
         return load_notes(*args, **kwargs)

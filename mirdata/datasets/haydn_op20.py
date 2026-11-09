@@ -12,7 +12,7 @@
 
 import logging
 import os
-from typing import Any, Dict, List, Optional, TextIO, Union
+from typing import Optional, TextIO, List
 
 from deprecated.sphinx import deprecated
 import numpy as np
@@ -150,7 +150,7 @@ def _split_score_annotations(fhandle: TextIO):
 
 
 @io.coerce_to_string_io
-def load_score(fhandle: TextIO) -> Optional[music21.stream.Score]:
+def load_score(fhandle: TextIO):
     """Load haydn op20 score with annotations from a file with music21 format (music21.stream.Score).
 
     Args:
@@ -198,7 +198,7 @@ def _format_key_string(key_string):
 
 
 @io.coerce_to_string_io
-def load_key(fhandle: TextIO, resolution: int = 28) -> Optional[KeyData]:
+def load_key(fhandle: TextIO, resolution=28):
     """Load haydn op20 key data from a file
 
     Args:
@@ -230,9 +230,7 @@ def load_key(fhandle: TextIO, resolution: int = 28) -> Optional[KeyData]:
 
 
 @io.coerce_to_string_io
-def load_key_music21(
-    fhandle: TextIO, resolution: int = 28
-) -> Optional[List[Dict[str, Any]]]:
+def load_key_music21(fhandle: TextIO, resolution=28):
     """Load haydn op20 key data from a file in music21 format
 
     Args:
@@ -268,9 +266,7 @@ def convert_and_save_to_midi(fpath: TextIO):
 
 
 @io.coerce_to_string_io
-def load_roman_numerals(
-    fhandle: TextIO, resolution: int = 28
-) -> Optional[List[Dict[str, Union[int, str]]]]:
+def load_roman_numerals(fhandle: TextIO, resolution=28):
     """Load haydn op20 roman numerals data from a file
 
     Args:
@@ -311,7 +307,7 @@ def _load_chords_base(fhandle: TextIO, resolution: int = 28):
 
 
 @io.coerce_to_string_io
-def load_chords(fhandle: TextIO, resolution: int = 28) -> Optional[ChordData]:
+def load_chords(fhandle: TextIO, resolution: int = 28):
     """Load haydn op20 chords data from a file
 
     Args:
@@ -336,9 +332,7 @@ def load_chords(fhandle: TextIO, resolution: int = 28) -> Optional[ChordData]:
 
 
 @io.coerce_to_string_io
-def load_chords_music21(
-    fhandle: TextIO, resolution: int = 28
-) -> Optional[List[Dict[str, Union[int, str]]]]:
+def load_chords_music21(fhandle: TextIO, resolution: int = 28):
     """Load haydn op20 chords data from a file in music21 format
 
     Args:
@@ -371,42 +365,38 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(reason="Use mirdata.datasets.haydn_op20.load_score", version="0.3.4")
-    def load_score(self, *args, **kwargs) -> Optional[music21.stream.Score]:
+    def load_score(self, *args, **kwargs):
         return load_score(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.haydn_op20.load_key_music21", version="0.3.4"
     )
-    def load_key_music21(self, *args, **kwargs) -> Optional[List[Dict[str, Any]]]:
+    def load_key_music21(self, *args, **kwargs):
         return load_key_music21(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.haydn_op20.load_key", version="0.3.4")
-    def load_key(self, *args, **kwargs) -> Optional[KeyData]:
+    def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.haydn_op20.load_chords", version="0.3.4")
-    def load_chords(self, *args, **kwargs) -> Optional[ChordData]:
+    def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.haydn_op20.load_chords_music21", version="0.3.4"
     )
-    def load_chords_music21(
-        self, *args, **kwargs
-    ) -> Optional[List[Dict[str, Union[int, str]]]]:
+    def load_chords_music21(self, *args, **kwargs):
         return load_chords_music21(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.haydn_op20.load_roman_numerals", version="0.3.4"
     )
-    def load_roman_numerals(
-        self, *args, **kwargs
-    ) -> Optional[List[Dict[str, Union[int, str]]]]:
+    def load_roman_numerals(self, *args, **kwargs):
         return load_roman_numerals(*args, **kwargs)
 
     @deprecated(
         reason="Use mirdata.datasets.haydn_op20.convert_and_save_to_midi",
         version="0.3.4",
     )
-    def load_midi_path(self, *args, **kwargs) -> Optional[str]:
+    def load_midi_path(self, *args, **kwargs):
         return convert_and_save_to_midi(*args, **kwargs)

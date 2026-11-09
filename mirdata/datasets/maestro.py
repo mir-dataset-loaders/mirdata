@@ -33,7 +33,7 @@
 import json
 import logging
 import os
-from typing import BinaryIO, Optional, Tuple
+from typing import Any, BinaryIO, Optional, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -41,7 +41,7 @@ import numpy as np
 import pretty_midi
 from smart_open import open
 
-from mirdata import annotations, core, download_utils, io
+from mirdata import core, download_utils, io
 
 BIBTEX = """@inproceedings{
   hawthorne2018enabling,
@@ -123,23 +123,23 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def canonical_composer(self):
+    def canonical_composer(self) -> Optional[Any]:
         return self._track_metadata.get("canonical_composer")
 
     @property
-    def canonical_title(self):
+    def canonical_title(self) -> Optional[Any]:
         return self._track_metadata.get("canonical_title")
 
     @property
-    def split(self):
+    def split(self) -> Optional[Any]:
         return self._track_metadata.get("split")
 
     @property
-    def year(self):
+    def year(self) -> Optional[Any]:
         return self._track_metadata.get("year")
 
     @property
-    def duration(self):
+    def duration(self) -> Optional[Any]:
         return self._track_metadata.get("duration")
 
     @core.cached_property
@@ -147,7 +147,7 @@ class Track(core.Track):
         return io.load_midi(self.midi_path)
 
     @core.cached_property
-    def notes(self):
+    def notes(self) -> Any:
         logging.warning(
             "The default unit for maestro pitch and velocity values have"
             + " changed in mirdata >0.3.3 from hz/confidence to midi/velocity"
@@ -217,15 +217,15 @@ class Dataset(core.Dataset):
         return metadata
 
     @deprecated(reason="Use mirdata.datasets.maestro.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.io.load_midi", version="0.3.4")
-    def load_midi(self, *args, **kwargs) -> pretty_midi.PrettyMIDI:
+    def load_midi(self, *args, **kwargs):
         return io.load_midi(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.io.load_notes_from_midi", version="0.3.4")
-    def load_notes(self, *args, **kwargs) -> Optional[annotations.NoteData]:
+    def load_notes(self, *args, **kwargs):
         return io.load_notes_from_midi(*args, **kwargs)
 
     def download(self, partial_download=None, force_overwrite=False, cleanup=False):

@@ -242,17 +242,17 @@ class Dataset(core.Dataset):
         )
 
     @deprecated(reason="Use mirdata.datasets.queen.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs) -> Optional[Tuple[np.ndarray, float]]:
+    def load_audio(self, *args, **kwargs):
         return load_audio(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.queen.load_key", version="0.3.4")
-    def load_key(self, *args, **kwargs) -> Optional[annotations.KeyData]:
+    def load_key(self, *args, **kwargs):
         return load_key(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.queen.load_chords", version="0.3.4")
-    def load_chords(self, *args, **kwargs) -> Optional[annotations.ChordData]:
+    def load_chords(self, *args, **kwargs):
         return load_chords(*args, **kwargs)
 
     @deprecated(reason="Use mirdata.datasets.queen.load_sections", version="0.3.4")
-    def load_sections(self, *args, **kwargs) -> Optional[annotations.SectionData]:
+    def load_sections(self, *args, **kwargs):
         return load_sections(*args, **kwargs)
