@@ -52,7 +52,7 @@
 import os
 import glob
 import json
-from typing import BinaryIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
@@ -143,7 +143,7 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:
@@ -154,27 +154,27 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @core.cached_property
-    def tonic(self):
+    def tonic(self) -> Optional[float]:
         return self._track_metadata.get("tonic")
 
     @core.cached_property
-    def artist(self):
+    def artist(self) -> Optional[str]:
         return self._track_metadata.get("artist")
 
     @core.cached_property
-    def gender(self):
+    def gender(self) -> Optional[str]:
         return self._track_metadata.get("gender")
 
     @core.cached_property
-    def mbid(self):
+    def mbid(self) -> Optional[str]:
         return self._track_metadata.get("mbid")
 
     @core.cached_property
-    def type(self):
+    def type(self) -> Optional[str]:
         return self._track_metadata.get("type")
 
     @core.cached_property
-    def tradition(self):
+    def tradition(self) -> Optional[str]:
         return self._track_metadata.get("tradition")
 
 

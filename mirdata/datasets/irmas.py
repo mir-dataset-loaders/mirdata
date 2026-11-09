@@ -91,7 +91,7 @@ IRMAS Loader
 
 import csv
 import os
-from typing import BinaryIO, List, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, List, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -222,7 +222,7 @@ class Track(core.Track):
         self.train = True if self.split == "train" else False
 
     @core.cached_property
-    def instrument(self):
+    def instrument(self) -> Any:
         if self.predominant_instrument is not None:
             return [self.predominant_instrument]
 

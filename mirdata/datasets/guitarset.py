@@ -194,7 +194,7 @@ class Track(core.Track):
         return load_beats(self.jams_path)
 
     @core.cached_property
-    def leadsheet_chords(self):
+    def leadsheet_chords(self) -> Optional[annotations.ChordData]:
         if self.mode == "solo":
             logging.warning(
                 "Chord annotations for solo excerpts are the same with the comp excerpt."
@@ -202,7 +202,7 @@ class Track(core.Track):
         return load_chords(self.jams_path, True)
 
     @core.cached_property
-    def inferred_chords(self):
+    def inferred_chords(self) -> Optional[annotations.ChordData]:
         if self.mode == "solo":
             logging.warning(
                 "Chord annotations for solo excerpts are the same as the comp excerpt."

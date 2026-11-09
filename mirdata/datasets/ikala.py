@@ -16,7 +16,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -120,7 +120,7 @@ class Track(core.Track):
         self.section = track_id.split("_")[1]
 
     @property
-    def singer_id(self):
+    def singer_id(self) -> Optional[Any]:
         return self._track_metadata.get(self.song_id)
 
     @core.cached_property

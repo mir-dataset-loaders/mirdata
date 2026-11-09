@@ -31,7 +31,7 @@
 
 import csv
 import json
-from typing import BinaryIO, Tuple
+from typing import BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
@@ -116,35 +116,35 @@ class Track(core.Track):
         self.tonic_finetuned_path = self.get_path("tonic-finetuned")
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         return load_audio(self.audio_path)
 
     @core.cached_property
-    def sections(self):
+    def sections(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_path)
 
     @core.cached_property
-    def sections_finetuned(self):
+    def sections_finetuned(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_finetuned_path)
 
     @core.cached_property
-    def nyas(self):
+    def nyas(self) -> Optional[annotations.EventData]:
         return load_nyas(self.nyas_path)
 
     @core.cached_property
-    def pitch(self):
+    def pitch(self) -> Optional[annotations.F0Data]:
         return load_pitch(self.pitch_path)
 
     @core.cached_property
-    def pitch_finetuned(self):
+    def pitch_finetuned(self) -> Optional[annotations.F0Data]:
         return load_pitch(self.pitch_finetuned_path)
 
     @core.cached_property
-    def tonic(self):
+    def tonic(self) -> Optional[float]:
         return load_tonic(self.tonic_path)
 
     @core.cached_property
-    def tonic_finetuned(self):
+    def tonic_finetuned(self) -> Optional[float]:
         return load_tonic(self.tonic_finetuned_path)
 
 

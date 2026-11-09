@@ -163,7 +163,7 @@ class Track(core.Track):
         self.vggish_path = self.get_path("vggish")
 
     @property
-    def split(self):
+    def split(self) -> Optional[str]:
         """Get the pre-defined split"""
         return self._track_metadata.get("split")
 

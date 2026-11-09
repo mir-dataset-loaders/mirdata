@@ -19,7 +19,7 @@ import gzip
 import logging
 import os
 import pickle
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -137,51 +137,51 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def audio_url(self):
+    def audio_url(self) -> Optional[Any]:
         return self._track_metadata.get("audio", {}).get("url")
 
     @property
-    def url_working(self):
+    def url_working(self) -> Optional[Any]:
         return self._track_metadata.get("audio", {}).get("working")
 
     @property
-    def ground_truth(self):
+    def ground_truth(self) -> Optional[Any]:
         return self._track_metadata.get("ground-truth")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def dataset_version(self):
+    def dataset_version(self) -> Optional[Any]:
         return self._track_metadata.get("dataset_version")
 
     @property
-    def scores_ncc(self):
+    def scores_ncc(self) -> Optional[Any]:
         return self._track_metadata.get("scores", {}).get("NCC")
 
     @property
-    def scores_manual(self):
+    def scores_manual(self) -> Optional[Any]:
         return self._track_metadata.get("scores", {}).get("manual")
 
     @property
-    def album(self):
+    def album(self) -> Optional[Any]:
         return self._track_metadata.get("metadata", {}).get("album")
 
     @property
-    def release_date(self):
+    def release_date(self) -> Optional[Any]:
         return self._track_metadata.get("metadata", {}).get("release_date")
 
     @property
-    def genres(self):
+    def genres(self) -> Optional[Any]:
         return self._track_metadata.get("metadata", {}).get("genres")
 
     @property
-    def language(self):
+    def language(self) -> Optional[Any]:
         return self._track_metadata.get("metadata", {}).get("language")
 
     @core.cached_property

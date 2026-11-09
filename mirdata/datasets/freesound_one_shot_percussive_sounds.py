@@ -41,7 +41,7 @@ Freesound One-Shot Percussive Sounds Dataset Loader
 
 import json
 import os
-from typing import BinaryIO, TextIO, Tuple, Optional
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -138,31 +138,31 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def tags(self):
+    def tags(self) -> Optional[Any]:
         return self._track_metadata.get("tags")
 
     @property
-    def freesound_analysis(self):
+    def freesound_analysis(self) -> Optional[Any]:
         return self._track_metadata.get("analysis")
 
     @property
-    def audiocommons_analysis(self):
+    def audiocommons_analysis(self) -> Optional[Any]:
         return self._track_metadata.get("ac_analysis")
 
     @property
-    def freesound_preview_urls(self):
+    def freesound_preview_urls(self) -> Optional[Any]:
         return self._track_metadata.get("previews")
 
     @property
-    def filename(self):
+    def filename(self) -> Optional[Any]:
         return self._track_metadata.get("name")
 
     @property
-    def username(self):
+    def username(self) -> Optional[Any]:
         return self._track_metadata.get("username")
 
     @property
-    def license(self):
+    def license(self) -> Optional[Any]:
         return self._track_metadata.get("license")
 
     @property

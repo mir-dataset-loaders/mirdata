@@ -11,7 +11,7 @@
 import csv
 import os
 import re
-from typing import BinaryIO, TextIO, Optional, Tuple, Dict, List
+from typing import Any, BinaryIO, Dict, List, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -131,55 +131,55 @@ class Track(core.Track):
         self.tuning_path = self.get_path("tuning")
 
     @property
-    def chart_date(self):
+    def chart_date(self) -> Optional[Any]:
         return self._track_metadata.get("chart_date")
 
     @property
-    def target_rank(self):
+    def target_rank(self) -> Optional[Any]:
         return self._track_metadata.get("target_rank")
 
     @property
-    def actual_rank(self):
+    def actual_rank(self) -> Optional[Any]:
         return self._track_metadata.get("actual_rank")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @property
-    def peak_rank(self):
+    def peak_rank(self) -> Optional[Any]:
         return self._track_metadata.get("peak_rank")
 
     @property
-    def weeks_on_chart(self):
+    def weeks_on_chart(self) -> Optional[Any]:
         return self._track_metadata.get("weeks_on_chart")
 
     @core.cached_property
-    def chords_full(self):
+    def chords_full(self) -> Optional[annotations.ChordData]:
         return load_chords(self.lab_full_path)
 
     @core.cached_property
-    def chords_majmin7(self):
+    def chords_majmin7(self) -> Optional[annotations.ChordData]:
         return load_chords(self.lab_majmin7_path)
 
     @core.cached_property
-    def chords_majmin7inv(self):
+    def chords_majmin7inv(self) -> Optional[annotations.ChordData]:
         return load_chords(self.lab_majmin7inv_path)
 
     @core.cached_property
-    def chords_majmin(self):
+    def chords_majmin(self) -> Optional[annotations.ChordData]:
         return load_chords(self.lab_majmin_path)
 
     @core.cached_property
-    def chords_majmininv(self):
+    def chords_majmininv(self) -> Optional[annotations.ChordData]:
         return load_chords(self.lab_majmininv_path)
 
     @core.cached_property
-    def chroma(self):
+    def chroma(self) -> np.ndarray:
         """Non-negative-least-squares (NNLS) chroma vectors from the Chordino Vamp plug-in
 
         Returns:
@@ -190,7 +190,7 @@ class Track(core.Track):
             return np.array([l for l in csv.reader(f)])[:, 1:].astype(np.float32)
 
     @core.cached_property
-    def tuning(self):
+    def tuning(self) -> List[str]:
         """Tuning estimates from the Chordino Vamp plug-in
 
         Returns:
@@ -200,19 +200,19 @@ class Track(core.Track):
             return next(csv.reader(f))[1:]
 
     @core.cached_property
-    def sections(self):
+    def sections(self) -> annotations.SectionData:
         return load_sections(
             os.path.join(self._data_home, self._track_paths["salami"][0])
         )
 
     @core.cached_property
-    def named_sections(self):
+    def named_sections(self) -> annotations.SectionData:
         return load_named_sections(
             os.path.join(self._data_home, self._track_paths["salami"][0])
         )
 
     @core.cached_property
-    def salami_metadata(self):
+    def salami_metadata(self) -> Dict[str, str]:
         return _parse_salami_metadata(
             os.path.join(self._data_home, self._track_paths["salami"][0])
         )

@@ -38,7 +38,7 @@
 import csv
 import json
 import os
-from typing import TextIO
+from typing import Any, Optional, TextIO
 
 from deprecated.sphinx import deprecated
 import numpy as np
@@ -116,23 +116,23 @@ class Track(core.Track):
         self.mb_tags_path = self.get_path("metadata")
 
     @property
-    def tonic(self):
+    def tonic(self) -> Optional[Any]:
         return self._track_metadata.get("tonic")
 
     @property
-    def makam(self):
+    def makam(self) -> Optional[Any]:
         return self._track_metadata.get("makam")
 
     @property
-    def mbid(self):
+    def mbid(self) -> Optional[Any]:
         return self._track_metadata.get("mbid")
 
     @core.cached_property
-    def pitch(self):
+    def pitch(self) -> annotations.F0Data:
         return load_pitch(self.pitch_path)
 
     @core.cached_property
-    def mb_tags(self):
+    def mb_tags(self) -> dict:
         return load_mb_tags(self.mb_tags_path)
 
 

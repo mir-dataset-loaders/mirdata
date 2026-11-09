@@ -14,7 +14,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -96,47 +96,47 @@ class Track(core.Track):
         self.audio_path_stereo = self.get_path("audio_stereo")
 
     @property
-    def composer(self):
+    def composer(self) -> Optional[Any]:
         return self._track_metadata.get("composer")
 
     @property
-    def work(self):
+    def work(self) -> Optional[Any]:
         return self._track_metadata.get("work")
 
     @property
-    def excerpt(self):
+    def excerpt(self) -> Optional[Any]:
         return self._track_metadata.get("excerpt")
 
     @property
-    def predominant_melodic_instruments(self):
+    def predominant_melodic_instruments(self) -> Optional[Any]:
         return self._track_metadata.get("predominant_melodic_instruments-normalized")
 
     @property
-    def alternating_melody(self):
+    def alternating_melody(self) -> Optional[Any]:
         return self._track_metadata.get("alternating_melody")
 
     @property
-    def contains_winds(self):
+    def contains_winds(self) -> Optional[Any]:
         return self._track_metadata.get("contains_winds")
 
     @property
-    def contains_strings(self):
+    def contains_strings(self) -> Optional[Any]:
         return self._track_metadata.get("contains_strings")
 
     @property
-    def contains_brass(self):
+    def contains_brass(self) -> Optional[Any]:
         return self._track_metadata.get("contains_brass")
 
     @property
-    def only_strings(self):
+    def only_strings(self) -> Optional[Any]:
         return self._track_metadata.get("only_strings")
 
     @property
-    def only_winds(self):
+    def only_winds(self) -> Optional[Any]:
         return self._track_metadata.get("only_winds")
 
     @property
-    def only_brass(self):
+    def only_brass(self) -> Optional[Any]:
         return self._track_metadata.get("only_brass")
 
     @core.cached_property

@@ -94,15 +94,15 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def singer_id(self):
+    def singer_id(self) -> Optional[str]:
         return self._track_metadata.get("singer_id")
 
     @property
-    def average_pitch_midi(self):
+    def average_pitch_midi(self) -> Optional[float]:
         return self._track_metadata.get("average_pitch_midi")
 
     @property
-    def language(self):
+    def language(self) -> Optional[str]:
         return self._track_metadata.get("language")
 
     @core.cached_property

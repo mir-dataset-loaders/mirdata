@@ -41,6 +41,7 @@
 
 import json
 import os
+from typing import Any, Dict, List, Optional
 
 from deprecated.sphinx import deprecated
 
@@ -192,7 +193,7 @@ class Track(core.Track):
 
     # Metadata
     @property
-    def artist(self):
+    def artist(self) -> List[str]:
         """metadata artist annotation
 
         Returns:
@@ -202,7 +203,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["artist"]
 
     @property
-    def title(self):
+    def title(self) -> List[str]:
         """metadata title annotation
 
         Returns:
@@ -212,7 +213,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["title"]
 
     @property
-    def date(self):
+    def date(self) -> List[str]:
         """metadata date annotation
 
         Returns:
@@ -222,7 +223,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["date"]
 
     @property
-    def file_name(self):
+    def file_name(self) -> str:
         """metadata file_name annotation
 
         Returns:
@@ -231,7 +232,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["file_name"]
 
     @property
-    def album(self):
+    def album(self) -> List[str]:
         """metadata album annotation
 
         Returns:
@@ -240,7 +241,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["album"]
 
     @property
-    def tracknumber(self):
+    def tracknumber(self) -> List[str]:
         """metadata tracknumber annotation
 
         Returns:
@@ -249,7 +250,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["metadata"]["tags"]["tracknumber"]
 
     @property
-    def tonal(self):
+    def tonal(self) -> Dict[str, Any]:
         """tonal features
 
         Returns:
@@ -272,7 +273,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["tonal"]
 
     @property
-    def low_level(self):
+    def low_level(self) -> Dict[str, Any]:
         """low_level track descriptors.
 
         Returns:
@@ -319,7 +320,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["lowlevel"]
 
     @property
-    def rhythm(self):
+    def rhythm(self) -> Dict[str, Any]:
         """rhythm essentia extractor descriptors
 
         Returns:
@@ -342,7 +343,7 @@ class Track(core.Track):
         return self.acousticbrainz_metadata["rhythm"]
 
     @core.cached_property
-    def acousticbrainz_metadata(self):
+    def acousticbrainz_metadata(self) -> Optional[Dict[str, Any]]:
         return load_extractor(os.path.normpath(self.path))
 
 

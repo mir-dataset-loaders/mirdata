@@ -41,7 +41,7 @@ import os
 import csv
 import glob
 import librosa
-from typing import BinaryIO, TextIO, Tuple
+from typing import Any, BinaryIO, Dict, List, Optional, TextIO, Tuple
 
 import numpy as np
 from xml.dom import minidom
@@ -126,39 +126,39 @@ class Track(core.Track):
         self.raaga = self.track_id.split("_")[1]
 
     @core.cached_property
-    def taala(self):
+    def taala(self) -> Optional[annotations.BeatData]:
         return load_taala(self.taala_path)
 
     @core.cached_property
-    def notation(self):
+    def notation(self) -> Optional[annotations.EventData]:
         return load_notation(self.notation_path, self.taala_path, self.structure_path)[
             0
         ]
 
     @core.cached_property
-    def sections(self):
+    def sections(self) -> Optional[annotations.SectionData]:
         return load_notation(self.notation_path, self.taala_path, self.structure_path)[
             1
         ]
 
     @core.cached_property
-    def mbid(self):
+    def mbid(self) -> Optional[Any]:
         return load_mbid(self.notation_path)
 
     @core.cached_property
-    def arohanam(self):
+    def arohanam(self) -> List[str]:
         return load_moorchanas(self.notation_path)[0]
 
     @core.cached_property
-    def avarohanam(self):
+    def avarohanam(self) -> List[str]:
         return load_moorchanas(self.notation_path)[1]
 
     @core.cached_property
-    def tonic(self):
+    def tonic(self) -> Dict[str, Any]:
         return self._track_metadata
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:

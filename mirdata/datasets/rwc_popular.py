@@ -152,75 +152,75 @@ class Track(core.Track):
         self.midi_path = self.get_path("midi")
 
     @property
-    def piece_number(self):
+    def piece_number(self) -> Optional[str]:
         return self._track_metadata.get("piece_number")
 
     @property
-    def cd_number(self):
+    def cd_number(self) -> Optional[str]:
         return self._track_metadata.get("cd_number")
 
     @property
-    def track_number(self):
+    def track_number(self) -> Optional[str]:
         return self._track_metadata.get("track_number")
 
     @property
-    def title(self):
+    def title(self) -> Optional[str]:
         return self._track_metadata.get("title")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[str]:
         return self._track_metadata.get("artist")
 
     @property
-    def singer_information(self):
+    def singer_information(self) -> Optional[str]:
         return self._track_metadata.get("singer_information")
 
     @property
-    def singing_language(self):
+    def singing_language(self) -> Optional[str]:
         return self._track_metadata.get("singing_language")
 
     @property
-    def tempo(self):
+    def tempo(self) -> Optional[str]:
         return self._track_metadata.get("tempo")
 
     @property
-    def variation(self):
+    def variation(self) -> Optional[str]:
         return self._track_metadata.get("variation")
 
     @property
-    def live_instrument(self):
+    def live_instrument(self) -> Optional[str]:
         return self._track_metadata.get("live_instrument")
 
     @property
-    def drum_information(self):
+    def drum_information(self) -> Optional[str]:
         return self._track_metadata.get("drum_information")
 
     @property
-    def composer(self):
+    def composer(self) -> Optional[str]:
         return self._track_metadata.get("composer")
 
     @property
-    def composition_type(self):
+    def composition_type(self) -> Optional[str]:
         return self._track_metadata.get("composition_type")
 
     @property
-    def main_genre(self):
+    def main_genre(self) -> Optional[str]:
         return self._track_metadata.get("main_genre")
 
     @property
-    def sub_genre(self):
+    def sub_genre(self) -> Optional[str]:
         return self._track_metadata.get("sub_genre")
 
     @property
-    def audio_start(self):
+    def audio_start(self) -> Optional[str]:
         return self._track_metadata.get("audio_start")
 
     @property
-    def audio_end(self):
+    def audio_end(self) -> Optional[str]:
         return self._track_metadata.get("audio_end")
 
     @property
-    def duration(self):
+    def duration(self) -> Optional[str]:
         return self._track_metadata.get("duration")
 
     @core.cached_property

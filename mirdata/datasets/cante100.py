@@ -48,7 +48,7 @@ cante100 Loader
 import csv
 import os
 import xml.etree.ElementTree as ET
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -188,23 +188,23 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def identifier(self):
+    def identifier(self) -> Optional[Any]:
         return self._track_metadata.get("musicBrainzID")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def release(self):
+    def release(self) -> Optional[Any]:
         return self._track_metadata.get("release")
 
     @property
-    def duration(self):
+    def duration(self) -> Optional[Any]:
         return self._track_metadata.get("duration")
 
     @property

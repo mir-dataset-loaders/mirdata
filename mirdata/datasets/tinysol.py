@@ -45,7 +45,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, Tuple
+from typing import Any, BinaryIO, Optional, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -125,55 +125,55 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def split(self):
+    def split(self) -> Optional[Any]:
         return self._track_metadata.get("Fold")
 
     @property
-    def family(self):
+    def family(self) -> Optional[Any]:
         return self._track_metadata.get("Family")
 
     @property
-    def instrument_abbr(self):
+    def instrument_abbr(self) -> Optional[Any]:
         return self._track_metadata.get("Instrument (abbr.)")
 
     @property
-    def instrument_full(self):
+    def instrument_full(self) -> Optional[Any]:
         return self._track_metadata.get("Instrument (in full)")
 
     @property
-    def technique_abbr(self):
+    def technique_abbr(self) -> Optional[Any]:
         return self._track_metadata.get("Technique (abbr.)")
 
     @property
-    def technique_full(self):
+    def technique_full(self) -> Optional[Any]:
         return self._track_metadata.get("Technique (in full)")
 
     @property
-    def pitch(self):
+    def pitch(self) -> Optional[Any]:
         return self._track_metadata.get("Pitch")
 
     @property
-    def pitch_id(self):
+    def pitch_id(self) -> Optional[Any]:
         return self._track_metadata.get("Pitch ID")
 
     @property
-    def dynamics(self):
+    def dynamics(self) -> Optional[Any]:
         return self._track_metadata.get("Dynamics")
 
     @property
-    def dynamics_id(self):
+    def dynamics_id(self) -> Optional[Any]:
         return self._track_metadata.get("Dynamics ID")
 
     @property
-    def instance_id(self):
+    def instance_id(self) -> Optional[Any]:
         return self._track_metadata.get("Instance ID")
 
     @property
-    def string_id(self):
+    def string_id(self) -> Optional[Any]:
         return self._track_metadata.get("String ID")
 
     @property
-    def is_resampled(self):
+    def is_resampled(self) -> Optional[Any]:
         return self._track_metadata.get("Resampled")
 
     @property

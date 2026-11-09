@@ -28,7 +28,7 @@ import csv
 import os
 import fnmatch
 import json
-from typing import BinaryIO, Tuple
+from typing import BinaryIO, Dict, List, Optional, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -118,23 +118,23 @@ class Track(core.Track):
         self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
 
     @core.cached_property
-    def key(self):
+    def key(self) -> Optional[List[str]]:
         return load_key(self.keys_path)
 
     @core.cached_property
-    def artists(self):
+    def artists(self) -> Optional[List[str]]:
         return load_artist(self.metadata_path)
 
     @core.cached_property
-    def genres(self):
+    def genres(self) -> Optional[Dict[str, List[str]]]:
         return load_genre(self.metadata_path)
 
     @core.cached_property
-    def tempo(self):
+    def tempo(self) -> Optional[int]:
         return load_tempo(self.metadata_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:

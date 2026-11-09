@@ -145,23 +145,23 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def instrument(self):
+    def instrument(self) -> str:
         return self._track_metadata["instrument"]
 
     @property
-    def midi_nr(self):
+    def midi_nr(self) -> int:
         return self._track_metadata["midi_nr"]
 
     @property
-    def fx_group(self):
+    def fx_group(self) -> int:
         return self._track_metadata["fx_group"]
 
     @property
-    def fx_type(self):
+    def fx_type(self) -> int:
         return self._track_metadata["fx_type"]
 
     @property
-    def fx_setting(self):
+    def fx_setting(self) -> int:
         return self._track_metadata["fx_setting"]
 
     @property

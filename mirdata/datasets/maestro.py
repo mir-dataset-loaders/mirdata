@@ -33,7 +33,7 @@
 import json
 import logging
 import os
-from typing import BinaryIO, Optional, Tuple
+from typing import Any, BinaryIO, Optional, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -123,23 +123,23 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def canonical_composer(self):
+    def canonical_composer(self) -> Optional[Any]:
         return self._track_metadata.get("canonical_composer")
 
     @property
-    def canonical_title(self):
+    def canonical_title(self) -> Optional[Any]:
         return self._track_metadata.get("canonical_title")
 
     @property
-    def split(self):
+    def split(self) -> Optional[Any]:
         return self._track_metadata.get("split")
 
     @property
-    def year(self):
+    def year(self) -> Optional[Any]:
         return self._track_metadata.get("year")
 
     @property
-    def duration(self):
+    def duration(self) -> Optional[Any]:
         return self._track_metadata.get("duration")
 
     @core.cached_property
@@ -147,7 +147,7 @@ class Track(core.Track):
         return io.load_midi(self.midi_path)
 
     @core.cached_property
-    def notes(self):
+    def notes(self) -> Any:
         logging.warning(
             "The default unit for maestro pitch and velocity values have"
             + " changed in mirdata >0.3.3 from hz/confidence to midi/velocity"

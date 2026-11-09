@@ -19,7 +19,7 @@
 import csv
 import json
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -103,19 +103,19 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def instrument(self):
+    def instrument(self) -> Optional[Any]:
         return self._track_metadata.get("instrument")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def genre(self):
+    def genre(self) -> Optional[Any]:
         return self._track_metadata.get("genre")
 
     @core.cached_property

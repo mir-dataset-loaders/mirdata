@@ -48,7 +48,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, Tuple
+from typing import Any, BinaryIO, Optional, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -236,43 +236,43 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def drummer(self):
+    def drummer(self) -> Optional[Any]:
         return self._track_metadata.get("drummer")
 
     @property
-    def session(self):
+    def session(self) -> Optional[Any]:
         return self._track_metadata.get("session")
 
     @property
-    def style(self):
+    def style(self) -> Optional[Any]:
         return self._track_metadata.get("style")
 
     @property
-    def tempo(self):
+    def tempo(self) -> Optional[Any]:
         return self._track_metadata.get("tempo")
 
     @property
-    def beat_type(self):
+    def beat_type(self) -> Optional[Any]:
         return self._track_metadata.get("beat_type")
 
     @property
-    def time_signature(self):
+    def time_signature(self) -> Optional[Any]:
         return self._track_metadata.get("time_signature")
 
     @property
-    def duration(self):
+    def duration(self) -> Optional[Any]:
         return self._track_metadata.get("duration")
 
     @property
-    def split(self):
+    def split(self) -> Optional[Any]:
         return self._track_metadata.get("split")
 
     @property
-    def midi_filename(self):
+    def midi_filename(self) -> Optional[Any]:
         return self._track_metadata.get("midi_filename")
 
     @property
-    def audio_filename(self):
+    def audio_filename(self) -> Optional[Any]:
         return self._track_metadata.get("audio_filename")
 
     @property
@@ -287,15 +287,15 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
     @core.cached_property
-    def beats(self):
+    def beats(self) -> annotations.BeatData:
         return load_beats(self.midi_path, self.midi)
 
     @core.cached_property
-    def drum_events(self):
+    def drum_events(self) -> annotations.EventData:
         return load_drum_events(self.midi_path, self.midi)
 
     @core.cached_property
-    def midi(self):
+    def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
         return load_midi(self.midi_path)
 
 

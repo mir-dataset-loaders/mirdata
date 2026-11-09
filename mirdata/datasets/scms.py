@@ -101,23 +101,23 @@ class Track(core.Track):
         self.activations_path = self.get_path("activations")
 
     @property
-    def tonic(self):
+    def tonic(self) -> Optional[float]:
         return self._track_metadata.get("tonic")
 
     @property
-    def gender(self):
+    def gender(self) -> Optional[str]:
         return self._track_metadata.get("gender")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[str]:
         return self._track_metadata.get("artist")
 
     @property
-    def title(self):
+    def title(self) -> Optional[str]:
         return self._track_metadata.get("title")
 
     @property
-    def train(self):
+    def train(self) -> Optional[bool]:
         return self._track_metadata.get("train")
 
     @core.cached_property

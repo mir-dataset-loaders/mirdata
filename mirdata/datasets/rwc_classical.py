@@ -52,7 +52,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, TextIO, Tuple
+from typing import Any, BinaryIO, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -161,35 +161,35 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def piece_number(self):
+    def piece_number(self) -> Optional[Any]:
         return self._track_metadata.get("piece_number")
 
     @property
-    def suffix(self):
+    def suffix(self) -> Optional[Any]:
         return self._track_metadata.get("suffix")
 
     @property
-    def track_number(self):
+    def track_number(self) -> Optional[Any]:
         return self._track_metadata.get("track_number")
 
     @property
-    def title(self):
+    def title(self) -> Optional[Any]:
         return self._track_metadata.get("title")
 
     @property
-    def composer(self):
+    def composer(self) -> Optional[Any]:
         return self._track_metadata.get("composer")
 
     @property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @property
-    def duration(self):
+    def duration(self) -> Optional[Any]:
         return self._track_metadata.get("duration")
 
     @property
-    def category(self):
+    def category(self) -> Optional[Any]:
         return self._track_metadata.get("category")
 
     @core.cached_property

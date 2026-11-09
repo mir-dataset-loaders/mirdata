@@ -44,7 +44,7 @@
 import os
 import csv
 import json
-from typing import BinaryIO, Tuple
+from typing import Any, BinaryIO, Optional, Tuple
 
 import librosa
 import numpy as np
@@ -155,59 +155,59 @@ class Track(core.Track):
         self.tani_segments_path = self.get_path("tani_segments")
 
     @core.cached_property
-    def tonic(self):
+    def tonic(self) -> Optional[float]:
         return load_tonic(self.tonic_path)
 
     @core.cached_property
-    def tonic_fine_tuned(self):
+    def tonic_fine_tuned(self) -> Optional[float]:
         return load_tonic(self.tonic_fine_tuned_path)
 
     @core.cached_property
-    def pitch(self):
+    def pitch(self) -> Optional[annotations.F0Data]:
         return load_pitch(self.pitch_path)
 
     @core.cached_property
-    def pitch_post_processed(self):
+    def pitch_post_processed(self) -> Optional[annotations.F0Data]:
         return load_pitch(self.pitch_post_processed_path)
 
     @core.cached_property
-    def nyas_segments(self):
+    def nyas_segments(self) -> Optional[annotations.EventData]:
         return load_nyas_segments(self.nyas_segments_path)
 
     @core.cached_property
-    def tani_segments(self):
+    def tani_segments(self) -> Optional[annotations.EventData]:
         return load_tani_segments(self.tani_segments_path)
 
     @core.cached_property
-    def recording(self):
+    def recording(self) -> Optional[Any]:
         return self._track_metadata.get("recording")
 
     @core.cached_property
-    def concert(self):
+    def concert(self) -> Optional[Any]:
         return self._track_metadata.get("concert")
 
     @core.cached_property
-    def artist(self):
+    def artist(self) -> Optional[Any]:
         return self._track_metadata.get("artist")
 
     @core.cached_property
-    def mbid(self):
+    def mbid(self) -> Optional[Any]:
         return self._track_metadata.get("mbid")
 
     @core.cached_property
-    def raga(self):
+    def raga(self) -> Optional[Any]:
         return self._track_metadata.get("raga")
 
     @core.cached_property
-    def ragaid(self):
+    def ragaid(self) -> Optional[Any]:
         return self._track_metadata.get("ragaid")
 
     @core.cached_property
-    def tradition(self):
+    def tradition(self) -> Optional[Any]:
         return self._track_metadata.get("tradition")
 
     @property
-    def audio(self):
+    def audio(self) -> Tuple[np.ndarray, float]:
         """The track's audio
 
         Returns:

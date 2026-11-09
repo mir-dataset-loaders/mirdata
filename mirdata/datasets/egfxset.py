@@ -85,7 +85,7 @@
 
 import csv
 import os
-from typing import BinaryIO, Optional, Tuple
+from typing import Any, BinaryIO, List, Optional, Tuple, Union
 from ast import literal_eval
 import re
 
@@ -233,7 +233,7 @@ class Track(core.Track):
         self.audio_path = self.get_path("audio")
 
     @property
-    def stringfret_tuple(self):
+    def stringfret_tuple(self) -> Optional[List[Any]]:
         return self._track_metadata.get("String-fret Tuple")
 
     @core.cached_property
@@ -245,31 +245,31 @@ class Track(core.Track):
         return self._track_metadata.get("Midinote")
 
     @property
-    def pickup_configuration(self):
+    def pickup_configuration(self) -> Optional[str]:
         return self._track_metadata.get("Pickup Configuration")
 
     @property
-    def effect(self):
+    def effect(self) -> Optional[str]:
         return self._track_metadata.get("Effect")
 
     @property
-    def model(self):
+    def model(self) -> Optional[str]:
         return self._track_metadata.get("Model")
 
     @property
-    def effect_type(self):
+    def effect_type(self) -> Optional[str]:
         return self._track_metadata.get("Effect Type")
 
     @property
-    def knob_names(self):
+    def knob_names(self) -> Optional[Union[List[str], str]]:
         return self._track_metadata.get("Knob Names")
 
     @property
-    def knob_type(self):
+    def knob_type(self) -> Optional[Union[List[str], str]]:
         return self._track_metadata.get("Knob Type")
 
     @property
-    def setting(self):
+    def setting(self) -> Optional[Union[List[Any], str]]:
         return self._track_metadata.get("Setting")
 
     @property

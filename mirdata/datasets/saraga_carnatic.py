@@ -32,7 +32,7 @@
 
 import csv
 import json
-from typing import BinaryIO, Tuple
+from typing import Any, BinaryIO, Dict, Optional, Tuple, Union
 
 from deprecated.sphinx import deprecated
 import librosa
@@ -152,39 +152,39 @@ class Track(core.Track):
         self.metadata_path = self.get_path("metadata")
 
     @core.cached_property
-    def metadata(self):
+    def metadata(self) -> Optional[Dict[str, Any]]:
         return load_metadata(self.metadata_path)
 
     @core.cached_property
-    def tonic(self):
+    def tonic(self) -> Optional[float]:
         return load_tonic(self.ctonic_path)
 
     @core.cached_property
-    def pitch(self):
+    def pitch(self) -> Optional[annotations.F0Data]:
         return load_pitch(self.pitch_path)
 
     @core.cached_property
-    def pitch_vocal(self):
+    def pitch_vocal(self) -> Optional[annotations.F0Data]:
         return load_pitch(self.pitch_vocal_path)
 
     @core.cached_property
-    def tempo(self):
+    def tempo(self) -> Optional[Dict[str, Union[int, float]]]:
         return load_tempo(self.tempo_path)
 
     @core.cached_property
-    def sama(self):
+    def sama(self) -> Optional[annotations.BeatData]:
         return load_sama(self.sama_path)
 
     @core.cached_property
-    def sections(self):
+    def sections(self) -> Optional[annotations.SectionData]:
         return load_sections(self.sections_path)
 
     @core.cached_property
-    def phrases(self):
+    def phrases(self) -> Optional[annotations.EventData]:
         return load_phrases(self.phrases_path)
 
     @property
-    def audio(self):
+    def audio(self) -> Optional[Tuple[np.ndarray, float]]:
         """The track's audio
 
         Returns:
