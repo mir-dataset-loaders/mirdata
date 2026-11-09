@@ -75,7 +75,7 @@ Please see :ref:`contributing` for guidelines.
    :caption: Further Information
    :maxdepth: 1
    
-   Mirdata Gallery <https://mir-dataset-loaders.github.io/mirdata-gallery/gallery.html>
+   Mirdata Gallery <https://mir-dataset-loaders.github.io/mirdata-gallery/index.html>
    source/faq
 
 
