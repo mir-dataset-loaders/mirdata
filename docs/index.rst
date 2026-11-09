@@ -74,7 +74,8 @@ Please see :ref:`contributing` for guidelines.
 .. toctree::
    :caption: Further Information
    :maxdepth: 1
-
+   
+   Mirdata Gallery <https://mir-dataset-loaders.github.io/mirdata-gallery/gallery.html>
    source/faq
 
 
