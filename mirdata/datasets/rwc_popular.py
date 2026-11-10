@@ -139,6 +139,8 @@ class Track(core.Track):
         chords (ChordData): human-labeled chord annotation
         melody (F0Data): human-labeled melody (F0) annotation
         midi (pretty_midi.PrettyMIDI): aligned MIDI annotations
+        notes (NoteData or None): note representation of the midi data.
+        If there are no notes in the midi file, returns None.
 
     """
 
@@ -238,6 +240,10 @@ class Track(core.Track):
     @core.cached_property
     def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
         return io.load_midi(self.midi_path)
+
+    @core.cached_property
+    def notes(self) -> Optional[annotations.NoteData]:
+        return io.load_notes_from_midi(self.midi_path, self.midi, skip_drums=True)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:

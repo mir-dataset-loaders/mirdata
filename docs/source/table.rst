@@ -504,21 +504,20 @@
      - :rwc:`\ `
 
    * - RWC jazz
-     - - audio: ❌
+     - - audio: ✅
        - annotations: ✅
      - - :ref:`beats`
-       - :ref:`sections`
+       - :ref:`notes`
      - 50
      - :rwc:`\ `
 
    * - RWC popular
-     - - audio: ❌
+     - - audio: ✅
        - annotations: ✅
      - - :ref:`beats`
-       - :ref:`sections`
-       - :ref:`vocal-activity`
+       - :ref:`melody`
        - :ref:`chords`
-       - :ref:`tempo`
+       - :ref:`notes`
      - 100
      - :rwc:`\ `
 

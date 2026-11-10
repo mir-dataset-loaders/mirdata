@@ -60,6 +60,7 @@ def test_track():
         "chords": annotations.ChordData,
         "melody": annotations.F0Data,
         "midi": pretty_midi.PrettyMIDI,
+        "notes": annotations.NoteData,
         "audio": tuple,
     }
 
@@ -69,6 +70,9 @@ def test_track():
     y, sr = track.audio
     assert sr == 44100
     assert y.shape == (44100 * 2,)
+
+    assert isinstance(track.notes, annotations.NoteData)
+    assert len(track.notes.intervals) > 0
 
 
 def test_load_chords():

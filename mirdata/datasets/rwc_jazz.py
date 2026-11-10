@@ -45,18 +45,16 @@ import csv
 import os
 from typing import Optional, Tuple
 
-from deprecated.sphinx import deprecated
 import numpy as np
 from smart_open import open
+import pretty_midi
 
-from mirdata import annotations, core, download_utils
+from mirdata import annotations, core, download_utils, io
 
 # these functions are identical for all rwc datasets
-from mirdata.datasets.rwc_classical import (
+from mirdata.datasets.rwc_popular import (
     load_beats,
-    load_sections,
     load_audio,
-    _duration_to_sec,
     LICENSE_INFO,
 )
 
@@ -69,46 +67,33 @@ BIBTEX = """@inproceedings{goto2002rwc,
 }"""
 
 INDEXES = {
-    "default": "1.0",
+    "default": "2.0",
     "test": "sample",
-    "1.0": core.Index(
-        filename="rwc_jazz_index_1.0.json",
-        url="https://zenodo.org/records/14024522/files/rwc_jazz_index_1.0.json?download=1",
-        checksum="e20376a2696a7666bd202ce7c603d277",
+    "2.0": core.Index(
+        filename="rwc_jazz_index_2.0.json",
+        url="https://zenodo.org/records/24115623?/files/rwc_jazz_index_2.0.json?download=1",
+        checksum="22a603a7b6411888e68dc3ba60512b78",
     ),
-    "sample": core.Index(filename="rwc_jazz_index_1.0_sample.json"),
+    "sample": core.Index(filename="rwc_jazz_index_2.0_sample.json"),
 }
 
 REMOTES = {
-    "metadata": download_utils.RemoteFileMetadata(
-        filename="master.zip",
-        url="https://github.com/magdalenafuentes/metadata/archive/master.zip",
-        checksum="7dbe87fedbaaa1f348625a2af1d78030",
+    "audio": download_utils.RemoteFileMetadata(
+        filename="RWC-J.zip",
+        url="https://zenodo.org/records/18656623/files/RWC-J.zip?download=1",
+        checksum="c5d7d989e1afb8257ec50a3696d90c37",
     ),
-    "annotations_beat": download_utils.RemoteFileMetadata(
-        filename="AIST.RWC-MDB-J-2001.BEAT.zip",
-        url="https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.BEAT.zip",
-        checksum="b483853da05d0fff3992879f7729bcb4",
-        destination_dir="annotations",
-    ),
-    "annotations_sections": download_utils.RemoteFileMetadata(
-        filename="AIST.RWC-MDB-J-2001.CHORUS.zip",
-        url=(
-            "https://staff.aist.go.jp/m.goto/RWC-MDB/AIST-Annotation/AIST.RWC-MDB-J-2001.CHORUS.zip"
-        ),
-        checksum="44afcf7f193d7e48a7d99e7a6f3ed39d",
-        destination_dir="annotations",
+    "annotation": download_utils.RemoteFileMetadata(
+        filename="rwc-annotations-main.zip",
+        url="https://github.com/rwc-music/rwc-annotations/archive/2b84581b0c4c80514aadf7e9025a309c91e02cc2.zip",
+        checksum="40f17835554467f66de60602f72f5686",
     ),
 }
 DOWNLOAD_INFO = """
-    Unfortunately the audio files of the RWC-Jazz dataset are not available
-    for download. If you have the RWC-Jazz dataset, place the contents into a
-    folder called RWC-Jazz with the following structure:
-        > RWC-Jazz/
-            > annotations/
-            > audio/rwc-j-m0i with i in [1 .. 4]
-            > metadata-master/
-    and copy the RWC-Jazz folder to {}
+    This dataset is RWC Jazz Database version 2.0 (released 2026).
+
+    If you need the previous version 1.0 with its loader and annotations, install an older mirdata version:
+        pip install "mirdata<=1.0.0"
 """
 
 
@@ -133,26 +118,29 @@ class Track(core.Track):
         variation (str):  style variations
 
     Cached Properties:
-        sections (SectionData): human-labeled section data
         beats (BeatData): human-labeled beat data
+        midi (pretty_midi.PrettyMIDI): aligned MIDI annotations
+        notes (NoteData or None): note representation of the midi data.
+        If there are no notes in the midi file, returns None.
+
+
 
     """
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
 
-        self.sections_path = self.get_path("sections")
-        self.beats_path = self.get_path("beats")
-
         self.audio_path = self.get_path("audio")
+        self.beats_path = self.get_path("beats")
+        self.midi_path = self.get_path("midi")
 
     @property
     def piece_number(self):
         return self._track_metadata.get("piece_number")
 
     @property
-    def suffix(self):
-        return self._track_metadata.get("suffix")
+    def cd_number(self):
+        return self._track_metadata.get("cd_number")
 
     @property
     def track_number(self):
@@ -167,24 +155,68 @@ class Track(core.Track):
         return self._track_metadata.get("artist")
 
     @property
-    def duration(self):
-        return self._track_metadata.get("duration")
+    def singer_information(self):
+        return self._track_metadata.get("singer_information")
+
+    @property
+    def singing_language(self):
+        return self._track_metadata.get("singing_language")
+
+    @property
+    def tempo(self):
+        return self._track_metadata.get("tempo")
 
     @property
     def variation(self):
         return self._track_metadata.get("variation")
 
     @property
-    def instruments(self):
-        return self._track_metadata.get("instruments")
+    def live_instrument(self):
+        return self._track_metadata.get("live_instrument")
 
-    @core.cached_property
-    def sections(self) -> Optional[annotations.SectionData]:
-        return load_sections(self.sections_path)
+    @property
+    def drum_information(self):
+        return self._track_metadata.get("drum_information")
+
+    @property
+    def composer(self):
+        return self._track_metadata.get("composer")
+
+    @property
+    def composition_type(self):
+        return self._track_metadata.get("composition_type")
+
+    @property
+    def main_genre(self):
+        return self._track_metadata.get("main_genre")
+
+    @property
+    def sub_genre(self):
+        return self._track_metadata.get("sub_genre")
+
+    @property
+    def audio_start(self):
+        return self._track_metadata.get("audio_start")
+
+    @property
+    def audio_end(self):
+        return self._track_metadata.get("audio_end")
+
+    @property
+    def duration(self):
+        return self._track_metadata.get("duration")
 
     @core.cached_property
     def beats(self) -> Optional[annotations.BeatData]:
         return load_beats(self.beats_path)
+
+    @core.cached_property
+    def midi(self) -> Optional[pretty_midi.PrettyMIDI]:
+        return io.load_midi(self.midi_path)
+
+    @core.cached_property
+    def notes(self) -> Optional[annotations.NoteData]:
+        return io.load_notes_from_midi(self.midi_path, self.midi, skip_drums=True)
 
     @property
     def audio(self) -> Optional[Tuple[np.ndarray, float]]:
@@ -219,48 +251,46 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "metadata-master", "rwc-j.csv")
+        metadata_path = os.path.join(
+            self.data_home,
+            "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2",
+            "metadata.csv",
+        )
 
         try:
             with open(metadata_path, "r", encoding="utf-8") as fhandle:
-                dialect = csv.Sniffer().sniff(fhandle.read(1024))
-                fhandle.seek(0)
-                reader = csv.reader(fhandle, dialect)
+                reader = csv.DictReader(fhandle, delimiter=";")
                 raw_data = []
-                for line in reader:
-                    if line[0] != "Piece No.":
-                        raw_data.append(line)
+                for row in reader:
+                    raw_data.append(row)
         except FileNotFoundError:
             raise FileNotFoundError("Metadata not found. Did you run .download()?")
 
         metadata_index = {}
         for line in raw_data:
-            if line[0] == "Piece No.":
-                continue
-            p = "00" + line[0].split(".")[1][1:]
-            track_id = "RM-J{}".format(p[len(p) - 3 :])
-
-            metadata_index[track_id] = {
-                "piece_number": line[0],
-                "suffix": line[1],
-                "track_number": line[2],
-                "title": line[3],
-                "artist": line[4],
-                "duration": _duration_to_sec(line[5]),
-                "variation": line[6],
-                "instruments": line[7],
-            }
+            if line["CollID"] == "J":
+                track_id = line["RWCID"]
+                metadata_index[track_id] = {
+                    "piece_number": line["PieceNo"],
+                    "cd_number": line["CDNo"],
+                    "track_number": line["TrackNo"],
+                    "title": line["Title"],
+                    "artist": line["Artist"],
+                    "singer_information": line["SingerInformation"],
+                    "singing_language": line["SingingLanguage"],
+                    "tempo": line["Tempo"],
+                    "variation": line["Variation"],
+                    "live_instrument": line["LiveInstruments"],
+                    "drum_information": line["DrumInformation"],
+                    "composer": line["Composer"],
+                    "composition_type": line["CompositionType"],
+                    "main_genre": line["GenreMain"],
+                    "sub_genre": line["GenreSub"],
+                    "audio_start": line["audio_start"],
+                    "audio_end": line["audio_end"],
+                    "duration": line["duration"],
+                }
+            else:
+                pass
 
         return metadata_index
-
-    @deprecated(reason="Use mirdata.datasets.rwc_jazz.load_audio", version="0.3.4")
-    def load_audio(self, *args, **kwargs):
-        return load_audio(*args, **kwargs)
-
-    @deprecated(reason="Use mirdata.datasets.rwc_jazz.load_sections", version="0.3.4")
-    def load_sections(self, *args, **kwargs):
-        return load_sections(*args, **kwargs)
-
-    @deprecated(reason="Use mirdata.datasets.rwc_jazz.load_beats", version="0.3.4")
-    def load_beats(self, *args, **kwargs):
-        return load_beats(*args, **kwargs)
