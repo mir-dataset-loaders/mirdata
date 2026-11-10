@@ -142,7 +142,7 @@ def test_validate_index(test_index, expected_missing, expected_inv_checksum):
     assert expected_inv_checksum == invalid_checksums
 
 
-def test_validate_files_ignores_nested_track_metadata(mocker):
+def test_validate_files_ignores_audio_features(mocker):
     mock_validate = mocker.patch.object(validate, "validate", return_value=(True, True))
     file_dict = {
         "001": {
