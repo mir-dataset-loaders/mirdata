@@ -1,3 +1,0 @@
-5	653	"nothing"
-653	1963	"chorus A"
-15206	16538	"chorus B"
