@@ -61,7 +61,7 @@ def test_track():
         "melody": annotations.F0Data,
         "midi": pretty_midi.PrettyMIDI,
         "notes": annotations.NoteData,
-        "audio": tuple
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
