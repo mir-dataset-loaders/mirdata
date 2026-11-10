@@ -1,0 +1,25 @@
+{
+  "version": "sample",
+  "tracks": {
+    "RWC_J004": {
+      "audio": [
+        "RWC-J/RWC_J004.wav",
+        "5c99c518da93c4185886fc1f076ff8e8"
+      ],
+      "beats": [
+        "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/01_annotations_preprocessed/beats/RWC-J/RWC_J004.csv",
+        "37f8fce3f801cf6957b48d085f959b31"
+      ],
+      "midi": [
+        "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/01_annotations_preprocessed/MIDI_aligned/RWC-J/RWC_J004.mid",
+        "eea7b4254a6393c806ba707aeeeaec0f"
+      ]
+    }
+  },
+  "metadata": {
+    "rwc-jazz-metadata": [
+      "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/metadata.csv",
+      "6f78a5fb90c8f100cbe8109f7797ee57"
+    ]
+  }
+}

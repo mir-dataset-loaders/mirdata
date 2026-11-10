@@ -93,6 +93,7 @@ def make_rwc_jazz_index(data_path):
             "audio": (audio_rel, audio_checksum),
             "beats": (beats_idx, beats_md5),
             "midi": (midi_idx, midi_md5),
+            "audio_features": audio_record,
         }
 
     metadata_rel = os.path.relpath(metadata_file, dataset_root).replace("\\", "/")
