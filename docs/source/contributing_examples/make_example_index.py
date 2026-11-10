@@ -51,8 +51,6 @@ def make_dataset_index(dataset_data_path):
     # combine all in dataset index
     dataset_index.update(index_metadata)
     dataset_index.update({"tracks": index_tracks})
-    if audio_records:
-        dataset_index.update({"audio_summary": summarize_audio(audio_records)})
 
     with open(DATASET_INDEX_PATH, "w") as fhandle:
         json.dump(dataset_index, fhandle, indent=2)
@@ -67,26 +65,6 @@ def audio_features(file_path):
         num_channels = 1 if y.ndim == 1 else y.shape[0]
         length = y.shape[-1] / sr
     return length, sr, num_channels
-
-
-def summarize_audio(audio_records):
-    sample_rate_counts = {}
-    channel_counts = {}
-    total_duration = 0.0
-
-    for r in audio_records:
-        total_duration += r["duration_seconds"]
-        sr = r["sample_rate"]
-        ch = r["num_channels"]
-        sample_rate_counts[sr] = sample_rate_counts.get(sr, 0) + 1
-        channel_counts[ch] = channel_counts.get(ch, 0) + 1
-
-    return {
-        "file_count": len(audio_records),
-        "total_audio_duration_seconds": round(total_duration, 3),
-        "sample_rate_counts": sample_rate_counts,
-        "channel_counts": channel_counts,
-    }
 
 
 def main(args):
