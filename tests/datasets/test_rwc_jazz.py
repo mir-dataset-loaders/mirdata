@@ -51,7 +51,7 @@ def test_track():
         "beats": annotations.BeatData,
         "midi": pretty_midi.PrettyMIDI,
         "notes": annotations.NoteData,
-        "audio": tuple
+        "audio": tuple,
     }
 
     run_track_tests(track, expected_attributes, expected_property_types)
@@ -63,8 +63,6 @@ def test_track():
     # test NoteData
     assert isinstance(track.notes, annotations.NoteData)
     assert len(track.notes.intervals) > 0
-
-
 
 
 def test_load_beats():
@@ -80,9 +78,7 @@ def test_load_beats():
     assert type(beat_data.positions) is np.ndarray
 
     # check values
-    assert np.array_equal(
-        beat_data.times[:4], np.array([0.050, 0.455, 0.860, 1.265])
-    )
+    assert np.array_equal(beat_data.times[:4], np.array([0.050, 0.455, 0.860, 1.265]))
     assert np.array_equal(beat_data.positions[:4], np.array([1, 2, 3, 4]))
 
 
