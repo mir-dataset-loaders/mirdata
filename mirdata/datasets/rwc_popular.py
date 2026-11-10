@@ -139,6 +139,8 @@ class Track(core.Track):
         chords (ChordData): human-labeled chord annotation
         melody (F0Data): human-labeled melody (F0) annotation
         midi (pretty_midi.PrettyMIDI): aligned MIDI annotations
+        notes (NoteData or None): note representation of the midi data.
+        If there are no notes in the midi file, returns None.
 
     """
 
