@@ -49,7 +49,7 @@ import numpy as np
 from smart_open import open
 import pretty_midi
 
-from mirdata import annotations, core, download_utils, io   
+from mirdata import annotations, core, download_utils, io
 
 # these functions are identical for all rwc datasets
 from mirdata.datasets.rwc_popular import (
@@ -88,7 +88,6 @@ REMOTES = {
         url="https://github.com/rwc-music/rwc-annotations/archive/2b84581b0c4c80514aadf7e9025a309c91e02cc2.zip",
         checksum="40f17835554467f66de60602f72f5686",
     ),
-
 }
 DOWNLOAD_INFO = """
     This dataset is RWC Jazz Database version 2.0 (released 2026).
@@ -128,7 +127,7 @@ class Track(core.Track):
 
     def __init__(self, track_id, data_home, dataset_name, index, metadata):
         super().__init__(track_id, data_home, dataset_name, index, metadata)
-        
+
         self.audio_path = self.get_path("audio")
         self.beats_path = self.get_path("beats")
         self.midi_path = self.get_path("midi")
@@ -225,8 +224,6 @@ class Track(core.Track):
         return load_audio(self.audio_path)
 
 
-
-
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
     """
@@ -246,10 +243,13 @@ class Dataset(core.Dataset):
             license_info=LICENSE_INFO,
         )
 
-
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2", "metadata.csv")
+        metadata_path = os.path.join(
+            self.data_home,
+            "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2",
+            "metadata.csv",
+        )
 
         try:
             with open(metadata_path, "r", encoding="utf-8") as fhandle:
