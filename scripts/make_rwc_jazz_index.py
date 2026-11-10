@@ -3,6 +3,8 @@ import csv
 import hashlib
 import json
 import os
+import librosa
+import soundfile as sf
 
 RWC_JAZZ_INDEX_PATH = "../mirdata/datasets/indexes/rwc_jazz_index_2.0.json"
 
@@ -36,6 +38,7 @@ def make_rwc_jazz_index(data_path):
     track_ids = sorted([f"RWC_J{p}" for p in piece])
 
     rwc_jazz_index = {"version": "2.0", "tracks": {}, "metadata": {}}
+    audio_records = []
     for track_id in track_ids:
         pid = track_id[-3:]
         rm_id = f"RM-J{pid}"
@@ -46,6 +49,17 @@ def make_rwc_jazz_index(data_path):
             raise FileNotFoundError(f"Audio file not found: {audio_abs}")
         audio_rel = os.path.relpath(audio_abs, dataset_root).replace("\\", "/")
         audio_checksum = md5(audio_abs)
+
+        length, sr, channels = audio_features(audio_abs)
+        audio_record = {
+            "duration_seconds": round(length, 3),
+            "sample_rate": sr,
+            "num_channels": channels,
+        }
+        audio_records.append(audio_record)
+
+
+
 
         beats_rel = os.path.join(
             "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2",
@@ -91,6 +105,16 @@ def make_rwc_jazz_index(data_path):
         json.dump(rwc_jazz_index, fhandle, indent=2)
 
     print(f"Wrote {len(track_ids)} tracks to {RWC_JAZZ_INDEX_PATH}")
+
+def audio_features(file_path):
+    try: #faster way of reading the header of the file if exists instead of loading the whole file
+        info = sf.info(file_path)
+        return info.duration, info.samplerate, info.channels
+    except Exception: #in case the file is not supported by soundfile, use librosa
+        y, sr = librosa.load(file_path, sr=None, mono=False)
+        num_channels = 1 if y.ndim == 1 else y.shape[0]
+        length = y.shape[-1] / sr
+    return length, sr, num_channels
 
 
 def main(args):
