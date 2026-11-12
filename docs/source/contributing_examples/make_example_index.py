@@ -45,6 +45,11 @@ def make_dataset_index(dataset_data_path):
             },
         }
 
+    # If your index has multitrack-level audio files (such as a mix), add
+    # features for those files too. This assumes index_multitracks has already
+    # been built; Entries with no multitrack-level audio path (only a "tracks" list,
+    # for example) are kept as-is; no audio_features are added to them.
+
     # top-key level version
     dataset_index = {"version": None}
 
