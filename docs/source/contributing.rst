@@ -186,7 +186,13 @@ or annotations related to the track id. File paths are relative to the top level
                         "annotation": [
                             "annotations/track1.csv",  // the relative path for track1's annotation
                             "2cf33591c3b28b382668952e236cccd5"  // track1.csv's md5 checksum
-                        ]
+                        ],
+                        "audio_features": {
+                            "audio": { 
+                            "duration_seconds": 777.485, //duration in seconds
+                            "sample_rate": 44100, //sample rate
+                            "num_channels": 1   // number of channels
+                        }
                     },
                     "track2": {
                         "audio": [
@@ -196,7 +202,13 @@ or annotations related to the track id. File paths are relative to the top level
                         "annotation": [
                             "annotations/Track2.csv",
                             "e1964798cfe86e914af895f8d0291812"
-                        ]
+                        ],
+                        "audio_features": {
+                            "audio": {
+                            "duration_seconds": 777.485,
+                            "sample_rate": 44100,
+                            "num_channels": 1
+                        }
                     },
                     "track3": {
                         "audio": [
@@ -206,7 +218,14 @@ or annotations related to the track id. File paths are relative to the top level
                         "annotation": [
                             "annotations/track3.csv",
                             "06cb006cc7b61de6be6361ff904654b3"
-                        ]
+                        ],
+                        "audio_features": {
+                            "audio": {
+                            "duration_seconds": 777.485,
+                            "sample_rate": 44100,
+                            "num_channels": 1
+                        }
+                        
                     },
                 }
             "metadata": {
