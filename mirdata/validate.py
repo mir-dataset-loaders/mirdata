@@ -85,6 +85,9 @@ def validate_files(file_dict, data_home, verbose):
             # multitrack case
             if tracks == "tracks":
                 continue
+            # Track-level metadata (e.g., audio_features) is not a file entry.
+            if isinstance(file[tracks], dict):
+                continue
             # tracks
             else:
                 filepath = file[tracks][0]

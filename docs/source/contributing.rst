@@ -110,7 +110,8 @@ The steps to add a new dataset loader to Mirdata are:
 
 Mirdata's structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
 dataset which is necessary for the loading and validating functionalities of Mirdata. In particular, indexes contain
-information about the files included in the dataset, their location and checksums. Indexes do not contain tags, annotations, or descriptors. The necessary steps are:
+information about the files included in the dataset, their location and checksums. They also contain audio features per audio file, for parsing in the `mirdata Gallery`.
+Indexes do not contain tags, annotations, or descriptors. The necessary steps are:
 
 1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.
 2. Then run the script on the dataset and save the index in ``mirdata/datasets/indexes/`` as ``dataset_index_<version>.json``.
@@ -186,7 +187,13 @@ or annotations related to the track id. File paths are relative to the top level
                         "annotation": [
                             "annotations/track1.csv",  // the relative path for track1's annotation
                             "2cf33591c3b28b382668952e236cccd5"  // track1.csv's md5 checksum
-                        ]
+                        ],
+                        "audio_features": {
+                            "audio": { 
+                            "duration_seconds": 777.485, //duration in seconds
+                            "sample_rate": 44100, //sample rate
+                            "num_channels": 1   // number of channels
+                        }
                     },
                     "track2": {
                         "audio": [
@@ -196,7 +203,13 @@ or annotations related to the track id. File paths are relative to the top level
                         "annotation": [
                             "annotations/Track2.csv",
                             "e1964798cfe86e914af895f8d0291812"
-                        ]
+                        ],
+                        "audio_features": {
+                            "audio": {
+                            "duration_seconds": 777.485,
+                            "sample_rate": 44100,
+                            "num_channels": 1
+                        }
                     },
                     "track3": {
                         "audio": [
@@ -206,7 +219,14 @@ or annotations related to the track id. File paths are relative to the top level
                         "annotation": [
                             "annotations/track3.csv",
                             "06cb006cc7b61de6be6361ff904654b3"
-                        ]
+                        ],
+                        "audio_features": {
+                            "audio": {
+                            "duration_seconds": 777.485,
+                            "sample_rate": 44100,
+                            "num_channels": 1
+                        }
+                        
                     },
                 }
             "metadata": {
@@ -267,10 +287,29 @@ Multitracks
                     "multitrack1-voice": {
                         "audio_voice1": ('audio/multitrack1-voice1.wav', checksum),
                         "audio_voice2": ('audio/multitrack1-voice1.wav', checksum),
-                        "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum)
+                        "voice-f0": ('annotations/multitrack1-voice-f0.csv', checksum),
+                        "audio_features": {
+                            "audio_voice1": {
+                                "duration_seconds": 123.456,
+                                "sample_rate": 44100,
+                                "num_channels": 1
+                            },
+                            "audio_voice2": {
+                                "duration_seconds": 123.456,
+                                "sample_rate": 44100,
+                                "num_channels": 1
+                            }
+                        }
                     }
                     "multitrack1-accompaniment": {
-                        "audio_accompaniment": ('audio/multitrack1-accompaniment.wav', checksum)
+                        "audio_accompaniment": ('audio/multitrack1-accompaniment.wav', checksum),
+                        "audio_features": {
+                            "audio_accompaniment": {
+                                "duration_seconds": 123.456,
+                                "sample_rate": 44100,
+                                "num_channels": 2
+                            }
+                        }
                     }
                     "multitrack2-voice" : {...}
                     ...
@@ -278,8 +317,15 @@ Multitracks
                 "multitracks": {
                     "multitrack1": {
                         "tracks": ['multitrack1-voice', 'multitrack1-accompaniment'],
-                        "audio": ('audio/multitrack1-mix.wav', checksum)
-                        "f0": ('annotations/multitrack1-f0.csv', checksum)
+                        "audio": ('audio/multitrack1-mix.wav', checksum),
+                        "f0": ('annotations/multitrack1-f0.csv', checksum),
+                        "audio_features": {
+                            "audio": {
+                                "duration_seconds": 123.456,
+                                "sample_rate": 44100,
+                                "num_channels": 2
+                            }
+                        }
                     }
                     "multitrack2": ...
                 },
@@ -296,6 +342,14 @@ Multitracks
             the multitrack mix and it is stored in the ``multitracks`` group. The multitrack ``multitrack1`` has an 
             additional track ``multitrack1-mix.wav`` which may be the master track, the final mix, 
             the recording of ``multitrack1`` with another microphone.
+
+        To add audio features, use the ``audio_features(file_path)`` function from
+        ``contributing_examples/make_example_index.py`` for each audio file in the index.
+        This includes audio files listed on individual tracks (for example,
+        ``audio_voice1`` and ``audio_voice2``) and audio files listed on a multitrack
+        entry (for example, its ``audio`` mix). Store each result under the matching
+        audio key in that entry's ``audio_features`` dictionary. The ``tracks`` list
+        contains track IDs, not audio paths, so it does not itself need audio features.
 
 
 .. _create_module:
