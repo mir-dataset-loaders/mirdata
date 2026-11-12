@@ -82,6 +82,17 @@ def test_metadata():
     os.remove(os.path.join(corrupted_data_home, "corrupted.xml"))
 
 
+def test_download_index_only_skips_extraction(tmp_path, mocker):
+    mocker.patch("mirdata.download_utils.downloader")
+    unzip = mocker.patch("mirdata.download_utils.unzip")
+    mocker.patch("mirdata.download_utils.move_directory_contents")
+
+    dataset = idmt_smt_audio_effects.Dataset(str(tmp_path), version="1.0")
+    dataset.download(partial_download=["index"])
+
+    unzip.assert_not_called()
+
+
 def test_download(httpserver):
     data_home = "tests/resources/mir_datasets/idmt_smt_audio_effects_download"
     if os.path.exists(data_home):
