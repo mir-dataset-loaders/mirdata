@@ -90,7 +90,7 @@ def test_download_index_only_skips_extraction(tmp_path, mocker):
     dataset = idmt_smt_audio_effects.Dataset(str(tmp_path), version="1.0")
     dataset.download(partial_download=["index"])
 
-    assert unzip.call_count == 0
+    unzip.assert_not_called()
 
 
 def test_download(httpserver):

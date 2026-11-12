@@ -314,8 +314,12 @@ class Dataset(core.Dataset):
             IOError: if a downloaded file's checksum is different from expected
 
         """
-        super().download(
+        download_utils.downloader(
+            self.data_home,
+            remotes=self.remotes,
+            index=self._index_data,
             partial_download=partial_download,
+            info_message=self._download_info,
             force_overwrite=force_overwrite,
             cleanup=cleanup,
             allow_invalid_checksum=allow_invalid_checksum,
