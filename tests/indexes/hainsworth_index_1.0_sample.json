@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "tracks": {
+    "hains001": {
+      "audio": [
+        "H_1.0/audio/hains001.flac",
+        "1a4e92cbf16b1512d2593e8e4e4847bb"
+      ],
+      "beats": [
+        "H_1.0/annotations/beats/hains001.beats",
+        "1e8cead7c8182f0e89d83fa4d53fbf65"
+      ],
+      "tempo": [
+        "H_1.0/annotations/tempo/hains001.bpm",
+        "7ad6b34dec3d21ff26c1f107193d9081"
+      ]
+    
+    }
+  }
+}

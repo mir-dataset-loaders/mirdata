@@ -9,7 +9,8 @@ import io
 def test_track():
     default_trackid = "hains001"
     data_home = os.path.normpath("tests/resources/mir_datasets/hainsworth")
-    dataset = hainsworth.Dataset(data_home)
+    dataset = hainsworth.Dataset(data_home, version="test")
+    assert dataset.index_path.endswith("hainsworth_index_1.0_sample.json")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
@@ -43,7 +44,7 @@ def test_track():
 
 def test_load_tempo():
     data_home = "tests/resources/mir_datasets/hainsworth"
-    dataset = hainsworth.Dataset(data_home)
+    dataset = hainsworth.Dataset(data_home, version="test")
     track = dataset.track("hains001")
     tempo_path = track.tempo_path
     parsed_tempo = hainsworth.load_tempo(tempo_path)
@@ -53,7 +54,7 @@ def test_load_tempo():
 
 def test_load_beats():
     data_home = "tests/resources/mir_datasets/hainsworth"
-    dataset = hainsworth.Dataset(data_home)
+    dataset = hainsworth.Dataset(data_home, version="test")
     track = dataset.track("hains001")
     beats_path = track.beats_path
     parsed_beats = hainsworth.load_beats(beats_path)
@@ -86,7 +87,7 @@ def test_load_beats():
 
 def test_load_audio():
     data_home = "tests/resources/mir_datasets/hainsworth"
-    dataset = hainsworth.Dataset(data_home)
+    dataset = hainsworth.Dataset(data_home, version="test")
     track = dataset.track("hains001")
     audio_path = track.audio_path
     audio, sr = hainsworth.load_audio(audio_path)
