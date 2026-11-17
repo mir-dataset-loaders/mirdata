@@ -55,8 +55,8 @@ INDEXES = {
     "2100-redux": core.Index(
         filename="slakh_index_2100-redux.json",
         partial_download=["2100-redux"],
-        url="https://zenodo.org/records/14009687/files/slakh_index_2100-redux.json?download=1",
-        checksum="7eaefceadb16f1d3621b5dce4b7867c3",
+        url="https://zenodo.org/records/24294116/files/slakh_index_2100-redux.json?download=1",
+        checksum="e45dc6e94ea4a170f5b81027d2e6660f",
     ),
     "baby": core.Index(
         filename="slakh_index_baby.json",

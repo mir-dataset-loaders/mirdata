@@ -73,8 +73,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="rwc_jazz_index_1.0.json",
-        url="https://zenodo.org/records/14024522/files/rwc_jazz_index_1.0.json?download=1",
-        checksum="e20376a2696a7666bd202ce7c603d277",
+        url="https://zenodo.org/records/24294116/files/rwc_jazz_index_1.0.json?download=1",
+        checksum="188d10aba7a96741dffe61fc9ecf1743",
     ),
     "sample": core.Index(filename="rwc_jazz_index_1.0_sample.json"),
 }

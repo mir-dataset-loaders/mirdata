@@ -76,8 +76,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="fma_keys_index_1.0.json",
-        url="https://zenodo.org/records/16757314/files/fma_keys_index_1.0.json?download=1",
-        checksum="6c905f1c0d1caef11643b67cfe80ddf4",
+        url="https://zenodo.org/records/24294116/files/fma_keys_index_1.0.json?download=1",
+        checksum="8aef8132af8743fb210b9c968b8dc4b4",
     ),
     "sample": core.Index(filename="fma_keys_index_1.0_sample.json"),
 }

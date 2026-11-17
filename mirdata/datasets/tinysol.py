@@ -68,8 +68,8 @@ INDEXES = {
     "test": "sample",
     "6.0": core.Index(
         filename="tinysol_index_6.0.json",
-        url="https://zenodo.org/records/13993273/files/tinysol_index_6.0.json?download=1",
-        checksum="dba7aab99081f66d6a46f2bcfc1a3296",
+        url="https://zenodo.org/records/24294116/files/tinysol_index_6.0.json?download=1",
+        checksum="d3929a4d1851df362b16a1ca99333f52",
     ),
     "sample": core.Index(filename="tinysol_index_6.0_sample.json"),
 }

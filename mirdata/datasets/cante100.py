@@ -94,8 +94,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="cante100_index_1.0.json",
-        url="https://zenodo.org/records/14007951/files/cante100_index_1.0.json?download=1",
-        checksum="0da98091223c1349ae2d60c5c0aabeed",
+        url="https://zenodo.org/records/24294116/files/cante100_index_1.0.json?download=1",
+        checksum="b8405657f7b9c356d07b5dc53260c84c",
     ),
     "sample": core.Index(filename="cante100_index_1.0_sample.json"),
 }

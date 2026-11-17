@@ -58,8 +58,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="ballroom_full_index_1.0.json",
-        url="https://zenodo.org/records/13993346/files/ballroom_full_index_1.0.json?download=1",
-        checksum="ca5a5c68e59c608ae8b73b23454d5707",
+        url="https://zenodo.org/records/24294116/files/ballroom_full_index_1.0.json?download=1",
+        checksum="02e2c4b3c5b5fa7810efea408292c723",
     ),
     "sample": core.Index(filename="ballroom_full_index_1.0_sample.json"),
 }

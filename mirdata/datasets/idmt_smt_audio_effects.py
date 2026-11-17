@@ -60,8 +60,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="idmt_smt_audio_effects_index.json",
-        url="https://zenodo.org/records/13930218/files/idmt_smt_audio_effects_index.json?download=1",
-        checksum="b4bedb7f675f892493a84a2e4914126e",
+        url="https://zenodo.org/records/24294116/files/idmt_smt_audio_effects_index.json?download=1",
+        checksum="964652fb51cb79a26583b3180ea84b03",
     ),
     "sample": core.Index(filename="idmt_smt_audio_effects_index_sample.json"),
 }

@@ -82,13 +82,13 @@ INDEXES = {
     "test": "sample",
     "full_dataset_1.0": core.Index(
         filename="compmusic_carnatic_rhythm_full_index_1.0.json",
-        url="https://zenodo.org/records/14007971/files/compmusic_carnatic_rhythm_full_index_1.0.json?download=1",
-        checksum="22d13adb87a3e9f3b5162cb2f73b638f",
+        url="https://zenodo.org/records/24294116/files/compmusic_carnatic_rhythm_full_index_1.0.json?download=1",
+        checksum="6f96261ccfb85beb6d9743f61f097591",
     ),
     "subset_1.0": core.Index(
         filename="compmusic_carnatic_rhythm_subset_index_1.0.json",
-        url="https://zenodo.org/records/14007996/files/compmusic_carnatic_rhythm_subset_index_1.0.json?download=1",
-        checksum="05e8e5570d0f57fb36d75a50538e2afb",
+        url="https://zenodo.org/records/24294116/files/compmusic_carnatic_rhythm_subset_index_1.0.json?download=1",
+        checksum="ba9942e8d77163bbd4a3766992130d06",
     ),
     "sample": core.Index(
         filename="compmusic_carnatic_rhythm_subset_index_1.0_sample.json"
