@@ -79,8 +79,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="compmusic_hindustani_rhythm_full_index_1.0.json",
-        url="https://zenodo.org/records/14007893/files/compmusic_hindustani_rhythm_full_index_1.0.json?download=1",
-        checksum="1b66dfd109bf453626be0b7352c9fa3a",
+        url="https://zenodo.org/records/24294116/files/compmusic_hindustani_rhythm_full_index_1.0.json?download=1",
+        checksum="219f7e200180cb1399f93cb523d1400a",
     ),
     "sample": core.Index(
         filename="compmusic_hindustani_rhythm_full_index_1.0_sample.json"

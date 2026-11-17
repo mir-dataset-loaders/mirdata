@@ -105,8 +105,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="mirdata_multivox_index_1.0.json",
-        url="https://zenodo.org/records/18274999/files/mirdata_multivox_index_1.0.json?download=1",
-        checksum="88d49145da4f30d4fc60ef4d31b611ac",
+        url="https://zenodo.org/records/24294116/files/multivox_index_1.0.json?download=1",
+        checksum="92feac961fdad07e5402b5f1dab806f8",
     ),
     "sample": core.Index(filename="mirdata_multivox_index_sample.json"),
 }

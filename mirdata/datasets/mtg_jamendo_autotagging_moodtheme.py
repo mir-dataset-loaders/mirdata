@@ -61,8 +61,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="mtg_jamendo_autotagging_moodtheme_index_1.0.json",
-        url="https://zenodo.org/records/13930488/files/mtg_jamendo_autotagging_moodtheme_index_1.0.json?download=1",
-        checksum="a6f7b654d3ebccf3388e9e93a5e58239",
+        url="https://zenodo.org/records/24294116/files/mtg_jamendo_autotagging_moodtheme_index_1.0.json?download=1",
+        checksum="4895edff7e8c2a902d4e5e9a7cd20e4d",
     ),
     "sample": core.Index(
         filename="mtg_jamendo_autotagging_moodtheme_index_1.0_sample.json"

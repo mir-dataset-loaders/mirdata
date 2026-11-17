@@ -52,8 +52,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="good_sounds_index_1.0.json",
-        url="https://zenodo.org/records/13916510/files/good_sounds_index_1.0.json?download=1",
-        checksum="9cda4e4ab46effbdfcc2be744d593d06",
+        url="https://zenodo.org/records/24294116/files/good_sounds_index_1.0.json?download=1",
+        checksum="f914964fce64c708c697de7c38a3861e",
     ),
     "sample": core.Index(filename="good_sounds_index_1.0_sample.json"),
 }

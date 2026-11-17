@@ -87,8 +87,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="openmic2018_index_1.0.json",
-        url="https://zenodo.org/records/13930335/files/openmic2018_index.json?download=1",
-        checksum="67fe744b529df1486c2de053cb81cbff",
+        url="https://zenodo.org/records/24294116/files/openmic2018_index_1.0.json?download=1",
+        checksum="8d48440919ae90f086e4fd5614bddabf",
     ),
     "sample": core.Index(filename="openmic2018_index_1.0_sample.json"),
 }

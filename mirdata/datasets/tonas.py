@@ -84,8 +84,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="tonas_index_1.0.json",
-        url="https://zenodo.org/records/14024167/files/tonas_index_1.0.json?download=1",
-        checksum="afa42c61f856471d2ef49609d894fb19",
+        url="https://zenodo.org/records/24294116/files/tonas_index_1.0.json?download=1",
+        checksum="1629cc110ed821b6a8f2590edbdead92",
     ),
     "sample": core.Index(filename="tonas_index_1.0_sample.json"),
 }

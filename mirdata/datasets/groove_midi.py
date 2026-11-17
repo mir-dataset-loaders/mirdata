@@ -74,8 +74,8 @@ INDEXES = {
     "test": "sample",
     "1.0.0": core.Index(
         filename="groove_midi_index_1.0.0.json",
-        url="https://zenodo.org/records/13993337/files/groove_midi_index_1.0.0.json?download=1",
-        checksum="9ee6fd1b2f3d50570fc446d4b19814a3",
+        url="https://zenodo.org/records/24294116/files/groove_midi_index_1.0.0.json?download=1",
+        checksum="52e89b258f432f6d917740c107615d99",
     ),
     "sample": core.Index(filename="groove_midi_index_1.0.0_sample.json"),
 }

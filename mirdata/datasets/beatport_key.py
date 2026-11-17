@@ -56,8 +56,8 @@ INDEXES = {
     "test": "sample",
     "1.0.0": core.Index(
         filename="beatport_key_index_1.0.0.json",
-        url="https://zenodo.org/records/13993022/files/beatport_key_index_1.0.0.json?download=1",
-        checksum="71291eec1a4791259d05fd9281c5cfbf",
+        url="https://zenodo.org/records/24294116/files/beatport_key_index_1.0.0.json?download=1",
+        checksum="2839f5f9d478ccf68cb76dd77710653d",
     ),
     "sample": core.Index(filename="beatport_key_index_1.0.0_sample.json"),
 }

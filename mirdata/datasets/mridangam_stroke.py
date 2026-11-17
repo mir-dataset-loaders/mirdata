@@ -74,8 +74,8 @@ INDEXES = {
     "test": "sample",
     "1.5": core.Index(
         filename="mridangam_stroke_index_1.5.json",
-        url="https://zenodo.org/records/13930511/files/mridangam_stroke_index_1.5.json?download=1",
-        checksum="b84b05f46839e2d4417cc59af377b0c2",
+        url="https://zenodo.org/records/24294116/files/mridangam_stroke_index_1.5.json?download=1",
+        checksum="a73cbbb041cdb961c02a750a0506510d",
     ),
     "sample": core.Index(filename="mridangam_stroke_index_1.5_sample.json"),
 }

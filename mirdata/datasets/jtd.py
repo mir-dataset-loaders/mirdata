@@ -80,8 +80,8 @@ INDEXES = {
     "test": "sample",
     "2.0": core.Index(
         filename="jtd_index_2.0.json",
-        url="https://zenodo.org/records/14546790/files/jtd_index_2.0.json?download=1",
-        checksum="fd31d02762fecadfd4615c3fdb41e225",
+        url="https://zenodo.org/records/24294116/files/jtd_index_2.0.json?download=1",
+        checksum="323718d723b2921b4e1d58394401333c",
     ),
     "sample": core.Index(filename="jtd_index_2.0_sample.json"),
 }

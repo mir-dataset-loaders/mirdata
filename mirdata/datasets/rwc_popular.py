@@ -72,8 +72,8 @@ INDEXES = {
     "test": "sample",
     "2.0": core.Index(
         filename="rwc_popular_index_2.0.json",
-        url="https://zenodo.org/records/20369966/files/rwc_popular_index_2.0.json?download=1",
-        checksum="c7f5f853768815885cea70d6c246895d",
+        url="https://zenodo.org/records/24294116/files/rwc_popular_index_2.0.json?download=1",
+        checksum="11f705c8deb7e12fe471aa3c2b2635fd",
     ),
     "sample": core.Index(filename="rwc_popular_index_2.0_sample.json"),
 }

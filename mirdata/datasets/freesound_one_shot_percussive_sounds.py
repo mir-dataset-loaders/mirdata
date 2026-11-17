@@ -64,8 +64,8 @@ INDEXES = {
     "test": "sample",
     "1.0": core.Index(
         filename="freesound_one_shot_percussive_sounds_index_1.0.json",
-        url="https://zenodo.org/records/13930469/files/freesound_one_shot_percussive_sounds_index_1.0.json?download=1",
-        checksum="5992d20ef9b2a9eadff0f7324d902003",
+        url="https://zenodo.org/records/24294116/files/freesound_one_shot_percussive_sounds_index_1.0.json?download=1",
+        checksum="ac373615d53ee640617400b11443bf99",
     ),
     "sample": core.Index(
         filename="freesound_one_shot_percussive_sounds_index_1.0_sample.json"

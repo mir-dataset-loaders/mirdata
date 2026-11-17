@@ -58,8 +58,8 @@ INDEXES = {
     "test": "sample",
     "2.0.0": core.Index(
         filename="maestro_index_2.0.0.json",
-        url="https://zenodo.org/records/13993264/files/maestro_index_2.0.0.json?download=1",
-        checksum="ed407580939a09714a9c68e599c75c91",
+        url="https://zenodo.org/records/24294116/files/maestro_index_2.0.0.json?download=1",
+        checksum="a0fe02fed078c63e091098b2b8223ed0",
     ),
     "sample": core.Index(filename="maestro_index_2.0.0_sample.json"),
 }
