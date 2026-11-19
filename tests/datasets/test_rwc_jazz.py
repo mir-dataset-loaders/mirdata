@@ -5,7 +5,7 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = "RM-J004"
+    default_trackid = "RWC_J004"
     data_home = os.path.normpath("tests/resources/mir_datasets/rwc_jazz")
     dataset = rwc_jazz.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
