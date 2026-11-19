@@ -85,8 +85,6 @@ def test_metadata():
 def test_download_index_only_skips_extraction(tmp_path, mocker):
     mocker.patch("mirdata.download_utils.downloader")
     unzip = mocker.patch("mirdata.download_utils.unzip")
-    mocker.patch("mirdata.download_utils.move_directory_contents")
-
     dataset = idmt_smt_audio_effects.Dataset(str(tmp_path), version="1.0")
     dataset.download(partial_download=["index"])
 

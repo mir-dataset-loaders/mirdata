@@ -60,6 +60,12 @@ import numpy as np
 from smart_open import open
 
 from mirdata import annotations, core, download_utils, io
+# these functions are identical for all rwc datasets
+from mirdata.datasets.rwc_popular import (
+    load_beats,
+    load_audio,
+    LICENSE_INFO,
+)
 
 BIBTEX = """@inproceedings{goto2002rwc,
   title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
