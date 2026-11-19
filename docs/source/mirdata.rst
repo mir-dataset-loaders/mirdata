@@ -101,6 +101,14 @@ compmusic_carnatic_rhythm
    :inherited-members:
 
 
+compmusic_carnatic_varnam
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.compmusic_carnatic_varnam
+   :members:
+   :inherited-members:
+
+
 compmusic_hindustani_rhythm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -378,6 +386,14 @@ multivox
    :inherited-members:
 
 
+openmic2018
+^^^^^^^^^^^
+
+.. automodule:: mirdata.datasets.openmic2018
+   :members:
+   :inherited-members:
+
+   
 orchset
 ^^^^^^^
 

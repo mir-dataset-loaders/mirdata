@@ -285,7 +285,9 @@ def load_audio(fhandle: BinaryIO) -> Tuple[np.ndarray, float]:
 # -- use this decorator so the docs are complete
 @core.docstring_inherit(core.Dataset)
 class Dataset(core.Dataset):
-    """The OpenMIC-2018 dataset"""
+    """
+    The OpenMIC-2018 dataset
+    """
 
     def __init__(self, data_home=None, version="default"):
         super().__init__(
