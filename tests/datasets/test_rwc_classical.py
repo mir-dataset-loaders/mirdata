@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import pretty_midi
 
 from mirdata.datasets import rwc_classical
 from mirdata import annotations
@@ -7,38 +8,49 @@ from tests.test_utils import run_track_tests
 
 
 def test_track():
-    default_trackid = "RM-C003"
+    default_trackid = "RWC_C003"
     data_home = os.path.normpath("tests/resources/mir_datasets/rwc_classical")
     dataset = rwc_classical.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "track_id": "RM-C003",
+        "track_id": "RWC_C003",
         "audio_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
-            "audio/rwc-c-m01/3.wav",
-        ),
-        "sections_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
-            "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
+            "RWC-C/RWC_C003.wav",
         ),
         "beats_path": os.path.join(
             os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
-            "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+            "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/01_annotations_preprocessed/beats/RWC-C/RWC_C003.csv",
         ),
-        "piece_number": "No. 3",
-        "suffix": "M01",
-        "track_number": "Tr. 03",
-        "title": "Symphony no.5 in C minor, op.67. 1st mvmt.",
-        "composer": "Beethoven, Ludwig van",
+        "midi_path": os.path.join(
+            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
+            "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/01_annotations_preprocessed/MIDI_aligned/RWC-C/RWC_C003.mid",
+        ),
+        "piece_number": "3",
+        "cd_number": "1",
+        "track_number": "3",
+        "title": "Symphony No.5 in C minor, Op.67, 1st mvmt.",
         "artist": "Tokyo City Philharmonic Orchestra",
-        "duration": 435,
-        "category": "Symphony",
+        "singer_information": "",
+        "singing_language": "",
+        "tempo": "",
+        "variation": "",
+        "live_instrument": "Orch",
+        "drum_information": "",
+        "composer": "Beethoven, Ludwig van",
+        "composition_type": "Symphony",
+        "main_genre": "Classical",
+        "sub_genre": "Classical",
+        "audio_start": "0.022",
+        "audio_end": "427.6245",
+        "duration": "433.7109977324263",
     }
 
     expected_property_types = {
         "beats": annotations.BeatData,
-        "sections": annotations.SectionData,
+        "midi": pretty_midi.PrettyMIDI,
+        "notes": annotations.NoteData,
         "audio": tuple,
     }
 
@@ -48,93 +60,15 @@ def test_track():
     y, sr = track.audio
     assert sr == 44100
     assert y.shape == (44100 * 2,)
-
-
-def test_load_sections():
-    # load a file which exists
-    section_path = (
-        "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT"
-    )
-    section_data = rwc_classical.load_sections(section_path)
-
-    # check types
-    assert type(section_data) == annotations.SectionData
-    assert type(section_data.intervals) is np.ndarray
-    assert type(section_data.labels) is list
-
-    # check values
-    assert np.array_equal(section_data.intervals[:, 0], np.array([0.29, 419.96]))
-    assert np.array_equal(section_data.intervals[:, 1], np.array([46.14, 433.71]))
-    assert np.array_equal(section_data.labels, np.array(["chorus A", "ending"]))
-
-    # empty file
-    section_path = (
-        "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C025_A.CHORUS.TXT"
-    )
-
-    section_data = rwc_classical.load_sections(section_path)
-
-    assert section_data == None
-
-
-def test_position_in_bar():
-    positions1 = np.array([48, 384, 48, 384, 48, 384, 48, 384])
-    times1 = np.array([1, 2, 3, 4, 5, 6, 7, 8])
-    fixed_positions1 = np.array([2, 1, 2, 1, 2, 1, 2, 1])
-    fixed_times1 = np.array([1, 2, 3, 4, 5, 6, 7, 8])
-    actual_positions1, actual_times1 = rwc_classical._position_in_bar(
-        positions1, times1
-    )
-    assert np.array_equal(actual_positions1, fixed_positions1)
-    assert np.array_equal(actual_times1, fixed_times1)
-
-    positions2 = np.array([-1, 48, 384, 48, 384, 48, 384, 48])
-    times2 = np.array([1, 2, 3, 4, 5, 6, 7, 8])
-    fixed_positions2 = np.array([2, 1, 2, 1, 2, 1, 2])
-    fixed_times2 = np.array([2, 3, 4, 5, 6, 7, 8])
-    actual_positions2, actual_times2 = rwc_classical._position_in_bar(
-        positions2, times2
-    )
-    assert np.array_equal(actual_positions2, fixed_positions2)
-    assert np.array_equal(actual_times2, fixed_times2)
-
-    positions3 = np.array([384, 48, 384, 48, 384, 48, 384, 48, 384])
-    times3 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    fixed_positions3 = np.array([1, 2, 1, 2, 1, 2, 1, 2, 1])
-    fixed_times3 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    actual_positions3, actual_times3 = rwc_classical._position_in_bar(
-        positions3, times3
-    )
-    assert np.array_equal(actual_positions3, fixed_positions3)
-    assert np.array_equal(actual_times3, fixed_times3)
-
-    positions4 = np.array([384, 24, 48, 72, 96, 120, 384, 24])
-    times4 = np.array([1, 2, 3, 4, 5, 6, 7, 8])
-    fixed_positions4 = np.array([1, 2, 3, 4, 5, 6, 1, 2])
-    fixed_times4 = np.array([1, 2, 3, 4, 5, 6, 7, 8])
-    actual_positions4, actual_times4 = rwc_classical._position_in_bar(
-        positions4, times4
-    )
-    assert np.array_equal(actual_positions4, fixed_positions4)
-    assert np.array_equal(actual_times4, fixed_times4)
-
-    positions5 = np.array([96, 384, 48, 96, 384, 48, 96])
-    times5 = np.array([1, 2, 3, 4, 5, 6, 7])
-    fixed_positions5 = np.array([3, 1, 2, 3, 1, 2, 3])
-    fixed_times5 = np.array([1, 2, 3, 4, 5, 6, 7])
-    actual_positions5, actual_times5 = rwc_classical._position_in_bar(
-        positions5, times5
-    )
-    assert np.array_equal(actual_positions5, fixed_positions5)
-    assert np.array_equal(actual_times5, fixed_times5)
+    # test NoteData
+    assert isinstance(track.notes, annotations.NoteData)
+    assert len(track.notes.intervals) > 0
 
 
 def test_load_beats():
     beats_path = (
         "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT"
+        + "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/01_annotations_preprocessed/beats/RWC-C/RWC_C003.csv"
     )
     beat_data = rwc_classical.load_beats(beats_path)
 
@@ -144,23 +78,46 @@ def test_load_beats():
     assert type(beat_data.positions) is np.ndarray
 
     # check values
-    assert np.array_equal(
-        beat_data.times, np.array([1.65, 2.58, 2.95, 3.33, 3.71, 4.09, 5.18, 6.28])
-    )
-    assert np.array_equal(beat_data.positions, np.array([2, 1, 2, 1, 2, 1, 2, 1]))
+    assert np.array_equal(beat_data.times[:4], np.array([0.290, 0.650, 1.650, 2.580]))
+    assert np.array_equal(beat_data.positions[:4], np.array([2, 1, 2, 1]))
 
 
 def test_load_metadata():
     data_home = "tests/resources/mir_datasets/rwc_classical"
     dataset = rwc_classical.Dataset(data_home, version="test")
     metadata = dataset._metadata
-    assert metadata["RM-C003"] == {
-        "piece_number": "No. 3",
-        "suffix": "M01",
-        "track_number": "Tr. 03",
-        "title": "Symphony no.5 in C minor, op.67. 1st mvmt.",
-        "composer": "Beethoven, Ludwig van",
-        "artist": "Tokyo City Philharmonic Orchestra",
-        "duration": 435,
-        "category": "Symphony",
-    }
+
+    assert "RWC_C003" in metadata
+    assert metadata["RWC_C003"]["piece_number"] == "3"
+    assert metadata["RWC_C003"]["cd_number"] == "1"
+    assert metadata["RWC_C003"]["track_number"] == "3"
+    assert metadata["RWC_C003"]["title"] == "Symphony No.5 in C minor, Op.67, 1st mvmt."
+    assert metadata["RWC_C003"]["artist"] == "Tokyo City Philharmonic Orchestra"
+    assert metadata["RWC_C003"]["live_instrument"] == "Orch"
+    assert metadata["RWC_C003"]["main_genre"] == "Classical"
+    assert metadata["RWC_C003"]["sub_genre"] == "Classical"
+    assert metadata["RWC_C003"]["audio_start"] == "0.022"
+    assert metadata["RWC_C003"]["audio_end"] == "427.6245"
+    assert metadata["RWC_C003"]["duration"] == "433.7109977324263"
+
+
+def test_load_metadata_else(tmp_path):
+    data_home = tmp_path / "rwc_classical"
+    metadata_dir = (
+        data_home / "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2"
+    )
+    metadata_dir.mkdir(parents=True)
+    metadata_file = metadata_dir / "metadata.csv"
+
+    metadata_file.write_text(
+        "RWCID;CollID;PieceNo;CDNo;TrackNo;Title;Artist;SingerInformation;"
+        "SingingLanguage;Tempo;Variation;LiveInstruments;DrumInformation;"
+        "Composer;CompositionType;GenreMain;GenreSub;audio_start;audio_end;duration\n"
+        "RWC_C001;J;1;1;1;Test;Test Artist;;;;;;;;;Classical;;0.1;10.0;10.0\n",
+        encoding="utf-8",
+    )
+
+    dataset = rwc_classical.Dataset(str(data_home), version="test")
+    metadata = dataset._metadata
+
+    assert metadata == {}

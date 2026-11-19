@@ -1,0 +1,30 @@
+{
+  "version": "2.0",
+  "tracks": {
+    "RWC_C003": {
+      "audio": [
+        "RWC-C/RWC_C003.wav",
+        "21a0e8276e04ebe42ddb0305ed9c9f44"
+      ],
+      "beats": [
+        "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/01_annotations_preprocessed/beats/RWC-C/RWC_C003.csv",
+        "db829db15cf6c5931853bab7b9a53ad7"
+      ],
+      "midi": [
+        "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/01_annotations_preprocessed/MIDI_aligned/RWC-C/RWC_C003.mid",
+        "e7f696be85c4dad84040e215594910aa"
+      ],
+      "audio_features": {
+        "duration_seconds": 433.711,
+        "sample_rate": 44100,
+        "num_channels": 2
+      }
+    }
+  },
+  "metadata": {
+    "rwc-classical-metadata": [
+      "rwc-annotations-2b84581b0c4c80514aadf7e9025a309c91e02cc2/metadata.csv",
+      "ce40286a4d0dd13af0d7e7454ae59a1e"
+    ]
+  }
+}
