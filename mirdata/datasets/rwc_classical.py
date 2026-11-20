@@ -82,23 +82,32 @@ class Track(core.Track):
         track_id (str): track id of the track
 
     Attributes:
-        artist (str): the track's artist
         audio_path (str): path of the audio file
         beats_path (str): path of the beat annotation file
+        piece_number (str): piece number of this Track, [1-50]
+        cd_number (str): cd number of this Track, [1-6]
+        track_number (str): CD track number of this Track, [1-20]
+        title (str): title of this Track, 1~50
         category (str): One of 'Symphony', 'Concerto', 'Orchestral',
             'Solo', 'Chamber', 'Vocal', or blank.
-        composer (str): Composer of this Track.
+        artist (str): Artist of this Track, e.g. "Chopin, Fryderyk"
         duration (float): Duration of the track in seconds
-        piece_number (str): Piece number of this Track, [1-50]
-        sections_path (str): path of the section annotation file
-        suffix (str): string within M01-M06
-        title (str): Title of The track.
-        track_id (str): track id
-        track_number (str): CD track number of this Track
+        singer_information (str): singer information of this Track, 2001~2006
+        singing_language (str): singing language of this Track, 1~30
+        tempo (float): tempo of this Track, 1~240
+        variation (float): variation of this Track, 0~240
+        live_instrument (str): live_instrument of this Track, 0~2
+        drum_information (str): drum_information of this Track, 0~1
+        composition_type (str): composition_type of this Track, 1~5
+        main_genre (str): main_genre of this Track, 1~14
+        sub_genre (str): sub_genre of this Track, 1~51
+        audio_start (str): audio start time of this Track, 0~600
+        audio_end (str): audio end time of this Track, 0~600
 
     Cached Properties:
-        sections (SectionData): human-labeled section annotations
         beats (BeatData): human-labeled beat annotations
+        midi (pretty_midi.PrettyMIDI): aligned MIDI annotations
+        notes (NoteData): note annotations
 
     """
 
@@ -306,3 +315,17 @@ class Dataset(core.Dataset):
                 pass
 
         return metadata_index
+
+    @deprecated(reason="Use mirdata.datasets.rwc_classical.load_audio", version="0.3.4")
+    def load_audio(self, *args, **kwargs):
+        return load_audio(*args, **kwargs)
+
+    @deprecated(
+        reason="Use mirdata.datasets.rwc_classical.load_sections", version="0.3.4"
+    )
+    def load_sections(self, *args, **kwargs):
+        return load_sections(*args, **kwargs)
+
+    @deprecated(reason="Use mirdata.datasets.rwc_classical.load_beats", version="0.3.4")
+    def load_beats(self, *args, **kwargs):
+        return load_beats(*args, **kwargs)

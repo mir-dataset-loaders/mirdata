@@ -496,10 +496,10 @@
      - ❌
 
    * - RWC classical
-     - - audio: ❌
+     - - audio: ✅
        - annotations: ✅
      - - :ref:`beats`
-       - :ref:`sections`
+       - :ref:`melody`
      - 61
      - :rwc:`\ `
 
