@@ -42,7 +42,7 @@ CUSTOM_TEST_TRACKS = {
     "medleydb_melody": "MusicDelta_Beethoven",
     "mdb_stem_synth": "AClassicEducation_NightOwl_STEM_08",
     "mridangam_stroke": "224030",
-    "rwc_classical": "RM-C003",
+    "rwc_classical": "RWC_C003",
     "rwc_jazz": "RM-J004",
     "rwc_popular": "RWC_P001",
     "openmic2018": "000046_3840",
