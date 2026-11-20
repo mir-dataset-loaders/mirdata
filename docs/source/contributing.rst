@@ -110,7 +110,7 @@ The steps to add a new dataset loader to Mirdata are:
 
 Mirdata's structure relies on `indexes`. Indexes are dictionaries contain information about the structure of the
 dataset which is necessary for the loading and validating functionalities of Mirdata. In particular, indexes contain
-information about the files included in the dataset, their location and checksums. They also contain audio features per audio file, for parsing in the `mirdata Gallery`.
+information about the files included in the dataset, their location and checksums. They also contain audio features per audio file, and total dataset size for automatic population of the `mirdata Gallery`.
 Indexes do not contain tags, annotations, or descriptors. The necessary steps are:
 
 1. To create an index, first create a script in ``scripts/``, as ``make_dataset_index.py``, which generates an index file.

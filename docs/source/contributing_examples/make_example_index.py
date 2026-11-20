@@ -14,20 +14,32 @@ def make_dataset_index(dataset_data_path):
     annotation_files = glob.glob(os.path.join(annotation_dir, "*.lab"))
     track_ids = sorted([os.path.basename(f).split(".")[0] for f in annotation_files])
 
+    total_dataset_bytes = 0
     # top-key level metadata
     metadata_checksum = md5(os.path.join(dataset_data_path, "id_mapping.txt"))
+    total_dataset_bytes += get_file_size(
+        os.path.join(dataset_data_path, "id_mapping.txt")
+    )
     index_metadata = {"metadata": {"id_mapping": ("id_mapping.txt", metadata_checksum)}}
-
     # top-key level tracks
     index_tracks = {}
     audio_records = []
     for track_id in track_ids:
-        audio_rel_path = "Wavfile/{}.wav".format(track_id)
-        audio_full_path = os.path.join(dataset_data_path, audio_rel_path)
-        audio_checksum = md5(audio_full_path)
-        annotation_checksum = md5(
-            os.path.join(dataset_data_path, "annotation/{}.lab".format(track_id))
+        # getting audio checksum and size
+        audio_full_path = os.path.join(
+            dataset_data_path, "Wavfile/{}.wav".format(track_id)
         )
+        audio_checksum = md5(audio_full_path)
+        audio_size = get_file_size(audio_full_path)
+        total_dataset_bytes += audio_size
+
+        # getting annotation checksum and size
+        annotation_full_path = os.path.join(
+            dataset_data_path, "annotation/{}.lab".format(track_id)
+        )
+        annotation_checksum = md5(annotation_full_path)
+        annotation_size = get_file_size(annotation_full_path)
+        total_dataset_bytes += annotation_size
 
         length, sr, channels = audio_features(audio_full_path)
         audio_record = {
@@ -46,12 +58,15 @@ def make_dataset_index(dataset_data_path):
         }
 
     # If your index has multitrack-level audio files (such as a mix), add
-    # features for those files too. This assumes index_multitracks has already
+    # audio features for those files too. This assumes index_multitracks has already
     # been built; Entries with no multitrack-level audio path (only a "tracks" list,
     # for example) are kept as-is; no audio_features are added to them.
 
     # top-key level version
-    dataset_index = {"version": None}
+    dataset_index = {
+        "version": None,
+        "dataset_size_bytes": total_dataset_bytes,
+    }
 
     # combine all in dataset index
     dataset_index.update(index_metadata)
@@ -62,14 +77,19 @@ def make_dataset_index(dataset_data_path):
 
 
 def audio_features(file_path):
-    try: #faster way of reading the header of the file if exists instead of loading the whole file
+    try:  # faster way of reading the header of the file if exists instead of loading the whole file
         info = sf.info(file_path)
         return info.duration, info.samplerate, info.channels
-    except Exception: #in case the file is not supported by soundfile, use librosa
+    except Exception:  # in case the file is not supported by soundfile, use librosa
         y, sr = librosa.load(file_path, sr=None, mono=False)
         num_channels = 1 if y.ndim == 1 else y.shape[0]
         length = y.shape[-1] / sr
     return length, sr, num_channels
+
+
+def get_file_size(file_path):
+    """Return file size in bytes."""
+    return os.path.getsize(file_path)
 
 
 def main(args):
