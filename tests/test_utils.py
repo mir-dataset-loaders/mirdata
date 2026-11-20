@@ -142,6 +142,30 @@ def test_validate_index(test_index, expected_missing, expected_inv_checksum):
     assert expected_inv_checksum == invalid_checksums
 
 
+def test_validate_files_ignores_audio_features(mocker):
+    mock_validate = mocker.patch.object(validate, "validate", return_value=(True, True))
+    file_dict = {
+        "001": {
+            "audio": ["audio.mp3", "checksum"],
+            "audio_features": {
+                "audio": {
+                    "duration_seconds": 204.64,
+                    "sample_rate": 44100,
+                    "num_channels": 2,
+                }
+            },
+        }
+    }
+
+    missing, invalid = validate.validate_files(file_dict, "data_home", verbose=False)
+
+    assert missing == {}
+    assert invalid == {}
+    mock_validate.assert_called_once_with(
+        os.path.join("data_home", "audio.mp3"), "checksum"
+    )
+
+
 @pytest.mark.parametrize(
     "missing_files,invalid_checksums",
     [
